@@ -1,0 +1,23 @@
+@import "~tailwindcss/base";
+@import "~tailwindcss/components";
+@import "~tailwindcss/utilities";
+
+// Base: animations, base, typography, and utilies.
+@import "./scss/base/_var.scss";
+@import "./scss/base/_fonts.scss";
+@import "./scss/base/_common.scss";
+@import "./scss/base/_wp-content.scss";
+
+// Layout: Header, footer, grid, navigation
+@import "./scss/layout/_footer.scss";
+@import "./scss/layout/_header.scss";
+@import "./scss/layout/_main.scss";
+
+// Pages: Have a single scss for each specific page
+// @import './scss/pages/_home.scss';
+
+// Vendor: handles 3rd party css
+
+// Components: have a single scss file for each individual component
+
+@import "./scss/_mobile.scss";
