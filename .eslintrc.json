@@ -33,6 +33,7 @@
   },
   "rules": {
     "react/jsx-filename-extension": "off",
+    "prettier/linebreak-style": "off",
     "react/no-array-index-key": "off",
     "react/jsx-props-no-spreading": "off",
     "react/react-in-jsx-scope": "off",
