@@ -1,11 +1,9 @@
 import React from 'react';
 
-const Box =()=> {
+export default function Test2() {
 	return (
 		<div>
-            Box
+            Test2
 		</div>
 	);
 }
-
-export default Box
