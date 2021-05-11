@@ -1,21 +1,23 @@
+import axios from 'axios';
 
-import { magic } from '../../lib/magic';
-import { removeTokenCookie } from '../../lib/auth-cookies';
-import { getLoginSession } from '../../lib/auth';
+export default async function login(req, res) {
+  const { WORDPRESS_ENDPOINT } = process.env;
+  const { method } = req;
 
-export default async function logout( req, res ) {
-	// const {WORDPRESS_ENDPOINT} = process.env;
-	try {
-		const session = await getLoginSession( req );
-
-		if ( session ) {
-			await magic.users.logoutByIssuer( session.issuer );
-			removeTokenCookie( res );
-		}
-	} catch ( error ) {
-		console.error( error );
-	}
-
-	res.writeHead( 302, { Location: '/' } );
-	res.end();
+  switch (method) {
+    case 'POST':
+      // Get data from your database
+      await axios
+        .get(`${WORDPRESS_ENDPOINT}/wp-json/wp/v2/users`)
+        .then(({ data }) => {
+          res.status(200).json({ data });
+        })
+        .catch(({ err }) => {
+          res.status(400).json({ err });
+        });
+      break;
+    default:
+      res.setHeader('Allow', ['POST']);
+      res.status(405).end(`Method ${method} Not Allowed`);
+  }
 }
