@@ -1,37 +1,49 @@
 import Router from 'next/router';
+import { useState } from 'react';
 import UserAPI from '../../src/ services /user.service';
 import useForm from '../../src/hooks/useForm';
+import DisplayError from '../common/DisplayError';
 
 const LoginForm = () => {
+
+	const [ loading, setLoading ] = useState( false );
+	const [ error, setError ] = useState( null );
+
 	const { inputs, handleChange, resetForm } = useForm( {
 		email: '',
 		password: '',
 	} );
-
 	const handleSubmit = async ( e ) => {
+		setError( null );
+		setLoading( true );
 		e.preventDefault();
 		try {
-			const { data, status } = await UserAPI.login( email, password );
+			const { data, status } = await UserAPI.login( inputs );
+			console.log( data, status );
 			if ( 200 !== status ) {
-				console.error( data.errors );
+				setError( status );
 			}
 
 			if ( data?.user ) {
-				// window.localStorage.setItem( 'user', JSON.stringify( data.user ) );
-				Router.push( '/' ); // TODO: go to last page
+				// TODO: Set cookie with nookies
+				resetForm();
+				Router.push( '/' ); // TODO: go to last page user visited
 			}
 		} catch ( error ) {
-			console.error( error );
+			setError( error );
+			setTimeout( () => {
+				setError( null );
+			}, 5000 );
 		} finally {
-			// setLoading( false );
+			setLoading( false );
 		}
 	};
 
 	return (
 		<>
 			<form method="POST" onSubmit={handleSubmit}>
-				<h2>Sign Into Your Account</h2>
-				<fieldset>
+				<DisplayError error={error} />
+				<fieldset disabled={loading}>
 					<label htmlFor="email">
                         Email
 						<input
