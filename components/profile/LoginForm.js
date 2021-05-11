@@ -1,7 +1,7 @@
 import Router from 'next/router';
 import { useState } from 'react';
-import UserAPI from '../../src/ services /user.service';
 import useForm from '../../src/hooks/useForm';
+import UserAPI from '../../src/services/user.service';
 import DisplayError from '../common/DisplayError';
 
 const LoginForm = () => {
