@@ -1,3 +1,1 @@
-export const upperCase = ( str ) =>{
-	return str?.toUpperCase();
-};
+export const upperCase = (str) => str?.toUpperCase();
