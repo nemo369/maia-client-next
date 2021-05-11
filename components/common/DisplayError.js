@@ -1,4 +1,4 @@
-import React from 'react';
+import PropTypes from 'prop-types'; // ES6
 
 const DisplayError = ({ error }) => {
   if (!error || !error.message) {
