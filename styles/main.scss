@@ -9,8 +9,7 @@
 @import "./scss/base/_wp-content.scss";
 
 // Layout: Header, footer, grid, navigation
-@import "./scss/layout/_footer.scss";
-@import "./scss/layout/_header.scss";
+@import "./scss/layout/_nav.scss";
 @import "./scss/layout/_main.scss";
 
 // Pages: Have a single scss for each specific page
@@ -19,5 +18,6 @@
 // Vendor: handles 3rd party css
 
 // Components: have a single scss file for each individual component
+// @import "./scss/components/nav.scss";
 
 @import "./scss/_mobile.scss";

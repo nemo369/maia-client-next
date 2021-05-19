@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types'; // ES6
 import NavBar from './NavBar';
-// eslint-disable-next-line react/prop-types
+
 const Layout = ({ children }) => (
-  <div className="layout">
+  <main className="min-h-screen md:flex main">
+    <article className="dashboard flex-grow">{children}</article>
     <NavBar />
-    {children}
-  </div>
+  </main>
 );
 
 Layout.prototype = {
