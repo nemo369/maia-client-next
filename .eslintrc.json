@@ -46,39 +46,21 @@
         "usePrettierrc": true
       }
     ],
-    "camelcase": [
-      1
-    ],
-    "spaced-comment": [
-      0
-    ],
-    "padded-blocks": [
-      0
-    ],
-    "prefer-template": [
-      0
-    ],
-    "max-len": [
-      0
-    ],
-    "no-else-return": [
-      0
-    ],
-    "func-names": [
-      0
-    ],
-    "object-shorthand": [
-      0
-    ],
-    "object-curly-newline":"off",
+    "camelcase": [1],
+    "spaced-comment": [0],
+    "padded-blocks": [0],
+    "prefer-template": [0],
+    "max-len": [0],
+    "no-else-return": [0],
+    "func-names": [0],
+    "object-shorthand": [0],
+    "object-curly-newline": "off",
     "template-curly-spacing": "off",
     "indent": [
       "warn",
       2,
       {
-        "ignoredNodes": [
-          "TemplateLiteral"
-        ],
+        "ignoredNodes": ["TemplateLiteral"],
         "SwitchCase": 1
       }
     ],

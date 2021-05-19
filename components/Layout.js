@@ -2,10 +2,10 @@ import PropTypes from 'prop-types'; // ES6
 import NavBar from './NavBar';
 
 const Layout = ({ children }) => (
-  <main className="min-h-screen md:flex main">
-    <article className="dashboard flex-grow">{children}</article>
+  <section className="min-h-screen md:flex main">
     <NavBar />
-  </main>
+    <main className="dashboard flex-grow">{children}</main>
+  </section>
 );
 
 Layout.prototype = {
