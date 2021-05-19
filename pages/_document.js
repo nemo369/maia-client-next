@@ -1,5 +1,6 @@
-// eslint-disable-next-line object-curly-newline
-import Document, { Html, Head, Main, NextScript } from 'next/document';
+import Document, {
+ Html, Head, Main, NextScript 
+} from 'next/document';
 
 class MyDocument extends Document {
   static async getInitialProps(ctx) {
