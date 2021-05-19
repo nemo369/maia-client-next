@@ -4,20 +4,22 @@ import useForm from '../../src/hooks/useForm';
 import UserAPI from '../../src/services/user.service';
 import DisplayError from '../common/DisplayError';
 
-const LoginForm = () => {
+const RegisterForm = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
   const { inputs, handleChange, resetForm } = useForm({
     username: '',
+    email: '',
     password: '',
+    passwordConfirmation: '',
   });
   const handleSubmit = async (e) => {
     setError(null);
     setLoading(true);
     e.preventDefault();
     try {
-      const { data, status } = await UserAPI.login(inputs);
+      const { data, status } = await UserAPI.register(inputs);
       // console.log(data, status);
       if (200 !== status) {
         setError(status);
@@ -43,17 +45,30 @@ const LoginForm = () => {
       <form method="POST" onSubmit={handleSubmit}>
         <DisplayError error={error} />
         <fieldset disabled={loading}>
-          <label htmlFor="email">
-            Email
+          <label htmlFor="username">
+            User Name
             <input
-              type="email"
+              type="text"
               name="username"
-              placeholder="Your Email Address"
-              autoComplete="email"
+              placeholder="User Name"
+              autoComplete="username"
               value={inputs.username}
               onChange={handleChange}
             />
           </label>
+          <br />
+          <label htmlFor="email">
+            Email
+            <input
+              type="email"
+              name="email"
+              placeholder="Your Email Address"
+              autoComplete="email"
+              value={inputs.email}
+              onChange={handleChange}
+            />
+          </label>
+          <br />
           <label htmlFor="password">
             Password
             <input
@@ -65,6 +80,19 @@ const LoginForm = () => {
               onChange={handleChange}
             />
           </label>
+          <br />
+          <label htmlFor="passwordConfirmation">
+            Confirm Password
+            <input
+              type="password"
+              name="passwordConfirmation"
+              placeholder="Password"
+              autoComplete="password"
+              value={inputs.passwordConfirmation}
+              onChange={handleChange}
+            />
+          </label>
+          <br />
           <button type="submit">Sign In!</button>
         </fieldset>
       </form>
@@ -72,4 +100,4 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+export default RegisterForm;

@@ -29,9 +29,12 @@ const UserAPI = {
     return response;
   },
   register: async (username, email, password) => {
+    console.log(username);
+    console.log(email);
+    console.log(password);
     try {
       const response = await axios.post(
-        `${SERVER_BASE_URL}/users`,
+        `${SERVER_BASE_URL}/user/Register`,
         JSON.stringify({ user: { username, email, password } }),
         {
           headers: {
