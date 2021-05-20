@@ -1,10 +1,10 @@
 import Router from 'next/router';
 import { useState } from 'react';
-import useForm from '../../src/hooks/useForm';
-import UserAPI from '../../src/services/user.service';
-import DisplayError from '../common/error/DisplayError';
+import useForm from '../../../src/hooks/useForm';
+import UserAPI from '../../../src/services/user.service';
+import DisplayError from '../../common/error/DisplayError';
 
-const LoginForm = () => {
+const LoginWithPassword = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -72,4 +72,4 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+export default LoginWithPassword;

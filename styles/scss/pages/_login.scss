@@ -1,0 +1,15 @@
+.login {
+    height: 837px;
+    max-height: 90vh;
+    max-width: 1290px;
+    padding: 0 12px;
+    &__form {
+        max-height: 791px;
+    }
+
+    &__image {
+        transform: translateX(15px);
+        z-index: 1;
+        position: relative;
+    }
+}
