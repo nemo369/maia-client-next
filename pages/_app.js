@@ -1,6 +1,6 @@
 import '../styles/main.scss';
 import '../styles/global.css';
-import Layout from '../components/Layout';
+import Layout from '../components/layout/Layout';
 // import { ReactElement as RE } from "react";
 
 const isSSR = () => 'undefined' === typeof window;
