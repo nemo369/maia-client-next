@@ -9,7 +9,7 @@ const LoginForm = () => {
   const [error, setError] = useState(null);
 
   const { inputs, handleChange, resetForm } = useForm({
-    email: '',
+    username: '',
     password: '',
   });
   const handleSubmit = async (e) => {
@@ -47,10 +47,10 @@ const LoginForm = () => {
             Email
             <input
               type="email"
-              name="email"
+              name="username"
               placeholder="Your Email Address"
               autoComplete="email"
-              value={inputs.email}
+              value={inputs.username}
               onChange={handleChange}
             />
           </label>
