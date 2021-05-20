@@ -1,4 +1,3 @@
-import Router from 'next/router';
 import { useState } from 'react';
 import useForm from '../../../src/hooks/useForm';
 import UserAPI from '../../../src/services/user.service';
