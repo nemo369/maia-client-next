@@ -1,13 +1,20 @@
-import PropTypes from 'prop-types'; // ES6
+import PropTypes from 'prop-types';
 
 const DisplayError = ({ error }) => {
   if (!error || !error.message) {
     return null;
   }
+  if (error.message) {
+    return (
+      <div className="font-bold">
+        <p>{error.message}</p>
+      </div>
+    );
+  }
   if (error.networkError && error.networkError.result && error.networkError.result.errors.length) {
     return error.networkError.result.errors.map((errorMsg, i) => (
       <div key={i}>
-        <p data-test="graphql-error">
+        <p>
           <strong>Shoot!</strong>
           {errorMsg.message}
         </p>
@@ -15,8 +22,8 @@ const DisplayError = ({ error }) => {
     ));
   }
   return (
-    <div>
-      <p data-test="graphql-error">
+    <div className=" font-bold">
+      <p>
         <strong>Error: </strong>
         {error.message}
       </p>

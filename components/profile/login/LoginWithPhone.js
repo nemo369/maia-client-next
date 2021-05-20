@@ -1,7 +1,7 @@
 import React from 'react';
 
-function LoginWithMail() {
-  return <div>LoginWithMail</div>;
+function LoginWithPhone() {
+  return <div>LoginWithPhone</div>;
 }
 
-export default LoginWithMail;
+export default LoginWithPhone;

@@ -3,11 +3,11 @@ import LoginCmp from '../../components/profile/LoginCmp';
 const Login = () => (
   <>
     <section className="login__wrapper flex justify-center items-center h-screen">
-      <div className="md:flex login">
-        <div className="login_form bg-green-500 rounded px-14 py-11">
+      <div className="md:flex login text-white w-full">
+        <div className="login__form bg-green-500 rounded px-14 py-11">
           <LoginCmp />
         </div>
-        <div className="login__image">
+        <div className="login__image flex-grow">
           <img
             src="/images/login.png"
             alt="התחברות למאי״ה"
