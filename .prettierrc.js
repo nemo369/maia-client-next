@@ -7,4 +7,10 @@ module.exports = {
     printWidth: 100,
     tabWidth: 2,
     useTabs: false,
+    'prettier/prettier': [
+      'error',
+      {
+        endOfLine: 'auto',
+      },
+    ],
   }

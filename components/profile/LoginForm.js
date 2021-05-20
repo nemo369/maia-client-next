@@ -1,15 +1,15 @@
 import Router from 'next/router';
 import { useState } from 'react';
-import UserAPI from '../../src/ services /user.service';
 import useForm from '../../src/hooks/useForm';
-import DisplayError from '../common/DisplayError';
+import UserAPI from '../../src/services/user.service';
+import DisplayError from '../common/error/DisplayError';
 
 const LoginForm = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
   const { inputs, handleChange, resetForm } = useForm({
-    email: '',
+    username: '',
     password: '',
   });
   const handleSubmit = async (e) => {
@@ -47,10 +47,10 @@ const LoginForm = () => {
             Email
             <input
               type="email"
-              name="email"
+              name="username"
               placeholder="Your Email Address"
               autoComplete="email"
-              value={inputs.email}
+              value={inputs.username}
               onChange={handleChange}
             />
           </label>
