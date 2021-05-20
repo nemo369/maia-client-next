@@ -35,7 +35,7 @@ const LoginWithPassword = () => {
   return (
     <>
       <form method="POST" onSubmit={handleSubmit}>
-        <h2 className="font-black	mb-2">התחברות</h2>
+        <h1 className="font-black	mb-2">התחברות</h1>
         <p className="mb-11">
           כדי שנוכל לשמור על פרטיותך ולהגן על הנתונים שלך נשלח לך באמצעות SMS סיסמה חד פעמית
         </p>
@@ -60,7 +60,7 @@ const LoginWithPassword = () => {
               type="password"
               name="password"
               placeholder="סיסמא"
-              autoComplete="password"
+              autoComplete="off"
               value={inputs.password}
               onChange={handleChange}
               className={`${error ? 'input-error shake' : ''}`}
