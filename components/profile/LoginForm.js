@@ -2,7 +2,7 @@ import Router from 'next/router';
 import { useState } from 'react';
 import useForm from '../../src/hooks/useForm';
 import UserAPI from '../../src/services/user.service';
-import DisplayError from '../common/DisplayError';
+import DisplayError from '../common/error/DisplayError';
 
 const LoginForm = () => {
   const [loading, setLoading] = useState(false);

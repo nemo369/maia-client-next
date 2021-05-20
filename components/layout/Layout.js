@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types'; // ES6
-import NavBar from './NavBar';
+import NavBar from '../navbar/NavBar';
 
 const Layout = function ({ children }) {
   const { pathname } = useRouter();

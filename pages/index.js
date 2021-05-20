@@ -1,9 +1,15 @@
+import Head from 'next/head';
 import Test from '../components/Test';
 
 export default function Home() {
   return (
-    <div>
-      <Test />
-    </div>
+    <>
+      <Head>
+        <title>עמוד הבית</title>
+      </Head>
+      <div>
+        <Test />
+      </div>
+    </>
   );
 }

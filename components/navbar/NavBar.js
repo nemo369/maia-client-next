@@ -1,16 +1,16 @@
 import Link from 'next/link';
 import React from 'react';
 import { useRouter } from 'next/router';
-import LightBulb from './svg/LightBulb';
+import LightBulb from '../svg/LightBulb';
 
 const NavBar = () => {
   const { pathname } = useRouter();
 
   const links = [
     { href: '/', name: 'ראשי', icon: <LightBulb /> },
-    { href: '/JobVacancies', name: 'זירת המקצוענות', icon: <LightBulb /> },
-    { href: '/TheCurriculum', name: 'מאגר הלימודים', icon: <LightBulb /> },
-    { href: '/Professionalism', name: 'משרות פנויות', icon: <LightBulb /> },
+    { href: '/Professions', name: 'זירת המקצועות', icon: <LightBulb /> },
+    { href: '/School', name: 'מאגר הלימודים', icon: <LightBulb /> },
+    { href: '/Jobs', name: 'משרות פנויות', icon: <LightBulb /> },
   ];
 
   const LinkButton = ({ link, isActive }) => (
