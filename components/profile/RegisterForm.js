@@ -41,8 +41,8 @@ const RegisterForm = () => {
   };
 
   return (
-    <div className="registerPage_container">
-      <div className="registerPage_header">header</div>
+    <div className="registerPage_container w-registercontainer_Width max-h-registercontainer_Heigth bg-registercontainer_white">
+      {/* <div className="registerPage_header">header</div> */}
       <div className="registerPage_form_container">
         <h1>העתיד שלך מתחיל כאן</h1>
         <p>הרשמה למערכת מאיה</p>

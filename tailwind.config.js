@@ -13,6 +13,14 @@ module.exports = {
     extend: {
       spacing: {
         bbc: '1920px',
+        fifteen: '15px',
+        registercontainer_Width: '1061px',
+        registercontainer_Heigth: '577px',
+      },
+
+      padding: {
+        fifty: '50px',
+        ten: '10px',
       },
 
       textColor: (theme) => theme('colors'),
@@ -31,6 +39,9 @@ module.exports = {
       backgroundColor: (theme) => ({
         ...theme('colors'),
         mainOrange: '#FB9773',
+        lightgreybackground: '#F5F5F5',
+        registercontainer_white: '#FFFFFF',
+        registercontainer_Input_grey: '#FFFFFF',
       }),
 
       fontSize: {
