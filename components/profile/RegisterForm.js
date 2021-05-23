@@ -60,11 +60,11 @@ const RegisterForm = () => {
       {/* <div className="registerPage_header">header</div> */}
       <div className="registerPage_form_container bg-registercontainer_white px-fifty">
         <form
-          className="registerPage_form grid grid-cols-2 w-ninetyPercent mx-auto"
+          className="registerPage_form grid grid-cols-2 w-ninetyPercent mx-auto gap-x-4 gap-y-3"
           method="POST"
           onSubmit={handleSubmit}
         >
-          <div className="justify-self-center py-4">
+          <div className="justify-self-end py-4">
             <p className="mb-2 text-registerPageSubSubTitle_fontsize text-topBarGrey leading-regiterPageSubSubTitle font-black">
               פרטים אישיים
             </p>
@@ -83,7 +83,7 @@ const RegisterForm = () => {
             // autoComplete="username"
             value={inputs.username}
             onChange={handleChange}
-            className="regiserPageInput justify-self-center h-registerPageInputHeight w-registerPageInputWidth bg-registerPageInputGrey m-4 rounded-md"
+            className="regiserPageInput justify-self-center h-registerPageInputHeight w-full bg-registerPageInputGrey my-4 rounded-md"
           />
           {/* </label> */}
           {/* <label htmlFor="password"> */}
@@ -94,7 +94,7 @@ const RegisterForm = () => {
             // autoComplete="password"
             value={inputs.password}
             onChange={handleChange}
-            className="regiserPageInput justify-self-center h-registerPageInputHeight w-registerPageInputWidth bg-registerPageInputGrey m-4 rounded-md"
+            className="regiserPageInput justify-self-center h-registerPageInputHeight w-full bg-registerPageInputGrey my-4 rounded-md"
           />
           {/* </label> */}
           {/* <label htmlFor="city"> */}
@@ -105,7 +105,7 @@ const RegisterForm = () => {
             // autoComplete="password"
             value={inputs.city}
             onChange={handleChange}
-            className="regiserPageInput justify-self-center h-registerPageInputHeight w-registerPageInputWidth bg-registerPageInputGrey m-4 rounded-md"
+            className="regiserPageInput justify-self-center h-registerPageInputHeight w-full bg-registerPageInputGrey my-4 rounded-md"
           />
           {/* </label> */}
           {/* <label htmlFor="street"> */}
@@ -116,7 +116,7 @@ const RegisterForm = () => {
             // autoComplete="password"
             value={inputs.street}
             onChange={handleChange}
-            className="regiserPageInput justify-self-center h-registerPageInputHeight w-registerPageInputWidth bg-registerPageInputGrey m-4 rounded-md"
+            className="regiserPageInput justify-self-center h-registerPageInputHeight w-full bg-registerPageInputGrey my-4 rounded-md"
           />
           {/* </label> */}
           {/* <label htmlFor="email"> */}
@@ -127,7 +127,7 @@ const RegisterForm = () => {
             // autoComplete="email"
             value={inputs.email}
             onChange={handleChange}
-            className="regiserPageInput justify-self-center h-registerPageInputHeight w-registerPageInputWidth bg-registerPageInputGrey m-4 rounded-md"
+            className="regiserPageInput justify-self-center h-registerPageInputHeight w-full bg-registerPageInputGrey my-4 rounded-md"
           />
           {/* </label> */}
           {/* <label htmlFor="passwordConfirmation"> */}
@@ -138,7 +138,7 @@ const RegisterForm = () => {
             // autoComplete="fullname"
             value={inputs.fullname}
             onChange={handleChange}
-            className="regiserPageInput justify-self-center h-registerPageInputHeight w-registerPageInputWidth bg-registerPageInputGrey m-4 rounded-md"
+            className="regiserPageInput justify-self-center h-registerPageInputHeight w-full bg-registerPageInputGrey my-4 rounded-md"
           />
           {/* </label> */}
           {/* <label htmlFor="cellphone"> */}
@@ -149,7 +149,7 @@ const RegisterForm = () => {
             // autoComplete="password"
             value={inputs.cellphone}
             onChange={handleChange}
-            className="regiserPageInput justify-self-center h-registerPageInputHeight w-registerPageInputWidth bg-registerPageInputGrey m-4 rounded-md"
+            className="regiserPageInput justify-self-center h-registerPageInputHeight w-full bg-registerPageInputGrey my-4 rounded-md"
           />
           {/* </label> */}
           {/* <label htmlFor="age"> */}
@@ -160,12 +160,12 @@ const RegisterForm = () => {
             // autoComplete="password"
             value={inputs.age}
             onChange={handleChange}
-            className="regiserPageInput justify-self-center h-registerPageInputHeight w-registerPageInputWidth bg-registerPageInputGrey m-4 rounded-md"
+            className="regiserPageInput justify-self-center h-registerPageInputHeight w-full bg-registerPageInputGrey my-4 rounded-md"
           />
           {/* </label> */}
 
           {/* </fieldset> */}
-          <div className="register_bottom w-onehundredandtwentyFifeP mr-sixty">
+          <div className="register_bottom col-start-1 col-end-3 mr-sixty">
             <div className="my-4">
               <p className="inline-block text-regiterPageDarkBottomText leading-regiterPageDarkBottomText text-regiterPageDarkBottomTextcolor">
                 לפנ י שאנחנו ממשיכים, איך נוח לך שנפנה אליך?
@@ -202,6 +202,7 @@ const RegisterForm = () => {
                 נקבה
               </label>
             </div>
+            {/* <span /> */}
             <div className="my-4">
               <input
                 className=" ml-4"
@@ -219,29 +220,32 @@ const RegisterForm = () => {
                 אני מאשר/ת למקדם/ת תעסוקה לצפות בפרטים שלי
               </label>
             </div>
-            <div className="my-4">
-              <input
-                className=" ml-4"
-                id="terms_and_conditions"
-                name="terms_and_conditions"
-                type="checkbox"
-                value="terms_and_conditions"
-                onChange={handleChange}
-              />
-              <label
-                htmlFor="terms_and_conditions"
-                name="terms_and_conditions"
-                className="text-regiterPageDarkBottomText leading-regiterPageDarkBottomText text-regiterPageDarkBottomTextcolor"
-              >
-                אני מאשר/ת כי קראתי בעיון ואישרתי את כל
-                <u> תנאי התקנון </u>
-                ואני מסכים/ה
-                <br />
-                לתהילך המוצע ובתנאים הרשומים
-              </label>
+            {/* <span /> */}
+            <div>
+              <div className="my-4">
+                <input
+                  className=" ml-4"
+                  id="terms_and_conditions"
+                  name="terms_and_conditions"
+                  type="checkbox"
+                  value="terms_and_conditions"
+                  onChange={handleChange}
+                />
+                <label
+                  htmlFor="terms_and_conditions"
+                  name="terms_and_conditions"
+                  className="text-regiterPageDarkBottomText leading-regiterPageDarkBottomText text-regiterPageDarkBottomTextcolor"
+                >
+                  אני מאשר/ת כי קראתי בעיון ואישרתי את כל
+                  <u> תנאי התקנון </u>
+                  ואני מסכים/ה
+                  <br />
+                  לתהילך המוצע ובתנאים הרשומים
+                </label>
+              </div>
             </div>
+            <button type="submit">Sign In!</button>
           </div>
-          <button type="submit">Sign In!</button>
         </form>
       </div>
     </div>
