@@ -1,31 +1,37 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { useRouter } from 'next/router';
 import useForm from '../../../src/hooks/useForm';
 import UserAPI from '../../../src/services/user.service';
 import DisplayError from '../../common/error/DisplayError';
 import Loader from '../../common/Loader';
+import { AppContext } from '../../../src/context/state';
+import { SET_USER } from '../../../src/context/userReucder';
 
 const LoginWithPassword = () => {
+  const router = useRouter();
+
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const { dispatch } = useContext(AppContext);
 
   const { inputs, handleChange, resetForm } = useForm({
     username: '',
     password: '',
   });
   const handleSubmit = async (e) => {
+    e.preventDefault();
+
     setError(null);
     setLoading(true);
-    e.preventDefault();
     const { data, status } = await UserAPI.login(inputs);
     if (200 !== status) {
       setError(data);
     }
-
     if (data?.token) {
-      // TODO: Set cookie with nookies
-      console.log(data);
+      dispatch({ type: SET_USER, user: data });
+
       resetForm();
-      // Router.push('/'); // TODO: go to last page user visited
+      router.push('/'); // TODO: navigate to last page
     }
 
     setLoading(false);

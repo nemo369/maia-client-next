@@ -1,12 +1,13 @@
-import { createContext, useContext } from 'react';
+import { createContext, useContext, useReducer } from 'react';
+import { userReducer } from './userReucder';
 
-const AppContext = createContext({
-  name: 'Guest',
-});
+export const AppContext = createContext();
 
 export function AppWrapper({ children }) {
+  const [user, dispatch] = useReducer(userReducer, null);
   const sharedState = {
-    /* whatever you want */
+    user,
+    dispatch,
   };
 
   return <AppContext.Provider value={sharedState}>{children}</AppContext.Provider>;

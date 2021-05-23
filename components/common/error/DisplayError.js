@@ -5,9 +5,12 @@ const DisplayError = ({ error }) => {
     return null;
   }
   if (error.message) {
+    const div = document.createElement('div');
+    div.innerHTML = error.message;
+    const text = div.textContent || div.innerText || '';
     return (
       <div className="font-bold">
-        <p>{error.message}</p>
+        <p>{text}</p>
       </div>
     );
   }
