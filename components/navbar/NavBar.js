@@ -1,10 +1,12 @@
 import Link from 'next/link';
-import React from 'react';
+import React, { useContext } from 'react';
 import { useRouter } from 'next/router';
 import LightBulb from '../svg/LightBulb';
+import { AppContext } from '../../src/context/state';
 
 const NavBar = () => {
   const { pathname } = useRouter();
+  const { user } = useContext(AppContext);
 
   const links = [
     { href: '/', name: 'ראשי', icon: <LightBulb /> },
@@ -31,7 +33,7 @@ const NavBar = () => {
     <aside className="nav flex flex-col h-screen justify-between bg-green-500 items-center">
       <div className="nav__profile">
         <Link href="/ProfilePage">
-          <a>user.dispalyName</a>
+          <a>{user?.user_display_name}</a>
         </Link>
       </div>
       <ul className="nav__links flex flex-col items-center justify-center">

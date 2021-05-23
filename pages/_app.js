@@ -1,6 +1,7 @@
 import '../styles/main.scss';
 import '../styles/global.css';
 import Layout from '../components/layout/Layout';
+import { AppWrapper } from '../src/context/state';
 // import { ReactElement as RE } from "react";
 
 const isSSR = () => 'undefined' === typeof window;
@@ -12,12 +13,12 @@ if ('production' !== process.env.NODE_ENV && !isSSR()) {
   axe(React, DOM, 1000);
 }
 
-function MyApp({ Component, pageProps }) {
-  return (
+const AppComponent = ({ Component, pageProps }) => (
+  <AppWrapper>
     <Layout>
       <Component {...pageProps} />
     </Layout>
-  );
-}
+  </AppWrapper>
+);
 
-export default MyApp;
+export default AppComponent;
