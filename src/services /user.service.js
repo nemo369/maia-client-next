@@ -17,20 +17,16 @@ const UserAPI = {
     }
   },
   login: async (creditiontals) => {
-    try {
-      const { data } = await axios.post(
-        `${SERVER_BASE_URL}/user/login`,
-        JSON.stringify(creditiontals),
-        {
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        }
-      );
-      return data;
-    } catch (error) {
-      return error.response;
-    }
+    const response = await axios.post(
+      `${SERVER_BASE_URL}/user/login`,
+      JSON.stringify(creditiontals),
+      {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }
+    );
+    return response;
   },
   register: async (username, email, password) => {
     try {

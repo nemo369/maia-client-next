@@ -8,7 +8,8 @@ export default function useForm(initial = {}) {
   useEffect(() => {
     // This function runs when the things we are watching change
     setInputs(initial);
-  }, [initial, initialValues]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [initialValues]);
 
   function handleChange(e) {
     let { value } = e.target;

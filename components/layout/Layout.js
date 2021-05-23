@@ -1,12 +1,17 @@
-import PropTypes from 'prop-types'; // ES6
+import { useRouter } from 'next/router';
+import PropTypes from 'prop-types';
 import NavBar from '../navbar/NavBar';
 
-const Layout = ({ children }) => (
-  <section className="min-h-screen md:flex main">
-    <NavBar />
-    <main className="dashboard flex-grow">{children}</main>
-  </section>
-);
+const Layout = function ({ children }) {
+  const { pathname } = useRouter();
+  const witihoutnav = ['/user/Register', '/user/login'];
+  return (
+    <section className="min-h-screen md:flex main">
+      {!witihoutnav.includes(pathname) ? <NavBar /> : ''}
+      <main className="dashboard flex-grow">{children}</main>
+    </section>
+  );
+};
 
 Layout.prototype = {
   children: PropTypes.any,
