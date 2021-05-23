@@ -3,11 +3,9 @@ import SignUpHeader from '../../components/SignUpHeader';
 
 const Register = function () {
   return (
-    <div className="bg-lightgreybackground ">
+    <div className="bg-lightgreybackground h-bbc w-full">
       <SignUpHeader />
-      <section>
-        <RegisterForm />
-      </section>
+      <RegisterForm />
     </div>
   );
 };

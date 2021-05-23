@@ -3,7 +3,7 @@ module.exports = {
     removeDeprecatedGapUtilities: true,
     purgeLayersByDefault: true,
   },
-  purge: ['./src/components/**/*.js', './pages/**/*.js'],
+  purge: ['./wp-content/themes/canaan/**/*.{vue,js,ts,jsx,tsx,php,svg}'],
   variants: {},
   // eslint-disable-next-line global-require
   plugins: [require('tailwindcss'), require('precss'), require('autoprefixer')],
@@ -14,8 +14,16 @@ module.exports = {
       spacing: {
         bbc: '1920px',
         fifteen: '15px',
+        fifty: '50px',
+        twentyFive: '25px',
+        sixty: '60px',
+        onehundredandtenP: '110%',
+        onehundredandtwentyFifeP: '125%',
         registercontainer_Width: '1061px',
         registercontainer_Heigth: '577px',
+        registerPageInputWidth: '364px',
+        registerPageInputHeight: '50px',
+        ninetyPercent: '90%',
       },
 
       padding: {
@@ -35,6 +43,8 @@ module.exports = {
         topBarGrey: '#999999',
         landingpage_section3darkgrey: '#343434',
         lp_sec4_left_darkgrey: '#6C6C6C',
+        registerPageSubtitle: '#333333',
+        regiterPageDarkBottomTextcolor: '#434343',
       },
       backgroundColor: (theme) => ({
         ...theme('colors'),
@@ -42,10 +52,26 @@ module.exports = {
         lightgreybackground: '#F5F5F5',
         registercontainer_white: '#FFFFFF',
         registercontainer_Input_grey: '#FFFFFF',
+        registerPageInputGrey: '#CCCCCC',
       }),
 
       fontSize: {
         topBarFontSize: '25px',
+        registerPageTitle: '45px',
+        registerPageSubTitle_fontsize: '30px',
+        registerPageSubSubTitle_fontsize: '21px',
+        regiterPageSmallGreyText: '17px',
+        regiterPageDarkBottomText: '18px',
+      },
+      lineHeight: {
+        regiterPageTitle: '48px',
+        regiterPageSubTitle: '30px',
+        regiterPageSubSubTitle: '21px',
+        regiterPageSmallGreyText: '17px',
+        regiterPageDarkBottomText: '18px',
+      },
+      opacity: {
+        7: '.7',
       },
 
       //  height: {
