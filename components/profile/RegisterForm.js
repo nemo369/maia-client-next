@@ -66,7 +66,7 @@ const RegisterForm = () => {
           method="POST"
           onSubmit={handleSubmit}
         >
-          <div className="justify-self-end py-4">
+          <div className="py-4">
             <p className="mb-2 text-registerPageSubSubTitle_fontsize text-topBarGrey leading-regiterPageSubSubTitle font-black">
               פרטים אישיים
             </p>
@@ -122,6 +122,7 @@ const RegisterForm = () => {
           />
           {/* </label> */}
           {/* <label htmlFor="email"> */}
+          <hr className="dashed col-start-1 col-end-3" />
           <input
             type="email"
             name="email"
@@ -167,43 +168,45 @@ const RegisterForm = () => {
           {/* </label> */}
 
           {/* </fieldset> */}
-          <div className="register_bottom col-start-1 col-end-3 mr-sixty">
-            <div className="my-4">
-              <p className="inline-block text-regiterPageDarkBottomText leading-regiterPageDarkBottomText text-regiterPageDarkBottomTextcolor">
-                לפנ י שאנחנו ממשיכים, איך נוח לך שנפנה אליך?
-              </p>
-              <input
-                className="inline-block mx-4"
-                id="input-gender-male"
-                name="male"
-                type="radio"
-                value="male"
-                onChange={handleChange}
-                placeholder="זכר"
-              />
-              <label
-                htmlFor="male"
-                className="text-regiterPageDarkBottomText leading-regiterPageDarkBottomText text-regiterPageDarkBottomTextcolor"
-              >
-                זכר
-              </label>
-              <input
-                className="inline-block mx-4"
-                id="input-gender-female"
-                name="female"
-                type="radio"
-                value="female"
-                onChange={handleChange}
-                // value={inputs.username}
-                placeholder="נקבה"
-              />
-              <label
-                htmlFor="female"
-                className="text-regiterPageDarkBottomText leading-regiterPageDarkBottomText text-regiterPageDarkBottomTextcolor"
-              >
-                נקבה
-              </label>
-            </div>
+          <div className="my-4 col-start-1 col-end-3">
+            <p className="inline-block text-regiterPageDarkBottomText leading-regiterPageDarkBottomText text-regiterPageDarkBottomTextcolor">
+              לפנ י שאנחנו ממשיכים, איך נוח לך שנפנה אליך?
+            </p>
+            <input
+              className="inline-block mx-4"
+              id="input-gender-male"
+              name="male"
+              type="radio"
+              value="male"
+              onChange={handleChange}
+              placeholder="זכר"
+            />
+            <label
+              htmlFor="male"
+              className="text-regiterPageDarkBottomText leading-regiterPageDarkBottomText text-regiterPageDarkBottomTextcolor"
+            >
+              זכר
+            </label>
+            <input
+              className="inline-block mx-4"
+              id="input-gender-female"
+              name="female"
+              type="radio"
+              value="female"
+              onChange={handleChange}
+              // value={inputs.username}
+              placeholder="נקבה"
+            />
+            <label
+              htmlFor="female"
+              className="text-regiterPageDarkBottomText leading-regiterPageDarkBottomText text-regiterPageDarkBottomTextcolor"
+            >
+              נקבה
+            </label>
+          </div>
+          <hr className="dashed col-start-1 col-end-3" />
+          {/* <div className="register-page-divider col-start-1 col-end-3" /> */}
+          <div className="register_bottom col-start-1 col-end-3">
             {/* <span /> */}
             <div className="my-4">
               <input
