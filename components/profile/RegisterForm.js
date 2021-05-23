@@ -25,6 +25,8 @@ const RegisterForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(inputs);
+    console.log(resetForm);
+    console.log(setError);
     // setError(null);
     // setLoading(true);
     // try {
