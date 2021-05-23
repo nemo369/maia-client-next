@@ -1,15 +1,15 @@
 import { useRouter } from 'next/router';
-import PropTypes from 'prop-types'; // ES6
+import PropTypes from 'prop-types';
 import NavBar from '../navbar/NavBar';
 
 const Layout = function ({ children }) {
   const { pathname } = useRouter();
-  const witihoutnav = ['/user/Register'];
+  const witihoutnav = ['/user/Register', '/user/login'];
   return (
-    <main className="h-screen md:flex main">
-      <article className="dashboard flex-grow">{children}</article>
+    <section className="min-h-screen md:flex main">
       {!witihoutnav.includes(pathname) ? <NavBar /> : ''}
-    </main>
+      <main className="dashboard flex-grow">{children}</main>
+    </section>
   );
 };
 
