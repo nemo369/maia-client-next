@@ -6,9 +6,9 @@ const Layout = function ({ children }) {
   const { pathname } = useRouter();
   const witihoutnav = ['/user/Register', '/user/login'];
   return (
-    <section className="min-h-screen md:flex main">
+    <section className="min-h-screen md:flex main bg-lightgreybackground">
       {!witihoutnav.includes(pathname) ? <NavBar /> : ''}
-      <main className="dashboard flex-grow">{children}</main>
+      <main className="dashboard flex-grow pt-9 md:pl-16">{children}</main>
     </section>
   );
 };
