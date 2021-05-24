@@ -11,27 +11,28 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        orangeMaya: '#FF916A',
-        whiteMaya: '#FFFFFF',
-        blackMaya: '#000000',
-        redMaya: '#F97168',
-        greenMaya: {
+        orange: '#FF916A',
+        white: '#FFFFFF',
+        red: '#F97168',
+        green: {
           DEFAULT: '#008B92',
           light: '#B3DDCF',
           dark: '#317885',
           lighter: '#A8DFCE',
+          500: '#41C2C4',
         },
-        blueMaya: {
+        blue: {
           DEFAULT: '#4EA8B5',
           light: '#45A4C7',
           dark: '#252464',
         },
-        greymaya: {
+        grey: {
           DEFAULT: '#999999',
           light: '#CCCCCC',
           dark: '#6C6C6C',
         },
-        yellowMaya: '#FFC960',
+        black: '#333333',
+        yellow: '#FFC960',
       },
       spacing: {
         bbc: '1920px',
