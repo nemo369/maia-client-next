@@ -1,8 +1,8 @@
 import React from 'react';
 
-export default function Button({ name, onClickFunction, style, disabled, className }) {
+export default function Button({ name, onClickFunction, type, disabled, className }) {
   let classes = '';
-  switch (style) {
+  switch (type) {
     case 'main':
       classes += `${
         disabled
