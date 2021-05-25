@@ -38,8 +38,13 @@ module.exports = {
         bbc: '1920px',
         fifteen: '15px',
         fifty: '50px',
-        twentyFive: '25px',
         sixty: '60px',
+        ten: '10px',
+        hundred: '100px',
+        twrnety: '20px',
+        thirty: '30px',
+        twentyFive: '25px',
+        twohundred: '200px',
         onehundredandtenP: '110%',
         onehundredandtwentyFifeP: '125%',
         registercontainer_Width: '1061px',
@@ -76,6 +81,7 @@ module.exports = {
         registercontainer_white: '#FFFFFF',
         registercontainer_Input_grey: '#FFFFFF',
         registerPageInputGrey: '#CCCCCC',
+        registerPageButtonGrey: '#999999',
       }),
 
       fontSize: {
@@ -94,7 +100,9 @@ module.exports = {
         regiterPageDarkBottomText: '18px',
       },
       opacity: {
-        7: '.7',
+        7: '0.7',
+        3: '0.3',
+        1: '0.1',
       },
 
       //  height: {
