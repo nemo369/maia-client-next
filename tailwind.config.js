@@ -40,6 +40,7 @@ module.exports = {
           lighter: '#EEEEEE',
           disabled: '#E7E7E7',
           text: '#B7B7B7',
+          active: '#999999',
         },
         yellow: '#FFC960',
         gradient: {
@@ -53,6 +54,7 @@ module.exports = {
         fifty: '50px',
         twentyFive: '25px',
         sixty: '60px',
+        262: '262px',
         onehundredandtenP: '110%',
         onehundredandtwentyFifeP: '125%',
         registercontainer_Width: '1061px',
@@ -116,6 +118,7 @@ module.exports = {
       },
       width: {
         250: '250px',
+        610: '610px',
       },
     },
   },
