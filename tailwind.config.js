@@ -19,7 +19,10 @@ module.exports = {
           DEFAULT: '#F19672',
           active: '#D0886D',
         },
-        white: '#FFFFFF',
+        white: {
+          DEFAULT: '#FFFFFF',
+          active: ' #F3F3F3',
+        },
         black: '#000000',
         red: '#F97168',
         green: {

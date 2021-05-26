@@ -11,7 +11,9 @@ export default function Button({ name, onClickFunction, type, disabled, classNam
       }`;
       break;
     case 'secondary':
-      classes += `${disabled && 'opacity-40'} bg-none text-black border border-black font-bold`;
+      classes += `${
+        disabled && 'opacity-40'
+      } bg-none text-black border border-black font-bold active:bg-white-active`;
       break;
     case 'gradient':
       classes += `${
