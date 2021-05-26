@@ -1,6 +1,7 @@
 import React from 'react';
 import Button from './common/Button';
 import Tabs from './common/Tabs';
+import Toggle from './common/Toggle';
 
 export default function Test() {
   return (
@@ -19,6 +20,10 @@ export default function Test() {
       <div>------------------------</div>
       <Tabs firstTab="הצג תוצאות" secondTab="לשלב הבא" type="two" />
       <Tabs firstTab="תוצאות דוח מסכם" secondTab="לשלב הבא" type="one" />
+      <div>------------------------</div>
+      <h1>Toggle</h1>
+      <div>------------------------</div>
+      <Toggle />
     </div>
   );
 }
