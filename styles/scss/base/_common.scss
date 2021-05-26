@@ -3,6 +3,48 @@ body {
   scroll-behavior: smooth;
 }
 
+//checkbox
+.button-group {
+  color: #333333;
+  border-radius: 5px;
+  width: 300px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  background-color: #eaeaea;
+  font-size: 18px;
+  text-align: center;
+}
+
+.button-sec {
+  min-width: 95px;
+  padding: 2px;
+}
+
+.button-label {
+  opacity: 0.5;
+}
+
+.button-group div input {
+  display: none;
+  font-size: 18px;
+  width: 100px;
+}
+.button-group div input:checked + label,
+.button-group div input:checked + label:active {
+  background: linear-gradient(143.28deg, #40c2c4 0%, #3c91a0 100%);
+  min-width: 100px;
+  opacity: 1;
+  border-radius: 3px;
+  color: #ffffff;
+  font-size: 18px;
+  width: 100px;
+  font-weight: bold;
+  display: inline-block;
+}
+
+//toggle button
+
 :root {
   --switches-bg-color: white;
   --switches-label-color: #6c6c6c;
@@ -85,7 +127,7 @@ body {
 
 /* slide the switch box from left to right */
 .switches-container input:nth-of-type(2):checked ~ .switch-wrapper {
-  transform: translateX(100%);
+  transform: translateX(-100%);
 }
 
 /* toggle the switch box labels - first checkbox:checked - show first switch div */

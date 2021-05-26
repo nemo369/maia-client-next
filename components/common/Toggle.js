@@ -4,16 +4,10 @@ export default function Toggle() {
   return (
     <>
       <div className="switches-container">
-        <input
-          type="radio"
-          id="switchMonthly"
-          name="switchPlan"
-          value="Monthly"
-          checked="checked"
-        />
-        <input type="radio" id="switchYearly" name="switchPlan" value="Yearly" />
-        <label htmlFor="switchMonthly">לימודים</label>
-        <label htmlFor="switchYearly">משרות</label>
+        <input type="radio" id="school" name="switchPlan" value="schoolValue" checked="checked" />
+        <input type="radio" id="jobs" name="switchPlan" value="jobsValue" />
+        <label htmlFor="school">לימודים</label>
+        <label htmlFor="jobs">משרות</label>
         <div className="switch-wrapper">
           <div className="switch">
             <div>לימודים</div>

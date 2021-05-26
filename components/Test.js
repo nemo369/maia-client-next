@@ -2,6 +2,7 @@ import React from 'react';
 import Button from './common/Button';
 import Tabs from './common/Tabs';
 import Toggle from './common/Toggle';
+import CheckboxGroup from './common/CheckboxGroup';
 
 export default function Test() {
   return (
@@ -16,14 +17,13 @@ export default function Test() {
       <Button type="gradient" name="אחר" className="h-16 w-40" />
       <Button type="gradient" name="אחר מושבת" disabled className="h-16 w-40" />
       <div>------------------------</div>
-      <h1>Tabs</h1>
-      <div>------------------------</div>
-      <Tabs firstTab="הצג תוצאות" secondTab="לשלב הבא" type="two" />
-      <Tabs firstTab="תוצאות דוח מסכם" secondTab="לשלב הבא" type="one" />
-      <div>------------------------</div>
       <h1>Toggle</h1>
       <div>------------------------</div>
       <Toggle />
+      <div>------------------------</div>
+      <h1>Checkbox</h1>
+      <div>------------------------</div>
+      <CheckboxGroup />
     </div>
   );
 }
