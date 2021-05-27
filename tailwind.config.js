@@ -35,6 +35,7 @@ module.exports = {
           light: '#B3DDCF',
           dark: '#317885',
           lighter: '#A8DFCE',
+          500: '#41C2C4',
         },
         blue: {
           DEFAULT: '#3C91A0',
@@ -61,9 +62,14 @@ module.exports = {
         bbc: '1920px',
         fifteen: '15px',
         fifty: '50px',
-        twentyFive: '25px',
         sixty: '60px',
         262: '262px',
+        ten: '10px',
+        hundred: '100px',
+        twrnety: '20px',
+        thirty: '30px',
+        twentyFive: '25px',
+        twohundred: '200px',
         onehundredandtenP: '110%',
         onehundredandtwentyFifeP: '125%',
         registercontainer_Width: '1061px',
@@ -100,6 +106,7 @@ module.exports = {
         registercontainer_white: '#FFFFFF',
         registercontainer_Input_grey: '#FFFFFF',
         registerPageInputGrey: '#CCCCCC',
+        registerPageButtonGrey: '#999999',
       }),
 
       fontSize: {
@@ -120,7 +127,9 @@ module.exports = {
         23: '23px',
       },
       opacity: {
-        7: '.7',
+        7: '0.7',
+        3: '0.3',
+        1: '0.1',
       },
       height: {
         50: '50px',

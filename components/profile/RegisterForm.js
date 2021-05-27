@@ -1,14 +1,13 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-// import Router from 'next/router';
 import { useState } from 'react';
 import useForm from '../../src/hooks/useForm';
-// import UserAPI from '../../src/services/user.service';
 import DisplayError from '../common/error/DisplayError';
+import PopoutExample from './SearchCountryInput';
 
 const RegisterForm = () => {
   // const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-
+  const [open, setOpen] = useState(true);
   const { inputs, handleChange, resetForm } = useForm({
     username: '',
     email: '',
@@ -22,6 +21,7 @@ const RegisterForm = () => {
     employment_coefficient: null,
     terms_and_conditions: null,
   });
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(inputs);
@@ -50,23 +50,21 @@ const RegisterForm = () => {
     //   setLoading(false);
     // }
   };
-
   return (
-    <div className="registerPage_container w-registercontainer_Width h-registercontainer_Heigth  mx-auto">
+    <div className="registerPage_container w-registercontainer_Width   mx-auto">
       <h1 className="font-black text-registerPageTitle text-mainOrange leading-reegisterPageTitle">
         העתיד שלך מתחיל כאן
       </h1>
       <p className="text-registerPageSubTitle text-registerPageSubTitle_fontsize leading-regiterPageSubTitle opacity-7 mb-fifty">
         הרשמה למערכת מאיה
       </p>
-      {/* <div className="registerPage_header">header</div> */}
-      <div className="registerPage_form_container bg-registercontainer_white px-fifty">
+      <div className="registerPage_form_container bg-registercontainer_white px-fifty register-form">
         <form
-          className="registerPage_form grid grid-cols-2 w-ninetyPercent mx-auto gap-x-4 gap-y-3"
+          className="registerPage_form grid grid-cols-2  mx-auto gap-x-4 gap-y-3"
           method="POST"
           onSubmit={handleSubmit}
         >
-          <div className="justify-self-end py-4">
+          <div className="py-4">
             <p className="mb-2 text-registerPageSubSubTitle_fontsize text-topBarGrey leading-regiterPageSubSubTitle font-black">
               פרטים אישיים
             </p>
@@ -76,157 +74,123 @@ const RegisterForm = () => {
           </div>
           <span />
           <DisplayError error={error} />
-          {/* <fieldset disabled={loading}> */}
-          {/* <label htmlFor="username"> */}
           <input
             type="text"
             name="username"
             placeholder="User Name"
-            // autoComplete="username"
             value={inputs.username}
             onChange={handleChange}
             className="regiserPageInput justify-self-center h-registerPageInputHeight w-full bg-registerPageInputGrey my-4 rounded-md"
           />
-          {/* </label> */}
-          {/* <label htmlFor="password"> */}
           <input
             type="password"
             name="password"
             placeholder="Password"
-            // autoComplete="password"
             value={inputs.password}
             onChange={handleChange}
             className="regiserPageInput justify-self-center h-registerPageInputHeight w-full bg-registerPageInputGrey my-4 rounded-md"
           />
-          {/* </label> */}
-          {/* <label htmlFor="city"> */}
-          <input
-            type="text"
-            name="city"
-            placeholder="בחר יישוב"
-            // autoComplete="password"
-            value={inputs.city}
-            onChange={handleChange}
-            className="regiserPageInput justify-self-center h-registerPageInputHeight w-full bg-registerPageInputGrey my-4 rounded-md"
-          />
-          {/* </label> */}
-          {/* <label htmlFor="street"> */}
-          <input
-            type="text"
-            name="street"
-            placeholder="בחר רחוב"
-            // autoComplete="password"
-            value={inputs.street}
-            onChange={handleChange}
-            className="regiserPageInput justify-self-center h-registerPageInputHeight w-full bg-registerPageInputGrey my-4 rounded-md"
-          />
-          {/* </label> */}
-          {/* <label htmlFor="email"> */}
+          <div>
+            {/* <button
+              type="button"
+              name="city"
+              placeholder="בחר יישובים"
+              value={inputs.city}
+              onChange={handleChange}
+              onClick={handleSearchInput}
+              className="relative regiserPageInput justify-self-center h-registerPageInputHeight w-full bg-registerPageInputGrey my-4 rounded-md"
+            >
+              םבחר יישובי
+            </button> */}
+            <PopoutExample open={open} setOpen={setOpen} />
+          </div>
+          {/* {isBrowser ? <SearchInput /> : ''} */}
+          <hr className="dashed col-start-1 col-end-3" />
           <input
             type="email"
             name="email"
             placeholder="מייל *"
-            // autoComplete="email"
             value={inputs.email}
             onChange={handleChange}
             className="regiserPageInput justify-self-center h-registerPageInputHeight w-full bg-registerPageInputGrey my-4 rounded-md"
           />
-          {/* </label> */}
-          {/* <label htmlFor="passwordConfirmation"> */}
           <input
             type="text"
             name="fullname"
             placeholder="שם מלא *"
-            // autoComplete="fullname"
             value={inputs.fullname}
             onChange={handleChange}
             className="regiserPageInput justify-self-center h-registerPageInputHeight w-full bg-registerPageInputGrey my-4 rounded-md"
           />
-          {/* </label> */}
-          {/* <label htmlFor="cellphone"> */}
           <input
             type="text"
             name="cellphone"
             placeholder="נייד"
-            // autoComplete="password"
             value={inputs.cellphone}
             onChange={handleChange}
             className="regiserPageInput justify-self-center h-registerPageInputHeight w-full bg-registerPageInputGrey my-4 rounded-md"
           />
-          {/* </label> */}
-          {/* <label htmlFor="age"> */}
           <input
             type="number"
             name="age"
             placeholder="גיל"
-            // autoComplete="password"
             value={inputs.age}
             onChange={handleChange}
             className="regiserPageInput justify-self-center h-registerPageInputHeight w-full bg-registerPageInputGrey my-4 rounded-md"
           />
-          {/* </label> */}
-
-          {/* </fieldset> */}
-          <div className="register_bottom col-start-1 col-end-3 mr-sixty">
-            <div className="my-4">
-              <p className="inline-block text-regiterPageDarkBottomText leading-regiterPageDarkBottomText text-regiterPageDarkBottomTextcolor">
-                לפנ י שאנחנו ממשיכים, איך נוח לך שנפנה אליך?
-              </p>
+          <div className="my-4 col-start-1 col-end-3">
+            <p className="inline-block text-regiterPageDarkBottomText leading-regiterPageDarkBottomText text-regiterPageDarkBottomTextcolor">
+              לפנ י שאנחנו ממשיכים, איך נוח לך שנפנה אליך?
+            </p>
+            <label className="text-regiterPageDarkBottomText leading-regiterPageDarkBottomText text-regiterPageDarkBottomTextcolor">
               <input
-                className="inline-block mx-4"
+                className="inline-block male mx-4"
                 id="input-gender-male"
-                name="male"
+                name="gender"
                 type="radio"
-                value="male"
+                value="m"
+                checked
                 onChange={handleChange}
                 placeholder="זכר"
               />
-              <label
-                htmlFor="male"
-                className="text-regiterPageDarkBottomText leading-regiterPageDarkBottomText text-regiterPageDarkBottomTextcolor"
-              >
-                זכר
-              </label>
+              זכר
+            </label>
+            <label className="text-regiterPageDarkBottomText leading-regiterPageDarkBottomText text-regiterPageDarkBottomTextcolor">
               <input
-                className="inline-block mx-4"
+                className="inline-block female mx-4"
                 id="input-gender-female"
-                name="female"
+                name="gender"
                 type="radio"
-                value="female"
+                value="f"
                 onChange={handleChange}
-                // value={inputs.username}
                 placeholder="נקבה"
               />
-              <label
-                htmlFor="female"
-                className="text-regiterPageDarkBottomText leading-regiterPageDarkBottomText text-regiterPageDarkBottomTextcolor"
-              >
-                נקבה
-              </label>
-            </div>
-            {/* <span /> */}
-            <div className="my-4">
-              <input
-                className=" ml-4"
-                id="employment_coefficient"
-                name="employment_coefficient"
-                type="checkbox"
-                value="employment_coefficient"
-                onChange={handleChange}
-              />
-              <label
-                htmlFor="employment_coefficient"
-                name="employment_coefficient"
-                className="text-regiterPageDarkBottomText leading-regiterPageDarkBottomText text-regiterPageDarkBottomTextcolor"
-              >
-                אני מאשר/ת למקדם/ת תעסוקה לצפות בפרטים שלי
-              </label>
-            </div>
-            {/* <span /> */}
+              נקבה
+            </label>
+          </div>
+          <hr className="dashed col-start-1 col-end-3" />
+          <div className="my-4">
+            <input
+              className="checkbox ml-4"
+              id="employment_coefficient"
+              name="employment_coefficient"
+              type="checkbox"
+              value="employment_coefficient"
+              onChange={handleChange}
+            />
+            <label
+              htmlFor="employment_coefficient"
+              name="employment_coefficient"
+              className="text-regiterPageDarkBottomText leading-regiterPageDarkBottomText text-regiterPageDarkBottomTextcolor"
+            >
+              אני מאשר/ת למקדם/ת תעסוקה לצפות בפרטים שלי
+            </label>
+          </div>
+          <div className="register_bottom col-start-1 col-end-3 flex justify-between ">
             <div>
               <div className="my-4">
                 <input
-                  className=" ml-4"
+                  className="checkbox ml-4"
                   id="terms_and_conditions"
                   name="terms_and_conditions"
                   type="checkbox"
@@ -246,7 +210,13 @@ const RegisterForm = () => {
                 </label>
               </div>
             </div>
-            <button type="submit">Sign In!</button>
+            <button
+              p
+              type="submit"
+              className="bg-registerPageButtonGrey font-medium py-2 justify-self-end mt-twenty mb-fifty px-sixty rounded-md hover:bg-mainOrange hover:text-mainWhite"
+            >
+              שנתחיל?
+            </button>
           </div>
         </form>
       </div>
