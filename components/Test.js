@@ -3,6 +3,7 @@ import Button from './common/Button';
 import Toggle from './common/Toggle';
 import CheckboxGroup from './common/CheckboxGroup';
 import Inputs from './common/Inputs';
+import NumInputs from './common/NumInputs';
 
 export default function Test() {
   return (
@@ -38,6 +39,18 @@ export default function Test() {
         </div>
         <Inputs placeholder="שגיאה" className="h-50 w-300" type="error" />
       </div>
+      <div>------------------------</div>
+      <h1>NumInputs</h1>
+      <div>------------------------</div>
+      <NumInputs type="main" />
+      <div h-3 w-3 mt-3>
+        ====
+      </div>
+      <NumInputs type="success" />
+      <div h-3 w-3 mt-3>
+        ====
+      </div>
+      <NumInputs type="error" />
     </div>
   );
 }
