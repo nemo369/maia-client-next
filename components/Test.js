@@ -1,9 +1,10 @@
 import React from 'react';
 import Button from './common/Button';
-import Toggle from './common/Toggle';
+import ToggleSchoolJobs from './common/ToggleSchoolJobs';
 import CheckboxGroup from './common/CheckboxGroup';
 import Inputs from './common/Inputs';
 import NumInputs from './common/NumInputs';
+import Toggle from './common/Toggle';
 
 export default function Test() {
   return (
@@ -19,6 +20,8 @@ export default function Test() {
       <Button type="gradient" name="אחר מושבת" disabled className="h-16 w-40" />
       <div>------------------------</div>
       <h1>Toggle</h1>
+      <div>------------------------</div>
+      <ToggleSchoolJobs />
       <div>------------------------</div>
       <Toggle />
       <div>------------------------</div>
