@@ -4,41 +4,66 @@ module.exports = {
     purgeLayersByDefault: true,
   },
   purge: ['./wp-content/themes/canaan/**/*.{vue,js,ts,jsx,tsx,php,svg}'],
-  variants: {},
+  variants: {
+    extend: {
+      backgroundColor: ['active'],
+      maxHeight: ['focus'],
+    },
+  },
   plugins: [require('tailwindcss'), require('precss'), require('autoprefixer')],
   darkMode: false, // or 'media' or 'class'
 
   theme: {
     extend: {
       colors: {
-        orange: '#FF916A',
-        white: '#FFFFFF',
-        red: '#F97168',
+        orange: {
+          DEFAULT: '#F19672',
+          active: '#D0886D',
+        },
+        white: {
+          DEFAULT: '#FFFFFF',
+          active: ' #F3F3F3',
+        },
+        black: '#000000',
+        red: {
+          DEFAULT: '#F97168',
+          error: '#FFDBDB',
+          active: '#FF8282',
+        },
         green: {
-          DEFAULT: '#008B92',
+          DEFAULT: '#FF3344',
           light: '#B3DDCF',
           dark: '#317885',
           lighter: '#A8DFCE',
           500: '#41C2C4',
         },
         blue: {
-          DEFAULT: '#4EA8B5',
+          DEFAULT: '#3C91A0',
           light: '#45A4C7',
           dark: '#252464',
+          active: '#429FAB',
         },
         grey: {
-          DEFAULT: '#999999',
+          DEFAULT: '#6C6C6C',
           light: '#CCCCCC',
-          dark: '#6C6C6C',
+          dark: '#4C4C4C',
+          lighter: '#EEEEEE',
+          disabled: '#E7E7E7',
+          text: '#B7B7B7',
+          active: '#999999',
         },
-        black: '#333333',
         yellow: '#FFC960',
+        gradient: {
+          1: '#40C2C4',
+          2: '#3C91A0',
+        },
       },
       spacing: {
         bbc: '1920px',
         fifteen: '15px',
         fifty: '50px',
         sixty: '60px',
+        262: '262px',
         ten: '10px',
         hundred: '100px',
         twrnety: '20px',
@@ -85,6 +110,7 @@ module.exports = {
       }),
 
       fontSize: {
+        22: '22px',
         topBarFontSize: '25px',
         registerPageTitle: '45px',
         registerPageSubTitle_fontsize: '30px',
@@ -98,19 +124,24 @@ module.exports = {
         regiterPageSubSubTitle: '21px',
         regiterPageSmallGreyText: '17px',
         regiterPageDarkBottomText: '18px',
+        23: '23px',
       },
       opacity: {
         7: '0.7',
         3: '0.3',
         1: '0.1',
       },
-
-      //  height: {
-      //   sm: '8px',
-      //   md: '16px',
-      //   lg: '24px',
-      //   xl: '100px',
-      //  }
+      height: {
+        50: '50px',
+      },
+      width: {
+        250: '250px',
+        300: '300px',
+        610: '610px',
+      },
+      borderRadius: {
+        DEFAULT: '5px',
+      },
     },
   },
 };
