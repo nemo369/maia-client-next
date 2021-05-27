@@ -17,7 +17,11 @@ export default function Inputs({ placeholder, type, className }) {
   }
   return (
     <div>
+      <label htmlFor={placeholder} className="sr-only">
+        {placeholder}
+      </label>
       <input
+        id={placeholder}
         placeholder={placeholder}
         className={`rounded outline-none text-lg p-5 focus:ring-2 
         ${classes} ${className}`}
