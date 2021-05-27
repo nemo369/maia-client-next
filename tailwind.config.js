@@ -7,6 +7,7 @@ module.exports = {
   variants: {
     extend: {
       backgroundColor: ['active'],
+      maxHeight: ['focus'],
     },
   },
   plugins: [require('tailwindcss'), require('precss'), require('autoprefixer')],
@@ -24,7 +25,11 @@ module.exports = {
           active: ' #F3F3F3',
         },
         black: '#000000',
-        red: '#F97168',
+        red: {
+          DEFAULT: '#F97168',
+          error: '#FFDBDB',
+          active: '#FF8282',
+        },
         green: {
           DEFAULT: '#FF3344',
           light: '#B3DDCF',
@@ -35,6 +40,7 @@ module.exports = {
           DEFAULT: '#3C91A0',
           light: '#45A4C7',
           dark: '#252464',
+          active: '#429FAB',
         },
         grey: {
           DEFAULT: '#6C6C6C',
@@ -121,7 +127,11 @@ module.exports = {
       },
       width: {
         250: '250px',
+        300: '300px',
         610: '610px',
+      },
+      borderRadius: {
+        DEFAULT: '5px',
       },
     },
   },
