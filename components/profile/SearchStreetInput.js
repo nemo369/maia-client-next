@@ -10,7 +10,7 @@ const selectStyles = {
   //   backgroundColor: 'white',
   // }),
 };
-export default class SearchCountryInput extends Component {
+export default class SearchStreetInput extends Component {
   constructor(props) {
     super(props);
     this.state = { isOpen: false, value: undefined };
@@ -20,14 +20,10 @@ export default class SearchCountryInput extends Component {
     this.setState((state) => ({ isOpen: !state.isOpen }));
   };
 
-  // sendValue=()=>{
-  //   this.props.getCity(this.state.value.value).value.value
-  // }
-
   optiosn1 = () => {
     // eslint-disable-next-line react/destructuring-assignment
-    console.log('hhh');
-    const ary = this.props.cities.map((x) => {
+    console.log(this.props.theStreets);
+    const ary = this.props.theStreets?.map((x) => {
       const obj = {};
       obj.value = x.name;
       obj.label = x.name;
@@ -39,12 +35,10 @@ export default class SearchCountryInput extends Component {
 
   onSelectChange = (value) => {
     console.log(value);
-    this.props.setCityId(value.id);
-    this.props.setCityData(value);
-    // this.props.checkCityId(value);
     this.toggleOpen();
     this.setState({ value });
-    console.log(this.state);
+    // console.log(this.state);
+    this.props.setTheStreet(value.value);
   };
 
   render() {
@@ -54,16 +48,16 @@ export default class SearchCountryInput extends Component {
         isOpen={isOpen}
         onClose={this.toggleOpen}
         className="absolute"
-        // onChange={this.props.onChange}
         target={
           <button
+            name="street"
             type="button"
             className="bwc"
             iconafter={<ChevronDown />}
             onClick={this.toggleOpen}
             isselected={isOpen.toString()}
           >
-            {value ? `  ${value.label}` : 'בחר יישוב *'}
+            {value ? `  ${value.label}` : 'בחר רחוב  *'}
           </button>
         }
       >

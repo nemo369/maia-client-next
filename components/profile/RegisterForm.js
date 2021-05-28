@@ -1,19 +1,38 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import useForm from '../../src/hooks/useForm';
+import Infoservice from '../../src/services/info.service';
 import DisplayError from '../common/error/DisplayError';
-import PopoutExample from './SearchCountryInput';
+import SearchCountryInput from './SearchCountryInput';
+import SearchStreetInput from './SearchStreetInput';
 
-const RegisterForm = () => {
-  // const [loading, setLoading] = useState(false);
+const RegisterForm = ({ cities }) => {
+  // let streets;
+  const [cityId, setCityId] = useState(null);
+  const [cityData, setCityData] = useState(null);
+  const [theStreets, setTheStreets] = useState(null);
+  const [theStreet, setTheStreet] = useState(null);
+
+  const getStreets = async () => {
+    const { data } = await Infoservice.getStreetInfo(cityId);
+    setTheStreets(data);
+  };
+
+  useEffect(() => {
+    if (cityId) {
+      getStreets();
+    }
+  }, [cityId]);
+
   const [error, setError] = useState(null);
   const [open, setOpen] = useState(true);
   const { inputs, handleChange, resetForm } = useForm({
     username: '',
     email: '',
     password: '',
-    city: '',
-    street: '',
+    // city: '',
+    city: cityData?.value,
+    street: theStreet,
     cellphone: '',
     age: '',
     fullname: '',
@@ -24,6 +43,7 @@ const RegisterForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    // const dataToSend = {...inputs, city:}
     console.log(inputs);
     console.log(resetForm);
     console.log(setError);
@@ -90,7 +110,7 @@ const RegisterForm = () => {
             onChange={handleChange}
             className="regiserPageInput justify-self-center h-registerPageInputHeight w-full bg-registerPageInputGrey my-4 rounded-md"
           />
-          <div>
+          <div className="relative">
             {/* <button
               type="button"
               name="city"
@@ -102,7 +122,26 @@ const RegisterForm = () => {
             >
               םבחר יישובי
             </button> */}
-            <PopoutExample open={open} setOpen={setOpen} />
+            <SearchCountryInput
+              cityId={cityId}
+              setCityId={setCityId}
+              setCityData={setCityData}
+              open={open}
+              setOpen={setOpen}
+              cities={cities}
+              handleChange={handleChange}
+            />
+          </div>
+          <div className="relative">
+            <SearchStreetInput
+              open={open}
+              theStreets={theStreets}
+              setTheStreet={setTheStreet}
+              setTheStreets={setTheStreets}
+              setOpen={setOpen}
+              handleChange={handleChange}
+              cities={cities}
+            />
           </div>
           {/* {isBrowser ? <SearchInput /> : ''} */}
           <hr className="dashed col-start-1 col-end-3" />
