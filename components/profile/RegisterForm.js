@@ -30,7 +30,6 @@ const RegisterForm = ({ cities }) => {
     username: '',
     email: '',
     password: '',
-    // city: '',
     city: cityData?.value,
     street: theStreet,
     cellphone: '',
