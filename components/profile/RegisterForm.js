@@ -3,8 +3,19 @@ import { useEffect, useState } from 'react';
 import useForm from '../../src/hooks/useForm';
 import Infoservice from '../../src/services/info.service';
 import DisplayError from '../common/error/DisplayError';
+import AgeInput from './register_form/inputs/AgeInput';
+import CellphoneInput from './register_form/inputs/CellphoneInput';
+import EmailInput from './register_form/inputs/EmailInput';
+import FemaleRadio from './register_form/inputs/FemaleRadio';
+import MaleRadio from './register_form/inputs/MaleRadio';
+import FullnameInput from './register_form/inputs/FullnameInput';
 import SearchCountryInput from './SearchCountryInput';
 import SearchStreetInput from './SearchStreetInput';
+import CoefficientCheckbox from './register_form/inputs/CoefficientCheckbox';
+import ConditionsCheckbox from './register_form/inputs/ContisionsCheckbox';
+import MainTitle from './register_form/texts/MainTItle';
+import SubTitle from './register_form/texts/SubTitle';
+import SubmitButton from './register_form/SubmitButton';
 
 const RegisterForm = ({ cities }) => {
   // let streets;
@@ -71,26 +82,14 @@ const RegisterForm = ({ cities }) => {
   };
   return (
     <div className="registerPage_container w-registercontainer_Width   mx-auto">
-      <h1 className="font-black text-registerPageTitle text-mainOrange leading-reegisterPageTitle">
-        העתיד שלך מתחיל כאן
-      </h1>
-      <p className="text-registerPageSubTitle text-registerPageSubTitle_fontsize leading-regiterPageSubTitle opacity-7 mb-fifty">
-        הרשמה למערכת מאיה
-      </p>
+      <MainTitle />
       <div className="registerPage_form_container bg-registercontainer_white px-fifty register-form">
         <form
           className="registerPage_form grid grid-cols-2  mx-auto gap-x-4 gap-y-3"
           method="POST"
           onSubmit={handleSubmit}
         >
-          <div className="py-4">
-            <p className="mb-2 text-registerPageSubSubTitle_fontsize text-topBarGrey leading-regiterPageSubSubTitle font-black">
-              פרטים אישיים
-            </p>
-            <p className=" text-regiterPageSmallGreyText text-topBarGrey leading-regiterPageSmallGreyText">
-              * פרטי המייל ו/או נייד ישמשו לצורך התחברות חוזרת למערכת
-            </p>
-          </div>
+          <SubTitle />
           <span />
           <DisplayError error={error} />
           <input
@@ -109,152 +108,43 @@ const RegisterForm = ({ cities }) => {
             onChange={handleChange}
             className="regiserPageInput justify-self-center h-registerPageInputHeight w-full bg-registerPageInputGrey my-4 rounded-md"
           />
-          <div className="relative">
-            {/* <button
-              type="button"
-              name="city"
-              placeholder="בחר יישובים"
-              value={inputs.city}
-              onChange={handleChange}
-              onClick={handleSearchInput}
-              className="relative regiserPageInput justify-self-center h-registerPageInputHeight w-full bg-registerPageInputGrey my-4 rounded-md"
-            >
-              םבחר יישובי
-            </button> */}
-            <SearchCountryInput
-              cityId={cityId}
-              setCityId={setCityId}
-              setCityData={setCityData}
-              open={open}
-              setOpen={setOpen}
-              cities={cities}
-              handleChange={handleChange}
-            />
-          </div>
-          <div className="relative">
-            <SearchStreetInput
-              open={open}
-              theStreets={theStreets}
-              setTheStreet={setTheStreet}
-              setTheStreets={setTheStreets}
-              setOpen={setOpen}
-              handleChange={handleChange}
-              cities={cities}
-            />
-          </div>
-          {/* {isBrowser ? <SearchInput /> : ''} */}
+          <SearchCountryInput
+            cityId={cityId}
+            setCityId={setCityId}
+            setCityData={setCityData}
+            cities={cities}
+            handleChange={handleChange}
+          />
+          <SearchStreetInput
+            open={open}
+            theStreets={theStreets}
+            setTheStreet={setTheStreet}
+            handleChange={handleChange}
+          />
           <hr className="dashed col-start-1 col-end-3" />
-          <input
-            type="email"
-            name="email"
-            placeholder="מייל *"
-            value={inputs.email}
-            onChange={handleChange}
-            className="regiserPageInput justify-self-center h-registerPageInputHeight w-full bg-registerPageInputGrey my-4 rounded-md"
-          />
-          <input
-            type="text"
-            name="fullname"
-            placeholder="שם מלא *"
-            value={inputs.fullname}
-            onChange={handleChange}
-            className="regiserPageInput justify-self-center h-registerPageInputHeight w-full bg-registerPageInputGrey my-4 rounded-md"
-          />
-          <input
-            type="text"
-            name="cellphone"
-            placeholder="נייד"
-            value={inputs.cellphone}
-            onChange={handleChange}
-            className="regiserPageInput justify-self-center h-registerPageInputHeight w-full bg-registerPageInputGrey my-4 rounded-md"
-          />
-          <input
-            type="number"
-            name="age"
-            placeholder="גיל"
-            value={inputs.age}
-            onChange={handleChange}
-            className="regiserPageInput justify-self-center h-registerPageInputHeight w-full bg-registerPageInputGrey my-4 rounded-md"
-          />
+          <EmailInput handleChange={handleChange} value={inputs.email} />
+
+          <FullnameInput handleChange={handleChange} value={inputs.fullname} />
+
+          <CellphoneInput handleChange={handleChange} value={inputs.cellphone} />
+
+          <AgeInput handleChange={handleChange} value={inputs.age} />
+
           <div className="my-4 col-start-1 col-end-3">
             <p className="inline-block text-regiterPageDarkBottomText leading-regiterPageDarkBottomText text-regiterPageDarkBottomTextcolor">
               לפנ י שאנחנו ממשיכים, איך נוח לך שנפנה אליך?
             </p>
-            <label className="text-regiterPageDarkBottomText leading-regiterPageDarkBottomText text-regiterPageDarkBottomTextcolor">
-              <input
-                className="inline-block male mx-4"
-                id="input-gender-male"
-                name="gender"
-                type="radio"
-                value="m"
-                checked
-                onChange={handleChange}
-                placeholder="זכר"
-              />
-              זכר
-            </label>
-            <label className="text-regiterPageDarkBottomText leading-regiterPageDarkBottomText text-regiterPageDarkBottomTextcolor">
-              <input
-                className="inline-block female mx-4"
-                id="input-gender-female"
-                name="gender"
-                type="radio"
-                value="f"
-                onChange={handleChange}
-                placeholder="נקבה"
-              />
-              נקבה
-            </label>
+            <MaleRadio onChange={handleChange} />
+            <FemaleRadio onChange={handleChange} />
           </div>
+
           <hr className="dashed col-start-1 col-end-3" />
-          <div className="my-4">
-            <input
-              className="checkbox ml-4"
-              id="employment_coefficient"
-              name="employment_coefficient"
-              type="checkbox"
-              value="employment_coefficient"
-              onChange={handleChange}
-            />
-            <label
-              htmlFor="employment_coefficient"
-              name="employment_coefficient"
-              className="text-regiterPageDarkBottomText leading-regiterPageDarkBottomText text-regiterPageDarkBottomTextcolor"
-            >
-              אני מאשר/ת למקדם/ת תעסוקה לצפות בפרטים שלי
-            </label>
-          </div>
+          <CoefficientCheckbox onChange={handleChange} />
+
           <div className="register_bottom col-start-1 col-end-3 flex justify-between ">
-            <div>
-              <div className="my-4">
-                <input
-                  className="checkbox ml-4"
-                  id="terms_and_conditions"
-                  name="terms_and_conditions"
-                  type="checkbox"
-                  value="terms_and_conditions"
-                  onChange={handleChange}
-                />
-                <label
-                  htmlFor="terms_and_conditions"
-                  name="terms_and_conditions"
-                  className="text-regiterPageDarkBottomText leading-regiterPageDarkBottomText text-regiterPageDarkBottomTextcolor"
-                >
-                  אני מאשר/ת כי קראתי בעיון ואישרתי את כל
-                  <u> תנאי התקנון </u>
-                  ואני מסכים/ה
-                  <br />
-                  לתהילך המוצע ובתנאים הרשומים
-                </label>
-              </div>
-            </div>
-            <button
-              p
-              type="submit"
-              className="bg-registerPageButtonGrey font-medium py-2 justify-self-end mt-twenty mb-fifty px-sixty rounded-md hover:bg-mainOrange hover:text-mainWhite"
-            >
-              שנתחיל?
-            </button>
+            <ConditionsCheckbox onChange={handleChange} />
+
+            <SubmitButton />
           </div>
         </form>
       </div>

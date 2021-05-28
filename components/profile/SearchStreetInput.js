@@ -21,9 +21,8 @@ export default class SearchStreetInput extends Component {
   };
 
   optiosn1 = () => {
-    // eslint-disable-next-line react/destructuring-assignment
-    console.log(this.props.theStreets);
-    const ary = this.props.theStreets?.map((x) => {
+    const { theStreets } = this.props;
+    const ary = theStreets?.map((x) => {
       const obj = {};
       obj.value = x.name;
       obj.label = x.name;
@@ -34,50 +33,51 @@ export default class SearchStreetInput extends Component {
   };
 
   onSelectChange = (value) => {
-    console.log(value);
     this.toggleOpen();
     this.setState({ value });
-    // console.log(this.state);
-    this.props.setTheStreet(value.value);
+    const { setTheStreet } = this.props;
+    setTheStreet(value.value);
   };
 
   render() {
     const { isOpen, value } = this.state;
     return (
-      <Dropdown
-        isOpen={isOpen}
-        onClose={this.toggleOpen}
-        className="absolute"
-        target={
-          <button
-            name="street"
-            type="button"
-            className="bwc"
-            iconafter={<ChevronDown />}
-            onClick={this.toggleOpen}
-            isselected={isOpen.toString()}
-          >
-            {value ? `  ${value.label}` : 'בחר רחוב  *'}
-          </button>
-        }
-      >
-        <Select
-          autoFocus
-          backspaceRemovesValue={false}
-          //   components={{ DropdownIndicator, IndicatorSeparator: null }}
-          controlShouldRenderValue={false}
-          hideSelectedOptions={false}
-          isClearable={false}
-          menuIsOpen
-          className="absolute w-full"
-          onChange={this.onSelectChange}
-          options={this.optiosn1()}
-          placeholder="Search..."
-          styles={selectStyles}
-          tabSelectsValue={false}
-          value={value}
-        />
-      </Dropdown>
+      <div className="relative">
+        <Dropdown
+          isOpen={isOpen}
+          onClose={this.toggleOpen}
+          className="absolute"
+          target={
+            <button
+              name="street"
+              type="button"
+              className="bwc"
+              iconafter={<ChevronDown />}
+              onClick={this.toggleOpen}
+              isselected={isOpen.toString()}
+            >
+              {value ? `  ${value.label}` : 'בחר רחוב  *'}
+            </button>
+          }
+        >
+          <Select
+            autoFocus
+            backspaceRemovesValue={false}
+            //   components={{ DropdownIndicator, IndicatorSeparator: null }}
+            controlShouldRenderValue={false}
+            hideSelectedOptions={false}
+            isClearable={false}
+            menuIsOpen
+            className="absolute w-full"
+            onChange={this.onSelectChange}
+            options={this.optiosn1()}
+            placeholder="Search..."
+            styles={selectStyles}
+            tabSelectsValue={false}
+            value={value}
+          />
+        </Dropdown>
+      </div>
     );
   }
 }
