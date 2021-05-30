@@ -19,6 +19,7 @@ module.exports = {
         orange: {
           DEFAULT: '#F19672',
           active: '#D0886D',
+          mainOr: '#FB9773',
         },
         white: {
           DEFAULT: '#FFFFFF',
