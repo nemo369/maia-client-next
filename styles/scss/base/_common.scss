@@ -43,12 +43,13 @@ body {
   display: inline-block;
 }
 
-//toggle button
+//toggle school jobs button
 
 :root {
   --switches-bg-color: white;
   --switches-label-color: #6c6c6c;
   --switch-bg-color: #3ea8b1;
+  --switch-bg-color-grey: #999999;
   --switch-text-color: white;
 }
 
@@ -138,4 +139,36 @@ body {
 /* toggle the switch box labels - second checkbox:checked - show second switch div */
 .switches-container input:nth-of-type(2):checked ~ .switch-wrapper .switch div:nth-of-type(2) {
   opacity: 1;
+}
+
+//toggel button
+
+.switch-toggle {
+  -webkit-appearance: none;
+  height: 1.56rem;
+  width: 3.125rem;
+  background-color: var(--switch-bg-color-grey);
+  border-radius: 43px;
+  position: relative;
+  cursor: pointer;
+  &::after {
+    top: 1px;
+    left: 2px;
+    content: '';
+    width: 1.4rem;
+    height: 1.4rem;
+    background-color: #ffffff;
+    position: absolute;
+    border-radius: 100%;
+    transition: 0.5s;
+  }
+  &:checked {
+    background-color: var(--switch-bg-color);
+    &::after {
+      transform: translateX(1.6rem);
+    }
+  }
+  &:focus {
+    outline-color: transparent;
+  }
 }

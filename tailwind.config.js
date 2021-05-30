@@ -36,6 +36,8 @@ module.exports = {
           dark: '#317885',
           lighter: '#A8DFCE',
           500: '#41C2C4',
+          success: '#DBFFE6',
+          successBorder: '#7AD77F',
         },
         blue: {
           DEFAULT: '#3C91A0',
@@ -133,11 +135,13 @@ module.exports = {
       },
       height: {
         50: '50px',
+        65: '65px',
       },
       width: {
         250: '250px',
         300: '300px',
         610: '610px',
+        66: '66px',
       },
       borderRadius: {
         DEFAULT: '5px',
