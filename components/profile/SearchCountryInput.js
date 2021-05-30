@@ -4,12 +4,13 @@ import Select from 'react-select';
 
 const selectStyles = {
   control: (provided) => ({ ...provided, minWidth: 240, margin: 8 }),
-  // menu: () => ({
-  //   boxShadow: 'inset 0 1px 0 rgba(0, 0, 0, 0.1)',
-  //   position: 'absolute',
-  //   width: '100%',
-  //   backgroundColor: 'white',
-  // }),
+  menu: () => ({
+    boxShadow: 'inset 0 1px 0 rgba(0, 0, 0, 0.1)',
+    position: 'absolute',
+    width: '100%',
+    backgroundColor: 'white',
+    color: 'red',
+  }),
 };
 
 const SearchCountryInput = (props) => {
@@ -49,30 +50,17 @@ const SearchCountryInput = (props) => {
         className="absolute"
         // onChange={onChange}
         target={
-          // <lable>
-          // {value ? `  ${value.label}` : 'בחר יישוב *'}
-          <input
-            placeholder="boom"
+          <button
             type="button"
             required
+            // className="regiserPageInput text-right text- justify-self-center h-registerPageInputHeight w-full bg-registerPageInputGrey my-4 rounded-md"
             className="bwc"
             // iconafter={<ChevronDown />}
             onClick={toggleOpen}
             isselected={isOpen.toString()}
-            // placeholder={value ? `  ${value.label}` : 'בחר יישוב *'}
-            // placeholder="ישובי"
-          />
-          // </lable>
-          // <button
-          //   type="button"
-          //   required
-          //   className="bwc"
-          //   iconafter={<ChevronDown />}
-          //   onClick={toggleOpen}
-          //   isselected={isOpen.toString()}
-          // >
-          //   {value ? `  ${value.label}` : 'בחר יישוב *'}
-          // </button>
+          >
+            {value ? `  ${value.label}` : 'בחר יישוב *'}
+          </button>
         }
       >
         <Select
@@ -83,7 +71,7 @@ const SearchCountryInput = (props) => {
           hideSelectedOptions={false}
           isClearable={false}
           menuIsOpen
-          className="absolute w-full"
+          className="absolute w-full boomp"
           onChange={onSelectChange}
           options={optiosn1()}
           placeholder="Search..."
@@ -181,11 +169,12 @@ const Menu = (props) => {
   return (
     <div
       css={{
-        backgroundColor: 'white',
+        backgroundColor: 'red',
         borderRadius: 4,
         boxShadow: `0 0 0 1px ${shadow}, 0 4px 11px ${shadow}`,
         marginTop: 8,
         position: 'absolute',
+        color: 'red',
         zIndex: 2,
       }}
       {...props}
@@ -206,15 +195,15 @@ const Blanket = (props) => (
   />
 );
 const Dropdown = ({ children, isOpen, target, onClose }) => (
-  <div css={{ position: 'absolute' }}>
+  <div css={{ position: 'absolute', color: 'red' }}>
     {target}
     {isOpen ? <Menu>{children}</Menu> : null}
     {isOpen ? <Blanket onClick={onClose} /> : null}
   </div>
 );
-const Svg = (p) => (
-  <svg width="24" height="24" viewBox="0 0 24 24" focusable="false" role="presentation" {...p} />
-);
+// const Svg = (p) => (
+//   <svg width="24" height="24" viewBox="0 0 24 24" focusable="false" role="presentation" {...p} />
+// );
 // const DropdownIndicator = () => (
 //   <div css={{ color: colors.neutral20, height: 24, width: 32 }}>
 //     <Svg>
@@ -226,12 +215,12 @@ const Svg = (p) => (
 //     </Svg>
 //   </div>
 // );
-const ChevronDown = () => (
-  <Svg style={{ marginRight: -6 }}>
-    <path
-      d="M8.292 10.293a1.009 1.009 0 0 0 0 1.419l2.939 2.965c.218.215.5.322.779.322s.556-.107.769-.322l2.93-2.955a1.01 1.01 0 0 0 0-1.419.987.987 0 0 0-1.406 0l-2.298 2.317-2.307-2.327a.99.99 0 0 0-1.406 0z"
-      fill="currentColor"
-      fillRule="evenodd"
-    />
-  </Svg>
-);
+// const ChevronDown = () => (
+//   <Svg style={{ marginRight: -6 }}>
+//     <path
+//       d="M8.292 10.293a1.009 1.009 0 0 0 0 1.419l2.939 2.965c.218.215.5.322.779.322s.556-.107.769-.322l2.93-2.955a1.01 1.01 0 0 0 0-1.419.987.987 0 0 0-1.406 0l-2.298 2.317-2.307-2.327a.99.99 0 0 0-1.406 0z"
+//       fill="currentColor"
+//       fillRule="evenodd"
+//     />
+//   </Svg>
+// );

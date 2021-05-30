@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import useForm from '../../src/hooks/useForm';
 import Infoservice from '../../src/services/info.service';
-import DisplayError from '../common/error/DisplayError';
+// import DisplayError from '../common/error/DisplayError';
 import AgeInput from './register_form/inputs/AgeInput';
 import CellphoneInput from './register_form/inputs/CellphoneInput';
 import EmailInput from './register_form/inputs/EmailInput';
@@ -18,14 +18,13 @@ import SubTitle from './register_form/texts/SubTitle';
 import SubmitButton from './register_form/SubmitButton';
 
 const RegisterForm = ({ cities }) => {
-  // let streets;
   const [cityId, setCityId] = useState(null);
   const [cityData, setCityData] = useState(null);
   const [theStreets, setTheStreets] = useState(null);
   const [theStreet, setTheStreet] = useState(null);
-  const [error, setError] = useState(null);
+  // const [error, setError] = useState(null);
   const [err, setErr] = useState(false);
-  const [open, setOpen] = useState(true);
+  // const [open, setOpen] = useState(true);
   const { inputs, handleChange, resetForm } = useForm({
     username: '',
     email: '',
@@ -50,8 +49,7 @@ const RegisterForm = ({ cities }) => {
   }, [cityId]);
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(cityId);
-    console.log(cityData);
+
     console.log(inputs.city);
     if (false === inputs.city) {
       console.log('cow');
@@ -59,7 +57,7 @@ const RegisterForm = ({ cities }) => {
     }
     // const dataToSend = {...inputs, city:}
     console.log(inputs);
-    // console.log(resetForm);
+    console.log(resetForm);
     console.log(setError);
     // setError(null);
     // setLoading(true);
@@ -123,7 +121,7 @@ const RegisterForm = ({ cities }) => {
           />
           <SearchStreetInput
             required
-            open={open}
+            // open={open}
             theStreets={theStreets}
             setTheStreet={setTheStreet}
             handleChange={handleChange}
