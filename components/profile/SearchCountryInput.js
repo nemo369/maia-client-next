@@ -18,21 +18,23 @@ const SearchCountryInput = (props) => {
   const [value, setValue] = useState(undefined);
   // const [err, setErr] = useState(props.err || false);
   const { err } = props;
+  const { cities } = props;
 
   const toggleOpen = () => {
     setIsOpen(!isOpen);
   };
 
   const optiosn1 = () => {
-    const { cities } = props;
-    const ary = cities.map((x) => {
+    if (!cities || !Array.isArray(cities)) {
+      return [];
+    }
+    return cities?.map((x) => {
       const obj = {};
       obj.value = x.name;
       obj.label = x.name;
       obj.id = x.id;
       return obj;
     });
-    return ary;
   };
 
   const onSelectChange = (value1) => {

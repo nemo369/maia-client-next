@@ -22,7 +22,7 @@ export async function getStaticProps() {
   const data = await res.json();
   if (!data) {
     return {
-      notFound: true,
+      cities: [],
     };
   }
 
