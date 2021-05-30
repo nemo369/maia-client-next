@@ -9,7 +9,7 @@ const selectStyles = {
     position: 'absolute',
     width: '100%',
     backgroundColor: 'white',
-    color: 'red',
+    color: '#3C91A0',
   }),
 };
 

@@ -14,6 +14,8 @@ module.exports = {
       spacing: {
         bbc: '1920px',
         fifteen: '15px',
+        thirtynine: '39%',
+        seventy: '70%',
         fifty: '50px',
         sixty: '60px',
         ten: '10px',

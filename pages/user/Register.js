@@ -6,6 +6,7 @@ const Register = function (props) {
   return (
     <div className="bg-lightgreybackground w-full min-h-screen">
       <SignUpHeader />
+
       <RegisterForm cities={cities} />
     </div>
   );

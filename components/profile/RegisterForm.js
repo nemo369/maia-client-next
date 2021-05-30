@@ -16,6 +16,7 @@ import ConditionsCheckbox from './register_form/inputs/ContisionsCheckbox';
 import MainTitle from './register_form/texts/MainTItle';
 import SubTitle from './register_form/texts/SubTitle';
 import SubmitButton from './register_form/SubmitButton';
+import Group18Img from '../svg/Group18Img';
 
 const RegisterForm = ({ cities }) => {
   const [cityId, setCityId] = useState(null);
@@ -86,6 +87,7 @@ const RegisterForm = ({ cities }) => {
     <div className="registerPage_container w-registercontainer_Width   mx-auto">
       <MainTitle />
       <div className="registerPage_form_container bg-registercontainer_white px-fifty register-form">
+        <Group18Img />
         <form
           className="registerPage_form grid grid-cols-2  mx-auto gap-x-4 gap-y-3"
           method="POST"
