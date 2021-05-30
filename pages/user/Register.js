@@ -1,13 +1,15 @@
 import RegisterForm from '../../components/profile/RegisterForm';
+import SignUpHeader from '../../components/SignUpHeader';
 
 const Register = function () {
   return (
-    // <div>
-    <section>
-      <h1>Register a new account</h1>
+    <div
+      className="bg-lightgreybackground w-full min-h-screen
+    "
+    >
+      <SignUpHeader />
       <RegisterForm />
-    </section>
-    // </div>
+    </div>
   );
 };
 

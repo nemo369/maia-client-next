@@ -9,11 +9,7 @@ class MyDocument extends Document {
   render() {
     return (
       <Html dir="rtl" lang="he">
-        <Head>
-          <title>Maia Client APP</title>
-          <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        </Head>
-
+        <Head />
         <body>
           <Main />
           <NextScript />
