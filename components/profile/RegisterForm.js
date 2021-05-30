@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import { useEffect, useState } from 'react';
 import useForm from '../../src/hooks/useForm';
 import Infoservice from '../../src/services/info.service';

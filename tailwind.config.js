@@ -3,80 +3,65 @@ module.exports = {
     removeDeprecatedGapUtilities: true,
     purgeLayersByDefault: true,
   },
-  purge: ['./wp-content/themes/canaan/**/*.{vue,js,ts,jsx,tsx,php,svg}'],
-  variants: {},
+  purge: ['./src/components/**/*.js', './pages/**/*.js'],
+  variants: {
+    extend: {
+      backgroundColor: ['active'],
+      maxHeight: ['focus'],
+    },
+  },
+  // eslint-disable-next-line global-require
   plugins: [require('tailwindcss'), require('precss'), require('autoprefixer')],
   darkMode: false, // or 'media' or 'class'
-
   theme: {
     extend: {
       colors: {
-        orangeMaya: '#FF916A',
-        whiteMaya: '#FFFFFF',
-        blackMaya: '#000000',
-        redMaya: '#F97168',
-        greenMaya: {
-          DEFAULT: '#008B92',
+        orange: {
+          DEFAULT: '#F19672',
+          active: '#D0886D',
+        },
+        white: {
+          DEFAULT: '#FFFFFF',
+          active: ' #F3F3F3',
+        },
+        black: '#000000',
+        red: {
+          DEFAULT: '#F97168',
+          error: '#FFDBDB',
+          active: '#FF8282',
+        },
+        green: {
+          DEFAULT: '#FF3344',
           light: '#B3DDCF',
           dark: '#317885',
           lighter: '#A8DFCE',
+          500: '#41C2C4',
+          success: '#DBFFE6',
+          successBorder: '#7AD77F',
         },
-        blueMaya: {
-          DEFAULT: '#4EA8B5',
+        blue: {
+          DEFAULT: '#3C91A0',
           light: '#45A4C7',
           dark: '#252464',
+          active: '#429FAB',
         },
-        greymaya: {
-          DEFAULT: '#999999',
+        grey: {
+          DEFAULT: '#6C6C6C',
           light: '#CCCCCC',
-          dark: '#6C6C6C',
+          dark: '#4C4C4C',
+          lighter: '#EEEEEE',
+          disabled: '#E7E7E7',
+          text: '#B7B7B7',
+          active: '#999999',
         },
-        yellowMaya: '#FFC960',
+        yellow: '#FFC960',
+        gradient: {
+          1: '#40C2C4',
+          2: '#3C91A0',
+        },
       },
       spacing: {
-        bbc: '1920px',
-        fifteen: '15px',
-        thirtynine: '39%',
-        seventyfour: '74%',
-        minusfourp: '-4%',
-        twentyeightp: '28%%',
-        fifty: '50px',
-        fiftyp: '50%',
-        sixty: '60px',
-        ten: '10px',
-        hundred: '100px',
-        twrnety: '20px',
-        thirty: '30px',
-        twentyFive: '25px',
-        twohundred: '200px',
-        onehundredandtenP: '110%',
-        onehundredandtwentyFifeP: '125%',
-        registercontainer_Width: '1061px',
-        registercontainer_Heigth: '577px',
-        registerPageInputWidth: '364px',
         registerPageInputHeight: '50px',
-        ninetyPercent: '90%',
-      },
-
-      padding: {
-        fifty: '50px',
-        ten: '10px',
-      },
-
-      textColor: (theme) => theme('colors'),
-      // eslint-disable-next-line no-dupe-keys
-      textColor: {
-        primary: '#3490dc',
-        secondary: '#ffed4a',
-        danger: '#e3342f',
-        mainTurquoise: '#3C91A0',
-        mainOrange: '#FB9773',
-        mainWhite: '#FFFFFF',
-        topBarGrey: '#999999',
-        landingpage_section3darkgrey: '#343434',
-        lp_sec4_left_darkgrey: '#6C6C6C',
-        registerPageSubtitle: '#333333',
-        regiterPageDarkBottomTextcolor: '#434343',
       },
       backgroundColor: (theme) => ({
         ...theme('colors'),
@@ -87,34 +72,6 @@ module.exports = {
         registerPageInputGrey: '#CCCCCC',
         registerPageButtonGrey: '#999999',
       }),
-
-      fontSize: {
-        topBarFontSize: '25px',
-        registerPageTitle: '45px',
-        registerPageSubTitle_fontsize: '30px',
-        registerPageSubSubTitle_fontsize: '21px',
-        regiterPageSmallGreyText: '17px',
-        regiterPageDarkBottomText: '18px',
-      },
-      lineHeight: {
-        regiterPageTitle: '48px',
-        regiterPageSubTitle: '30px',
-        regiterPageSubSubTitle: '21px',
-        regiterPageSmallGreyText: '17px',
-        regiterPageDarkBottomText: '18px',
-      },
-      opacity: {
-        7: '0.7',
-        3: '0.3',
-        1: '0.1',
-      },
-
-      //  height: {
-      //   sm: '8px',
-      //   md: '16px',
-      //   lg: '24px',
-      //   xl: '100px',
-      //  }
     },
   },
 };
