@@ -20,7 +20,7 @@ export async function getStaticProps() {
   const { WORDPRESS_ENDPOINT } = process.env;
   const res = await fetch(`${WORDPRESS_ENDPOINT}/wp-json/wp/v2/info/city`);
   const data = await res.json();
-  if (!data) {
+  if (!data || !Array.isArray(data)) {
     return {
       cities: [],
     };

@@ -10,10 +10,10 @@ const NavBar = () => {
   const { user } = useContext(AppContext);
 
   const links = [
-    { href: '/', name: 'ראשי', icon: <LightBulb /> },
+    { href: '/dashbaord', name: 'ראשי', icon: <LightBulb /> },
     { href: '/professions', name: 'זירת המקצועות', icon: <LightBulb /> },
     { href: '/school', name: 'מאגר הלימודים', icon: <LightBulb /> },
-    { href: '/Jobs', name: 'משרות פנויות', icon: <LightBulb /> },
+    { href: '/jobs', name: 'משרות פנויות', icon: <LightBulb /> },
   ];
 
   const LinkButton = ({ link, isActive }) => (

@@ -12,10 +12,10 @@ export default function Test() {
       <div>------------------------</div>
       <h1>Buttons</h1>
       <div>------------------------</div>
-      <Button type="main" name="ראשי" className="h-50 w-250" />
-      <Button type="main" name="ראשי מושבת" className="h-50 w-250" disabled />
-      <Button type="secondary" name="משני" className="h-50 w-250" />
-      <Button type="secondary" name="משני מושבת" disabled className="h-50 w-250" />
+      <Button type="main" name="ראשי" className="h-[50px] w-250" />
+      <Button type="main" name="ראשי מושבת" className="h-[50px] w-250" disabled />
+      <Button type="secondary" name="משני" className="h-[50px] w-250" />
+      <Button type="secondary" name="משני מושבת" disabled className="h-[50px] w-250" />
       <Button type="gradient" name="אחר" className="h-16 w-40" />
       <Button type="gradient" name="אחר מושבת" disabled className="h-16 w-40" />
       <div>------------------------</div>
@@ -32,15 +32,15 @@ export default function Test() {
       <h1>Inputs</h1>
       <div>------------------------</div>
       <div className="bg-white-active">
-        <Inputs placeholder="רגיל הרשמה" className="h-50 w-300" type="main" />
+        <Inputs placeholder="רגיל הרשמה" className="h-[50px] w-300" type="main" />
         <div h-3 w-3 mt-3>
           ====
         </div>
-        <Inputs placeholder="משני הרשמה התחברות" className="h-50 w-300" type="secondary" />
+        <Inputs placeholder="משני הרשמה התחברות" className="h-[50px] w-300" type="secondary" />
         <div h-3 w-3 mt-3>
           ====
         </div>
-        <Inputs placeholder="שגיאה" className="h-50 w-300" type="error" />
+        <Inputs placeholder="שגיאה" className="h-[50px] w-300" type="error" />
       </div>
       <div>------------------------</div>
       <h1>NumInputs</h1>
