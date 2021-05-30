@@ -51,24 +51,24 @@ const RegisterForm = () => {
     // }
   };
   return (
-    <div className="registerPage_container w-registercontainer_Width   mx-auto">
-      <h1 className="font-black text-registerPageTitle text-mainOrange leading-reegisterPageTitle">
+    <div className="registerPage_container max-w-5xl   mx-auto">
+      <h1 className="font-black text-4xl text-mainOrange leading-reegisterPageTitle">
         העתיד שלך מתחיל כאן
       </h1>
-      <p className="text-registerPageSubTitle text-registerPageSubTitle_fontsize leading-regiterPageSubTitle opacity-7 mb-fifty">
+      <p className="text-registerPageSubTitle text-[30px] leading-regiterPageSubTitle opacity-7 mb-12">
         הרשמה למערכת מאיה
       </p>
-      <div className="registerPage_form_container bg-registercontainer_white px-fifty register-form">
+      <div className="registerPage_form_container bg-registercontainer_white px-12 register-form">
         <form
           className="registerPage_form grid grid-cols-2  mx-auto gap-x-4 gap-y-3"
           method="POST"
           onSubmit={handleSubmit}
         >
           <div className="py-4">
-            <p className="mb-2 text-registerPageSubSubTitle_fontsize text-topBarGrey leading-regiterPageSubSubTitle font-black">
+            <p className="mb-2 text-[22px] text-topBarGrey leading-regiterPageSubSubTitle font-black">
               פרטים אישיים
             </p>
-            <p className=" text-regiterPageSmallGreyText text-topBarGrey leading-regiterPageSmallGreyText">
+            <p className=" text-lg text-topBarGrey ">
               * פרטי המייל ו/או נייד ישמשו לצורך התחברות חוזרת למערכת
             </p>
           </div>
@@ -139,10 +139,10 @@ const RegisterForm = () => {
             className="regiserPageInput justify-self-center h-registerPageInputHeight w-full bg-registerPageInputGrey my-4 rounded-md"
           />
           <div className="my-4 col-start-1 col-end-3">
-            <p className="inline-block text-regiterPageDarkBottomText leading-regiterPageDarkBottomText text-regiterPageDarkBottomTextcolor">
+            <p className="inline-block text-lg leading-none le text-lgcolor">
               לפנ י שאנחנו ממשיכים, איך נוח לך שנפנה אליך?
             </p>
-            <label className="text-regiterPageDarkBottomText leading-regiterPageDarkBottomText text-regiterPageDarkBottomTextcolor">
+            <label className="text-lg leading-none text-lgcolor">
               <input
                 className="inline-block male mx-4"
                 id="input-gender-male"
@@ -155,7 +155,7 @@ const RegisterForm = () => {
               />
               זכר
             </label>
-            <label className="text-regiterPageDarkBottomText leading-regiterPageDarkBottomText text-regiterPageDarkBottomTextcolor">
+            <label className="text-lg leading-none text-lgcolor">
               <input
                 className="inline-block female mx-4"
                 id="input-gender-female"
@@ -181,7 +181,7 @@ const RegisterForm = () => {
             <label
               htmlFor="employment_coefficient"
               name="employment_coefficient"
-              className="text-regiterPageDarkBottomText leading-regiterPageDarkBottomText text-regiterPageDarkBottomTextcolor"
+              className="text-lg leading-none text-lgcolor"
             >
               אני מאשר/ת למקדם/ת תעסוקה לצפות בפרטים שלי
             </label>
@@ -200,7 +200,7 @@ const RegisterForm = () => {
                 <label
                   htmlFor="terms_and_conditions"
                   name="terms_and_conditions"
-                  className="text-regiterPageDarkBottomText leading-regiterPageDarkBottomText text-regiterPageDarkBottomTextcolor"
+                  className="text-lg leading-none text-lgcolor"
                 >
                   אני מאשר/ת כי קראתי בעיון ואישרתי את כל
                   <u> תנאי התקנון </u>
@@ -213,7 +213,7 @@ const RegisterForm = () => {
             <button
               p
               type="submit"
-              className="bg-registerPageButtonGrey font-medium py-2 justify-self-end mt-twenty mb-fifty px-sixty rounded-md hover:bg-mainOrange hover:text-mainWhite"
+              className="bg-registerPageButtonGrey font-medium py-2 justify-self-end mt-twenty mb-12 px-16 rounded-md hover:bg-mainOrange hover:text-mainWhite"
             >
               שנתחיל?
             </button>

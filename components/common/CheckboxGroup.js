@@ -4,10 +4,10 @@ export default function CheckboxGroup() {
   return (
     <div className="button-group">
       <div className="button-sec">
-        <input type="radio" id="r1" name="r-group" />
         <label className="button-label" htmlFor="r1">
           הכל
         </label>
+        <input type="radio" id="r1" name="r-group" />
       </div>
       <div className="button-sec">
         <input type="radio" id="r2" name="r-group" />
