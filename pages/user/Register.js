@@ -4,9 +4,11 @@ import SignUpHeader from '../../components/SignUpHeader';
 const Register = function (props) {
   const { cities } = props;
   return (
-    <div className="bg-lightgreybackground w-full min-h-screen">
+    <div
+      className="bg-lightgreybackground w-full
+     min-h-screen"
+    >
       <SignUpHeader />
-
       <RegisterForm cities={cities} />
     </div>
   );
