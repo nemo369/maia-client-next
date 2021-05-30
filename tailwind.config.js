@@ -1,9 +1,10 @@
 module.exports = {
+  mode: 'jit',
   future: {
     removeDeprecatedGapUtilities: true,
     purgeLayersByDefault: true,
   },
-  purge: ['./src/components/**/*.js', './pages/**/*.js'],
+  purge: ['./components/**/*.js', './pages/**/*.js'],
   variants: {
     extend: {
       backgroundColor: ['active'],
