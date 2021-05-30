@@ -6,7 +6,7 @@ const SERVER_BASE_URL = `${FRONT_URL}`;
 const UserAPI = {
   current: async () => {
     try {
-      const response = await axios.get('/user', {
+      const response = await axios.post('/user', {
         headers: {
           Authorization: `Token ${encodeURIComponent(token)}`,
         },

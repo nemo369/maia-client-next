@@ -1,19 +1,37 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import useForm from '../../src/hooks/useForm';
-import DisplayError from '../common/error/DisplayError';
-import PopoutExample from './SearchCountryInput';
+import Infoservice from '../../src/services/info.service';
+// import DisplayError from '../common/error/DisplayError';
+import AgeInput from './register_form/inputs/AgeInput';
+import CellphoneInput from './register_form/inputs/CellphoneInput';
+import EmailInput from './register_form/inputs/EmailInput';
+import FemaleRadio from './register_form/inputs/FemaleRadio';
+import MaleRadio from './register_form/inputs/MaleRadio';
+import FullnameInput from './register_form/inputs/FullnameInput';
+import SearchCountryInput from './SearchCountryInput';
+import SearchStreetInput from './SearchStreetInput';
+import CoefficientCheckbox from './register_form/inputs/CoefficientCheckbox';
+import ConditionsCheckbox from './register_form/inputs/ContisionsCheckbox';
+import MainTitle from './register_form/texts/MainTItle';
+import SubTitle from './register_form/texts/SubTitle';
+import SubmitButton from './register_form/SubmitButton';
+import Group18Img from '../svg/Group18Img';
+import Group11 from '../svg/Group11';
 
-const RegisterForm = () => {
-  // const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
-  const [open, setOpen] = useState(true);
+const RegisterForm = ({ cities }) => {
+  const [cityId, setCityId] = useState(null);
+  const [cityData, setCityData] = useState(null);
+  const [theStreets, setTheStreets] = useState(null);
+  const [theStreet, setTheStreet] = useState(null);
+  // const [error, setError] = useState(null);
+  const [err, setErr] = useState(false);
+  // const [open, setOpen] = useState(true);
   const { inputs, handleChange, resetForm } = useForm({
     username: '',
     email: '',
     password: '',
-    city: '',
-    street: '',
+    city: cityData?.value,
+    street: theStreet,
     cellphone: '',
     age: '',
     fullname: '',
@@ -21,9 +39,24 @@ const RegisterForm = () => {
     employment_coefficient: null,
     terms_and_conditions: null,
   });
-
+  useEffect(() => {
+    const getStreets = async () => {
+      const { data } = await Infoservice.getStreetInfo(cityId);
+      setTheStreets(data);
+    };
+    if (cityId) {
+      getStreets();
+    }
+  }, [cityId]);
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    console.log(inputs.city);
+    if (false === inputs.city) {
+      console.log('cow');
+      setErr(true);
+    }
+    // const dataToSend = {...inputs, city:}
     console.log(inputs);
     console.log(resetForm);
     console.log(setError);
@@ -52,28 +85,19 @@ const RegisterForm = () => {
   };
   return (
     <div className="registerPage_container max-w-5xl   mx-auto">
-      <h1 className="font-black text-4xl text-mainOrange leading-reegisterPageTitle">
-        העתיד שלך מתחיל כאן
-      </h1>
-      <p className="text-registerPageSubTitle text-[30px] leading-regiterPageSubTitle opacity-7 mb-12">
-        הרשמה למערכת מאיה
-      </p>
-      <div className="registerPage_form_container bg-registercontainer_white px-12 register-form">
+      <MainTitle />
+      <div className="registerPage_form_container bg-white px-12 register-form">
+        <Group18Img />
+        <Group11 />
         <form
-          className="registerPage_form grid grid-cols-2  mx-auto gap-x-4 gap-y-3"
+          className="registerPage_form grid grid-cols-2  mx-auto gap-x-4 gap-y-3 rounded"
           method="POST"
           onSubmit={handleSubmit}
+          id="theform"
         >
-          <div className="py-4">
-            <p className="mb-2 text-[22px] text-topBarGrey leading-regiterPageSubSubTitle font-black">
-              פרטים אישיים
-            </p>
-            <p className=" text-lg text-topBarGrey ">
-              * פרטי המייל ו/או נייד ישמשו לצורך התחברות חוזרת למערכת
-            </p>
-          </div>
+          <SubTitle />
           <span />
-          <DisplayError error={error} />
+          {/* <DisplayError error={error} /> */}
           <input
             type="text"
             name="username"
@@ -90,133 +114,46 @@ const RegisterForm = () => {
             onChange={handleChange}
             className="regiserPageInput justify-self-center h-registerPageInputHeight w-full bg-registerPageInputGrey my-4 rounded-md"
           />
-          <div>
-            {/* <button
-              type="button"
-              name="city"
-              placeholder="בחר יישובים"
-              value={inputs.city}
-              onChange={handleChange}
-              onClick={handleSearchInput}
-              className="relative regiserPageInput justify-self-center h-registerPageInputHeight w-full bg-registerPageInputGrey my-4 rounded-md"
-            >
-              םבחר יישובי
-            </button> */}
-            <PopoutExample open={open} setOpen={setOpen} />
-          </div>
-          {/* {isBrowser ? <SearchInput /> : ''} */}
+          <SearchCountryInput
+            cityId={cityId}
+            setCityId={setCityId}
+            setCityData={setCityData}
+            cities={cities}
+            handleChange={handleChange}
+            err={err}
+          />
+          <SearchStreetInput
+            required
+            // open={open}
+            theStreets={theStreets}
+            setTheStreet={setTheStreet}
+            handleChange={handleChange}
+          />
           <hr className="dashed col-start-1 col-end-3" />
-          <input
-            type="email"
-            name="email"
-            placeholder="מייל *"
-            value={inputs.email}
-            onChange={handleChange}
-            className="regiserPageInput justify-self-center h-registerPageInputHeight w-full bg-registerPageInputGrey my-4 rounded-md"
-          />
-          <input
-            type="text"
-            name="fullname"
-            placeholder="שם מלא *"
-            value={inputs.fullname}
-            onChange={handleChange}
-            className="regiserPageInput justify-self-center h-registerPageInputHeight w-full bg-registerPageInputGrey my-4 rounded-md"
-          />
-          <input
-            type="text"
-            name="cellphone"
-            placeholder="נייד"
-            value={inputs.cellphone}
-            onChange={handleChange}
-            className="regiserPageInput justify-self-center h-registerPageInputHeight w-full bg-registerPageInputGrey my-4 rounded-md"
-          />
-          <input
-            type="number"
-            name="age"
-            placeholder="גיל"
-            value={inputs.age}
-            onChange={handleChange}
-            className="regiserPageInput justify-self-center h-registerPageInputHeight w-full bg-registerPageInputGrey my-4 rounded-md"
-          />
+
+          <EmailInput handleChange={handleChange} value={inputs.email} />
+
+          <FullnameInput handleChange={handleChange} value={inputs.fullname} />
+
+          <CellphoneInput handleChange={handleChange} value={inputs.cellphone} />
+
+          <AgeInput handleChange={handleChange} value={inputs.age} />
+
           <div className="my-4 col-start-1 col-end-3">
-            <p className="inline-block text-lg leading-none le text-lgcolor">
+            <p className="inline-block text-regiterPageDarkBottomText leading-regiterPageDarkBottomText text-regiterPageDarkBottomTextcolor">
               לפנ י שאנחנו ממשיכים, איך נוח לך שנפנה אליך?
             </p>
-            <label className="text-lg leading-none text-lgcolor">
-              <input
-                className="inline-block male mx-4"
-                id="input-gender-male"
-                name="gender"
-                type="radio"
-                value="m"
-                checked
-                onChange={handleChange}
-                placeholder="זכר"
-              />
-              זכר
-            </label>
-            <label className="text-lg leading-none text-lgcolor">
-              <input
-                className="inline-block female mx-4"
-                id="input-gender-female"
-                name="gender"
-                type="radio"
-                value="f"
-                onChange={handleChange}
-                placeholder="נקבה"
-              />
-              נקבה
-            </label>
+            <MaleRadio handleChange={handleChange} />
+            <FemaleRadio handleChange={handleChange} />
           </div>
+
           <hr className="dashed col-start-1 col-end-3" />
-          <div className="my-4">
-            <input
-              className="checkbox ml-4"
-              id="employment_coefficient"
-              name="employment_coefficient"
-              type="checkbox"
-              value="employment_coefficient"
-              onChange={handleChange}
-            />
-            <label
-              htmlFor="employment_coefficient"
-              name="employment_coefficient"
-              className="text-lg leading-none text-lgcolor"
-            >
-              אני מאשר/ת למקדם/ת תעסוקה לצפות בפרטים שלי
-            </label>
-          </div>
+          <CoefficientCheckbox onChange={handleChange} />
+
           <div className="register_bottom col-start-1 col-end-3 flex justify-between ">
-            <div>
-              <div className="my-4">
-                <input
-                  className="checkbox ml-4"
-                  id="terms_and_conditions"
-                  name="terms_and_conditions"
-                  type="checkbox"
-                  value="terms_and_conditions"
-                  onChange={handleChange}
-                />
-                <label
-                  htmlFor="terms_and_conditions"
-                  name="terms_and_conditions"
-                  className="text-lg leading-none text-lgcolor"
-                >
-                  אני מאשר/ת כי קראתי בעיון ואישרתי את כל
-                  <u> תנאי התקנון </u>
-                  ואני מסכים/ה
-                  <br />
-                  לתהילך המוצע ובתנאים הרשומים
-                </label>
-              </div>
-            </div>
-            <button
-              p
-              type="submit"
-              className="bg-registerPageButtonGrey font-medium py-2 justify-self-end mt-twenty mb-12 px-16 rounded-md hover:bg-mainOrange hover:text-mainWhite"
-            >
-              שנתחיל?
-            </button>
+            <ConditionsCheckbox onChange={handleChange} />
+
+            <SubmitButton />
           </div>
         </form>
       </div>
