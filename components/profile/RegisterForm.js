@@ -23,19 +23,8 @@ const RegisterForm = ({ cities }) => {
   const [cityData, setCityData] = useState(null);
   const [theStreets, setTheStreets] = useState(null);
   const [theStreet, setTheStreet] = useState(null);
-
-  const getStreets = async () => {
-    const { data } = await Infoservice.getStreetInfo(cityId);
-    setTheStreets(data);
-  };
-
-  useEffect(() => {
-    if (cityId) {
-      getStreets();
-    }
-  }, [cityId]);
-
   const [error, setError] = useState(null);
+  const [err, setErr] = useState(false);
   const [open, setOpen] = useState(true);
   const { inputs, handleChange, resetForm } = useForm({
     username: '',
@@ -50,12 +39,27 @@ const RegisterForm = ({ cities }) => {
     employment_coefficient: null,
     terms_and_conditions: null,
   });
-
+  useEffect(() => {
+    const getStreets = async () => {
+      const { data } = await Infoservice.getStreetInfo(cityId);
+      setTheStreets(data);
+    };
+    if (cityId) {
+      getStreets();
+    }
+  }, [cityId]);
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log(cityId);
+    console.log(cityData);
+    console.log(inputs.city);
+    if (false === inputs.city) {
+      console.log('cow');
+      setErr(true);
+    }
     // const dataToSend = {...inputs, city:}
     console.log(inputs);
-    console.log(resetForm);
+    // console.log(resetForm);
     console.log(setError);
     // setError(null);
     // setLoading(true);
@@ -88,10 +92,11 @@ const RegisterForm = ({ cities }) => {
           className="registerPage_form grid grid-cols-2  mx-auto gap-x-4 gap-y-3"
           method="POST"
           onSubmit={handleSubmit}
+          id="theform"
         >
           <SubTitle />
           <span />
-          <DisplayError error={error} />
+          {/* <DisplayError error={error} /> */}
           <input
             type="text"
             name="username"
@@ -114,14 +119,17 @@ const RegisterForm = ({ cities }) => {
             setCityData={setCityData}
             cities={cities}
             handleChange={handleChange}
+            err={err}
           />
           <SearchStreetInput
+            required
             open={open}
             theStreets={theStreets}
             setTheStreet={setTheStreet}
             handleChange={handleChange}
           />
           <hr className="dashed col-start-1 col-end-3" />
+
           <EmailInput handleChange={handleChange} value={inputs.email} />
 
           <FullnameInput handleChange={handleChange} value={inputs.fullname} />
@@ -134,8 +142,8 @@ const RegisterForm = ({ cities }) => {
             <p className="inline-block text-regiterPageDarkBottomText leading-regiterPageDarkBottomText text-regiterPageDarkBottomTextcolor">
               לפנ י שאנחנו ממשיכים, איך נוח לך שנפנה אליך?
             </p>
-            <MaleRadio onChange={handleChange} />
-            <FemaleRadio onChange={handleChange} />
+            <MaleRadio handleChange={handleChange} />
+            <FemaleRadio handleChange={handleChange} />
           </div>
 
           <hr className="dashed col-start-1 col-end-3" />

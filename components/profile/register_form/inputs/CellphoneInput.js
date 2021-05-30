@@ -3,6 +3,7 @@ const CellphoneInput = (props) => {
   return (
     <input
       type="text"
+      required
       name="cellphone"
       placeholder="נייד"
       value={value}

@@ -3,6 +3,7 @@ const AgeInput = (props) => {
   return (
     <input
       type="number"
+      required
       name="age"
       placeholder="גיל"
       value={value}

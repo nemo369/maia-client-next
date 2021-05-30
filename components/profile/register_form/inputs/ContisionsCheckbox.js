@@ -5,6 +5,7 @@ const ConditionsCheckbox = (props) => {
     <div>
       <div className="my-4">
         <input
+          required
           className="checkbox ml-4"
           id="terms_and_conditions"
           name="terms_and_conditions"

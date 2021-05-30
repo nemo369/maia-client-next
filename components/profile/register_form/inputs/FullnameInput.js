@@ -4,6 +4,7 @@ const FullnameInput = (props) => {
     <input
       type="text"
       name="fullname"
+      required
       placeholder="שם מלא *"
       value={value}
       onChange={handleChange}

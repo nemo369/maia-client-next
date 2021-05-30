@@ -1,7 +1,10 @@
 const EmailInput = (props) => {
   const { value, handleChange } = props;
+
   return (
     <input
+      // onInput={InvalidMsg}
+      required
       type="email"
       name="email"
       placeholder="מייל *"

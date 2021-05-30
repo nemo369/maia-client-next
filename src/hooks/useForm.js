@@ -33,6 +33,7 @@ export default function useForm(initial = {}) {
     if ('male' === name) {
       value = 'male';
     }
+
     setInputs({
       // copy the existing state
       ...inputs,

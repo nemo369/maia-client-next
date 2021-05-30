@@ -1,4 +1,5 @@
-import { Component } from 'react';
+import { useState } from 'react';
+// import { Component, useState } from 'react';
 import Select from 'react-select';
 
 const selectStyles = {
@@ -10,18 +11,19 @@ const selectStyles = {
   //   backgroundColor: 'white',
   // }),
 };
-export default class SearchCountryInput extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { isOpen: false, value: undefined };
-  }
 
-  toggleOpen = () => {
-    this.setState((state) => ({ isOpen: !state.isOpen }));
+const SearchCountryInput = (props) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [value, setValue] = useState(undefined);
+  // const [err, setErr] = useState(props.err || false);
+  const { err } = props;
+
+  const toggleOpen = () => {
+    setIsOpen(!isOpen);
   };
 
-  optiosn1 = () => {
-    const { cities } = this.props;
+  const optiosn1 = () => {
+    const { cities } = props;
     const ary = cities.map((x) => {
       const obj = {};
       obj.value = x.name;
@@ -32,56 +34,145 @@ export default class SearchCountryInput extends Component {
     return ary;
   };
 
-  onSelectChange = (value) => {
-    const { setCityId, setCityData } = this.props;
-    setCityId(value.id);
-    setCityData(value);
-    this.toggleOpen();
-    this.setState({ value });
+  const onSelectChange = (value1) => {
+    const { setCityId, setCityData } = props;
+    setCityId(value1.id);
+    setCityData(value1);
+    toggleOpen();
+    setValue(value1);
   };
-
-  render() {
-    const { isOpen, value } = this.state;
-    return (
-      <div className="relative">
-        <Dropdown
-          isOpen={isOpen}
-          onClose={this.toggleOpen}
-          className="absolute"
-          // onChange={this.props.onChange}
-          target={
-            <button
-              type="button"
-              className="bwc"
-              iconafter={<ChevronDown />}
-              onClick={this.toggleOpen}
-              isselected={isOpen.toString()}
-            >
-              {value ? `  ${value.label}` : 'בחר יישוב *'}
-            </button>
-          }
-        >
-          <Select
-            autoFocus
-            backspaceRemovesValue={false}
-            //   components={{ DropdownIndicator, IndicatorSeparator: null }}
-            controlShouldRenderValue={false}
-            hideSelectedOptions={false}
-            isClearable={false}
-            menuIsOpen
-            className="absolute w-full"
-            onChange={this.onSelectChange}
-            options={this.optiosn1()}
-            placeholder="Search..."
-            styles={selectStyles}
-            tabSelectsValue={false}
-            value={value}
+  return (
+    <div className="relative">
+      <Dropdown
+        isOpen={isOpen}
+        onClose={toggleOpen}
+        className="absolute"
+        // onChange={onChange}
+        target={
+          // <lable>
+          // {value ? `  ${value.label}` : 'בחר יישוב *'}
+          <input
+            placeholder="boom"
+            type="button"
+            required
+            className="bwc"
+            // iconafter={<ChevronDown />}
+            onClick={toggleOpen}
+            isselected={isOpen.toString()}
+            // placeholder={value ? `  ${value.label}` : 'בחר יישוב *'}
+            // placeholder="ישובי"
           />
-        </Dropdown>
-      </div>
-    );
-  }
-}
+          // </lable>
+          // <button
+          //   type="button"
+          //   required
+          //   className="bwc"
+          //   iconafter={<ChevronDown />}
+          //   onClick={toggleOpen}
+          //   isselected={isOpen.toString()}
+          // >
+          //   {value ? `  ${value.label}` : 'בחר יישוב *'}
+          // </button>
+        }
+      >
+        <Select
+          autoFocus
+          backspaceRemovesValue={false}
+          //   components={{ DropdownIndicator, IndicatorSeparator: null }}
+          controlShouldRenderValue={false}
+          hideSelectedOptions={false}
+          isClearable={false}
+          menuIsOpen
+          className="absolute w-full"
+          onChange={onSelectChange}
+          options={optiosn1()}
+          placeholder="Search..."
+          styles={selectStyles}
+          tabSelectsValue={false}
+          value={value}
+        />
+      </Dropdown>
+      {err ? <h3>must fill in feald beach</h3> : ''}
+    </div>
+  );
+};
+export default SearchCountryInput;
+
+// export default class SearchCountryInput extends Component {
+//   constructor(props) {
+//     super(props);
+//     this.state = { isOpen: false, value: undefined, err: this.props?.err };
+//   }
+
+//   toggleOpen = () => {
+//     this.setState((state) => ({ isOpen: !state.isOpen }));
+//   };
+
+//   optiosn1 = () => {
+//     const { cities } = this.props;
+//     const ary = cities.map((x) => {
+//       const obj = {};
+//       obj.value = x.name;
+//       obj.label = x.name;
+//       obj.id = x.id;
+//       return obj;
+//     });
+//     return ary;
+//   };
+
+//   onSelectChange = (value) => {
+//     const { setCityId, setCityData } = this.props;
+//     setCityId(value.id);
+//     setCityData(value);
+//     this.toggleOpen();
+//     this.setState({ value });
+//   };
+
+//   render() {
+//     const { isOpen, value, err } = this.state;
+//     return (
+//       <div className="relative">
+//         <Dropdown
+//           isOpen={isOpen}
+//           onClose={this.toggleOpen}
+//           className="absolute"
+//           // onChange={this.props.onChange}
+//           target={
+//             <button
+//               type="button"
+//               required
+//               className="bwc"
+//               iconafter={<ChevronDown />}
+//               onClick={this.toggleOpen}
+//               isselected={isOpen.toString()}
+//             >
+//               {value ? `  ${value.label}` : 'בחר יישוב *'}
+//             </button>
+//           }
+//         >
+//           <Select
+//             autoFocus
+//             backspaceRemovesValue={false}
+//             //   components={{ DropdownIndicator, IndicatorSeparator: null }}
+//             controlShouldRenderValue={false}
+//             hideSelectedOptions={false}
+//             isClearable={false}
+//             menuIsOpen
+//             className="absolute w-full"
+//             onChange={this.onSelectChange}
+//             options={this.optiosn1()}
+//             placeholder="Search..."
+//             styles={selectStyles}
+//             tabSelectsValue={false}
+//             value={value}
+//           />
+//         </Dropdown>
+//         {err ? <h3>must fill in feald beach</h3> : ''}
+//         <p>yoyo</p>
+//       </div>
+//     );
+//   }
+// }
 
 // styled components
 
