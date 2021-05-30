@@ -32,7 +32,9 @@ const NavBar = () => {
   );
   return (
     <div className="nav__wrapper flex bg-green-500">
-      <aside className="nav flex flex-col h-screen justify-between bg-green-500 items-center">
+      <div className="nav__placeholder h-screen w-[150px]" />
+      <div className="nav__border rounded-r-lg bg-gr hidden md:block z-20" />
+      <aside className="fixed z-10 w-[115px] right-5 nav flex flex-col h-screen justify-between bg-green-500 items-center">
         <div className="nav__profile">
           <Link href="/ProfilePage">
             <a>{user?.user_display_name}</a>
@@ -51,7 +53,6 @@ const NavBar = () => {
           </Link>
         </div>
       </aside>
-      <div className="nav__border rounded-r-lg bg-gr hidden md:block" />
     </div>
   );
 };

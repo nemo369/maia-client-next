@@ -6,7 +6,13 @@ export default function ToggleSchoolJobs() {
       <div className="switches-container">
         <label htmlFor="school">
           <span className="sr-only">לימודים</span>
-          <input type="radio" id="school" name="switchPlan" value="schoolValue" checked="checked" />
+          <input
+            type="radio"
+            id="school"
+            name="switchPlan"
+            value="schoolValue"
+            defaultChecked="checked"
+          />
         </label>
         <label htmlFor="jobs">
           <span className="sr-only">משרות</span>
