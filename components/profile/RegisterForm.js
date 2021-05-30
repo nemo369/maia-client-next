@@ -84,9 +84,9 @@ const RegisterForm = ({ cities }) => {
     // }
   };
   return (
-    <div className="registerPage_container w-registercontainer_Width   mx-auto">
+    <div className="registerPage_container max-w-5xl   mx-auto">
       <MainTitle />
-      <div className="registerPage_form_container bg-registercontainer_white px-fifty register-form">
+      <div className="registerPage_form_container bg-white px-12 register-form">
         <Group18Img />
         <Group11 />
         <form

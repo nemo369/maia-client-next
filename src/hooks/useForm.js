@@ -14,8 +14,6 @@ export default function useForm(initial = {}) {
   function handleChange(e) {
     let { value } = e.target;
     const { name, type } = e.target;
-    console.log(value);
-    console.log(name);
     // TODO: check for email and password and make refactor to its own function
     // debugger;
     if ('number' === type) {
