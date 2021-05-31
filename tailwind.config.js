@@ -7,8 +7,9 @@ module.exports = {
   purge: ['./components/**/*.js', './pages/**/*.js'],
   variants: {
     extend: {
-      backgroundColor: ['active'],
+      backgroundColor: ['active', 'checked'],
       maxHeight: ['focus'],
+      borderColor: ['checked'],
     },
   },
   // eslint-disable-next-line global-require
