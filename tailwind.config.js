@@ -1,19 +1,18 @@
 module.exports = {
-  mode: 'jit',
   future: {
     removeDeprecatedGapUtilities: true,
     purgeLayersByDefault: true,
   },
-  purge: ['./components/**/*.js', './pages/**/*.js'],
+  purge: ['./wp-content/themes/canaan/**/*.{vue,js,ts,jsx,tsx,php,svg}'],
   variants: {
     extend: {
       backgroundColor: ['active'],
       maxHeight: ['focus'],
     },
   },
-  // eslint-disable-next-line global-require
   plugins: [require('tailwindcss'), require('precss'), require('autoprefixer')],
   darkMode: false, // or 'media' or 'class'
+
   theme: {
     extend: {
       colors: {
@@ -62,7 +61,45 @@ module.exports = {
         },
       },
       spacing: {
+        bbc: '1920px',
+        fifteen: '15px',
+        fifty: '50px',
+        sixty: '60px',
+        262: '262px',
+        ten: '10px',
+        hundred: '100px',
+        twrnety: '20px',
+        thirty: '30px',
+        twentyFive: '25px',
+        twohundred: '200px',
+        onehundredandtenP: '110%',
+        onehundredandtwentyFifeP: '125%',
+        registercontainer_Width: '1061px',
+        registercontainer_Heigth: '577px',
+        registerPageInputWidth: '364px',
         registerPageInputHeight: '50px',
+        ninetyPercent: '90%',
+      },
+
+      padding: {
+        fifty: '50px',
+        ten: '10px',
+      },
+
+      textColor: (theme) => theme('colors'),
+      // eslint-disable-next-line no-dupe-keys
+      textColor: {
+        primary: '#3490dc',
+        secondary: '#ffed4a',
+        danger: '#e3342f',
+        mainTurquoise: '#3C91A0',
+        mainOrange: '#FB9773',
+        mainWhite: '#FFFFFF',
+        topBarGrey: '#999999',
+        landingpage_section3darkgrey: '#343434',
+        lp_sec4_left_darkgrey: '#6C6C6C',
+        registerPageSubtitle: '#333333',
+        regiterPageDarkBottomTextcolor: '#434343',
       },
       backgroundColor: (theme) => ({
         ...theme('colors'),
@@ -73,6 +110,42 @@ module.exports = {
         registerPageInputGrey: '#CCCCCC',
         registerPageButtonGrey: '#999999',
       }),
+
+      fontSize: {
+        22: '22px',
+        topBarFontSize: '25px',
+        registerPageTitle: '45px',
+        registerPageSubTitle_fontsize: '30px',
+        registerPageSubSubTitle_fontsize: '21px',
+        regiterPageSmallGreyText: '17px',
+        regiterPageDarkBottomText: '18px',
+      },
+      lineHeight: {
+        regiterPageTitle: '48px',
+        regiterPageSubTitle: '30px',
+        regiterPageSubSubTitle: '21px',
+        regiterPageSmallGreyText: '17px',
+        regiterPageDarkBottomText: '18px',
+        23: '23px',
+      },
+      opacity: {
+        7: '0.7',
+        3: '0.3',
+        1: '0.1',
+      },
+      height: {
+        50: '50px',
+        65: '65px',
+      },
+      width: {
+        250: '250px',
+        300: '300px',
+        610: '610px',
+        66: '66px',
+      },
+      borderRadius: {
+        DEFAULT: '5px',
+      },
     },
   },
 };
