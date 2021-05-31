@@ -1,16 +1,32 @@
 import RegisterForm from '../../components/profile/RegisterForm';
 import SignUpHeader from '../../components/SignUpHeader';
 
-const Register = function () {
+const Register = function (props) {
+  const { cities } = props;
   return (
     <div
-      className="bg-lightgreybackground w-full min-h-screen
-    "
+      className="bg-lightgreybackground w-full
+     min-h-screen"
     >
       <SignUpHeader />
-      <RegisterForm />
+      <RegisterForm cities={cities} />
     </div>
   );
 };
 
 export default Register;
+
+export async function getStaticProps() {
+  const { WORDPRESS_ENDPOINT } = process.env;
+  const res = await fetch(`${WORDPRESS_ENDPOINT}/wp-json/wp/v2/info/city`);
+  const data = await res.json();
+  if (!data) {
+    return {
+      notFound: true,
+    };
+  }
+
+  return {
+    props: { cities: data }, // will be passed to the page component as props
+  };
+}

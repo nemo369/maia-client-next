@@ -27,17 +27,17 @@ export default function Inputs({
     <div>
       <label htmlFor={placeholder} className="sr-only">
         {placeholder}
-      </label>
-      <input
-        id={placeholder}
-        required={required}
-        placeholder={placeholder}
-        value={value}
-        onChange={onChange}
-        type={type}
-        className={`rounded outline-none text-lg p-5 focus:ring-2 
+        <input
+          id={placeholder}
+          required={required}
+          placeholder={placeholder}
+          value={value}
+          onChange={onChange}
+          type={type}
+          className={`rounded outline-none text-lg p-5 focus:ring-2 
         ${classes} ${className}`}
-      />
+        />
+      </label>
     </div>
   );
 }

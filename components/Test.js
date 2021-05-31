@@ -9,7 +9,7 @@ import Toggle from './common/Toggle';
 export default function Test() {
   return (
     <div>
-      <div>------------------------</div>
+      <div className="h-3 w-3 my-9">====</div>
       <h1>Buttons</h1>
       <div>------------------------</div>
       <Button type="button" status="main" name="ראשי" className="h-50 w-250" />
@@ -20,17 +20,17 @@ export default function Test() {
       <Button type="button" status="gradient" name="אחר מושבת" disabled className="h-16 w-40" />
       <div>------------------------</div>
       <h1>Toggle</h1>
-      <div>------------------------</div>
+      <div className="h-3 w-3 my-9">====</div>
       <ToggleSchoolJobs />
-      <div>------------------------</div>
+      <div className="h-3 w-3 my-9">====</div>
       <Toggle />
-      <div>------------------------</div>
+      <div className="h-3 w-3 my-9">====</div>
       <h1>Checkbox</h1>
-      <div>------------------------</div>
+      <div className="h-3 w-3 my-9">====</div>
       <CheckboxGroup />
-      <div>------------------------</div>
+      <div className="h-3 w-3 my-9">====</div>
       <h1>Inputs</h1>
-      <div>------------------------</div>
+      <div className="h-3 w-3 my-9">====</div>
       <div className="bg-white-active">
         <Inputs placeholder="רגיל הרשמה" className="h-50 w-300" status="main" />
         <div h-3 w-3 mt-3>
@@ -42,7 +42,7 @@ export default function Test() {
         </div>
         <Inputs placeholder="שגיאה" className="h-50 w-300" status="error" />
       </div>
-      <div>------------------------</div>
+      <div className="h-3 w-3 my-9">====</div>
       <h1>NumInputs</h1>
       <div>------------------------</div>
       <NumInputs status="main" />
