@@ -1,8 +1,8 @@
 import React from 'react';
 
-export default function Button({ name, onClickFunction, type, disabled, className }) {
+export default function Button({ name, onClickFunction, submit, disabled, className, status }) {
   let classes = '';
-  switch (type) {
+  switch (status) {
     case 'main':
       classes += `${
         disabled
@@ -30,7 +30,7 @@ export default function Button({ name, onClickFunction, type, disabled, classNam
       <button
         className={`rounded-xl text-lg focus:outline-none
         ${classes} ${className}`}
-        type="button"
+        type={submit ? 'submit' : 'button'}
         onClick={onClickFunction}
       >
         {name}

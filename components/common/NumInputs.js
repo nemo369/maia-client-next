@@ -1,8 +1,8 @@
 import React from 'react';
 
-export default function NumInputs({ type, className }) {
+export default function NumInputs({ status, className }) {
   let classes = '';
-  switch (type) {
+  switch (status) {
     case 'main':
       classes += 'bg-white focus:ring-orange text-orange';
       break;
@@ -18,6 +18,7 @@ export default function NumInputs({ type, className }) {
   return (
     <div>
       <input
+        type="number"
         maxLength="1"
         className={`rounded-lg h-65 w-66 outline-none text-5xl py-2 px-5 focus:ring-2 text-align: center;
         ${classes} ${className}`}
