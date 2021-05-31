@@ -225,3 +225,37 @@ input[type='number'] {
 .check input[type='checkbox']:checked:before {
   border: 1px solid #3c91a0;
 }
+
+// radio button
+
+input[type='radio'] {
+  /* remove standard background appearance */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  /* create custom radiobutton appearance */
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  padding: 3px;
+  /* background-color only for content */
+  background-clip: content-box;
+  border: 1px solid #cccccc;
+  border-radius: 50%;
+  margin-left: 16px;
+}
+
+/* appearance for checked radiobutton */
+input[type='radio']:checked {
+  background-color: #3c91a0;
+  border: 1px solid#3c91a0;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+}
+
+.radio-label {
+  margin-left: 30px;
+}
