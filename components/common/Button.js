@@ -1,8 +1,8 @@
 import React from 'react';
 
-export default function Button({ name, onClickFunction, type, disabled, className }) {
-  let classes = `transition-all rounded-xl text-lg focus:outline-none ${className} `;
-  switch (type) {
+export default function Button({ name, onClickFunction, submit, disabled, className, status }) {
+  let classes = '';
+  switch (status) {
     case 'main':
       classes += `h-[50px] px-[105px] ${
         disabled
@@ -27,7 +27,12 @@ export default function Button({ name, onClickFunction, type, disabled, classNam
   }
   return (
     <div>
-      <button className={`${classes}`} type="button" onClick={onClickFunction} disabled={disabled}>
+      <button
+        className={`rounded-xl text-lg focus:outline-none
+        ${classes} ${className}`}
+        type={submit ? 'submit' : 'button'}
+        onClick={onClickFunction}
+      >
         {name}
       </button>
     </div>

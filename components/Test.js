@@ -11,19 +11,14 @@ export default function Test() {
     <div>
       <div className="h-3 w-3 my-9">====</div>
       <h1>Buttons</h1>
-      <div className="h-3 w-3 my-9">====</div>
-      <Button type="main" name="ראשי" />
-      <div className="h-3 w-3 my-9">====</div>
-      <Button type="main" name="ראשי מושבת" disabled />
-      <div className="h-3 w-3 my-9">====</div>
-      <Button type="secondary" name="משני" />
-      <div className="h-3 w-3 my-9">====</div>
-      <Button type="secondary" name="משני מושבת" disabled />
-      <div className="h-3 w-3 my-9">====</div>
-      <Button type="gradient" name="אחר" className="h-16" />
-      <div className="h-3 w-3 my-9">====</div>
-      <Button type="gradient" name="אחר מושבת" disabled className="h-16" />
-      <div className="h-3 w-3 my-9">====</div>
+      <div>------------------------</div>
+      <Button type="button" status="main" name="ראשי" className="h-50 w-250" />
+      <Button type="button" status="main" name="ראשי מושבת" className="h-50 w-250" disabled />
+      <Button type="button" status="secondary" name="משני" className="h-50 w-250" />
+      <Button type="button" status="secondary" name="משני מושבת" disabled className="h-50 w-250" />
+      <Button type="button" status="gradient" name="אחר" className="h-16 w-40" />
+      <Button type="button" status="gradient" name="אחר מושבת" disabled className="h-16 w-40" />
+      <div>------------------------</div>
       <h1>Toggle</h1>
       <div className="h-3 w-3 my-9">====</div>
       <ToggleSchoolJobs />
@@ -37,20 +32,28 @@ export default function Test() {
       <h1>Inputs</h1>
       <div className="h-3 w-3 my-9">====</div>
       <div className="bg-white-active">
-        <Inputs placeholder="רגיל הרשמה" className="h-[50px] w-300" type="main" />
-        <div className="h-3 w-3 my-9">====</div>
-        <Inputs placeholder="משני הרשמה התחברות" className="h-[50px] w-300" type="secondary" />
-        <div className="h-3 w-3 my-9">====</div>
-        <Inputs placeholder="שגיאה" className="h-[50px] w-300" type="error" />
+        <Inputs placeholder="רגיל הרשמה" className="h-50 w-300" status="main" />
+        <div h-3 w-3 mt-3>
+          ====
+        </div>
+        <Inputs placeholder="משני הרשמה התחברות" className="h-50 w-300" status="secondary" />
+        <div h-3 w-3 mt-3>
+          ====
+        </div>
+        <Inputs placeholder="שגיאה" className="h-50 w-300" status="error" />
       </div>
       <div className="h-3 w-3 my-9">====</div>
       <h1>NumInputs</h1>
-      <div className="h-3 w-3 my-9">====</div>
-      <NumInputs type="main" />
-      <div className="h-3 w-3 my-9">====</div>
-      <NumInputs type="success" />
-      <div className="h-3 w-3 my-9">====</div>
-      <NumInputs type="error" />
+      <div>------------------------</div>
+      <NumInputs status="main" />
+      <div h-3 w-3 mt-3>
+        ====
+      </div>
+      <NumInputs status="success" />
+      <div h-3 w-3 mt-3>
+        ====
+      </div>
+      <NumInputs status="error" />
     </div>
   );
 }
