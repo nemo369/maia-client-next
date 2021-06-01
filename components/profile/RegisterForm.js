@@ -51,15 +51,17 @@ const RegisterForm = ({ cities }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    console.log(inputs.city);
     if (false === inputs.city) {
+      console.log('cow');
       setErr(true);
     }
-    const data = { ...inputs };
+    // const dataToSend = {...inputs, city:}
 
     setError(null);
     // setLoading(true);
     try {
-      const { data, status } = await UserAPI.register(data);
+      const { data, status } = await UserAPI.register(inputs);
       // console.log(data, status);
       if (200 !== status) {
         setError(status);
