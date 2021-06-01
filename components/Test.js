@@ -7,6 +7,7 @@ import Check from './common/Check';
 import Inputs from './common/Inputs';
 import NumInputs from './common/NumInputs';
 import Toggle from './common/Toggle';
+import StepperOne from './common/StepperOne';
 
 export default function Test() {
   return (
@@ -76,6 +77,16 @@ export default function Test() {
       <h1>RadioMaleFemale</h1>
       <RadioMaleFemale />
       <div>------------------------</div>
+      <h1>StepperOne</h1>
+      <StepperOne step="one" className="w-[650px] h-[80px]" />
+      <div h-3 w-3 mt-3>
+        ====
+      </div>
+      <StepperOne step="two" className="w-[650px] h-[80px]" />
+      <div h-3 w-3 mt-3>
+        ====
+      </div>
+      <StepperOne step="three" className="w-[650px] h-[80px]" />
     </div>
   );
 }
