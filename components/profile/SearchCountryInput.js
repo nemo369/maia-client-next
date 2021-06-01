@@ -49,14 +49,14 @@ const SearchCountryInput = (props) => {
       <Dropdown
         isOpen={isOpen}
         onClose={toggleOpen}
-        className="absolute"
+        className="absolute "
         // onChange={onChange}
         target={
           <button
             type="button"
             required
             // className="regiserPageInput text-right text- justify-self-center h-registerPageInputHeight w-full bg-registerPageInputGrey my-4 rounded-md"
-            className="bwc"
+            className="bwc emailini "
             // iconafter={<ChevronDown />}
             onClick={toggleOpen}
             isselected={isOpen.toString()}
@@ -73,7 +73,7 @@ const SearchCountryInput = (props) => {
           hideSelectedOptions={false}
           isClearable={false}
           menuIsOpen
-          className="absolute w-full boomp"
+          className="absolute w-full "
           onChange={onSelectChange}
           options={optiosn1()}
           placeholder="Search..."
@@ -82,7 +82,7 @@ const SearchCountryInput = (props) => {
           value={value}
         />
       </Dropdown>
-      {err ? <h3>must fill in feald beach</h3> : ''}
+      {err ? <h3>must fill in feald bitch</h3> : ''}
     </div>
   );
 };
@@ -197,7 +197,7 @@ const Blanket = (props) => (
   />
 );
 const Dropdown = ({ children, isOpen, target, onClose }) => (
-  <div css={{ position: 'absolute', color: 'red' }}>
+  <div className="boomp" css={{ position: 'absolute', color: 'red' }}>
     {target}
     {isOpen ? <Menu>{children}</Menu> : null}
     {isOpen ? <Blanket onClick={onClose} /> : null}

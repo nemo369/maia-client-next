@@ -55,6 +55,7 @@ module.exports = {
           disabled: '#E7E7E7',
           text: '#B7B7B7',
           active: '#999999',
+          mid: '#333333',
         },
         yellow: '#FFC960',
         gradient: {
@@ -64,6 +65,8 @@ module.exports = {
       },
       spacing: {
         registerPageInputHeight: '50px',
+        ninetyonepercent: '91%',
+        twentyP: '20%',
       },
       backgroundColor: (theme) => ({
         ...theme('colors'),

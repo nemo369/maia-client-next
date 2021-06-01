@@ -1,5 +1,8 @@
 const EmailInput = (props) => {
   const { value, handleChange } = props;
+  const pop = () => {
+    console.log('shack');
+  };
 
   return (
     <input
@@ -10,7 +13,8 @@ const EmailInput = (props) => {
       placeholder="מייל *"
       value={value}
       onChange={handleChange}
-      className="regiserPageInput justify-self-center h-registerPageInputHeight w-full bg-registerPageInputGrey my-4 rounded-md"
+      onFocus={pop}
+      className="regiserPageInput emailini justify-self-center h-registerPageInputHeight w-full bg-grey-disabled my-4 rounded-md"
     />
   );
 };

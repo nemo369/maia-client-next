@@ -2,9 +2,7 @@
 const MainTitle = () => (
   <div>
     <h1 className="font-black t text-orange-mainOr text-5xl leading-10">העתיד שלך מתחיל כאן</h1>
-    <p className="text-registerPageSubTitle text-registerPageSubTitle_fontsize leading-regiterPageSubTitle opacity-7 mb-fifty">
-      הרשמה למערכת מאיה
-    </p>
+    <p className="text-3xl leading-8 mb-12 text-grey-dark">הרשמה למערכת מאיה</p>
   </div>
 );
 

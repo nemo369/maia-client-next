@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import Logo from './svg/Logo';
 import WHeelChair from './svg/WheelChair';
 
@@ -7,8 +8,11 @@ const SignUpHeader = function () {
       <Logo />
       <div className="justify-self-end p-12">
         <div className="ml-4 inline-block">
-          <p className="inline-block">יש לך משתמש?</p>
-          <p className="inline-block"> התחבר עכשיו</p>
+          <p className="inline-block text-lg">יש לך שם משתמש? </p>
+          <span> </span>
+          <Link href="http://localhost:3000/login">
+            <p className="inline-block text-orange-mainOr text-lg"> התחבר עכשיו </p>
+          </Link>
         </div>
         <WHeelChair />
       </div>
