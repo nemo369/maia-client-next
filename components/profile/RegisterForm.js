@@ -16,6 +16,7 @@ import SubTitle from './register_form/texts/SubTitle';
 import SubmitButton from './register_form/SubmitButton';
 import Group18Img from '../svg/Group18Img';
 import Group11 from '../svg/Group11';
+import UserAPI from '../../src/services/user.service';
 
 const RegisterForm = ({ cities }) => {
   const [cityId, setCityId] = useState(null);
@@ -50,7 +51,7 @@ const RegisterForm = ({ cities }) => {
   }, [cityId]);
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    console.log(error);
     console.log(inputs.city);
     if (false === inputs.city) {
       console.log('cow');
@@ -85,7 +86,7 @@ const RegisterForm = ({ cities }) => {
     <div className="registerPage_container -mt-24 max-w-5xl mx-auto mb-40">
       {/* <ConditionsPopup /> */}
       <MainTitle />
-      <div className="registerPage_form_container bg-white  px-32 pt-14 pb-9 register-form">
+      <div className="registerPage_form_container bg-white  px-32 pt-14 pb-9 register-form rounded-md">
         <Group18Img />
         <Group11 />
         <form

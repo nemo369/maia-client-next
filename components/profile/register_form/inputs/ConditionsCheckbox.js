@@ -4,7 +4,7 @@ const ConditionsCheckbox = (props) => {
   const { handleChange } = props;
   return (
     // <div>
-    <div className="my-4 z-40">
+    <div className="my-4 ">
       <label
         onChange={handleChange}
         htmlFor="terms_and_conditions"
@@ -26,7 +26,7 @@ const ConditionsCheckbox = (props) => {
         <span> </span>
         ואני מסכים/ה
         <br />
-        לתהילך המוצע ובתנאים הרשומים
+        <p className="pr-9">לתהילך המוצע ובתנאים הרשומים</p>
       </label>
     </div>
     // </div>

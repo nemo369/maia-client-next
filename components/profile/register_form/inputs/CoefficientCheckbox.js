@@ -1,18 +1,9 @@
 const CoefficientCheckbox = (props) => {
   const { handleChange } = props;
-  // const handlepop = () => {
-  //   console.log('shabam');
-  //   const k = document.getElementsByClassName('smallpop');
-  //   k.styled.display = 'inline';
-  //   console.log(k);
-  // };
-  // useEffect(()=>{
-  //   handlepop()
-  // },[handlepop])
+
   return (
     <div className="my-4">
       <label
-        // onChange={handleChange}
         htmlFor="employment_coefficient"
         name="employment_coefficient"
         className="text-regiterPageDarkBottomText leading-regiterPageDarkBottomText text-regiterPageDarkBottomTextcolor"
@@ -30,7 +21,7 @@ const CoefficientCheckbox = (props) => {
       <div className="smallpop w-4 h-4 border-solid rounded-full font-small bg-grey text-white text-xs mr-4 hover:bg-gradient-2 inline-block text-center">
         ?
       </div>
-      <div className="coeffitiontPop absolute h-48 w-96 bg-lightgreybackground mr-96 rounded-lg text-sm px-6 py-4 overflow-auto hidden">
+      <div className="coeffitiontPop absolute h-48 w-96 bg-lightgreybackground mr-96 rounded-lg text-sm px-6 py-4 overflow-auto hidden z-40">
         <p>
           מקדם התעבוקה ילווה אותך בתהליכי קבלת ההחלטות לבניית מסלון אישי לקרייה שלך ללא עלות. אך אל
           דאגה! לא תהיה לנו גישה אל הפרטים שלכם ללא אישור מפורט ממכם!
