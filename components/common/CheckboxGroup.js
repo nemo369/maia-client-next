@@ -5,20 +5,20 @@ export default function CheckboxGroup() {
   return (
     <div className="button-group">
       <div className="button-sec">
-        <input type="radio" id="r1" name="r-group" />
-        <label className="button-label" htmlFor="r1">
+        <input type="radio" id="r1" name="r-group" className="cursor-pointer" />
+        <label className="button-label cursor-pointer" htmlFor="r1">
           הכל
         </label>
       </div>
       <div className="button-sec">
-        <input type="radio" id="r2" name="r-group" />
-        <label className="button-label" htmlFor="r2">
+        <input type="radio" id="r2" name="r-group" className="cursor-pointer" />
+        <label className="button-label cursor-pointer" htmlFor="r2">
           הכי מתאים
         </label>
       </div>
       <div className="button-sec">
-        <input type="radio" id="r3" name="r-group" />
-        <label className="button-label" htmlFor="r3">
+        <input type="radio" id="r3" name="r-group" className="cursor-pointer" />
+        <label className="button-label cursor-pointer" htmlFor="r3">
           הכי חדש
         </label>
       </div>
