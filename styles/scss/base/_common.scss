@@ -266,7 +266,7 @@ input[type='radio']:checked {
   border-radius: 10px;
 }
 
-.Stepper {
+.stepper {
   position: relative;
   display: table;
   width: 100%;
@@ -274,20 +274,20 @@ input[type='radio']:checked {
   border-collapse: collapse;
 }
 
-.Stepper__step {
+.stepper__step {
   position: relative;
   display: table-cell;
   text-align: center;
   padding: 1rem;
 }
 
-.Stepper__indicator {
+.stepper__indicator {
   position: relative;
   display: block;
   z-index: 2;
 }
 
-.Stepper__label {
+.stepper__label {
   position: relative;
   display: block;
   color: #ffffff;
@@ -296,7 +296,7 @@ input[type='radio']:checked {
   line-height: 1;
 }
 
-.Stepper__info {
+.stepper__info {
   position: relative;
   display: inline-block;
   width: 34px;
@@ -309,11 +309,11 @@ input[type='radio']:checked {
   z-index: 2;
 }
 
-.Stepper__panel {
+.stepper__panel {
   display: none;
 }
 
-.Stepper .Stepper__step:after {
+.stepper .stepper__step:after {
   content: ' ';
   position: absolute;
   top: 1.8rem;
@@ -323,19 +323,19 @@ input[type='radio']:checked {
   border-radius: 4px;
   background-color: #fb9773;
 }
-.dis_first .Stepper__step:nth-child(1):after,
-.dis_first .Stepper__step:nth-child(2):after {
+.dis_first .stepper__step:nth-child(1):after,
+.dis_first .stepper__step:nth-child(2):after {
   background: #ffffff;
 }
 
-.dis_second .Stepper__step:nth-child(2):after {
+.dis_second .stepper__step:nth-child(2):after {
   background: #ffffff;
 }
 
-.Stepper .Stepper__step:last-child:after {
+.stepper .stepper__step:last-child:after {
   display: none;
 }
-.Stepper__empty {
+.stepper__empty {
   height: 14px;
   width: 14px;
   border-radius: 50%;

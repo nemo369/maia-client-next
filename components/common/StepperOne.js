@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function StepperOne({ step, className }) {
+export default function stepperOne({ step, className }) {
   let one = '';
   let two = '';
   let three = '';
@@ -30,68 +30,59 @@ export default function StepperOne({ step, className }) {
       break;
   }
   return (
-    <div className={`stepper-one Stepper ${className} ${dis}`}>
-      <div className="Stepper__step">
-        <div className="Stepper__indicator">
+    <div className={`stepper-one stepper ${className} ${dis}`}>
+      <div className="stepper__step">
+        <div className="stepper__indicator">
           {'one' === step ? (
-            <span className={`${one} Stepper__info shadow-active bottom-[10px]`}>1</span>
+            <span className={`${one} stepper__info shadow-active bottom-[10px]`}>1</span>
           ) : (
-            <span className={`Stepper__info ${one}`}>
-              <span className="Stepper__empty bg-[#ffffff]" />
+            <span className={`stepper__info ${one}`}>
+              <span className="stepper__empty bg-[#ffffff]" />
             </span>
           )}
         </div>
-        <div className={`Stepper__label ${'one' === step && 'font-bold'}`}>
+        <div className={`stepper__label ${'one' === step && 'font-bold'}`}>
           <span>
             מה עשיתי
             <br />
             עד כה
           </span>
         </div>
-        <div className="Stepper__panel">
-          <div className="Content" />
-        </div>
       </div>
-      <div className="Stepper__step">
-        <div className="Stepper__indicator">
+      <div className="stepper__step">
+        <div className="stepper__indicator">
           {'two' === step ? (
-            <span className={`${two} Stepper__info shadow-active bottom-[10px]`}>2</span>
+            <span className={`${two} stepper__info shadow-active bottom-[10px]`}>2</span>
           ) : (
-            <span className={`Stepper__info ${two}`}>
-              <span className={`Stepper__empty ${dot}`} />
+            <span className={`stepper__info ${two}`}>
+              <span className={`stepper__empty ${dot}`} />
             </span>
           )}
         </div>
-        <div className={`Stepper__label ${'two' === step && 'font-bold'}`}>
+        <div className={`stepper__label ${'two' === step && 'font-bold'}`}>
           <span>
             מה מעניין
             <br />
             אותי
           </span>
         </div>
-        <div className="Stepper__panel">
-          <div className="Content" />
-        </div>
       </div>
-      <div className="Stepper__step">
-        <div className="Stepper__indicator">
+      <div className="stepper__step">
+        <div className="stepper__indicator">
           {'three' === step ? (
-            <span className={`${three} Stepper__info shadow-active bottom-[10px]`}>3</span>
+            <span className={`${three} stepper__info shadow-active bottom-[10px]`}>3</span>
           ) : (
-            <span className={`Stepper__info ${three}`}>
-              <span className="Stepper__empty bg-[#DFDFDF]" />
+            <span className={`stepper__info ${three}`}>
+              <span className="stepper__empty bg-[#DFDFDF]" />
             </span>
           )}
         </div>
-        <div className={`Stepper__label ${'three' === step && 'font-bold'}`}>
+        <div className={`stepper__label ${'three' === step && 'font-bold'}`}>
           <span>
             היכולות שלי +
             <br />
             מה מתאים לי
           </span>
-        </div>
-        <div className="Stepper__panel">
-          <div className="Content" />
         </div>
       </div>
     </div>
