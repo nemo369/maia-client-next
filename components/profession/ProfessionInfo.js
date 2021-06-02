@@ -1,7 +1,6 @@
 import React from 'react';
 
 function ProfessionInfo({ profession }) {
-  console.log(profession);
   return (
     <article className="bg-white rounded py-8 px-4 ml-4 w-full">
       <header className="flex mb-7">

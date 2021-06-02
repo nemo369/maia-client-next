@@ -4,7 +4,7 @@ import Question from '../../svg/Question';
 
 const Tooltip = () => (
   <Popup
-    trigger={(open) => (
+    trigger={() => (
       <button type="button">
         <Question />
       </button>

@@ -36,8 +36,8 @@ const RegisterForm = ({ cities }) => {
     age: '',
     fullname: '',
     gender: '',
-    employment_coefficient: null,
-    terms_and_conditions: null,
+    employment_Coefficient: null,
+    terms_and_Conditions: null,
   });
 
   useEffect(() => {

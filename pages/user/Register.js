@@ -1,3 +1,4 @@
+import { NextSeo } from 'next-seo';
 import RegisterForm from '../../components/profile/RegisterForm';
 import SignUpHeader from '../../components/SignUpHeader';
 
@@ -8,6 +9,7 @@ const Register = function (props) {
       className="bg-lightgreybackground w-full
      min-h-screen"
     >
+      <NextSeo title="Simple Usage Example" description="A short description goes here." />
       <SignUpHeader />
       <RegisterForm cities={cities} />
       {/* <RegisterForm /> */}
