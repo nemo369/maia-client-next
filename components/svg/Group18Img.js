@@ -1,6 +1,11 @@
 function Group18Img() {
   return (
-    <svg className="absolute  top-2/4 left-3/4 " width="537px" height="424px" viewBox="0 0 537 424">
+    <svg
+      className="absolute top-[25%] left-[92%]"
+      width="537px"
+      height="424px"
+      viewBox="0 0 537 424"
+    >
       <title>5EA6C226-7FE3-4F26-97AC-01B498C8D2A6</title>
       <g id="Design" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
         <g id="Styleguide" transform="translate(-1104.000000, -8339.000000)">

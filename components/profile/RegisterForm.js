@@ -84,12 +84,12 @@ const RegisterForm = ({ cities, termsText }) => {
     }
   };
   return (
-    <div className="registerPage_container -mt-24 max-w-5xl mx-auto mb-40">
+    <div className="registerPage_container relative -mt-24 max-w-5xl mx-auto mb-40">
       {/* <ConditionsPopup /> */}
       <MainTitle />
+      <Group11 />
       <div className="registerPage_form_container relative bg-white  px-32 pt-14 pb-9 register-form rounded-md">
         <Group18Img />
-        <Group11 />
         <form
           className="registerPage_form block grid-cols-2  mx-auto gap-x-4 gap-y-3 rounded-md md:grid"
           method="POST"
