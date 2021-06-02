@@ -7,12 +7,12 @@ export default function NumInputs({ status, className }) {
       classes += 'bg-white focus:ring-2 focus:ring-orange text-orange';
       break;
     case 'success':
-      classes +=
-        'bg-green-success focus:ring-0 focus:ring-green-successBorder border-2 border-green-successBorder text-green-successBorder';
+      classes += `bg-green-success 
+      focus:ring-0 focus:ring-green-successBorder border-2 border-green-successBorder text-green-successBorder`;
       break;
     case 'error':
-      classes +=
-        'bg-red-error focus:ring-0 focus:ring-red-active border-2 border-red-active text-red-active';
+      classes += `bg-red-error focus:ring-0 focus:ring-red-active 
+      border-2 border-red-active text-red-active`;
       break;
     default:
       break;
