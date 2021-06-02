@@ -12,7 +12,12 @@ module.exports = {
     },
   },
   // eslint-disable-next-line global-require
-  plugins: [require('tailwindcss'), require('precss'), require('autoprefixer')],
+  plugins: [
+    require('tailwindcss'),
+    require('precss'),
+    require('autoprefixer'),
+    require('tailwind-scrollbar'),
+  ],
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {

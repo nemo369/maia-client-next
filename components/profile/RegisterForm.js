@@ -52,6 +52,7 @@ const RegisterForm = ({ cities }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(error);
+    console.log(inputs);
     console.log(inputs.city);
     if (false === inputs.city) {
       console.log('cow');
@@ -124,7 +125,6 @@ const RegisterForm = ({ cities }) => {
           />
           <SearchStreetInput
             required
-            // open={open}
             theStreets={theStreets}
             setTheStreet={setTheStreet}
             handleChange={handleChange}

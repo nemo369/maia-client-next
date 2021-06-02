@@ -12,14 +12,14 @@ const Pop = () => (
     nested
   >
     {(close) => (
-      <div className="modal bg-lightgreybackground text-xl leading-5 text-grey-active overflow-hidden rounded-lg   max-w-3xl max-h-96">
+      <div className="modal bg-white text-xl leading-5 text-grey-active overflow-hidden rounded-lg    max-h-96">
         <button type="button" className="close" onClick={close}>
           x
         </button>
         <div className="header font-black text-3xl leading-8 text-grey-mid text-center my-4">
           תנאי תקנון:
         </div>
-        <div className="  max-w-xl max-h-72 overflow-auto ">
+        <div className="uu max-w-5xl max-h-72 overflow-auto scrollbar scrollbar-thumb-green-500 ">
           <div className="content px-8">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque, a nostrum. Dolorem,
             repellat quidem ut, minima sint vel eveniet quibusdam voluptates delectus doloremque,

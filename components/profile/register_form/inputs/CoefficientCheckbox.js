@@ -21,7 +21,7 @@ const CoefficientCheckbox = (props) => {
       <div className="smallpop w-4 h-4 border-solid rounded-full font-small bg-grey text-white text-xs mr-4 hover:bg-gradient-2 inline-block text-center">
         ?
       </div>
-      <div className="coeffitiontPop absolute h-48 w-96 bg-lightgreybackground mr-96 rounded-lg text-sm px-6 py-4 overflow-auto hidden z-40">
+      <div className="coeffitiontPop absolute h-48 w-96 bg-white  mr-96 rounded-lg text-sm px-6 py-4 overflow-auto hidden z-40">
         <p>
           מקדם התעבוקה ילווה אותך בתהליכי קבלת ההחלטות לבניית מסלון אישי לקרייה שלך ללא עלות. אך אל
           דאגה! לא תהיה לנו גישה אל הפרטים שלכם ללא אישור מפורט ממכם!

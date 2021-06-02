@@ -9,6 +9,7 @@ const selectStyles = {
     position: 'absolute',
     width: '100%',
     backgroundColor: 'white',
+    // backgroundColor: 'red',
     color: '#3C91A0',
   }),
 };
@@ -45,18 +46,18 @@ const SearchCountryInput = (props) => {
     setValue(value1);
   };
   return (
-    <div className="relative">
+    <div className="relative  ">
       <Dropdown
         isOpen={isOpen}
         onClose={toggleOpen}
-        className="absolute "
+        className="absolute  "
         // onChange={onChange}
         target={
           <button
             type="button"
             required
             // className="regiserPageInput text-right text- justify-self-center h-registerPageInputHeight w-full bg-registerPageInputGrey my-4 rounded-md"
-            className="bwc emailini "
+            className="bwc emailini"
             // iconafter={<ChevronDown />}
             onClick={toggleOpen}
             isselected={isOpen.toString()}
@@ -92,6 +93,7 @@ const Menu = (props) => {
   const shadow = 'hsla(218, 50%, 10%, 0.1)';
   return (
     <div
+      className=" "
       css={{
         backgroundColor: 'red',
         borderRadius: 4,
@@ -107,6 +109,7 @@ const Menu = (props) => {
 };
 const Blanket = (props) => (
   <div
+    className="scrollbar scrollbar-thumb-green-500 max-h-52 w-full"
     css={{
       bottom: 0,
       left: 0,
@@ -119,7 +122,7 @@ const Blanket = (props) => (
   />
 );
 const Dropdown = ({ children, isOpen, target, onClose }) => (
-  <div className="boomp" css={{ position: 'absolute', color: 'red' }}>
+  <div className="boomp " css={{ position: 'absolute', color: 'red' }}>
     {target}
     {isOpen ? <Menu>{children}</Menu> : null}
     {isOpen ? <Blanket onClick={onClose} /> : null}
