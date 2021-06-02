@@ -1,7 +1,6 @@
 import React from 'react';
 
-function ProfessionDropdowns({ profession }) {
-  console.log(profession);
+function ProfessionDropdowns() {
   return <section className="w-full">ProfessionDropdowns</section>;
 }
 

@@ -1,7 +1,7 @@
 import Pop from '../Pop';
 
 const ConditionsCheckbox = (props) => {
-  const { handleChange } = props;
+  const { handleChange, termsText } = props;
   return (
     // <div>
     <div className="my-4 ">
@@ -22,7 +22,7 @@ const ConditionsCheckbox = (props) => {
         />
         אני מאשר/ת כי קראתי בעיון ואישרתי את כל
         <span> </span>
-        <Pop />
+        <Pop termsText={termsText} />
         <span> </span>
         ואני מסכים/ה
         <br />

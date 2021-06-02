@@ -18,12 +18,12 @@ import Group18Img from '../svg/Group18Img';
 import Group11 from '../svg/Group11';
 import UserAPI from '../../src/services/user.service';
 
-const RegisterForm = ({ cities }) => {
+const RegisterForm = ({ cities, termsText }) => {
   const [cityId, setCityId] = useState(null);
   const [cityData, setCityData] = useState(null);
   const [theStreets, setTheStreets] = useState(null);
   const [theStreet, setTheStreet] = useState(null);
-  const [error, setError] = useState(null);
+  // const [error, setError] = useState(null);
   const [err, setErr] = useState(false);
   // const [open, setOpen] = useState(true);
   const { inputs, handleChange, resetForm } = useForm({
@@ -51,11 +51,7 @@ const RegisterForm = ({ cities }) => {
   }, [cityId]);
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(error);
-    console.log(inputs);
-    console.log(inputs.city);
     if (false === inputs.city) {
-      console.log('cow');
       setErr(true);
     }
     const dataToSend = {
@@ -69,8 +65,6 @@ const RegisterForm = ({ cities }) => {
     // setLoading(true);
     try {
       const { data, status } = await UserAPI.register(dataToSend);
-      console.log(data);
-      console.log(status);
       if (200 !== status) {
         setError(status);
       }
@@ -81,7 +75,6 @@ const RegisterForm = ({ cities }) => {
         Router.push('/'); // TODO: go to last page user visited
       }
     } catch (errr) {
-      console.log(errr);
       setError(errr);
       setTimeout(() => {
         setError(null);
@@ -143,7 +136,7 @@ const RegisterForm = ({ cities }) => {
           <CoefficientCheckbox handleChange={handleChange} />
 
           <div className="register_bottom col-start-1 col-end-3 flex justify-between ">
-            <ConditionsCheckbox handleChange={handleChange} />
+            <ConditionsCheckbox termsText={termsText} handleChange={handleChange} />
             <SubmitButton />
           </div>
         </form>

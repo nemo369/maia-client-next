@@ -3,7 +3,6 @@ import axios from 'axios';
 export default async function register(req, res) {
   const { WORDPRESS_ENDPOINT } = process.env;
   const { method } = req;
-  console.log(req.body);
   switch (method) {
     case 'POST':
       // Get data from your database

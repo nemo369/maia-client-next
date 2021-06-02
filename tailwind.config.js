@@ -71,8 +71,6 @@ module.exports = {
       },
       spacing: {
         registerPageInputHeight: '50px',
-        ninetyonepercent: '91%',
-        twentyP: '20%',
       },
       backgroundColor: (theme) => ({
         ...theme('colors'),

@@ -3,7 +3,7 @@ import RegisterForm from '../../components/profile/RegisterForm';
 import SignUpHeader from '../../components/SignUpHeader';
 
 const Register = function (props) {
-  const { cities } = props;
+  const { cities, termsText } = props;
   return (
     <div
       className="bg-lightgreybackground w-full
@@ -11,7 +11,7 @@ const Register = function (props) {
     >
       <NextSeo title="Simple Usage Example" description="A short description goes here." />
       <SignUpHeader />
-      <RegisterForm cities={cities} />
+      <RegisterForm cities={cities} termsText={termsText} />
       {/* <RegisterForm /> */}
     </div>
   );
@@ -23,15 +23,17 @@ export async function getStaticProps() {
   const { WORDPRESS_ENDPOINT } = process.env;
   try {
     const res = await fetch(`${WORDPRESS_ENDPOINT}/wp-json/wp/v2/info/city`);
+    const conditionsText = await fetch(`${WORDPRESS_ENDPOINT}/wp-json/wp/v2/info/conditionsText`);
     const data = await res.json();
-    if (!data) {
+    const text = await conditionsText.json();
+    if (!data || !conditionsText) {
       return {
         notFound: true,
       };
     }
 
     return {
-      props: { cities: data }, // will be passed to the page component as props
+      props: { cities: data, termsText: text }, // will be passed to the page component as props
     };
   } catch (error) {
     return {

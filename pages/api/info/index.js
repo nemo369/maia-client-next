@@ -14,7 +14,6 @@ export default async function info(req, res) {
         })
         .catch(({ response }) => {
           res.status(response.status).json(response.data);
-          console.log(response);
         });
       break;
     default:
