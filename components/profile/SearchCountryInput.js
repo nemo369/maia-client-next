@@ -9,6 +9,7 @@ const selectStyles = {
     position: 'absolute',
     width: '100%',
     backgroundColor: 'white',
+    // backgroundColor: 'red',
     color: '#3C91A0',
   }),
 };
@@ -45,18 +46,18 @@ const SearchCountryInput = (props) => {
     setValue(value1);
   };
   return (
-    <div className="relative">
+    <div className="relative  ">
       <Dropdown
         isOpen={isOpen}
         onClose={toggleOpen}
-        className="absolute"
+        className="absolute  "
         // onChange={onChange}
         target={
           <button
             type="button"
             required
             // className="regiserPageInput text-right text- justify-self-center h-registerPageInputHeight w-full bg-registerPageInputGrey my-4 rounded-md"
-            className="bwc"
+            className="bwc emailini"
             // iconafter={<ChevronDown />}
             onClick={toggleOpen}
             isselected={isOpen.toString()}
@@ -73,7 +74,7 @@ const SearchCountryInput = (props) => {
           hideSelectedOptions={false}
           isClearable={false}
           menuIsOpen
-          className="absolute w-full boomp"
+          className="absolute w-full "
           onChange={onSelectChange}
           options={optiosn1()}
           placeholder="Search..."
@@ -82,94 +83,17 @@ const SearchCountryInput = (props) => {
           value={value}
         />
       </Dropdown>
-      {err ? <h3>must fill in feald beach</h3> : ''}
+      {err ? <h3>must fill in feald bitch</h3> : ''}
     </div>
   );
 };
 export default SearchCountryInput;
 
-// export default class SearchCountryInput extends Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = { isOpen: false, value: undefined, err: this.props?.err };
-//   }
-
-//   toggleOpen = () => {
-//     this.setState((state) => ({ isOpen: !state.isOpen }));
-//   };
-
-//   optiosn1 = () => {
-//     const { cities } = this.props;
-//     const ary = cities.map((x) => {
-//       const obj = {};
-//       obj.value = x.name;
-//       obj.label = x.name;
-//       obj.id = x.id;
-//       return obj;
-//     });
-//     return ary;
-//   };
-
-//   onSelectChange = (value) => {
-//     const { setCityId, setCityData } = this.props;
-//     setCityId(value.id);
-//     setCityData(value);
-//     this.toggleOpen();
-//     this.setState({ value });
-//   };
-
-//   render() {
-//     const { isOpen, value, err } = this.state;
-//     return (
-//       <div className="relative">
-//         <Dropdown
-//           isOpen={isOpen}
-//           onClose={this.toggleOpen}
-//           className="absolute"
-//           // onChange={this.props.onChange}
-//           target={
-//             <button
-//               type="button"
-//               required
-//               className="bwc"
-//               iconafter={<ChevronDown />}
-//               onClick={this.toggleOpen}
-//               isselected={isOpen.toString()}
-//             >
-//               {value ? `  ${value.label}` : 'בחר יישוב *'}
-//             </button>
-//           }
-//         >
-//           <Select
-//             autoFocus
-//             backspaceRemovesValue={false}
-//             //   components={{ DropdownIndicator, IndicatorSeparator: null }}
-//             controlShouldRenderValue={false}
-//             hideSelectedOptions={false}
-//             isClearable={false}
-//             menuIsOpen
-//             className="absolute w-full"
-//             onChange={this.onSelectChange}
-//             options={this.optiosn1()}
-//             placeholder="Search..."
-//             styles={selectStyles}
-//             tabSelectsValue={false}
-//             value={value}
-//           />
-//         </Dropdown>
-//         {err ? <h3>must fill in feald beach</h3> : ''}
-//         <p>yoyo</p>
-//       </div>
-//     );
-//   }
-// }
-
-// styled components
-
 const Menu = (props) => {
   const shadow = 'hsla(218, 50%, 10%, 0.1)';
   return (
     <div
+      className=" "
       css={{
         backgroundColor: 'red',
         borderRadius: 4,
@@ -185,6 +109,7 @@ const Menu = (props) => {
 };
 const Blanket = (props) => (
   <div
+    className="scrollbar scrollbar-thumb-green-500 max-h-52 w-full"
     css={{
       bottom: 0,
       left: 0,
@@ -197,7 +122,7 @@ const Blanket = (props) => (
   />
 );
 const Dropdown = ({ children, isOpen, target, onClose }) => (
-  <div css={{ position: 'absolute', color: 'red' }}>
+  <div className="boomp " css={{ position: 'absolute', color: 'red' }}>
     {target}
     {isOpen ? <Menu>{children}</Menu> : null}
     {isOpen ? <Blanket onClick={onClose} /> : null}

@@ -13,7 +13,12 @@ module.exports = {
     },
   },
   // eslint-disable-next-line global-require
-  plugins: [require('tailwindcss'), require('precss'), require('autoprefixer')],
+  plugins: [
+    require('tailwindcss'),
+    require('precss'),
+    require('autoprefixer'),
+    require('tailwind-scrollbar'),
+  ],
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
@@ -21,6 +26,7 @@ module.exports = {
         orange: {
           DEFAULT: '#F19672',
           active: '#D0886D',
+          mainOr: '#FB9773',
         },
         white: {
           DEFAULT: '#FFFFFF',
@@ -55,6 +61,7 @@ module.exports = {
           disabled: '#E7E7E7',
           text: '#B7B7B7',
           active: '#999999',
+          mid: '#333333',
         },
         yellow: '#FFC960',
         gradient: {

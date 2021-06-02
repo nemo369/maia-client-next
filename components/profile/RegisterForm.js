@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import useForm from '../../src/hooks/useForm';
 import Infoservice from '../../src/services/info.service';
-// import DisplayError from '../common/error/DisplayError';
 import AgeInput from './register_form/inputs/AgeInput';
 import CellphoneInput from './register_form/inputs/CellphoneInput';
 import EmailInput from './register_form/inputs/EmailInput';
@@ -11,14 +10,15 @@ import FullnameInput from './register_form/inputs/FullnameInput';
 import SearchCountryInput from './SearchCountryInput';
 import SearchStreetInput from './SearchStreetInput';
 import CoefficientCheckbox from './register_form/inputs/CoefficientCheckbox';
-import ConditionsCheckbox from './register_form/inputs/ContisionsCheckbox';
+import ConditionsCheckbox from './register_form/inputs/ConditionsCheckbox';
 import MainTitle from './register_form/texts/MainTItle';
 import SubTitle from './register_form/texts/SubTitle';
 import SubmitButton from './register_form/SubmitButton';
 import Group18Img from '../svg/Group18Img';
 import Group11 from '../svg/Group11';
+import UserAPI from '../../src/services/user.service';
 
-const RegisterForm = ({ cities }) => {
+const RegisterForm = ({ cities, termsText }) => {
   const [cityId, setCityId] = useState(null);
   const [cityData, setCityData] = useState(null);
   const [theStreets, setTheStreets] = useState(null);
@@ -36,9 +36,10 @@ const RegisterForm = ({ cities }) => {
     age: '',
     fullname: '',
     gender: '',
-    employment_coefficient: null,
-    terms_and_conditions: null,
+    employment_Coefficient: null,
+    terms_and_Conditions: null,
   });
+
   useEffect(() => {
     const getStreets = async () => {
       const { data } = await Infoservice.getStreetInfo(cityId);
@@ -50,42 +51,47 @@ const RegisterForm = ({ cities }) => {
   }, [cityId]);
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     if (false === inputs.city) {
       setErr(true);
     }
-    // const dataToSend = {...inputs, city:}
-    // setError(null);
-    // setLoading(true);
-    // try {
-    //   const { data, status } = await UserAPI.register(inputs);
-    //   // console.log(data, status);
-    //   if (200 !== status) {
-    //     setError(status);
-    //   }
+    const dataToSend = {
+      ...inputs,
+      city: JSON.stringify(cityData),
+      street: JSON.stringify(theStreet),
+      username: inputs.email,
+    };
 
-    //   if (data?.user) {
-    //     // TODO: Set cookie with nookies
-    //     resetForm();
-    //     Router.push('/'); // TODO: go to last page user visited
-    //   }
-    // } catch (err) {
-    //   setError(err);
-    //   setTimeout(() => {
-    //     setError(null);
-    //   }, 5000);
-    // } finally {
-    //   setLoading(false);
-    // }
+    setError(null);
+    // setLoading(true);
+    try {
+      const { data, status } = await UserAPI.register(dataToSend);
+      if (200 !== status) {
+        setError(status);
+      }
+
+      if (data?.user) {
+        // TODO: Set cookie with nookies
+        resetForm();
+        Router.push('/'); // TODO: go to last page user visited
+      }
+    } catch (errr) {
+      setError(errr);
+      setTimeout(() => {
+        setError(null);
+      }, 5000);
+    } finally {
+      // setLoading(false);
+    }
   };
   return (
-    <div className="registerPage_container max-w-5xl   mx-auto">
+    <div className="registerPage_container -mt-24 max-w-5xl mx-auto mb-40">
+      {/* <ConditionsPopup /> */}
       <MainTitle />
-      <div className="registerPage_form_container bg-white px-12 register-form">
+      <div className="registerPage_form_container relative bg-white  px-32 pt-14 pb-9 register-form rounded-md">
         <Group18Img />
         <Group11 />
         <form
-          className="registerPage_form grid grid-cols-2  mx-auto gap-x-4 gap-y-3 rounded"
+          className="registerPage_form block grid-cols-2  mx-auto gap-x-4 gap-y-3 rounded-md md:grid"
           method="POST"
           onSubmit={handleSubmit}
           id="theform"
@@ -93,22 +99,7 @@ const RegisterForm = ({ cities }) => {
           <SubTitle />
           <span />
           {/* <DisplayError error={error} /> */}
-          <input
-            type="text"
-            name="username"
-            placeholder="User Name"
-            value={inputs.username}
-            onChange={handleChange}
-            className="regiserPageInput justify-self-center h-registerPageInputHeight w-full bg-registerPageInputGrey my-4 rounded-md"
-          />
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            value={inputs.password}
-            onChange={handleChange}
-            className="regiserPageInput justify-self-center h-registerPageInputHeight w-full bg-registerPageInputGrey my-4 rounded-md"
-          />
+
           <SearchCountryInput
             cityId={cityId}
             setCityId={setCityId}
@@ -119,7 +110,6 @@ const RegisterForm = ({ cities }) => {
           />
           <SearchStreetInput
             required
-            // open={open}
             theStreets={theStreets}
             setTheStreet={setTheStreet}
             handleChange={handleChange}
@@ -143,11 +133,10 @@ const RegisterForm = ({ cities }) => {
           </div>
 
           <hr className="dashed col-start-1 col-end-3" />
-          <CoefficientCheckbox onChange={handleChange} />
+          <CoefficientCheckbox handleChange={handleChange} />
 
           <div className="register_bottom col-start-1 col-end-3 flex justify-between ">
-            <ConditionsCheckbox onChange={handleChange} />
-
+            <ConditionsCheckbox termsText={termsText} handleChange={handleChange} />
             <SubmitButton />
           </div>
         </form>
