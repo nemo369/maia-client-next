@@ -26,7 +26,7 @@ const RegisterForm = ({ cities }) => {
   // const [error, setError] = useState(null);
   const [err, setErr] = useState(false);
   // const [open, setOpen] = useState(true);
-  const { inputs, handleChange, resetForm } = useForm({
+  const { inputs, handleChange } = useForm({
     username: '',
     email: '',
     password: '',
@@ -51,15 +51,10 @@ const RegisterForm = ({ cities }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    console.log(inputs.city);
     if (false === inputs.city) {
-      console.log('cow');
       setErr(true);
     }
     // const dataToSend = {...inputs, city:}
-    console.log(inputs);
-    console.log(resetForm);
-    console.log(setError);
     // setError(null);
     // setLoading(true);
     // try {
