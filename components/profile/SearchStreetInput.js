@@ -36,7 +36,7 @@ export default class SearchStreetInput extends Component {
     this.toggleOpen();
     this.setState({ value });
     const { setTheStreet } = this.props;
-    setTheStreet(value.value);
+    setTheStreet(value);
   };
 
   render() {

@@ -32,43 +32,16 @@ const UserAPI = {
       return error.response;
     }
   },
-  register: async (
-    username,
-    email,
-    password,
-    fullName,
-    phone,
-    city,
-    age,
-    gender,
-    employment_Coefficient,
-    terms_and_Conditions
-  ) => {
+  register: async (user) => {
     try {
-      const response = await axios.post(
-        `${SERVER_BASE_URL}/user/register`,
-        JSON.stringify({
-          user: {
-            username,
-            email,
-            password,
-            fullName,
-            phone,
-            city,
-            age,
-            gender,
-            employment_Coefficient,
-            terms_and_Conditions,
-          },
-        }),
-        {
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        }
-      );
+      const response = await axios.post(`${SERVER_BASE_URL}/user/register`, JSON.stringify(user), {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
       return response;
     } catch (error) {
+      console.log(error);
       return error.response;
     }
   },

@@ -58,13 +58,19 @@ const RegisterForm = ({ cities }) => {
       console.log('cow');
       setErr(true);
     }
-    // const dataToSend = {...inputs, city:}
+    const dataToSend = {
+      ...inputs,
+      city: JSON.stringify(cityData),
+      street: JSON.stringify(theStreet),
+      username: inputs.email,
+    };
 
     setError(null);
     // setLoading(true);
     try {
-      const { data, status } = await UserAPI.register(inputs);
-      // console.log(data, status);
+      const { data, status } = await UserAPI.register(dataToSend);
+      console.log(data);
+      console.log(status);
       if (200 !== status) {
         setError(status);
       }
@@ -75,6 +81,7 @@ const RegisterForm = ({ cities }) => {
         Router.push('/'); // TODO: go to last page user visited
       }
     } catch (errr) {
+      console.log(errr);
       setError(errr);
       setTimeout(() => {
         setError(null);
@@ -87,7 +94,7 @@ const RegisterForm = ({ cities }) => {
     <div className="registerPage_container -mt-24 max-w-5xl mx-auto mb-40">
       {/* <ConditionsPopup /> */}
       <MainTitle />
-      <div className="registerPage_form_container bg-white  px-32 pt-14 pb-9 register-form rounded-md">
+      <div className="registerPage_form_container relative bg-white  px-32 pt-14 pb-9 register-form rounded-md">
         <Group18Img />
         <Group11 />
         <form
@@ -99,22 +106,7 @@ const RegisterForm = ({ cities }) => {
           <SubTitle />
           <span />
           {/* <DisplayError error={error} /> */}
-          <input
-            type="text"
-            name="username"
-            placeholder="User Name"
-            value={inputs.username}
-            onChange={handleChange}
-            className="regiserPageInput justify-self-center h-registerPageInputHeight w-full  bg-grey-disabled my-4 rounded-md"
-          />
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            value={inputs.password}
-            onChange={handleChange}
-            className="regiserPageInput justify-self-center h-registerPageInputHeight w-full bg-grey-disabled my-4 rounded-md"
-          />
+
           <SearchCountryInput
             cityId={cityId}
             setCityId={setCityId}
