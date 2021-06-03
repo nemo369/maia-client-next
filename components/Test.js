@@ -8,6 +8,7 @@ import Inputs from './common/Inputs';
 import NumInputs from './common/NumInputs';
 import Toggle from './common/Toggle';
 import StepperOne from './common/StepperOne';
+import Positions from './common/Positions';
 
 export default function Test() {
   return (
@@ -87,6 +88,40 @@ export default function Test() {
         ====
       </div>
       <StepperOne step="three" className="w-[650px] h-[80px]" />
+      <div>------------------------</div>
+      <h1>Positions</h1>
+      <Positions
+        percentage="10"
+        company="אלקטרה-בע׳׳מ"
+        jobTitle="מגייסת פקיד /ה טכני /ת לאתר
+ביטחוני באילת!"
+        description="פקיד/ה טכני/ת לאתר ביטחוני באילת! התפקיד כולל:
+קבלת קריאות לקוח …"
+      />
+      <div h-3 w-3 mt-3>
+        ====
+      </div>
+      <Positions
+        isButton
+        percentage="70"
+        company="אלקטרה-בע׳׳מ"
+        jobTitle="מגייסת פקיד /ה טכני /ת לאתר
+ביטחוני באילת!"
+        description="פקיד/ה טכני/ת לאתר ביטחוני באילת! התפקיד כולל:
+קבלת קריאות לקוח …"
+      />
+      <div h-3 w-3 mt-3>
+        ====
+      </div>
+      <Positions
+        isButton
+        percentage="90"
+        company="אלקטרה-בע׳׳מ"
+        jobTitle="מגייסת פקיד /ה טכני /ת לאתר
+ביטחוני באילת!"
+        description="פקיד/ה טכני/ת לאתר ביטחוני באילת! התפקיד כולל:
+קבלת קריאות לקוח …"
+      />
     </div>
   );
 }
