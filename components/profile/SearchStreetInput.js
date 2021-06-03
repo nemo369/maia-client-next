@@ -22,21 +22,22 @@ export default class SearchStreetInput extends Component {
 
   optiosn1 = () => {
     const { theStreets } = this.props;
-    const ary = theStreets?.map((x) => {
-      const obj = {};
-      obj.value = x.name;
-      obj.label = x.name;
-      obj.id = x.id;
-      return obj;
+    if (!theStreets || !Array.isArray(theStreets)) return [];
+    return theStreets?.map((street) => {
+      const { name, id } = street;
+      return {
+        name,
+        label: name,
+        id,
+      };
     });
-    return ary;
   };
 
   onSelectChange = (value) => {
     this.toggleOpen();
     this.setState({ value });
     const { setTheStreet } = this.props;
-    setTheStreet(value.value);
+    setTheStreet(value);
   };
 
   render() {

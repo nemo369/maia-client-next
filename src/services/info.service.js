@@ -7,7 +7,7 @@ const Infoservice = {
   getStreetInfo: async (cityId) => {
     try {
       const { data } = await axios.post(
-        `${SERVER_BASE_URL}/info`,
+        `${SERVER_BASE_URL}/info/street`,
         // headers: {
         //   Authorization: `Token ${encodeURIComponent(token)}`,
         // },

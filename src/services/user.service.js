@@ -32,17 +32,13 @@ const UserAPI = {
       return error.response;
     }
   },
-  register: async (username, email, password) => {
+  register: async (user) => {
     try {
-      const response = await axios.post(
-        `${SERVER_BASE_URL}/user/Register`,
-        JSON.stringify({ user: { username, email, password } }),
-        {
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        }
-      );
+      const response = await axios.post(`${SERVER_BASE_URL}/user/register`, JSON.stringify(user), {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
       return response;
     } catch (error) {
       return error.response;

@@ -2,7 +2,7 @@
 const SubmitButton = () => (
   <button
     type="submit"
-    className="bg-registerPageButtonGrey font-medium py-2 justify-self-end mt-twenty mb-fifty px-sixty rounded-md hover:bg-mainOrange hover:text-mainWhite"
+    className="bg-grey-disabled font-medium px-20 mb-8 rounded-md hover:bg-mainOrange hover:text-mainWhite"
   >
     שנתחיל?
   </button>
