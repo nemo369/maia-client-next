@@ -26,7 +26,7 @@ const RegisterForm = ({ cities, termsText }) => {
   // const [error, setError] = useState(null);
   const [err, setErr] = useState(false);
   // const [open, setOpen] = useState(true);
-  const { inputs, handleChange, resetForm } = useForm({
+  const { inputs, handleChange } = useForm({
     username: '',
     email: '',
     password: '',
