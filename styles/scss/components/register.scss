@@ -20,6 +20,7 @@
   line-height: 18px !important;
   text-align: right !important;
   padding-right: 20px !important;
+  color: #999999 !important;
 }
 
 .group11 {
@@ -99,4 +100,24 @@
   border-radius: 8px;
   height: 80px;
   width: 0px;
+}
+body > ::-webkit-scrollbar-thumb {
+  background-color: red;
+  border-radius: 8px;
+  height: 80px;
+  width: 0px;
+}
+
+.css-26l3qy-menu {
+  top: 100%;
+  // background-color: hsl(0deg 68% 46%);
+  background-color: red;
+  border-radius: 4px;
+  box-shadow: 0 0 0 1px hsl(0deg 0% 0% / 10%), 0 4px 11px hsl(0deg 0% 0% / 10%);
+  margin-bottom: 8px;
+  margin-top: 8px;
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+  box-sizing: border-box;
 }

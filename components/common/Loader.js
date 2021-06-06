@@ -4,6 +4,7 @@ function Loader({ loading }) {
   if (!loading) {
     return null;
   }
+  // return <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24" />;
   return <div className="loader">Loading...</div>;
 }
 

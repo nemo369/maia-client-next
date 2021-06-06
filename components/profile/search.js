@@ -1,3 +1,4 @@
+// import { Component } from 'react';
 import Select from 'react-select';
 import { useState } from 'react';
 
@@ -31,11 +32,8 @@ const SearchStreetInput = (props) => {
     });
   };
   const onSelectChange = (value1) => {
-    console.log(value1.label);
     toggleOpen();
-    setTheStreet(value1.label);
-    setValue(value1?.label);
-    console.log(theStreet);
+    setTheStreet(value1);
   };
   return (
     <div className="relative">
@@ -45,7 +43,6 @@ const SearchStreetInput = (props) => {
         className="absolute"
         target={
           <button
-            disabled={!cityData}
             // {cityData ? disabled : required }
             name="street"
             type="button"
@@ -53,7 +50,7 @@ const SearchStreetInput = (props) => {
             onClick={toggleOpen}
             isselected={isOpen.toString()}
           >
-            {value ? `  ${value}` : 'בחר רחוב  *'}
+            {theStreet ? `  ${theStreet.label}` : 'בחר רחוב  *'}
           </button>
         }
       >
@@ -71,7 +68,7 @@ const SearchStreetInput = (props) => {
           placeholder="Search..."
           // styles={selectStyles}
           tabSelectsValue={false}
-          value={theStreet?.name}
+          value={value}
         />
       </Dropdown>
     </div>

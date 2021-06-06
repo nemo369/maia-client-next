@@ -1,7 +1,7 @@
 function Group18Img() {
   return (
     <svg
-      className="absolute top-[25%] left-[92%]"
+      className="absolute top-[25%] left-[92%] hidden md:block"
       width="537px"
       height="424px"
       viewBox="0 0 537 424"

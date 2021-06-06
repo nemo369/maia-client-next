@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Select from 'react-select';
 
 const selectStyles = {
-  control: (provided) => ({ ...provided, minWidth: 240, margin: 8 }),
+  // control: (provided) => ({ ...provided, minWidth: 240, margin: 8 }),
   menu: () => ({
     boxShadow: 'inset 0 1px 0 rgba(0, 0, 0, 0.1)',
     position: 'absolute',
@@ -11,6 +11,7 @@ const selectStyles = {
     backgroundColor: 'white',
     // backgroundColor: 'red',
     color: '#3C91A0',
+    scrollbars: 'red',
   }),
 };
 
@@ -18,8 +19,9 @@ const SearchCountryInput = (props) => {
   const [isOpen, setIsOpen] = useState(false);
   const [value, setValue] = useState(undefined);
   // const [err, setErr] = useState(props.err || false);
-  const { err } = props;
-  const { cities } = props;
+  // const { err } = props;
+  // const { cities } = props;
+  const { setCityId, setCityData, cities, err } = props;
 
   const toggleOpen = () => {
     setIsOpen(!isOpen);
@@ -39,25 +41,24 @@ const SearchCountryInput = (props) => {
   };
 
   const onSelectChange = (value1) => {
-    const { setCityId, setCityData } = props;
     setCityId(value1.id);
     setCityData(value1);
     toggleOpen();
     setValue(value1);
   };
   return (
-    <div className="relative  ">
+    <div className="relative ">
       <Dropdown
         isOpen={isOpen}
         onClose={toggleOpen}
-        className="absolute  "
+        className="absolute vvf "
         // onChange={onChange}
         target={
           <button
             type="button"
             required
             // className="regiserPageInput text-right text- justify-self-center h-registerPageInputHeight w-full bg-registerPageInputGrey my-4 rounded-md"
-            className="bwc emailini"
+            className="bwc text-grey-active emailini  "
             // iconafter={<ChevronDown />}
             onClick={toggleOpen}
             isselected={isOpen.toString()}
@@ -74,11 +75,12 @@ const SearchCountryInput = (props) => {
           hideSelectedOptions={false}
           isClearable={false}
           menuIsOpen
-          className="absolute w-full "
+          className="absolute w-full max-h-52 "
+          // className="absolute w-full max-h-52 scrollbar scrollbar-thumb-red-200 scrollbar-track-blue-500 "
           onChange={onSelectChange}
           options={optiosn1()}
           placeholder="Search..."
-          styles={selectStyles}
+          // styles={selectStyles}
           tabSelectsValue={false}
           value={value}
         />
@@ -89,27 +91,24 @@ const SearchCountryInput = (props) => {
 };
 export default SearchCountryInput;
 
-const Menu = (props) => {
-  const shadow = 'hsla(218, 50%, 10%, 0.1)';
-  return (
-    <div
-      className=" "
-      css={{
-        backgroundColor: 'red',
-        borderRadius: 4,
-        boxShadow: `0 0 0 1px ${shadow}, 0 4px 11px ${shadow}`,
-        marginTop: 8,
-        position: 'absolute',
-        color: 'red',
-        zIndex: 2,
-      }}
-      {...props}
-    />
-  );
-};
+const Menu = (props) => (
+  <div
+    className="vvf"
+    // css={{
+    //   backgroundColor: 'red',
+    //   borderRadius: 4,
+    //   boxShadow: `0 0 0 1px ${shadow}, 0 4px 11px ${shadow}`,
+    //   marginTop: 8,
+    //   position: 'absolute',
+    //   color: 'red',
+    //   zIndex: 2,
+    // }}
+    {...props}
+  />
+);
 const Blanket = (props) => (
   <div
-    className="scrollbar scrollbar-thumb-green-500 max-h-52 w-full"
+    className=""
     css={{
       bottom: 0,
       left: 0,
@@ -125,7 +124,7 @@ const Dropdown = ({ children, isOpen, target, onClose }) => (
   <div className="boomp " css={{ position: 'absolute', color: 'red' }}>
     {target}
     {isOpen ? <Menu>{children}</Menu> : null}
-    {isOpen ? <Blanket onClick={onClose} /> : null}
+    {/* {isOpen ? <Blanket onClick={onClose} /> : null} */}
   </div>
 );
 // const Svg = (p) => (
