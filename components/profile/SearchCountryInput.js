@@ -2,26 +2,24 @@ import { useState } from 'react';
 // import { Component, useState } from 'react';
 import Select from 'react-select';
 
-const selectStyles = {
-  // control: (provided) => ({ ...provided, minWidth: 240, margin: 8 }),
-  menu: () => ({
-    boxShadow: 'inset 0 1px 0 rgba(0, 0, 0, 0.1)',
-    position: 'absolute',
-    width: '100%',
-    backgroundColor: 'white',
-    // backgroundColor: 'red',
-    color: '#3C91A0',
-    scrollbars: 'red',
-  }),
-};
+// const selectStyles = {
+//   // control: (provided) => ({ ...provided, minWidth: 240, margin: 8 }),
+//   menu: () => ({
+//     boxShadow: 'inset 0 1px 0 rgba(0, 0, 0, 0.1)',
+//     position: 'absolute',
+//     width: '100%',
+//     backgroundColor: 'white',
+//     // backgroundColor: 'red',
+//     color: '#3C91A0',
+//     scrollbars: 'red',
+//   }),
+// };
 
 const SearchCountryInput = (props) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [value, setValue] = useState(undefined);
-  // const [err, setErr] = useState(props.err || false);
-  // const { err } = props;
-  // const { cities } = props;
-  const { setCityId, setCityData, cities, err } = props;
+  const [vale, setVale] = useState(undefined);
+
+  const { setCityId, setCityData, cities, err, value, setValue } = props;
 
   const toggleOpen = () => {
     setIsOpen(!isOpen);
@@ -41,10 +39,11 @@ const SearchCountryInput = (props) => {
   };
 
   const onSelectChange = (value1) => {
+    setValue('בחר רחוב *');
     setCityId(value1.id);
     setCityData(value1);
     toggleOpen();
-    setValue(value1);
+    setVale(value1);
   };
   return (
     <div className="relative ">
@@ -52,35 +51,30 @@ const SearchCountryInput = (props) => {
         isOpen={isOpen}
         onClose={toggleOpen}
         className="absolute vvf "
-        // onChange={onChange}
         target={
           <button
             type="button"
             required
-            // className="regiserPageInput text-right text- justify-self-center h-registerPageInputHeight w-full bg-registerPageInputGrey my-4 rounded-md"
             className="bwc text-grey-active emailini  "
-            // iconafter={<ChevronDown />}
             onClick={toggleOpen}
             isselected={isOpen.toString()}
           >
-            {value ? `  ${value.label}` : 'בחר יישוב *'}
+            {vale ? `  ${vale.label}` : 'בחר יישוב *'}
           </button>
         }
       >
         <Select
+          required
           autoFocus
           backspaceRemovesValue={false}
-          //   components={{ DropdownIndicator, IndicatorSeparator: null }}
           controlShouldRenderValue={false}
           hideSelectedOptions={false}
           isClearable={false}
           menuIsOpen
           className="absolute w-full max-h-52 "
-          // className="absolute w-full max-h-52 scrollbar scrollbar-thumb-red-200 scrollbar-track-blue-500 "
           onChange={onSelectChange}
           options={optiosn1()}
           placeholder="Search..."
-          // styles={selectStyles}
           tabSelectsValue={false}
           value={value}
         />
@@ -106,21 +100,21 @@ const Menu = (props) => (
     {...props}
   />
 );
-const Blanket = (props) => (
-  <div
-    className=""
-    css={{
-      bottom: 0,
-      left: 0,
-      top: 0,
-      right: 0,
-      position: 'absolute',
-      zIndex: 1,
-    }}
-    {...props}
-  />
-);
-const Dropdown = ({ children, isOpen, target, onClose }) => (
+// const Blanket = (props) => (
+//   <div
+//     className=""
+//     css={{
+//       bottom: 0,
+//       left: 0,
+//       top: 0,
+//       right: 0,
+//       position: 'absolute',
+//       zIndex: 1,
+//     }}
+//     {...props}
+//   />
+// );
+const Dropdown = ({ children, isOpen, target }) => (
   <div className="boomp " css={{ position: 'absolute', color: 'red' }}>
     {target}
     {isOpen ? <Menu>{children}</Menu> : null}

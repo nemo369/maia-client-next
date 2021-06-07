@@ -6,7 +6,8 @@ function BreadCrumbs({ breadCrumbs }) {
   const main = [{ title: 'ראשי', href: '/' }];
   const bcs = [...main, ...breadCrumbs];
   return (
-    <nav className="bread-crumbs" aria-label="breadcrumbs">
+    <nav className="bread-crumbs">
+      {/* <nav className="bread-crumbs" aria-label="breadcrumbs"> */}
       <ul className="flex items-center text-lg font-bold text-grey mb-4">
         {bcs.map((bc, key, { length, lastIndex = length - 1 }) => (
           <li

@@ -1,5 +1,3 @@
-import RadioMaleFemale from '../../../common/RadioMaleFemale';
-
 const CoefficientCheckbox = (props) => {
   const { handleChange } = props;
 

@@ -18,18 +18,19 @@ import SubmitButton from './register_form/SubmitButton';
 import Group18Img from '../svg/Group18Img';
 import Group11 from '../svg/Group11';
 import UserAPI from '../../src/services/user.service';
-import RadioMaleFemale from '../common/RadioMaleFemale';
 
 const RegisterForm = ({ cities, termsText }) => {
   const [cityId, setCityId] = useState(null);
-  const [cityData, setCityData] = useState(null);
+  const [cityData, setCityData] = useState('');
   const [theStreets, setTheStreets] = useState(null);
   const [theStreet, setTheStreet] = useState(null);
   const [error, setError] = useState(false);
-  const [err, setErr] = useState(false);
+  // const [err, setErr] = useState(false);
   const [open, setOpen] = useState(false);
   const router = useRouter();
-  // const [loader, setLoader] = useState(false);
+  const [value, setValue] = useState(undefined);
+  const [val, setVal] = useState(false);
+
   const { inputs, handleChange, resetForm } = useForm({
     username: '',
     email: '',
@@ -56,7 +57,8 @@ const RegisterForm = ({ cities, termsText }) => {
   const handleSubmit = async (e) => {
     setOpen(!open);
     e.preventDefault();
-    // if (false === inputs.city) {
+
+    // if (false === inputs.city || ' ' === inputs.city) {
     //   setErr(true);
     // }
     const dataToSend = {
@@ -66,19 +68,8 @@ const RegisterForm = ({ cities, termsText }) => {
       username: inputs.email,
     };
 
-    // setError(null);
-    // setLoading(true);
-
     const { data, status } = await UserAPI.register(dataToSend);
-    console.log(data);
-    console.log(status);
-    // if (200 !== status) {
-    //   console.log(data);
-    //   console.log(data.message);
-    //   setError(data.message);
-    // }
     if (200 !== status) {
-      console.log(data.message);
       setError(data.message);
     }
 
@@ -113,15 +104,22 @@ const RegisterForm = ({ cities, termsText }) => {
             setCityData={setCityData}
             cities={cities}
             handleChange={handleChange}
-            err={err}
             error={error}
             setError={setError}
+            setTheStreet={setTheStreet}
+            value={value}
+            setValue={setValue}
+            val={val}
+            setVal={setVal}
           />
           <SearchStreetInput
             theStreets={theStreets}
             setTheStreet={setTheStreet}
             handleChange={handleChange}
             cityData={cityData}
+            value={value}
+            val={val}
+            setValue={setValue}
           />
           <hr className="dashed col-start-1 col-end-3" />
 
@@ -148,12 +146,9 @@ const RegisterForm = ({ cities, termsText }) => {
           <hr className="dashed col-start-1 col-end-3" />
           <CoefficientCheckbox handleChange={handleChange} />
 
-          {/* <div className="register_bottom col-start-1 col-end-3 flex justify-between "> */}
           {error ? <div className="text-red-500 text-left">{error}</div> : <span> </span>}
           <ConditionsCheckbox termsText={termsText} handleChange={handleChange} />
           <SubmitButton open={open} />
-
-          {/* </div> */}
         </form>
       </div>
     </div>

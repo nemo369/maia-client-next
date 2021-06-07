@@ -1,19 +1,9 @@
 import Select from 'react-select';
 import { useState } from 'react';
 
-// const selectStyles = {
-//   control: (provided) => ({ ...provided, minWidth: 240, margin: 8 }),
-//   // menu: () => ({
-//   //   boxShadow: 'inset 0 1px 0 rgba(0, 0, 0, 0.1)',
-//   //   position: 'absolute',
-//   //   width: '100%',
-//   //   backgroundColor: 'white',
-//   // }),
-// };
 const SearchStreetInput = (props) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [value, setValue] = useState(undefined);
-  const { theStreets, cityData, setTheStreet, theStreet } = props;
+  const { theStreets, cityData, setTheStreet, theStreet, value, setValue } = props;
 
   const toggleOpen = () => {
     setIsOpen(!isOpen);
@@ -31,11 +21,9 @@ const SearchStreetInput = (props) => {
     });
   };
   const onSelectChange = (value1) => {
-    console.log(value1.label);
     toggleOpen();
     setTheStreet(value1.label);
-    setValue(value1?.label);
-    console.log(theStreet);
+    setValue(value1.label);
   };
   return (
     <div className="relative">
@@ -46,7 +34,6 @@ const SearchStreetInput = (props) => {
         target={
           <button
             disabled={!cityData}
-            // {cityData ? disabled : required }
             name="street"
             type="button"
             className="bwc text-grey-active"
@@ -60,7 +47,6 @@ const SearchStreetInput = (props) => {
         <Select
           autoFocus
           backspaceRemovesValue={false}
-          //   components={{ DropdownIndicator, IndicatorSeparator: null }}
           controlShouldRenderValue={false}
           hideSelectedOptions={false}
           isClearable={false}
@@ -69,7 +55,6 @@ const SearchStreetInput = (props) => {
           onChange={onSelectChange}
           options={optiosn1()}
           placeholder="Search..."
-          // styles={selectStyles}
           tabSelectsValue={false}
           value={theStreet?.name}
         />
