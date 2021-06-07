@@ -1,6 +1,11 @@
 function Group11() {
   return (
-    <svg className="absolute group11 top-1/4" width="240px" height="168px" viewBox="0 0 240 168">
+    <svg
+      className="absolute group11 top-[7%] right-[126%]"
+      width="240px"
+      height="168px"
+      viewBox="0 0 240 168"
+    >
       <title>D464D077-447F-48E1-BC72-6C0723B5D7DD</title>
       <g id="Design" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
         <g id="Styleguide" transform="translate(-697.000000, -8467.000000)">

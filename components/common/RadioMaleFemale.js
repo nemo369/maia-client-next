@@ -3,15 +3,15 @@ import React from 'react';
 
 export default function RadioMaleFemale({ onChangeGender }) {
   return (
-    <div className="flex" onChange={onChangeGender}>
+    <div className="flex inline-block" onChange={onChangeGender}>
       <div className="flex">
-        <input type="radio" value="MALE" name="gender" id="male" />
+        <input type="radio" value="MALE" name="gender" id="male" required />
         <label className="radio-label" htmlFor="male">
           זכר
         </label>
       </div>
       <div className="flex">
-        <input type="radio" value="FEMALE" name="gender" id="female" />
+        <input type="radio" value="FEMALE" name="gender" id="female" checked required />
         <label className="radio-label" htmlFor="female">
           נקבה
         </label>

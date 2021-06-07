@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 import useForm from '../../src/hooks/useForm';
 import Infoservice from '../../src/services/info.service';
 import AgeInput from './register_form/inputs/AgeInput';
@@ -20,13 +21,16 @@ import UserAPI from '../../src/services/user.service';
 
 const RegisterForm = ({ cities, termsText }) => {
   const [cityId, setCityId] = useState(null);
-  const [cityData, setCityData] = useState(null);
+  const [cityData, setCityData] = useState('');
   const [theStreets, setTheStreets] = useState(null);
   const [theStreet, setTheStreet] = useState(null);
-  // const [error, setError] = useState(null);
+  const [error, setError] = useState(false);
   const [err, setErr] = useState(false);
-  // const [open, setOpen] = useState(true);
-  const { inputs, handleChange } = useForm({
+  const [open, setOpen] = useState(false);
+  const router = useRouter();
+  const [inputValue, setInputValue] = useState(undefined);
+
+  const { inputs, handleChange, resetForm } = useForm({
     username: '',
     email: '',
     password: '',
@@ -50,8 +54,10 @@ const RegisterForm = ({ cities, termsText }) => {
     }
   }, [cityId]);
   const handleSubmit = async (e) => {
+    setOpen(!open);
     e.preventDefault();
-    if (false === inputs.city) {
+
+    if (undefined === inputs.city) {
       setErr(true);
     }
     const dataToSend = {
@@ -61,35 +67,26 @@ const RegisterForm = ({ cities, termsText }) => {
       username: inputs.email,
     };
 
-    setError(null);
-    // setLoading(true);
-    try {
-      const { data, status } = await UserAPI.register(dataToSend);
-      if (200 !== status) {
-        setError(status);
-      }
-
-      if (data?.user) {
-        // TODO: Set cookie with nookies
-        resetForm();
-        Router.push('/'); // TODO: go to last page user visited
-      }
-    } catch (errr) {
-      setError(errr);
-      setTimeout(() => {
-        setError(null);
-      }, 5000);
-    } finally {
-      // setLoading(false);
+    const { data, status } = await UserAPI.register(dataToSend);
+    if (200 !== status) {
+      setError(data.message);
     }
+
+    if (200 === status) {
+      // TODO: Set cookie with nookies
+      resetForm();
+      router.push('/user/login'); // TODO: go to last page user visited
+    }
+    setOpen(!open);
   };
+
   return (
-    <div className="registerPage_container -mt-24 max-w-5xl mx-auto mb-40">
+    <div className="registerPage_container relative xl:-mt-24 max-w-5xl mx-auto mb-40 ">
       {/* <ConditionsPopup /> */}
       <MainTitle />
-      <div className="registerPage_form_container relative bg-white  px-32 pt-14 pb-9 register-form rounded-md">
+      <Group11 />
+      <div className="registerPage_form_container relative bg-white  px-32 pt-14 pb-9 register-form rounded-lg">
         <Group18Img />
-        <Group11 />
         <form
           className="registerPage_form block grid-cols-2  mx-auto gap-x-4 gap-y-3 rounded-md md:grid"
           method="POST"
@@ -106,13 +103,20 @@ const RegisterForm = ({ cities, termsText }) => {
             setCityData={setCityData}
             cities={cities}
             handleChange={handleChange}
+            error={error}
+            setError={setError}
+            setTheStreet={setTheStreet}
+            inputValue={inputValue}
+            setInputValue={setInputValue}
             err={err}
           />
           <SearchStreetInput
-            required
             theStreets={theStreets}
             setTheStreet={setTheStreet}
             handleChange={handleChange}
+            cityData={cityData}
+            inputValue={inputValue}
+            setInputValue={setInputValue}
           />
           <hr className="dashed col-start-1 col-end-3" />
 
@@ -124,21 +128,24 @@ const RegisterForm = ({ cities, termsText }) => {
 
           <AgeInput handleChange={handleChange} value={inputs.age} />
 
-          <div className="my-4 col-start-1 col-end-3">
+          <div className="my-4 col-start-1 col-end-3 flex">
             <p className="inline-block text-regiterPageDarkBottomText leading-regiterPageDarkBottomText text-regiterPageDarkBottomTextcolor">
               לפנ י שאנחנו ממשיכים, איך נוח לך שנפנה אליך?
             </p>
-            <MaleRadio handleChange={handleChange} />
-            <FemaleRadio handleChange={handleChange} />
+            <div className=" inline-block">
+              <div className="flex">
+                <MaleRadio handleChange={handleChange} />
+                <FemaleRadio handleChange={handleChange} />
+              </div>
+            </div>
           </div>
 
           <hr className="dashed col-start-1 col-end-3" />
           <CoefficientCheckbox handleChange={handleChange} />
 
-          <div className="register_bottom col-start-1 col-end-3 flex justify-between ">
-            <ConditionsCheckbox termsText={termsText} handleChange={handleChange} />
-            <SubmitButton />
-          </div>
+          {error ? <div className="text-red-500 text-left">{error}</div> : <span> </span>}
+          <ConditionsCheckbox termsText={termsText} handleChange={handleChange} />
+          <SubmitButton open={open} />
         </form>
       </div>
     </div>

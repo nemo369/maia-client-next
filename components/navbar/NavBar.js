@@ -4,16 +4,23 @@ import { useRouter } from 'next/router';
 import LightBulb from '../svg/LightBulb';
 import { AppContext } from '../../src/context/state';
 import Logosvg from '../svg/Logo';
+import Information from '../svg/Information';
+import SchoolHat from '../svg/SchoolHat';
+import Briefcase from '../svg/Briefcase';
+import ProfilePic from '../svg/ProfilePic';
+import SilverLogo from '../svg/SilverLogo';
 
 const NavBar = () => {
   const { pathname } = useRouter();
   const { user } = useContext(AppContext);
 
   const links = [
+    { href: '/dashbaord', icon: <ProfilePic /> },
     { href: '/dashbaord', name: 'ראשי', icon: <LightBulb /> },
-    { href: '/professions', name: 'זירת המקצועות', icon: <LightBulb /> },
-    { href: '/school', name: 'מאגר הלימודים', icon: <LightBulb /> },
-    { href: '/jobs', name: 'משרות פנויות', icon: <LightBulb /> },
+    { href: '/professions', name: 'זירת המקצועות', icon: <Information /> },
+    { href: '/school', name: 'מאגר הלימודים', icon: <SchoolHat /> },
+    { href: '/jobs', name: 'משרות פנויות', icon: <Briefcase /> },
+    { href: '/jobs', icon: <SilverLogo /> },
   ];
 
   const LinkButton = ({ link, isActive }) => (
