@@ -22,7 +22,9 @@ const ConditionsCheckbox = (props) => {
         />
         <p className="inline-block">אני מאשר/ת כי קראתי בעיון ואישרתי את כל</p>
         <span> </span>
+
         <Pop termsText={termsText} />
+
         <p className="inline-block pr-9"> ואני מסכים/ה </p>
         <span> </span>
         {/* <br /> */}

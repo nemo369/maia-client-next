@@ -11,7 +11,7 @@ export default function RadioMaleFemale({ onChangeGender }) {
         </label>
       </div>
       <div className="flex">
-        <input type="radio" value="FEMALE" name="gender" id="female" required />
+        <input type="radio" value="FEMALE" name="gender" id="female" checked required />
         <label className="radio-label" htmlFor="female">
           נקבה
         </label>

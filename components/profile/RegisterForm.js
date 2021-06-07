@@ -25,11 +25,10 @@ const RegisterForm = ({ cities, termsText }) => {
   const [theStreets, setTheStreets] = useState(null);
   const [theStreet, setTheStreet] = useState(null);
   const [error, setError] = useState(false);
-  // const [err, setErr] = useState(false);
+  const [err, setErr] = useState(false);
   const [open, setOpen] = useState(false);
   const router = useRouter();
-  const [value, setValue] = useState(undefined);
-  const [val, setVal] = useState(false);
+  const [inputValue, seInputValue] = useState(undefined);
 
   const { inputs, handleChange, resetForm } = useForm({
     username: '',
@@ -58,9 +57,9 @@ const RegisterForm = ({ cities, termsText }) => {
     setOpen(!open);
     e.preventDefault();
 
-    // if (false === inputs.city || ' ' === inputs.city) {
-    //   setErr(true);
-    // }
+    if (undefined === inputs.city) {
+      setErr(true);
+    }
     const dataToSend = {
       ...inputs,
       city: JSON.stringify(cityData),
@@ -107,19 +106,17 @@ const RegisterForm = ({ cities, termsText }) => {
             error={error}
             setError={setError}
             setTheStreet={setTheStreet}
-            value={value}
-            setValue={setValue}
-            val={val}
-            setVal={setVal}
+            inputValue={inputValue}
+            seInputValue={seInputValue}
+            err={err}
           />
           <SearchStreetInput
             theStreets={theStreets}
             setTheStreet={setTheStreet}
             handleChange={handleChange}
             cityData={cityData}
-            value={value}
-            val={val}
-            setValue={setValue}
+            inputValue={inputValue}
+            seInputValue={setVseInputValuealue}
           />
           <hr className="dashed col-start-1 col-end-3" />
 
