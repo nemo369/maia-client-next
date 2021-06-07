@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 const SearchStreetInput = (props) => {
   const [isOpen, setIsOpen] = useState(false);
-  const { theStreets, cityData, setTheStreet, theStreet, value, setValue } = props;
+  const { theStreets, cityData, setTheStreet, theStreet, inputValue, setInputValue } = props;
 
   const toggleOpen = () => {
     setIsOpen(!isOpen);
@@ -23,7 +23,7 @@ const SearchStreetInput = (props) => {
   const onSelectChange = (value1) => {
     toggleOpen();
     setTheStreet(value1.label);
-    setValue(value1.label);
+    setInputValue(value1.label);
   };
   return (
     <div className="relative">
@@ -40,7 +40,7 @@ const SearchStreetInput = (props) => {
             onClick={toggleOpen}
             isselected={isOpen.toString()}
           >
-            {value ? `  ${value}` : 'בחר רחוב  *'}
+            {inputValue ? `  ${inputValue}` : 'בחר רחוב  *'}
           </button>
         }
       >

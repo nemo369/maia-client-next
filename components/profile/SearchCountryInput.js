@@ -5,7 +5,7 @@ const SearchCountryInput = (props) => {
   const [isOpen, setIsOpen] = useState(false);
   const [vale, setVale] = useState(undefined);
 
-  const { setCityId, setCityData, cities, err, value, setValue } = props;
+  const { setCityId, setCityData, cities, err, value, setInputValue } = props;
 
   const toggleOpen = () => {
     setIsOpen(!isOpen);
@@ -25,7 +25,7 @@ const SearchCountryInput = (props) => {
   };
 
   const onSelectChange = (value1) => {
-    setValue('בחר רחוב *');
+    setInputValue('בחר רחוב *');
     setCityId(value1.id);
     setCityData(value1);
     toggleOpen();

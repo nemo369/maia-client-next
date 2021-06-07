@@ -28,7 +28,7 @@ const RegisterForm = ({ cities, termsText }) => {
   const [err, setErr] = useState(false);
   const [open, setOpen] = useState(false);
   const router = useRouter();
-  const [inputValue, seInputValue] = useState(undefined);
+  const [inputValue, setInputValue] = useState(undefined);
 
   const { inputs, handleChange, resetForm } = useForm({
     username: '',
@@ -107,7 +107,7 @@ const RegisterForm = ({ cities, termsText }) => {
             setError={setError}
             setTheStreet={setTheStreet}
             inputValue={inputValue}
-            seInputValue={seInputValue}
+            setInputValue={setInputValue}
             err={err}
           />
           <SearchStreetInput
@@ -116,7 +116,7 @@ const RegisterForm = ({ cities, termsText }) => {
             handleChange={handleChange}
             cityData={cityData}
             inputValue={inputValue}
-            seInputValue={setVseInputValuealue}
+            setInputValue={setInputValue}
           />
           <hr className="dashed col-start-1 col-end-3" />
 
