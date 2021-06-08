@@ -18,7 +18,7 @@ const UserAPI = {
   },
   login: async (creditiontals) => {
     try {
-      const { data } = await axios.post(
+      const response = await axios.post(
         `${SERVER_BASE_URL}/user/login`,
         JSON.stringify(creditiontals),
         {
@@ -27,7 +27,7 @@ const UserAPI = {
           },
         }
       );
-      return data;
+      return response;
     } catch (error) {
       return error.response;
     }
