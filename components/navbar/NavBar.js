@@ -51,7 +51,6 @@ const NavBar = () => {
             <>
               {'m' === user?.user_gender ? <MalePic /> : <ProfilePic />}
 
-              <a>nemo frenk</a>
               <a>{user?.user_display_name}</a>
             </>
           </Link>
