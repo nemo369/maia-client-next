@@ -5,7 +5,7 @@ export const getUserSession = (req) => {
   if (!userCookie) {
     return {
       redirect: {
-        destination: 'user/login',
+        destination: '/user/login',
         permanent: false,
       },
     };

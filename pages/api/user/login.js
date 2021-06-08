@@ -24,11 +24,10 @@ export default async function login(req, res) {
               Authorization: `Bearer ${tokenData.token}`,
             },
           })
-          .then(({ data }) => {
-            const moreData = data.data;
+          .then(({ data: moreData }) => {
             const user = {
-              ...moreData,
               ...tokenData,
+              ...moreData,
             };
             setCookie({ res }, 'token-cookie', JSON.stringify(user), {
               secure: 'production' === NODE_ENV,
@@ -36,7 +35,7 @@ export default async function login(req, res) {
               httpOnly: true,
               path: '/',
             });
-            res.status(200).json(user);
+            res.status(200).json({ ...user, token: 'token' });
           });
       } catch ({ response }) {
         res.status(response.status).json(response.data);
