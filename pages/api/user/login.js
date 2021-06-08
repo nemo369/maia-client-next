@@ -1,20 +1,47 @@
 import axios from 'axios';
+import { setCookie, destroyCookie } from 'nookies';
 
 export default async function login(req, res) {
-  const { WORDPRESS_ENDPOINT } = process.env;
+  const { WORDPRESS_ENDPOINT, NODE_ENV } = process.env;
   const { method } = req;
+  destroyCookie({ res }, 'token-cookie');
 
   switch (method) {
     case 'POST':
       // Get data from your database
-      await axios
-        .post(`${WORDPRESS_ENDPOINT}/wp-json/jwt-auth/v1/token`, req.body)
-        .then(({ data }) => {
-          res.status(200).json({ data });
-        })
-        .catch(({ response }) => {
-          res.status(response.status).json(response.data);
-        });
+      try {
+        const { data: tokenData } = await axios.post(
+          `${WORDPRESS_ENDPOINT}/wp-json/jwt-auth/v1/token`,
+          req.body
+        );
+        if (!tokenData?.token) {
+          throw new Error('No token :(');
+        }
+
+        await axios
+          .get(`${WORDPRESS_ENDPOINT}/wp-json/wp/v2/users/user`, {
+            headers: {
+              Authorization: `Bearer ${tokenData.token}`,
+            },
+          })
+          .then(({ data }) => {
+            const moreData = data.data;
+            const user = {
+              ...moreData,
+              ...tokenData,
+            };
+            setCookie({ res }, 'token-cookie', JSON.stringify(user), {
+              secure: 'production' === NODE_ENV,
+              maxAge: 72576000,
+              httpOnly: true,
+              path: '/',
+            });
+            res.status(200).json(user);
+          });
+      } catch ({ response }) {
+        res.status(response.status).json(response.data);
+      }
+
       break;
     default:
       res.setHeader('Allow', ['POST']);
