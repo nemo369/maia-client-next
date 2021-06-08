@@ -1,6 +1,6 @@
 function LightBulb() {
   return (
-    <svg width="38px" height="66px" viewBox="0 0 38 66" version="1.1">
+    <svg className="lightbulb" width="38px" height="66px" viewBox="0 0 38 66" version="1.1">
       <title>EAC4442F-1736-4A4A-90CF-E581009149C1</title>
       <defs>
         <filter id="filter-1">
