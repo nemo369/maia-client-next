@@ -1,6 +1,6 @@
 function Briefcase() {
   return (
-    <svg width="73px" height="64px" viewBox="0 0 73 64" version="1.1">
+    <svg className="active-svg" width="73px" height="64px" viewBox="0 0 73 64" version="1.1">
       <title>ABC2A426-ABED-4A03-A418-0784F186DC18</title>
       <defs>
         <filter id="filter-1">
