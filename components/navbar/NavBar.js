@@ -16,7 +16,7 @@ const NavBar = () => {
 
   const links = [
     { href: '/dashbaord', icon: <ProfilePic /> },
-    { href: '/dashbaord', name: 'ראשי', icon: <LightBulb /> },
+    // { href: '/dashbaord', name: 'ראשי', icon: <LightBulb /> },
     { href: '/professions', name: 'זירת המקצועות', icon: <Information /> },
     { href: '/school', name: 'מאגר הלימודים', icon: <SchoolHat /> },
     { href: '/jobs', name: 'משרות פנויות', icon: <Briefcase /> },

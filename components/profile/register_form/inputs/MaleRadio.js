@@ -7,7 +7,7 @@ const MaleRadio = (props) => {
     >
       <input
         required
-        checked
+        // defaultChecked
         onChange={handleChange}
         className="inline-block male mx-4"
         id="input-gender-male"

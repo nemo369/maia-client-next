@@ -4,6 +4,7 @@ import SignUpHeader from '../../components/SignUpHeader';
 
 const Register = function (props) {
   const { cities, termsText } = props;
+  console.log(cities);
   return (
     <div
       className="bg-lightgreybackground w-full
@@ -12,7 +13,6 @@ const Register = function (props) {
       <NextSeo title="Simple Usage Example" description="A short description goes here." />
       <SignUpHeader />
       <RegisterForm cities={cities} termsText={termsText} />
-      {/* <RegisterForm /> */}
     </div>
   );
 };
