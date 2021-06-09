@@ -1,6 +1,6 @@
 function MalePic() {
   return (
-    <svg width="157px" height="155px" viewBox="0 0 157 155" version="1.1">
+    <svg viewBox="0 0 157 155" version="1.1">
       <title>4FDD258A-F747-48D9-B301-827436EEBB02</title>
       <defs>
         <circle id="path-1" cx="78.5" cy="76.5" r="67.5" />

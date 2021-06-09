@@ -40,14 +40,15 @@ const NavBar = () => {
       <div className="nav__placeholder h-screen w-[150px]" />
       <div className="nav__border rounded-r-lg  hidden md:block z-20" />
       <aside className="fixed z-10 w-[115px] right-8 nav flex flex-col h-screen justify-between bg-green-500  items-center">
-        <div className="nav__profile w-[84px] h-[104px] mt-4">
+        <div className="nav__profile  mt-4">
           <Link href="/ProfilePage">
             <a>
-              {'m' === user?.gender ? <MalePic /> : <ProfilePic />}
-              <div className=" text-lg text-white leading-[18px] text-center pt-1 mt-1 font-bold">
-                אלינה קץ
+              <div className="w-[84px]  mx-auto">
+                {'m' === user?.gender ? <MalePic /> : <ProfilePic />}
               </div>
-              <div>{user?.displayName}</div>
+              <div className=" text-lg text-white leading-[18px] text-center pt-1 mt-1 font-bold">
+                {user?.displayName}
+              </div>
             </a>
           </Link>
         </div>
