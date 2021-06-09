@@ -16,7 +16,6 @@ import MalePic from '../svg/MalePic';
 const NavBar = () => {
   const { pathname } = useRouter();
   const { user } = useContext(AppContext);
-  console.log(user);
 
   const links = [
     // { href: '/dashbaord', icon: <ProfilePic /> },
