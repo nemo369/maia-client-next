@@ -4,7 +4,6 @@ import SignUpHeader from '../../components/SignUpHeader';
 
 const Register = function (props) {
   const { cities, termsText } = props;
-  console.log(cities);
   return (
     <div
       className="bg-lightgreybackground w-full

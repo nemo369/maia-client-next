@@ -14,7 +14,7 @@ if ('production' !== process.env.NODE_ENV && !isSSR()) {
 }
 
 const AppComponent = ({ Component, pageProps }) => (
-  <AppWrapper>
+  <AppWrapper userProp={pageProps.user}>
     <Layout>
       <Component {...pageProps} />
     </Layout>
