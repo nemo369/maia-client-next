@@ -1,6 +1,6 @@
 function ProfilePic() {
   return (
-    <svg width="84px" height="104px" viewBox="0 0 157 155" version="1.1">
+    <svg viewBox="0 0 157 155" version="1.1">
       <title>2ED1247D-D231-4B56-9DD9-0F697B97FB56</title>
       <defs>
         <circle id="path-1" cx="78.5" cy="76.5" r="67.5" />
