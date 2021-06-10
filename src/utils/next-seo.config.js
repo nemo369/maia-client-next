@@ -1,6 +1,6 @@
 const seoObj = {
-  title: 'Adam-Milo',
-  description: 'We help people',
+  title: 'מערכת מאיה |',
+  description: 'We fu**ing help people yall',
 };
 export const seoMerge = (seo) => ({
   ...seoObj,

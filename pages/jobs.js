@@ -4,7 +4,7 @@ import { seoMerge } from '../src/utils/next-seo.config';
 
 export default function Jobs() {
   const seo = seoMerge({
-    title: 'מערכת מאיה | זירת המקצועות',
+    title: 'משרות פנויות | ',
   });
   return (
     <div>
