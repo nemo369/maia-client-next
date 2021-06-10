@@ -3,6 +3,7 @@ function MalePic() {
     <svg viewBox="0 0 157 155" version="1.1">
       <title>4FDD258A-F747-48D9-B301-827436EEBB02</title>
       <defs>
+        {/* <circle id="path-1" cx="38.5" cy="36.5" r="27.5" /> */}
         <circle id="path-1" cx="78.5" cy="76.5" r="67.5" />
       </defs>
       <g id="Design" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">

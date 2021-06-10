@@ -6,7 +6,7 @@ import { AppContext } from '../../src/context/state';
 import Information from '../svg/Information';
 import SchoolHat from '../svg/SchoolHat';
 import Briefcase from '../svg/Briefcase';
-import ProfilePic from '../svg/ProfilePic';
+import FemalePic from '../svg/FemalePic';
 import SilverLogo from '../svg/SilverLogo';
 import MalePic from '../svg/MalePic';
 
@@ -23,14 +23,20 @@ const NavBar = () => {
 
   const LinkButton = ({ link, isActive }) => (
     <li
-      className={`transition-all rounded active-svg text-white text-base py-3 nav__button flex flex-col items-center justify-center  ${
-        isActive ? 'active' : 'disabled'
+      className={`transition-all flex-grow-0 rounded text-white leading-4 text-base py-3 nav__button flex flex-col items-center justify-center  ${
+        isActive ? 'active active-svg' : 'disabled'
       }`}
     >
       <Link href={link.href}>
-        <a>
+        <a className="grid">
           {link.icon}
-          <span>{link.name}</span>
+          <span
+            className={`mt-2  text-base text-white  leading-4
+              ${isActive ? ' font-bold' : ' '}
+            `}
+          >
+            {link.name}
+          </span>
         </a>
       </Link>
     </li>
@@ -44,7 +50,7 @@ const NavBar = () => {
           <Link href="/ProfilePage">
             <a>
               <div className="w-[84px]  mx-auto">
-                {'m' === user?.gender ? <MalePic /> : <ProfilePic />}
+                {'m' === user?.gender ? <MalePic /> : <FemalePic />}
               </div>
               <div className=" text-lg text-white leading-[18px] text-center pt-1 mt-1 font-bold">
                 {user?.displayName}
@@ -52,7 +58,7 @@ const NavBar = () => {
             </a>
           </Link>
         </div>
-        <ul className="nav__links flex flex-col items- mx-4 justify-center gap-y-10">
+        <ul className="nav__links flex flex-col items- mx-4 justify-center gap-y-2">
           {links.map((link) => (
             <LinkButton key={link.href} link={link} isActive={pathname === link.href} />
           ))}

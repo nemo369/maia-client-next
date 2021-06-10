@@ -1,8 +1,11 @@
 .nav {
   &__button {
     width: 115px;
+    flex: 0 0 115px;
     height: 107px;
     border-radius: 14px;
+    background: rgba(255, 255, 255, 0);
+    opacity: 1;
     &.active {
       background: rgba(255, 255, 255, 0.3);
     }
@@ -17,4 +20,48 @@
     border-top-right-radius: 60px;
     border-bottom-right-radius: 60px;
   }
+}
+
+.nav__links > * svg {
+  // max-width: 100px;
+  // max-height: 100px;
+}
+
+.active-bulb {
+  fill: transparent;
+  stroke: #fff;
+}
+.active-jobs {
+  fill: transparent;
+  stroke: #fff;
+}
+.active-svg .active-jobs {
+  fill: #fff;
+  stroke: #fff;
+}
+.active-svg .active-bulb {
+  fill: #fff;
+  stroke: #fff;
+}
+.st2,
+.st1 {
+  fill: transparent;
+  stroke: #fff;
+}
+.active-info {
+  fill: transparent;
+  stroke: #fff;
+}
+.active-svg .active-info {
+  fill: #fff;
+  stroke: #fff;
+}
+
+.active-study {
+  fill: transparent;
+  stroke: #fff;
+}
+.active-svg .active-study {
+  fill: #fb9773;
+  stroke: #fb9773;
 }
