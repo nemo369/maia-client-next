@@ -1,8 +1,11 @@
 .nav {
   &__button {
-    width: 115px;
-    flex: 0 0 115px;
-    height: 107px;
+    // width: 115px;
+    // flex: 0 0 115px;
+    // height: 107px;
+    max-width: 115px;
+    max-height: 105px;
+
     border-radius: 14px;
     background: rgba(255, 255, 255, 0);
     opacity: 1;

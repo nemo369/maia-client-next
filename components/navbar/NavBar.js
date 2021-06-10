@@ -44,8 +44,8 @@ const NavBar = () => {
   return (
     <div className="nav__wrapper flex bg-green-500 gap-x-8">
       <div className="nav__placeholder h-screen w-[150px]" />
-      <div className="nav__border rounded-r-lg  hidden md:block z-20" />
-      <aside className="fixed z-10 w-[115px] right-8 nav flex flex-col h-screen justify-between bg-green-500  items-center">
+      <aside className="fixed z-10  nav flex flex-col h-screen justify-between bg-green-500  items-center">
+        {/* <aside className="fixed z-10 w-[115px] right-8 nav flex flex-col h-screen justify-between bg-green-500  items-center"> */}
         <div className="nav__profile  mt-4">
           <Link href="/ProfilePage">
             <a>
@@ -59,6 +59,7 @@ const NavBar = () => {
           </Link>
         </div>
         <ul className="nav__links flex flex-col items- mx-4 justify-center gap-y-2">
+          {/* <ul className="nav__links flex flex-col items- mx-4 justify-center gap-y-6"> */}
           {links.map((link) => (
             <LinkButton key={link.href} link={link} isActive={pathname === link.href} />
           ))}
@@ -72,6 +73,7 @@ const NavBar = () => {
           </Link>
         </div>
       </aside>
+      <div className="nav__border rounded-r-lg  hidden md:block z-20" />
     </div>
   );
 };
