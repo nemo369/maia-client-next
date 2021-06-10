@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import { NextSeo } from 'next-seo';
 import { getUserSession } from '../src/utils/getUser';
-import { seoMerge } from '../../src/utils/next-seo.config';
+import { seoMerge } from '../src/utils/next-seo.config';
 
 // import Test from '../components/Test';
 
