@@ -1,11 +1,14 @@
 import { NextSeo } from 'next-seo';
 import React from 'react';
-import seoObj from '../src/utils/next-seo.config';
+import { seoMerge } from '../src/utils/next-seo.config';
 
 export default function Jobs() {
+  const seo = seoMerge({
+    title: 'מערכת מאיה | זירת המקצועות',
+  });
   return (
     <div>
-      <NextSeo {...seoObj} />
+      <NextSeo {...seo} />
       jobs
     </div>
   );
