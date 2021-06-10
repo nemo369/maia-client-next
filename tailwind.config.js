@@ -1,3 +1,4 @@
+/* eslint-disable global-require */
 module.exports = {
   mode: 'jit',
   future: {
@@ -12,7 +13,6 @@ module.exports = {
       borderColor: ['checked'],
     },
   },
-  // eslint-disable-next-line global-require
   plugins: [
     require('tailwindcss'),
     require('precss'),
@@ -41,7 +41,7 @@ module.exports = {
         green: {
           DEFAULT: '#FF3344',
           light: '#B3DDCF',
-          dark: '#317885',
+          dark: '#15858E',
           lighter: '#A8DFCE',
           500: '#41C2C4',
           success: '#DBFFE6',

@@ -3,8 +3,8 @@ import { userReducer } from './userReucder';
 
 export const AppContext = createContext();
 
-export function AppWrapper({ children }) {
-  const [user, dispatch] = useReducer(userReducer, null);
+export function AppWrapper({ children, userProp }) {
+  const [user, dispatch] = useReducer(userReducer, userProp);
   const sharedState = {
     user,
     dispatch,

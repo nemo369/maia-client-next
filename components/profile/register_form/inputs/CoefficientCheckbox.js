@@ -9,6 +9,7 @@ const CoefficientCheckbox = (props) => {
         className="text-regiterPageDarkBottomText leading-regiterPageDarkBottomText text-regiterPageDarkBottomTextcolor"
       >
         <input
+          required
           className="checkbox ml-4"
           id="employment_coefficient"
           name="employment_coefficient"

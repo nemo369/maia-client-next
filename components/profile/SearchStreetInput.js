@@ -1,27 +1,15 @@
-import { Component } from 'react';
 import Select from 'react-select';
+import { useState } from 'react';
 
-const selectStyles = {
-  control: (provided) => ({ ...provided, minWidth: 240, margin: 8 }),
-  // menu: () => ({
-  //   boxShadow: 'inset 0 1px 0 rgba(0, 0, 0, 0.1)',
-  //   position: 'absolute',
-  //   width: '100%',
-  //   backgroundColor: 'white',
-  // }),
-};
-export default class SearchStreetInput extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { isOpen: false, value: undefined };
-  }
+const SearchStreetInput = (props) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const { theStreets, cityData, setTheStreet, theStreet, inputValue, setInputValue } = props;
 
-  toggleOpen = () => {
-    this.setState((state) => ({ isOpen: !state.isOpen }));
+  const toggleOpen = () => {
+    setIsOpen(!isOpen);
   };
 
-  optiosn1 = () => {
-    const { theStreets } = this.props;
+  const optiosn1 = () => {
     if (!theStreets || !Array.isArray(theStreets)) return [];
     return theStreets?.map((street) => {
       const { name, id } = street;
@@ -32,75 +20,49 @@ export default class SearchStreetInput extends Component {
       };
     });
   };
-
-  onSelectChange = (value) => {
-    this.toggleOpen();
-    this.setState({ value });
-    const { setTheStreet } = this.props;
-    setTheStreet(value);
+  const onSelectChange = (value1) => {
+    toggleOpen();
+    setTheStreet(value1.label);
+    setInputValue(value1.label);
   };
-
-  render() {
-    const { isOpen, value } = this.state;
-    return (
-      <div className="relative">
-        <Dropdown
-          isOpen={isOpen}
-          onClose={this.toggleOpen}
-          className="absolute"
-          target={
-            <button
-              name="street"
-              type="button"
-              className="bwc"
-              iconafter={<ChevronDown />}
-              onClick={this.toggleOpen}
-              isselected={isOpen.toString()}
-            >
-              {value ? `  ${value.label}` : 'בחר רחוב  *'}
-            </button>
-          }
-        >
-          <Select
-            autoFocus
-            backspaceRemovesValue={false}
-            //   components={{ DropdownIndicator, IndicatorSeparator: null }}
-            controlShouldRenderValue={false}
-            hideSelectedOptions={false}
-            isClearable={false}
-            menuIsOpen
-            className="absolute w-full"
-            onChange={this.onSelectChange}
-            options={this.optiosn1()}
-            placeholder="Search..."
-            styles={selectStyles}
-            tabSelectsValue={false}
-            value={value}
-          />
-        </Dropdown>
-      </div>
-    );
-  }
-}
-
-// styled components
-
-const Menu = (props) => {
-  const shadow = 'hsla(218, 50%, 10%, 0.1)';
   return (
-    <div
-      css={{
-        backgroundColor: 'white',
-        borderRadius: 4,
-        boxShadow: `0 0 0 1px ${shadow}, 0 4px 11px ${shadow}`,
-        marginTop: 8,
-        position: 'absolute',
-        zIndex: 2,
-      }}
-      {...props}
-    />
+    <div className="relative">
+      <Dropdown
+        isOpen={isOpen}
+        onClose={toggleOpen}
+        className="absolute"
+        target={
+          <button
+            disabled={!cityData}
+            name="street"
+            type="button"
+            className="bwc text-grey-active"
+            onClick={toggleOpen}
+            isselected={isOpen.toString()}
+          >
+            {inputValue ? `  ${inputValue}` : 'בחר רחוב  *'}
+          </button>
+        }
+      >
+        <Select
+          autoFocus
+          backspaceRemovesValue={false}
+          controlShouldRenderValue={false}
+          hideSelectedOptions={false}
+          isClearable={false}
+          menuIsOpen
+          className="absolute w-full"
+          onChange={onSelectChange}
+          options={optiosn1()}
+          placeholder="Search..."
+          tabSelectsValue={false}
+          value={theStreet?.name}
+        />
+      </Dropdown>
+    </div>
   );
 };
+export default SearchStreetInput;
 const Blanket = (props) => (
   <div
     css={{
@@ -121,26 +83,19 @@ const Dropdown = ({ children, isOpen, target, onClose }) => (
     {isOpen ? <Blanket onClick={onClose} /> : null}
   </div>
 );
-const Svg = (p) => (
-  <svg width="24" height="24" viewBox="0 0 24 24" focusable="false" role="presentation" {...p} />
-);
-// const DropdownIndicator = () => (
-//   <div css={{ color: colors.neutral20, height: 24, width: 32 }}>
-//     <Svg>
-//       <path
-//         d="M16.436 15.085l3.94 4.01a1 1 0 0 1-1.425 1.402l-3.938-4.006a7.5 7.5 0 1 1 1.423-1.406zM10.5 16a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11z"
-//         fill="currentColor"
-//         fillRule="evenodd"
-//       />
-//     </Svg>
-//   </div>
-// );
-const ChevronDown = () => (
-  <Svg style={{ marginRight: -6 }}>
-    <path
-      d="M8.292 10.293a1.009 1.009 0 0 0 0 1.419l2.939 2.965c.218.215.5.322.779.322s.556-.107.769-.322l2.93-2.955a1.01 1.01 0 0 0 0-1.419.987.987 0 0 0-1.406 0l-2.298 2.317-2.307-2.327a.99.99 0 0 0-1.406 0z"
-      fill="currentColor"
-      fillRule="evenodd"
-    />
-  </Svg>
+const Menu = (props) => (
+  // const shadow = 'hsla(218, 50%, 10%, 0.1)';
+  <div
+    className="vvf"
+    // css={{
+    //   backgroundColor: 'red',
+    //   borderRadius: 4,
+    //   boxShadow: `0 0 0 1px ${shadow}, 0 4px 11px ${shadow}`,
+    //   marginTop: 8,
+    //   position: 'absolute',
+    //   color: 'red',
+    //   zIndex: 2,
+    // }}
+    {...props}
+  />
 );

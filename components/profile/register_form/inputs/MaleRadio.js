@@ -3,10 +3,11 @@ const MaleRadio = (props) => {
   return (
     <label
       htmlFor="input-gender-male"
-      className="text-regiterPageDarkBottomText leading-regiterPageDarkBottomText text-regiterPageDarkBottomTextcolor"
+      className="text-regiterPageDarkBottomText leading-regiterPageDarkBottomText text-regiterPageDarkBottomTextcolor flex"
     >
       <input
         required
+        // defaultChecked
         onChange={handleChange}
         className="inline-block male mx-4"
         id="input-gender-male"

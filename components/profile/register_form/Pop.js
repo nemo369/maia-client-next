@@ -10,7 +10,7 @@ const Pop = (props) => {
     <Popup
       trigger={
         <button type="button" className="button">
-          תנאי התקנון
+          <u>תנאי התקנון</u>
         </button>
       }
       modal
