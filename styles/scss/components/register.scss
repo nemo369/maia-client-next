@@ -37,18 +37,26 @@
   margin: auto;
   text-align: center;
 }
+.modal {
+  width: 400px;
+}
 .modal > .close {
   cursor: pointer;
   position: absolute;
   display: block;
   padding: 2px 5px;
   line-height: 20px;
-  right: -10px;
-  top: -10px;
-  font-size: 24px;
+  width: 29px;
+  height: 29px;
+  right: 17px;
+  top: 21px;
   background: #ffffff;
-  border-radius: 18px;
-  border: 1px solid #cfcece;
+  font-size: 21px;
+  font-weight: 600;
+  color: rgb(214, 214, 214);
+  border-radius: 100%;
+  color: rgb(214, 214, 214);
+  border: 2px solid rgb(214, 214, 214);
 }
 
 .smallpop:hover + .coeffitiontPop {
@@ -94,30 +102,4 @@
   background-position: center;
   background-size: 70%;
   background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMTJweCIgaGVpZ2h0PSIxMXB4IiB2aWV3Qm94PSIwIDAgMTIgMTEiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8dGl0bGU+MDYzNzk4ODktRDQzMi00REM1LUE3NzEtQUVGRkY1NjVENjc0PC90aXRsZT4KICAgIDxnIGlkPSJEZXNpZ24iIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCI+CiAgICAgICAgPGcgaWQ9IlN0eWxlZ3VpZGUiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC00NDkuMDAwMDAwLCAtMjk0Ni4wMDAwMDApIiBzdHJva2U9IiMzQzkxQTAiIHN0cm9rZS13aWR0aD0iMiI+CiAgICAgICAgICAgIDxwb2x5bGluZSBpZD0iUGF0aC0yIiBwb2ludHM9IjQ1MCAyOTUxLjg0Njg1IDQ1Mi45OTkzMjkgMjk1NS4wNTA5IDQ1OS44MTczODggMjk0NyI+PC9wb2x5bGluZT4KICAgICAgICA8L2c+CiAgICA8L2c+Cjwvc3ZnPg==');
-}
-
-.modal > *::-webkit-scrollbar-thumb {
-  border-radius: 8px;
-  height: 80px;
-  width: 0px;
-}
-body > ::-webkit-scrollbar-thumb {
-  background-color: red;
-  border-radius: 8px;
-  height: 80px;
-  width: 0px;
-}
-
-.css-26l3qy-menu {
-  top: 100%;
-  // background-color: hsl(0deg 68% 46%);
-  background-color: red;
-  border-radius: 4px;
-  box-shadow: 0 0 0 1px hsl(0deg 0% 0% / 10%), 0 4px 11px hsl(0deg 0% 0% / 10%);
-  margin-bottom: 8px;
-  margin-top: 8px;
-  position: absolute;
-  width: 100%;
-  z-index: 1;
-  box-sizing: border-box;
 }
