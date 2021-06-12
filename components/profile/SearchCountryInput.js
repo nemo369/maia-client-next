@@ -1,6 +1,47 @@
 import { useState } from 'react';
 import Select from 'react-select';
 
+const customStyles = {
+  menuList: (provided, state) => ({
+    ...provided,
+    width: '98%',
+    borderBottom: '1px dotted pink',
+
+    padding: 20,
+
+    '::-webkit-scrollbar-thumb': {
+      background: '#00C5C6', // imported color string
+      marginRight: '10px',
+      height: '50px',
+      borderRadios: '50%',
+      width: '10px',
+    },
+    '::-webkit-scrollbar-track': {
+      background: '#D6D9E2',
+      marginRight: '10px',
+      opacity: '0.55',
+      borderRadios: '20px',
+      width: '5px',
+    },
+    '::-webkit-scrollbar': {
+      marginRight: '10px',
+      width: '4px',
+    },
+  }),
+  option: (provided, state) => ({
+    ...provided,
+
+    ':hover': {
+      color: '#00C5C6',
+      backgroundColor: 'white',
+      fontWeight: '600',
+    },
+    ':activ': {
+      // color: '#00C5C6',
+    },
+  }),
+};
+
 const SearchCountryInput = (props) => {
   const [isOpen, setIsOpen] = useState(false);
   const [vale, setVale] = useState(undefined);
@@ -63,6 +104,7 @@ const SearchCountryInput = (props) => {
           placeholder="Search..."
           tabSelectsValue={false}
           value={value}
+          styles={customStyles}
         />
       </Dropdown>
       {err ? <h3>must fill in feald bitch</h3> : ''}
@@ -82,9 +124,15 @@ const Menu = (props) => (
     //   position: 'absolute',
     //   color: 'red',
     //   zIndex: 2,
-    // }}
     {...props}
-  />
+    // }}
+  >
+    {/* <div className="react-select__menu ">
+      <div className="react-select__menu-list bbg ">
+        <div className="react-select__option " {...props} />
+      </div>
+    </div> */}
+  </div>
 );
 // const Blanket = (props) => (
 //   <div
@@ -100,10 +148,12 @@ const Menu = (props) => (
 //     {...props}
 //   />
 // );
+{
+  /* <div className="react-select__menu scrollbar-thin scrollbar-thumb-gradient-1"> */
+}
 const Dropdown = ({ children, isOpen, target }) => (
   <div className="boomp " css={{ position: 'absolute', color: 'red' }}>
     {target}
     {isOpen ? <Menu>{children}</Menu> : null}
-    {/* {isOpen ? <Blanket onClick={onClose} /> : null} */}
   </div>
 );
