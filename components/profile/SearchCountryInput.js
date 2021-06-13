@@ -1,6 +1,63 @@
 import { useState } from 'react';
 import Select from 'react-select';
 
+const customStyles = {
+  menuList: (provided) => ({
+    ...provided,
+    width: '98%',
+    padding: 20,
+
+    '::-webkit-scrollbar-thumb': {
+      background: '#00C5C6',
+      height: '50px',
+      borderRadios: '50%',
+      width: '10px',
+    },
+    '::-webkit-scrollbar-track': {
+      background: '#D6D9E2',
+      opacity: '0.55',
+      borderRadios: '20px',
+      width: '5px',
+    },
+    '::-webkit-scrollbar': {
+      width: '4px',
+    },
+  }),
+  option: (provided) => ({
+    ...provided,
+    ':hover': {
+      color: '#00C5C6',
+      backgroundColor: 'white',
+      fontWeight: '600',
+    },
+  }),
+  menu: (provided) => ({
+    ...provided,
+    marginTop: '0px',
+    padding: '10px',
+    color: 'grey',
+    border: '1px solid #CCCCCC',
+  }),
+  // control: (provided, state) => ({
+  //   ...provided,
+
+  //   alignItems: 'center',
+  //   backgroundColor: 'hsl(0, 0%, 100%)',
+  //   // borderColor: 'red',
+  //   borderRadius: '4px',
+  //   borderStyle: 'solid',
+  //   borderWidth: '1px',
+  //   cursor: 'default',
+  //   display: 'flex',
+  //   border: '2px solid grey',
+  //   zIndex: '0',
+
+  //   ':activ': {
+  //     bordColor: 'red',
+  //   },
+  // }),
+};
+
 const SearchCountryInput = (props) => {
   const [isOpen, setIsOpen] = useState(false);
   const [vale, setVale] = useState(undefined);
@@ -9,6 +66,13 @@ const SearchCountryInput = (props) => {
 
   const toggleOpen = () => {
     setIsOpen(!isOpen);
+    const gg = document.querySelector('.city');
+    gg.style.backgroundColor = 'rgba(255, 255, 255, 0.81)';
+    gg.style.border = 'solid 2px #41c2c4';
+    if (isOpen) {
+      gg.style.backgroundColor = 'rgba(231, 231, 231)';
+      gg.style.border = 'none';
+    }
   };
 
   const optiosn1 = () => {
@@ -37,11 +101,12 @@ const SearchCountryInput = (props) => {
         isOpen={isOpen}
         onClose={toggleOpen}
         className="absolute vvf "
+        required
         target={
           <button
             type="button"
             required
-            className="bwc text-grey-active emailini  "
+            className="regiserPageInput city bwc text-grey-active emailini  hover: bg-red-900  "
             onClick={toggleOpen}
             isselected={isOpen.toString()}
           >
@@ -57,12 +122,21 @@ const SearchCountryInput = (props) => {
           hideSelectedOptions={false}
           isClearable={false}
           menuIsOpen
-          className="absolute w-full max-h-52 "
+          className="absolute w-full max-h-52 border-grey-500 "
           onChange={onSelectChange}
           options={optiosn1()}
           placeholder="Search..."
           tabSelectsValue={false}
           value={value}
+          styles={customStyles}
+          theme={(theme) => ({
+            ...theme,
+            borderRadius: '4px',
+            colors: {
+              ...theme.colors,
+              primary: '#CCCCCC',
+            },
+          })}
         />
       </Dropdown>
       {err ? <h3>must fill in feald bitch</h3> : ''}
@@ -74,17 +148,24 @@ export default SearchCountryInput;
 const Menu = (props) => (
   <div
     className="vvf"
-    // css={{
-    //   backgroundColor: 'red',
-    //   borderRadius: 4,
-    //   boxShadow: `0 0 0 1px ${shadow}, 0 4px 11px ${shadow}`,
-    //   marginTop: 8,
-    //   position: 'absolute',
-    //   color: 'red',
-    //   zIndex: 2,
-    // }}
+    css={{
+      backgroundColor: 'red',
+      borderRadius: 4,
+      // bord
+      // boxShadow: `0 0 0 1px ${shadow}, 0 4px 11px ${shadow}`,
+      marginTop: 8,
+      position: 'absolute',
+      color: 'red',
+      zIndex: 2,
+    }}
     {...props}
-  />
+  >
+    {/* <div className="react-select__menu ">
+      <div className="react-select__menu-list bbg ">
+        <div className="react-select__option " {...props} />
+      </div>
+    </div> */}
+  </div>
 );
 // const Blanket = (props) => (
 //   <div
@@ -100,10 +181,10 @@ const Menu = (props) => (
 //     {...props}
 //   />
 // );
+
 const Dropdown = ({ children, isOpen, target }) => (
   <div className="boomp " css={{ position: 'absolute', color: 'red' }}>
     {target}
     {isOpen ? <Menu>{children}</Menu> : null}
-    {/* {isOpen ? <Blanket onClick={onClose} /> : null} */}
   </div>
 );
