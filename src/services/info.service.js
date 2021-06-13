@@ -14,7 +14,6 @@ const Infoservice = {
         // },
         { city_id: cityId }
       );
-      console.log(data);
       return data;
     } catch (error) {
       return error.response;
