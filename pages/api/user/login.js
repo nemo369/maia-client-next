@@ -19,7 +19,7 @@ export default async function login(req, res) {
         }
 
         await axios
-          .get(`${WORDPRESS_ENDPOINT}/wp-json/wp/v2/users/user`, {
+          .get(`${WORDPRESS_ENDPOINT}/wp-json/wp/v2/user/user`, {
             headers: {
               Authorization: `Bearer ${tokenData.token}`,
             },

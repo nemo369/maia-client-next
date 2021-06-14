@@ -32,6 +32,22 @@ const UserAPI = {
       return error.response;
     }
   },
+  EmailLogin: async (creditiontals) => {
+    try {
+      const response = await axios.post(
+        `${SERVER_BASE_URL}/user/magic-link`,
+        JSON.stringify(creditiontals),
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      );
+      return response;
+    } catch (error) {
+      return error.response;
+    }
+  },
   register: async (user) => {
     try {
       const response = await axios.post(`${SERVER_BASE_URL}/user/register`, JSON.stringify(user), {
