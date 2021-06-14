@@ -5,40 +5,37 @@ export default async function login(req, res) {
   const { WORDPRESS_ENDPOINT, NODE_ENV } = process.env;
   const { method } = req;
   destroyCookie({ res }, 'token-cookie');
+  const { nonce, email, key } = req.query;
 
   switch (method) {
-    case 'POST':
+    case 'GET':
       // Get data from your database
       try {
-        const { data: tokenData } = await axios.post(
-          `${WORDPRESS_ENDPOINT}/wp-json/jwt-auth/v1/token`,
-          req.body
-        );
-        if (!tokenData?.token) {
-          throw new Error('No token :(');
+        if (!nonce || !email || !key || 20 > key.length) {
+          throw new Error();
         }
-
         await axios
-          .get(`${WORDPRESS_ENDPOINT}/wp-json/wp/v2/user/user`, {
-            headers: {
-              Authorization: `Bearer ${tokenData.token}`,
-            },
-          })
-          .then(({ data: moreData }) => {
-            const user = {
-              ...tokenData,
-              ...moreData,
-            };
+          .get(
+            `${WORDPRESS_ENDPOINT}/wp-json/wp/v2/user/user?nonce=${nonce}&email=${email}&key=${key}`
+          )
+          .then(({ data: user }) => {
             setCookie({ res }, 'token-cookie', JSON.stringify(user), {
               secure: 'production' === NODE_ENV,
               maxAge: 72576000,
               httpOnly: true,
               path: '/',
             });
-            res.status(200).json({ ...user, token: 'token' });
+            res.writeHead(307, { Location: '/' });
+            res.end();
+          })
+          .catch(({ response }) => {
+            res.writeHead(307, { Location: `/user/login?error=${response.data.message}` });
+            res.end();
           });
       } catch ({ response }) {
-        res.status(response.status).json(response.data);
+        res.writeHead(307, { Location: '/user/login' });
+        res.end();
+        // res.status(response.status).json(response.data);
       }
 
       break;

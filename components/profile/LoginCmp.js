@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { LOGIN_TYPE_LS } from '../../src/utils/consts';
 import { Case, Switch } from '../common/Switch';
-import Logosvg from '../svg/Logo';
+import SilverLog from '../svg/SilverLog';
 import LoginWithMail from './login/LoginWithMail';
 import LoginWithPassword from './login/LoginWithPassword';
 import LoginWithPhone from './login/LoginWithPhone';
@@ -18,7 +18,7 @@ export default function LoginCmp() {
   return (
     <section className="flex flex-col  h-full">
       <div className="mb-16">
-        <Logosvg />
+        <SilverLog />
       </div>
       <Switch test={loginType}>
         <Case value="password">
@@ -35,7 +35,8 @@ export default function LoginCmp() {
       <div className="mt-auto mx-auto text-center">
         {'phone' !== loginType && (
           <button
-            className="block underline mx-auto"
+            // className="underline absolute"
+            className="block underline mx-auto my-auto "
             type="button"
             onClick={() => changeLoginType('phone')}
           >

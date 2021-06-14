@@ -57,7 +57,7 @@ const NavBar = () => {
             </a>
           </Link>
         </div>
-        <ul className="nav__links flex flex-col items- mx-4 justify-center gap-y-2">
+        <ul className="nav__links flex flex-col items- mx-4 justify-center gap-y-4">
           {links.map((link) => (
             <LinkButton key={link.href} link={link} isActive={pathname === link.href} />
           ))}

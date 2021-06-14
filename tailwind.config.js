@@ -69,9 +69,9 @@ module.exports = {
           2: '#3C91A0',
         },
       },
-      spacing: {
-        registerPageInputHeight: '50px',
-      },
+      // spacing: {
+      //   registerPageInputHeight: '50px',
+      // },
       backgroundColor: (theme) => ({
         ...theme('colors'),
         mainOrange: '#FB9773',

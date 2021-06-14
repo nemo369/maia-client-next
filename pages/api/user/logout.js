@@ -8,7 +8,7 @@ export default async function login(req, res) {
     case 'POST':
       // Get data from your database
       await axios
-        .get(`${WORDPRESS_ENDPOINT}/wp-json/wp/v2/users`)
+        .get(`${WORDPRESS_ENDPOINT}/wp-json/wp/v2/user`)
         .then(({ data }) => {
           res.status(200).json({ data });
         })
