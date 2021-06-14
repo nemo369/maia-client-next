@@ -17,7 +17,7 @@ export default async function proxy(req, res) {
       break;
     case 'POST':
       await axios
-        .post(`${WORDPRESS_ENDPOINT}/wp-json/wp/v2/${endpoint}`, req.body)
+        .post(`${WORDPRESS_ENDPOINT}/wp-json/wp/v2${endpoint}`, req.body)
         .then(({ data }) => {
           console.log(data);
           res.status(200).json({ data });
