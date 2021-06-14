@@ -6,3 +6,13 @@
 .lightbulb {
   color: white;
 }
+
+.school-hat {
+  color: #3fafb6;
+}
+
+.profile-container {
+  display: grid;
+  grid-template-columns: 1fr 2.5fr 1fr;
+  column-gap: 20px;
+}
