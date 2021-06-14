@@ -32,17 +32,13 @@ const UserAPI = {
       return error.response;
     }
   },
-  EmailLogin: async (creditiontals) => {
+  emailLogin: async (email) => {
     try {
-      const response = await axios.post(
-        `${SERVER_BASE_URL}/user/magic-link`,
-        JSON.stringify(creditiontals),
-        {
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        }
-      );
+      const response = await axios.get(`${SERVER_BASE_URL}/user/magic-link?email=${email}`, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
       return response;
     } catch (error) {
       return error.response;

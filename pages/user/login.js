@@ -4,7 +4,7 @@ const Login = () => (
   <>
     <section className="login__wrapper flex justify-center items-center h-screen overflow-hidden">
       <div className="md:flex login text-white w-full">
-        <div className="login__form bg-green-500 rounded px-14 py-11">
+        <div className="login__form bg-green-500 rounded-lg px-14 py-11">
           <LoginCmp />
         </div>
         <div className="login__image flex-grow">

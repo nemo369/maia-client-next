@@ -4,11 +4,10 @@ export default async function proxy(req, res) {
   const { WORDPRESS_ENDPOINT } = process.env;
   const { method, url } = req;
   const endpoint = url.replace(/^\/api/, '');
-
   switch (method) {
     case 'GET':
       await axios
-        .get(`${WORDPRESS_ENDPOINT}/wp-json/wp/v2/${endpoint}`)
+        .get(`${WORDPRESS_ENDPOINT}/wp-json/wp/v2${endpoint}`)
         .then(({ data }) => {
           res.status(200).json({ data });
         })
