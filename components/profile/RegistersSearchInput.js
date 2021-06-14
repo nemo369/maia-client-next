@@ -34,7 +34,7 @@ const SearchInput = () => (
   //     });
   <div className="dropdown">
     <input
-      className="regiserPageInput h-registerPageInputHeight w-full bg-registerPageInputGrey my-4 rounded-md "
+      className="regiserPageInput h-12 w-full bg-registerPageInputGrey my-4 rounded-md "
       placeholder="בחר עיר *"
       onClick={myFunction}
     />

@@ -7,7 +7,7 @@ export default async function register(req, res) {
     case 'POST':
       // Get data from your database
       await axios
-        .post(`${WORDPRESS_ENDPOINT}/wp-json/wp/v2/users/register`, req.body)
+        .post(`${WORDPRESS_ENDPOINT}/wp-json/wp/v2/user/register`, req.body)
         .then(({ data }) => {
           res.status(200).json({ data });
         })
