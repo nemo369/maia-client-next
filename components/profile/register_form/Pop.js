@@ -5,11 +5,10 @@ const Pop = (props) => {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
+    const wrapper = document.querySelector('#__next');
     if (open) {
-      const wrapper = document.querySelector('#__next');
       wrapper.style.filter = 'blur(2px)';
     } else {
-      const wrapper = document.querySelector('#__next');
       wrapper.style.filter = 'blur(0px)';
     }
   }, [open]);

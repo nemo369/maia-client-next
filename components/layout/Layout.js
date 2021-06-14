@@ -4,7 +4,7 @@ import NavBar from '../navbar/NavBar';
 
 const Layout = function ({ children }) {
   const { pathname } = useRouter();
-  const witihoutnav = ['/user/register', '/user/login'];
+  const witihoutnav = ['/user/signup', '/user/login'];
   return (
     <section className="min-h-screen overflow-hidden md:flex  bg-lightgreybackground wrapper">
       {!witihoutnav.includes(pathname) ? <NavBar /> : ''}

@@ -10,10 +10,10 @@ const SignUpHeader = function () {
         <div className="ml-4 inline-block">
           <p className="inline-block text-lg">יש לך שם משתמש? </p>
           <span> </span>
-          <Link href="http://localhost:3000/login">
-            <p className="inline-block text-orange-mainOr text-lg">
+          <Link href="/user/login">
+            <a className="inline-block text-orange-mainOr text-lg">
               <u> התחבר עכשיו </u>
-            </p>
+            </a>
           </Link>
         </div>
         <WHeelChair />
