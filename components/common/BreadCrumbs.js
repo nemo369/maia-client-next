@@ -7,10 +7,12 @@ function BreadCrumbs({ breadCrumbs }) {
   const bcs = [...main, ...breadCrumbs];
   return (
     <nav className="bread-crumbs" aria-label="breadcrumbs">
-      <ul className="flex items-center text-lg font-bold text-grey mb-4">
+      <ul className="flex items-center text-lg font-bold text-gray mb-4">
         {bcs.map((bc, key, { length, lastIndex = length - 1 }) => (
           <li
-            className={`ml-3 flex items-center ${key === lastIndex ? 'text-black' : ''}`}
+            className={`ml-3 flex items-center opacity-50 ${
+              key === lastIndex ? 'text-black opacity-100' : ''
+            }`}
             key={bc.href}
           >
             {key ? (

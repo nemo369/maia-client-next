@@ -6,7 +6,7 @@ export default function Button({ name, onClickFunction, submit, disabled, classN
     case 'main':
       classes += `h-[50px] px-[105px] ${
         disabled
-          ? 'bg-grey-disabled text-grey-text font-bold'
+          ? 'bg-gray-disabled text-gray-text font-bold'
           : 'bg-orange text-white active:bg-orange-active hover:bg-orange-active font-bold'
       }`;
       break;
@@ -18,7 +18,7 @@ export default function Button({ name, onClickFunction, submit, disabled, classN
     case 'gradient':
       classes += `h-16 px-10 ${
         disabled
-          ? 'bg-grey-disabled text-grey-text font-thin'
+          ? 'bg-gray-disabled text-gray-text font-thin'
           : 'bg-gradient-to-r from-gradient-1 to-gradient-2 text-white hover:from-blue hover:to-blue font-bold'
       }`;
       break;

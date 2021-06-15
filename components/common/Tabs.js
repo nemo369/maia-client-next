@@ -8,7 +8,7 @@ export default function Tabs({ type, firstTab, secondTab, onClickFunction, class
       <button
         hidden={active}
         className={`text-lg focus:outline-none 
-        bg-grey active:bg-grey-active focus:bg-grey-active 
+        bg-gray active:bg-gray-active focus:bg-gray-active 
         text-white py-3.5 px-36 ml-2 font-bold rounded-tr-lg ${className}`}
         type="button"
         onClick={onClickFunction}
@@ -28,7 +28,7 @@ export default function Tabs({ type, firstTab, secondTab, onClickFunction, class
       <button
         hidden={!active}
         className={`text-lg focus:outline-none 
-        bg-grey active:bg-grey-active
+        bg-gray active:bg-gray-active
         text-white py-3.5 w-610 ml-2 font-bold rounded-tr-lg rounded-tl-lg ${className}`}
         type="button"
         onClick={onClickFunction}

@@ -28,7 +28,7 @@ const LoginWithMail = () => {
             setEmail(e.target.value);
           }}
           required
-          className="w-full h-[50px] rounded-md text-grey"
+          className="w-full h-[50px] rounded-md text-gray"
           placeholder="מייל"
         />
         <button

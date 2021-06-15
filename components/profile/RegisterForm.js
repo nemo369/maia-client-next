@@ -48,7 +48,6 @@ const RegisterForm = ({ cities, termsText }) => {
     const getStreets = async () => {
       const { data } = await Infoservice.getStreetInfo(cityId);
       if (data) {
-        console.log(data);
         setTheStreets(data);
       }
     };

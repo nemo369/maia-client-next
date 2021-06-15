@@ -10,7 +10,7 @@ const EmailInput = (props) => {
         placeholder="מייל *"
         value={value}
         onChange={handleChange}
-        className="regiserPageInput bwc emailini justify-self-center h-12 w-full bg-grey-disabled  my-4 rounded-md"
+        className="regiserPageInput bwc emailini justify-self-center h-12 w-full bg-gray-disabled  my-4 rounded-md"
       />
     </div>
   );
