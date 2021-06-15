@@ -44,6 +44,18 @@ const UserAPI = {
       return error.response;
     }
   },
+  phoneLogin: async (phone) => {
+    try {
+      const response = await axios.get(`${SERVER_BASE_URL}/user/magic-link?phone=${phone}`, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      return response;
+    } catch (error) {
+      return error.response;
+    }
+  },
   register: async (user) => {
     try {
       const response = await axios.post(`${SERVER_BASE_URL}/user/register`, JSON.stringify(user), {

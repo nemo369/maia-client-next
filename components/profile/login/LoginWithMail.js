@@ -49,7 +49,6 @@ const LoginWithMail = () => {
               : ''
           }`}
           placeholder="מייל"
-          // placeholder={error ? `${email}מייל לא קיים או לא תקין` : 'mail'}
         />
         <button
           type="submit"
@@ -70,7 +69,6 @@ const LoginWithMail = () => {
           ''
         )}
       </form>
-      {/* <div className=" w-[200px] h-[300px] bg-red-active ">תבדוק את המייל שלך</div> */}
     </div>
   );
 };

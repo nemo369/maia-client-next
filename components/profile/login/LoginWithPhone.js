@@ -8,7 +8,7 @@ function LoginWithPhone() {
   const [loader, setLoader] = useState(false);
   const [popup, setPopup] = useState('');
   const validatePhoneNumber = (emailToValidate) => {
-    // eslint-disable-next-line prettier/prettier
+    // eslint-disable-next-line no-useless-escape
     const re = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
     return re.test(emailToValidate);
   };
@@ -20,7 +20,7 @@ function LoginWithPhone() {
       return;
     }
     setLoader(true);
-    const { data, status } = await UserAPI.emailLogin(cellNumber);
+    const { data, status } = await UserAPI.phoneLogin(cellNumber);
     setLoader(false);
     if (200 !== status || !data.data.message) {
       setError(true);
@@ -36,9 +36,9 @@ function LoginWithPhone() {
       </div>
       <form method="POST" onSubmit={handleSubmit} className="relative">
         <input
-          type="text"
+          type="number"
           onChange={(e) => {
-            setEmail(e.target.value);
+            setCellNUmber(e.target.value);
             setError(false);
           }}
           className={`email1 w-full h-[50px] rounded-md text-grey px-3 font-bold text-[18px] ${
@@ -47,7 +47,6 @@ function LoginWithPhone() {
               : ''
           }`}
           placeholder="נייד"
-          // placeholder={error ? `${email}מייל לא קיים או לא תקין` : 'mail'}
         />
         <button
           type="submit"
@@ -55,11 +54,11 @@ function LoginWithPhone() {
         >
           התחברות
         </button>
-        <Loader loading={loader} />
+        <Loader className="absolute right-40 w-32 h-32" loading={loader} />
         {popup && <p>{popup}</p>}
         {error ? (
           <div className="absolute top-3  right-auto left-2  font-bold  text-red-500 grid grid-flow-col items-center">
-            נייד לא תקין
+            נייד לא קיים
             <div className="w-5  leading-4 h-5 font-bold text-center mr-3 text-lg border-2 border-red-500  text-red-500 rounded-full inline-block">
               i
             </div>
@@ -68,7 +67,6 @@ function LoginWithPhone() {
           ''
         )}
       </form>
-      {/* <div className=" w-[200px] h-[300px] bg-red-active ">תבדוק את המייל שלך</div> */}
     </div>
   );
 }
