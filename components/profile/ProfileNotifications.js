@@ -1,4 +1,5 @@
 import React from 'react';
+import Xcircle from '../svg/Xcircle';
 
 const news = [
   {
@@ -47,7 +48,9 @@ export default function ProfileNotifications() {
                   <div className="text-[14px] opacity-70">{content.date}</div>
                 </div>
                 <div className="w-[10px]">
-                  <button type="button">X</button>
+                  <button type="button">
+                    <Xcircle />
+                  </button>
                 </div>
               </div>
             ))}
@@ -64,7 +67,9 @@ export default function ProfileNotifications() {
                   <div className="text-[14px] opacity-70">{content.date}</div>
                 </div>
                 <div className="w-[10px]">
-                  <button type="button">X</button>
+                  <button type="button">
+                    <Xcircle />
+                  </button>
                 </div>
               </div>
             ))}
