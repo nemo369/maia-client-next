@@ -1,6 +1,12 @@
 const seoObj = {
-  title: 'מערכת מאיה |',
-  description: 'We fu**ing help people yall',
+  title: 'מערכת מאי״ה | ',
+  description: 'מערכת אבחון, ייעוץ והרשמה מבית אדם מילא',
+  openGraph: {
+    type: 'website',
+    locale: 'he_IL',
+    // url: 'https://www.nextmovies.test',
+    site_name: 'מאערכת המאי״ה',
+  },
 };
 export const seoMerge = (seo) => ({
   ...seoObj,
