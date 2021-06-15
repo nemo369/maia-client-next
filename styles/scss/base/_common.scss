@@ -479,3 +479,15 @@ input[type='radio']:checked {
   position: absolute;
   pointer-events: none;
 }
+
+.gray-hat {
+  display: flex;
+  justify-content: center;
+  svg {
+    height: 40px;
+  }
+  path {
+    stroke: #cccccc;
+    stroke-width: 3px;
+  }
+}

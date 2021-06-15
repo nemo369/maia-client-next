@@ -36,7 +36,7 @@ export default function ProfileFavorite() {
       </div>
       <div className="fav-content w-[100%] h-[283px] flex justify-center items-center">
         <div className="fav-content-empty-state">
-          <div>
+          <div className="gray-hat">
             <SchoolHat />
           </div>
           <div className="text-black opacity-20 text-[28px] font-bold">
