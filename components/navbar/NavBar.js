@@ -46,7 +46,7 @@ const NavBar = () => {
       <div className="nav__placeholder h-screen w-[150px]" />
       <aside className="fixed z-10  nav flex flex-col h-screen justify-between bg-green-500  items-center">
         <div className="nav__profile  mt-4 my-1">
-          <Link href="/ProfilePage">
+          <Link href="/profile">
             <a>
               <div className="w-[84px]  mx-auto">
                 {'m' === user?.gender ? <MalePic /> : <FemalePic />}
