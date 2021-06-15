@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import UserAPI from '../../../src/services/user.service';
-import SmallExclamationMarkGreen from '../../svg/SmallExclamationMarkGreen';
 import Loader from '../../common/Loader';
 
 const LoginWithMail = () => {
