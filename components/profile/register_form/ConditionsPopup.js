@@ -4,7 +4,7 @@ const ConditionsPopup = () => (
     <div className="grid grid-cols-2 mt-2">
       <button type="button">exit</button>
       <span />
-      <h1 className="font-black text-3xl leading-8 text-center text-grey-mid col-start-1 col-end-3 mb-3">
+      <h1 className="font-black text-3xl leading-8 text-center text-gray-mid col-start-1 col-end-3 mb-3">
         תנאי תקנון:
       </h1>
     </div>

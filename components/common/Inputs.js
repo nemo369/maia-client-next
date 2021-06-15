@@ -12,7 +12,7 @@ export default function Inputs({
   let classes = '';
   switch (status) {
     case 'main':
-      classes += 'bg-grey-disabled focus:ring-blue-active';
+      classes += 'bg-gray-disabled focus:ring-blue-active';
       break;
     case 'secondary':
       classes += 'bg-white focus:ring-blue-active';

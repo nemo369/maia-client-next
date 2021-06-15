@@ -54,7 +54,7 @@ export default function Positions({
           </div>
         </div>
 
-        <div className="company text-grey-active text-[18px]">{company}</div>
+        <div className="company text-gray-active text-[18px]">{company}</div>
         <div className="job-title font-bold text-[18px] text-[#333333]">{jobTitle}</div>
         <div className="dash border-b-[1px] border-dashed border-[#979797] opacity-20 w-full h-1" />
         <div className="description text-[#333333] opacity-70 text-[16px] mt-[10px]">
@@ -63,7 +63,7 @@ export default function Positions({
         <div className="footer w-full flex flex-row-reverse">
           {isButton && (
             <button
-              className="border-black border-2 text-black rounded-[5px] py-[2px] px-[20px] active:bg-grey-lighter focus:outline-none"
+              className="border-black border-2 text-black rounded-[5px] py-[2px] px-[20px] active:bg-gray-lighter focus:outline-none"
               type="button"
             >
               קרא עוד

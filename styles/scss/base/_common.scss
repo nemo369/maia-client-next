@@ -51,7 +51,7 @@ body {
   --switches-bg-color: white;
   --switches-label-color: #6c6c6c;
   --switch-bg-color: #3ea8b1;
-  --switch-bg-color-grey: #999999;
+  --switch-bg-color-gray: #999999;
   --switch-text-color: white;
 }
 
@@ -149,7 +149,7 @@ body {
   -webkit-appearance: none;
   height: 1.56rem;
   width: 3.125rem;
-  background-color: var(--switch-bg-color-grey);
+  background-color: var(--switch-bg-color-gray);
   border-radius: 43px;
   position: relative;
   cursor: pointer;

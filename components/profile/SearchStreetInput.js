@@ -36,7 +36,7 @@ const SearchStreetInput = (props) => {
             disabled={!cityData}
             name="street"
             type="button"
-            className="bwc text-grey-active"
+            className="bwc text-gray-active"
             onClick={toggleOpen}
             isselected={isOpen.toString()}
           >
