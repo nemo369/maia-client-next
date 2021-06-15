@@ -20,7 +20,7 @@ function LoginWithPhone() {
       return;
     }
     setLoader(true);
-    const { data, status } = await UserAPI.emailLogin(email);
+    const { data, status } = await UserAPI.emailLogin(cellNumber);
     setLoader(false);
     if (200 !== status || !data.data.message) {
       setError(true);
