@@ -84,7 +84,8 @@ const RegisterForm = ({ cities, termsText }) => {
   };
 
   return (
-    <div className="registerPage_container relative xl:-mt-24 max-w-5xl mx-auto mb-40 ">
+    <div className="registerPage_container mt-24 relative max-w-5xl mx-auto mb-40 ">
+      {/* <div className="registerPage_container relative xl:-mt-24 max-w-5xl mx-auto mb-40 "> */}
       {/* <ConditionsPopup /> */}
       <MainTitle />
       <Group11 />

@@ -36,7 +36,7 @@ export default function LoginCmp() {
         {'phone' !== loginType && (
           <button
             // className="underline absolute"
-            className="block relative bottom-80 right-24 underline mx-auto my-auto "
+            className="block relative  bottom-52 right-[92px] underline mx-auto my-auto "
             type="button"
             onClick={() => changeLoginType('phone')}
           >
