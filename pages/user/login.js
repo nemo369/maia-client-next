@@ -1,5 +1,6 @@
 import { NextSeo } from 'next-seo';
 import LoginCmp from '../../components/profile/LoginCmp';
+import { seoMerge } from '../../src/utils/next-seo.config';
 
 const Login = () => {
   const seo = seoMerge({
