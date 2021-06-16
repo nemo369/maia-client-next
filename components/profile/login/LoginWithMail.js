@@ -22,14 +22,8 @@ const LoginWithMail = () => {
     }
     setLoader(true);
     const { data, status } = await UserAPI.emailLogin(email);
-    console.log(email);
-    console.log(data);
-    console.log(data.data.message);
-    console.log(status);
     setLoader(false);
     if (200 !== status) {
-      console.log('shrooms');
-      // setError(true);
       setPopup(data.message);
     } else {
       setPopup(data.data.message);

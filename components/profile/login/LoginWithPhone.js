@@ -21,18 +21,14 @@ function LoginWithPhone(props) {
       return;
     }
     setLoader(true);
-    const { data, status } = await UserAPI.emailLogin({ phone: cellNumber, type: 'phone' });
-    console.log(data);
-    console.log(status);
+    const { data, status } = await UserAPI.magicLogin({ phone: cellNumber, type: 'phone' });
     setLoader(false);
     if (200 !== status || !data.data.message) {
       setPopup(data.data.message);
-      // setError(true);
     } else {
       setPopup(data.data.message);
     }
     setCell(cellNumber);
-    // setOpen(true);
   };
   return (
     <div>

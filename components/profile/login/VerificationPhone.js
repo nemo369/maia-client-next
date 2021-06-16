@@ -2,6 +2,7 @@ import router from 'next/router';
 import React, { useState } from 'react';
 import UserAPI from '../../../src/services/user.service';
 import Loader from '../../common/Loader';
+import { SET_USER } from '../../../src/context/userReucder';
 
 const VerificationPhone = (props) => {
   const { cell } = props;
@@ -10,12 +11,19 @@ const VerificationPhone = (props) => {
   const [inputs, setInputs] = useState(['', '', '', '']);
   const [error, setError] = useState(false);
   const [popup, setPopup] = useState('');
+  function formatPhoneNumber(phoneNumberString) {
+    const cleaned = ('' + phoneNumberString).replace(/\D/g, '');
+    const match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
+    if (match) {
+      return '(' + match[1] + ') ' + match[2] + '-' + match[3];
+    }
+    return null;
+  }
   const keyUp = (e, index) => {
     const el = e.currentTarget;
     if (3 !== index && e.target.value) {
       el.nextElementSibling.focus();
     }
-    // console.log(inputs.join(''));
     if (4 === inputs.join('').length) {
       setLoader(true);
       const { data, status } = UserAPI.phoneVerification({ phone: cell, pin: inputs });
@@ -29,6 +37,12 @@ const VerificationPhone = (props) => {
         setClasses(
           'bg-green-success focus:ring-0 focus:ring-green-successBorder border-2 border-green-successBorder text-green-successBorder'
         );
+      }
+
+      //////ככה??/////
+      if (data?.token) {
+        dispatch({ type: SET_USER, user: data });
+
         router.push('/');
       }
       setLoader(false);
@@ -41,18 +55,7 @@ const VerificationPhone = (props) => {
       <div className="mb-11">
         אנא הזן/י את הקוד שקיבלת בהודעת SMS לטלפון שלך
         <br />
-        {cell[0]}
-        {cell[1]}
-        {cell[2]}
-        {'-'}
-        {cell[3]}
-        {cell[4]}
-        {cell[5]}
-        {'-'}
-        {cell[6]}
-        {cell[7]}
-        {cell[9]}
-        {cell[9]}
+        {formatPhoneNumber(cell)}
       </div>
       <div className="flex h-16 gap-x-7">
         {[0, 1, 2, 3].map((index, key) => (

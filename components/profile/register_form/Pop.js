@@ -1,3 +1,4 @@
+/* eslint-disable react/no-danger */
 import { useEffect, useState } from 'react';
 import Popup from 'reactjs-popup';
 
@@ -54,7 +55,7 @@ const Pop = (props) => {
             תנאי תקנון:
           </div>
           <div className="uu w-[98%] max-w-5xl max-h-72 overflow-auto scrollbar-thin  scrollbar-thumb-grey-light ">
-            {/* <div className="content px-8" dangerouslySetInnerHTML={{{__html:termsText.text}} /> */}
+            <div className="content px-8" dangerouslySetInnerHTML={{ __html: termsText.text }} />
           </div>
           <div className="actions">
             <button

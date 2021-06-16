@@ -45,19 +45,6 @@ const UserAPI = {
     }
   },
 
-  ///////אפשר למחוק את זה נכון? ////////////
-  phoneLogin: async (phone) => {
-    try {
-      const response = await axios.get(`${SERVER_BASE_URL}/user/magic-link?phone=${phone}`, {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-      return response;
-    } catch (error) {
-      return error.response;
-    }
-  },
   phoneVerification: async (creditiontals) => {
     try {
       const response = await axios.post(
