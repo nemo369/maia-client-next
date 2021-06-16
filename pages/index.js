@@ -2,7 +2,7 @@ import { NextSeo } from 'next-seo';
 import { getUserSession } from '../src/utils/getUser';
 import { seoMerge } from '../src/utils/next-seo.config';
 
-// import Test from '../components/Test';
+import Test from '../components/Test';
 
 export default function Home() {
   const seo = seoMerge({
@@ -11,7 +11,9 @@ export default function Home() {
   return (
     <>
       <NextSeo {...seo} />
-      <div>{/* <Test /> */}</div>
+      <div>
+        <Test />
+      </div>
     </>
   );
 }
