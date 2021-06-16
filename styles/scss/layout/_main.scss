@@ -7,10 +7,19 @@
   color: white;
 }
 
-.active-svg .active-bulb {
-  fill: #fff;
-  stroke: #fff;
-  // font-weight: 900;
+.school-hat {
+  color: #3fafb6;
+}
+
+.profile-container {
+  display: grid;
+  grid-template-columns: 1fr 2.5fr 1fr;
+  column-gap: 20px;
+  .active-svg .active-bulb {
+    fill: #fff;
+    stroke: #fff;
+    // font-weight: 900;
+  }
 }
 
 .email1::placeholder {

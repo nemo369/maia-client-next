@@ -51,7 +51,7 @@ body {
   --switches-bg-color: white;
   --switches-label-color: #6c6c6c;
   --switch-bg-color: #3ea8b1;
-  --switch-bg-color-grey: #999999;
+  --switch-bg-color-gray: #999999;
   --switch-text-color: white;
 }
 
@@ -149,7 +149,7 @@ body {
   -webkit-appearance: none;
   height: 1.56rem;
   width: 3.125rem;
-  background-color: var(--switch-bg-color-grey);
+  background-color: var(--switch-bg-color-gray);
   border-radius: 43px;
   position: relative;
   cursor: pointer;
@@ -342,4 +342,157 @@ input[type='radio']:checked {
 
 .shadow-active {
   box-shadow: 0 0 0 5px #9c9c90;
+}
+
+//circular-progressbar
+
+.single-chart {
+  float: left;
+}
+.circular-chart {
+  display: block;
+  width: 50px;
+  height: 50px;
+}
+
+.circle {
+  fill: none;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  animation: progress 1s ease-out forwards;
+}
+
+@keyframes progress {
+  0% {
+    stroke-dasharray: 0 100;
+  }
+}
+
+.percentage {
+  fill: #000000;
+  font-size: 12px;
+  text-anchor: middle;
+  font-weight: 900;
+}
+
+.pofile-notifications {
+  background: linear-gradient(143.28deg, #40c2c4 0%, #3c91a0 100%);
+}
+
+//selector
+
+#fav-selector {
+  position: relative;
+  display: block;
+  width: 190px;
+  height: 25px;
+}
+
+#select-button {
+  padding: 3px 12px;
+  background-color: #3333331f;
+  cursor: pointer;
+  color: #0000006e;
+  transition: 0.3s all ease-in-out;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+.label {
+  display: none;
+}
+
+#options-view-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 3;
+  border-radius: 5px;
+}
+
+.options {
+  position: absolute;
+  left: 0;
+  width: 250px;
+}
+
+#options {
+  position: absolute;
+  right: 0;
+  left: 0;
+  margin: 0 auto;
+  background-color: #fff;
+  margin-top: 4px;
+  border-radius: 5px;
+}
+
+#options-view-button:checked ~ #options {
+  border: 2px solid rgba(204, 204, 204, 0.54);
+}
+
+#options-view-button:checked ~ #select-button {
+  background-color: white;
+  border: 2px solid #00a4ae;
+}
+
+#options-view-button:checked ~ #options .label {
+  display: block;
+  padding: 15px;
+}
+
+#select-button:focus ~ #select-button {
+  background-color: white;
+}
+
+.label {
+  text-decoration: none;
+  color: #999999;
+  font-size: 16px;
+}
+
+.option {
+  background: white;
+}
+
+.option:hover a {
+  color: #00a4ae;
+  font-weight: bold;
+}
+
+#select-box:after {
+  content: '<';
+  font: 17px 'Consolas', monospace;
+  color: rgba(12, 12, 12, 0.445);
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+  right: 168px;
+  top: 8px;
+  position: absolute;
+  pointer-events: none;
+}
+
+.gray-hat {
+  display: flex;
+  justify-content: center;
+  svg {
+    height: 40px;
+  }
+  path {
+    stroke: #cccccc;
+    stroke-width: 3px;
+  }
+}
+
+.profile-inputs {
+  width: 365px;
+  margin-top: 15px;
 }

@@ -8,7 +8,7 @@ const SubmitButton = (props) => {
       // type="submit"
       placeholder="שנתחיל?"
       // disabled
-      className="bg-grey-disabled relative text-grey-active text-xl font-medium mt-4 mb-4 mr-44 rounded-md  hover:bg-mainOrange hover:text-mainWhite"
+      className="bg-gray-disabled relative text-gray-active text-xl font-medium mt-4 mb-4 mr-44 rounded-md  hover:bg-mainOrange hover:text-mainWhite"
     >
       {open ? (
         <svg className="animate-spin absolute -ml-1 mr-3 h-5 w-5 text-blue-700" viewBox="0 0 24 24">

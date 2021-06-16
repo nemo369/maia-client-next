@@ -1,12 +1,12 @@
 function Question() {
   return (
     <div />
-    // <div className="w-4 h-4 border-solid rounded-full font-small bg-grey text-white text-xs mr-4 hover:bg-gradient-2" onMouseEnter={} >
+    // <div className="w-4 h-4 border-solid rounded-full font-small bg-gray text-white text-xs mr-4 hover:bg-gradient-2" onMouseEnter={} >
     //   {' '}
     //   ?
     // </div>
     // <button ></button>
-    // <svg className="te text-grey" width="19px" height="19px" viewBox="0 0 19 19" version="1.1">
+    // <svg className="te text-gray" width="19px" height="19px" viewBox="0 0 19 19" version="1.1">
     //   <title>C4026F9C-AD6D-471F-A56F-676DAA6929B7</title>
     //   <defs>
     //     <path

@@ -41,7 +41,7 @@ const Pop = (props) => {
       nested
     >
       {(close) => (
-        <div className="modal bg-white text-xl leading-5 text-grey-active overflow-hidden rounded-lg    max-h-96">
+        <div className="modal bg-white text-xl leading-5 text-gray-active overflow-hidden rounded-lg    max-h-96">
           <button
             type="button"
             className="close"
@@ -51,11 +51,11 @@ const Pop = (props) => {
           >
             x
           </button>
-          <div className="header font-black text-3xl leading-8 text-grey-mid text-center my-4">
+          <div className="header font-black text-3xl leading-8 text-gray-mid text-center my-4">
             תנאי תקנון:
           </div>
-          <div className="uu w-[98%] max-w-5xl max-h-72 overflow-auto scrollbar-thin  scrollbar-thumb-grey-light ">
-            <div className="content px-8" dangerouslySetInnerHTML={{ __html: termsText.text }} />
+          <div className="uu w-[98%] max-w-5xl max-h-72 overflow-auto scrollbar-thin  scrollbar-thumb-gray-light ">
+            <div className="content px-8">{termsText.text}</div>
           </div>
           <div className="actions">
             <button

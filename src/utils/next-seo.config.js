@@ -1,5 +1,5 @@
 const seoObj = {
-  title: 'מערכת מאי״ה | ',
+  title: 'מערכת מאי״ה',
   description: 'מערכת אבחון, ייעוץ והרשמה מבית אדם מילא',
   openGraph: {
     type: 'website',

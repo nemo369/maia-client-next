@@ -29,5 +29,4 @@ function Xcircle() {
     </svg>
   );
 }
-
 export default Xcircle;

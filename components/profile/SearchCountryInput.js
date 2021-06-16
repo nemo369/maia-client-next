@@ -35,7 +35,7 @@ const customStyles = {
     ...provided,
     marginTop: '0px',
     padding: '10px',
-    color: 'grey',
+    color: 'gray',
     border: '1px solid #CCCCCC',
   }),
   // control: (provided, state) => ({
@@ -49,7 +49,7 @@ const customStyles = {
   //   borderWidth: '1px',
   //   cursor: 'default',
   //   display: 'flex',
-  //   border: '2px solid grey',
+  //   border: '2px solid gray',
   //   zIndex: '0',
 
   //   ':activ': {
@@ -106,7 +106,7 @@ const SearchCountryInput = (props) => {
           <button
             type="button"
             required
-            className="regiserPageInput city bwc text-grey-active emailini  hover: bg-red-900  "
+            className="regiserPageInput city bwc text-gray-active emailini  hover: bg-red-900  "
             onClick={toggleOpen}
             isselected={isOpen.toString()}
           >
@@ -122,7 +122,7 @@ const SearchCountryInput = (props) => {
           hideSelectedOptions={false}
           isClearable={false}
           menuIsOpen
-          className="absolute w-full max-h-52 border-grey-500 "
+          className="absolute w-full max-h-52 border-gray-500 "
           onChange={onSelectChange}
           options={optiosn1()}
           placeholder="Search..."
