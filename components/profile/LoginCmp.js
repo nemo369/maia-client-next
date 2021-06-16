@@ -4,7 +4,7 @@ import { Case, Switch } from '../common/Switch';
 import SilverLog from '../svg/SilverLog';
 import LoginWithMail from './login/LoginWithMail';
 import LoginWithPassword from './login/LoginWithPassword';
-import LoginWithPhone from './login/LoginWithPhone';
+import PhoneLog from './login/PhoneLog';
 
 export default function LoginCmp() {
   const [loginType, setLoginType] = useState();
@@ -28,15 +28,15 @@ export default function LoginCmp() {
           <LoginWithMail />
         </Case>
         <Case value="phone">
-          <LoginWithPhone />
+          <PhoneLog />
         </Case>
       </Switch>
       <p className="text-center mt-4">נתקלת בבעיה? 03-6450072</p>
-      <div className="mt-auto mx-auto text-center">
+      <div className="mt-auto relative mx-auto text-center">
         {'phone' !== loginType && (
           <button
-            // className="underline absolute"
-            className="block underline mx-auto my-auto "
+            className="block underline mx-auto"
+            // className="block relative  bottom-52 right-[92px] underline mx-auto my-auto "
             type="button"
             onClick={() => changeLoginType('phone')}
           >

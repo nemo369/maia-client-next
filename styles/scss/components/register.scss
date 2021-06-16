@@ -112,34 +112,8 @@
   background-color: red;
 }
 
-// .modal > *::-webkit-scrollbar-thumb {
-//   border-radius: 8px;
-//   height: 80px;
-//   width: 0px;
-// }
-// body > ::-webkit-scrollbar-thumb {
-//   background-color: red;
-//   border-radius: 8px;
-//   height: 80px;
-//   width: 0px;
-// }
-
-// .css-26l3qy-menu {
-//   top: 100%;
-//   // background-color: hsl(0deg 68% 46%);
-//   background-color: red;
-//   border-radius: 4px;
-//   box-shadow: 0 0 0 1px hsl(0deg 0% 0% / 10%), 0 4px 11px hsl(0deg 0% 0% / 10%);
-//   margin-bottom: 8px;
-//   margin-top: 8px;
-//   position: absolute;
-//   width: 100%;
-//   z-index: 1;
-//   box-sizing: border-box;
-// }
-
-// .css-26l3qy-menu > *::-webkit-scrollbar-thumb {
-//   color: red;
-//   background-color: red;
-//   width: 20px;
-// }
+@media only screen and (min-width: 1450px) {
+  .registerPage_container {
+    margin-top: -6rem;
+  }
+}

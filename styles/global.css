@@ -16,13 +16,6 @@
   padding: 10px;
 } */
 
-/* .registerPage_container {
-  display: grid;
-} */
-/* .registerPage_form {
-  display: grid;
-} */
-
 .regiserPageInput::placeholder {
   color: #434343;
   font-size: 18px;

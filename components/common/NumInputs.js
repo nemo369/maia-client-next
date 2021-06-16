@@ -20,7 +20,7 @@ export default function NumInputs({ status, className }) {
   return (
     <div>
       <input
-        type="number"
+        type="text"
         maxLength="1"
         className={`rounded-lg h-[65px] w-[66px] outline-none text-5xl py-2 px-5 text-align: center;
         ${classes} ${className}`}

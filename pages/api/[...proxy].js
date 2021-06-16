@@ -4,7 +4,6 @@ export default async function proxy(req, res) {
   const { WORDPRESS_ENDPOINT } = process.env;
   const { method, url } = req;
   const endpoint = url.replace(/^\/api/, '');
-
   switch (method) {
     case 'GET':
       await axios
