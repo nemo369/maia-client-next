@@ -5,7 +5,7 @@ import SchoolHat from '../svg/SchoolHat';
 
 export default function ProfileFavorite() {
   return (
-    <div className="fav my-[22px] w-[1175px] bg-white rounded-[20px] py-[25px] px-[21px]">
+    <div className="fav my-[22px] h-[415px] bg-white rounded-[20px] py-[25px] px-[21px]">
       <div className="flex justify-between items-center">
         <div className="text-black text-[28px] font-bold">המועדפים שלי</div>
         <div className="flex">

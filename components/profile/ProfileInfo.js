@@ -1,6 +1,7 @@
 import React from 'react';
 import Inputs from '../common/Inputs';
 import Toggle from '../common/Toggle';
+import Check from '../common/Check';
 import QuestionDisable from '../svg/QuestionDisable';
 
 export default function ProfileInfo() {
@@ -28,6 +29,20 @@ export default function ProfileInfo() {
             <QuestionDisable />
           </div>
           <Toggle />
+        </div>
+        <div className="px-8">
+          <div className="flex justify-between mb-2">
+            <Check content="אני מאשר/ת ליועץ/ת לצפות בפרטים שלי" />
+            <QuestionDisable />
+          </div>
+          <div className="flex justify-between mb-2">
+            <Check content="אני מאשר/ת ליועץ לצפות במשרות ששלחתי" />
+            <QuestionDisable />
+          </div>
+          <div className="flex justify-between mb-2">
+            <Check content="אני מאשר/ת למעסיקים לפנות אלי עצמאית" />
+            <QuestionDisable />
+          </div>
         </div>
       </div>
     </div>

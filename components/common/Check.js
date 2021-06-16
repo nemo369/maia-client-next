@@ -1,8 +1,8 @@
 import React from 'react';
 
-export default function Check({ id, value, isChecked, disabled, onChange, className }) {
+export default function Check({ id, value, isChecked, disabled, onChange, className, content }) {
   return (
-    <div className="check">
+    <div className="check flex float-right">
       <input
         type="checkbox"
         id={id}
@@ -12,6 +12,7 @@ export default function Check({ id, value, isChecked, disabled, onChange, classN
         onChange={onChange}
         className={className}
       />
+      <div className="check-text">{content}</div>
     </div>
   );
 }
