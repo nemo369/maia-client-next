@@ -24,7 +24,7 @@ export default function ProfileInfo() {
           <Inputs type="text" status="main" className="profile-inputs" placeholder="מייל" />
         </div>
         <div className="flex justify-between mt-6 px-[34px] space-x-3">
-          <div>
+          <div className="flex">
             <div className="text-gray-mid text-[18px]">מחפש עבודה?</div>
             <QuestionDisable />
           </div>
