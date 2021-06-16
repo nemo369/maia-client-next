@@ -22,9 +22,15 @@ const LoginWithMail = () => {
     }
     setLoader(true);
     const { data, status } = await UserAPI.emailLogin(email);
+    console.log(email);
+    console.log(data);
+    console.log(data.data.message);
+    console.log(status);
     setLoader(false);
-    if (200 !== status || !data.data.message) {
-      setError(true);
+    if (200 !== status) {
+      console.log('shrooms');
+      // setError(true);
+      setPopup(data.message);
     } else {
       setPopup(data.data.message);
     }
@@ -37,19 +43,22 @@ const LoginWithMail = () => {
         כדי שנוכל לשמור על פרטיותך ולהגן על הנתונים שלך נשלח לך באמצעות מייל מייל סיסמא חד פעמי
       </div>
       <form method="POST" onSubmit={handleSubmit} className="relative">
-        <input
-          type="text"
-          onChange={(e) => {
-            setEmail(e.target.value);
-            setError(false);
-          }}
-          className={`email1 w-full h-[50px] rounded-md text-grey px-3 font-bold text-[18px] ${
-            error
-              ? 'focus:ring-2 focus:ring-red-500 focus:text-red-700 text-red-700 focus:font-bold focus:text-lg ring-2 ring-red-500 bg-opacity-80 bg-red-error placeholder-red-800'
-              : ''
-          }`}
-          placeholder="מייל"
-        />
+        <div>
+          <input
+            type="text"
+            onChange={(e) => {
+              setEmail(e.target.value);
+              setError(false);
+            }}
+            className={`email1 w-full h-[50px] rounded-md text-grey px-3 font-bold text-[18px] ${
+              error
+                ? 'focus:ring-2 focus:ring-red-500 focus:text-red-700 text-red-700 focus:font-bold focus:text-lg ring-2 ring-red-500 bg-opacity-80 bg-red-error placeholder-red-800'
+                : ''
+            }`}
+            placeholder="מייל"
+          />
+          {popup && <p className="text-center pt-1">{popup}</p>}
+        </div>
         <button
           type="submit"
           className="submit mt-32 bg-mainOrange w-full text-center rounded py-4 hover:bg-opacity-90"
@@ -57,8 +66,8 @@ const LoginWithMail = () => {
           התחברות
         </button>
         <Loader loading={loader} />
-        {popup && <p>{popup}</p>}
-        {error ? (
+
+        {/* {error ? (
           <div className="absolute top-3  right-auto left-2  font-bold  text-red-500 grid grid-flow-col items-center">
             מייל לא תקין
             <div className="w-5  leading-4 h-5 font-bold text-center mr-3 text-lg border-2 border-red-500  text-red-500 rounded-full inline-block">
@@ -67,7 +76,7 @@ const LoginWithMail = () => {
           </div>
         ) : (
           ''
-        )}
+        )} */}
       </form>
     </div>
   );

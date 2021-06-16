@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import UserAPI from '../../../src/services/user.service';
 import Loader from '../../common/Loader';
 
-function LoginWithPhone() {
+function LoginWithPhone(props) {
   const [cellNumber, setCellNUmber] = useState('');
   const [error, setError] = useState(false);
   const [loader, setLoader] = useState(false);
   const [popup, setPopup] = useState('');
+  const { setCell } = props;
   const validatePhoneNumber = (emailToValidate) => {
     // eslint-disable-next-line no-useless-escape
     const re = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
@@ -20,13 +21,18 @@ function LoginWithPhone() {
       return;
     }
     setLoader(true);
-    const { data, status } = await UserAPI.phoneLogin(cellNumber);
+    const { data, status } = await UserAPI.emailLogin({ phone: cellNumber, type: 'phone' });
+    console.log(data);
+    console.log(status);
     setLoader(false);
     if (200 !== status || !data.data.message) {
-      setError(true);
+      setPopup(data.data.message);
+      // setError(true);
     } else {
       setPopup(data.data.message);
     }
+    setCell(cellNumber);
+    // setOpen(true);
   };
   return (
     <div>

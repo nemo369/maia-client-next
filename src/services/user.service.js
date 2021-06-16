@@ -44,6 +44,8 @@ const UserAPI = {
       return error.response;
     }
   },
+
+  ///////אפשר למחוק את זה נכון? ////////////
   phoneLogin: async (phone) => {
     try {
       const response = await axios.get(`${SERVER_BASE_URL}/user/magic-link?phone=${phone}`, {
@@ -51,6 +53,22 @@ const UserAPI = {
           'Content-Type': 'application/json',
         },
       });
+      return response;
+    } catch (error) {
+      return error.response;
+    }
+  },
+  phoneVerification: async (creditiontals) => {
+    try {
+      const response = await axios.post(
+        `${SERVER_BASE_URL}/user/login`,
+        JSON.stringify(creditiontals),
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      );
       return response;
     } catch (error) {
       return error.response;
