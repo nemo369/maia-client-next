@@ -17,7 +17,7 @@ export default function LoginCmp() {
   };
   return (
     <section className="flex flex-col  h-full">
-      <div className="mb-16">
+      <div className="logo-wrapper mb-16">
         <SilverLog />
       </div>
       <Switch test={loginType}>

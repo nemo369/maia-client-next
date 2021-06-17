@@ -44,6 +44,18 @@ const UserAPI = {
       return error.response;
     }
   },
+  magicLogin: async (email) => {
+    try {
+      const response = await axios.get(`${SERVER_BASE_URL}/user/magic-link?email=${email}`, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      return response;
+    } catch (error) {
+      return error.response;
+    }
+  },
 
   phoneVerification: async (creditiontals) => {
     try {

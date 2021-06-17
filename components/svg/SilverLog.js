@@ -1,6 +1,12 @@
 function SilverLog() {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="165" height="73" viewBox="0 0 165 73">
+    <svg
+      className="silver-logo login-logo"
+      xmlns="http://www.w3.org/2000/svg"
+      width="165"
+      height="73"
+      viewBox="0 0 165 73"
+    >
       <g fill="none" fillRule="evenodd" stroke="none" strokeWidth="1">
         <g transform="translate(-1564 -71)">
           <g transform="translate(1564 71)">

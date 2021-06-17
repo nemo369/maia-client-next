@@ -43,7 +43,8 @@ function LoginWithPhone(props) {
             setCellNUmber(e.target.value);
             setError(false);
           }}
-          className={`email1 w-full h-[50px] rounded-md text-grey px-3 font-bold text-[18px] ${
+          // className={`email1 w-full h-[50px] rounded-md text-grey px-3 font-bold text-[18px] ${
+          className={`email1 w-full h-[50px] rounded-md text-green-700 px-3 font-bold text-[18px] ${
             error
               ? 'focus:ring-2 focus:ring-red-500 focus:text-red-700 text-red-700 focus:font-bold focus:text-lg ring-2 ring-red-500 bg-opacity-80 bg-red-error placeholder-red-800'
               : ''
