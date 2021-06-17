@@ -11,9 +11,17 @@
   color: #3fafb6;
 }
 
-.profile-container {
-  .active-svg .active-bulb {
-    fill: #fff;
-    stroke: #fff;
-  }
+.profile-avatar {
+  width: 130px;
+  margin-top: 25px;
+}
+
+.profile-fav-company {
+  min-width: 180px;
+  max-width: 180px;
+}
+
+.description {
+  min-width: 520px;
+  max-width: 520px;
 }

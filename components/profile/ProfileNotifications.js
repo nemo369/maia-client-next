@@ -1,5 +1,6 @@
 import React from 'react';
-import Xcircle from '../svg/Xcircle';
+import GrayX from '../svg/GrayX';
+import SmallHatGreen from '../svg/SmallHatGreen';
 
 const news = [
   {
@@ -44,14 +45,16 @@ export default function ProfileNotifications() {
           <div>
             {news.map((content) => (
               <div key={content.title} className="flex px-[3px] space-x-4">
-                <div className="bg-white rounded-full w-[22px] h-[22px] ml-[10px] mt-[10px]" />
+                <div className="w-[22px] h-[22px] ml-[10px] mt-[10px]">
+                  <SmallHatGreen />
+                </div>
                 <div className="text-white mb-[3px]">
                   <div className="text-[16px]">{content.title}</div>
                   <div className="text-[14px] opacity-70">{content.date}</div>
                 </div>
                 <div className="w-[10px]">
                   <button type="button" aria-label="סגירה">
-                    <Xcircle />
+                    <GrayX />
                   </button>
                 </div>
               </div>
@@ -63,14 +66,16 @@ export default function ProfileNotifications() {
           <div>
             {news.map((content) => (
               <div key={content.title} className="flex px-[3px] space-x-4">
-                <div className="bg-white rounded-full w-[22px] h-[22px] ml-[10px] mt-[10px]" />
+                <div className="w-[22px] h-[22px] ml-[10px] mt-[10px]">
+                  <SmallHatGreen />
+                </div>
                 <div className="text-white mb-[3px]">
                   <div className="text-[16px]">{content.title}</div>
                   <div className="text-[14px] opacity-70">{content.date}</div>
                 </div>
                 <div className="w-[10px]">
                   <button type="button" aria-label="סגירה">
-                    <Xcircle />
+                    <GrayX />
                   </button>
                 </div>
               </div>
