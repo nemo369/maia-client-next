@@ -25,42 +25,14 @@ export default function LoginCmp() {
           <LoginWithPassword />
         </Case>
         <Case value="email">
-          <LoginWithMail />
+          <LoginWithMail changeLoginType={changeLoginType} />
         </Case>
         <Case value="phone">
-          <PhoneLog />
+          <PhoneLog changeLoginType={changeLoginType} />
         </Case>
       </Switch>
       <p className="text-center mt-4">נתקלת בבעיה? 03-6450072</p>
       <div className="mt-auto relative mx-auto text-center">
-        {'phone' !== loginType && (
-          <button
-            className="block underline mx-auto"
-            // className="block relative  bottom-52 right-[92px] underline mx-auto my-auto "
-            type="button"
-            onClick={() => changeLoginType('phone')}
-          >
-            אני מעוניין/ת לקבל קוד לנייד
-          </button>
-        )}
-        {'email' !== loginType && (
-          <button
-            className="block underline mx-auto"
-            type="button"
-            onClick={() => changeLoginType('email')}
-          >
-            אני מעוניין/ת לקבל קוד למייל
-          </button>
-        )}
-        {'password' !== loginType && (
-          <button
-            className="block underline mx-auto"
-            type="button"
-            onClick={() => changeLoginType('password')}
-          >
-            התחברות עם סיסמא
-          </button>
-        )}
         <a>
           <span>עדיין לא רשום/ה?</span>
           <strong>התחל/י כאן</strong>

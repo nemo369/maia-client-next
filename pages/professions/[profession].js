@@ -27,6 +27,7 @@ export default function Profession({ profession }) {
 
 export async function getServerSideProps({ query }) {
   const { profession } = query;
+  console.log(profession);
   return {
     props: { profession }, // will be passed to the page component as props
   };

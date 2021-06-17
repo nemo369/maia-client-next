@@ -90,3 +90,21 @@
 .st-logo-2 {
   fill: #3b91a2;
 }
+
+@media only screen and (max-height: 790px) {
+  .li-button {
+    width: 101px;
+    min-height: 55px;
+    max-height: 75px;
+  }
+  .nav-icons {
+    width: 30px;
+    height: 30px;
+  }
+  .nav-profile-img {
+    width: 70px;
+  }
+  .nav-profile-img-text text {
+    font-size: 1rem;
+  }
+}

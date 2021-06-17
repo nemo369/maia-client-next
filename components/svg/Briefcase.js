@@ -1,7 +1,7 @@
 function Briefcase() {
   return (
     <svg
-      className="justify-self-center w-[43px] h-[47px]"
+      className="justify-self-center w-[43px] h-[47px] nav-icons"
       xmlns="http://www.w3.org/2000/svg"
       x="0"
       y="0"

@@ -9,7 +9,7 @@ const Login = () => {
   return (
     <>
       <NextSeo {...seo} />
-      <section className="login__wrapper flex justify-center items-center h-screen overflow-hidden">
+      <section className="login__wrapper flex justify-center items-center h-screen overflow-hidden relative">
         <div className="md:flex login text-white w-full">
           <div className="login__form bg-green-500 z-40  rounded px-14 py-11">
             <LoginCmp />

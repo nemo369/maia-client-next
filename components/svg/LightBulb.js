@@ -4,7 +4,7 @@ function LightBulb() {
       xmlns="http://www.w3.org/2000/svg"
       x="0"
       y="0"
-      className="justify-self-center st2"
+      className="justify-self-center st2 nav-icons"
       enableBackground="new -281 369 48 55"
       version="1.1"
       viewBox="-281 369 48 55"

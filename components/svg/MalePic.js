@@ -1,6 +1,6 @@
 function MalePic() {
   return (
-    <svg viewBox="0 0 157 155" version="1.1">
+    <svg viewBox="0 0 157 155" version="1.1" className="nav-profile-img">
       <title>4FDD258A-F747-48D9-B301-827436EEBB02</title>
       <defs>
         {/* <circle id="path-1" cx="38.5" cy="36.5" r="27.5" /> */}

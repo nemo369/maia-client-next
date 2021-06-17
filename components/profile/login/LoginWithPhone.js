@@ -3,6 +3,7 @@ import UserAPI from '../../../src/services/user.service';
 import Loader from '../../common/Loader';
 
 function LoginWithPhone(props) {
+  const { changeLoginType } = props;
   const [cellNumber, setCellNUmber] = useState('');
   const [error, setError] = useState(false);
   const [loader, setLoader] = useState(false);
@@ -43,14 +44,18 @@ function LoginWithPhone(props) {
             setCellNUmber(e.target.value);
             setError(false);
           }}
-          // className={`email1 w-full h-[50px] rounded-md text-grey px-3 font-bold text-[18px] ${
-          className={`email1 w-full h-[50px] rounded-md text-green-700 px-3 font-bold text-[18px] ${
+          className={`email1 w-full h-[50px] rounded-md text-gray x-3 font-bold text-[18px] ${
             error
               ? 'focus:ring-2 focus:ring-red-500 focus:text-red-700 text-red-700 focus:font-bold focus:text-lg ring-2 ring-red-500 bg-opacity-80 bg-red-error placeholder-red-800'
               : ''
           }`}
           placeholder="נייד"
         />
+        <div className="text-left pt-1">
+          <button className="underline " type="button" onClick={() => changeLoginType('email')}>
+            אני מעוניין/ת לקבל קוד למייל
+          </button>
+        </div>
         <button
           type="submit"
           className="submit mt-32 bg-mainOrange w-full text-center rounded py-4 hover:bg-opacity-90"

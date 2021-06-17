@@ -3,12 +3,18 @@ import React, { useState } from 'react';
 import LoginWithPhone from './LoginWithPhone';
 import VerificationPhone from './VerificationPhone';
 
-const PhoneLog = () => {
-  // const [open, setOpen] = useState(true);
+const PhoneLog = (props) => {
+  const { changeLoginType } = props;
   const [cell, setCell] = useState(false);
 
   return (
-    <div>{!cell ? <LoginWithPhone setCell={setCell} /> : <VerificationPhone cell={cell} />}</div>
+    <div>
+      {!cell ? (
+        <LoginWithPhone changeLoginType={changeLoginType} setCell={setCell} />
+      ) : (
+        <VerificationPhone cell={cell} />
+      )}
+    </div>
   );
 };
 
