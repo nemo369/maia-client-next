@@ -35,7 +35,9 @@ export default function LoginCmp() {
       <div className="mt-auto relative mx-auto text-center">
         <a>
           <span>עדיין לא רשום/ה?</span>
-          <strong>התחל/י כאן</strong>
+          <strong>
+            <u>התחל/י כאן</u>
+          </strong>
         </a>
       </div>
     </section>
