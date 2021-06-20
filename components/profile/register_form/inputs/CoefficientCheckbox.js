@@ -2,7 +2,7 @@ const CoefficientCheckbox = (props) => {
   const { handleChange } = props;
 
   return (
-    <div className="my-4">
+    <div className="">
       <label
         htmlFor="employment_coefficient"
         name="employment_coefficient"

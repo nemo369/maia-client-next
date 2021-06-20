@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import UserAPI from '../../../src/services/user.service';
 import Loader from '../../common/Loader';
 
-const LoginWithMail = () => {
+const LoginWithMail = (props) => {
+  const { changeLoginType } = props;
   const [email, setEmail] = useState('');
   const [error, setError] = useState(false);
   const [loader, setLoader] = useState(false);
@@ -44,13 +45,19 @@ const LoginWithMail = () => {
               setEmail(e.target.value);
               setError(false);
             }}
-            className={`email1 w-full h-[50px] rounded-md text-grey px-3 font-bold text-[18px] ${
+            className={`email1 text-gray w-full h-[50px] rounded-md  px-3 font-bold text-[18px]
+            ${
               error
                 ? 'focus:ring-2 focus:ring-red-500 focus:text-red-700 text-red-700 focus:font-bold focus:text-lg ring-2 ring-red-500 bg-opacity-80 bg-red-error placeholder-red-800'
                 : ''
             }`}
             placeholder="מייל"
           />
+          <div className="text-left pt-1">
+            <button className="underline" type="button" onClick={() => changeLoginType('phone')}>
+              אני מעוניין/ת לקבל קוד לנייד
+            </button>
+          </div>
           {popup && <p className="text-center pt-1">{popup}</p>}
         </div>
         <button
@@ -61,7 +68,7 @@ const LoginWithMail = () => {
         </button>
         <Loader loading={loader} />
 
-        {/* {error ? (
+        {error ? (
           <div className="absolute top-3  right-auto left-2  font-bold  text-red-500 grid grid-flow-col items-center">
             מייל לא תקין
             <div className="w-5  leading-4 h-5 font-bold text-center mr-3 text-lg border-2 border-red-500  text-red-500 rounded-full inline-block">
@@ -70,7 +77,7 @@ const LoginWithMail = () => {
           </div>
         ) : (
           ''
-        )} */}
+        )}
       </form>
     </div>
   );

@@ -23,7 +23,7 @@ const NavBar = () => {
 
   const LinkButton = ({ link, isActive }) => (
     <li
-      className={`transition-all flex-grow-0 rounded text-white leading-4 text-base py-3 nav__button flex flex-col items-center justify-center  ${
+      className={`transition-all li-button flex-grow-0 rounded text-white leading-4 text-base py-3 nav__button flex flex-col items-center justify-center  ${
         isActive ? 'active active-svg' : 'disabled'
       }`}
     >
@@ -32,7 +32,7 @@ const NavBar = () => {
           {link.icon}
           <span
             className={`mt-2  text-base text-white  leading-4
-              ${isActive ? ' font-bold' : ' '}
+              ${isActive ? ' text-sm font-bold' : ' '}
             `}
           >
             {link.name}
@@ -51,7 +51,7 @@ const NavBar = () => {
               <div className="w-[84px]  mx-auto">
                 {'m' === user?.gender ? <MalePic /> : <FemalePic />}
               </div>
-              <div className=" text-lg text-white leading-[18px] text-center pt-1 mt-1 font-bold">
+              <div className="nav-profile-img-text text-lg text-white leading-[18px] text-center pt-1 mt-1 font-bold">
                 {user?.displayName}
               </div>
             </a>

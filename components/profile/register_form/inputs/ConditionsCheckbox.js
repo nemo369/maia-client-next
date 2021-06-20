@@ -4,7 +4,7 @@ const ConditionsCheckbox = (props) => {
   const { handleChange, termsText } = props;
   return (
     // <div>
-    <div className="my-4 ">
+    <div className="">
       <label
         onChange={handleChange}
         htmlFor="terms_and_conditions"

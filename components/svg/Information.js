@@ -1,7 +1,7 @@
 function Information() {
   return (
     <svg
-      className="w-[20px] h-[43px] justify-self-center"
+      className="w-[20px] h-[43px] justify-self-center nav-icons"
       xmlns="http://www.w3.org/2000/svg"
       x="0"
       y="0"

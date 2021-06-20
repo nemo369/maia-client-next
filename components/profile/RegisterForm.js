@@ -130,25 +130,26 @@ const RegisterForm = ({ cities, termsText }) => {
           <CellphoneInput handleChange={handleChange} value={inputs.cellphone} />
 
           <AgeInput handleChange={handleChange} value={inputs.age} />
-
-          <div className="my-4 col-start-1 col-end-3 flex">
-            <p className="inline-block text-regiterPageDarkBottomText leading-regiterPageDarkBottomText text-regiterPageDarkBottomTextcolor">
-              לפנ י שאנחנו ממשיכים, איך נוח לך שנפנה אליך?
-            </p>
-            <div className=" inline-block">
-              <div className="flex">
-                <MaleRadio handleChange={handleChange} />
-                <FemaleRadio handleChange={handleChange} />
+          <div className="grid grid-cols-2 col-start-1 col-end-3">
+            <div className="my-4 col-start-1 col-end-3 flex">
+              <p className="inline-block text-regiterPageDarkBottomText leading-regiterPageDarkBottomText text-regiterPageDarkBottomTextcolor">
+                לפנ י שאנחנו ממשיכים, איך נוח לך שנפנה אליך?
+              </p>
+              <div className=" inline-block">
+                <div className="flex">
+                  <MaleRadio handleChange={handleChange} />
+                  <FemaleRadio handleChange={handleChange} />
+                </div>
               </div>
             </div>
+
+            <CoefficientCheckbox handleChange={handleChange} />
+            <hr className="dashed col-start-1 col-end-3 my-4" />
+
+            {error ? <div className="text-red-500 text-left">{error}</div> : ''}
+            <ConditionsCheckbox termsText={termsText} handleChange={handleChange} />
+            <SubmitButton open={open} />
           </div>
-
-          <hr className="dashed col-start-1 col-end-3" />
-          <CoefficientCheckbox handleChange={handleChange} />
-
-          {error ? <div className="text-red-500 text-left">{error}</div> : <span> </span>}
-          <ConditionsCheckbox termsText={termsText} handleChange={handleChange} />
-          <SubmitButton open={open} />
         </form>
       </div>
     </div>

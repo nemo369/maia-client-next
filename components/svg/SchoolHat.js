@@ -4,7 +4,7 @@ function SchoolHat() {
       xmlns="http://www.w3.org/2000/svg"
       // x="0"
       // y="0"
-      className="st2 w-12 h-7 justify-self-center"
+      className="st2 w-12 h-7 justify-self-center nav-icons"
       enableBackground="new -276 380 58 34"
       version="1.1"
       viewBox="-276 380 58 34"
