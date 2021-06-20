@@ -1,4 +1,5 @@
 import { NextSeo } from 'next-seo';
+import nookies from 'nookies';
 import RegisterForm from '../../components/profile/RegisterForm';
 import SignUpHeader from '../../components/SignUpHeader';
 import { seoMerge } from '../../src/utils/next-seo.config';
@@ -23,6 +24,13 @@ const Register = function (props) {
 export default Register;
 
 export async function getStaticProps() {
+  nookies.set(ctx, 'token-cookie', null, {
+    maxAge: 0,
+    path: '/',
+  });
+}
+
+
   const { WORDPRESS_ENDPOINT } = process.env;
   try {
     const res = await fetch(`${WORDPRESS_ENDPOINT}/wp-json/wp/v2/info/city`);
