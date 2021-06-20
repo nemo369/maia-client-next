@@ -28,9 +28,6 @@ export async function getStaticProps() {
     maxAge: 0,
     path: '/',
   });
-}
-
-
   const { WORDPRESS_ENDPOINT } = process.env;
   try {
     const res = await fetch(`${WORDPRESS_ENDPOINT}/wp-json/wp/v2/info/city`);
