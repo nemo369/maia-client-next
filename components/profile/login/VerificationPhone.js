@@ -1,8 +1,9 @@
 import router from 'next/router';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import UserAPI from '../../../src/services/user.service';
 import Loader from '../../common/Loader';
 import { SET_USER } from '../../../src/context/userReucder';
+import { AppContext } from '../../../src/context/state';
 
 const sucsessClass = `bg-green-success focus:ring-0 
 focus:ring-green-successBorder border-2 border-green-successBorder text-green-successBorder`;
@@ -12,6 +13,8 @@ const errorClass = `bg-red-error focus:ring-0
 focus:ring-red border-2 border-red text-red`;
 const VerificationPhone = (props) => {
   const { cell } = props;
+  const { dispatch } = useContext(AppContext);
+
   const [loader, setLoader] = useState(false);
   const [inputs, setInputs] = useState(['', '', '', '']);
   const [error, setError] = useState(false);
@@ -26,14 +29,15 @@ const VerificationPhone = (props) => {
   const handleSumbit = async () => {
     setLoader(true);
     setError(false);
-    const { data, status } = await UserAPI.phoneVerification({ phone: cell, pin: inputs });
-    setInputs(['', '', '', '']);
+    const pin = [...inputs].reverse().join('');
+    const { data, status } = await UserAPI.phoneVerification({ phone: cell, pin });
     setLoader(false);
     if (200 !== status || !data) {
-      setError(true);
+      setError(data.message ? data.message : 'שגיאת שרת');
+      setInputs(['', '', '', '']);
+      document.activeElement?.blur();
       return;
     }
-
     //////ככה??/////
     if (data?.token) {
       dispatch({ type: SET_USER, user: data });
@@ -67,7 +71,9 @@ const VerificationPhone = (props) => {
         בהודעת SMS לטלפון שלך
         <span className="mr-2">{formatPhoneNumber(cell)}</span>
       </div>
-      <div className="text-white h-6">{error && 'מספר לא תקין. בבקשה נסה שוב'}</div>
+      <div className="text-white h-6">
+        {!!error && <span className="shake block">{error}</span>}
+      </div>
       <div className="flex h-16 gap-x-7">
         {[0, 1, 2, 3].map((index, key) => (
           <input

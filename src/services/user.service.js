@@ -61,29 +61,16 @@ const UserAPI = {
     }
   },
 
-  phoneVerification: async (creditiontals) => {
+  phoneVerification: async ({ phone, pin }) => {
     try {
-      const response = await axios.post(
-        `${SERVER_BASE_URL}/user/login`,
-        JSON.stringify(creditiontals),
+      const response = await axios.get(
+        `${SERVER_BASE_URL}/user/login-with-phone?phone=${phone}&pin=${+pin}`,
         {
           headers: {
             'Content-Type': 'application/json',
           },
         }
       );
-      return response;
-    } catch (error) {
-      return error.response;
-    }
-  },
-  register: async (user) => {
-    try {
-      const response = await axios.post(`${SERVER_BASE_URL}/user/register`, JSON.stringify(user), {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
       return response;
     } catch (error) {
       return error.response;
