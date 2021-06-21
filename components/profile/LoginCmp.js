@@ -35,7 +35,9 @@ export default function LoginCmp() {
       <a className="text-center mt-4 block" href="tel:036450072">
         נתקלת בבעיה? 03-6450072
       </a>
-      <button onClick={() => setLoginType('password')}>התחברות עם סיסמא</button>
+      <button type="button" onClick={() => setLoginType('password')}>
+        התחברות עם סיסמא
+      </button>
       <div className="mt-auto relative mx-auto text-center">
         <Link href="/user/signup">
           <a>

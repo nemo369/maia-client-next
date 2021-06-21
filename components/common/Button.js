@@ -29,7 +29,7 @@ export default function Button({ name, onClickFunction, type, disabled, classNam
     <button
       className={`rounded-xl text-lg focus:outline-none
         ${classes} ${className}`}
-      type={type || 'button'}
+      type={'submit' === type ? 'submit' : 'button'}
       onClick={onClickFunction}
     >
       {name}
