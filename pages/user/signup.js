@@ -23,27 +23,25 @@ const Register = function (props) {
 
 export default Register;
 
-export async function getStaticProps() {
+export async function getStaticProps(ctx) {
   nookies.set(ctx, 'token-cookie', null, {
     maxAge: 0,
     path: '/',
   });
   const { WORDPRESS_ENDPOINT } = process.env;
   try {
-    const res = await fetch(`${WORDPRESS_ENDPOINT}/wp-json/wp/v2/info/city`);
-    const conditionsText = await fetch(`${WORDPRESS_ENDPOINT}/wp-json/wp/v2/info/conditions-text`);
-    const data = await res.json();
-    const text = await conditionsText.json();
-    if (!data || !conditionsText) {
-      return {
-        notFound: true,
-      };
-    }
+    const [cities, termsText] = await Promise.all([
+      fetch(`${WORDPRESS_ENDPOINT}/wp-json/wp/v2/info/city`).then((res) => res.json()),
+      fetch(`${WORDPRESS_ENDPOINT}/wp-json/wp/v2/info/conditions-text`).then((res) => res.json()),
+    ]);
 
+    console.log(cities);
     return {
-      props: { cities: data, termsText: text }, // will be passed to the page component as props
+      props: { cities, termsText }, // will be passed to the page component as props
     };
   } catch (error) {
+    console.log(error);
+
     return {
       props: { cities: [], termsText: '' },
     };

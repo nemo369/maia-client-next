@@ -3,7 +3,7 @@ const FemaleRadio = (props) => {
   return (
     <label
       htmlFor="input-gender-female"
-      className="text-regiterPageDarkBottomText leading-regiterPageDarkBottomText text-regiterPageDarkBottomTextcolor flex "
+      className="cursor-pointer text-regiterPageDarkBottomText leading-regiterPageDarkBottomText text-regiterPageDarkBottomTextcolor flex "
     >
       <input
         className="inline-block female mx-4"

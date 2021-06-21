@@ -22,15 +22,10 @@ export default function useForm(initial = {}) {
     if ('file' === type) {
       [value] = e.target.files;
     }
-    if ('terms_and_conditions' === name || 'employment_coefficient' === name) {
-      value = true;
+    if ('checkbox' === type) {
+      value = !!value;
     }
-    if ('female' === name) {
-      value = 'female';
-    }
-    if ('male' === name) {
-      value = 'male';
-    }
+
     setInputs({
       // copy the existing state
       ...inputs,

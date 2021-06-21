@@ -44,20 +44,20 @@ const NavBar = () => {
   return (
     <div className="nav__wrapper flex bg-green-500 gap-x-8">
       <div className="nav__placeholder h-screen w-[150px]" />
-      <aside className="fixed z-10  nav flex flex-col h-screen justify-between bg-green-500  items-center">
-        <div className="nav__profile  mt-4 my-1">
+      <aside className="w-[155px] py-3 px-5 fixed z-10  nav flex flex-col h-screen justify-between bg-green-500  items-center">
+        <div className="nav__profile  w-full mt-4 my-1">
           <Link href="/profile">
             <a>
               <div className="w-[84px]  mx-auto">
                 {'m' === user?.gender ? <MalePic /> : <FemalePic />}
               </div>
-              <div className="nav-profile-img-text text-lg text-white leading-[18px] text-center pt-1 mt-1 font-bold">
+              <div className="w-full  truncate nav-profile-img-text text-lg text-white leading-[18px] text-center pt-1 mt-1 font-bold">
                 {user?.displayName}
               </div>
             </a>
           </Link>
         </div>
-        <ul className="nav__links flex flex-col items- mx-4 justify-center gap-y-4">
+        <ul className="nav__links flex flex-col justify-center gap-y-4">
           {links.map((link) => (
             <LinkButton key={link.href} link={link} isActive={pathname === link.href} />
           ))}

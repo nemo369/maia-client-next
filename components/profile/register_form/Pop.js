@@ -2,20 +2,14 @@
 import { useEffect, useState } from 'react';
 import Popup from 'reactjs-popup';
 
-const Pop = (props) => {
+const Pop = ({ termsText }) => {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
     const wrapper = document.querySelector('#__next');
-    if (open) {
-      wrapper.style.filter = 'blur(2px)';
-    } else {
-      wrapper.style.filter = 'blur(0px)';
-    }
+    const blur = open ? 2 : 0;
+    wrapper.style.filter = `blur(${blur}px)`;
   }, [open]);
-
-  const { termsText } = props;
-
   return (
     <Popup
       onClose={() => {
@@ -55,7 +49,7 @@ const Pop = (props) => {
             תנאי תקנון:
           </div>
           <div className="uu w-[98%] max-w-5xl max-h-72 overflow-auto scrollbar-thin  scrollbar-thumb-gray-light ">
-            <div className="content px-8">{termsText.text}</div>
+            <div className="content px-8" dangerouslySetInnerHTML={{ __html: termsText }} />
           </div>
           <div className="actions">
             <button

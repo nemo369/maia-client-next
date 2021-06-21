@@ -8,7 +8,7 @@ const FullnameInput = (props) => {
       placeholder="שם מלא *"
       value={value}
       onChange={handleChange}
-      className="regiserPageInput justify-self-center h-12 bwc w-full bg-gray-disabled my-4 rounded-md"
+      className="regiserPageInput justify-self-center h-12 bwc w-full bg-gray-disabled  rounded-md"
     />
   );
 };

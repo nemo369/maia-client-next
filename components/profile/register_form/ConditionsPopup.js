@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
 const ConditionsPopup = () => (
   <div className="absolute  w-1/2  h-1/2 bg-gray-600 z-40 conditionPop rounded-lg">
     <div className="grid grid-cols-2 mt-2">

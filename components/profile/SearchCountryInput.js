@@ -38,31 +38,13 @@ const customStyles = {
     color: 'gray',
     border: '1px solid #CCCCCC',
   }),
-  // control: (provided, state) => ({
-  //   ...provided,
-
-  //   alignItems: 'center',
-  //   backgroundColor: 'hsl(0, 0%, 100%)',
-  //   // borderColor: 'red',
-  //   borderRadius: '4px',
-  //   borderStyle: 'solid',
-  //   borderWidth: '1px',
-  //   cursor: 'default',
-  //   display: 'flex',
-  //   border: '2px solid gray',
-  //   zIndex: '0',
-
-  //   ':activ': {
-  //     bordColor: 'red',
-  //   },
-  // }),
 };
 
 const SearchCountryInput = (props) => {
   const [isOpen, setIsOpen] = useState(false);
   const [vale, setVale] = useState(undefined);
 
-  const { setCityId, setCityData, cities, err, value, setInputValue } = props;
+  const { setCityId, setCityData, cities, value, setInputValue } = props;
 
   const toggleOpen = () => {
     setIsOpen(!isOpen);
@@ -79,21 +61,15 @@ const SearchCountryInput = (props) => {
     if (!cities || !Array.isArray(cities)) {
       return [];
     }
-    return cities?.map((x) => {
-      const obj = {};
-      obj.value = x.name;
-      obj.label = x.name;
-      obj.id = x.id;
-      return obj;
-    });
+    return cities?.map((city) => ({ ...city, value: city.name, label: city.name, id: city.id }));
   };
 
   const onSelectChange = (value1) => {
-    setInputValue('בחר רחוב *');
     setCityId(value1.id);
     setCityData(value1);
     toggleOpen();
     setVale(value1);
+    setInputValue(null);
   };
   return (
     <div className="relative ">
@@ -106,7 +82,9 @@ const SearchCountryInput = (props) => {
           <button
             type="button"
             required
-            className="regiserPageInput city bwc text-gray-active emailini  hover: bg-red-900  "
+            className={`regiserPageInput city bwc  emailini  hover: bg-red-900 ${
+              vale ? '' : 'text-gray-active'
+            }`}
             onClick={toggleOpen}
             isselected={isOpen.toString()}
           >
@@ -139,49 +117,12 @@ const SearchCountryInput = (props) => {
           })}
         />
       </Dropdown>
-      {err ? <h3>must fill in feald bitch</h3> : ''}
     </div>
   );
 };
 export default SearchCountryInput;
 
-const Menu = (props) => (
-  <div
-    className="vvf"
-    css={{
-      backgroundColor: 'red',
-      borderRadius: 4,
-      // bord
-      // boxShadow: `0 0 0 1px ${shadow}, 0 4px 11px ${shadow}`,
-      marginTop: 8,
-      position: 'absolute',
-      color: 'red',
-      zIndex: 2,
-    }}
-    {...props}
-  >
-    {/* <div className="react-select__menu ">
-      <div className="react-select__menu-list bbg ">
-        <div className="react-select__option " {...props} />
-      </div>
-    </div> */}
-  </div>
-);
-// const Blanket = (props) => (
-//   <div
-//     className=""
-//     css={{
-//       bottom: 0,
-//       left: 0,
-//       top: 0,
-//       right: 0,
-//       position: 'absolute',
-//       zIndex: 1,
-//     }}
-//     {...props}
-//   />
-// );
-
+const Menu = (props) => <div className="vvf absolute top-full w-full z-20" {...props} />;
 const Dropdown = ({ children, isOpen, target }) => (
   <div className="boomp " css={{ position: 'absolute', color: 'red' }}>
     {target}

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Link from 'next/link';
 import { LOGIN_TYPE_LS } from '../../src/utils/consts';
 import { Case, Switch } from '../common/Switch';
 import SilverLog from '../svg/SilverLog';
@@ -31,14 +32,19 @@ export default function LoginCmp() {
           <PhoneLog changeLoginType={changeLoginType} />
         </Case>
       </Switch>
-      <p className="text-center mt-4">נתקלת בבעיה? 03-6450072</p>
+      <a className="text-center mt-4 block" href="tel:036450072">
+        נתקלת בבעיה? 03-6450072
+      </a>
+      <button onClick={() => setLoginType('password')}>התחברות עם סיסמא</button>
       <div className="mt-auto relative mx-auto text-center">
-        <a>
-          <span>עדיין לא רשום/ה?</span>
-          <strong className="mr-2">
-            <u>התחל/י כאן</u>
-          </strong>
-        </a>
+        <Link href="/user/signup">
+          <a>
+            <span>עדיין לא רשום/ה?</span>
+            <strong className="mr-2">
+              <u>התחל/י כאן</u>
+            </strong>
+          </a>
+        </Link>
       </div>
     </section>
   );

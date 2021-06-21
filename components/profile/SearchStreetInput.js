@@ -14,6 +14,7 @@ const SearchStreetInput = (props) => {
     return theStreets?.map((street) => {
       const { name, id } = street;
       return {
+        ...street,
         name,
         label: name,
         id,
@@ -22,7 +23,7 @@ const SearchStreetInput = (props) => {
   };
   const onSelectChange = (value1) => {
     toggleOpen();
-    setTheStreet(value1.label);
+    setTheStreet(value1);
     setInputValue(value1.label);
   };
   return (
@@ -36,7 +37,7 @@ const SearchStreetInput = (props) => {
             disabled={!cityData}
             name="street"
             type="button"
-            className="bwc text-gray-active"
+            className={`bwc ${inputValue ? '' : 'text-gray-active'}`}
             onClick={toggleOpen}
             isselected={isOpen.toString()}
           >
@@ -76,26 +77,12 @@ const Blanket = (props) => (
     {...props}
   />
 );
+const Menu = (props) => <div className="vvf absolute top-full w-full z-20" {...props} />;
+
 const Dropdown = ({ children, isOpen, target, onClose }) => (
   <div css={{ position: 'absolute' }}>
     {target}
     {isOpen ? <Menu>{children}</Menu> : null}
     {isOpen ? <Blanket onClick={onClose} /> : null}
   </div>
-);
-const Menu = (props) => (
-  // const shadow = 'hsla(218, 50%, 10%, 0.1)';
-  <div
-    className="vvf"
-    // css={{
-    //   backgroundColor: 'red',
-    //   borderRadius: 4,
-    //   boxShadow: `0 0 0 1px ${shadow}, 0 4px 11px ${shadow}`,
-    //   marginTop: 8,
-    //   position: 'absolute',
-    //   color: 'red',
-    //   zIndex: 2,
-    // }}
-    {...props}
-  />
 );

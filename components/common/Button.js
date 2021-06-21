@@ -1,17 +1,17 @@
 import React from 'react';
 
-export default function Button({ name, onClickFunction, submit, disabled, className, status }) {
+export default function Button({ name, onClickFunction, type, disabled, className, status }) {
   let classes = '';
   switch (status) {
     case 'main':
-      classes += `h-[50px] px-[105px] ${
+      classes += `h-[50px]  ${
         disabled
           ? 'bg-gray-disabled text-gray-text font-bold'
           : 'bg-orange text-white active:bg-orange-active hover:bg-orange-active font-bold'
       }`;
       break;
     case 'secondary':
-      classes += `h-[50px] px-[105px] ${
+      classes += `h-[50px]  ${
         disabled && 'opacity-40'
       } bg-none text-black border border-black font-bold active:bg-white-active hover:bg-white-active`;
       break;
@@ -26,15 +26,13 @@ export default function Button({ name, onClickFunction, submit, disabled, classN
       break;
   }
   return (
-    <div>
-      <button
-        className={`rounded-xl text-lg focus:outline-none
+    <button
+      className={`rounded-xl text-lg focus:outline-none
         ${classes} ${className}`}
-        type={submit ? 'submit' : 'button'}
-        onClick={onClickFunction}
-      >
-        {name}
-      </button>
-    </div>
+      type={type || 'button'}
+      onClick={onClickFunction}
+    >
+      {name}
+    </button>
   );
 }

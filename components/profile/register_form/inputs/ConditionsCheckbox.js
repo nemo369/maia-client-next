@@ -20,15 +20,12 @@ const ConditionsCheckbox = (props) => {
           type="checkbox"
           value="terms_and_conditions"
         />
-        <p className="inline-block">אני מאשר/ת כי קראתי בעיון ואישרתי את כל</p>
-        <span> </span>
-
-        <Pop termsText={termsText} />
-
-        <p className="inline-block pr-9"> ואני מסכים/ה </p>
-        <span> </span>
-        {/* <br /> */}
-        <p className="inline-block ">לתהילך המוצע ובתנאים הרשומים </p>
+        <p className="inline-block"> אני מאשר/ת כי קראתי בעיון ואישרתי את כל </p>
+        <span className="mr-1">
+          <Pop termsText={termsText} />
+        </span>
+        <span> ואני מסכים/ה </span>
+        <span>לתהליך המוצע ובתנאים הרשומים </span>
       </label>
     </div>
     // </div>

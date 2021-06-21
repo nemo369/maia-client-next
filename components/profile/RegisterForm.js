@@ -14,10 +14,11 @@ import CoefficientCheckbox from './register_form/inputs/CoefficientCheckbox';
 import ConditionsCheckbox from './register_form/inputs/ConditionsCheckbox';
 import MainTitle from './register_form/texts/MainTItle';
 import SubTitle from './register_form/texts/SubTitle';
-import SubmitButton from './register_form/SubmitButton';
 import Group18Img from '../svg/Group18Img';
 import Group11 from '../svg/Group11';
 import UserAPI from '../../src/services/user.service';
+import Button from '../common/Button';
+import Loader from '../common/Loader';
 
 const RegisterForm = ({ cities, termsText }) => {
   const [cityId, setCityId] = useState(null);
@@ -25,24 +26,25 @@ const RegisterForm = ({ cities, termsText }) => {
   const [theStreets, setTheStreets] = useState(null);
   const [theStreet, setTheStreet] = useState(null);
   const [error, setError] = useState(false);
-  const [err, setErr] = useState(false);
-  const [open, setOpen] = useState(false);
+  const [loader, setLoader] = useState(false);
   const router = useRouter();
-  const [inputValue, setInputValue] = useState(undefined);
+  const [inputValue, setInputValue] = useState();
 
   const { inputs, handleChange, resetForm } = useForm({
     username: '',
     email: '',
     password: '',
-    city: cityData?.value,
-    street: theStreet,
     cellphone: '',
     age: '',
     fullname: '',
     gender: '',
-    employment_Coefficient: null,
-    terms_and_Conditions: null,
+    employment_coefficient: null,
+    terms_and_conditions: null,
   });
+
+  useEffect(() => {
+    setError(null);
+  }, [inputs]);
 
   useEffect(() => {
     const getStreets = async () => {
@@ -56,16 +58,13 @@ const RegisterForm = ({ cities, termsText }) => {
     }
   }, [cityId]);
   const handleSubmit = async (e) => {
-    setOpen(!open);
     e.preventDefault();
+    setLoader(true);
 
-    if (undefined === inputs.city) {
-      setErr(true);
-    }
     const dataToSend = {
       ...inputs,
-      city: JSON.stringify(cityData),
-      street: JSON.stringify(theStreet),
+      city: theStreet ? JSON.stringify(cityData) : null,
+      street: theStreet ? JSON.stringify(theStreet) : null,
       username: inputs.email,
     };
 
@@ -77,9 +76,9 @@ const RegisterForm = ({ cities, termsText }) => {
     if (200 === status) {
       // TODO: Set cookie with nookies
       resetForm();
-      router.push('/user/login'); // TODO: go to last page user visited
+      router.push('/user/login?error="נרשמת בהצלחה, כעת נותר להתחבר"'); // TODO: go to last page user visited
     }
-    setOpen(!open);
+    setLoader(false);
   };
 
   return (
@@ -91,64 +90,70 @@ const RegisterForm = ({ cities, termsText }) => {
       <div className="registerPage_form_container relative bg-white  px-32 pt-14 pb-9 register-form rounded-lg">
         <Group18Img />
         <form
-          className="registerPage_form block grid-cols-2  mx-auto gap-x-4 gap-y-3 rounded-md md:grid"
+          className="registerPage_form block   mx-auto  rounded-md  relative"
           method="POST"
           onSubmit={handleSubmit}
           id="theform"
         >
+          <Loader
+            loading={loader}
+            className="absolute right-0 left-0 m-auto top-0 z-20 bottom-0 my-auto"
+          />
           <SubTitle />
           <span />
-          {/* <DisplayError error={error} /> */}
+          <div className={`grid gap-x-4 gap-y-7 md:grid-cols-2 ${loader ? 'opacity-30 ' : ''}`}>
+            <SearchCountryInput
+              cityId={cityId}
+              setCityId={setCityId}
+              setCityData={setCityData}
+              cities={cities}
+              error={error}
+              setError={setError}
+              setTheStreet={setTheStreet}
+              setInputValue={setInputValue}
+            />
+            <SearchStreetInput
+              theStreets={theStreets}
+              setTheStreet={setTheStreet}
+              cityData={cityData}
+              inputValue={inputValue}
+              setInputValue={setInputValue}
+            />
+          </div>
+          <hr className="dashed my-5" />
+          <div className={`grid gap-x-4 gap-y-7 md:grid-cols-2 ${loader ? 'opacity-30 ' : ''}`}>
+            <EmailInput handleChange={handleChange} value={inputs.email} />
 
-          <SearchCountryInput
-            cityId={cityId}
-            setCityId={setCityId}
-            setCityData={setCityData}
-            cities={cities}
-            handleChange={handleChange}
-            error={error}
-            setError={setError}
-            setTheStreet={setTheStreet}
-            inputValue={inputValue}
-            setInputValue={setInputValue}
-            err={err}
-          />
-          <SearchStreetInput
-            theStreets={theStreets}
-            setTheStreet={setTheStreet}
-            handleChange={handleChange}
-            cityData={cityData}
-            inputValue={inputValue}
-            setInputValue={setInputValue}
-          />
-          <hr className="dashed col-start-1 col-end-3" />
+            <FullnameInput handleChange={handleChange} value={inputs.fullname} />
 
-          <EmailInput handleChange={handleChange} value={inputs.email} />
+            <CellphoneInput handleChange={handleChange} value={inputs.cellphone} />
 
-          <FullnameInput handleChange={handleChange} value={inputs.fullname} />
+            <AgeInput handleChange={handleChange} value={inputs.age} />
+          </div>
+          {error ? <div className="text-red-500 shake mt-3">{error}</div> : ''}
 
-          <CellphoneInput handleChange={handleChange} value={inputs.cellphone} />
-
-          <AgeInput handleChange={handleChange} value={inputs.age} />
-          <div className="grid grid-cols-2 col-start-1 col-end-3">
-            <div className="my-4 col-start-1 col-end-3 flex">
-              <p className="inline-block text-regiterPageDarkBottomText leading-regiterPageDarkBottomText text-regiterPageDarkBottomTextcolor">
-                לפנ י שאנחנו ממשיכים, איך נוח לך שנפנה אליך?
-              </p>
-              <div className=" inline-block">
-                <div className="flex">
-                  <MaleRadio handleChange={handleChange} />
-                  <FemaleRadio handleChange={handleChange} />
-                </div>
-              </div>
+          <div className=" mt-7 mb-5 col-start-1 col-end-3 flex">
+            <p className="inline-block text-regiterPageDarkBottomText leading-regiterPageDarkBottomText text-regiterPageDarkBottomTextcolor">
+              לפני שאנחנו ממשיכים, איך נוח לך שנפנה אליך?
+            </p>
+            <div className="flex gap-x-7">
+              <MaleRadio handleChange={handleChange} />
+              <FemaleRadio handleChange={handleChange} />
             </div>
+          </div>
 
-            <CoefficientCheckbox handleChange={handleChange} />
-            <hr className="dashed col-start-1 col-end-3 my-4" />
+          <CoefficientCheckbox handleChange={handleChange} />
+          <hr className="dashed col-start-1 col-end-3 my-4" />
 
-            {error ? <div className="text-red-500 text-left">{error}</div> : ''}
+          <div className="flex justify-between">
             <ConditionsCheckbox termsText={termsText} handleChange={handleChange} />
-            <SubmitButton open={open} />
+            <Button
+              type="submit"
+              status="main"
+              name="שנתחיל?"
+              className="h-[50px] w-[250px]"
+              disabled={loader}
+            />
           </div>
         </form>
       </div>

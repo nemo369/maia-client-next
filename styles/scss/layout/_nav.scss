@@ -3,12 +3,14 @@
     width: 115px;
     min-height: 85px;
     max-height: 104px;
-    // flex: 0 0 115px;
+    flex: 0 0 115px;
     // height: 107px;
 
     border-radius: 14px;
     background: rgba(255, 255, 255, 0);
     opacity: 1;
+    transition: all 0.4s;
+    &:hover,
     &.active {
       background: rgba(255, 255, 255, 0.2);
     }
