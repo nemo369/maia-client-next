@@ -1,24 +1,21 @@
 import React from 'react';
 
-export default function stepperOne({ step, className }) {
+export default function stepperOne({ step }) {
   let one = '';
   let two = '';
   let three = '';
   let dot = '';
-  let dis = '';
   switch (step) {
     case 'one':
       one += 'one bg-orange';
       two += 'one bg-white';
       three += 'one bg-white';
       dot += 'bg-[#DFDFDF]';
-      dis += 'dis_first';
       break;
     case 'two':
       one += 'bg-orange';
       two += 'bg-orange';
       three += 'bg-white';
-      dis += 'dis_second';
       break;
     case 'three':
       one += 'bg-orange';
@@ -30,7 +27,7 @@ export default function stepperOne({ step, className }) {
       break;
   }
   return (
-    <div className={`stepper-one stepper ${className} ${dis}`}>
+    <div>
       <div className="stepper__step">
         <div className="stepper__indicator">
           {'one' === step ? (

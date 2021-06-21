@@ -4,6 +4,10 @@ import { getUserSession } from '../src/utils/getUser';
 import { seoMerge } from '../src/utils/next-seo.config';
 import StepperOne from '../components/common/StepperOne';
 import { AppContext } from '../src/context/state';
+import DashboardHeader from '../components/dashboard/DashboardHeader';
+import DashboardSummary from '../components/dashboard/DashboardSummary';
+import Dashboard from '../components/dashboard/Dashboard';
+import Banner from '../components/dashboard/Banner';
 // import Test from '../components/Test';
 
 export default function Home() {
@@ -15,8 +19,13 @@ export default function Home() {
   return (
     <>
       <NextSeo {...seo} />
-      <section className="dashboard">
-        <StepperOne step={user.step || 'one'} className="w-[650px] h-[80px]" />
+      <section className="dashboard pl-16">
+        <DashboardHeader />
+        <div className="dashboard__grid md:grid">
+          <DashboardSummary />
+          <Dashboard />
+          <Banner />
+        </div>
         {/* <Test /> */}
       </section>
     </>
