@@ -1,0 +1,51 @@
+$bubble-color: #fff;
+$bubble-width: 6px;
+
+.bubble {
+    position: absolute;
+    background-color: $bubble-color;
+    padding: 16px;
+    height: max-content;
+    box-shadow: 0 22px 25px -10px rgba(0, 0, 0, 0.17);
+    &:after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 0;
+        border: $bubble-width solid transparent;
+        border-bottom: 0;
+    }
+    &.bubble-bottom {
+        &:after {
+            bottom: 0;
+
+            left: 50%;
+            border-top-color: $bubble-color;
+            border-bottom: 0;
+            margin-left: -$bubble-width;
+            margin-bottom: -$bubble-width;
+        }
+    }
+    &.bubble-left {
+        &:after {
+            left: 0;
+            top: 50%;
+            border: $bubble-width solid transparent;
+            border-right-color: $bubble-color;
+            border-left: 0;
+            margin-top: -$bubble-width;
+            margin-left: -$bubble-width;
+        }
+    }
+    &.bubble-right {
+        &:after {
+            right: 0;
+            top: 50%;
+            border: $bubble-width solid transparent;
+            border-left-color: $bubble-color;
+            border-right: 0;
+            margin-top: -$bubble-width;
+            margin-right: -$bubble-width;
+        }
+    }
+}

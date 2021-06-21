@@ -42,13 +42,13 @@ const NavBar = () => {
     </li>
   );
   return (
-    <div className="nav__wrapper flex bg-green-500 gap-x-8">
-      <div className="nav__placeholder h-screen w-[150px]" />
-      <aside className="w-[155px] py-3 px-5 fixed z-10  nav flex flex-col h-screen justify-between bg-green-500  items-center">
-        <div className="nav__profile  w-full mt-4 my-1">
+    <div className="nav__wrapper md:flex bg-green-500 gap-x-8">
+      <div className="nav__placeholder md:h-screen md:w-[150px]  h-24" />
+      <aside className="md:w-[155px] w-full py-3 px-5 fixed z-10  nav flex md:flex-col md:h-screen h-24 justify-between bg-green-500  items-center top-0">
+        <div className="nav__profile  md:w-full md:mt-4 md:mb-1 ">
           <Link href="/profile">
             <a>
-              <div className="w-[84px]  mx-auto">
+              <div className="md:w-[84px]  mx-auto  h-1/2 w-10">
                 {'m' === user?.gender ? <MalePic /> : <FemalePic />}
               </div>
               <div className="w-full  truncate nav-profile-img-text text-lg text-white leading-[18px] text-center pt-1 mt-1 font-bold">
@@ -57,7 +57,7 @@ const NavBar = () => {
             </a>
           </Link>
         </div>
-        <ul className="nav__links flex flex-col justify-center gap-y-4">
+        <ul className="nav__links flex md:flex-col justify-center gap-y-4 items-center">
           {links.map((link) => (
             <LinkButton key={link.href} link={link} isActive={pathname === link.href} />
           ))}
