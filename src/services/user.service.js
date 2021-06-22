@@ -28,21 +28,21 @@ const UserAPI = {
       return error.response;
     }
   },
-  emailLogin: async (email) => {
-    try {
-      const response = await axios.get(`${API_URL}/user/magic-link`, {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        params: {
-          email,
-        },
-      });
-      return response;
-    } catch (error) {
-      return error.response;
-    }
-  },
+  // emailLogin: async (email) => {
+  //   try {
+  //     const response = await axios.get(`${API_URL}/user/magic-link`, {
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //       params: {
+  //         email,
+  //       },
+  //     });
+  //     return response;
+  //   } catch (error) {
+  //     return error.response;
+  //   }
+  // },
   magicLogin: async (creditiontals) => {
     try {
       const response = await axios.post(

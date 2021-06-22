@@ -22,7 +22,7 @@ const LoginWithMail = (props) => {
       return;
     }
     setLoader(true);
-    const { data, status } = await UserAPI.emailLogin(email);
+    const { data, status } = await UserAPI.magicLogin({ email, type: 'email' });
     setLoader(false);
     if (200 !== status) {
       setPopup(data.message);
@@ -40,7 +40,8 @@ const LoginWithMail = (props) => {
       <form method="POST" onSubmit={handleSubmit} className="relative">
         <div>
           <input
-            type="text"
+            autoComplete="email"
+            type="email"
             onChange={(e) => {
               setEmail(e.target.value);
               setError(false);

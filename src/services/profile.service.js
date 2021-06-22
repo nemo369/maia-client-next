@@ -8,7 +8,8 @@ const ProfileAPI = {
     try {
       const response = await axios.get(`${API_URL}/profile`, {
         headers: {
-          Authorization: `Token ${encodeURIComponent(token)}`,
+          'Content-type': 'application/json',
+          Authorization: `Bearer ${token}`,
         },
       });
       return response;

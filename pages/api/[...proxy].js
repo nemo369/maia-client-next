@@ -2,13 +2,13 @@ import axios from 'axios';
 
 export default async function proxy(req, res) {
   const { WORDPRESS_ENDPOINT } = process.env;
-  const { method, url } = req;
+  const { method, url, headers } = req;
   const endpoint = url.replace(/^\/api/, '');
-  console.log(req);
+
   switch (method) {
     case 'GET':
       await axios
-        .get(`${WORDPRESS_ENDPOINT}/wp-json/wp/v2${endpoint}`)
+        .get(`${WORDPRESS_ENDPOINT}/wp-json/wp/v2${endpoint}`, { headers })
         .then(({ data }) => {
           res.status(200).json({ data });
         })
@@ -18,7 +18,7 @@ export default async function proxy(req, res) {
       break;
     case 'POST':
       await axios
-        .post(`${WORDPRESS_ENDPOINT}/wp-json/wp/v2${endpoint}`, req.body)
+        .post(`${WORDPRESS_ENDPOINT}/wp-json/wp/v2${endpoint}`, req.body, { headers })
         .then(({ data }) => {
           res.status(200).json({ data });
         })

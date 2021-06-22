@@ -33,13 +33,12 @@ export async function getServerSideProps(req) {
   if (user.redirect) return user;
   const profile = await ProfileAPI.profile(token);
   // Here you can add more data
-  console.log(user, token);
-  if (200 !== profile.status) {
+  if (200 !== profile.status || !profile.data) {
     return {
       props: { user, profile: null }, // will be passed to the page component as props
     };
   }
   return {
-    props: { user, profile }, // will be passed to the page component as props
+    props: { user, profile: profile.data }, // will be passed to the page component as props
   };
 }
