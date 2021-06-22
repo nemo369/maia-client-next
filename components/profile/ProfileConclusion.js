@@ -3,7 +3,7 @@ import Button from '../common/Button';
 
 export default function ProfileConclusion() {
   return (
-    <div className="conclusion w-[850px] bg-white rounded-[20px] py-[25px] px-[21px]">
+    <div className="conclusion w-[850px] max-h-[400px] bg-white rounded-[20px] py-[25px] px-[21px]">
       <div className="conclusion-header flex justify-between">
         <div>
           <div className="text-black opacity-50 text-[26px]">סיכום תוצאות שלב </div>

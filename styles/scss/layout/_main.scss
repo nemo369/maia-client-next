@@ -18,15 +18,19 @@
   color: #3fafb6;
 }
 
-.profile-container {
-  display: grid;
-  grid-template-columns: 1fr 2.5fr 1fr;
-  column-gap: 20px;
-  .active-svg .active-bulb {
-    fill: #fff;
-    stroke: #fff;
-    // font-weight: 900;
-  }
+.profile-avatar {
+  width: 130px;
+  margin-top: 25px;
+}
+
+.profile-fav-company {
+  min-width: 180px;
+  max-width: 180px;
+}
+
+.description {
+  min-width: 520px;
+  max-width: 520px;
 }
 
 .email1::placeholder {

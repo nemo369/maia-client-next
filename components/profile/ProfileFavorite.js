@@ -1,11 +1,12 @@
 import React from 'react';
-import Link from 'next/link';
 import CheckboxGroup from '../common/CheckboxGroup';
-import SchoolHat from '../svg/SchoolHat';
+import ProfileFavoriteEmpty from './ProfileFavoriteEmpty';
+import ProfileFavoriteData from './ProfileFavoriteData';
 
 export default function ProfileFavorite() {
+  const isData = true;
   return (
-    <div className="fav my-[22px] w-[1175px] bg-white rounded-[20px] py-[25px] px-[21px]">
+    <div className="fav my-[22px] h-[415px] bg-white rounded-[20px] py-[25px] px-[21px]">
       <div className="flex justify-between items-center">
         <div className="text-black text-[28px] font-bold">המועדפים שלי</div>
         <div className="flex">
@@ -34,21 +35,34 @@ export default function ProfileFavorite() {
           <CheckboxGroup checkOne="מקצועות" checkTwo="משרות" checkThree="לימודים" />
         </div>
       </div>
-      <div className="fav-content w-[100%] h-[283px] flex justify-center items-center">
-        <div className="fav-content-empty-state">
-          <div className="gray-hat">
-            <SchoolHat />
-          </div>
-          <div className="text-black opacity-20 text-[28px] font-bold">
-            עדיין לא נבחרו מסלולי לימוד שאהבת
-          </div>
-          <Link href="/jobs">
-            <a className="text-[#3D9CA8] text-[20px] font-bold underline flex justify-center">
-              לעמוד המשרות
-            </a>
-          </Link>
-        </div>
-      </div>
+      {isData ? (
+        <>
+          <ProfileFavoriteData
+            percentage="92"
+            isButton
+            company="אלקטרה בע׳׳מ"
+            jobTitle="מגייסת אנליסט BI"
+            description="אלקטרה מחפשת BI ANALYST מנוסים לתפקיד הכולל ניהול והובלה של פרויקטי BI מקצה לקצה; החל משלב איתור צרכי הלקוח מול הנהלה בכירה ומקבלי החלטות, אפיון עסקי והגדרת"
+          />
+          <ProfileFavoriteData
+            percentage="82"
+            isButton
+            company="הראל ביטוח"
+            jobTitle="דרוש Senior Data analyst"
+            description="לאגף ארגון ושיטות בהראל, האחראי על תהליכים אסטרטגים חוצי ארגון, דרוש.ה אנליסט.ית BI. ביומיום שלך בתפקיד: פיתוח, ניתוח ותפעול שוטף של בקרות ומסדי נתונים תפעוליים באמצעות כלים מתקדמים"
+          />
+          <ProfileFavoriteData
+            percentage="79"
+            isButton
+            company="קבוצת יעל"
+            jobTitle="קבוצת יעל מגייס אנליסט/ית
+            שיווקי"
+            description="חברתנו המתמחה במתן שירותים אנליטיים למגזר הפיננסי דרוש/ה Marketing data analyst התפקיד כולל: שליפת נתוני שאילתות מידע מורכבות מבסיסי נתונים שונים ותחקורם"
+          />
+        </>
+      ) : (
+        <ProfileFavoriteEmpty />
+      )}
     </div>
   );
 }
