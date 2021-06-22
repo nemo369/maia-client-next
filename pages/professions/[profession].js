@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import BreadCrumbs from '../../components/common/BreadCrumbs';
 import ProfessionDropdowns from '../../components/profession/ProfessionDropdowns';
 import ProfessionInfo from '../../components/profession/ProfessionInfo';
+import { getUserSession } from '../../src/utils/getUser';
 
 export default function Profession({ profession }) {
   const router = useRouter();
@@ -25,10 +26,11 @@ export default function Profession({ profession }) {
   );
 }
 
-export async function getServerSideProps({ query }) {
-  const { profession } = query;
-  console.log(profession);
+export async function getServerSideProps(req) {
+  const [user] = getUserSession(req);
+  if (user.redirect) return user;
+  const { profession } = req.query;
   return {
-    props: { profession }, // will be passed to the page component as props
+    props: { user, profession },
   };
 }

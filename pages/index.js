@@ -5,9 +5,10 @@ import DashboardHeader from '../components/dashboard/DashboardHeader';
 import DashboardSummary from '../components/dashboard/DashboardSummary';
 import Dashboard from '../components/dashboard/Dashboard';
 import Banner from '../components/dashboard/Banner';
+import ProfileAPI from '../src/services/profile.service';
 // import Test from '../components/Test';
 
-export default function Home() {
+export default function Home({ profile }) {
   const seo = seoMerge({
     title: 'ראשי',
   });
@@ -15,6 +16,7 @@ export default function Home() {
     <>
       <NextSeo {...seo} />
       <section className="dashboard md:pl-16 md:pr-0 px-3">
+        {JSON.stringify(profile)}
         <DashboardHeader />
         <div className="dashboard__grid md:grid">
           <DashboardSummary />
@@ -27,9 +29,17 @@ export default function Home() {
   );
 }
 export async function getServerSideProps(req) {
-  const userSession = getUserSession(req);
-  if (userSession.redirect) return userSession;
-
+  const [user, token] = getUserSession(req);
+  if (user.redirect) return user;
+  const profile = await ProfileAPI.profile(token);
   // Here you can add more data
-  return userSession;
+  console.log(user, token);
+  if (200 !== profile.status) {
+    return {
+      props: { user, profile: null }, // will be passed to the page component as props
+    };
+  }
+  return {
+    props: { user, profile }, // will be passed to the page component as props
+  };
 }

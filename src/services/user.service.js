@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { FRONT_URL } from '../utils/consts';
 
-const SERVER_BASE_URL = `${FRONT_URL}`;
+const API_URL = `${FRONT_URL}`;
 
 const UserAPI = {
   current: async () => {
@@ -18,15 +18,11 @@ const UserAPI = {
   },
   login: async (creditiontals) => {
     try {
-      const response = await axios.post(
-        `${SERVER_BASE_URL}/user/login`,
-        JSON.stringify(creditiontals),
-        {
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        }
-      );
+      const response = await axios.post(`${API_URL}/user/login`, JSON.stringify(creditiontals), {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
       return response;
     } catch (error) {
       return error.response;
@@ -34,9 +30,12 @@ const UserAPI = {
   },
   emailLogin: async (email) => {
     try {
-      const response = await axios.get(`${SERVER_BASE_URL}/user/magic-link?email=${email}`, {
+      const response = await axios.get(`${API_URL}/user/magic-link`, {
         headers: {
           'Content-Type': 'application/json',
+        },
+        params: {
+          email,
         },
       });
       return response;
@@ -47,7 +46,7 @@ const UserAPI = {
   magicLogin: async (creditiontals) => {
     try {
       const response = await axios.post(
-        `${SERVER_BASE_URL}/user/magic-link`,
+        `${API_URL}/user/magic-link`,
         JSON.stringify(creditiontals),
         {
           headers: {
@@ -64,7 +63,7 @@ const UserAPI = {
   phoneVerification: async ({ phone, pin }) => {
     try {
       const response = await axios.get(
-        `${SERVER_BASE_URL}/user/login-with-phone?phone=${phone}&pin=${+pin}`,
+        `${API_URL}/user/login-with-phone?phone=${phone}&pin=${+pin}`,
         {
           headers: {
             'Content-Type': 'application/json',
@@ -78,7 +77,7 @@ const UserAPI = {
   },
   register: async (user) => {
     try {
-      const response = await axios.post(`${SERVER_BASE_URL}/user/register`, JSON.stringify(user), {
+      const response = await axios.post(`${API_URL}/user/register`, JSON.stringify(user), {
         headers: {
           'Content-Type': 'application/json',
         },

@@ -2,6 +2,7 @@ import { NextSeo } from 'next-seo';
 import nookies from 'nookies';
 import RegisterForm from '../../components/profile/RegisterForm';
 import SignUpHeader from '../../components/SignUpHeader';
+import { USER_COOKIE } from '../../src/utils/consts';
 import { seoMerge } from '../../src/utils/next-seo.config';
 
 const Register = function (props) {
@@ -24,7 +25,7 @@ const Register = function (props) {
 export default Register;
 
 export async function getStaticProps(ctx) {
-  nookies.set(ctx, 'token-cookie', null, {
+  nookies.set(ctx, USER_COOKIE, null, {
     maxAge: 0,
     path: '/',
   });

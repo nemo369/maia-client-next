@@ -1,6 +1,7 @@
 import { NextSeo } from 'next-seo';
 import nookies from 'nookies';
 import LoginCmp from '../../components/profile/LoginCmp';
+import { USER_COOKIE } from '../../src/utils/consts';
 import { seoMerge } from '../../src/utils/next-seo.config';
 
 const Login = () => {
@@ -33,7 +34,7 @@ const Login = () => {
 export default Login;
 
 export async function getServerSideProps(ctx) {
-  nookies.set(ctx, 'token-cookie', null, {
+  nookies.set(ctx, USER_COOKIE, null, {
     maxAge: 0,
     path: '/',
   });

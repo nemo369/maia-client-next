@@ -1,10 +1,11 @@
 import axios from 'axios';
 import { setCookie, destroyCookie } from 'nookies';
+import { USER_COOKIE } from '../../../src/utils/consts';
 
 export default async function login(req, res) {
   const { WORDPRESS_ENDPOINT, NODE_ENV } = process.env;
   const { method } = req;
-  destroyCookie({ res }, 'token-cookie');
+  destroyCookie({ res }, USER_COOKIE);
   const { nonce, email, key } = req.query;
 
   switch (method) {
@@ -19,7 +20,7 @@ export default async function login(req, res) {
             `${WORDPRESS_ENDPOINT}/wp-json/wp/v2/user/user?nonce=${nonce}&email=${email}&key=${key}`
           )
           .then(({ data: user }) => {
-            setCookie({ res }, 'token-cookie', JSON.stringify(user), {
+            setCookie({ res }, USER_COOKIE, JSON.stringify(user), {
               secure: 'production' === NODE_ENV,
               maxAge: 72576000,
               httpOnly: true,

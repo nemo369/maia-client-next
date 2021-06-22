@@ -1,17 +1,20 @@
 import { parseCookies } from 'nookies';
+import { USER_COOKIE } from './consts';
 
 export const getUserSession = (req) => {
-  const userCookie = parseCookies(req)['token-cookie'];
+  const userCookie = parseCookies(req)[USER_COOKIE];
   if (!userCookie) {
-    return {
-      redirect: {
-        destination: '/user/login',
-        permanent: false,
+    return [
+      {
+        redirect: {
+          destination: '/user/login',
+          permanent: false,
+        },
       },
-    };
+      null,
+    ];
   }
-  const user = { ...JSON.parse(userCookie), token: 'token' };
-  return {
-    props: { user }, // will be passed to the page component as props
-  };
+  const data = JSON.parse(userCookie);
+  const user = { ...data, token: 'token' };
+  return [user, data.token];
 };

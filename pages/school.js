@@ -16,9 +16,11 @@ export default function School() {
 }
 
 export async function getServerSideProps(req) {
-  const userSession = getUserSession(req);
-  if (userSession.redirect) return userSession;
+  const [user] = getUserSession(req);
+  if (user.redirect) return user;
 
   // Here you can add more data
-  return userSession;
+  return {
+    props: { user },
+  };
 }

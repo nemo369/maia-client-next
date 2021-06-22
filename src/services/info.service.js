@@ -1,12 +1,12 @@
 import axios from 'axios';
 import { FRONT_URL } from '../utils/consts';
 
-const SERVER_BASE_URL = `${FRONT_URL}`;
+const API_URL = `${FRONT_URL}`;
 
 const Infoservice = {
   getStreetInfo: async (cityId) => {
     try {
-      const { data } = await axios.post(`${SERVER_BASE_URL}/info/street`, { city_id: cityId });
+      const { data } = await axios.post(`${API_URL}/info/street`, { city_id: cityId });
       return data;
     } catch (error) {
       return error.response;
