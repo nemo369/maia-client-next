@@ -1,27 +1,25 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
 
-export default function CheckboxGroup({ checkOne, checkTwo, checkThree }) {
-  return (
-    <div className="button-group">
-      <div className="button-sec">
-        <input type="radio" id="r1" name="r-group" className="cursor-pointer" />
-        <label className="button-label cursor-pointer" htmlFor="r1">
-          {checkOne}
+const CheckboxGroup = ({ checks, onChange, checkType }) => (
+  <div className="button-group">
+    {checks.map((check) => (
+      <div className="button-sec" key={check.id}>
+        <input
+          // {checkType.id === check.id ? 'checked' : ''}
+          type="radio"
+          id={check.id}
+          value={check.id}
+          name="check"
+          className="cursor-pointer"
+          onChange={() => onChange(check.id)}
+        />
+        <label className="button-label cursor-pointer" htmlFor={check.id}>
+          {check.name}
         </label>
       </div>
-      <div className="button-sec">
-        <input type="radio" id="r2" name="r-group" className="cursor-pointer" />
-        <label className="button-label cursor-pointer" htmlFor="r2">
-          {checkTwo}
-        </label>
-      </div>
-      <div className="button-sec">
-        <input type="radio" id="r3" name="r-group" className="cursor-pointer" />
-        <label className="button-label cursor-pointer" htmlFor="r3">
-          {checkThree}
-        </label>
-      </div>
-    </div>
-  );
-}
+    ))}
+  </div>
+);
+
+export default CheckboxGroup;
