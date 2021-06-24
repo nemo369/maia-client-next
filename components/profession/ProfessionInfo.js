@@ -9,10 +9,10 @@ function ProfessionInfo({ profession }) {
         <span>80</span>
       </header>
       <p>{profession}</p>
-      <footer className="mt-4 flex">
-        <button type="button">בדוק משרות פנויות</button>
-        <button type="button">בדוק מסלולי לימוד</button>
-      </footer>
+      <div className="mt-4 flex">
+        <button type="button"> בדוק משרות פנויות </button>
+        <button type="button"> בדוק מסלולי לימוד </button>
+      </div>
     </article>
   );
 }

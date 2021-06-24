@@ -2,9 +2,12 @@ import axios from 'axios';
 
 export default async function proxy(req, res) {
   const { WORDPRESS_ENDPOINT } = process.env;
-  const { method, url, headers } = req;
+  const { method, url } = req;
+  let { headers } = req;
   const endpoint = url.replace(/^\/api/, '');
-
+  if (!headers.Authorization) {
+    headers = null;
+  }
   switch (method) {
     case 'GET':
       await axios

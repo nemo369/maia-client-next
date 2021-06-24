@@ -4,8 +4,10 @@ import BreadCrumbs from '../../components/common/BreadCrumbs';
 import ProfessionDropdowns from '../../components/profession/ProfessionDropdowns';
 import ProfessionInfo from '../../components/profession/ProfessionInfo';
 import { getUserSession } from '../../src/utils/getUser';
+import ProfessionBottomSlider from '../../components/profession/ProfessionBottomSlider';
+import moreProfessions from '../api/user/moreProfessions';
 
-export default function Profession({ profession }) {
+export default function Profession({ profession, additionalProfessions }) {
   const router = useRouter();
   return (
     <div>
@@ -21,6 +23,7 @@ export default function Profession({ profession }) {
           <ProfessionInfo profession={profession} />
           <ProfessionDropdowns profession={profession} />
         </div>
+        <ProfessionBottomSlider profession={profession} professions={additionalProfessions} />
       </section>
     </div>
   );
@@ -30,7 +33,10 @@ export async function getServerSideProps(req) {
   const [user] = getUserSession(req);
   if (user.redirect) return user;
   const { profession } = req.query;
+
+  const additionalProfessions = await moreProfessions();
+
   return {
-    props: { user, profession },
+    props: { user, profession, additionalProfessions },
   };
 }
