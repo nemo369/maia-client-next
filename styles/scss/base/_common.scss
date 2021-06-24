@@ -7,20 +7,8 @@ body {
 }
 //checkbox group
 .button-group {
-  color: #333333;
   border-radius: 5px;
   width: 300px;
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-around;
-  background-color: #eaeaea;
-  font-size: 18px;
-  text-align: center;
-}
-
-.button-sec {
-  min-width: 95px;
-  padding: 2px;
 }
 
 .button-label {
@@ -35,14 +23,11 @@ body {
 .button-group div input:checked + label,
 .button-group div input:checked + label:active {
   background: linear-gradient(143.28deg, #40c2c4 0%, #3c91a0 100%);
-  min-width: 100px;
   opacity: 1;
   border-radius: 3px;
   color: #ffffff;
   font-size: 18px;
-  width: 100px;
   font-weight: bold;
-  display: inline-block;
 }
 
 //toggle school jobs button
