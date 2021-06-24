@@ -2,7 +2,7 @@
     &__grid {
         min-height: calc(100vh - 300px);
         gap: 36px 51px;
-        grid-template-columns: 558px 1fr;
+        grid-template-columns: minmax(400px, 558px) 1fr;
         grid-template-areas:
             "aside main"
             "aside banner";
