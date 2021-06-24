@@ -3,7 +3,7 @@ import { DASHBOARD_TYPE_CATEGORY } from '../../../src/utils/consts';
 import { getLs, setLs } from '../../../src/utils/localStorge';
 import CheckboxGroup from '../../common/CheckboxGroup';
 
-function CategoryCahnger({ onChangeCategoryList }) {
+function CategoryCahnger({ onChangeCategoryList, length }) {
   const categoryGroups = [
     { name: 'משרות', id: 'professions' },
     { name: 'לימודים', id: 'studies' },
@@ -11,8 +11,10 @@ function CategoryCahnger({ onChangeCategoryList }) {
   ];
   const [categoryType, setcategoryType] = useState(categoryGroups[0]);
   useEffect(() => {
-    setcategoryType(getLs(DASHBOARD_TYPE_CATEGORY));
-  }, []);
+    const current = getLs(DASHBOARD_TYPE_CATEGORY);
+    setcategoryType(current);
+    onChangeCategoryList(current);
+  }, [onChangeCategoryList]);
   const onChange = (id) => {
     const newCategory = categoryGroups.find((c) => c.id === id);
     setLs(DASHBOARD_TYPE_CATEGORY, newCategory);
@@ -28,7 +30,7 @@ function CategoryCahnger({ onChangeCategoryList }) {
         </h2>
         <h3 className="text-base text-black/50">
           (נמצאו&nbsp;
-          {categoryGroups.length}
+          {length}
           &nbsp;
           {categoryType.name}
           &nbsp;חדשות עבורך)

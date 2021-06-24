@@ -51,7 +51,7 @@ const NavBar = () => {
               <div className="md:w-[84px]  mx-auto  h-1/2 w-10">
                 {'m' === user?.gender ? <MalePic /> : <FemalePic />}
               </div>
-              <div className="w-full  truncate nav-profile-img-text text-lg text-white leading-[18px] text-center pt-1 mt-1 font-bold">
+              <div className="w-full  nav-profile-img-text text-lg text-white leading-[18px] text-center pt-1 mt-1 font-bold">
                 {user?.displayName}
               </div>
             </a>

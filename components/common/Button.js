@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Button({ name, onClickFunction, type, disabled, className, status }) {
+const Button = ({ name, onClickFunction, type, disabled, className, status }) => {
   let classes = '';
   switch (status) {
     case 'main':
@@ -35,4 +35,6 @@ export default function Button({ name, onClickFunction, type, disabled, classNam
       {name}
     </button>
   );
-}
+};
+
+export default Button;
