@@ -1,13 +1,18 @@
 import React from 'react';
 
-function HeartEmpty() {
+function HeartEmpty(props) {
+  const { addToFavorites } = props;
+  // const className = className1;
   return (
     <svg
+      onClick={addToFavorites}
+      // className={className}
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
       width="23"
       height="21"
       viewBox="0 0 23 21"
+      // onClick={addToFavorites}
     >
       <defs>
         <filter id="filter-1">

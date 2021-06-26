@@ -1,0 +1,26 @@
+.alice-carousel__wrapper {
+  li {
+    direction: rtl;
+    padding-left: 6px;
+    padding-right: 6px;
+  }
+}
+.alice-carousel__next-btn {
+  width: 50px !important;
+  height: 50px !important;
+  position: absolute !important;
+  top: -65px !important;
+  left: 52px !important;
+}
+.alice-carousel__prev-btn {
+  width: 50px !important;
+  height: 50px !important;
+  position: absolute !important;
+  top: -65px !important;
+}
+.alice-carousel__prev-btn-item {
+  font-size: 25px;
+}
+.alice-carousel__next-btn-item {
+  font-size: 25px;
+}

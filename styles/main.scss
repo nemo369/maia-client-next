@@ -1,29 +1,30 @@
-@import "~tailwindcss/base";
-@import "~tailwindcss/components";
-@import "~tailwindcss/utilities";
+@import '~tailwindcss/base';
+@import '~tailwindcss/components';
+@import '~tailwindcss/utilities';
 
 // Base: animations, base, typography, and utilies.
-@import "./scss/base/_var.scss";
-@import "./scss/base/_fonts.scss";
-@import "./scss/base/_utilities.scss";
-@import "./scss/base/_common.scss";
-@import "./scss/base/_wp-content.scss";
-@import "./scss/base/_animation.scss";
+@import './scss/base/_var.scss';
+@import './scss/base/_fonts.scss';
+@import './scss/base/_utilities.scss';
+@import './scss/base/_common.scss';
+@import './scss/base/_wp-content.scss';
+@import './scss/base/_animation.scss';
 
 // Layout: Header, footer, grid, navigation
-@import "./scss/layout/_nav.scss";
-@import "./scss/layout/_main.scss";
+@import './scss/layout/_nav.scss';
+@import './scss/layout/_main.scss';
 
 // Pages: Have a single scss for each specific page
-@import "./scss/pages/_login.scss";
-@import "./scss/pages/_dashboard.scss";
+@import './scss/pages/_login.scss';
+@import './scss/pages/_dashboard.scss';
 
 // Vendor: handles 3rd party css
+@import './scss/vendor/alice.scss';
 
 // Components: have a single scss file for each individual component
-@import "./scss/components/loader.scss";
-@import "./scss/components/bubble.scss";
-@import "./scss/components/register.scss";
-@import "./scss/components/popup.scss";
+@import './scss/components/loader.scss';
+@import './scss/components/bubble.scss';
+@import './scss/components/register.scss';
+@import './scss/components/popup.scss';
 
-@import "./scss/_mobile.scss";
+@import './scss/_mobile.scss';

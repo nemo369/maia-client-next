@@ -20,8 +20,8 @@ export default function Profession({ profession, additionalProfessions }) {
         />
         <h1 className="text-black text-3xl font-black mb-16">זירת המקצוענות</h1>
         <div className="md:flex justify-between">
-          <ProfessionInfo profession={profession} />
-          <ProfessionDropdowns profession={profession} />
+          <ProfessionInfo professions={additionalProfessions} profession={profession} />
+          <ProfessionDropdowns professions={additionalProfessions} profession={profession} />
         </div>
         <ProfessionBottomSlider profession={profession} professions={additionalProfessions} />
       </section>

@@ -39,7 +39,6 @@ export async function getStaticProps(ctx) {
       props: { cities, termsText }, // will be passed to the page component as props
     };
   } catch (error) {
-    console.log(error);
     return {
       props: { cities: [], termsText: '' },
     };

@@ -61,7 +61,7 @@ export default function Positions({
         <div className="description text-[#333333] opacity-70 text-[16px] mt-[10px] text-right">
           {description}
         </div>
-        <div className="footer w-full flex flex-row-reverse">
+        <div className="footer w-full flex my-[10px] flex-row-reverse">
           {isButton && (
             <button
               className="border-black border-2 text-black rounded-[5px] py-[2px] px-[20px] active:bg-gray-lighter focus:outline-none"

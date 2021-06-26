@@ -28,6 +28,15 @@ const UserAPI = {
       return error.response;
     }
   },
+  addToFavorites: async (creditiontals) => {
+    // console.log(creditiontals);
+    try {
+      const response = await axios.post(`${API_URL}/user/addToFavorites`, { id: creditiontals });
+      return response;
+    } catch (error) {
+      return error.response;
+    }
+  },
   // emailLogin: async (email) => {
   //   try {
   //     const response = await axios.get(`${API_URL}/user/magic-link`, {

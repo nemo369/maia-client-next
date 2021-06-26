@@ -1,10 +1,10 @@
 import axios from 'axios';
 
-export default async function moreProfessions(req, res) {
+export default async function moreProfessions() {
   const { WORDPRESS_ENDPOINT } = process.env;
   const { data } = await axios.get(`${WORDPRESS_ENDPOINT}/wp-json/wp/v2/vendor/professions`);
-  const tt = JSON.stringify(data);
-  return tt;
+
+  return data;
   //   const { method } = 'GET';
   //   switch (method) {
   //     case 'GET':
