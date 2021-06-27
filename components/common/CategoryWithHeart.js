@@ -1,5 +1,6 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 import { useState } from 'react';
+import Link from 'next/link';
 import UserAPI from '../../src/services/user.service';
 import HeartEmpty from '../svg/HeartEmpty';
 import HeartFull from '../svg/HeartFull';
@@ -52,12 +53,14 @@ export default function CategoryWithHeart({
         </p>
         <div className="footer w-full flex my-[10px]">
           {isButton && (
-            <button
-              className="border-black border-2 text-black rounded-[5px] py-[2px] px-[20px] active:bg-gray-lighter focus:outline-none"
-              type="button"
-            >
-              קרא עוד
-            </button>
+            <Link href={`/professions/${id}`}>
+              <a
+                className="border-black border-2 text-black rounded-[5px] py-[2px] px-[20px] active:bg-gray-lighter focus:outline-none"
+                type="button"
+              >
+                קרא עוד
+              </a>
+            </Link>
           )}
         </div>
       </div>
