@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function stepperOne({ step }) {
+const Stepper = ({ step }) => {
   let one = '';
   let two = '';
   let three = '';
@@ -84,4 +84,6 @@ export default function stepperOne({ step }) {
       </div>
     </div>
   );
-}
+};
+
+export default Stepper;

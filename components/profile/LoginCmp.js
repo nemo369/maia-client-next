@@ -6,14 +6,15 @@ import SilverLog from '../svg/SilverLog';
 import LoginWithMail from './login/LoginWithMail';
 import LoginWithPassword from './login/LoginWithPassword';
 import PhoneLog from './login/PhoneLog';
+import { getLs, setLs } from '../../src/utils/localStorge';
 
 export default function LoginCmp() {
   const [loginType, setLoginType] = useState();
   useEffect(() => {
-    setLoginType(localStorage.getItem(LOGIN_TYPE_LS) || 'email');
+    setLoginType(getLs(LOGIN_TYPE_LS));
   }, []);
   const changeLoginType = (type) => {
-    localStorage.setItem(LOGIN_TYPE_LS, type);
+    setLs(LOGIN_TYPE_LS, type);
     setLoginType(type);
   };
   return (

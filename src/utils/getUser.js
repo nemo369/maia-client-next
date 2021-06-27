@@ -15,6 +15,6 @@ export const getUserSession = (req) => {
     ];
   }
   const data = JSON.parse(userCookie);
-  const user = { ...data, token: 'token' };
+  const user = { ...data };
   return [user, data.token];
 };
