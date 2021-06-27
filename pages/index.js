@@ -1,5 +1,6 @@
 import { NextSeo } from 'next-seo';
 import { useContext, useEffect } from 'react';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { getUserSession } from '../src/utils/getUser';
 import { seoMerge } from '../src/utils/next-seo.config';
 import DashboardHeader from '../components/dashboard/DashboardHeader';
@@ -9,6 +10,7 @@ import Banner from '../components/dashboard/Banner';
 import ProfileAPI from '../src/services/profile.service';
 import { SET_PROFILE } from '../src/context/userReucder';
 import { AppContext } from '../src/context/state';
+
 // import Test from '../components/Test';
 
 export default function Home({ profile }) {
@@ -46,7 +48,12 @@ export async function getServerSideProps(req) {
       props: { user, profile: null }, // will be passed to the page component as props
     };
   }
+  console.log(req.locale);
   return {
-    props: { user, profile: data.data }, // will be passed to the page component as props
+    props: {
+      ...(await serverSideTranslations(req.locale, ['common'])),
+      user,
+      profile: data.data,
+    }, // will be passed to the page component as props
   };
 }

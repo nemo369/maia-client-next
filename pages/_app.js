@@ -1,5 +1,6 @@
 import '../styles/main.scss';
 import '../styles/global.css';
+import { appWithTranslation } from 'next-i18next';
 import Layout from '../components/layout/Layout';
 import { AppWrapper } from '../src/context/state';
 // import { ReactElement as RE } from "react";
@@ -21,4 +22,4 @@ const AppComponent = ({ Component, pageProps }) => (
   </AppWrapper>
 );
 
-export default AppComponent;
+export default appWithTranslation(AppComponent);
