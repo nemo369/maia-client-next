@@ -26,7 +26,7 @@ export default function Home({ profile }) {
       <NextSeo {...seo} />
       <section className="dashboard md:pl-16 md:pr-0 px-3">
         <DashboardHeader />
-        <div className="dashboard__grid xl:grid ">
+        <div className="dashboard__grid xl:grid pb-10">
           <DashboardSummary />
           <DashboardCatergory />
           <Banner />

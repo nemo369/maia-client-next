@@ -12,5 +12,13 @@ const Infoservice = {
       return error.response;
     }
   },
+  getBanner: async () => {
+    try {
+      const { data } = await axios.get(`${API_URL}/info/banner`);
+      return data;
+    } catch (error) {
+      return error.response;
+    }
+  },
 };
 export default Infoservice;

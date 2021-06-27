@@ -2,7 +2,7 @@ import React from 'react';
 import Button from '../common/Button';
 import HeartEmpty from '../svg/HeartEmpty';
 import CategoryPercentage from '../profile/CategoryPercentage';
-// import HeartFull from '../svg/HeartFull';
+
 function ProfessionInfo({ profession }) {
   return (
     <article className="bg-white max-h-[451px] rounded-lg py-8 px-4 ml-4 w-full">

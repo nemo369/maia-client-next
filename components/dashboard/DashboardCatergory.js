@@ -36,7 +36,6 @@ function Dashboard() {
         jobs: jobs || [],
         studies: studies || [],
       });
-      console.log(currentCategory);
       if (categories[currentCategory]) {
         setcatList([...categories[currentCategory]]);
       } else {
