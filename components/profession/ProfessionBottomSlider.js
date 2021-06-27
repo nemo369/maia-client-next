@@ -12,10 +12,11 @@ function ProfessionBottomSlider({ professions }) {
 
   const items = professions.map((profession1) => (
     <CategoryWithHeart
-      jobTitle={profession1.title}
+      title={profession1.title}
       isButton
       description={profession1.description}
-      professionID={profession1.id}
+      id={profession1.id}
+      category="profession"
     />
   ));
 

@@ -1,46 +1,26 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 import { useState } from 'react';
-import Infoservice from '../../src/services/info.service';
+import UserAPI from '../../src/services/user.service';
 import HeartEmpty from '../svg/HeartEmpty';
 import HeartFull from '../svg/HeartFull';
 
 export default function CategoryWithHeart({
   className,
   company,
-  percentage,
-  jobTitle,
+  title,
   description,
   isButton,
-  professionID,
+  category,
+  id,
 }) {
-  //   const { handleDragStart, addToFavorites } = props;
   const [favorites, setFavorites] = useState(false);
   const addToFavorites = async () => {
     setFavorites(!favorites);
-    await Infoservice.addToFavorites(professionID);
+    await UserAPI.addToFavorites({ id, category });
   };
 
   const handleDragStart = (e) => e.preventDefault();
-  let colorOne = '';
-  let colorTwo = '';
-  switch (true) {
-    case 50 > percentage:
-      colorOne += '#FB7067';
-      colorTwo += '#F9DBD7';
-      break;
-    case 50 <= percentage && 80 > percentage:
-      colorOne += '#FFC960';
-      colorTwo += '#FFF1DC';
-      break;
-    case 80 < percentage:
-      // eslint-disable-next-line no-unused-vars
-      colorOne += '#4cc790';
-      // eslint-disable-next-line no-unused-vars
-      colorTwo += '#E5F6EA';
-      break;
-    default:
-      break;
-  }
+
   return (
     <div onDragStart={handleDragStart} tabIndex="0" className={className} role="tab">
       <div
@@ -50,9 +30,9 @@ export default function CategoryWithHeart({
         <div className="h-[42px] w-full">
           <div className="single-chart">
             {favorites ? (
-              <HeartEmpty addToFavorites={addToFavorites} />
-            ) : (
               <HeartFull addToFavorites={addToFavorites} />
+            ) : (
+              <HeartEmpty addToFavorites={addToFavorites} />
             )}
           </div>
         </div>
@@ -61,10 +41,10 @@ export default function CategoryWithHeart({
         <div
           className="job-title font-bold text-[18px] text-[#333333] text-right "
           //   className={`job-title font-bold text-[18px] text-[#333333] text-right ${
-          //     60 > jobTitle.length ? 'overflow-ellipsis overflow-hidden' : ''
+          //     60 > title.length ? 'overflow-ellipsis overflow-hidden' : ''
           //   }`}
         >
-          {jobTitle}
+          {title}
         </div>
         <div className="dash border-b-[1px] border-dashed border-[#979797] opacity-20 w-full h-1" />
         <p className="description  text-[#333333] opacity-70 text-[16px] mt-[10px] text-right">

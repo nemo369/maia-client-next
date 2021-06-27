@@ -5,7 +5,7 @@ import ProfessionDropdowns from '../../components/profession/ProfessionDropdowns
 import ProfessionInfo from '../../components/profession/ProfessionInfo';
 import { getUserSession } from '../../src/utils/getUser';
 import ProfessionBottomSlider from '../../components/profession/ProfessionBottomSlider';
-import moreProfessions from '../api/user/moreProfessions';
+import UserAPI from '../../src/services/user.service';
 
 export default function Profession({ profession, additionalProfessions }) {
   const router = useRouter();
@@ -34,7 +34,8 @@ export async function getServerSideProps(req) {
   if (user.redirect) return user;
   const { profession } = req.query;
 
-  const additionalProfessions = await moreProfessions();
+  // const additionalProfessions = await UserAPI.moreProfessions();
+  const additionalProfessions = [];
 
   return {
     props: { user, profession, additionalProfessions },

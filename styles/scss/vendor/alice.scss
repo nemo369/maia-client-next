@@ -5,18 +5,18 @@
     padding-right: 6px;
   }
 }
-.alice-carousel__next-btn {
-  width: 50px !important;
-  height: 50px !important;
-  position: absolute !important;
-  top: -65px !important;
-  left: 52px !important;
+.alice-carousel .alice-carousel__next-btn {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: -65px;
+  left: 52px;
 }
-.alice-carousel__prev-btn {
-  width: 50px !important;
-  height: 50px !important;
-  position: absolute !important;
-  top: -65px !important;
+.alice-carousel .alice-carousel__prev-btn {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: -65px;
 }
 .alice-carousel__prev-btn-item {
   font-size: 25px;
