@@ -9,6 +9,9 @@ function ProfessionBottomSlider({ professions }) {
     568: { items: 2 },
     1024: { items: 3 },
   };
+  if (!professions || !Array.isArray(professions)) {
+    return null;
+  }
 
   const items = professions.map((profession1) => (
     <CategoryWithHeart

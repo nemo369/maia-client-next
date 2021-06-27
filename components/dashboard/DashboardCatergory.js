@@ -27,9 +27,9 @@ function Dashboard() {
   useEffect(() => {
     const fetchAll = async () => {
       const [{ data: professions }, { data: jobs }, { data: studies }] = await Promise.all([
-        VendorAPI.getCategory(user.token, 'professions'),
-        VendorAPI.getCategory(user.token, 'jobs'),
-        VendorAPI.getCategory(user.token, 'studies'),
+        VendorAPI.getCategorys(user.token, 'professions'),
+        VendorAPI.getCategorys(user.token, 'jobs'),
+        VendorAPI.getCategorys(user.token, 'studies'),
       ]);
       setcategories({
         professions: professions || [],

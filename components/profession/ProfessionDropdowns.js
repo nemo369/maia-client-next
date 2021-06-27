@@ -1,6 +1,7 @@
 import React from 'react';
 
-function ProfessionDropdowns() {
+function ProfessionDropdowns({ profession }) {
+  console.log(profession);
   return (
     <section className="leftNav w-full">
       <ul>
