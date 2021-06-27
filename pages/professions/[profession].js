@@ -4,16 +4,21 @@ import BreadCrumbs from '../../components/common/BreadCrumbs';
 import ProfessionDropdowns from '../../components/profession/ProfessionDropdowns';
 import ProfessionInfo from '../../components/profession/ProfessionInfo';
 import { getUserSession } from '../../src/utils/getUser';
+import ProfessionBottomSlider from '../../components/profession/ProfessionBottomSlider';
+import VendorAPI from '../../src/services/vendor.service';
 
-export default function Profession({ profession }) {
+export default function Profession({ profession, additionalProfessions }) {
   const router = useRouter();
+  if (!profession) {
+    return 'TODO: redirect to professions page';
+  }
   return (
     <div>
       <section className="professions">
         <BreadCrumbs
           breadCrumbs={[
             { title: 'מקצועות', href: '/professions' },
-            { title: profession, href: router.asPath },
+            { title: profession.title, href: router.asPath },
           ]}
         />
         <h1 className="text-black text-3xl font-black mb-16">זירת המקצוענות</h1>
@@ -21,16 +26,23 @@ export default function Profession({ profession }) {
           <ProfessionInfo profession={profession} />
           <ProfessionDropdowns profession={profession} />
         </div>
+        <ProfessionBottomSlider professions={additionalProfessions} />
       </section>
     </div>
   );
 }
 
 export async function getServerSideProps(req) {
-  const [user] = getUserSession(req);
+  const [user, token] = getUserSession(req);
   if (user.redirect) return user;
   const { profession } = req.query;
+
+  const professions = await VendorAPI.getCategorys(token, 'professions');
+  const additionalProfessions = professions.data;
+
+  const fetchedProfession = await VendorAPI.getCategory(token, 'profession', profession);
+  const professionData = fetchedProfession.data;
   return {
-    props: { user, profession },
+    props: { user, additionalProfessions, profession: professionData },
   };
 }

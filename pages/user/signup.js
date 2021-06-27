@@ -35,7 +35,6 @@ export async function getStaticProps(ctx) {
       fetch(`${WORDPRESS_ENDPOINT}/wp-json/wp/v2/info/city`).then((res) => res.json()),
       fetch(`${WORDPRESS_ENDPOINT}/wp-json/wp/v2/info/conditions-text`).then((res) => res.json()),
     ]);
-
     return {
       props: { cities, termsText }, // will be passed to the page component as props
     };

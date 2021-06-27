@@ -30,7 +30,7 @@ export default function Positions({
   return (
     <div className={className}>
       <div
-        className="bg-white rounded-[10px] border-[1px] border-[rgba(151,151,151,0.13)]
+        className="bg-white rounded-[10px] border-[1px] overflow-hidden border-[rgba(151,151,151,0.13)]
       px-[18px] py-[12px]"
       >
         <div className="h-[42px] w-full">
@@ -56,12 +56,12 @@ export default function Positions({
         </div>
 
         <div className="company text-gray-active text-[18px]">{company}</div>
-        <div className="job-title font-bold text-[18px] text-[#333333]">{jobTitle}</div>
+        <div className="job-title font-bold text-[18px] text-[#333333] text-right">{jobTitle}</div>
         <div className="dash border-b-[1px] border-dashed border-[#979797] opacity-20 w-full h-1" />
-        <div className="description text-[#333333] opacity-70 text-[16px] mt-[10px]">
+        <div className="description text-[#333333] opacity-70 text-[16px] mt-[10px] text-right">
           {description}
         </div>
-        <div className="footer w-full flex flex-row-reverse">
+        <div className="footer w-full flex my-[10px] flex-row-reverse">
           {isButton && (
             <button
               className="border-black border-2 text-black rounded-[5px] py-[2px] px-[20px] active:bg-gray-lighter focus:outline-none"
