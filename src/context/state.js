@@ -10,7 +10,6 @@ export function AppWrapper({ children, userProp }) {
     profile,
     dispatch,
   };
-
   return <AppContext.Provider value={sharedState}>{children}</AppContext.Provider>;
 }
 

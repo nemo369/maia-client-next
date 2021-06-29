@@ -1,3 +1,4 @@
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { NextSeo } from 'next-seo';
 import React from 'react';
 import { getUserSession } from '../src/utils/getUser';
@@ -19,7 +20,12 @@ export async function getServerSideProps(req) {
   if (user.redirect) return user;
 
   // Here you can add more data
+  const locale = `he${user.gender}`;
+
   return {
-    props: { user: user },
+    props: {
+      ...(await serverSideTranslations(locale, ['common', 'jobs'])),
+      user: user,
+    },
   };
 }

@@ -5,6 +5,7 @@ import ChevronLeft from '../svg/ChevronLeft';
 function BreadCrumbs({ breadCrumbs }) {
   const main = [{ title: 'ראשי', href: '/' }];
   const bcs = [...main, ...breadCrumbs];
+  console.log(breadCrumbs);
   return (
     <nav className="bread-crumbs" aria-label="breadcrumbs">
       <ul className="flex items-center text-lg font-bold text-gray mb-4">

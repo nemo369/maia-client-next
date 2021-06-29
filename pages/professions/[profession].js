@@ -1,5 +1,6 @@
 import React from 'react';
 import { useRouter } from 'next/router';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import BreadCrumbs from '../../components/common/BreadCrumbs';
 import ProfessionDropdowns from '../../components/profession/ProfessionDropdowns';
 import ProfessionInfo from '../../components/profession/ProfessionInfo';
@@ -42,7 +43,14 @@ export async function getServerSideProps(req) {
 
   const fetchedProfession = await VendorAPI.getCategory(token, 'profession', profession);
   const professionData = fetchedProfession.data;
+  const locale = `he${user.gender}`;
+
   return {
-    props: { user, additionalProfessions, profession: professionData },
+    props: {
+      ...(await serverSideTranslations(locale, ['common', 'profession'])),
+      user,
+      additionalProfessions,
+      profession: professionData,
+    },
   };
 }
