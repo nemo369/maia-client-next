@@ -3,8 +3,8 @@
 import { useState } from 'react';
 import Popup from 'reactjs-popup';
 
-const PopUp = ({ children, trigger }) => {
-  const [open, setOpen] = useState(false);
+const PopUp = ({ children, trigger, defaultOpen = false }) => {
+  const [open, setOpen] = useState(defaultOpen);
   const closeModal = () => {
     setOpen(false);
   };
@@ -21,9 +21,11 @@ const PopUp = ({ children, trigger }) => {
   };
   return (
     <>
-      <div onClick={openModal} className={trigger.props.className} role="button" tabIndex={0}>
-        {trigger}
-      </div>
+      {trigger && (
+        <div onClick={openModal} className={trigger.props.className} role="button" tabIndex={0}>
+          {trigger}
+        </div>
+      )}
       <Popup position="center" modal open={open}>
         <div className="bg-white rounded-2xl py-7 px-4 h-[460px] overflow-y-auto">
           {children}
