@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import React, { useContext } from 'react';
 import { useRouter } from 'next/router';
+import { useTranslation } from 'next-i18next';
 import LightBulb from '../svg/LightBulb';
 import { AppContext } from '../../src/context/state';
 import Information from '../svg/Information';
@@ -13,12 +14,12 @@ import MalePic from '../svg/MalePic';
 const NavBar = () => {
   const { pathname } = useRouter();
   const { user } = useContext(AppContext);
-
+  const { t } = useTranslation('common');
   const links = [
-    { href: '/', name: 'ראשי', icon: <LightBulb /> },
-    { href: '/professions', name: 'זירת המקצועות', icon: <Information /> },
-    { href: '/school', name: 'מאגר הלימודים', icon: <SchoolHat /> },
-    { href: '/jobs', name: 'משרות פנויות', icon: <Briefcase /> },
+    { href: '/', name: t('ראשי'), icon: <LightBulb /> },
+    { href: '/professions', name: t('זירת המקצועות'), icon: <Information /> },
+    { href: '/studies', name: t('מאגר הלימודים'), icon: <SchoolHat /> },
+    { href: '/jobs', name: t('משרות פנויות'), icon: <Briefcase /> },
   ];
 
   const LinkButton = ({ link, isActive }) => (

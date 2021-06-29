@@ -1,12 +1,14 @@
 import React from 'react';
 import { NextSeo } from 'next-seo';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { useTranslation } from 'next-i18next';
 import { seoMerge } from '../src/utils/next-seo.config';
 import { getUserSession } from '../src/utils/getUser';
 
-export default function School() {
+export default function Studies() {
+  const { t } = useTranslation('common');
   const seo = seoMerge({
-    title: 'מאגר הלימודים',
+    title: t('מאגר הלימודים'),
   });
   return (
     <>
@@ -24,7 +26,7 @@ export async function getServerSideProps(req) {
 
   return {
     props: {
-      ...(await serverSideTranslations(locale, ['common', 'school'])),
+      ...(await serverSideTranslations(locale, ['common', 'studies'])),
       user,
     },
   };
