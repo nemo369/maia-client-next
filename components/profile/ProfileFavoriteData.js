@@ -15,15 +15,15 @@ export default function ProfileFavoriteData({
   let colorTwo = '';
   const isFav = true;
   switch (true) {
-    case 50 > percentage:
+    case 49 > percentage:
       colorOne += '#FB7067';
       colorTwo += '#F9DBD7';
       break;
-    case 50 <= percentage && 80 > percentage:
+    case 50 <= percentage && 74 > percentage:
       colorOne += '#FFC960';
       colorTwo += '#FFF1DC';
       break;
-    case 80 <= percentage:
+    case 75 <= percentage:
       colorOne += '#4cc790';
       colorTwo += '#E5F6EA';
       break;

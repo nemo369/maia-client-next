@@ -48,7 +48,11 @@ function Dashboard() {
   }, [user.token]);
   return (
     <section>
-      <CategoryCahnger onChangeCategoryList={onChangeCategoryList} length={catList?.length || 0} />
+      <CategoryCahnger
+        isLabel
+        onChangeCategoryList={onChangeCategoryList}
+        length={catList?.length || 0}
+      />
       <CategoryList categories={catList} type={currentCategory} />
     </section>
   );

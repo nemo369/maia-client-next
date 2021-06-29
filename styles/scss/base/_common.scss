@@ -141,7 +141,7 @@ body {
   &::after {
     top: 1px;
     left: 2px;
-    content: "";
+    content: '';
     width: 1.4rem;
     height: 1.4rem;
     background-color: #ffffff;
@@ -170,18 +170,18 @@ input::-webkit-inner-spin-button {
 }
 
 /* Firefox */
-input[type="number"] {
+input[type='number'] {
   -moz-appearance: textfield;
 }
 
 //check
 
-.check input[type="checkbox"] {
+.check input[type='checkbox'] {
   position: relative;
   cursor: pointer;
 }
-.check input[type="checkbox"]:before {
-  content: "";
+.check input[type='checkbox']:before {
+  content: '';
   display: block;
   position: absolute;
   width: 20px;
@@ -192,8 +192,8 @@ input[type="number"] {
   border-radius: 2px;
   background-color: #eeeeee;
 }
-.check input[type="checkbox"]:checked:after {
-  content: "";
+.check input[type='checkbox']:checked:after {
+  content: '';
   display: block;
   width: 5px;
   height: 10px;
@@ -207,13 +207,13 @@ input[type="number"] {
   left: 8px;
 }
 
-.check input[type="checkbox"]:checked:before {
+.check input[type='checkbox']:checked:before {
   border: 1px solid #3c91a0;
 }
 
 // radio button
 
-input[type="radio"] {
+input[type='radio'] {
   /* remove standard background appearance */
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -231,7 +231,7 @@ input[type="radio"] {
 }
 
 /* appearance for checked radiobutton */
-input[type="radio"]:checked {
+input[type='radio']:checked {
   background-color: #3c91a0;
   border: 1px solid#3c91a0;
 }
@@ -294,7 +294,7 @@ input[type="radio"]:checked {
 }
 
 .stepper .stepper__step:after {
-  content: " ";
+  content: ' ';
   position: absolute;
   top: 1.8rem;
   width: 100%;
@@ -452,8 +452,8 @@ input[type="radio"]:checked {
 }
 
 #select-box:after {
-  content: "<";
-  font: 17px "Consolas", monospace;
+  content: '<';
+  font: 17px 'Consolas', monospace;
   color: rgba(12, 12, 12, 0.445);
   -webkit-transform: rotate(90deg);
   -moz-transform: rotate(90deg);
@@ -488,4 +488,8 @@ input[type="radio"]:checked {
   color: #666666;
   position: relative;
   top: -3px;
+}
+
+.conclusion-btn {
+  width: 200px;
 }

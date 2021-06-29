@@ -1,7 +1,11 @@
 import React from 'react';
-import CheckboxGroup from '../common/CheckboxGroup';
+import CategoryCahnger from '../dashboard/cateorgy/CategoryCahnger';
 import ProfileFavoriteEmpty from './ProfileFavoriteEmpty';
 import ProfileFavoriteData from './ProfileFavoriteData';
+
+const onChangeCategoryList = (catData) => {
+  console.log(catData.id);
+};
 
 export default function ProfileFavorite() {
   const isData = true;
@@ -32,7 +36,7 @@ export default function ProfileFavorite() {
               </div>
             </div>
           </div>
-          <CheckboxGroup checkOne="מקצועות" checkTwo="משרות" checkThree="לימודים" />
+          <CategoryCahnger isLabel={false} onChangeCategoryList={onChangeCategoryList} />
         </div>
       </div>
       {isData ? (

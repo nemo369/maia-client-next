@@ -1,0 +1,14 @@
+.scroller {
+  height: 140px;
+  overflow-y: scroll;
+  cursor: pointer;
+}
+
+::-webkit-scrollbar {
+  width: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 1.5px;
+  background-color: #56d3d5;
+}

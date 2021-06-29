@@ -12,7 +12,7 @@ export default function ProfileConclusion() {
           </div>
         </div>
         <div>
-          <Button type="button" status="main" name="הצג דוח מסכם" />
+          <Button className="conclusion-btn" type="button" status="main" name="הצג דוח מסכם" />
         </div>
       </div>
       <div className="conclusion-body mt-[25px]">
