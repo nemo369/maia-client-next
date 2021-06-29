@@ -53,7 +53,7 @@ export async function getServerSideProps(req) {
   const locale = `he${user.gender}`;
   return {
     props: {
-      ...(await serverSideTranslations(locale, ['common', 'dashboard'])),
+      ...(await serverSideTranslations(locale, ['common'])),
       user,
       profile: data.data,
     }, // will be passed to the page component as props
