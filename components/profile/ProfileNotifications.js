@@ -40,7 +40,7 @@ export default function ProfileNotifications() {
       </div>
       <div className="profile-body">
         <div className="profile-body-news dash border-b-[1px] border-dashed border-[#ffffff2f]">
-          <div className="text-white text-[10px] font-black p-[5px]">חדשות</div>
+          <div className="text-white text-[10px] font-bold p-[5px]">חדשות</div>
           <div>
             <div className="scroller">
               {news.map((content) => (
