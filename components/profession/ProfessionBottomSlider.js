@@ -12,14 +12,13 @@ function ProfessionBottomSlider({ professions }) {
   if (!professions || !Array.isArray(professions)) {
     return null;
   }
-
   const items = professions.map((profession1) => (
     <CategoryWithHeart
       title={profession1.title}
       isButton
       description={profession1.description}
       id={profession1.id}
-      category="profession"
+      category="professions"
     />
   ));
 

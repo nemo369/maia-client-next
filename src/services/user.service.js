@@ -28,10 +28,14 @@ const UserAPI = {
       return error.response;
     }
   },
-  addToFavorites: async ({ id, category }) => {
+  addToFavorites: async ({ id, category, value }) => {
     // console.log(creditiontals);
     try {
-      const response = await axios.post(`${API_URL}/profile/addToFavorites`, { id, category });
+      const response = await axios.post(`${API_URL}/profile/addToFavorites`, {
+        id,
+        category,
+        value,
+      });
       return response;
     } catch (error) {
       return error.response;

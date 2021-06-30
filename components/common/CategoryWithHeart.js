@@ -17,8 +17,9 @@ export default function CategoryWithHeart({
   const [favorites, setFavorites] = useState(false);
   const addToFavorites = async () => {
     setFavorites(!favorites);
-    await UserAPI.addToFavorites({ id, category });
+    await UserAPI.addToFavorites({ id, category, title });
   };
+  console.log(id + category + title);
 
   const handleDragStart = (e) => e.preventDefault();
 

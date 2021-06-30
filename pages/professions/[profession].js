@@ -12,6 +12,8 @@ export default function Profession({ profession, additionalProfessions }) {
   if (!profession) {
     return 'TODO: redirect to professions page';
   }
+  console.log(profession);
+  console.log(additionalProfessions);
   return (
     <div>
       <section className="professions">
