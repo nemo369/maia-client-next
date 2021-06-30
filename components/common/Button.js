@@ -1,6 +1,6 @@
-import React from 'react';
+import { forwardRef } from 'react';
 
-const Button = ({ name, onClickFunction, type, disabled, className, status }) => {
+const Button = forwardRef(({ name, onClick, type, disabled, className, status }, ref) => {
   let classes = '';
   switch (status) {
     case 'main':
@@ -27,14 +27,15 @@ const Button = ({ name, onClickFunction, type, disabled, className, status }) =>
   }
   return (
     <button
+      ref={ref}
       className={`rounded-xl text-lg focus:outline-none
         ${classes} ${className}`}
       type={'submit' === type ? 'submit' : 'button'}
-      onClick={onClickFunction}
+      onClick={onClick}
     >
       {name}
     </button>
   );
-};
+});
 
 export default Button;

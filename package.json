@@ -7,6 +7,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "translations-scan": "i18next-scanner --config src/lib/i18next-scanner.config.engine.js {components,pages}/**/*.{js,jsx}",
     "lint": "eslint components/** src/** pages/**",
     "lint:fix": "eslint --fix components/** src/**"
   },
@@ -14,6 +15,7 @@
     "autoprefixer": "^10.2.5",
     "axios": "^0.21.1",
     "next": "11.0.0",
+    "next-i18next": "^8.5.1",
     "next-seo": "^4.26.0",
     "nookies": "^2.5.2",
     "precss": "^4.0.0",
@@ -42,6 +44,7 @@
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-react": "^7.23.2",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "i18next-scanner": "^3.0.0",
     "postcss-flexbugs-fixes": "^5.0.2",
     "postcss-import": "^14.0.2",
     "postcss-preset-env": "^6.7.0",

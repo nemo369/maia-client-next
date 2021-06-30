@@ -1,3 +1,38 @@
 .popup-overlay {
   background-color: rgba(0, 0, 0, 0.185);
+  backdrop-filter: blur(2px);
+}
+.popup-overlay.popside-overlay {
+  background-color: rgba(38, 51, 67, 0.99);
+  backdrop-filter: blur(4px);
+  animation: blurIn 0.4s linear both;
+}
+.popside-content {
+  margin-right: auto !important;
+  margin-left: 0 !important;
+  animation: slide 0.9s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+// .w-full-content {
+//   width: 100%;
+// }
+
+@keyframes blurIn {
+  from {
+    background-color: rgba(38, 51, 67, 0.1);
+    backdrop-filter: blur(0px);
+  }
+  to {
+    background-color: rgba(38, 51, 67, 0.7);
+
+    backdrop-filter: blur(4px);
+  }
+}
+@keyframes slide {
+  from {
+    max-width: 0;
+  }
+  to {
+    max-width: 100%;
+  }
 }

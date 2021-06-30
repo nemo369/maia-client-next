@@ -30,7 +30,7 @@ export default async function login(req, res) {
             res.end();
           })
           .catch(({ response }) => {
-            res.writeHead(307, { Location: `/user/login?error=${response.data.message}` });
+            res.writeHead(307, { Location: `/user/login?error=${response.status}` });
             res.end();
           });
       } catch ({ response }) {

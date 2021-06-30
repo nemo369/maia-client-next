@@ -40,14 +40,6 @@
   -webkit-box-orient: vertical;
 }
 
-.job-title {
-  display: block;
-  width: 400px;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-
 .email1::placeholder {
   padding-right: 10px;
 }
@@ -64,7 +56,7 @@
   // box-shadow: 0 0 10px rgba(0, 0, 0, 0.9);
 }
 
-.leftNav input[type='checkbox'] {
+.leftNav input[type="checkbox"] {
   position: absolute;
   top: 0;
   left: 0;
@@ -111,7 +103,7 @@
   pointer-events: none;
   position: relative;
   float: right;
-  content: '+';
+  content: "+";
   margin-top: -0.1em;
   font-size: 1.2em;
   vertical-align: middle;
@@ -129,12 +121,12 @@
   transition: max-height 0.5s ease-in-out;
 }
 
-.leftNav input[type='checkbox']:checked ~ .submenu {
+.leftNav input[type="checkbox"]:checked ~ .submenu {
   max-height: 999px;
   border-top: 1px solid #555;
 }
 
-.leftNav input[type='checkbox']:checked ~ a:after {
+.leftNav input[type="checkbox"]:checked ~ a:after {
   transform: rotate(45deg);
 }
 

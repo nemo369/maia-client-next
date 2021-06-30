@@ -5,7 +5,7 @@ export default async function proxy(req, res) {
   const { method, url } = req;
   let { headers } = req;
   const endpoint = url.replace(/^\/api/, '');
-  if (!headers.Authorization) {
+  if (!headers.Authorization && !headers.authorization) {
     headers = null;
   }
   switch (method) {
@@ -16,6 +16,12 @@ export default async function proxy(req, res) {
           res.status(200).json({ data });
         })
         .catch(({ response }) => {
+          console.log(response.status);
+          if (401 === response.status) {
+            res.writeHead(307, { Location: '/user/login?error=401' });
+            res.end();
+            return;
+          }
           res.status(response.status).json(response.data);
         });
       break;
@@ -26,6 +32,11 @@ export default async function proxy(req, res) {
           res.status(200).json({ data });
         })
         .catch(({ response }) => {
+          if (401 === response.status) {
+            res.writeHead(307, { Location: '/user/login?error=401' });
+            res.end();
+            return;
+          }
           res.status(response.status).json(response.data);
         });
       break;

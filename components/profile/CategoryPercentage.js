@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 import React from 'react';
 
-export default function CategoryPercentage({ className, percentage }) {
+const CategoryPercentage = ({ className, percentage }) => {
   let colorOne = '';
   let colorTwo = '';
   switch (true) {
@@ -51,4 +51,5 @@ export default function CategoryPercentage({ className, percentage }) {
       </div>
     </div>
   );
-}
+};
+export default CategoryPercentage;
