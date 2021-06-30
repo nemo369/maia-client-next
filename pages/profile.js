@@ -11,7 +11,8 @@ import { seoMerge } from '../src/utils/next-seo.config';
 import { getUserSession } from '../src/utils/getUser';
 import ProfileAPI from '../src/services/profile.service';
 
-export default function Profile() {
+export default function Profile(props) {
+  console.log(props);
   const seo = seoMerge({
     title: 'פרופיל אישי',
   });
