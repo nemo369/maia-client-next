@@ -4,8 +4,8 @@ import GrayHat from '../svg/GrayHat';
 
 export default function ProfileFavoriteEmpty() {
   return (
-    <div className="fav-content w-[100%] h-[283px] flex justify-center items-center">
-      <div className="fav-content-empty-state">
+    <div className="w-[100%] h-[283px] flex justify-center items-center">
+      <div>
         <div className="gray-hat">
           <GrayHat />
         </div>

@@ -15,15 +15,15 @@ export default function ProfileFavoriteData({
   let colorTwo = '';
   const isFav = true;
   switch (true) {
-    case 50 > percentage:
+    case 49 > percentage:
       colorOne += '#FB7067';
       colorTwo += '#F9DBD7';
       break;
-    case 50 <= percentage && 80 > percentage:
+    case 50 <= percentage && 74 > percentage:
       colorOne += '#FFC960';
       colorTwo += '#FFF1DC';
       break;
-    case 80 <= percentage:
+    case 75 <= percentage:
       colorOne += '#4cc790';
       colorTwo += '#E5F6EA';
       break;
@@ -59,8 +59,8 @@ export default function ProfileFavoriteData({
                 </svg>
               </div>
               <div className="profile-fav-company leading-6">
-                <div className="company font-bold text-[#333300] text-[20px]">{company}</div>
-                <div className="job-title font-bold text-[18px] text-[#333300]">{jobTitle}</div>
+                <div className="font-bold text-[#333300] text-[20px]">{company}</div>
+                <div className="font-bold text-[18px] text-[#333300]">{jobTitle}</div>
               </div>
             </div>
             <div className="description leading-5 w-[522px] mr-10 text-[#333300] opacity-70 text-[18px]">

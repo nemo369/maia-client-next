@@ -1,0 +1,46 @@
+//check
+
+.check input[type='checkbox'] {
+  position: relative;
+  cursor: pointer;
+}
+
+.check input[type='checkbox']:before {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 0;
+  left: 0;
+  border: 1px solid #999999;
+  border-radius: 2px;
+  background-color: #eeeeee;
+}
+
+.check input[type='checkbox']:checked:after {
+  content: '';
+  display: block;
+  width: 5px;
+  height: 10px;
+  border: solid #3c91a0;
+  border-width: 0 2px 2px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+  position: absolute;
+  top: 4px;
+  left: 8px;
+}
+
+.check input[type='checkbox']:checked:before {
+  border: 1px solid #3c91a0;
+}
+
+.check-text {
+  margin-right: 20px;
+  font-size: 18px;
+  color: #666666;
+  position: relative;
+  top: -3px;
+}

@@ -3,15 +3,15 @@ import Inputs from '../common/Inputs';
 import Toggle from '../common/Toggle';
 import Check from '../common/Check';
 import WhiteQuestion from '../svg/WhiteQuestion';
-import FemalePic from '../svg/FemalePic';
+import FemaleCrown from '../svg/FemaleCrown';
 import MalePic from '../svg/MalePic';
 
 export default function ProfileInfo() {
   const user = { gender: 'f' };
   return (
-    <div className="info h-[690px]  w-[430px] bg-white rounded-[20px]">
+    <div className="h-[690px] w-[430px] bg-white rounded-[20px]">
       <div className="profile-avatar mx-auto">
-        {'m' === user?.gender ? <MalePic /> : <FemalePic />}
+        {'m' === user?.gender ? <MalePic /> : <FemaleCrown />}
       </div>
       <div className="text-orange font-bold text-[19px] text-center">
         כל הכבוד!

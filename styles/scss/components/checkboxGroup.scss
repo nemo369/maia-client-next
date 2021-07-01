@@ -1,0 +1,24 @@
+//checkbox group
+.button-group {
+  border-radius: 5px;
+  width: 300px;
+}
+
+.button-label {
+  opacity: 0.5;
+}
+
+.button-group div input {
+  display: none;
+  font-size: 18px;
+  width: 100px;
+}
+.button-group div input:checked + label,
+.button-group div input:checked + label:active {
+  background: linear-gradient(143.28deg, #40c2c4 0%, #3c91a0 100%);
+  opacity: 1;
+  border-radius: 3px;
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: bold;
+}

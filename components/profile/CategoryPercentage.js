@@ -5,15 +5,15 @@ const CategoryPercentage = ({ className, percentage }) => {
   let colorOne = '';
   let colorTwo = '';
   switch (true) {
-    case 50 > percentage:
+    case 49 > percentage:
       colorOne += '#FB7067';
       colorTwo += '#F9DBD7';
       break;
-    case 50 <= percentage && 80 > percentage:
+    case 50 <= percentage && 74 > percentage:
       colorOne += '#FFC960';
       colorTwo += '#FFF1DC';
       break;
-    case 80 <= percentage:
+    case 75 <= percentage:
       colorOne += '#4cc790';
       colorTwo += '#E5F6EA';
       break;
@@ -22,11 +22,11 @@ const CategoryPercentage = ({ className, percentage }) => {
   }
   return (
     <div className={className}>
-      <div className="">
+      <div>
         <div className="flex">
           <div className="flex">
             <div className="flex">
-              <div className="h-[42px] ">
+              <div className="h-[42px]">
                 <svg viewBox="0 0 36 36" className="circular-chart orange">
                   <linearGradient id={`linearColors-${percentage}`} x1="1" y1="1" x2="1" y2="0">
                     <stop offset="0%" stopColor={colorOne} />
