@@ -1,6 +1,7 @@
 import React from 'react';
 import Button from '../common/Button';
 import HeartEmpty from '../svg/HeartEmpty';
+// import CategoryWithHeart from '../common/CategoryWithHeart';
 import CategoryPercentage from '../profile/CategoryPercentage';
 
 function ProfessionInfo({ profession }) {
@@ -9,6 +10,7 @@ function ProfessionInfo({ profession }) {
       <header className="flex mb-7 items-center">
         <h2 className="ml-auto text-2xl font-bold">{profession.title}</h2>
         <HeartEmpty className="ml-[6px]" />
+        {/* <CategoryWithHeart id={profession.id} type="professions" /> */}
         <CategoryPercentage percentage="92" className="flex-none" />
       </header>
       <p>{profession.description}</p>

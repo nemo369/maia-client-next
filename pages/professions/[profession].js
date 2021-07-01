@@ -8,7 +8,7 @@ import { getUserSession } from '../../src/utils/getUser';
 import ProfessionBottomSlider from '../../components/profession/ProfessionBottomSlider';
 import VendorAPI from '../../src/services/vendor.service';
 
-export default function Profession({ user, profession, additionalProfessions }) {
+export default function Profession({ profession, additionalProfessions }) {
   const router = useRouter();
   if (!profession) {
     return 'TODO: redirect to professions page';
@@ -25,10 +25,10 @@ export default function Profession({ user, profession, additionalProfessions }) 
         />
         <h1 className="text-black text-3xl font-black mb-16">זירת המקצוענות</h1>
         <div className="md:flex justify-between">
-          <ProfessionInfo userToken={user?.token} profession={profession} />
-          <ProfessionDropdowns userToken={user?.token} profession={profession} />
+          <ProfessionInfo profession={profession} />
+          <ProfessionDropdowns profession={profession} />
         </div>
-        <ProfessionBottomSlider userToken={user?.token} professions={additionalProfessions} />
+        <ProfessionBottomSlider professions={additionalProfessions} />
       </section>
     </div>
   );

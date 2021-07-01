@@ -1,9 +1,10 @@
 /* eslint-disable react/jsx-one-expression-per-line */
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import Link from 'next/link';
 import UserAPI from '../../src/services/user.service';
 import HeartEmpty from '../svg/HeartEmpty';
 import HeartFull from '../svg/HeartFull';
+import { AppContext } from '../../src/context/state';
 
 export default function CategoryWithHeart({
   className,
@@ -13,8 +14,9 @@ export default function CategoryWithHeart({
   isButton,
   type,
   id,
-  token,
 }) {
+  const { user } = useContext(AppContext);
+  const token = user.token ? user.token : '';
   const [favorites, setFavorites] = useState(false);
   const toglleFavorites = async () => {
     setFavorites(!favorites);
@@ -40,14 +42,7 @@ export default function CategoryWithHeart({
         </div>
 
         <div className="company text-gray-active text-[18px]">{company}</div>
-        <div
-          className="title-length font-bold text-[18px] text-[#333333] text-right "
-          //   className={`job-title font-bold text-[18px] text-[#333333] text-right ${
-          //     60 > title.length ? 'overflow-ellipsis overflow-hidden' : ''
-          //   }`}
-        >
-          {value}
-        </div>
+        <div className="title-length font-bold text-[18px] text-[#333333] text-right ">{value}</div>
         <div className="dash border-b-[1px] border-dashed border-[#979797] opacity-20 w-full h-1" />
         <p className="description  text-[#333333] opacity-70 text-[16px] mt-[10px] text-right">
           {description}

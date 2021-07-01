@@ -3,7 +3,7 @@ import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
 import CategoryWithHeart from '../common/CategoryWithHeart';
 
-function ProfessionBottomSlider({ userToken, professions }) {
+function ProfessionBottomSlider({ professions }) {
   const responsive = {
     0: { items: 1 },
     568: { items: 2 },
@@ -19,7 +19,6 @@ function ProfessionBottomSlider({ userToken, professions }) {
       description={profession1.description}
       id={profession1.id}
       type="professions"
-      token={userToken}
     />
   ));
 
