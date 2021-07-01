@@ -1,0 +1,100 @@
+//selector
+
+.fav-selector {
+  position: relative;
+  display: block;
+  width: 190px;
+  height: 25px;
+}
+
+.select-button {
+  padding: 3px 12px;
+  background-color: #3333331f;
+  cursor: pointer;
+  color: #0000006e;
+  transition: 0.3s all ease-in-out;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+.label {
+  display: none;
+}
+
+.options-view-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 3;
+  border-radius: 5px;
+}
+
+.options {
+  position: absolute;
+  left: 0;
+  width: 250px;
+}
+
+.options {
+  position: absolute;
+  right: 0;
+  left: 0;
+  margin: 0 auto;
+  background-color: #fff;
+  margin-top: 4px;
+  border-radius: 5px;
+}
+
+.options-view-button:checked ~ .options {
+  border: 2px solid rgba(204, 204, 204, 0.54);
+}
+
+.options-view-button:checked ~ .select-button {
+  background-color: white;
+  border: 2px solid #00a4ae;
+}
+
+.options-view-button:checked ~ .options .label {
+  display: block;
+  padding: 15px;
+}
+
+.select-button:focus ~ .select-button {
+  background-color: white;
+}
+
+.label {
+  text-decoration: none;
+  color: #999999;
+  font-size: 16px;
+}
+
+.option {
+  background: white;
+}
+
+.option:hover a {
+  color: #00a4ae;
+  font-weight: bold;
+}
+
+.select-box:after {
+  content: '<';
+  font: 17px 'Consolas', monospace;
+  color: rgba(12, 12, 12, 0.445);
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+  right: 168px;
+  top: 8px;
+  position: absolute;
+  pointer-events: none;
+}

@@ -5,160 +5,104 @@ body {
 .flex-col {
   flex-direction: column;
 }
-//checkbox group
-.button-group {
-  border-radius: 5px;
-  width: 300px;
-}
-
-.button-label {
-  opacity: 0.5;
-}
-
-.button-group div input {
-  display: none;
-  font-size: 18px;
-  width: 100px;
-}
-.button-group div input:checked + label,
-.button-group div input:checked + label:active {
-  background: linear-gradient(143.28deg, #40c2c4 0%, #3c91a0 100%);
-  opacity: 1;
-  border-radius: 3px;
-  color: #ffffff;
-  font-size: 18px;
-  font-weight: bold;
-}
 
 //toggle school jobs button
 
-:root {
-  --switches-bg-color: white;
-  --switches-label-color: #6c6c6c;
-  --switch-bg-color: #3ea8b1;
-  --switch-bg-color-gray: #999999;
-  --switch-text-color: white;
-}
+// :root {
+//   --switches-bg-color: white;
+//   --switches-label-color: #6c6c6c;
+//   --switch-bg-color: #3ea8b1;
+//   --switch-bg-color-gray: #999999;
+//   --switch-text-color: white;
+// }
 
-.switches-container {
-  width: 12.5rem;
-  position: relative;
-  display: flex;
-  padding: 0;
-  border: 1px solid rgba(222, 222, 222, 0.45);
-  background: var(--switches-bg-color);
-  line-height: 2rem;
-  border-radius: 19.36px;
-}
+// .switches-container {
+//   width: 12.5rem;
+//   position: relative;
+//   display: flex;
+//   padding: 0;
+//   border: 1px solid rgba(222, 222, 222, 0.45);
+//   background: var(--switches-bg-color);
+//   line-height: 2rem;
+//   border-radius: 19.36px;
+// }
 
-/* input (radio) for toggling. hidden - use labels for clicking on */
-.switches-container input {
-  visibility: hidden;
-  position: absolute;
-  top: 0;
-}
+// /* input (radio) for toggling. hidden - use labels for clicking on */
+// .switches-container input {
+//   visibility: hidden;
+//   position: absolute;
+//   top: 0;
+// }
 
-/* labels for the input (radio) boxes - something to click on */
-.switches-container label {
-  width: 50%;
-  padding: 0;
-  margin: 0;
-  text-align: center;
-  cursor: pointer;
-  color: var(--switches-label-color);
-  opacity: 50%;
-}
+// /* labels for the input (radio) boxes - something to click on */
+// .switches-container label {
+//   width: 50%;
+//   padding: 0;
+//   margin: 0;
+//   text-align: center;
+//   cursor: pointer;
+//   color: var(--switches-label-color);
+//   opacity: 50%;
+// }
 
-/* switch highlighters wrapper (sliding left / right) 
-    - need wrapper to enable the even margins around the highlight box
-*/
-.switch-wrapper {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 50%;
-  padding: 0.2rem;
-  z-index: 3;
-  transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
-  /* transition: transform 1s; */
-}
+// /* switch highlighters wrapper (sliding left / right)
+//     - need wrapper to enable the even margins around the highlight box
+// */
+// .switch-wrapper {
+//   position: absolute;
+//   top: 0;
+//   bottom: 0;
+//   width: 50%;
+//   padding: 0.2rem;
+//   z-index: 3;
+//   transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+//   /* transition: transform 1s; */
+// }
 
-/* switch box highlighter */
-.switch {
-  border-radius: 14.85px;
-  background: var(--switch-bg-color);
-  height: 100%;
-}
+// /* switch box highlighter */
+// .switch {
+//   border-radius: 14.85px;
+//   background: var(--switch-bg-color);
+//   height: 100%;
+// }
 
-/* switch box labels
-    - default setup
-    - toggle afterwards based on radio:checked status 
-*/
-.switch div {
-  width: 100%;
-  text-align: center;
-  opacity: 0;
-  display: block;
-  color: var(--switch-text-color);
-  font-weight: bold;
-  transition: opacity 0.2s cubic-bezier(0.77, 0, 0.175, 1) 0.125s;
-  will-change: opacity;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
+// /* switch box labels
+//     - default setup
+//     - toggle afterwards based on radio:checked status
+// */
+// .switch div {
+//   width: 100%;
+//   text-align: center;
+//   opacity: 0;
+//   display: block;
+//   color: var(--switch-text-color);
+//   font-weight: bold;
+//   transition: opacity 0.2s cubic-bezier(0.77, 0, 0.175, 1) 0.125s;
+//   will-change: opacity;
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+// }
 
-/* slide the switch box from right to left */
-.switches-container input:nth-of-type(1):checked ~ .switch-wrapper {
-  transform: translateX(0%);
-}
+// /* slide the switch box from right to left */
+// .switches-container input:nth-of-type(1):checked ~ .switch-wrapper {
+//   transform: translateX(0%);
+// }
 
-/* slide the switch box from left to right */
-.switches-container input:nth-of-type(2):checked ~ .switch-wrapper {
-  transform: translateX(-100%);
-}
+// /* slide the switch box from left to right */
+// .switches-container input:nth-of-type(2):checked ~ .switch-wrapper {
+//   transform: translateX(-100%);
+// }
 
-/* toggle the switch box labels - first checkbox:checked - show first switch div */
-.switches-container input:nth-of-type(1):checked ~ .switch-wrapper .switch div:nth-of-type(1) {
-  opacity: 1;
-}
+// /* toggle the switch box labels - first checkbox:checked - show first switch div */
+// .switches-container input:nth-of-type(1):checked ~ .switch-wrapper .switch div:nth-of-type(1) {
+//   opacity: 1;
+// }
 
-/* toggle the switch box labels - second checkbox:checked - show second switch div */
-.switches-container input:nth-of-type(2):checked ~ .switch-wrapper .switch div:nth-of-type(2) {
-  opacity: 1;
-}
-
-//toggel button
-
-.switch-toggle {
-  -webkit-appearance: none;
-  height: 1.56rem;
-  width: 3.125rem;
-  background-color: var(--switch-bg-color-gray);
-  border-radius: 43px;
-  position: relative;
-  cursor: pointer;
-  &::after {
-    top: 1px;
-    left: 2px;
-    content: "";
-    width: 1.4rem;
-    height: 1.4rem;
-    background-color: #ffffff;
-    position: absolute;
-    border-radius: 100%;
-    transition: 0.5s;
-  }
-  &:checked {
-    background-color: var(--switch-bg-color);
-    &::after {
-      transform: translateX(1.6rem);
-    }
-  }
-  &:focus {
-    outline-color: transparent;
-  }
-}
+// /* toggle the switch box labels - second checkbox:checked - show second switch div */
+// .switches-container input:nth-of-type(2):checked ~ .switch-wrapper .switch div:nth-of-type(2) {
+//   opacity: 1;
+// }
 
 //input number
 
@@ -170,322 +114,6 @@ input::-webkit-inner-spin-button {
 }
 
 /* Firefox */
-input[type="number"] {
+input[type='number'] {
   -moz-appearance: textfield;
-}
-
-//check
-
-.check input[type="checkbox"] {
-  position: relative;
-  cursor: pointer;
-}
-.check input[type="checkbox"]:before {
-  content: "";
-  display: block;
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  top: 0;
-  left: 0;
-  border: 1px solid #999999;
-  border-radius: 2px;
-  background-color: #eeeeee;
-}
-.check input[type="checkbox"]:checked:after {
-  content: "";
-  display: block;
-  width: 5px;
-  height: 10px;
-  border: solid #3c91a0;
-  border-width: 0 2px 2px 0;
-  -webkit-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  transform: rotate(45deg);
-  position: absolute;
-  top: 4px;
-  left: 8px;
-}
-
-.check input[type="checkbox"]:checked:before {
-  border: 1px solid #3c91a0;
-}
-
-// radio button
-
-input[type="radio"] {
-  /* remove standard background appearance */
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  /* create custom radiobutton appearance */
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  padding: 3px;
-  /* background-color only for content */
-  background-clip: content-box;
-  border: 1px solid #cccccc;
-  border-radius: 50%;
-  margin-left: 16px;
-}
-
-/* appearance for checked radiobutton */
-input[type="radio"]:checked {
-  background-color: #3c91a0;
-  border: 1px solid#3c91a0;
-}
-
-.radio-label {
-  margin-left: 30px;
-}
-
-//stepper
-.stepper-one {
-  background: linear-gradient(97.81deg, #40c2c4 0%, #3c91a0 100%);
-  border-radius: 10px;
-}
-
-.stepper {
-  position: relative;
-  display: table;
-  width: 100%;
-  table-layout: fixed;
-  border-collapse: collapse;
-}
-
-.stepper__step {
-  position: relative;
-  display: table-cell;
-  text-align: center;
-  padding: 1rem;
-}
-
-.stepper__indicator {
-  position: relative;
-  display: block;
-  z-index: 2;
-}
-
-.stepper__label {
-  position: relative;
-  display: block;
-  color: #ffffff;
-  z-index: 2;
-  margin-top: 5px;
-  line-height: 1;
-}
-
-.stepper__info {
-  position: relative;
-  display: inline-block;
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  font-size: 23px;
-  text-align: center;
-  font-weight: bold;
-  color: #fff;
-  z-index: 2;
-}
-
-.stepper__panel {
-  display: none;
-}
-
-.stepper .stepper__step:after {
-  content: " ";
-  position: absolute;
-  top: 1.8rem;
-  width: 100%;
-  height: 7.5px;
-  z-index: 1;
-  border-radius: 4px;
-  background-color: #fb9773;
-}
-.dis_1 .stepper__step:nth-child(1):after,
-.dis_1 .stepper__step:nth-child(2):after {
-  background: #ffffff;
-}
-
-.dis_2 .stepper__step:nth-child(2):after {
-  background: #ffffff;
-}
-
-.stepper .stepper__step:last-child:after {
-  display: none;
-}
-.stepper__empty {
-  height: 14px;
-  width: 14px;
-  border-radius: 50%;
-  z-index: 10;
-  position: absolute;
-  right: 10px;
-  top: 10px;
-}
-
-.shadow-active {
-  box-shadow: 0 0 0 5px #9c9c90;
-}
-
-//circular-progressbar
-
-.single-chart {
-  float: left;
-}
-.circular-chart {
-  display: block;
-  width: 50px;
-  height: 50px;
-}
-
-.circle {
-  fill: none;
-  stroke-width: 1.5;
-  stroke-linecap: round;
-  animation: progress 1s ease-out forwards;
-}
-
-@keyframes progress {
-  0% {
-    stroke-dasharray: 0 100;
-  }
-}
-
-.percentage {
-  fill: #000000;
-  font-size: 12px;
-  text-anchor: middle;
-  font-weight: 900;
-}
-
-.pofile-notifications {
-  background: linear-gradient(143.28deg, #40c2c4 0%, #3c91a0 100%);
-}
-
-//selector
-
-#fav-selector {
-  position: relative;
-  display: block;
-  width: 190px;
-  height: 25px;
-}
-
-#select-button {
-  padding: 3px 12px;
-  background-color: #3333331f;
-  cursor: pointer;
-  color: #0000006e;
-  transition: 0.3s all ease-in-out;
-  font-size: 16px;
-  border-radius: 5px;
-}
-
-.label {
-  display: none;
-}
-
-#options-view-button {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  opacity: 0;
-  cursor: pointer;
-  z-index: 3;
-  border-radius: 5px;
-}
-
-.options {
-  position: absolute;
-  left: 0;
-  width: 250px;
-}
-
-#options {
-  position: absolute;
-  right: 0;
-  left: 0;
-  margin: 0 auto;
-  background-color: #fff;
-  margin-top: 4px;
-  border-radius: 5px;
-}
-
-#options-view-button:checked ~ #options {
-  border: 2px solid rgba(204, 204, 204, 0.54);
-}
-
-#options-view-button:checked ~ #select-button {
-  background-color: white;
-  border: 2px solid #00a4ae;
-}
-
-#options-view-button:checked ~ #options .label {
-  display: block;
-  padding: 15px;
-}
-
-#select-button:focus ~ #select-button {
-  background-color: white;
-}
-
-.label {
-  text-decoration: none;
-  color: #999999;
-  font-size: 16px;
-}
-
-.option {
-  background: white;
-}
-
-.option:hover a {
-  color: #00a4ae;
-  font-weight: bold;
-}
-
-#select-box:after {
-  content: "<";
-  font: 17px "Consolas", monospace;
-  color: rgba(12, 12, 12, 0.445);
-  -webkit-transform: rotate(90deg);
-  -moz-transform: rotate(90deg);
-  -ms-transform: rotate(90deg);
-  transform: rotate(90deg);
-  right: 168px;
-  top: 8px;
-  position: absolute;
-  pointer-events: none;
-}
-
-.gray-hat {
-  display: flex;
-  justify-content: center;
-  svg {
-    height: 40px;
-  }
-  path {
-    stroke: #cccccc;
-    stroke-width: 3px;
-  }
-}
-
-.profile-inputs {
-  width: 365px;
-  margin-top: 15px;
-}
-
-.check-text {
-  margin-right: 20px;
-  font-size: 18px;
-  color: #666666;
-  position: relative;
-  top: -3px;
 }
