@@ -9,7 +9,7 @@ import MalePic from '../svg/MalePic';
 export default function ProfileInfo() {
   const user = { gender: 'f' };
   return (
-    <div className="info h-[690px]  w-[430px] bg-white rounded-[20px]">
+    <div className="h-[690px] w-[430px] bg-white rounded-[20px]">
       <div className="profile-avatar mx-auto">
         {'m' === user?.gender ? <MalePic /> : <FemaleCrown />}
       </div>

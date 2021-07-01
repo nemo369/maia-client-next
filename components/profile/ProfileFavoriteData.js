@@ -59,8 +59,8 @@ export default function ProfileFavoriteData({
                 </svg>
               </div>
               <div className="profile-fav-company leading-6">
-                <div className="company font-bold text-[#333300] text-[20px]">{company}</div>
-                <div className="job-title font-bold text-[18px] text-[#333300]">{jobTitle}</div>
+                <div className="font-bold text-[#333300] text-[20px]">{company}</div>
+                <div className="font-bold text-[18px] text-[#333300]">{jobTitle}</div>
               </div>
             </div>
             <div className="description leading-5 w-[522px] mr-10 text-[#333300] opacity-70 text-[18px]">
