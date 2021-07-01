@@ -28,14 +28,20 @@ const UserAPI = {
       return error.response;
     }
   },
-  addToFavorites: async ({ id, category, value }) => {
+  toglleFavorites: async ({ id, type, value, token }) => {
     // console.log(creditiontals);
     try {
-      const response = await axios.post(`${API_URL}/profile/addToFavorites`, {
-        id,
-        category,
-        value,
-      });
+      const response = await axios.post(
+        `${API_URL}/profile/toglle-favorites`,
+        {
+          id,
+          type,
+          value,
+        },
+        {
+          headers: { 'Content-type': 'application/json', Authorization: `Bearer ${token}` },
+        }
+      );
       return response;
     } catch (error) {
       return error.response;

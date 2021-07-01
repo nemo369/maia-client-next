@@ -5,7 +5,7 @@ import CategoryPercentage from '../profile/CategoryPercentage';
 
 function ProfessionInfo({ profession }) {
   return (
-    <article className="bg-white max-h-[451px] rounded-lg py-8 px-4 ml-4 w-full">
+    <article className="bg-white max-h-[451px] rounded-lg pt-8 pb-4 px-4 ml-4 w-full">
       <header className="flex mb-7 items-center">
         <h2 className="ml-auto text-2xl font-bold">{profession.title}</h2>
         <HeartEmpty className="ml-[6px]" />
@@ -20,7 +20,9 @@ function ProfessionInfo({ profession }) {
           className="h-12 pb-4 pt-[10px] px-4"
         />
         {/* <button type="button"> בדוק משרות פנויות </button> */}
-        <button type="button"> בדוק מסלולי לימוד </button>
+        <button className="font-bold mr-2" type="button">
+          <u> בדוק מסלולי לימוד </u>
+        </button>
       </div>
     </article>
   );

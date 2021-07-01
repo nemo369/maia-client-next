@@ -1,78 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
+import WhitePen from '../svg/WhitePen';
 
-function ProfessionDropdowns({ profession }) {
-  console.log(profession);
+const Acordion = ({ text, title }) => {
+  const [isActive, setIsActive] = useState(false);
   return (
-    <section className="leftNav w-full">
+    <li className={`acordion ${isActive ? 'isActive' : ''}`}>
+      <button
+        className=" font-extrabold text-xl leading-6"
+        type="button"
+        onClick={() => {
+          setIsActive(!isActive);
+        }}
+      >
+        <WhitePen />
+        {title}
+      </button>
+      <div className="submenu">{text}</div>
+    </li>
+  );
+};
+function ProfessionDropdowns({ profession }) {
+  return (
+    <section className=" relative max-w-[812px] w-full">
       <ul>
-        <li>
-          <a href="#" title="Nach Hause">
-            Home
-          </a>
-        </li>
-        <li className="sub">
-          <input type="checkbox" />
-          <a href="#">Profile</a>
-
-          {/* <!-- Begin--> */}
-
-          <ul className="submenu">
-            <li className="sub">
-              <input type="checkbox" />
-              <a href="#">Profile List</a>
-            </li>
-          </ul>
-        </li>
-
-        {/* <!-- end--> */}
-        <li className="sub">
-          <input type="checkbox" />
-          <a href="#">Logs</a>
-
-          {/* <!-- Begin--> */}
-
-          <ul className="submenu">
-            <li className="sub">
-              <input type="checkbox" />
-              <a href="#">Search Log Items</a>
-            </li>
-            <li className="sub">
-              <input type="checkbox" />
-              <a href="#">Show XLS Files</a>
-            </li>
-            <li className="sub">
-              <input type="checkbox" />
-              <a href="#">Change Log Levels</a>
-            </li>
-          </ul>
-        </li>
-
-        {/* </li> */}
-        <li className="sub">
-          <input type="checkbox" />
-          <a href="#">Policy</a>
-
-          {/* <!-- Begin--> */}
-
-          <ul className="submenu">
-            <li className="sub">
-              <input type="checkbox" />
-              <a href="#">Boot Parameters</a>
-            </li>
-            <li className="sub">
-              <input type="checkbox" />
-              <a href="#">Configure SMTP</a>
-            </li>
-            <li className="sub">
-              <input type="checkbox" />
-              <a href="#">Configure Purge Policy</a>
-            </li>
-            <li className="sub">
-              <input type="checkbox" />
-              <a href="#">Purge Now!</a>
-            </li>
-          </ul>
-        </li>
+        <Acordion title="מה עושים עם זה" text={profession.whatToDoWithIt.text} />
+        <Acordion title="מה עושים עם זה" text={profession.whatToDoWithIt.text} />
+        <Acordion title="מה עושים עם זה" text={profession.whatToDoWithIt.text} />
+        <Acordion title="מה עושים עם זה" text={profession.whatToDoWithIt.text} />
       </ul>
     </section>
   );
