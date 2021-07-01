@@ -1,3 +1,4 @@
+import { useTranslation } from 'next-i18next';
 import { NextSeo } from 'next-seo';
 import { useRouter } from 'next/router';
 import nookies from 'nookies';
@@ -7,8 +8,10 @@ import { USER_COOKIE } from '../../src/utils/consts';
 import { seoMerge } from '../../src/utils/next-seo.config';
 
 const Login = () => {
+  const { t } = useTranslation('common');
+
   const seo = seoMerge({
-    title: 'התחברות',
+    title: t('התחברות'),
   });
   const router = useRouter();
   const { error } = router.query;
@@ -16,10 +19,10 @@ const Login = () => {
   useEffect(() => {
     switch (+error) {
       case 400:
-        setErrorMsg('תוקף קישור זה פג');
+        setErrorMsg(t('תוקף קישור זה פג'));
         break;
       case 401:
-        setErrorMsg('אנא התחברו מחדש');
+        setErrorMsg(t('אנא התחברו מחדש'));
         break;
 
       default:

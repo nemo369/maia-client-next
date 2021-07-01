@@ -1,3 +1,4 @@
+import { useTranslation } from 'next-i18next';
 import { NextSeo } from 'next-seo';
 import nookies from 'nookies';
 import RegisterForm from '../../components/profile/RegisterForm';
@@ -6,8 +7,10 @@ import { USER_COOKIE } from '../../src/utils/consts';
 import { seoMerge } from '../../src/utils/next-seo.config';
 
 const Register = function (props) {
+  const { t } = useTranslation('common');
+
   const seo = seoMerge({
-    title: 'הרשמה למערכת',
+    title: t('הרשמה למערכת'),
   });
   const { cities, termsText } = props;
   return (

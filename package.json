@@ -7,6 +7,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "translations-scan": "i18next-scanner --config src/lib/i18next-scanner.config.engine.js {components,pages}/**/*.{js,jsx}",
     "lint": "eslint components/** src/** pages/**",
     "lint:fix": "eslint --fix components/** src/**"
   },
@@ -43,6 +44,7 @@
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-react": "^7.23.2",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "i18next-scanner": "^3.0.0",
     "postcss-flexbugs-fixes": "^5.0.2",
     "postcss-import": "^14.0.2",
     "postcss-preset-env": "^6.7.0",

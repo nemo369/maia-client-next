@@ -1,13 +1,13 @@
+import { useTranslation } from 'next-i18next';
 import Link from 'next/link';
 import { useState } from 'react';
-import { AppContext, useAppContext } from '../../../src/context/state';
 import { trimText } from '../../../src/utils/util';
 import Button from '../../common/Button';
 import Loader from '../../common/Loader';
 import CategoryPercentage from '../../profile/CategoryPercentage';
 
 const CategoryLi = ({ cat, type }) => {
-  const { user } = useAppContext(AppContext);
+  const { t } = useTranslation('common');
   const [isHoverd, setisHoverd] = useState(false);
   return (
     <li
@@ -23,12 +23,7 @@ const CategoryLi = ({ cat, type }) => {
       >
         <Link href={`/${type}/${cat.id}`}>
           <a>
-            <Button
-              type="button"
-              status="main"
-              className="px-6"
-              name={'m' === user.gender ? 'לחץ לצפייה' : 'לחצי לצפייה'}
-            />
+            <Button type="button" status="main" className="px-6" name={t('לחץ לצפייה')} />
           </a>
         </Link>
       </div>

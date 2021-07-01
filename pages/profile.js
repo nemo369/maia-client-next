@@ -1,6 +1,7 @@
 import { NextSeo } from 'next-seo';
 import React from 'react';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { useTranslation } from 'next-i18next';
 import BreadCrumbs from '../components/common/BreadCrumbs';
 import ProfileConclusion from '../components/profile/ProfileConclusion';
 import UploadedFiles from '../components/profile/UploadedFiles';
@@ -13,8 +14,9 @@ import ProfileAPI from '../src/services/profile.service';
 
 export default function Profile(props) {
   console.log(props);
+  const { t } = useTranslation('common');
   const seo = seoMerge({
-    title: 'פרופיל אישי',
+    title: t('פרופיל אישי'),
   });
   return (
     <>
