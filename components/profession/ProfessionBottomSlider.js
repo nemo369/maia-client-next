@@ -19,17 +19,23 @@ function ProfessionBottomSlider({ professions }) {
       description={profession1.description}
       id={profession1.id}
       type="professions"
+      className="px-0"
     />
   ));
 
   return (
-    <AliceCarousel
-      responsive={responsive}
-      disableDotsControls
-      mouseTracking={false}
-      items={items}
-      infinite
-    />
+    <div className="mt-16">
+      <div className="text-2xl font-bold leading-6 mb-6 pr-[6px] ">
+        עוד מקצועות שיכולות להתאים לך
+      </div>
+      <AliceCarousel
+        responsive={responsive}
+        disableDotsControls
+        mouseTracking={false}
+        items={items}
+        infinite
+      />
+    </div>
   );
 }
 

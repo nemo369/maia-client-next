@@ -29,7 +29,6 @@ const UserAPI = {
     }
   },
   toglleFavorites: async ({ id, type, value, token }) => {
-    // console.log(creditiontals);
     try {
       const response = await axios.post(
         `${API_URL}/profile/toglle-favorites`,

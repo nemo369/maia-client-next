@@ -1,6 +1,31 @@
 import React, { useState } from 'react';
 import WhitePen from '../svg/WhitePen';
+import Arrow from '../svg/Arrow';
 
+function ProfessionDropdowns({ profession }) {
+  return (
+    <section className=" relative max-w-[812px] w-full">
+      <ul id="professionDropdown">
+        <Acordion
+          title="מה עושים עם זה"
+          text={profession?.whatToDoWithIt?.text ? profession.whatToDoWithIt.text : ''}
+        />
+        <Acordion
+          title="מה עושים עם זה"
+          text={profession?.whatToDoWithIt?.text ? profession.whatToDoWithIt.text : ''}
+        />
+        <Acordion
+          title="מה עושים עם זה"
+          text={profession?.whatToDoWithIt?.text ? profession.whatToDoWithIt.text : ''}
+        />
+        <Acordion
+          title="מה עושים עם זה"
+          text={profession?.whatToDoWithIt?.text ? profession.whatToDoWithIt.text : ''}
+        />
+      </ul>
+    </section>
+  );
+}
 const Acordion = ({ text, title }) => {
   const [isActive, setIsActive] = useState(false);
   return (
@@ -12,24 +37,17 @@ const Acordion = ({ text, title }) => {
           setIsActive(!isActive);
         }}
       >
-        <WhitePen />
-        {title}
+        <div className="inline-block">
+          <WhitePen />
+          {title}
+        </div>
+        <div className={isActive ? 'inline-block -rotate-90' : 'inline-block rotate-90'}>
+          <Arrow />
+        </div>
       </button>
       <div className="submenu">{text}</div>
     </li>
   );
 };
-function ProfessionDropdowns({ profession }) {
-  return (
-    <section className=" relative max-w-[812px] w-full">
-      <ul>
-        <Acordion title="מה עושים עם זה" text={profession.whatToDoWithIt.text} />
-        <Acordion title="מה עושים עם זה" text={profession.whatToDoWithIt.text} />
-        <Acordion title="מה עושים עם זה" text={profession.whatToDoWithIt.text} />
-        <Acordion title="מה עושים עם זה" text={profession.whatToDoWithIt.text} />
-      </ul>
-    </section>
-  );
-}
 
 export default ProfessionDropdowns;

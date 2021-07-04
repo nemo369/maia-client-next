@@ -28,7 +28,7 @@ export default function CategoryWithHeart({
   return (
     <div onDragStart={handleDragStart} tabIndex="0" className={className} role="tab">
       <div
-        className="bg-white rounded border-[1px] border-[rgba(151,151,151,0.13)]
+        className="bg-white heart  rounded border-[1px] border-[rgba(151,151,151,0.13)]
       px-[18px] py-[12px]"
       >
         <div className="h-[42px] w-full">

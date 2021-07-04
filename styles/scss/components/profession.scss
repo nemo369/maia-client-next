@@ -1,0 +1,73 @@
+.professionInfo {
+  height: fit-content;
+}
+// #professionDropdown:first-child {
+//   border-top-left-radius: 10px;
+// }
+// #professionDropdown:last-child {
+//   border-bottom-left-radius: 10px;
+// }
+.acordion:first-child {
+  border-top-left-radius: 10px;
+}
+.acordion:last-child {
+  border-bottom-left-radius: 10px;
+}
+// .professionDropdown:first-child {
+
+// }
+// .professionDropdown:last-child {
+//   border-bottom-left-radius: 10px;
+// }
+
+.acordion button {
+  display: flex;
+  padding: 15px 20px;
+  color: #fff;
+  text-decoration: none;
+  width: 100%;
+  text-align: right;
+  justify-content: space-between;
+}
+
+.acordion {
+  position: relative;
+  float: left;
+  width: 100%;
+  list-style: none;
+  color: #fff;
+  transition: 0.5s;
+  // border-top: 1px solid #555;
+  background: linear-gradient(143.28deg, #40c2c4 0%, #3c91a0 100%);
+  margin-top: 3px;
+  // height: 82px;
+  // border-radius: 10px;
+}
+
+.acordion li:first-child {
+  border-top: none;
+}
+
+.acordion .submenu {
+  max-height: 0;
+  overflow: hidden;
+  border-top: none;
+  transition: max-height 0.5s ease-in-out;
+  padding: 6px;
+  // width: 100%;
+}
+
+.acordion.isActive .submenu {
+  max-height: 999px;
+  // border-top: 1px solid #555;
+}
+.acordion svg {
+  color: white;
+  fill: white;
+  // background-color: red;
+}
+
+.heart {
+  border-width: 0;
+  margin: 0px;
+}

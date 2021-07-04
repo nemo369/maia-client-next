@@ -54,7 +54,7 @@ export async function getServerSideProps(req) {
       props: { user, profile: null }, // will be passed to the page component as props
     };
   }
-  console.log(req.locale);
+  // console.log(req.locale);
   return {
     props: {
       ...(await serverSideTranslations(req.locale, ['common'])),
