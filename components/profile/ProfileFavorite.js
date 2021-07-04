@@ -1,24 +1,28 @@
 import React from 'react';
-import CheckboxGroup from '../common/CheckboxGroup';
+import CategoryCahnger from '../dashboard/cateorgy/CategoryCahnger';
 import ProfileFavoriteEmpty from './ProfileFavoriteEmpty';
 import ProfileFavoriteData from './ProfileFavoriteData';
+
+const onChangeCategoryList = (catData) => {
+  console.log(catData.id);
+};
 
 export default function ProfileFavorite() {
   const isData = true;
   return (
-    <div className="fav my-[22px] h-[415px] bg-white rounded-[20px] py-[25px] px-[21px]">
+    <div className="my-[22px] h-[415px] bg-white rounded-[20px] py-[25px] px-[21px]">
       <div className="flex justify-between items-center">
         <div className="text-black text-[28px] font-bold">המועדפים שלי</div>
         <div className="flex">
-          <div id="fav-selector" className="ml-3">
-            <div id="select-box">
-              <input type="checkbox" id="options-view-button" />
-              <div id="select-button" className="selector">
-                <div id="selected-value">
+          <div className="ml-3 fav-selector">
+            <div className="select-box">
+              <input type="checkbox" className="options-view-button" />
+              <div className="selector select-button">
+                <div className="selected-value">
                   <span>סינון</span>
                 </div>
               </div>
-              <div id="options">
+              <div className="options">
                 <div className="option">
                   <a className="label" href="#">
                     אהבתי
@@ -32,7 +36,7 @@ export default function ProfileFavorite() {
               </div>
             </div>
           </div>
-          <CheckboxGroup checkOne="מקצועות" checkTwo="משרות" checkThree="לימודים" />
+          <CategoryCahnger isLabel={false} onChangeCategoryList={onChangeCategoryList} />
         </div>
       </div>
       {isData ? (

@@ -1,10 +1,10 @@
 import React from 'react';
 
 function HeartEmpty(props) {
-  const { addToFavorites } = props;
+  const { toglleFavorites } = props;
   // const className = className1;
   return (
-    <button onClick={addToFavorites} type="button">
+    <button onClick={toglleFavorites} type="button">
       <svg
         // className={className}
         xmlns="http://www.w3.org/2000/svg"
@@ -12,7 +12,7 @@ function HeartEmpty(props) {
         width="23"
         height="21"
         viewBox="0 0 23 21"
-        // onClick={addToFavorites}
+        // onClick={toglleFavorites}
       >
         <defs>
           <filter id="filter-1">

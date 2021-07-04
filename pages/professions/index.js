@@ -19,7 +19,7 @@ export default function Professions() {
       <section className="professions">
         <BreadCrumbs breadCrumbs={[{ title: t('מקצועות'), href: '/professions' }]} />
         <h1 className="text-black text-3xl font-black">{t('זירת המקצוענות')}</h1>
-        <Link href={`professions/${'asda'}`}>
+        <Link href={`professions/${'1'}`}>
           <a>
             <u>{t('בדיקה')}</u>
           </a>

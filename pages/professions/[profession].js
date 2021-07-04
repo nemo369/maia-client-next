@@ -13,6 +13,7 @@ export default function Profession({ profession, additionalProfessions }) {
   if (!profession) {
     return 'TODO: redirect to professions page';
   }
+
   return (
     <div>
       <section className="professions">
