@@ -1,17 +1,17 @@
 import React from 'react';
 import Button from '../common/Button';
-import HeartEmpty from '../svg/HeartEmpty';
 // import CategoryWithHeart from '../common/CategoryWithHeart';
+import JustHeart from '../common/JustHeart';
 import CategoryPercentage from '../profile/CategoryPercentage';
 
 function ProfessionInfo({ profession }) {
   return (
-    <article className="bg-white max-h-[451px] rounded-lg pt-8 pb-4 px-4 ml-4 w-full">
-      <header className="flex mb-7 items-center">
+    <article className="bg-white professionInfo max-h-[451px] rounded-lg pt-8 pb-4 px-4 mr-[6px] ml-4 w-full ">
+      <header className="flex mb-7 gap-x-4 items-center">
         <h2 className="ml-auto text-2xl font-bold">{profession.title}</h2>
-        <HeartEmpty className="ml-[6px]" />
+        <JustHeart />
         {/* <CategoryWithHeart id={profession.id} type="professions" /> */}
-        <CategoryPercentage percentage="92" className="flex-none" />
+        <CategoryPercentage percentage="92" className="flex-none mb-2" />
       </header>
       <p>{profession.description}</p>
       <div className="mt-4 flex">

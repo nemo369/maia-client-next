@@ -34,7 +34,7 @@ export default async function proxy(req, res) {
           res.status(200).json({ data });
         })
         .catch((err) => {
-          console.log(err);
+          // console.log(err);
           if (!err) {
             res.status(500).json('Server Error');
           }
