@@ -22,7 +22,7 @@ There is a github action that run `build`and `lint`command just to make sure eve
 
 ## API's
 
-1. The app API is only calling the the [maia-client-wp](https://github.com/nemo369/maia-client-next) endpoints using the [..proxy].js file.
+1. The app API is only calling the the [maia-client-wp](https://github.com/nemo369/maia-client-wp) endpoints using the [..proxy].js file.
 1. [veritas](http://api.veritas-hr.com/)
 
 ## Design
