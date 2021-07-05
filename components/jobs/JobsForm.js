@@ -29,6 +29,8 @@ function JobsForm() {
     profession: null,
     field: null,
     filterBy: 'ALL',
+    locationType: 'CHOOSE_CITY', //WORK_FROM_HOME
+    range: 5000,
   });
   const onCheckboxGroupChange = (value) => {
     handleChange({ target: { value, name: 'filterBy', type: 'filterBy' } });
@@ -56,7 +58,7 @@ function JobsForm() {
         />
         <hr className="border border-dashed my-6" />
         <div className="bg-white rounded-lg flex py-8 px-4 shadow-md justify-between">
-          <JobsLocation />
+          <JobsLocation inputs={inputs} handleChange={handleChange} />
           <div>
             <legend>היקף משרה</legend>
           </div>
@@ -75,40 +77,40 @@ function JobsForm() {
 
 export default JobsForm;
 const customStyles = {
-  menuList: (provided) => ({
-    ...provided,
+  menuList: () => ({
+    backgroundColor: '#E1E1E1',
+    color: 'black',
+    border: 0,
   }),
   control: (provided) => ({
     ...provided,
-    backgroundColor: 'gray',
+    backgroundColor: '#E1E1E1',
+    border: 0,
+    borderRadius: '8px',
+  }),
+  indicatorsContainer: () => ({
+    backgroundColor: '#E1E1E1',
   }),
 };
 const TopForm = ({ inputs, handleSelectCahnge, onCheckboxGroupChange }) => (
   <div className="flex gap-x-7 justify-between">
     <Select
-      className="flex-grow bg-gray-400"
+      className="flex-grow "
       placeholder="מקצוע"
       name="profession"
       defaultValue={inputs.profession}
       onChange={(e) => handleSelectCahnge({ ...e, name: 'profession' })}
       options={professionOptions}
       styles={customStyles}
-      // theme={(theme) => ({
-      //   ...theme,
-      //   borderRadius: '4px',
-      //   colors: {
-      //     ...theme.colors,
-      //     primary: '#CCCCCC',
-      //   },
-      // })}
     />
     <Select
-      className="flex-grow bg-gray-400"
+      className="flex-grow "
       placeholder="תחום"
       name="field"
       defaultValue={inputs.field}
       onChange={(e) => handleSelectCahnge({ ...e, name: 'field' })}
       options={fieldnOptions}
+      styles={customStyles}
     />
     <CheckboxGroup
       checks={filterByOptions}
