@@ -49,7 +49,7 @@ const NavBar = () => {
         <div className="nav__profile  md:w-full md:mt-4 md:mb-1 ">
           <Link href="/profile">
             <a>
-              <div className="md:w-[84px]  mx-auto  h-1/2 w-10">
+              <div className="md:w-[84px]  mx-auto  h-[73px] w-10">
                 {'m' === user?.gender ? <MalePic /> : <FemalePic />}
               </div>
               <div className="w-full  nav-profile-img-text text-lg text-white leading-[18px] text-center pt-1 mt-1 font-bold">

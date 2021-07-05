@@ -10,7 +10,10 @@
   fill: none;
   stroke-width: 1.5;
   stroke-linecap: round;
+  animation-delay: 2s;
   animation: progress 1s ease-out forwards;
+  transform-origin: center;
+  transform: rotate(189deg);
 }
 
 @keyframes progress {
@@ -20,7 +23,6 @@
 }
 
 .percentage {
-  fill: #000000;
   font-size: 12px;
   text-anchor: middle;
   font-weight: 900;

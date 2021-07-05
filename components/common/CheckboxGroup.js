@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
 
-const CheckboxGroup = ({ checks, onChange, checkType }) => (
+const CheckboxGroup = ({ checks, onChange, checkType, name = 'check' }) => (
   <div className="button-group flex text-lg h-10 py-[6px] px-1 border border-gray-200 bg-white min-w-[315px]">
     {checks?.map((check) => (
       <div
@@ -13,7 +13,7 @@ const CheckboxGroup = ({ checks, onChange, checkType }) => (
           type="radio"
           id={check.id}
           value={check.id}
-          name="check"
+          name={name}
           className=""
           onChange={() => onChange(check.id)}
         />

@@ -15,12 +15,12 @@ export default function Jobs() {
     title: t('משרות פנויות'),
   });
   return (
-    <>
+    <div className="pl-2">
       <NextSeo {...seo} />
       <BreadCrumbs breadCrumbs={[{ title: t('משרות'), href: '/jobs' }]} />
       <JobsHeader count={0} />
       <JobsForm />
-    </>
+    </div>
   );
 }
 export async function getServerSideProps(req) {
