@@ -46,12 +46,12 @@ const ProfessionDropdown = (props) => {
   const { setCityId, setCityData, cities, value, setInputValue } = props;
   const toggleOpen = () => {
     setIsOpen(!isOpen);
-    const gg = document.querySelector('.city');
-    gg.style.backgroundColor = 'rgba(255, 255, 255, 0.81)';
-    gg.style.border = 'solid 2px #41c2c4';
+    const professionSelector = document.querySelector('.proffesion');
+    professionSelector.style.backgroundColor = 'rgba(255, 255, 255, 0.81)';
+    professionSelector.style.border = 'solid 2px #41c2c4';
     if (isOpen) {
-      gg.style.backgroundColor = 'rgba(231, 231, 231)';
-      gg.style.border = 'none';
+      professionSelector.style.backgroundColor = 'rgba(231, 231, 231)';
+      professionSelector.style.border = 'none';
     }
   };
 
@@ -80,7 +80,7 @@ const ProfessionDropdown = (props) => {
           <button
             type="button"
             required
-            className={`regiserPageInput city professionBwc  emailini  hover: bg-red-900 ${
+            className={`regiserPageInput profession professionBwc  emailini  hover: bg-red-900 ${
               vale ? '' : 'text-gray-active'
             }`}
             onClick={toggleOpen}

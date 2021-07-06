@@ -12,11 +12,7 @@ import { seoMerge } from '../src/utils/next-seo.config';
 import { getUserSession } from '../src/utils/getUser';
 import ProfileAPI from '../src/services/profile.service';
 
-export default function Profile(props) {
-  const { user } = props;
-  console.log(user);
-  console.log('uuser');
-  // console.log(props);
+export default function Profile() {
   const { t } = useTranslation('common');
   const seo = seoMerge({
     title: t('פרופיל אישי'),
