@@ -32,10 +32,10 @@ function JobsHeader({ count = 21 }) {
           </button>
         </h2>
       </div>
-      <p className="max-w-4xl text-xl my-5 leading-5">
+      <h3 className="max-w-4xl text-xl my-5 leading-5">
         כאן תוכלו לקרוא על מקצועות ותפקידים שיכולים להתאים לכם או שמעניינים אתכם לקרוא עליהם. מאיה
         מציגה בפניכם את המקצועות המתאימים ביותר. השתמשו במסננים לקריאה על מקצועות נוספים.
-      </p>
+      </h3>
     </header>
   );
 }

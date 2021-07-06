@@ -5,3 +5,14 @@ export const trimText = (str, length = 64) => {
   }
   return `${str.substring(0, length - 3)}...`;
 };
+
+export const addOrRemove = ([...array], value) => {
+  const index = array.indexOf(value);
+
+  if (-1 === index) {
+    array.push(value);
+  } else {
+    array.splice(index, 1);
+  }
+  return array;
+};

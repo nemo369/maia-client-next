@@ -25,7 +25,6 @@ export default function useForm(initial = {}) {
     if ('checkbox' === type) {
       value = !!value;
     }
-
     setInputs({
       // copy the existing state
       ...inputs,

@@ -11,12 +11,14 @@ for (let index = min; index < max; index += step) {
 }
 function JobsLocation({ handleChange, inputs }) {
   const { user } = useContext(AppContext);
+  const street = JSON.parse(user.street);
+  const streetStr = `${street?.name}, ${street?.city_name}`;
   const { t } = useTranslation('common');
   return (
     <div className="flex">
-      <h4 className="ml-4 text-lg font-bold">מיקום</h4>
+      <h4 className="ml-2 text-lg ">מיקום</h4>
       <div className="">
-        <div className="flex items-center">
+        <div className="flex items-center px-3">
           <input
             className="bg-orange"
             type="radio"
@@ -26,16 +28,20 @@ function JobsLocation({ handleChange, inputs }) {
             checked={'CHOOSE_CITY' === inputs.locationType}
             onChange={handleChange}
           />
-          <label className="radio-label font-bold" htmlFor="choose-city">
+          <label className="radio-label " htmlFor="choose-city">
             {t('איפה אתה גר')}
           </label>
-          <input
-            type="text"
-            name="city"
-            disabled
-            defaultValue={user.street}
-            className="bg-gray-disabled rounded-md h-[30px] px-2 mr-3 ml-6"
-          />
+          <label htmlFor="city">
+            <span className="sr-only">שם העיר</span>
+            <input
+              id="city"
+              type="text"
+              name="city"
+              disabled
+              defaultValue={streetStr}
+              className="bg-gray-disabled rounded-md h-[30px] px-2 mr-3 ml-6 w-56"
+            />
+          </label>
           <input
             className="bg-orange"
             type="radio"
@@ -45,22 +51,27 @@ function JobsLocation({ handleChange, inputs }) {
             checked={'WORK_FROM_HOME' === inputs.locationType}
             onChange={handleChange}
           />
-          <label className="radio-label font-bold" htmlFor="work-from-home">
+          <label className="radio-label " htmlFor="work-from-home">
             {t('עבודה מהבית')}
           </label>
         </div>
         <div className="bar mt-3 w-full">
-          <input
-            className="w-full"
-            type="range"
-            min={min}
-            max={max}
-            step={step}
-            value={inputs.range}
-            name="range"
-            onChange={handleChange}
-          />
-          <div className="flex justify-between">
+          <label htmlFor="range">
+            <span className="sr-only">מרחק מהבית בקילומטרים</span>
+            <input
+              id="range"
+              className="w-full e-range"
+              type="range"
+              min={min}
+              max={max}
+              step={step}
+              value={inputs.range}
+              name="range"
+              onChange={handleChange}
+            />
+          </label>
+
+          <div className="flex justify-between px-3">
             {steps.map((num) => (
               <span
                 key={num}
