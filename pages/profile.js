@@ -13,7 +13,10 @@ import { getUserSession } from '../src/utils/getUser';
 import ProfileAPI from '../src/services/profile.service';
 
 export default function Profile(props) {
-  console.log(props);
+  const { user } = props;
+  console.log(user);
+  console.log('uuser');
+  // console.log(props);
   const { t } = useTranslation('common');
   const seo = seoMerge({
     title: t('פרופיל אישי'),

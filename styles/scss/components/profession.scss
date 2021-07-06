@@ -1,6 +1,11 @@
 .professionInfo {
   height: fit-content;
 }
+.professionInfoBoxShadow {
+  box-shadow: 0 12px 34px -20px rgba(16, 20, 63, 0.15);
+  border: 1px solid rgba(151, 151, 151, 0.13);
+}
+
 // #professionDropdown:first-child {
 //   border-top-left-radius: 10px;
 // }
@@ -28,20 +33,7 @@
   width: 100%;
   text-align: right;
   justify-content: space-between;
-}
-
-.acordion {
-  position: relative;
-  float: left;
-  width: 100%;
-  list-style: none;
-  color: #fff;
-  transition: 0.5s;
-  // border-top: 1px solid #555;
-  background: linear-gradient(143.28deg, #40c2c4 0%, #3c91a0 100%);
-  margin-top: 3px;
-  // height: 82px;
-  // border-radius: 10px;
+  outline: none;
 }
 
 .acordion li:first-child {
@@ -55,11 +47,30 @@
   transition: max-height 0.5s ease-in-out;
   padding: 6px;
   // width: 100%;
+  //   background-color: #3c91a0;
 }
 
 .acordion.isActive .submenu {
   max-height: 999px;
+  //   background-color: #3c91a0;
   // border-top: 1px solid #555;
+}
+.acordion.isActive {
+  background: #3c91a0;
+  // border-top: 1px solid #555;
+}
+.acordion {
+  position: relative;
+  float: left;
+  width: 100%;
+  list-style: none;
+  color: #fff;
+  transition: 0.5s;
+  // border-top: 1px solid #555;
+  background: linear-gradient(143.28deg, #40c2c4 0%, #3c91a0 100%);
+  margin-top: 3px;
+  // height: 82px;
+  // border-radius: 10px;
 }
 .acordion svg {
   color: white;
@@ -70,4 +81,16 @@
 .heart {
   border-width: 0;
   margin: 0px;
+}
+.professionBwc {
+  position: relative;
+  justify-self: center;
+  height: 40px;
+  width: 100%;
+  border-radius: 0.375rem;
+  text-align: start;
+  padding-right: 20px;
+  font-size: 18px;
+  --tw-bg-opacity: 1;
+  background-color: rgba(231, 231, 231, var(--tw-bg-opacity));
 }

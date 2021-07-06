@@ -13,6 +13,7 @@ import MalePic from '../svg/MalePic';
 
 const NavBar = () => {
   const { pathname } = useRouter();
+  console.log(pathname);
   const { user } = useContext(AppContext);
   const { t } = useTranslation('common');
   const links = [
@@ -60,7 +61,13 @@ const NavBar = () => {
         </div>
         <ul className="nav__links flex md:flex-col justify-center gap-y-4 items-center">
           {links.map((link) => (
-            <LinkButton key={link.href} link={link} isActive={pathname === link.href} />
+            <LinkButton
+              key={link.href}
+              link={link}
+              isActive={
+                ('/' !== link.href && pathname.includes(link.href)) || pathname === link.href
+              }
+            />
           ))}
         </ul>
         <div className="nav__logo">
