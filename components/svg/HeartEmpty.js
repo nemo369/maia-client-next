@@ -4,7 +4,7 @@ function HeartEmpty(props) {
   const { toglleFavorites } = props;
   // const className = className1;
   return (
-    <button onClick={toglleFavorites} type="button">
+    <button className="hover:w-[25px] hover:h-[23px]" onClick={toglleFavorites} type="button">
       <svg
         // className={className}
         xmlns="http://www.w3.org/2000/svg"

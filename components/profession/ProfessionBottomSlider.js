@@ -6,9 +6,10 @@ import CategoryWithHeart from '../common/CategoryWithHeart';
 function ProfessionBottomSlider({ professions }) {
   const responsive = {
     0: { items: 1 },
-    568: { items: 2 },
+    600: { items: 2 },
     1024: { items: 3 },
   };
+  // console.log(professions[0].id);
   if (!professions || !Array.isArray(professions)) {
     return null;
   }
@@ -19,20 +20,20 @@ function ProfessionBottomSlider({ professions }) {
       description={profession1.description}
       id={profession1.id}
       type="professions"
-      className="px-0"
+      className="px-0 "
     />
   ));
 
   return (
-    <div className="mt-16">
+    <div className="col-start-1 col-end-4 mt-16">
       <div className="text-2xl font-bold leading-6 mb-6 pr-[6px] ">
         עוד מקצועות שיכולות להתאים לך
       </div>
       <AliceCarousel
-        responsive={responsive}
+        mouseTracking
         disableDotsControls
-        mouseTracking={false}
         items={items}
+        responsive={responsive}
         infinite
       />
     </div>

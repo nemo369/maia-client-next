@@ -1,14 +1,23 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { NextSeo } from 'next-seo';
+import { useTranslation } from 'next-i18next';
 import BreadCrumbs from '../../components/common/BreadCrumbs';
 import ProfessionDropdowns from '../../components/profession/ProfessionDropdowns';
 import ProfessionInfo from '../../components/profession/ProfessionInfo';
 import { getUserSession } from '../../src/utils/getUser';
 import ProfessionBottomSlider from '../../components/profession/ProfessionBottomSlider';
 import VendorAPI from '../../src/services/vendor.service';
+import { seoMerge } from '../../src/utils/next-seo.config';
 
 export default function Profession({ profession, additionalProfessions }) {
+  const { t } = useTranslation('common');
+  console.log(profession);
+
+  const seo = seoMerge({
+    title: t('זירת המקצועות '),
+  });
   const router = useRouter();
   if (!profession) {
     return 'TODO: redirect to professions page';
@@ -23,12 +32,13 @@ export default function Profession({ profession, additionalProfessions }) {
             { title: profession.title, href: router.asPath },
           ]}
         />
+        <NextSeo {...seo} />
         <h1 className="text-black text-3xl font-black mb-16">זירת המקצוענות</h1>
-        <div className="md:flex justify-between">
+        <div className="md:grid grid-cols-2 gap-x-4 justify-between">
           <ProfessionInfo profession={profession} />
           <ProfessionDropdowns profession={profession} />
+          <ProfessionBottomSlider professions={additionalProfessions} />
         </div>
-        <ProfessionBottomSlider professions={additionalProfessions} />
       </section>
     </div>
   );

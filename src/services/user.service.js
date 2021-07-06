@@ -33,7 +33,7 @@ const UserAPI = {
       const response = await axios.post(
         `${API_URL}/profile/toglle-favorites`,
         {
-          id,
+          id: `${id}`,
           type,
           value,
         },
