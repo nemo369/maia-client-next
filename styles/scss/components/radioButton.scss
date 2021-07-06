@@ -1,6 +1,6 @@
 // radio button
 
-input[type='radio'] {
+input[type="radio"] {
   /* remove standard background appearance */
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -11,18 +11,22 @@ input[type='radio'] {
   height: 20px;
   padding: 3px;
   /* background-color only for content */
+  background-color: transparent;
   background-clip: content-box;
   border: 1px solid #cccccc;
   border-radius: 50%;
   margin-left: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 /* appearance for checked radiobutton */
-input[type='radio']:checked {
+input[type="radio"]:checked {
   background-color: #3c91a0;
   border: 1px solid#3c91a0;
 }
 
-.radio-label {
-  margin-left: 30px;
+input[type="radio"]:checked.bg-orange {
+  background-color: #ef786c;
+  border-color: #979797;
 }

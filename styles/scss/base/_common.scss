@@ -114,6 +114,10 @@ input::-webkit-inner-spin-button {
 }
 
 /* Firefox */
-input[type='number'] {
+input[type="number"] {
   -moz-appearance: textfield;
+}
+
+.bar-of-progress {
+  z-index: 50;
 }

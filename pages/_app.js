@@ -1,11 +1,21 @@
 import '../styles/main.scss';
 import '../styles/global.css';
 import { appWithTranslation } from 'next-i18next';
+import ProgressBar from '@badrap/bar-of-progress';
+import Router from 'next/router';
 import Layout from '../components/layout/Layout';
 import { AppWrapper } from '../src/context/state';
-// import { ReactElement as RE } from "react";
 
 const isSSR = () => 'undefined' === typeof window;
+const progress = new ProgressBar({
+  size: 2,
+  color: '#FF3344',
+  className: 'bar-of-progress',
+  delay: 100,
+});
+Router.events.on('routeChangeStart', progress.start);
+Router.events.on('routeChangeComplete', progress.finish);
+Router.events.on('routeChangeError', progress.finish);
 
 if ('production' !== process.env.NODE_ENV && !isSSR()) {
   const React = require("react"); // eslint-disable-line

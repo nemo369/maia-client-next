@@ -14,7 +14,7 @@ const VendorAPI = {
       });
       return data;
     } catch (error) {
-      return error.response;
+      return [];
     }
   },
   getCategory: async (token, type, id) => {
