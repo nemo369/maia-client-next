@@ -1,0 +1,20 @@
+.nojobs {
+    svg {
+        .active-jobs {
+            stroke: rgba(0, 0, 0, 0.2);
+        }
+    }
+}
+
+.job {
+    max-height: 92px;
+    &.acitve {
+        max-height: 300px;
+        .job__top {
+            background: linear-gradient(179.83deg, #3c91a0 0%, #40c2c4 100%);
+        }
+    }
+    &__inner {
+        background: linear-gradient(179.62deg, #3c91a0 0%, #40c2c4 100%);
+    }
+}
