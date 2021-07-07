@@ -13,7 +13,6 @@ import MalePic from '../svg/MalePic';
 
 const NavBar = () => {
   const { pathname } = useRouter();
-  console.log(pathname);
   const { user } = useContext(AppContext);
   const { t } = useTranslation('common');
   const links = [

@@ -10,11 +10,11 @@ import { getUserSession } from '../../src/utils/getUser';
 import ProfessionBottomSlider from '../../components/profession/ProfessionBottomSlider';
 import VendorAPI from '../../src/services/vendor.service';
 import { seoMerge } from '../../src/utils/next-seo.config';
+import useProfile from '../../src/hooks/useProfile';
 
 export default function Profession({ profession, additionalProfessions }) {
   const { t } = useTranslation('common');
-  console.log(profession);
-
+  useProfile();
   const seo = seoMerge({
     title: t('זירת המקצועות '),
   });

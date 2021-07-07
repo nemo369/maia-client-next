@@ -28,20 +28,19 @@ const UserAPI = {
       return error.response;
     }
   },
-  toglleFavorites: async ({ id, type, value, token }) => {
+  toglleFavorites: async ({ id, type, token }) => {
     try {
-      const response = await axios.post(
+      const { data, status } = await axios.post(
         `${API_URL}/profile/toglle-favorites`,
         {
           id: `${id}`,
           type,
-          value,
         },
         {
           headers: { 'Content-type': 'application/json', Authorization: `Bearer ${token}` },
         }
       );
-      return response;
+      return { ...data, status };
     } catch (error) {
       return error.response;
     }

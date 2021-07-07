@@ -1,34 +1,27 @@
 // import React, { useContext } from 'react';
-import { NextSeo } from 'next-seo';
-// import Link from 'next/link';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { NextSeo } from 'next-seo';
 import BreadCrumbs from '../../components/common/BreadCrumbs';
-import { getUserSession } from '../../src/utils/getUser';
-import { seoMerge } from '../../src/utils/next-seo.config';
-// import { AppContext } from '../../src/context/state';
-import ProfileAPI from '../../src/services/profile.service';
-import VendorAPI from '../../src/services/vendor.service';
 import CategoryWithHeart from '../../components/common/CategoryWithHeart';
-// import useForm from '../../src/hooks/useForm';
 import ProfessionDomain from '../../components/profile/ProfessionDomain';
 import ProfessionDropdown from '../../components/profile/ProfessionDropdown';
+import useProfile from '../../src/hooks/useProfile';
+
+import VendorAPI from '../../src/services/vendor.service';
+import { getUserSession } from '../../src/utils/getUser';
+import { seoMerge } from '../../src/utils/next-seo.config';
 
 export default function Professions({ additionalProfessions }) {
   const seo = seoMerge({
     title: 'זירת המקצועות',
   });
   const { t } = useTranslation('common');
-  // const { inputs, handleChange, resetForm } = useForm({
-  //   freeWrite: '',
-  //   domain: '',
-  //   profession: '',
-  // });
-  // const { user } = useContext(AppContext);
-  // const { additionalProfessions } = useContext(AppContext);
-  console.log(additionalProfessions);
+  useProfile();
+
   const professionList = additionalProfessions.map((profession) => (
     <CategoryWithHeart
+      key={profession.id}
       value={profession.title}
       isButton
       description={profession.description}
@@ -80,19 +73,14 @@ export default function Professions({ additionalProfessions }) {
 
 export async function getServerSideProps(req) {
   const [user, token] = getUserSession(req);
-  const profileUser = await ProfileAPI.profile(token);
-  const userProfile = profileUser.data;
-  const professions = await VendorAPI.getCategorys(token, 'professions');
-  const additionalProfessions = professions.data;
+  const { data: additionalProfessions } = await VendorAPI.getCategorys(token, 'professions');
   if (user.redirect) return user;
   const locale = `he${user.gender}`;
   // Here you can add more data
   return {
     props: {
       ...(await serverSideTranslations(locale, ['common', 'professions'])),
-
       user,
-      userProfile,
       additionalProfessions,
     },
   };

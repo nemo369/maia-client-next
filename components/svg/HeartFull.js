@@ -1,9 +1,13 @@
 import React from 'react';
 
-function HeartFull(props) {
-  const { toglleFavorites } = props;
+function HeartFull({ disabled, toglleFavorites }) {
   return (
-    <button className="hover:w-[25px] hover:h-[23px]" onClick={toglleFavorites} type="button">
+    <button
+      className="hover:w-[25px] hover:h-[23px]"
+      onClick={toglleFavorites}
+      type="button"
+      disalbed={disabled}
+    >
       <svg xmlns="http://www.w3.org/2000/svg" width="23" height="21" viewBox="0 0 23 21">
         <g fill="none" fillRule="evenodd" stroke="none" strokeWidth="1">
           <g fill="#FF726B" fillRule="nonzero" transform="translate(-857 -3491)">

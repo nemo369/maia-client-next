@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React, { useState } from 'react';
 import WhitePen from '../svg/WhitePen';
 import WhiteEarth from '../svg/WhiteEarth';
@@ -8,9 +9,11 @@ function ProfessionDropdowns({ profession }) {
   return (
     <section className=" relative max-w-[812px] w-full">
       <ul id="professionDropdown">
-        {profession.whatToDoWithIt.map((x) => (
-          <Acordion title={x.title} text={x.text} />
-        ))}
+        {profession.whatToDoWithIt
+          ? profession.whatToDoWithIt.map((x) => (
+            <Acordion key={x.title} title={x.title} text={x.text} />
+          ))
+          : null}
         {/* <Acordion
           title="מה עושים עם זה"
           text={profession?.whatToDoWithIt[0].text ? profession.whatToDoWithIt[0].text : ''}

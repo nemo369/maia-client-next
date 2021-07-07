@@ -1,10 +1,6 @@
 /* eslint-disable react/jsx-one-expression-per-line */
-import { useContext, useState } from 'react';
 import Link from 'next/link';
-import UserAPI from '../../src/services/user.service';
-import HeartEmpty from '../svg/HeartEmpty';
-import HeartFull from '../svg/HeartFull';
-import { AppContext } from '../../src/context/state';
+import JustHeart from './JustHeart';
 
 export default function CategoryWithHeart({
   className,
@@ -15,22 +11,6 @@ export default function CategoryWithHeart({
   type,
   id,
 }) {
-  // console.log(id);
-  // const { userFromContext } = useContext(AppContext);
-  const { user } = useContext(AppContext);
-  // const [user, setUser] = useState(userFromContext);
-  // const [token, setToken] = useState(user.token ? user.token : '');
-  const token = user.token ? user.token : '';
-
-  // useEffect(()=>{
-  // if(use)
-  // },[])
-
-  const [favorites, setFavorites] = useState(false);
-  const toglleFavorites = async () => {
-    setFavorites(!favorites);
-    await UserAPI.toglleFavorites({ id, type, value, token });
-  };
   const handleDragStart = (e) => e.preventDefault();
 
   return (
@@ -41,11 +21,7 @@ export default function CategoryWithHeart({
       >
         <div className="h-[42px] w-full inline">
           <div className="single-chart">
-            {favorites ? (
-              <HeartFull toglleFavorites={toglleFavorites} />
-            ) : (
-              <HeartEmpty toglleFavorites={toglleFavorites} />
-            )}
+            <JustHeart id={id} type={type} />
           </div>
         </div>
 

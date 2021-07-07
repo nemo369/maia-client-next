@@ -1,18 +1,19 @@
 import React from 'react';
 
-function HeartEmpty(props) {
-  const { toglleFavorites } = props;
-  // const className = className1;
+function HeartEmpty({ toglleFavorites, disabled }) {
   return (
-    <button className="hover:w-[25px] hover:h-[23px]" onClick={toglleFavorites} type="button">
+    <button
+      className="hover:w-[25px] hover:h-[23px]"
+      onClick={toglleFavorites}
+      type="button"
+      disabled={disabled}
+    >
       <svg
-        // className={className}
         xmlns="http://www.w3.org/2000/svg"
         xmlnsXlink="http://www.w3.org/1999/xlink"
         width="23"
         height="21"
         viewBox="0 0 23 21"
-        // onClick={toglleFavorites}
       >
         <defs>
           <filter id="filter-1">

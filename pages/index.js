@@ -43,9 +43,9 @@ export default function Home({ profile }) {
 export async function getServerSideProps(req) {
   const [user, token] = getUserSession(req);
   if (user.redirect) return user;
-  const { data, status } = await ProfileAPI.profile(token);
+  const { data: profile, status } = await ProfileAPI.profile(token);
   // Here you can add more data
-  if (200 !== status || !data?.data) {
+  if (200 !== status || !profile) {
     return {
       props: { user, profile: null }, // will be passed to the page component as props
     };
@@ -55,7 +55,7 @@ export async function getServerSideProps(req) {
     props: {
       ...(await serverSideTranslations(locale, ['common'])),
       user,
-      profile: data.data,
+      profile,
     }, // will be passed to the page component as props
   };
 }

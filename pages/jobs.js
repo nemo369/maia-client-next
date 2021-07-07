@@ -5,11 +5,13 @@ import React from 'react';
 import BreadCrumbs from '../components/common/BreadCrumbs';
 import JobsForm from '../components/jobs/JobsForm';
 import JobsHeader from '../components/jobs/JobsHeader';
+import useProfile from '../src/hooks/useProfile';
 import { getUserSession } from '../src/utils/getUser';
 import { seoMerge } from '../src/utils/next-seo.config';
 
 export default function Jobs() {
   const { t } = useTranslation('common');
+  useProfile();
 
   const seo = seoMerge({
     title: t('משרות פנויות'),
