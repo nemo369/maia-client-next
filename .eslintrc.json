@@ -71,6 +71,7 @@
     "no-undef": 0,
     "no-param-reassign": 0,
     "comma-dangle": 0,
-    "lines-around-comment": 0
+    "lines-around-comment": 0,
+    "jsx-a11y/label-has-associated-control": 0
   }
 }

@@ -1,12 +1,12 @@
 //check
 
-.check input[type='checkbox'] {
+.check input[type="checkbox"] {
   position: relative;
   cursor: pointer;
 }
 
-.check input[type='checkbox']:before {
-  content: '';
+.check input[type="checkbox"]:before {
+  content: "";
   display: block;
   position: absolute;
   width: 20px;
@@ -18,8 +18,8 @@
   background-color: #eeeeee;
 }
 
-.check input[type='checkbox']:checked:after {
-  content: '';
+.check input[type="checkbox"]:checked:after {
+  content: "";
   display: block;
   width: 5px;
   height: 10px;
@@ -33,7 +33,7 @@
   left: 8px;
 }
 
-.check input[type='checkbox']:checked:before {
+.check input[type="checkbox"]:checked:before {
   border: 1px solid #3c91a0;
 }
 
@@ -43,4 +43,9 @@
   color: #666666;
   position: relative;
   top: -3px;
+}
+input[type="checkbox"].bg-white {
+  &::before {
+    background-color: white;
+  }
 }
