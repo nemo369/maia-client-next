@@ -1,7 +1,20 @@
 import React from 'react';
 import Button from '../common/Button';
 
-export default function ProfileConclusion() {
+export default function ProfileConclusion({ stage }) {
+  let stageContent = '';
+  switch (stage.id) {
+    case '1':
+      stageContent += '';
+      break;
+    case '2':
+      stageContent += '';
+    case '3':
+      stageContent += '';
+      break;
+    default:
+      break;
+  }
   return (
     <div className="w-[850px] max-h-[400px] bg-white rounded-[20px] py-[25px] px-[21px]">
       <div className="flex justify-between">

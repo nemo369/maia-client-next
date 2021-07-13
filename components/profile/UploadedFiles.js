@@ -6,17 +6,17 @@ import YellowJpg from '../svg/YellowJpg';
 export default function UploadedFiles() {
   return (
     <>
-      <div className="files my-[22px] w-[435px] bg-white h-[130px] rounded-[20px] py-[20px] px-[21px]">
+      <div className="py-[20px] px-[21px]">
         <div className="flex justify-between items-center">
-          <div className="text-black text-[28px] font-bold">הקבצים שהעליתי</div>
+          <div className="text-[#666666] text-[18px]">הקבצים שהעליתי</div>
           <button
             type="button"
-            className="text-[16px] outline-none	 text-gray-active underline cursor-pointer"
+            className="text-[16px] outline-none	 text-[#FB9773] underline cursor-pointer"
           >
             העלאת קובץ חדש+
           </button>
         </div>
-        <div className="flex">
+        <div className="flex mt-[18px]">
           <BlueDoc />
           <RedPd />
           <YellowJpg />
