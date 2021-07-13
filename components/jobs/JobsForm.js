@@ -61,7 +61,6 @@ function JobsForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoader(true);
-    console.log(inputs);
 
     // const { data, status } = await UserAPI.register(dataToSend);
 
