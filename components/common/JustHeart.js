@@ -8,6 +8,7 @@ import { addOrRemove } from '../../src/utils/util';
 import { SET_PROFILE } from '../../src/context/userReucder';
 
 export default function JustHeart(props) {
+  console.log(props);
   const { type } = props;
   // eslint-disable-next-line react/destructuring-assignment
   const id = `${props.id}`;
@@ -39,8 +40,11 @@ export default function JustHeart(props) {
   const handleDragStart = (e) => e.preventDefault();
 
   return (
-    <div onDragStart={handleDragStart} tabIndex="0" role="tab">
-      <div className="bg-white heart  rounded border-[1px] border-[rgba(151,151,151,0.13)]">
+    <div onDragStart={handleDragStart} tabIndex="0" className="h-4 text right" role="tab">
+      <div
+        className="rounded  border-[rgba(151,151,151,0.13)]"
+        // className={`${className2} bg-white heart  rounded border-[1px] border-[rgba(151,151,151,0.13)]`}
+      >
         <div className={`transition-opacity w-full ${loading ? 'opacity-50' : ''}`}>
           {favorites.includes(`${id}`) ? (
             <HeartFull toglleFavorites={toglleFavorites} disabled={loading} />
