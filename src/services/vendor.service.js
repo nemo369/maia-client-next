@@ -4,9 +4,9 @@ import { FRONT_URL } from '../utils/consts';
 const API_URL = `${FRONT_URL}`;
 
 const VendorAPI = {
-  getCategorys: async (token, type) => {
+  getCategorys: async (token, type, ids = null) => {
     try {
-      const { data } = await axios.get(`${API_URL}/vendor/${type}`, {
+      const { data } = await axios.get(`${API_URL}/vendor/${type}${ids ? `?ids=[${ids}]` : ''}`, {
         headers: {
           'Content-type': 'application/json',
           Authorization: `Bearer ${token}`,

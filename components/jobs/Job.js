@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useTranslation } from 'next-i18next';
 import CategoryPercentage from '../profile/CategoryPercentage';
 import JustHeart from '../common/JustHeart';
+import Arrow from '../svg/Arrow';
 
 function Job({ job }) {
   const { t } = useTranslation('common');
@@ -36,9 +37,11 @@ function Job({ job }) {
             <button
               type="button"
               onClick={() => setisOpen(!isOpen)}
-              className="flex items-center justify-center w-6 h-6 p-6 rounded-full hover:opacity-80 transition focus:outline-none focus:ring-1"
+              className={`${
+                isOpen ? 'rotate-180' : ''
+              } flex items-center justify-center w-6 h-6  rounded-full hover:opacity-80 transition focus:outline-none focus:ring-1`}
             >
-              {isOpen ? '<' : '>'}
+              <Arrow />
             </button>
           </div>
         </div>

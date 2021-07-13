@@ -41,11 +41,13 @@ const Acordion = ({ text, title }) => {
           setIsActive(!isActive);
         }}
       >
-        <div className="inline-block">
+        <div className="inline-block acodrion-svg">
           <CheckForTitle title={title} />
-          {title}
+          <span>
+            {title}
+          </span>
         </div>
-        <div className={isActive ? 'inline-block -rotate-90' : 'inline-block rotate-90'}>
+        <div className={`w-6 h-6 flex items-center justify-center transition ${isActive ? 'rotate-180' : ''}`}>
           <Arrow />
         </div>
       </button>
