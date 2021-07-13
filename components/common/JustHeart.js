@@ -26,6 +26,7 @@ export default function JustHeart(props) {
       setLoading(false);
     }, 1000);
   };
+  // console.log(profile);
   useEffect(() => {
     const isLoading = !profile;
     setLoading(isLoading);

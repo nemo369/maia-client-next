@@ -10,7 +10,7 @@
 .select-button {
   padding: 3px 12px;
   background-color: #3333331f;
-  cursor: pointer;
+  // cursor: pointer;
   color: #0000006e;
   transition: 0.3s all ease-in-out;
   font-size: 16px;
@@ -31,7 +31,7 @@
   height: 100%;
   margin: 0;
   opacity: 0;
-  cursor: pointer;
+  // cursor: pointer;
   z-index: 3;
   border-radius: 5px;
 }

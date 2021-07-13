@@ -5,7 +5,6 @@ import WhiteEarth from '../svg/WhiteEarth';
 import Arrow from '../svg/Arrow';
 
 function ProfessionDropdowns({ profession }) {
-  console.log(profession);
   return (
     <section className=" relative max-w-[812px] w-full">
       <ul id="professionDropdown">
