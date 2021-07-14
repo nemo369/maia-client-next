@@ -7,13 +7,18 @@ import { NextSeo } from 'next-seo';
 import { useState } from 'react';
 import BreadCrumbs from '../../components/common/BreadCrumbs';
 import CategoryWithHeart from '../../components/common/CategoryWithHeart';
+// import ProfessionDropdown from '../../components/profile/ProfessionDropdown';
 import useProfile from '../../src/hooks/useProfile';
+
 import VendorAPI from '../../src/services/vendor.service';
 import { getUserSession } from '../../src/utils/getUser';
 import { seoMerge } from '../../src/utils/next-seo.config';
-import Dropdown from '../../components/common/Dropdown';
 
-export default function Professions({ additionalProfessions }) {
+import CompareDropdown from '../../components/common/CompareDropdown';
+import StudyForm from '../../components/common/study/StudyForm';
+// import NotificationAPI from '../../src/services/notification.service';
+
+export default function Studies({ additionalStudies }) {
   const seo = seoMerge({
     title: 'זירת המקצועות',
   });
@@ -23,40 +28,42 @@ export default function Professions({ additionalProfessions }) {
   const [text, setText] = useState('');
   const [suggestions, setSuggestions] = useState([]);
 
-  const jobs = [
-    'מהנדס אדריכלות ועיצוב פנים',
-    'עיצוב תעשייתי ועיצוב חוץ',
-    'הנדסת תעשייה וניהול',
-    'רואה חשבון',
-    'עורך דין',
-    'הנדסת תעשייה וניהול',
-    'הנדסת תעשייה וניהול',
-    'הנדסת תעשייה וניהול',
-    'הנדסת תעשייה וניהול',
-    'הנדסת תעשייה וניהול',
-  ];
-  const professions = [
-    'סייבר',
-    'תכנות',
-    'אדריכלות פנים',
-    'הנדסת מזון',
-    'הנדסת מחשבים',
-    'הייטק',
-    'אומנות',
-    'אומנות',
-    'אומנות',
-    'אומנות',
-    'אומנות',
-    'אומנות',
-  ];
-  const professionList = additionalProfessions.map((profession) => (
+  // const jobs = [
+  //   'מהנדס אדריכלות ועיצוב פנים',
+  //   'עיצוב תעשייתי ועיצוב חוץ',
+  //   'הנדסת תעשייה וניהול',
+  //   'רואה חשבון',
+  //   'עורך דין',
+  //   'הנדסת תעשייה וניהול',
+  //   'הנדסת תעשייה וניהול',
+  //   'הנדסת תעשייה וניהול',
+  //   'הנדסת תעשייה וניהול',
+  //   'הנדסת תעשייה וניהול',
+  // ];
+  // const professions = [
+  //   'סייבר',
+  //   'תכנות',
+  //   'אדריכלות פנים',
+  //   'הנדסת מזון',
+  //   'הנדסת מחשבים',
+  //   'הייטק',
+  //   'אומנות',
+  //   'אומנות',
+  //   'אומנות',
+  //   'אומנות',
+  //   'אומנות',
+  //   'אומנות',
+  // ];
+
+  const professionList = additionalStudies.map((study) => (
     <CategoryWithHeart
-      key={profession.id}
-      value={profession.title}
+      key={study.id}
+      value={study.title}
       isButton
-      description={profession.description}
-      id={profession.id}
-      type="professions"
+      description={study.description}
+      id={study.id}
+      type="studies"
+      company="מכללת עזריאלי"
       className="px-0 "
     />
   ));
@@ -64,7 +71,7 @@ export default function Professions({ additionalProfessions }) {
   const handleChange = (event) => {
     let matches = [];
     if (0 < text.length) {
-      matches = additionalProfessions.filter((user) => {
+      matches = additionalStudies.filter((user) => {
         const regex = new RegExp(`${text}`, 'gi');
         return user.title.match(regex);
       });
@@ -77,11 +84,11 @@ export default function Professions({ additionalProfessions }) {
     <>
       <NextSeo {...seo} />
       <section className="professions">
-        <BreadCrumbs breadCrumbs={[{ title: t('מקצועות'), href: '/professions' }]} />
+        <BreadCrumbs breadCrumbs={[{ title: t('לימודים'), href: '/studies' }]} />
         <div className="grid grid-cols-none ml-3">
           <div>
             <div className="flex">
-              <h1 className="text-black text-3xl font-black">{t('זירת המקצוענות')}</h1>
+              <h1 className="text-black text-3xl font-black">{t('מאגר לימודים')}</h1>
               <div className="flex self-center bg-orange rounded-lg py-2 px-8 h-9 text-white text-[22px] font-bold leading-6 mr-9">
                 <p>נמצאו לך שלוש מקצועות שיתאימו לך</p>
                 <div className="relative smallpop w-4 h-4 border-solid border-white-active border-2 rounded-full font-small  text-white text-xs mr-4 hover:bg-gradient-2 inline-block text-center">
@@ -94,8 +101,8 @@ export default function Professions({ additionalProfessions }) {
               מאיה מציגה בפניכם את המקצועות המתאימים ביותר. השתמשו במסננים לקריאה על מקצועות נוספים.
             </p>
           </div>
-          <div className="grid grid-cols-2 gap-x-1  ">
-            <div>
+          <div className="grid grid-cols-6 gap-x-4">
+            <div className="col-start-1 col-end-3">
               <input
                 className="regiserPageInput justify-self-center h-12 professionBwc w-full bg-gray-disabled  rounded-md"
                 type="text"
@@ -109,11 +116,14 @@ export default function Professions({ additionalProfessions }) {
                   : ''}
               </div>
             </div>
-            <div className="grid grid-cols-2 gap-x-1">
-              {/* <ProfessionDomain /> */}
-              <Dropdown content={professions} title="תחום" />
-              <Dropdown content={jobs} title="מקצוע" />
-              {/* <ProfessionDropdown /> */}
+
+            {/* <Dropdown content={professions} title="תחום" /> */}
+            <StudyForm />
+            {/* <Dropdown content={jobs} title="מקצוע" />
+            <Dropdown content={jobs} title="מסלול" /> */}
+            <div className="flex items-center">
+              <CompareDropdown />
+              <span className="mr-2">השוואת מסלולים</span>
             </div>
           </div>
           <hr className="mainProfessionsDash my-5" />
@@ -126,15 +136,15 @@ export default function Professions({ additionalProfessions }) {
 
 export async function getServerSideProps(req) {
   const [user, token] = getUserSession(req);
-  const { data: additionalProfessions } = await VendorAPI.getCategorys(token, 'professions');
+  const { data: additionalStudies } = await VendorAPI.getCategorys(token, 'studies');
   if (user.redirect) return user;
   const locale = `he${user.gender}`;
   // Here you can add more data
   return {
     props: {
-      ...(await serverSideTranslations(locale, ['common', 'professions'])),
+      ...(await serverSideTranslations(locale, ['common', 'studies'])),
       user,
-      additionalProfessions,
+      additionalStudies,
     },
   };
 }

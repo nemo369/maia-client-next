@@ -25,7 +25,7 @@ export default function CategoryWithHeart({
           </div>
         </div>
 
-        <div className="company text-gray-active text-[18px]">{company}</div>
+        <div className="company text-gray-active text-[18px] text-right">{company}</div>
         <div className="title-length font-bold text-[18px] text-[#333333] text-right ">{value}</div>
         <div className="dash border-b-[1px] border-dashed border-[#979797] opacity-20 w-full h-1" />
         <p className="description  text-black tracking-normal font-normal opacity-70 leading-[18px] text-lg mt-[10px] text-right">
@@ -33,7 +33,7 @@ export default function CategoryWithHeart({
         </p>
         <div className="footer w-full flex my-[10px]">
           {isButton && (
-            <Link href={`/professions/${id}`}>
+            <Link href={`/${type}/${id}`}>
               <a
                 className="border-black border-2 font-bold text-base leading-4 text-black rounded-[5px] py-[2px] px-[20px] active:bg-gray-lighter focus:outline-none hover:bg-white-active"
                 type="button"
