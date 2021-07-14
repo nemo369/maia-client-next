@@ -10,11 +10,11 @@ export default function StudyMoreInfo({ study }) {
       {study.more_study_info.map((stud) => (
         <div className=" lg:mr-7 flex gap-1 mb-5 flex-shrink flex-grow">
           <div className="bg-white study-two-cornered py-7 px-3 self-start added-shadow">
-            <CheckForTitle1 title={stud.title} />
+            <CheckForTitle title={stud.title} />
           </div>
           <div className="bg-white study-three-cornered added-shadow grid content-evenly pb-10 pt-5  px-5 gap-4">
-            <div>{stud.title}</div>
-            <div>{stud.text} </div>
+            <h4 className=" font-bold text-lg leading-4">{stud.title}</h4>
+            <p className="text-sm leading-3">{stud.text} </p>
           </div>
         </div>
       ))}
@@ -22,7 +22,7 @@ export default function StudyMoreInfo({ study }) {
   );
 }
 
-const CheckForTitle1 = ({ title }) => {
+const CheckForTitle = ({ title }) => {
   let classes = '';
   switch (title) {
     case 'תנאי קבלה':

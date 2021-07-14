@@ -5,6 +5,7 @@ import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { NextSeo } from 'next-seo';
 import { useState } from 'react';
+import Select from 'react-select';
 import BreadCrumbs from '../../components/common/BreadCrumbs';
 import CategoryWithHeart from '../../components/common/CategoryWithHeart';
 // import ProfessionDropdown from '../../components/profile/ProfessionDropdown';
@@ -16,9 +17,10 @@ import { seoMerge } from '../../src/utils/next-seo.config';
 import Dropdown from '../../components/common/Dropdown';
 
 import CompareDropdown from '../../components/common/CompareDropdown';
+import StudyForm from '../../components/common/study/StudyForm';
 // import NotificationAPI from '../../src/services/notification.service';
 
-export default function Studies({ additionalProfessions }) {
+export default function Studies({ additionalStudies }) {
   const seo = seoMerge({
     title: 'זירת המקצועות',
   });
@@ -54,13 +56,14 @@ export default function Studies({ additionalProfessions }) {
     'אומנות',
     'אומנות',
   ];
-  const professionList = additionalProfessions.map((profession) => (
+
+  const professionList = additionalStudies.map((study) => (
     <CategoryWithHeart
-      key={profession.id}
-      value={profession.title}
+      key={study.id}
+      value={study.title}
       isButton
-      description={profession.description}
-      id={profession.id}
+      description={study.description}
+      id={study.id}
       type="studies"
       company="מכללת עזריאלי"
       className="px-0 "
@@ -70,7 +73,7 @@ export default function Studies({ additionalProfessions }) {
   const handleChange = (event) => {
     let matches = [];
     if (0 < text.length) {
-      matches = additionalProfessions.filter((user) => {
+      matches = additionalStudies.filter((user) => {
         const regex = new RegExp(`${text}`, 'gi');
         return user.title.match(regex);
       });
@@ -116,9 +119,10 @@ export default function Studies({ additionalProfessions }) {
               </div>
             </div>
 
-            <Dropdown content={professions} title="תחום" />
-            <Dropdown content={jobs} title="מקצוע" />
-            <Dropdown content={jobs} title="מסלול" />
+            {/* <Dropdown content={professions} title="תחום" /> */}
+            <StudyForm />
+            {/* <Dropdown content={jobs} title="מקצוע" />
+            <Dropdown content={jobs} title="מסלול" /> */}
             <div className="flex items-center">
               <CompareDropdown />
               <span className="mr-2">השוואת מסלולים</span>
@@ -134,7 +138,7 @@ export default function Studies({ additionalProfessions }) {
 
 export async function getServerSideProps(req) {
   const [user, token] = getUserSession(req);
-  const { data: additionalProfessions } = await VendorAPI.getCategorys(token, 'studies');
+  const { data: additionalStudies } = await VendorAPI.getCategorys(token, 'studies');
   if (user.redirect) return user;
   const locale = `he${user.gender}`;
   // Here you can add more data
@@ -142,7 +146,7 @@ export async function getServerSideProps(req) {
     props: {
       ...(await serverSideTranslations(locale, ['common', 'studies'])),
       user,
-      additionalProfessions,
+      additionalStudies,
     },
   };
 }

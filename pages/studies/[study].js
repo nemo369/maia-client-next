@@ -29,7 +29,7 @@ export default function Studies({ study, studies }) {
       <section>
         <BreadCrumbs
           breadCrumbs={[
-            { title: 'לימודים', href: '/professions' },
+            { title: 'לימודים', href: '/studies' },
             { title: study.title, href: router.asPath },
           ]}
         />
@@ -51,9 +51,11 @@ export async function getServerSideProps(req) {
   const [user, token] = getUserSession(req);
   if (user.redirect) return user;
   const { study } = req.query;
-  const fetchedstudies = await VendorAPI.getCategorys(token, 'studies');
+  const [fetchedstudies, fetchedStudy] = await Promise.all([
+    VendorAPI.getCategorys(token, 'studies'),
+    VendorAPI.getCategory(token, 'study', study),
+  ]);
   const studies = fetchedstudies.data;
-  const fetchedStudy = await VendorAPI.getCategory(token, 'study', study);
   const study1 = fetchedStudy.data;
   const locale = `he${user.gender}`;
 

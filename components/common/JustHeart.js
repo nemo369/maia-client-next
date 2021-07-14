@@ -8,7 +8,6 @@ import { addOrRemove } from '../../src/utils/util';
 import { SET_PROFILE } from '../../src/context/userReucder';
 
 export default function JustHeart(props) {
-  console.log(props);
   const { type } = props;
   // eslint-disable-next-line react/destructuring-assignment
   const id = `${props.id}`;
