@@ -5,7 +5,6 @@ import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { NextSeo } from 'next-seo';
 import { useState } from 'react';
-import Select from 'react-select';
 import BreadCrumbs from '../../components/common/BreadCrumbs';
 import CategoryWithHeart from '../../components/common/CategoryWithHeart';
 // import ProfessionDropdown from '../../components/profile/ProfessionDropdown';
@@ -14,7 +13,6 @@ import useProfile from '../../src/hooks/useProfile';
 import VendorAPI from '../../src/services/vendor.service';
 import { getUserSession } from '../../src/utils/getUser';
 import { seoMerge } from '../../src/utils/next-seo.config';
-import Dropdown from '../../components/common/Dropdown';
 
 import CompareDropdown from '../../components/common/CompareDropdown';
 import StudyForm from '../../components/common/study/StudyForm';
@@ -30,32 +28,32 @@ export default function Studies({ additionalStudies }) {
   const [text, setText] = useState('');
   const [suggestions, setSuggestions] = useState([]);
 
-  const jobs = [
-    'מהנדס אדריכלות ועיצוב פנים',
-    'עיצוב תעשייתי ועיצוב חוץ',
-    'הנדסת תעשייה וניהול',
-    'רואה חשבון',
-    'עורך דין',
-    'הנדסת תעשייה וניהול',
-    'הנדסת תעשייה וניהול',
-    'הנדסת תעשייה וניהול',
-    'הנדסת תעשייה וניהול',
-    'הנדסת תעשייה וניהול',
-  ];
-  const professions = [
-    'סייבר',
-    'תכנות',
-    'אדריכלות פנים',
-    'הנדסת מזון',
-    'הנדסת מחשבים',
-    'הייטק',
-    'אומנות',
-    'אומנות',
-    'אומנות',
-    'אומנות',
-    'אומנות',
-    'אומנות',
-  ];
+  // const jobs = [
+  //   'מהנדס אדריכלות ועיצוב פנים',
+  //   'עיצוב תעשייתי ועיצוב חוץ',
+  //   'הנדסת תעשייה וניהול',
+  //   'רואה חשבון',
+  //   'עורך דין',
+  //   'הנדסת תעשייה וניהול',
+  //   'הנדסת תעשייה וניהול',
+  //   'הנדסת תעשייה וניהול',
+  //   'הנדסת תעשייה וניהול',
+  //   'הנדסת תעשייה וניהול',
+  // ];
+  // const professions = [
+  //   'סייבר',
+  //   'תכנות',
+  //   'אדריכלות פנים',
+  //   'הנדסת מזון',
+  //   'הנדסת מחשבים',
+  //   'הייטק',
+  //   'אומנות',
+  //   'אומנות',
+  //   'אומנות',
+  //   'אומנות',
+  //   'אומנות',
+  //   'אומנות',
+  // ];
 
   const professionList = additionalStudies.map((study) => (
     <CategoryWithHeart
