@@ -5,6 +5,7 @@ import React from 'react';
 import BreadCrumbs from '../components/common/BreadCrumbs';
 import JobsForm from '../components/jobs/JobsForm';
 import JobsHeader from '../components/jobs/JobsHeader';
+import JobsList from '../components/jobs/JobsList';
 import useProfile from '../src/hooks/useProfile';
 import { getUserSession } from '../src/utils/getUser';
 import { seoMerge } from '../src/utils/next-seo.config';
@@ -22,6 +23,7 @@ export default function Jobs() {
       <BreadCrumbs breadCrumbs={[{ title: t('משרות'), href: '/jobs' }]} />
       <JobsHeader count={0} />
       <JobsForm />
+      <JobsList />
     </div>
   );
 }
