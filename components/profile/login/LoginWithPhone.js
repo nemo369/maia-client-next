@@ -35,25 +35,28 @@ function LoginWithPhone(props) {
   };
   return (
     <div className="mb-auto">
-      <div className="font-black text-2xl">התחברות</div>
+      <h1 className="font-black text-2xl">התחברות</h1>
       <div className="mb-11">
         כדי שנוכל לשמור על פרטיותך ולהגן על הנתונים שלך נשלח לך באמצעות SMS סיסמא חד פעמי
       </div>
       <form method="POST" onSubmit={handleSubmit} className="relative">
-        <input
-          type="tel"
-          autoComplete="tel-local"
-          onChange={(e) => {
-            setCellNUmber(e.target.value);
-            setError(false);
-          }}
-          className={`email1 w-full h-[50px] rounded-md text-gray px-4  text-lg focus:outline-none focus:ring  ${
-            error
-              ? 'focus:ring-2 focus:ring-red focus:text-red text-red focus:font-bold focus:text-lg ring-2 ring-red bg-opacity-80 bg-red-error placeholder-red-800'
-              : ''
-          }`}
-          placeholder="נייד"
-        />
+        <label>
+          <span className="sr-only">נייד</span>
+          <input
+            type="tel"
+            autoComplete="tel-local"
+            onChange={(e) => {
+              setCellNUmber(e.target.value);
+              setError(false);
+            }}
+            className={`email1 w-full h-[50px] rounded-md text-gray px-4  text-lg focus:outline-none focus:ring  ${
+              error
+                ? 'focus:ring-2 focus:ring-red focus:text-red text-red focus:font-bold focus:text-lg ring-2 ring-red bg-opacity-80 bg-red-error placeholder-red-800'
+                : ''
+            }`}
+            placeholder="נייד"
+          />
+        </label>
         <div className="text-left pt-1">
           <button className="underline " type="button" onClick={() => changeLoginType('email')}>
             אני מעוניין/ת לקבל קוד למייל

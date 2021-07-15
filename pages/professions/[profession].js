@@ -33,7 +33,7 @@ export default function Profession({ profession, additionalProfessions }) {
           ]}
         />
         <NextSeo {...seo} />
-        <h1 className="text-black text-3xl font-black mb-16">זירת המקצוענות</h1>
+        <h1 className="text-black text-3xl font-black mb-16">{t('זירת המקצוענות')}</h1>
         <div className="md:grid grid-cols-2 gap-x-4 justify-between">
           <ProfessionInfo profession={profession} />
           <ProfessionDropdowns profession={profession} />

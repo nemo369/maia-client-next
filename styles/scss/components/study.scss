@@ -1,0 +1,17 @@
+.study-two-cornered {
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+.study-three-cornered {
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+.flexi text > * {
+  color: white;
+  fill: white;
+}
+
+.added-shadow {
+  box-shadow: 0 12px 34px -20px rgba(16, 20, 63, 0.15);
+}

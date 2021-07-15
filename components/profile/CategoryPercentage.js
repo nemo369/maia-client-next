@@ -23,7 +23,7 @@ const CategoryPercentage = ({ className, percentage }) => {
   return (
     <div className={className}>
       <div>
-        <div className="flex">
+        <div className="flex felxi">
           <div className="flex">
             <div className="flex">
               <div className="h-[42px]">

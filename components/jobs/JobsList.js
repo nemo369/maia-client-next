@@ -1,9 +1,8 @@
 import Briefcase from '../svg/Briefcase';
+import Job from './Job';
 
-function JobsList() {
-  const jobs = [];
-
-  if (!jobs.length) {
+function JobsList({ jobs }) {
+  if (!Array.isArray(jobs) || !jobs.length) {
     return (
       <section className="nojobs flex justify-center items-center min-h-[500px]">
         <div className="flex flex-col justify-center">
@@ -19,7 +18,13 @@ function JobsList() {
       </section>
     );
   }
-  return <div>JobsList</div>;
+  return (
+    <ul className="jobs-list flex flex-col gap-y-4 mt-4">
+      {jobs.map((job) => (
+        <Job key={job.id} job={job} />
+      ))}
+    </ul>
+  );
 }
 
 export default JobsList;

@@ -64,7 +64,7 @@ const VerificationPhone = (props) => {
   };
   return (
     <div className="relative">
-      <div className="font-black text-2xl">התחברות</div>
+      <h1 className="font-black text-2xl">התחברות</h1>
       <div className="mb-11">
         אנא הזן/י את הקוד שקיבלת
         <br />
