@@ -30,7 +30,7 @@ const Login = () => {
 
         break;
     }
-  }, [error]);
+  }, [error, t]);
   return (
     <>
       <NextSeo {...seo} />
