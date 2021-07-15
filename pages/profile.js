@@ -49,16 +49,18 @@ export async function getServerSideProps(req) {
   const [user, token] = getUserSession(req);
   if (user.redirect) return user;
   // Here you can add more data
-  if (200 !== status || !profile) {
-    return {
-      props: { user, profile: null }, // will be passed to the page component as props
-    };
-  }
+  // const { data: profile, status } = await ProfileAPI.profile(token);
+  // if (200 !== status || !profile) {
+  //   return {
+  //     props: { user, profile: null }, // will be passed to the page component as props
+  //   };
+  // }
   const notifications = await NotificationAPI.full_notification(token);
   return {
     props: {
       ...(await serverSideTranslations(req.locale, ['common'])),
       user,
+      // profile,
       notifications: notifications.data,
     }, // will be passed to the page component as props
   };
