@@ -126,8 +126,8 @@ export default function Professions({ additionalProfessions }) {
 
 export async function getServerSideProps(req) {
   const [user, token] = getUserSession(req);
-  const { data: additionalProfessions } = await VendorAPI.getCategorys(token, 'professions');
   if (user.redirect) return user;
+  const { data: additionalProfessions } = await VendorAPI.getCategorys(token, 'professions');
   const locale = `he${user.gender}`;
   // Here you can add more data
   return {

@@ -39,12 +39,13 @@ export default function JustHeart(props) {
   const handleDragStart = (e) => e.preventDefault();
 
   return (
-    <div onDragStart={handleDragStart} tabIndex="0" className="h-4 text right" role="tab">
-      <div
-        className="rounded  border-[rgba(151,151,151,0.13)]"
-        // className={`${className2} bg-white heart  rounded border-[1px] border-[rgba(151,151,151,0.13)]`}
-      >
-        <div className={`transition-opacity w-full ${loading ? 'opacity-50' : ''}`}>
+    <div onDragStart={handleDragStart} tabIndex="0" role="tab">
+      <div className=" heart  rounded border-[1px] border-[rgba(151,151,151,0.13)]">
+        <div
+          className={`flex items-center justify-center p-2 transition w-full 
+          hover:scale-110
+          ${loading ? 'opacity-50' : ''}`}
+        >
           {favorites.includes(`${id}`) ? (
             <HeartFull toglleFavorites={toglleFavorites} disabled={loading} />
           ) : (
