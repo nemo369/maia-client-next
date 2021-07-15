@@ -41,9 +41,9 @@ function CategoryCahnger({ onChangeCategoryList, length, isLabel }) {
               &nbsp;חדשות עבורך)
             </h3>
           </div>
-          <CheckboxGroup checks={categoryGroups} onChange={onChange} checkType={categoryType} />
         </>
       )}
+      <CheckboxGroup checks={categoryGroups} onChange={onChange} checkType={categoryType} />
     </div>
   );
 }

@@ -4,19 +4,19 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'next-i18next';
 import BreadCrumbs from '../components/common/BreadCrumbs';
 import ProfileConclusion from '../components/profile/ProfileConclusion';
-import UploadedFiles from '../components/profile/UploadedFiles';
 import ProfileInfo from '../components/profile/ProfileInfo';
 import ProfileNotifications from '../components/profile/ProfileNotifications';
 import ProfileFavorite from '../components/profile/ProfileFavorite';
 import { seoMerge } from '../src/utils/next-seo.config';
 import { getUserSession } from '../src/utils/getUser';
-import ProfileAPI from '../src/services/profile.service';
+import NotificationAPI from '../src/services/notification.service';
+import useProfile from '../src/hooks/useProfile';
 
 const stage = [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }];
 
-export default function Profile(props) {
-  console.log(props);
+export default function Profile({ notifications }) {
   const { t } = useTranslation('common');
+  useProfile();
   const seo = seoMerge({
     title: t('פרופיל אישי'),
   });
@@ -29,8 +29,8 @@ export default function Profile(props) {
         <div className="flex flex-wrap">
           <div className="profile-container flex flex-col w-[1160px] ml-5 justify-between mb-2">
             <div className="flex justify-between">
-              <ProfileNotifications />
-              <ProfileConclusion stage={stage} />
+              <ProfileNotifications notifications={notifications} />
+              <ProfileConclusion stage="3" />
             </div>
             <div>
               <ProfileFavorite />
@@ -48,19 +48,18 @@ export default function Profile(props) {
 export async function getServerSideProps(req) {
   const [user, token] = getUserSession(req);
   if (user.redirect) return user;
-  const { data: profile, status } = await ProfileAPI.profile(token);
   // Here you can add more data
   if (200 !== status || !profile) {
     return {
       props: { user, profile: null }, // will be passed to the page component as props
     };
   }
-  // console.log(req.locale);
+  const notifications = await NotificationAPI.full_notification(token);
   return {
     props: {
       ...(await serverSideTranslations(req.locale, ['common'])),
       user,
-      profile,
+      notifications: notifications.data,
     }, // will be passed to the page component as props
   };
 }
