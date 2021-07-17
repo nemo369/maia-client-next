@@ -22,7 +22,6 @@ const NavBar = () => {
     { href: '/studies', name: t('מאגר הלימודים'), icon: <SchoolHat /> },
     { href: '/jobs', name: t('משרות פנויות'), icon: <Briefcase /> },
   ];
-
   return (
     <div className="nav__wrapper md:flex bg-green-500 gap-x-8">
       <div className="nav__placeholder md:h-screen md:w-[150px]  h-24" />
