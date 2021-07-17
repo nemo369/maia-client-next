@@ -1,10 +1,15 @@
 import { createContext, useContext, useReducer } from 'react';
-import { userReducer } from './userReucder';
+import { appReducer } from './appReducer';
 
 export const AppContext = createContext();
 
 export function AppWrapper({ children, userProp }) {
-  const [{ user, profile }, dispatch] = useReducer(userReducer, { user: userProp, profile: null });
+  const initializer = {
+    user: userProp,
+    profile: null,
+    notifcations: [],
+  };
+  const [{ user, profile }, dispatch] = useReducer(appReducer, initializer);
   const sharedState = {
     user,
     profile,

@@ -5,7 +5,7 @@ import HeartEmpty from '../svg/HeartEmpty';
 import HeartFull from '../svg/HeartFull';
 import { AppContext } from '../../src/context/state';
 import { addOrRemove } from '../../src/utils/util';
-import { SET_PROFILE } from '../../src/context/userReucder';
+import { SET_PROFILE } from '../../src/context/appReducer';
 
 export default function JustHeart(props) {
   const { type } = props;

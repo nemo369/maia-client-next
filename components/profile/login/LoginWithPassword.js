@@ -5,7 +5,7 @@ import UserAPI from '../../../src/services/user.service';
 import DisplayError from '../../common/error/DisplayError';
 import Loader from '../../common/Loader';
 import { AppContext } from '../../../src/context/state';
-import { SET_USER } from '../../../src/context/userReucder';
+import { SET_USER } from '../../../src/context/appReducer';
 
 const LoginWithPassword = () => {
   const router = useRouter();

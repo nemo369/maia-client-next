@@ -18,6 +18,12 @@ const ProfileAPI = {
       return { data: null, status: 500 };
     }
   },
+  profileSWR: (token) => axios.get(`${API_URL}/profile`, {
+      headers: {
+        'Content-type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+    }),
 };
 
 export default ProfileAPI;

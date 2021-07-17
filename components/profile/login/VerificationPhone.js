@@ -2,7 +2,7 @@ import router from 'next/router';
 import React, { useContext, useState } from 'react';
 import UserAPI from '../../../src/services/user.service';
 import Loader from '../../common/Loader';
-import { SET_USER } from '../../../src/context/userReucder';
+import { SET_USER } from '../../../src/context/appReducer';
 import { AppContext } from '../../../src/context/state';
 
 const sucsessClass = `bg-green-success focus:ring-0 
