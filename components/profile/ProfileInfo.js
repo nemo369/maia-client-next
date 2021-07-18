@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import Toggle from '../common/Toggle';
 import Check from '../common/Check';
 import WhiteQuestion from '../svg/WhiteQuestion';
 import FemaleCrown from '../svg/FemaleCrown';
