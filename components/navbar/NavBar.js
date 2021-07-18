@@ -10,6 +10,7 @@ import Briefcase from '../svg/Briefcase';
 import FemalePic from '../svg/FemalePic';
 import SilverLogo from '../svg/SilverLogo';
 import MalePic from '../svg/MalePic';
+import LinkButton from './LinkButton';
 
 const NavBar = () => {
   const { pathname } = useRouter();
@@ -22,26 +23,6 @@ const NavBar = () => {
     { href: '/jobs', name: t('משרות פנויות'), icon: <Briefcase /> },
   ];
 
-  const LinkButton = ({ link, isActive }) => (
-    <li
-      className={`transition-all li-button flex-grow-0 rounded text-white leading-4 text-base py-3 nav__button flex flex-col items-center justify-center  ${
-        isActive ? 'active active-svg' : 'disabled'
-      }`}
-    >
-      <Link href={link.href}>
-        <a className="grid">
-          {link.icon}
-          <span
-            className={`mt-2  text-base text-white  leading-4
-              ${isActive ? ' text-sm font-bold' : ' '}
-            `}
-          >
-            {link.name}
-          </span>
-        </a>
-      </Link>
-    </li>
-  );
   return (
     <div className="nav__wrapper md:flex bg-green-500 gap-x-8">
       <div className="nav__placeholder md:h-screen md:w-[150px]  h-24" />

@@ -17,8 +17,8 @@ export default async function proxy(req, res) {
           res.status(200).json({ data });
         })
         .catch(({ response }) => {
-          if (401 === response.status) {
-            res.writeHead(307, { Location: '/user/login?error=401' });
+          if ([401, 403].includes(response?.status)) {
+            res.writeHead(307, { Location: `/user/login?error=${response.status}` });
             res.end();
             return;
           }
@@ -38,8 +38,8 @@ export default async function proxy(req, res) {
             res.status(500).json('Server Error');
           }
           const { response } = err;
-          if (401 === response?.status) {
-            res.writeHead(307, { Location: '/user/login?error=401' });
+          if ([401, 403].includes(response?.status)) {
+            res.writeHead(307, { Location: `/user/login?error=${response.status}` });
             res.end();
             return;
           }
@@ -53,6 +53,11 @@ export default async function proxy(req, res) {
           res.status(200).json({ data });
         })
         .catch(({ response }) => {
+          if ([401, 403].includes(response?.status)) {
+            res.writeHead(307, { Location: `/user/login?error=${response.status}` });
+            res.end();
+            return;
+          }
           res.status(response.status).json(response.data);
         });
       break;

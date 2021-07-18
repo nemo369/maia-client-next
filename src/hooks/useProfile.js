@@ -1,6 +1,6 @@
 import { useEffect, useContext } from 'react';
 import { AppContext } from '../context/state';
-import { SET_PROFILE } from '../context/userReucder';
+import { SET_PROFILE } from '../context/appReducer';
 import ProfileAPI from '../services/profile.service';
 // FETCHING THE FULL PROFILE OBJECT ONLY IF DIDNT FETCHED BEFORE
 export default function useProfile() {
@@ -18,7 +18,4 @@ export default function useProfile() {
       fetchUser();
     }
   }, [profile, dispatch, user?.token]);
-  return {
-    profile,
-  };
 }
