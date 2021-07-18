@@ -6,13 +6,71 @@ import Check from './Check';
 
 const CompareDropdown = () => {
   const { t } = useTranslation('common');
+  // const dummyaray = [
+  //   { text: 'משך מסלול', id: 1 },
+  //   { text: 'תעודה בסיום', id: 2 },
+  //   { text: 'מאפיינים מיוחדים', id: 3 },
+  //   { text: 'דרישות מוקדמות', id: 4 },
+  // ];
   const dummyaray = [
-    { text: 'משך מסלול', id: 1 },
-    { text: 'תעודה בסיום', id: 2 },
-    { text: 'מאפיינים מיוחדים', id: 3 },
-    { text: 'דרישות מוקדמות', id: 4 },
+    {
+      text: 'דרישות מוקדמות',
+      id: 1,
+      options: [
+        { text: 'השכלה תיכונית חלקית', id: 1 },
+        { text: 'השכלה תיכונית מלאה', id: 2 },
+        { text: 'תעודת גמר/מקצוע', id: 3 },
+        { text: 'תכנאי/ת', id: 4 },
+        { text: 'הנדסאי/ת', id: 5 },
+        { text: 'תואר ראשון', id: 6 },
+        { text: 'תואר שני', id: 7 },
+        { text: 'תואר שלישי', id: 8 },
+        { text: 'פסיכומטרי', id: 9 },
+      ],
+    },
+    {
+      text: 'מאפיינים מיוחדים',
+      id: 2,
+      options: [
+        { text: 'מתאים גם לאנשים עובדים', id: 1 },
+        { text: 'לבני 30 ומעלה', id: 2 },
+        { text: 'לציבור הדתי והחרדי', id: 3 },
+        { text: 'לחברה הערבית', id: 4 },
+        { text: 'ליוצאי אתיופיה', id: 5 },
+        { text: 'לבעלי צרכים מיוחדים', id: 6 },
+        { text: 'מסלול דו חוגי', id: 7 },
+        { text: 'מסלול חד חוגי', id: 8 },
+      ],
+    },
+    {
+      text: 'תעודה בסיום',
+      id: 2,
+      options: [
+        { text: 'תעודת גמר/תעודת מקצוע', id: 1 },
+        { text: 'תכנאי/ת', id: 2 },
+        { text: 'הנדסאי/ת', id: 3 },
+        { text: 'השכלה תיכונית מלאה', id: 4 },
+        { text: 'תעודת גמר/מקצוע', id: 5 },
+        { text: 'תואר ראשון', id: 6 },
+        { text: 'תואר שני', id: 7 },
+        { text: 'תואר שלישי', id: 8 },
+      ],
+    },
+    {
+      text: 'משך מסלול',
+
+      id: 4,
+      options: [
+        { text: 'פחות משנה', id: 1 },
+        { text: 'שנה', id: 2 },
+        { text: 'שנתיים', id: 3 },
+        { text: 'שלוש שנים', id: 4 },
+        { text: 'ארבע שנים', id: 5 },
+        { text: 'חמש שנים ומעלה', id: 6 },
+      ],
+    },
   ];
-  const dummyareas = ['צפון', 'דרום', 'מרכז', 'השרון', 'ירושלים'];
+  const dummyareas = ['צפון', 'תל אביב והמרכז', 'ירושלים וסביבתה', 'חיפה והצפון', 'הנגב והדרום'];
   const handelClick = () => {
     console.log('focus-out');
   };
@@ -43,20 +101,20 @@ const CompareDropdown = () => {
         <span className="mr-2 font-bold text-base leading-4 text-black">{t('השוואת מסלולים')}</span>
       </button>
       {open && (
-        <form className="bg-white p-5 absolute text-black shadow-2xl grid min-h-[252px] top-12 z-40 rounded-lg w-full">
+        <form className="bg-white p-5 absolute text-black shadow-2xl grid min-h-[252px] top-12 z-40 rounded-lg w-full gap-5">
           <div className="triangle" />
           <div className="flex justify-around">
             {dummyaray.map((x) => (
               <div className="w-full">
-                <h3 className="font-bold">{t(x.text)}</h3>
+                <h3 className="font-bold font-bold text-xl leading-5">{t(x.text)}</h3>
 
-                {/* <div className="flex flex-col flex-wrap max-h-[100px] mt-5 gap-y-5"> */}
-                <div className="flex checkdropdown  flex-wrap  mt-5 gap-y-5">
-                  {dummyaray.map(() => (
+                {/* <div className="flex checkdropdown  flex-wrap  mt-5 gap-y-5"> */}
+                <div className="grid checkdropdown mt-5 gap-y-5">
+                  {x.options.map((y) => (
                     <Check
                       id={x.id}
                       className="p-1 mr-3"
-                      content={t('לורם איפוסם')}
+                      content={t(y.text)}
                       textClass="text-base mr-3 relative"
                       wraperClass="pl-4"
                     />
@@ -89,7 +147,6 @@ const CompareDropdown = () => {
         </form>
       )}
     </div>
-    // </section>
   );
 };
 
