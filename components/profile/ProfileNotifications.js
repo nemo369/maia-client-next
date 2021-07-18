@@ -5,28 +5,7 @@ import SmallHatGreen from '../svg/SmallHatGreen';
 import SmallExclamationMarkGreen from '../svg/SmallExclamationMarkGreen';
 import SmallBreifcaseGreen from '../svg/SmallBreifcaseGreen';
 
-const news = [
-  {
-    id: 1,
-    title: 'נמצאו 12 משרות חדשות עבורך',
-    date: '12.12.12',
-    type: 'job',
-  },
-  {
-    id: 2,
-    title: 'נמצאו 12 מסלולי לימוד חדשים עבורך',
-    date: '12.12.12',
-    type: 'school',
-  },
-  {
-    id: 3,
-    title: 'נמצאו 12 מסלולי לימוד חדשים עבורך',
-    date: '12.12.12',
-    type: 'alert',
-  },
-];
-
-export default function ProfileNotifications() {
+export default function ProfileNotifications({ notifications }) {
   return (
     <div className="pofile-notifications max-h-[400px] w-[300px] rounded-[15px] p-[20px]">
       <div className="pofile-notifications-header dash border-b-[1px] border-dashed border-[#ffffff2f] flex justify-between text-gray-200 items-center">
@@ -43,7 +22,7 @@ export default function ProfileNotifications() {
           <div className="text-white text-[10px] font-bold p-[5px]">חדשות</div>
           <div>
             <div className="scroller">
-              {news.map((content) => (
+              {notifications?.map((content) => (
                 <div id={content.id} key={content.id} className="flex px-[3px] space-x-4">
                   <div className="w-[20px] h-[20px] ml-[12px] mt-[10px]">
                     {'school' === content.type ? (
@@ -71,7 +50,7 @@ export default function ProfileNotifications() {
         <div className="profile-body-sooner">
           <div className="text-white text-[10px] py-[5px]">מוקדם יותר</div>
           <div className="scroller">
-            {news.map((content) => (
+            {notifications?.map((content) => (
               <div key={content.title} className="flex px-[3px] space-x-4">
                 <div className="w-[20px] h-[20px] ml-[12px] mt-[10px]">
                   {'school' === content.type ? (

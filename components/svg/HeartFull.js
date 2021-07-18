@@ -3,10 +3,10 @@ import React from 'react';
 function HeartFull({ disabled, toglleFavorites }) {
   return (
     <button
-      className="hover:w-[25px] hover:h-[23px]"
       onClick={toglleFavorites}
       type="button"
       disalbed={disabled}
+      className="w-full h-full focus:outline-none focus:ring-1 ring-red-300 rounded-full ring-offset-4"
     >
       <svg xmlns="http://www.w3.org/2000/svg" width="23" height="21" viewBox="0 0 23 21">
         <g fill="none" fillRule="evenodd" stroke="none" strokeWidth="1">

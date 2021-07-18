@@ -2,6 +2,7 @@ import { useTranslation } from 'next-i18next';
 import { useContext } from 'react';
 import { AppContext } from '../../src/context/state';
 import Button from '../common/Button';
+import Loader from '../common/Loader';
 import PopSide from '../common/PopSide';
 import PopUp from '../common/PopUp';
 
@@ -64,7 +65,13 @@ function NextStagePopUp() {
 function DashboardSummary({ step }) {
   const { profile } = useContext(AppContext);
   const { t } = useTranslation('common');
-
+  if (!profile) {
+    return (
+      <div className="bg-white rounded-lg py-5 px-4 flex items-center justify-center h-full">
+        <Loader loading />
+      </div>
+    );
+  }
   return (
     <div className="dashboard__summary bg-white rounded-lg py-5 px-4 flex flex-col">
       <div>

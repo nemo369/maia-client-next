@@ -4,7 +4,7 @@ import { LOGIN_TYPE_LS } from '../../src/utils/consts';
 import { Case, Switch } from '../common/Switch';
 import SilverLog from '../svg/SilverLog';
 import LoginWithMail from './login/LoginWithMail';
-import LoginWithPassword from './login/LoginWithPassword';
+// import LoginWithPassword from './login/LoginWithPassword';
 import PhoneLog from './login/PhoneLog';
 import { getLs, setLs } from '../../src/utils/localStorge';
 
@@ -23,9 +23,9 @@ export default function LoginCmp() {
         <SilverLog />
       </div>
       <Switch test={loginType}>
-        <Case value="password">
+        {/* <Case value="password">
           <LoginWithPassword />
-        </Case>
+        </Case> */}
         <Case value="email">
           <LoginWithMail changeLoginType={changeLoginType} />
         </Case>
@@ -36,7 +36,7 @@ export default function LoginCmp() {
       <a className="text-center mt-4 block" href="tel:036450072">
         נתקלת בבעיה? 03-6450072
       </a>
-      <button type="button" onClick={() => setLoginType('password')}>
+      <button className="hidden" type="button" onClick={() => setLoginType('password')}>
         התחברות עם סיסמא
       </button>
       <div className="mt-auto relative mx-auto text-center">

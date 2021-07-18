@@ -2,7 +2,7 @@ import router from 'next/router';
 import React, { useContext, useState } from 'react';
 import UserAPI from '../../../src/services/user.service';
 import Loader from '../../common/Loader';
-import { SET_USER } from '../../../src/context/userReucder';
+import { SET_USER } from '../../../src/context/appReducer';
 import { AppContext } from '../../../src/context/state';
 
 const sucsessClass = `bg-green-success focus:ring-0 
@@ -64,7 +64,7 @@ const VerificationPhone = (props) => {
   };
   return (
     <div className="relative">
-      <div className="font-black text-2xl">התחברות</div>
+      <h1 className="font-black text-2xl">התחברות</h1>
       <div className="mb-11">
         אנא הזן/י את הקוד שקיבלת
         <br />

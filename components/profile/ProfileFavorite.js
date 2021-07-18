@@ -10,7 +10,7 @@ const onChangeCategoryList = (catData) => {
 export default function ProfileFavorite() {
   const isData = true;
   return (
-    <div className="my-[22px] h-[415px] bg-white rounded-[20px] py-[25px] px-[21px]">
+    <div className="my-[18px] h-[420px] bg-white rounded-[20px] py-[25px] px-[21px]">
       <div className="flex justify-between items-center">
         <div className="text-black text-[28px] font-bold">המועדפים שלי</div>
         <div className="flex">

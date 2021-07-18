@@ -7,10 +7,11 @@ import JobsForm from '../components/jobs/JobsForm';
 import JobsHeader from '../components/jobs/JobsHeader';
 import JobsList from '../components/jobs/JobsList';
 import useProfile from '../src/hooks/useProfile';
+import VendorAPI from '../src/services/vendor.service';
 import { getUserSession } from '../src/utils/getUser';
 import { seoMerge } from '../src/utils/next-seo.config';
 
-export default function Jobs() {
+export default function Jobs({ jobs }) {
   const { t } = useTranslation('common');
   useProfile();
 
@@ -23,13 +24,14 @@ export default function Jobs() {
       <BreadCrumbs breadCrumbs={[{ title: t('משרות'), href: '/jobs' }]} />
       <JobsHeader count={0} />
       <JobsForm />
-      <JobsList />
+      <JobsList jobs={jobs} />
     </div>
   );
 }
 export async function getServerSideProps(req) {
-  const [user] = getUserSession(req);
+  const [user, token] = getUserSession(req);
   if (user.redirect) return user;
+  const { data: jobs } = await VendorAPI.getCategorys(token, 'jobs');
 
   // Here you can add more data
   const locale = `he${user.gender}`;
@@ -37,6 +39,7 @@ export async function getServerSideProps(req) {
   return {
     props: {
       ...(await serverSideTranslations(locale, ['common'])),
+      jobs,
       user: user,
     },
   };
