@@ -11,44 +11,36 @@ import useProfile from '../../src/hooks/useProfile';
 import VendorAPI from '../../src/services/vendor.service';
 import { getUserSession } from '../../src/utils/getUser';
 import { seoMerge } from '../../src/utils/next-seo.config';
-import Dropdown from '../../components/common/Dropdown';
+import CheckboxGroup from '../../components/common/CheckboxGroup';
+import { setLs } from '../../src/utils/localStorge';
+import { DASHBOARD_TYPE_CATEGORY } from '../../src/utils/consts';
+import ProfessionForm from '../../components/profession/ProfessionForm';
 
-export default function Professions({ additionalProfessions }) {
+export default function Professions({ additionalProfessions, num = 3 }) {
   const seo = seoMerge({
     title: 'זירת המקצועות',
   });
   const { t } = useTranslation('common');
   useProfile();
 
-  const [text, setText] = useState('');
-  const [suggestions, setSuggestions] = useState([]);
+  const categoryGroups = [
+    { name: t('הכל'), id: 1 },
+    { name: t('הכי מתאים'), id: 2 },
+  ];
 
-  const jobs = [
-    'מהנדס אדריכלות ועיצוב פנים',
-    'עיצוב תעשייתי ועיצוב חוץ',
-    'הנדסת תעשייה וניהול',
-    'רואה חשבון',
-    'עורך דין',
-    'הנדסת תעשייה וניהול',
-    'הנדסת תעשייה וניהול',
-    'הנדסת תעשייה וניהול',
-    'הנדסת תעשייה וניהול',
-    'הנדסת תעשייה וניהול',
-  ];
-  const professions = [
-    'סייבר',
-    'תכנות',
-    'אדריכלות פנים',
-    'הנדסת מזון',
-    'הנדסת מחשבים',
-    'הייטק',
-    'אומנות',
-    'אומנות',
-    'אומנות',
-    'אומנות',
-    'אומנות',
-    'אומנות',
-  ];
+  const [categoryType, setcategoryType] = useState(categoryGroups[0]);
+  const [currentCategory, setcurrentCategory] = useState(null);
+  const onChangeCategoryList = (catData) => {
+    setcurrentCategory(catData.id);
+    console.log(currentCategory);
+  };
+
+  const onChange = (id) => {
+    const newCategory = categoryGroups.find((c) => c.id === id);
+    setLs(DASHBOARD_TYPE_CATEGORY, newCategory);
+    setcategoryType(newCategory);
+    onChangeCategoryList(newCategory);
+  };
   const professionList = additionalProfessions.map((profession) => (
     <CategoryWithHeart
       key={profession.id}
@@ -61,18 +53,6 @@ export default function Professions({ additionalProfessions }) {
     />
   ));
 
-  const handleChange = (event) => {
-    let matches = [];
-    if (0 < text.length) {
-      matches = additionalProfessions.filter((user) => {
-        const regex = new RegExp(`${text}`, 'gi');
-        return user.title.match(regex);
-      });
-    }
-    setSuggestions(matches);
-    setText(event.target.value);
-  };
-
   return (
     <>
       <NextSeo {...seo} />
@@ -83,37 +63,24 @@ export default function Professions({ additionalProfessions }) {
             <div className="flex">
               <h1 className="text-black text-3xl font-black">{t('זירת המקצוענות')}</h1>
               <div className="flex self-center bg-orange rounded-lg py-2 px-8 h-9 text-white text-[22px] font-bold leading-6 mr-9">
-                <p>נמצאו לך שלוש מקצועות שיתאימו לך</p>
+                <p>{t(`נמצאו לך ${num} מקצועות שיתאימו לך`)}</p>
                 <div className="relative smallpop w-4 h-4 border-solid border-white-active border-2 rounded-full font-small  text-white text-xs mr-4 hover:bg-gradient-2 inline-block text-center">
                   ?
                 </div>
               </div>
             </div>
             <p className="max-w-4xl my-5">
-              כאן תוכלו לקרוא על מקצועות ותפקידים שיכולים להתאים לכם או שמעניינים אתכם לקרוא עליהם.
-              מאיה מציגה בפניכם את המקצועות המתאימים ביותר. השתמשו במסננים לקריאה על מקצועות נוספים.
+              {t(
+                'כאן תוכלו לקרוא על מקצועות ותפקידים שיכולים להתאים לכם או שמעניינים אתכם לקרוא עליהם. מאיה מציגה בפניכם את המקצועות המתאימים ביותר. השתמשו במסננים לקריאה על מקצועות נוספים.'
+              )}
             </p>
           </div>
           <div className="grid grid-cols-2 gap-x-1  ">
-            <div>
-              <input
-                className="regiserPageInput justify-self-center h-12 professionBwc w-full bg-gray-disabled  rounded-md"
-                type="text"
-                placeholder="חיפוש חופשי"
-                value={text}
-                onChange={handleChange}
-              />
-              <div>
-                {suggestions
-                  ? suggestions.map((suggestion, i) => <div key={i}>{suggestion.title}</div>)
-                  : ''}
-              </div>
-            </div>
             <div className="grid grid-cols-2 gap-x-1">
-              {/* <ProfessionDomain /> */}
-              <Dropdown content={professions} title="תחום" />
-              <Dropdown content={jobs} title="מקצוע" />
-              {/* <ProfessionDropdown /> */}
+              <ProfessionForm />
+            </div>
+            <div className="justify-self-end">
+              <CheckboxGroup checks={categoryGroups} onChange={onChange} checkType={categoryType} />
             </div>
           </div>
           <hr className="mainProfessionsDash my-5" />

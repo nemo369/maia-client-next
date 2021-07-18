@@ -15,3 +15,40 @@
 .added-shadow {
   box-shadow: 0 12px 34px -20px rgba(16, 20, 63, 0.15);
 }
+
+.triangle{
+  position: absolute;
+  width: 0; 
+  height: 0; 
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  
+  border-bottom: 20px solid white;
+
+  justify-self: center;
+  margin-right: 353px; 
+  top: -12px;
+}
+
+.checkbox-container > .button-group{
+  min-width: 0;
+  width: auto;
+}
+.checkdropdown > * .check-text{
+  margin-right: 10px;
+  grid-column-gap: 10px
+}
+.checkdropdown {
+  grid-column-gap: 15px;
+}
+.checkdropdown1 > * .check-text {
+  margin-left: 10px;
+  margin-right:7px;
+}
+
+@media only screen and (max-width: 1060px) {
+  .checkbox-container > .button-group{
+    height: auto;
+    
+  }
+}
