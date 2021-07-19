@@ -2,7 +2,7 @@
   -webkit-appearance: none;
   height: 1.56rem;
   width: 3.125rem;
-  background-color: var(--switch-bg-color-gray);
+  background-color: #999999;
   border-radius: 43px;
   position: relative;
   cursor: pointer;
@@ -18,7 +18,7 @@
     transition: 0.5s;
   }
   &:checked {
-    background-color: var(--switch-bg-color);
+    background-color: #3ea8b1;
     &::after {
       transform: translateX(1.6rem);
     }
