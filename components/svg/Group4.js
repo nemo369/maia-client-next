@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Group4() {
+function Group4({ content, container }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -8,6 +8,7 @@ function Group4() {
       width="78"
       height="32"
       viewBox="0 0 78 32"
+      className="inline-block"
     >
       <defs>
         <filter id="filter-1" colorInterpolationFilters="auto">
@@ -24,9 +25,18 @@ function Group4() {
       <g fill="none" fillRule="evenodd" stroke="none" strokeWidth="1">
         <g transform="translate(-1286 -3606)">
           <g transform="translate(1286 3606)">
-            <rect width="44" height="32" x="34" y="0" fill="#333" opacity="0.1" rx="5" />
-            <g filter="url(#filter-1)" transform="translate(44 6)">
-              <g fill="#292F49" fillRule="nonzero">
+            <rect
+              className={container}
+              width="44"
+              height="32"
+              x="34"
+              y="0"
+              fill="#333"
+              opacity="0.1"
+              rx="5"
+            />
+            <g transform="translate(44 6)">
+              <g className={content} fill="#000000" fillRule="nonzero">
                 <path d="M.75 4.75h6.68a3.006 3.006 0 002.903 2.259 3.006 3.006 0 002.903-2.259H23.25a.75.75 0 000-1.5H13.236A3.006 3.006 0 0010.333.991 3.006 3.006 0 007.43 3.25H.75a.75.75 0 000 1.5zm9.583-2.259A1.51 1.51 0 0111.842 4a1.51 1.51 0 01-1.509 1.509A1.51 1.51 0 018.824 4a1.51 1.51 0 011.509-1.509zM23.25 9.25h-1.606a3.006 3.006 0 00-2.903-2.259A3.006 3.006 0 0015.84 9.25H.75a.75.75 0 000 1.5h15.089a3.006 3.006 0 002.902 2.259 3.006 3.006 0 002.903-2.259h1.606a.75.75 0 000-1.5zm-4.509 2.259A1.51 1.51 0 0117.232 10a1.51 1.51 0 011.51-1.509A1.51 1.51 0 0120.25 10a1.51 1.51 0 01-1.509 1.509zM23.25 15.25H8.718a3.005 3.005 0 00-2.902-2.259 3.006 3.006 0 00-2.902 2.259H.75a.75.75 0 000 1.5h2.164a3.006 3.006 0 002.902 2.259 3.005 3.005 0 002.902-2.259H23.25a.75.75 0 000-1.5zM5.816 17.509A1.51 1.51 0 014.308 16a1.51 1.51 0 011.508-1.509A1.51 1.51 0 017.324 16a1.51 1.51 0 01-1.508 1.509z" />
               </g>
             </g>
