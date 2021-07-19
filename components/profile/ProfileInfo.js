@@ -1,6 +1,6 @@
+/* eslint-disable react/no-danger */
 /* eslint-disable operator-linebreak */
 import React, { useContext, useState, useEffect } from 'react';
-import Parser from 'html-react-parser';
 import Check from '../common/Check';
 import FemaleCrown from '../svg/FemaleCrown';
 import MalePic from '../svg/MalePic';
@@ -57,7 +57,7 @@ export default function ProfileInfo() {
                 </div>
               }
             >
-              {Parser(tooltipLookingForJob)}
+              <div dangerouslySetInnerHTML={{ __html: tooltipLookingForJob }} />
             </Tooltip>
           </div>
           <Toggle isChecked={lookingForJob} onChange={onIsChecked} />
@@ -72,7 +72,7 @@ export default function ProfileInfo() {
                 </div>
               }
             >
-              {Parser(tooltipSendedJobs)}
+              <div dangerouslySetInnerHTML={{ __html: tooltipSendedJobs }} />
             </Tooltip>
           </div>
           <div className="flex justify-between mb-2">
@@ -84,7 +84,7 @@ export default function ProfileInfo() {
                 </div>
               }
             >
-              {Parser(tooltipReachMe)}
+              <div dangerouslySetInnerHTML={{ __html: tooltipReachMe }} />
             </Tooltip>
           </div>
         </div>
