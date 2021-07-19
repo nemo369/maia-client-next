@@ -36,7 +36,8 @@
 }
 .checkdropdown > * .check-text{
   margin-right: 10px;
-  grid-column-gap: 10px
+  grid-column-gap: 10px;
+  font-size: 14x;
 }
 .checkdropdown {
   grid-column-gap: 15px;
@@ -51,4 +52,7 @@
     height: auto;
     
   }
+}
+.wrapper-border:not(:last-child){
+  border-left: 2px solid rgb(151,151,151, 0.2) ;
 }
