@@ -1,7 +1,8 @@
+import React, { useContext } from 'react';
 import { NextSeo } from 'next-seo';
-import React from 'react';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'next-i18next';
+import { AppContext } from '../src/context/state';
 import BreadCrumbs from '../components/common/BreadCrumbs';
 import ProfileConclusion from '../components/profile/ProfileConclusion';
 import ProfileInfo from '../components/profile/ProfileInfo';

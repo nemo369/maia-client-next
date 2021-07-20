@@ -1,5 +1,6 @@
 /* eslint-disable no-nested-ternary */
-import React from 'react';
+import React, { useContext } from 'react';
+import { AppContext } from '../../src/context/state';
 import SmallHatGreen from '../svg/SmallHatGreen';
 import SmallExclamationMarkGreen from '../svg/SmallExclamationMarkGreen';
 import SmallBreifcaseGreen from '../svg/SmallBreifcaseGreen';
