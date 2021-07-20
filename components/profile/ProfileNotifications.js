@@ -1,6 +1,5 @@
 /* eslint-disable no-nested-ternary */
 import React, { useContext } from 'react';
-import Moment from 'react-moment';
 import { AppContext } from '../../src/context/state';
 import SmallHatGreen from '../svg/SmallHatGreen';
 import SmallExclamationMarkGreen from '../svg/SmallExclamationMarkGreen';
@@ -9,8 +8,6 @@ import { SET_NOTIFICATIONS } from '../../src/context/appReducer';
 
 export default function ProfileNotifications() {
   const { notifications, dispatch } = useContext(AppContext);
-  Moment.globalFormat = 'D MMM YYYY';
-
   const clearNotifications = () => {
     dispatch({ type: SET_NOTIFICATIONS, notifications: [] });
   };
@@ -45,11 +42,7 @@ export default function ProfileNotifications() {
                   </div>
                   <div className="text-white mb-[3px]">
                     <div className="text-[14px]">{content.title}</div>
-                    <div className="text-[12px] opacity-70">
-                      <Moment format="DD.MM.YYYY" unix>
-                        {content.date}
-                      </Moment>
-                    </div>
+                    <div className="text-[12px] opacity-70">{content.date}</div>
                   </div>
                   <div>
                     <button
@@ -81,11 +74,7 @@ export default function ProfileNotifications() {
                 </div>
                 <div className="text-white mb-[3px]">
                   <div className="text-[14px]">{content.title}</div>
-                  <div className="text-[12px] opacity-70">
-                    <Moment format="DD.MM.YYYY" unix>
-                      {content.date}
-                    </Moment>
-                  </div>
+                  <div className="text-[12px] opacity-70">{content.date}</div>
                 </div>
                 <div>
                   <button
