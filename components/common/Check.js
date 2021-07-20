@@ -8,6 +8,7 @@ export default function Check({
   onChange,
   className,
   content,
+  dirname,
   name,
 }) {
   return (
@@ -15,6 +16,7 @@ export default function Check({
       <input
         type="checkbox"
         id={id}
+        dirname={dirname}
         name={name}
         value={value}
         checked={isChecked}
