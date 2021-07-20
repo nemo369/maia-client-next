@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { NextSeo } from 'next-seo';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'next-i18next';
@@ -17,11 +17,16 @@ import { SET_NOTIFICATIONS } from '../src/context/appReducer';
 export default function Profile({ notifications }) {
   const { t } = useTranslation('common');
   const { dispatch } = useContext(AppContext);
-  dispatch({ type: SET_NOTIFICATIONS, notifications: notifications });
   useProfile();
+
   const seo = seoMerge({
     title: t('פרופיל אישי'),
   });
+
+  useEffect(() => {
+    dispatch({ type: SET_NOTIFICATIONS, notifications: notifications });
+  }, []);
+
   return (
     <>
       <NextSeo {...seo} />
