@@ -7,7 +7,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "prod": "npm i && npm run build && npm run start",
+    "prod": "npm i && npm run build && pm2 restart maia-client-next",
     "translations-scan": "i18next-scanner --config src/lib/i18next-scanner.config.engine.js {components,pages}/**/*.{js,jsx}",
     "lint": "eslint components/** src/** pages/**",
     "lint:fix": "eslint --fix components/** src/**"
@@ -26,7 +26,6 @@
     "react-alice-carousel": "^2.5.1",
     "react-axe": "^3.5.4",
     "react-dom": "17.0.2",
-    "react-moment": "^1.1.1",
     "react-select": "^4.3.1",
     "reactjs-popup": "^2.0.4",
     "sass": "^1.35.1",
