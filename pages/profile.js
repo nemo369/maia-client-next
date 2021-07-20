@@ -12,8 +12,6 @@ import { getUserSession } from '../src/utils/getUser';
 import NotificationAPI from '../src/services/notification.service';
 import useProfile from '../src/hooks/useProfile';
 
-// const stage = [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }];
-
 export default function Profile({ notifications }) {
   const { t } = useTranslation('common');
   useProfile();
