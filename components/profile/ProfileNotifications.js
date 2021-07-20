@@ -5,13 +5,14 @@ import { AppContext } from '../../src/context/state';
 import SmallHatGreen from '../svg/SmallHatGreen';
 import SmallExclamationMarkGreen from '../svg/SmallExclamationMarkGreen';
 import SmallBreifcaseGreen from '../svg/SmallBreifcaseGreen';
+import { SET_NOTIFICATIONS } from '../../src/context/appReducer';
 
 export default function ProfileNotifications() {
-  const { notifications } = useContext(AppContext);
+  const { notifications, dispatch } = useContext(AppContext);
   Moment.globalFormat = 'D MMM YYYY';
 
   const clearNotifications = () => {
-    console.log('dd');
+    dispatch({ type: SET_NOTIFICATIONS, notifications: [] });
   };
 
   return (
