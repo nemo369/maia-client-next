@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
 import LightBulb from '../svg/LightBulb';
@@ -11,17 +11,27 @@ import FemalePic from '../svg/FemalePic';
 import SilverLogo from '../svg/SilverLogo';
 import MalePic from '../svg/MalePic';
 import LinkButton from './LinkButton';
+import NotificationAPI from '../../src/services/notification.service';
 
 const NavBar = () => {
   const { pathname } = useRouter();
   const { user } = useContext(AppContext);
   const { t } = useTranslation('common');
+  const [notificationsLength, setNotificationsLength] = useState('');
   const links = [
     { href: '/', name: t('ראשי'), icon: <LightBulb /> },
     { href: '/professions', name: t('זירת המקצועות'), icon: <Information /> },
     { href: '/studies', name: t('מאגר הלימודים'), icon: <SchoolHat /> },
     { href: '/jobs', name: t('משרות פנויות'), icon: <Briefcase /> },
   ];
+
+  useEffect(() => {
+    const getNotifications = async () => {
+      const notifications = await NotificationAPI.full_notification(user.token);
+      setNotificationsLength(notifications.data.length);
+    };
+    getNotifications();
+  }, []);
 
   return (
     <div className="nav__wrapper md:flex bg-green-500 gap-x-8">
@@ -30,6 +40,11 @@ const NavBar = () => {
         <div className="nav__profile  md:w-full md:mt-4 md:mb-1 ">
           <Link href="/profile">
             <a>
+              {notificationsLength && (
+                <div className="text-center leading-[19px] absolute top-[35px] right-[40px] text-white text-[16px] font-black rounded-full border-2 border-white w-[22px] h-[22px] bg-[#EF4444]">
+                  {notificationsLength}
+                </div>
+              )}
               <div className="md:w-[84px]  mx-auto  h-[73px] w-10">
                 {'m' === user?.gender ? <MalePic /> : <FemalePic />}
               </div>
