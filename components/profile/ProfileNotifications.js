@@ -1,3 +1,4 @@
+/* eslint-disable operator-linebreak */
 /* eslint-disable no-nested-ternary */
 import React, { useContext } from 'react';
 import { AppContext } from '../../src/context/state';
@@ -5,11 +6,31 @@ import SmallHatGreen from '../svg/SmallHatGreen';
 import SmallExclamationMarkGreen from '../svg/SmallExclamationMarkGreen';
 import SmallBreifcaseGreen from '../svg/SmallBreifcaseGreen';
 import { SET_NOTIFICATIONS } from '../../src/context/appReducer';
+import NotificationAPI from '../../src/services/notification.service';
+
+const formatDate = (date) => {
+  const day = new Date(Number(date)).getDate();
+
+  const mounth = new Date(Number(date)).getMonth() + 1;
+
+  const year = new Date(Number(date)).getFullYear();
+
+  return day + '.' + mounth + '.' + year;
+};
 
 export default function ProfileNotifications() {
-  const { notifications, dispatch } = useContext(AppContext);
-  const clearNotifications = () => {
+  const { notifications, dispatch, user } = useContext(AppContext);
+
+  const clearNotifications = async () => {
     dispatch({ type: SET_NOTIFICATIONS, notifications: [] });
+    const noteArr = notifications.map((note) => note.id);
+    await NotificationAPI.clear_notification(user.token, noteArr);
+  };
+
+  const clearNotification = async (id) => {
+    const newArr = notifications.filter((note) => note.id !== id);
+    dispatch({ type: SET_NOTIFICATIONS, notifications: newArr });
+    await NotificationAPI.clear_notification(user.token, id);
   };
 
   return (
@@ -42,13 +63,14 @@ export default function ProfileNotifications() {
                   </div>
                   <div className="text-white mb-[3px]">
                     <div className="text-[14px]">{content.title}</div>
-                    <div className="text-[12px] opacity-70">{content.date}</div>
+                    <div className="text-[12px] opacity-70">{formatDate(content.date)}</div>
                   </div>
                   <div>
                     <button
-                      className="relative opacity-50 mr-[20px] w-[12px] h-[12px] border-solid border-white border-[1px] rounded-full text-white text-[10px] text-center cursor-pointer leading-none focus:outline-none active:border-gray-200 active:text-gray-200"
+                      className="opacity-50 mr-[20px] w-[12px] h-[12px] border-solid border-white border-[1px] rounded-[50%] text-white text-[10px] text-center cursor-pointer leading-none focus:outline-none active:border-gray-200 active:text-gray-200"
                       type="button"
                       aria-label="סגירה"
+                      onClick={() => clearNotification(content.id)}
                     >
                       x
                     </button>
@@ -74,13 +96,14 @@ export default function ProfileNotifications() {
                 </div>
                 <div className="text-white mb-[3px]">
                   <div className="text-[14px]">{content.title}</div>
-                  <div className="text-[12px] opacity-70">{content.date}</div>
+                  <div className="text-[12px] opacity-70">{formatDate(content.date)}</div>
                 </div>
                 <div>
                   <button
-                    className="relative opacity-50 mr-[20px] w-[12px] h-[12px] border-solid border-white border-[1px] rounded-full text-white text-[10px] text-center cursor-pointer leading-none focus:outline-none active:border-gray-200 active:text-gray-200"
+                    className=" opacity-50 mr-[20px] w-[12px] h-[12px] border-solid border-white border-[1px] rounded-[50%] text-white text-[10px] text-center cursor-pointer leading-none focus:outline-none active:border-gray-200 active:text-gray-200"
                     type="button"
                     aria-label="סגירה"
+                    onClick={() => clearNotification(content.id)}
                   >
                     x
                   </button>
