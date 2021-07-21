@@ -15,7 +15,7 @@ const formatDate = (date) => {
 
   const year = new Date(Number(date)).getFullYear();
 
-  return day + '.' + mounth + '.' + year;
+  return `${day}.${mounth}.${year}`;
 };
 
 export default function ProfileNotifications() {
@@ -30,7 +30,7 @@ export default function ProfileNotifications() {
   const clearNotification = async (id) => {
     const newArr = notifications.filter((note) => note.id !== id);
     dispatch({ type: SET_NOTIFICATIONS, notifications: newArr });
-    await NotificationAPI.clear_notification(user.token, id);
+    await NotificationAPI.clear_notification(user.token, [id]);
   };
 
   return (
