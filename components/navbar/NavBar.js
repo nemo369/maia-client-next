@@ -12,12 +12,12 @@ import SilverLogo from '../svg/SilverLogo';
 import MalePic from '../svg/MalePic';
 import LinkButton from './LinkButton';
 import NotificationAPI from '../../src/services/notification.service';
+import { SET_NOTIFICATIONS } from '../../src/context/appReducer';
 
 const NavBar = () => {
   const { pathname } = useRouter();
-  const { user } = useContext(AppContext);
+  const { user, dispatch, notifications } = useContext(AppContext);
   const { t } = useTranslation('common');
-  const [notificationsLength, setNotificationsLength] = useState('');
   const links = [
     { href: '/', name: t('ראשי'), icon: <LightBulb /> },
     { href: '/professions', name: t('זירת המקצועות'), icon: <Information /> },
@@ -27,8 +27,8 @@ const NavBar = () => {
 
   useEffect(() => {
     const getNotifications = async () => {
-      const notifications = await NotificationAPI.full_notification(user.token);
-      setNotificationsLength(notifications.data.length);
+      const data = await NotificationAPI.full_notification(user.token);
+      dispatch({ type: SET_NOTIFICATIONS, notifications: data.data });
     };
     getNotifications();
   }, []);
@@ -40,11 +40,11 @@ const NavBar = () => {
         <div className="nav__profile  md:w-full md:mt-4 md:mb-1 ">
           <Link href="/profile">
             <a>
-              {notificationsLength && (
+              {notifications?.length ? (
                 <div className="text-center leading-[19px] absolute top-[35px] right-[40px] text-white text-[16px] font-black rounded-full border-2 border-white w-[22px] h-[22px] bg-[#EF4444]">
-                  {notificationsLength}
+                  {notifications?.length}
                 </div>
-              )}
+              ) : null}
               <div className="md:w-[84px]  mx-auto  h-[73px] w-10">
                 {'m' === user?.gender ? <MalePic /> : <FemalePic />}
               </div>
