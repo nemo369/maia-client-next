@@ -44,7 +44,7 @@ export default function ProfileDetails() {
               disabled={isDisabled}
             />
             <Inputs
-              type="text"
+              type="tel"
               status="main"
               className="profile-inputs text-[#717171]"
               placeholder="טלפון"
@@ -52,7 +52,7 @@ export default function ProfileDetails() {
               disabled
             />
             <Inputs
-              type="text"
+              type="mail"
               status="main"
               className="profile-inputs text-[#717171]"
               placeholder="מייל"
