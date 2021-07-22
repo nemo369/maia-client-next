@@ -10,14 +10,14 @@ import useProfile from '../../src/hooks/useProfile';
 import VendorAPI from '../../src/services/vendor.service';
 import { getUserSession } from '../../src/utils/getUser';
 import { seoMerge } from '../../src/utils/next-seo.config';
-import CompareDropdown from '../../components/common/CompareDropdown';
+import CompareDropdown from '../../components/common/study/CompareDropdown';
 import StudyForm from '../../components/common/study/StudyForm';
 import CheckboxGroup from '../../components/common/CheckboxGroup';
 import { DASHBOARD_TYPE_CATEGORY } from '../../src/utils/consts';
 import { setLs } from '../../src/utils/localStorge';
+import useForm from '../../src/hooks/useForm';
 
-export default function Studies({ additionalStudies, num = 3 }) {
-  console.log(additionalStudies);
+export default function Studies({ additionalStudies, num = 3, user }) {
   const seo = seoMerge({
     title: 'זירת הלימודים',
   });
@@ -34,6 +34,11 @@ export default function Studies({ additionalStudies, num = 3 }) {
     console.log(currentCategory);
   };
 
+  const { inputs, handleChange } = useForm({
+    field: null,
+    profession: null,
+    path: null,
+  });
   const onChange = (id) => {
     const newCategory = categoryGroups.find((c) => c.id === id);
     setLs(DASHBOARD_TYPE_CATEGORY, newCategory);
@@ -41,7 +46,7 @@ export default function Studies({ additionalStudies, num = 3 }) {
     onChangeCategoryList(newCategory);
   };
 
-  const professionList = additionalStudies.map((study) => (
+  const studyList = additionalStudies.map((study) => (
     <CategoryWithHeart
       key={study.id}
       value={study.title}
@@ -53,6 +58,11 @@ export default function Studies({ additionalStudies, num = 3 }) {
       className="px-0 "
     />
   ));
+  const [comparedCategorys, setComparedCategorys] = useState('');
+  const filteredCategories = async (dataToSend) => {
+    console.log(dataToSend);
+    setComparedCategorys(await VendorAPI.fetchComparedCategorys(user.token, dataToSend, 'studies'));
+  };
 
   return (
     <>
@@ -77,17 +87,23 @@ export default function Studies({ additionalStudies, num = 3 }) {
             </p>
           </div>
           <div className="grid grid-cols-5 gap-x-4 relative">
-            <StudyForm />
+            <StudyForm handleChange={handleChange} />
 
             <div className="flex items-center">
-              <CompareDropdown />
+              <CompareDropdown
+                comparedCategorys={comparedCategorys}
+                filteredCategories={filteredCategories}
+                topIputs={inputs}
+                //לבנתיים//
+                additionalStudies={additionalStudies}
+              />
             </div>
             <div className="checkbox-container">
               <CheckboxGroup checks={categoryGroups} onChange={onChange} checkType={categoryType} />
             </div>
           </div>
           <hr className="mainProfessionsDash my-5" />
-          <div className="grid grid-cols-3 gap-2">{professionList}</div>
+          <div className="grid grid-cols-3 gap-2">{studyList}</div>
         </div>
       </section>
     </>

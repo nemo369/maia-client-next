@@ -8,13 +8,16 @@ export default function Check({
   onChange,
   className,
   content,
+  dirname,
   name,
+  checkWrapper,
 }) {
   return (
-    <div className="check flex float-right">
+    <div className={checkWrapper + ' check flex float-right'}>
       <input
         type="checkbox"
         id={id}
+        dirname={dirname}
         name={name}
         value={value}
         checked={isChecked}
