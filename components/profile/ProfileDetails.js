@@ -98,7 +98,7 @@ export default function ProfileDetails() {
                 <div dangerouslySetInnerHTML={{ __html: tooltipSendedJobs }} />
               </Tooltip>
             </div>
-            <div className="dash w-[365px] border-b-[1px] border-dashed border-[#979797] opacity-20 h-1" />
+            <div className="dash w-[365px] border-b-[2px] border-dashed border-[#979797] opacity-20 h-1" />
             <div className="my-[15px] flex w-[365px] justify-between">
               <div className="text-[#666666] text-[18px]">
                 עריכת פרטי שאלון אוטוביוגרפיה
