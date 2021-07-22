@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable prettier/prettier */
 import React, { useState, useContext } from 'react';
 import Inputs from '../common/Inputs';
@@ -6,6 +7,7 @@ import RadioMaleFemale from '../common/RadioMaleFemale';
 import { AppContext } from '../../src/context/state';
 import Check from '../common/Check';
 import Tooltip from '../common/Tooltip';
+import EditInfo from '../svg/EditInfo';
 
 export default function ProfileDetails() {
   const { profile } = useContext(AppContext);
@@ -103,7 +105,7 @@ export default function ProfileDetails() {
               <div className="text-[#666666] text-[18px]">
                 עריכת פרטי שאלון אוטוביוגרפיה
               </div>
-              <button onClick={editInfo} type="button">ICON</button>
+              <button className="opacity-50 focus:outline-none" onClick={editInfo} type="button"><EditInfo /></button>
             </div>
           </div>
         </div>
