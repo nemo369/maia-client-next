@@ -105,7 +105,7 @@ export default function ProfileDetails() {
               <div className="text-[#666666] text-[18px]">
                 עריכת פרטי שאלון אוטוביוגרפיה
               </div>
-              <button className="opacity-50 focus:outline-none" onClick={editInfo} type="button"><EditInfo /></button>
+              <button className="opacity-50 focus:outline-none hover:opacity-100" onClick={editInfo} type="button"><EditInfo /></button>
             </div>
           </div>
         </div>
