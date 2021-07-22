@@ -9,6 +9,7 @@ import ProfileDetails from './ProfileDetails';
 import { AppContext } from '../../src/context/state';
 import Toggle from '../common/Toggle';
 import Tooltip from '../common/Tooltip';
+import NeedInfo from '../svg/NeedInfo';
 
 export default function ProfileInfo() {
   const user = { gender: 'f' };
@@ -31,10 +32,13 @@ export default function ProfileInfo() {
   };
   return (
     <div className="h-[825px] w-[430px] bg-white rounded-[20px]">
-      <div className="profile-avatar mx-auto">
+      <span className="relative top-[-80px] right-[300px]">
+        <NeedInfo />
+      </span>
+      <div className="w-[130px] mx-auto relative bottom-[260px]">
         {'m' === user?.gender ? <MalePic /> : <FemaleCrown />}
       </div>
-      <div className="relative bottom-[40px]">
+      <div className="relative bottom-[250px]">
         <div className="text-orange font-bold text-[19px] text-center">
           כל הכבוד!
           <br />
