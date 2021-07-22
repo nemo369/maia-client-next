@@ -19,7 +19,7 @@ export default function CategoryWithHeart({
         className="bg-white heart professionInfoBoxShadow  rounded-2xl border-[1px] border-[rgba(151,151,151,0.13)]
       px-[18px] py-[19px]"
       >
-        <div className="h-[42px] w-full inline">
+        <div className="heart-wrapper h-[42px] w-full inline">
           <div className="single-chart">
             <JustHeart id={id} type={type} />
           </div>

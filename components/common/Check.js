@@ -10,9 +10,10 @@ export default function Check({
   content,
   dirname,
   name,
+  checkWrapper,
 }) {
   return (
-    <div className="check flex float-right">
+    <div className={checkWrapper + ' check flex float-right'}>
       <input
         type="checkbox"
         id={id}

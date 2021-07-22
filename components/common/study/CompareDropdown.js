@@ -1,12 +1,15 @@
 import { useTranslation } from 'next-i18next';
 import { useState } from 'react';
-import useFormStudy from '../../src/hooks/useFormStudy';
-import Group4 from '../svg/Group4';
-import Button from './Button';
-import Check from './Check';
-import { StudyData } from './StudyData';
+import useFormStudy from '../../../src/hooks/useFormStudy';
+import Group4 from '../../svg/Group4';
+import Button from '../Button';
+import Check from '../Check';
+import PopSide from '../PopSide';
+import { StudyData } from '../StudyData';
+import CompareSidePop from './CompareSidePop';
 
-const CompareDropdown = () => {
+const CompareDropdown = (props) => {
+  const { filteredCategories, comparedCategorys, additionalStudies } = props;
   const { t } = useTranslation('common');
 
   const { inputs, handleChange } = useFormStudy({
@@ -16,16 +19,17 @@ const CompareDropdown = () => {
     miuhad: '',
     area: '',
   });
-  const handleSubmit = (e) => {
+  const [open, setOpen] = useState(false);
+  const { studyData, areaData } = StudyData();
+  const [group4fill, setGroup4fill] = useState(false);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    filteredCategories(inputs);
 
     console.log(inputs);
   };
 
-  const { studyData, areaData } = StudyData();
-  const [open, setOpen] = useState(false);
-  // const [check, setCheck] = useState(false);
-  const [group4fill, setGroup4fill] = useState(false);
   const handelClick = () => {
     setOpen(!open);
     setGroup4fill(!group4fill);
@@ -51,7 +55,7 @@ const CompareDropdown = () => {
       {open && (
         <form
           onSubmit={handleSubmit}
-          className="bg-white p-5 absolute text-black shadow-2xl grid min-h-[252px] top-12 z-40 rounded-lg w-full gap-5"
+          className="bg-white study-form p-5 absolute text-black shadow-2xl grid min-h-[252px] top-12 z-40 rounded-lg w-full gap-5"
         >
           <div className="triangle" />
           <div className="flex justify-around gap-4">
@@ -59,14 +63,14 @@ const CompareDropdown = () => {
               <div className="w-full wrapper-border">
                 <h3 className="font-bold text-xl leading-5">{t(x.text)}</h3>
 
-                <div className="grid checkdropdown mt-5 gap-y-5">
+                <div className="grid grid-cols-2   checkdropdown mt-5 gap-y-5">
                   {x.options.map((y) => (
                     <Check
                       name={x.name}
                       id={y.id}
                       value={y.id}
                       onChange={handleChange}
-                      className="p-1 mr-3"
+                      className="pll p-1  w-4 h-4"
                       content={t(y.text)}
                       textClass="text-sm mr-3 relative"
                       wraperClass="pl-4"
@@ -92,13 +96,25 @@ const CompareDropdown = () => {
                 />
               ))}
             </div>
-            <Button
-              onClick={handleSubmit}
-              className="w-24"
-              type="button"
-              status="main"
-              name="חיפוש"
-            />
+            <PopSide
+              trigger={
+                <Button
+                  onClick={handleSubmit}
+                  className="w-24"
+                  type="button"
+                  status="main"
+                  name="חיפוש"
+                />
+              }
+            >
+              <CompareSidePop
+                comparedCategorys={comparedCategorys}
+                open={open}
+                setOpen={setOpen}
+                //לבנתיים//
+                additionalStudies={additionalStudies}
+              />
+            </PopSide>
           </div>
         </form>
       )}

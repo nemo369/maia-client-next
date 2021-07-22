@@ -17,6 +17,23 @@ const VendorAPI = {
       return [];
     }
   },
+  fetchComparedCategorys: async (token, filteredData, type) => {
+    try {
+      const { data } = await axios.post(
+        `${API_URL}/vendor/${type}`,
+        { filteredData },
+        {
+          headers: {
+            'Content-type': 'application/json',
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      return data;
+    } catch (error) {
+      return [];
+    }
+  },
   getCategory: async (token, type, id) => {
     try {
       const { data } = await axios.get(`${API_URL}/vendor/${type}?id=${id}`, {

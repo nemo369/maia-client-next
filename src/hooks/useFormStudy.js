@@ -14,7 +14,8 @@ export default function useFormStudy(initial = {}) {
   function handleChange(e) {
     const { value } = e.target;
     const { name } = e.target;
-
+    console.log(value);
+    // console.log(name);
     setInputs({
       // copy the existing state
       ...inputs,
