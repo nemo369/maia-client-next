@@ -1,15 +1,10 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 import React from 'react';
 import Select from 'react-select';
-import useForm from '../../../src/hooks/useForm';
 
-export default function StudyForm() {
-  const { inputs, handleChange } = useForm({
-    field: null,
-    profession: null,
-    path: null,
-  });
-  console.log(inputs.scope);
+export default function StudyForm(props) {
+  const { handleChange } = props;
+
   const handleSelectCahnge = ({ value, name }) => {
     console.log(value);
     console.log(name);
@@ -17,9 +12,9 @@ export default function StudyForm() {
   };
 
   const professionOptions = [
-    { value: 'chocolate', label: 'Chocolate' },
-    { value: 'strawberry', label: 'Strawberry' },
-    { value: 'vanilla', label: 'Vanilla' },
+    { value: 'chocolate', label: 'Chocolate', id: 1 },
+    { value: 'strawberry', label: 'Strawberry', id: 2 },
+    { value: 'vanilla', label: 'Vanilla', id: 3 },
   ];
   const customStyles = {
     menuList: () => ({
@@ -45,8 +40,8 @@ export default function StudyForm() {
         className="flex-grow "
         placeholder="תחום"
         name="field"
-        // defaultValue={inputs.scope}
-        onChange={(e) => handleSelectCahnge({ value: e.target, name: 'field' })}
+        value="field"
+        onChange={(e) => handleSelectCahnge({ value: e.value, name: 'field' })}
         options={professionOptions}
         styles={customStyles}
       />
@@ -56,8 +51,8 @@ export default function StudyForm() {
         className="flex-grow "
         placeholder="מצקוע"
         name="profession"
-        // defaultValue={inputs.scope}
-        onChange={(e) => handleSelectCahnge({ value: e.target, name: 'profession' })}
+        value="profession"
+        onChange={(e) => handleSelectCahnge({ value: e.value, name: 'profession' })}
         options={professionOptions}
         styles={customStyles}
       />
@@ -67,8 +62,8 @@ export default function StudyForm() {
         className="flex-grow "
         placeholder="מסלול"
         name="path"
-        // defaultValue={inputs.scope}
-        onChange={(e) => handleSelectCahnge({ value: e.target, name: 'path' })}
+        value="path"
+        onChange={(e) => handleSelectCahnge({ value: e.value, name: 'path' })}
         options={professionOptions}
         styles={customStyles}
       />

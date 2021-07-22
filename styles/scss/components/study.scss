@@ -37,20 +37,64 @@
 .checkdropdown > * .check-text{
   margin-right: 10px;
   grid-column-gap: 10px;
-  font-size: 14x;
+  font-size: 16px;
+}
+.checkdropdown1 > * .check-text{
+  font-size: 16px;
+}
+.checkdropdown1 > * .checkbox{
+  margin-right: 0px;
 }
 .checkdropdown {
-  grid-column-gap: 15px;
+  grid-column-gap: 17px;
 }
 .checkdropdown1 > * .check-text {
   margin-left: 10px;
   margin-right:7px;
+}
+.study-form > * .check input[type="checkbox"]:before {
+  width: 18px;
+  height: 18px;
+}
+.study-sidePop-wrapper >  .check input[type="checkbox"]:before {
+  width: 38px;
+  height: 38px;
+  border-radius: 11px;
+  position: absolute;
+  right: -15px;
+  
+}
+.study-sidePop-wrapper > * .check-text{
+  margin-right: 50px;
+}
+.study-sidePop-wrapper >  .check input[type=checkbox]:checked:after {
+  content: "";
+  display: block;
+  width: 11px;
+  height: 21px;
+  border: solid #3c91a0;
+  border-width: 0 2px 2px 0;
+  transform: rotate(
+45deg
+);
+  position: absolute;
+  top: 4px;
+  left: 4px;
+}
+
+.copmare-SidePop > * .heart-wrapper{
+  display: none;
 }
 
 @media only screen and (max-width: 1060px) {
   .checkbox-container > .button-group{
     height: auto;
     
+  }
+}
+@media only screen and (max-width: 1679px) {
+  .checkdropdown{
+    grid-template-columns: repeat(1, minmax(0, 1fr));
   }
 }
 .wrapper-border:not(:last-child){
