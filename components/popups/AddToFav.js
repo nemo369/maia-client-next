@@ -1,7 +1,7 @@
 import { useTranslation } from 'next-i18next';
 import React, { useState } from 'react';
 import PopUp from '../common/PopUp';
-import PagePen from '../svg/PagePen';
+import AddFav from '../svg/AddFav';
 import Button from '../common/Button';
 
 const AddToFav = () => {
@@ -21,7 +21,7 @@ export default AddToFav;
 
 const PopupContent = () => (
   <div className="flex flex-col items-center justify-center py-16 px-16">
-    <PagePen />
+    <AddFav />
     <h2 className="text-center text-3xl font-bold ">מקצוע נוסף למועדפים</h2>
     <div>
       {t('באזור האישי תוכל לצפות בכל')}
