@@ -8,6 +8,7 @@ export default function Inputs({
   onChange,
   value,
   required,
+  disabled,
 }) {
   let classes = '';
   switch (status) {
@@ -35,6 +36,7 @@ export default function Inputs({
         value={value}
         onChange={onChange}
         type={type}
+        disabled={disabled}
         className={`rounded outline-none text-lg p-5 focus:ring-2 
         ${classes} ${className}`}
       />

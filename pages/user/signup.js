@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { useTranslation } from 'next-i18next';
 import { NextSeo } from 'next-seo';
 import nookies from 'nookies';
@@ -35,7 +36,7 @@ export async function getStaticProps(ctx) {
   const { WORDPRESS_ENDPOINT } = process.env;
   try {
     const [cities, termsText] = await Promise.all([
-      fetch(`${WORDPRESS_ENDPOINT}/wp-json/wp/v2/info/city`).then((res) => res.json()),
+      fetch(`${WORDPRESS_ENDPOINT}/wp-content/themes/canaan/data/cities.json`).then((res) => res.json()),
       fetch(`${WORDPRESS_ENDPOINT}/wp-json/wp/v2/info/conditions-text`).then((res) => res.json()),
     ]);
     return {

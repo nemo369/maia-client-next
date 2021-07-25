@@ -30,14 +30,18 @@ const NotificationAPI = {
       return error.response;
     }
   },
-  clear_notification: async (token, id) => {
+  clear_notification: async (token, notifications) => {
     try {
-      const { data } = await axios.post(`${API_URL}/notifications/clear-notifications`, id, {
-        headers: {
-          'Content-type': 'application/json',
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const { data } = await axios.post(
+        `${API_URL}/notifications/clear-notifications`,
+        { notifications },
+        {
+          headers: {
+            'Content-type': 'application/json',
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       return data;
     } catch (error) {
       return error.response;

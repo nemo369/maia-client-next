@@ -34,3 +34,14 @@ yarn-error.log*
 # vercel
 .vercel
 package-lock.json
+
+# Server Shits
+.bash_history
+.bash_logout
+.bashrc
+.cache/
+.config/
+.npm/
+.pm2/
+.profile
+.sudo_as_admin_successful
