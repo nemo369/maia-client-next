@@ -28,7 +28,7 @@ const NavBar = () => {
   useEffect(() => {
     const getNotifications = async () => {
       const { data } = await NotificationAPI.full_notification(user?.token);
-      if (data && Array.isArray(data)) {
+      if (data && Array.isArray(data.data)) {
         dispatch({ type: SET_NOTIFICATIONS, notifications: data.data });
       }
     };
