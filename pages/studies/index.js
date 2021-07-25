@@ -60,7 +60,6 @@ export default function Studies({ additionalStudies, num = 3, user }) {
   ));
   const [comparedCategorys, setComparedCategorys] = useState('');
   const filteredCategories = async (dataToSend) => {
-    console.log(dataToSend);
     setComparedCategorys(await VendorAPI.fetchComparedCategorys(user.token, dataToSend, 'studies'));
   };
 

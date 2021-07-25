@@ -1,16 +1,16 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import Check from '../common/Check';
 import WhiteQuestion from '../svg/WhiteQuestion';
 import FemaleCrown from '../svg/FemaleCrown';
 import MalePic from '../svg/MalePic';
 import UploadedFiles from './UploadedFiles';
 import ProfileDetails from './ProfileDetails';
-import { AppContext } from '../../src/context/state';
+// import { AppContext } from '../../src/context/state';
 
 export default function ProfileInfo() {
   const user = { gender: 'f' };
-  const { profile } = useContext(AppContext);
-  console.log(profile);
+  // const { profile } = useContext(AppContext);
+  // console.log(profile);
   return (
     <div className="h-[825px] w-[430px] bg-white rounded-[20px]">
       <div className="profile-avatar mx-auto">

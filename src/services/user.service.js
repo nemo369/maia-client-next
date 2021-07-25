@@ -46,7 +46,7 @@ const UserAPI = {
     }
   },
   magicLogin: async (creditiontals) => {
-    console.log(API_URL);
+    // console.log(API_URL);
     try {
       const response = await axios.post(
         `${API_URL}/user/magic-link`,

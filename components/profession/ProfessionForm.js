@@ -13,8 +13,6 @@ export default function ProfessionForm() {
   const { t } = useTranslation('common');
   console.log(inputs.scope);
   const handleSelectCahnge = ({ value, name }) => {
-    console.log(value);
-    console.log(name);
     handleChange({ target: { value, name, type: 'select' } });
   };
 

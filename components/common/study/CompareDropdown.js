@@ -26,8 +26,6 @@ const CompareDropdown = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     filteredCategories(inputs);
-
-    console.log(inputs);
   };
 
   const handelClick = () => {
