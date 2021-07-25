@@ -104,3 +104,10 @@
 .item3:nth-child(odd) .compare-wrapper{
   background-color: grey
 }
+
+.compare-c > svg path g  {
+  fill: black;
+  stroke: black;
+  // background-color: black;
+  // color: black;
+}

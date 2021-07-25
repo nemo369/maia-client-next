@@ -31,7 +31,7 @@ const CompareStepTwo = ({ setOpen, open, setCompare, clearForm, compare }) => {
               {t(compare[0].title)}
             </h1>
           </div>
-          <div className="flex justify-self-end">
+          <div className="flex justify-self-end compare-c">
             <MailGreySmall />
             <PrinterGreySmall />
             <Button
