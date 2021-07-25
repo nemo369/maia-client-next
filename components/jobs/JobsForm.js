@@ -56,8 +56,6 @@ function JobsForm() {
     handleChange({ target: { value, name, type: 'array' } });
   };
   const handleSelectCahnge = ({ value, name }) => {
-    console.log(value);
-    console.log(name);
     handleChange({ target: { value, name, type: 'select' } });
   };
   const handleSubmit = async (e) => {

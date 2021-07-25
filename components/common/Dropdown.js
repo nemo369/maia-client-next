@@ -5,7 +5,7 @@ import WithClickOutside from './WithClickOutside';
 const Dropdown = forwardRef(({ open1, setOpen1, props }, ref) => {
   const { title, content } = props;
   const handelClick = () => {
-    console.log('focus-out');
+    // console.log('focus-out');
   };
 
   return (
