@@ -6,7 +6,6 @@ import Button from '../common/Button';
 
 const NextStepPopUp = () => {
   const [isDone, setIsDone] = useState(false);
-  const { t } = useTranslation('common');
 
   return (
     <div>
@@ -19,22 +18,25 @@ const NextStepPopUp = () => {
 
 export default NextStepPopUp;
 
-const PopupContent = () => (
-  <div className="flex flex-col items-center justify-center py-16 px-16">
-    <PagePen />
-    <h2 className="text-center text-3xl font-bold ">
-      מעבר אל השלב
-      <br />
-      ״מה מעניין אותי״
-    </h2>
-    <div>
-      בשלב זה תועבר אל שאלון הקריירה
-      <br />
-      שיסייע לך לזהות את תחומי העניין
-      <br />
-      התעסוקתיים שלך
+const PopupContent = () => {
+  const { t } = useTranslation('common');
+  return (
+    <div className="flex flex-col items-center justify-center py-16 px-16">
+      <PagePen />
+      <h2 className="text-center text-3xl font-bold ">
+        מעבר אל השלב
+        <br />
+        ״מה מעניין אותי״
+      </h2>
+      <div>
+        {t('בשלב זה תועבר אל שאלון הקריירה')}
+        <br />
+        שיסייע לך לזהות את תחומי העניין
+        <br />
+        התעסוקתיים שלך
+      </div>
+      <Button className="h-[50px] w-[240px]" status="secondary" name="התחל" />
+      <Button className="h-[50px] w-[240px]" status="secondary" name="סגור" />
     </div>
-    <Button className="h-[50px] w-[240px]" status="secondary" name="התחל" />
-    <Button className="h-[50px] w-[240px]" status="secondary" name="סגור" />
-  </div>
-);
+  );
+};
