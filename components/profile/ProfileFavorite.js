@@ -1,42 +1,76 @@
-import React from 'react';
-import CategoryCahnger from '../dashboard/cateorgy/CategoryCahnger';
+import React, { useState } from 'react';
+import Select from 'react-select';
+import { useTranslation } from 'next-i18next';
 import ProfileFavoriteEmpty from './ProfileFavoriteEmpty';
 import ProfileFavoriteData from './ProfileFavoriteData';
-
-const onChangeCategoryList = (catData) => {
-  console.log(catData.id);
-};
+import CheckboxGroupGray from '../common/CheckboxGroupGray';
 
 export default function ProfileFavorite() {
+  const { t } = useTranslation('common');
+
+  const categoryGroups = [
+    { name: t('משרות'), id: 'jobs' },
+    { name: t('לימודים'), id: 'studies' },
+    { name: t('מקצועות'), id: 'professions' },
+  ];
+
+  const professionOptions = [
+    { value: 'sent', label: 'נשלחו' },
+    { value: 'favorite', label: 'אהבתי' },
+  ];
+  const customStyles = {
+    menuList: () => ({
+      backgroundColor: '#FFFFFF',
+      color: '#898080',
+      borderWidth: '2px',
+    }),
+    control: (provided) => ({
+      ...provided,
+      backgroundColor: '#E1E1E1',
+      border: 0,
+      borderRadius: '5px',
+      width: '200px',
+      height: 32,
+      minHeight: 32,
+      boxShadow: 'none',
+    }),
+    indicatorsContainer: () => ({
+      backgroundColor: '#E1E1E1',
+      height: 18,
+      marginBottom: 18,
+    }),
+  };
+
+  const [categoryType, setcategoryType] = useState(categoryGroups[0]);
+
+  const onChange = (id) => {
+    const newCategory = categoryGroups.find((c) => c.id === id);
+    setcategoryType(newCategory);
+  };
+
   const isData = true;
   return (
     <div className="my-[18px] h-[420px] bg-white rounded-[20px] py-[25px] px-[21px]">
       <div className="flex justify-between items-center">
         <div className="text-black text-[28px] font-bold">המועדפים שלי</div>
         <div className="flex">
-          <div className="ml-3 fav-selector">
-            <div className="select-box">
-              <input type="checkbox" className="options-view-button" />
-              <div className="selector select-button">
-                <div className="selected-value">
-                  <span>סינון</span>
-                </div>
-              </div>
-              <div className="options">
-                <div className="option">
-                  <a className="label" href="#">
-                    אהבתי
-                  </a>
-                </div>
-                <div className="option">
-                  <a className="label" href="#">
-                    נשלחו
-                  </a>
-                </div>
-              </div>
-            </div>
+          <div className="ml-[6px]">
+            <Select
+              className="focus:outline-none"
+              placeholder="סינון"
+              name="profession"
+              onChange={(e) => handleSelectCahnge({ value: e.target, name: 'profession' })}
+              options={professionOptions}
+              styles={customStyles}
+            />
           </div>
-          <CategoryCahnger isLabel={false} onChangeCategoryList={onChangeCategoryList} />
+          <div>
+            <CheckboxGroupGray
+              checks={categoryGroups}
+              onChange={onChange}
+              checkType={categoryType}
+            />
+          </div>
         </div>
       </div>
       {isData ? (

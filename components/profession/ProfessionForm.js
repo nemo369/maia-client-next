@@ -32,6 +32,7 @@ export default function ProfessionForm() {
       backgroundColor: '#E1E1E1',
       border: 0,
       borderRadius: '8px',
+      boxShadow: 'none',
     }),
     indicatorsContainer: () => ({
       backgroundColor: '#E1E1E1',
@@ -40,10 +41,10 @@ export default function ProfessionForm() {
   return (
     <>
       <Select
-        aria-label=">מצקוע"
-        label="מצקוע"
+        aria-label=">מקצוע"
+        label="מקצוע"
         className="flex-grow "
-        placeholder={t('מצקוע')}
+        placeholder={t('מקצוע')}
         name="profession"
         onChange={(e) => handleSelectCahnge({ value: e.target, name: 'profession' })}
         options={professionOptions}
