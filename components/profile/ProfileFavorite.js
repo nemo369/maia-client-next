@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import Select from 'react-select';
 import { useTranslation } from 'next-i18next';
-import ProfileFavoriteEmpty from './ProfileFavoriteEmpty';
 import ProfileFavoriteData from './ProfileFavoriteData';
 import CheckboxGroupGray from '../common/CheckboxGroupGray';
 
-export default function ProfileFavorite({ jobs }) {
+export default function ProfileFavorite({ jobs, studies, professions }) {
   const { t } = useTranslation('common');
   const categoryGroups = [
     { name: t('משרות'), id: 'jobs' },
@@ -75,7 +74,12 @@ export default function ProfileFavorite({ jobs }) {
           </div>
         </div>
       </div>
-      <ProfileFavoriteData categoryType={categoryType} jobs={jobs} />
+      <ProfileFavoriteData
+        categoryType={categoryType}
+        jobs={jobs}
+        studies={studies}
+        professions={professions}
+      />
     </div>
   );
 }

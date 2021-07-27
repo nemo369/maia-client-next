@@ -15,7 +15,7 @@ import useProfile from '../src/hooks/useProfile';
 import { SET_NOTIFICATIONS } from '../src/context/appReducer';
 import VendorAPI from '../src/services/vendor.service';
 
-export default function Profile({ notifications, jobs }) {
+export default function Profile({ notifications, jobs, studies, professions }) {
   const { t } = useTranslation('common');
   const { dispatch } = useContext(AppContext);
   useProfile();
@@ -41,7 +41,7 @@ export default function Profile({ notifications, jobs }) {
               <ProfileConclusion stage="3" />
             </div>
             <div>
-              <ProfileFavorite jobs={jobs} />
+              <ProfileFavorite jobs={jobs} studies={studies} professions={professions} />
             </div>
           </div>
           <div className="flex flex-col">
@@ -58,12 +58,15 @@ export async function getServerSideProps(req) {
   if (user.redirect) return user;
   const notifications = await NotificationAPI.full_notification(token);
   const { data: jobs } = await VendorAPI.getCategorys(token, 'jobs');
-
+  const { data: studies } = await VendorAPI.getCategorys(token, 'studies');
+  const { data: professions } = await VendorAPI.getCategorys(token, 'professions');
   return {
     props: {
       ...(await serverSideTranslations(req.locale, ['common'])),
       user,
       jobs,
+      studies,
+      professions,
       notifications: notifications.data,
     }, // will be passed to the page component as props
   };
