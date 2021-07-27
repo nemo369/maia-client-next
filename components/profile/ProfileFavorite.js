@@ -42,10 +42,15 @@ export default function ProfileFavorite() {
   };
 
   const [categoryType, setcategoryType] = useState(categoryGroups[0]);
+  const [selectCategory, setSelectCategory] = useState('');
 
   const onChange = (id) => {
     const newCategory = categoryGroups.find((c) => c.id === id);
     setcategoryType(newCategory);
+  };
+
+  const handleSelectCahnge = ({ value }) => {
+    setSelectCategory(value);
   };
 
   const isData = true;
@@ -56,10 +61,9 @@ export default function ProfileFavorite() {
         <div className="flex">
           <div className="ml-[6px]">
             <Select
-              className="focus:outline-none"
               placeholder="סינון"
               name="profession"
-              onChange={(e) => handleSelectCahnge({ value: e.target, name: 'profession' })}
+              onChange={handleSelectCahnge}
               options={professionOptions}
               styles={customStyles}
             />
