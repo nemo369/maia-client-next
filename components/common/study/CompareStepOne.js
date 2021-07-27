@@ -30,13 +30,13 @@ const CompareStepOne = ({
       className="px-0 max-w-[666px] max-h-40"
     />
   ));
-  const handleChange11 = (id) => {
-    const che = inputs.categories.includes(id.toString());
-    handleChange();
-    if (che) {
-      return true;
-    }
-  };
+  // const handleChange11 = (id) => {
+  //   const che = inputs.categories.includes(id.toString());
+  //   handleChange();
+  //   if (che) {
+  //     return true;
+  //   }
+  // };
 
   // console.log(inputs);
 

@@ -103,10 +103,7 @@ export default function Studies({ additionalStudies, num = 3, user }) {
             </div>
           </div>
           <hr className="mainProfessionsDash my-5" />
-          <div className="grid grid-cols-3 gap-2">
-            <NoStudyEmpty />
-          </div>
-          {/* <div className="grid grid-cols-3 gap-2">{studyList || <NoStudyEmpty />}</div> */}
+          <div className="grid grid-cols-3 gap-2">{studyList || <NoStudyEmpty />}</div>
         </div>
       </section>
     </>

@@ -5,7 +5,7 @@ import MailGreySmall from '../../svg/MailGreySmall';
 import Xcircle from '../../svg/Xcircle';
 import JustHeart from '../JustHeart';
 
-const CompareStepTwo = ({ setOpen, open, setCompare, clearForm, compare }) => {
+const CompareStepTwo = ({ setOpen, open, setCompare, compare }) => {
   console.log(compare);
   const { t } = useTranslation('common');
   const close = () => {
