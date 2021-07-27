@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import GrayHat from '../svg/GrayHat';
 
-export default function ProfileFavoriteEmpty() {
+export default function ProfileFavoriteEmpty({ categoryType }) {
   return (
     <div className="w-[100%] h-[283px] flex justify-center items-center">
       <div>

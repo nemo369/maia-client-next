@@ -6,7 +6,7 @@ function HeartEmpty({ toglleFavorites, disabled }) {
       onClick={toglleFavorites}
       type="button"
       disabled={disabled}
-      className="w-full h-full focus:outline-none focus:ring-1 ring-red-300 rounded-full ring-offset-4"
+      className="w-full h-full focus:outline-none"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
