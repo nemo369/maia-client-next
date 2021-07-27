@@ -16,6 +16,7 @@ import CheckboxGroup from '../../components/common/CheckboxGroup';
 import { DASHBOARD_TYPE_CATEGORY } from '../../src/utils/consts';
 import { setLs } from '../../src/utils/localStorge';
 import useForm from '../../src/hooks/useForm';
+import NoStudyEmpty from '../../components/profile/NoStudyEmpty';
 
 export default function Studies({ additionalStudies, num = 3, user }) {
   const seo = seoMerge({
@@ -102,7 +103,7 @@ export default function Studies({ additionalStudies, num = 3, user }) {
             </div>
           </div>
           <hr className="mainProfessionsDash my-5" />
-          <div className="grid grid-cols-3 gap-2">{studyList}</div>
+          <div className="grid grid-cols-3 gap-2">{studyList || <NoStudyEmpty />}</div>
         </div>
       </section>
     </>
