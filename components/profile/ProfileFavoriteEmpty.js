@@ -3,6 +3,7 @@ import Link from 'next/link';
 import GrayHat from '../svg/GrayHat';
 
 export default function ProfileFavoriteEmpty({ categoryType }) {
+  console.log(categoryType);
   return (
     <div className="w-[100%] h-[283px] flex justify-center items-center">
       <div>

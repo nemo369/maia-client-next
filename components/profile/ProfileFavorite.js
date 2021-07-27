@@ -50,7 +50,7 @@ export default function ProfileFavorite({ jobs, studies, professions }) {
   const handleSelectCahnge = ({ value }) => {
     setSelectCategory(value);
   };
-
+  console.log(selectCategory);
   return (
     <div className="my-[18px] h-[420px] bg-white rounded-[20px] py-[25px] px-[21px]">
       <div className="flex justify-between items-center">
