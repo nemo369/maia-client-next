@@ -1,12 +1,13 @@
 import { useState } from 'react';
-import useFormStudy from '../../../src/hooks/useFormStudy';
+// import useFormStudy from '../../../src/hooks/useFormStudy';
+import useFormStudyInner from '../../../src/hooks/useFormStudyInner';
 import CompareStepTwo from './CompareStepTwo';
 import CompareStepOne from './CompareStepOne';
 
 const CompareSidePop = ({ open, setOpen, comparedCategorys, additionalStudies }) => {
   const [compare, setCompare] = useState(false);
-  const { inputs, handleChange, clearForm } = useFormStudy({
-    categories: '',
+  const { inputs, handleChange, clearForm } = useFormStudyInner({
+    categories: [],
   });
   const handleCompare = () => {
     const filtered = [];

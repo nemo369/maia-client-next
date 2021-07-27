@@ -2,9 +2,15 @@ import { useTranslation } from 'next-i18next';
 import Button from '../Button';
 import Xcircle from '../../svg/Xcircle';
 import CategoryWithHeart from '../CategoryWithHeart';
-import Check from '../Check';
 
-const CompareStepOne = ({ setOpen, open, additionalStudies, handleChange, handleCompare }) => {
+const CompareStepOne = ({
+  setOpen,
+  open,
+  additionalStudies,
+  handleChange,
+  handleCompare,
+  inputs,
+}) => {
   const { t } = useTranslation('common');
   const close = () => {
     if ('undefined' === typeof window) return;
@@ -24,6 +30,15 @@ const CompareStepOne = ({ setOpen, open, additionalStudies, handleChange, handle
       className="px-0 max-w-[666px] max-h-40"
     />
   ));
+  const handleChange11 = (id) => {
+    const che = inputs.categories.includes(id.toString());
+    handleChange();
+    if (che) {
+      return true;
+    }
+  };
+
+  // console.log(inputs);
 
   return (
     <div className="grid copmare-SidePop">
@@ -48,20 +63,22 @@ const CompareStepOne = ({ setOpen, open, additionalStudies, handleChange, handle
             status="main"
             name="השוואת מסלולים"
             onClick={handleCompare}
+            disabled={0 >= inputs.categories.length}
           />
         </div>
         <div className="grid study-sidePop-wrapper gap-y-8 pr-6 pt-5">
-          {List.map((x) => (
-            <Check
-              key={x.props.id}
-              content={x}
-              onChange={handleChange}
-              value={x.props.id}
-              name="categories"
-              id={x.props.id}
-              checkWrapper="content-center "
-              className="self-center"
-            />
+          {List.map((x, index) => (
+            <label key={index} className="content-center check flex float-right">
+              <input
+                type="checkbox"
+                value={x.props.id}
+                name="categories"
+                onChange={handleChange}
+                className="self-center"
+                defaultChecked={inputs.categories.includes(x.props.id.toString()) ? true : null}
+              />
+              <div className="check-text">{x}</div>
+            </label>
           ))}
         </div>
       </div>
