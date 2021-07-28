@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React, { useContext } from 'react';
 import Check from '../common/Check';
 import WhiteQuestion from '../svg/WhiteQuestion';
@@ -10,6 +11,7 @@ import { AppContext } from '../../src/context/state';
 export default function ProfileInfo() {
   const user = { gender: 'f' };
   const { profile } = useContext(AppContext);
+
   console.log(profile);
   return (
     <div className="h-[825px] w-[430px] bg-white rounded-[20px]">
