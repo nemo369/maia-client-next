@@ -6,7 +6,7 @@ const API_URL = `${FRONT_URL}`;
 const Infoservice = {
   getStreetInfo: async (cityId) => {
     try {
-      const { data } = await axios.post(`${API_URL}/info/street`, { city_id: cityId });
+      const { data } = await axios.get(`${API_URL}/user/fetch-city?cityid=${cityId}`);
       return data;
     } catch (error) {
       return error.response;

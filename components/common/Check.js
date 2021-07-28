@@ -1,7 +1,6 @@
 import React from 'react';
 
 export default function Check({
-  id,
   value,
   isChecked,
   disabled,
@@ -12,11 +11,11 @@ export default function Check({
   name,
   checkWrapper,
 }) {
+  console.log(isChecked);
   return (
-    <div className={checkWrapper + ' check flex float-right'}>
+    <label className={checkWrapper + ' check flex float-right'}>
       <input
         type="checkbox"
-        id={id}
         dirname={dirname}
         name={name}
         value={value}
@@ -26,6 +25,6 @@ export default function Check({
         className={className}
       />
       <div className="check-text">{content}</div>
-    </div>
+    </label>
   );
 }

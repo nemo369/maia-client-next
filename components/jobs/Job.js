@@ -8,9 +8,7 @@ function Job({ job }) {
   const { t } = useTranslation('common');
   const [isOpen, setisOpen] = useState(false);
 
-  const sendJob = () => {
-    console.log(job);
-  };
+  const sendJob = () => {};
   return (
     <li
       className={`job  transition-all rounded-2xl shadow ${

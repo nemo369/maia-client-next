@@ -9,6 +9,7 @@ import { seoMerge } from '../../src/utils/next-seo.config';
 
 const Login = () => {
   const { t } = useTranslation('common');
+  console.log(process.env.NEXT_PUBLIC_FORNT_ENDPOINT);
   const seo = seoMerge({
     title: t('התחברות'),
   });

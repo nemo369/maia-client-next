@@ -26,8 +26,6 @@ const CompareDropdown = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     filteredCategories(inputs);
-
-    console.log(inputs);
   };
 
   const handelClick = () => {
@@ -59,14 +57,15 @@ const CompareDropdown = (props) => {
         >
           <div className="triangle" />
           <div className="flex justify-around gap-4">
-            {studyData.map((x) => (
-              <div className="w-full wrapper-border">
+            {studyData.map((x, idX) => (
+              <div key={idX} className="w-full wrapper-border">
                 <h3 className="font-bold text-xl leading-5">{t(x.text)}</h3>
 
                 <div className="grid grid-cols-2   checkdropdown mt-5 gap-y-5">
-                  {x.options.map((y) => (
+                  {x.options.map((y, index) => (
                     <Check
                       name={x.name}
+                      key={index}
                       id={y.id}
                       value={y.id}
                       onChange={handleChange}
@@ -83,8 +82,9 @@ const CompareDropdown = (props) => {
           <div className="flex flex-wrap justify-between items-end">
             <div className="checkdropdown1">
               <h3 className="text-xl leading-5 font-bold mb-3">אזור</h3>
-              {areaData.map((x) => (
+              {areaData.map((x, index) => (
                 <Check
+                  key={index}
                   className="p-1 mr-3 cheche"
                   onChange={handleChange}
                   value={x.id}

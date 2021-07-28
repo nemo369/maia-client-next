@@ -4,7 +4,6 @@ import Button from '../Button';
 import JustHeart from '../JustHeart';
 
 export default function StudyProfile({ study }) {
-  console.log(study);
   return (
     <div className="pofile-notifications grid grid-rows-8  rounded-2xl lg:max-w-[313px] max-h-[530px] px-5 py-5 flex-shrink-0">
       <div className="row-span-2 flex flex-shrink flex-grow justify-between font-bold text-lg leading-4 text-white border-b-[1px] border-dashed border-[#ffffff2f]">
