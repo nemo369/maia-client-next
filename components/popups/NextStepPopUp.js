@@ -1,21 +1,18 @@
 import { useTranslation } from 'next-i18next';
-import React, { useState } from 'react';
+import React from 'react';
 import PopUp from '../common/PopUp';
 import PagePen from '../svg/PagePen';
 import Button from '../common/Button';
 
-const NextStepPopUp = () => {
-  const [isDone, setIsDone] = useState(false);
+const NextStepPopUp = () => (
+  // const [isDone, setIsDone] = useState(false);
 
-  return (
-    <div>
-      <PopUp defaultOpen>
-        <PopupContent />
-      </PopUp>
-    </div>
-  );
-};
-
+  <div>
+    <PopUp defaultOpen>
+      <PopupContent />
+    </PopUp>
+  </div>
+);
 export default NextStepPopUp;
 
 const PopupContent = () => {

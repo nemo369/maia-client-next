@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
-import { useTranslation } from 'next-i18next';
-import React, { useState } from 'react';
+// import { useTranslation } from 'next-i18next';
+import React from 'react';
 import PopUp from '../common/PopUp';
 import Button from '../common/Button';
 import Inputs from '../common/Inputs';
@@ -19,7 +19,7 @@ export default ForMoreInfo;
 
 const PopupContent = () => {
   const tooltipSendedJobs = '<span>סגירת מצב ״מחפש עבודה״ תציג אותך במצב לא פעיל אצל<br /> המעסקים שאליהם שלחת בקשה והם לא יכולו לראות את <br /> פרטיך האישיים.</span>';
-  const { t } = useTranslation('common');
+  // const { t } = useTranslation('common');
   return (
     <div className="flex flex-col items-center justify-center py-4 px-10">
       <h2 className="text-center text-3xl font-bold text-gray-mid">נשארתם עם שאלה לא פתורה?</h2>
