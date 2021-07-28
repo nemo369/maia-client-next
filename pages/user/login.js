@@ -48,7 +48,7 @@ const Login = () => {
               height="837"
               src="/images/login-image.svg"
               alt="התחברות למאי״ה"
-              className="object-contain  block max-w-none"
+              className="object-contain  block max-w-none mq"
             />
           </div>
         </div>

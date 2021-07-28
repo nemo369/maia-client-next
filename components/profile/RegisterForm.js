@@ -82,15 +82,15 @@ const RegisterForm = ({ cities, termsText }) => {
   };
 
   return (
-    <div className="registerPage_container mt-24 relative max-w-5xl mx-auto mb-40 ">
+    <div className="registerPage_container mt-24 relative max-w-5xl mx-auto mb-40 mq-register">
       {/* <div className="registerPage_container relative xl:-mt-24 max-w-5xl mx-auto mb-40 "> */}
       {/* <ConditionsPopup /> */}
       <MainTitle />
       <Group11 />
-      <div className="registerPage_form_container relative bg-white  px-32 pt-14 pb-9 register-form rounded-lg">
+      <div className="registerPage_form_container relative bg-white px-32 pt-14 pb-9 register-form rounded-lg mq-form">
         <Group18Img />
         <form
-          className="registerPage_form block   mx-auto  rounded-md  relative"
+          className="registerPage_form block mx-auto rounded-md relative"
           method="POST"
           onSubmit={handleSubmit}
           id="theform"

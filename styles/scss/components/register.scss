@@ -113,15 +113,46 @@
   background-repeat: no-repeat;
   background-size: 54%;
 
-  background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMTJweCIgaGVpZ2h0PSIxMXB4IiB2aWV3Qm94PSIwIDAgMTIgMTEiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8dGl0bGU+MDYzNzk4ODktRDQzMi00REM1LUE3NzEtQUVGRkY1NjVENjc0PC90aXRsZT4KICAgIDxnIGlkPSJEZXNpZ24iIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCI+CiAgICAgICAgPGcgaWQ9IlN0eWxlZ3VpZGUiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC00NDkuMDAwMDAwLCAtMjk0Ni4wMDAwMDApIiBzdHJva2U9IiMzQzkxQTAiIHN0cm9rZS13aWR0aD0iMiI+CiAgICAgICAgICAgIDxwb2x5bGluZSBpZD0iUGF0aC0yIiBwb2ludHM9IjQ1MCAyOTUxLjg0Njg1IDQ1Mi45OTkzMjkgMjk1NS4wNTA5IDQ1OS44MTczODggMjk0NyI+PC9wb2x5bGluZT4KICAgICAgICA8L2c+CiAgICA8L2c+Cjwvc3ZnPg==");
+  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMTJweCIgaGVpZ2h0PSIxMXB4IiB2aWV3Qm94PSIwIDAgMTIgMTEiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8dGl0bGU+MDYzNzk4ODktRDQzMi00REM1LUE3NzEtQUVGRkY1NjVENjc0PC90aXRsZT4KICAgIDxnIGlkPSJEZXNpZ24iIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCI+CiAgICAgICAgPGcgaWQ9IlN0eWxlZ3VpZGUiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC00NDkuMDAwMDAwLCAtMjk0Ni4wMDAwMDApIiBzdHJva2U9IiMzQzkxQTAiIHN0cm9rZS13aWR0aD0iMiI+CiAgICAgICAgICAgIDxwb2x5bGluZSBpZD0iUGF0aC0yIiBwb2ludHM9IjQ1MCAyOTUxLjg0Njg1IDQ1Mi45OTkzMjkgMjk1NS4wNTA5IDQ1OS44MTczODggMjk0NyI+PC9wb2x5bGluZT4KICAgICAgICA8L2c+CiAgICA8L2c+Cjwvc3ZnPg==');
 }
 #react-select-3-option-0 :hover {
   color: red;
   background-color: red;
 }
+.registerPage_container {
+  margin-top: -6rem;
+}
 
-@media only screen and (min-width: 1450px) {
-  .registerPage_container {
-    margin-top: -6rem;
+@media (max-width: 1280px) {
+  .mq-register {
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-bottom: 10px;
+    margin-top: 30px;
+  }
+
+  .mq-title {
+    position: relative;
+    top: -100px;
+    right: 300px;
+  }
+
+  .mq-register-label {
+    font-size: 30px;
+  }
+
+  .mq-register-my-title {
+    font-size: 40px;
+  }
+
+  .mq-sign {
+    margin-left: 50px;
+    margin-right: 50px;
+  }
+  .registerPage_form_container {
+    position: relative;
+    top: -100px;
+    right: 100px;
+    padding: 10px 50px;
   }
 }
