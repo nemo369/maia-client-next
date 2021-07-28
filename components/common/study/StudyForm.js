@@ -45,11 +45,10 @@ export default function StudyForm(props) {
         styles={customStyles}
       />
       <Select
-        instanceId="2"
-        aria-label=">מצקוע"
-        label="מצקוע"
+        aria-label="מקצוע"
+        label="מקצוע"
         className="flex-grow "
-        placeholder="מצקוע"
+        placeholder="מקצוע"
         name="profession"
         value="profession"
         onChange={(e) => handleSelectCahnge({ value: e.value, name: 'profession' })}
