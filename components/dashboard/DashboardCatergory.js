@@ -31,18 +31,22 @@ function Dashboard() {
         VendorAPI.getCategorys(user.token, 'jobs'),
         VendorAPI.getCategorys(user.token, 'studies'),
       ]);
+
       setcategories({
         professions: professions || [],
         jobs: jobs || [],
         studies: studies || [],
       });
-      if (categories[currentCategory]) {
-        setcatList([...categories[currentCategory]]);
-      } else {
-        setcatList(null);
-      }
-      setcurrentCategory(null);
-      setcurrentCategory(currentCategory);
+
+      setTimeout(() => {
+        if (categories[currentCategory]) {
+          setcatList([...categories[currentCategory]]);
+        } else {
+          setcatList([]);
+        }
+        setcurrentCategory(null);
+        setcurrentCategory(currentCategory);
+      }, 1);
     };
     fetchAll();
   }, [user.token]);
