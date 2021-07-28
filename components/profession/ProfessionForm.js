@@ -5,13 +5,12 @@ import Select from 'react-select';
 import useForm from '../../src/hooks/useForm';
 
 export default function ProfessionForm() {
-  const { inputs, handleChange } = useForm({
+  const { handleChange } = useForm({
     field: null,
     profession: null,
     path: null,
   });
   const { t } = useTranslation('common');
-  console.log(inputs.scope);
   const handleSelectCahnge = ({ value, name }) => {
     handleChange({ target: { value, name, type: 'select' } });
   };

@@ -1,10 +1,9 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
 
 const CheckboxGroupGray = ({ checks, onChange, checkType, name = 'check' }) => (
   <div className="button-group-gray">
     {checks?.map((check) => (
-      <div className="button-sec-gray" key={check.id}>
+      <div className="button-sec-gray flex-grow" key={check.id}>
         <input
           checked={checkType.id === check.id}
           type="radio"

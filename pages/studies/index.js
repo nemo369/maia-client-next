@@ -29,10 +29,9 @@ export default function Studies({ additionalStudies, num = 3, user }) {
     { name: t('הכי מתאים'), id: 2 },
   ];
   const [categoryType, setcategoryType] = useState(categoryGroups[0]);
-  const [currentCategory, setcurrentCategory] = useState(null);
+  const [, setcurrentCategory] = useState(null);
   const onChangeCategoryList = (catData) => {
     setcurrentCategory(catData.id);
-    console.log(currentCategory);
   };
 
   const { inputs, handleChange } = useForm({

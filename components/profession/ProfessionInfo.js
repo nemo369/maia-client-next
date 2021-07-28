@@ -1,7 +1,5 @@
 import Link from 'next/link';
 import React from 'react';
-import Button from '../common/Button';
-// import CategoryWithHeart from '../common/CategoryWithHeart';
 import JustHeart from '../common/JustHeart';
 import CategoryPercentage from '../profile/CategoryPercentage';
 
@@ -16,14 +14,14 @@ function ProfessionInfo({ profession }) {
       </header>
       <p>{profession.description}</p>
       <div className="mt-4 flex">
-        <Link href={`/jobs/${profession.id}`}>
+        {/* <Link href={`/jobs/${profession.id}`}>
           <Button
             type="secondary"
             status="main"
             name="בדוק משרות פנויות"
             className="h-12 pb-4 pt-[10px] px-4"
           />
-        </Link>
+        </Link> */}
         {/* <button type="button"> בדוק משרות פנויות </button> */}
         <Link href={`/studies/${profession.id}`}>
           <button className="font-bold mr-2" type="button">
