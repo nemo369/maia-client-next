@@ -24,7 +24,7 @@ const PopupContent = () => {
       <div className="text-center text-[20px] mt-[50px] leading-[30px]">
         {t('באזור האישי תוכל לצפות בכל')}
         <br />
-        המקצועות / המשרות והלימודים
+        המקצועות /הלימודים
         <br />
         שהוספת למועדפים
       </div>

@@ -7,7 +7,7 @@ import CheckboxGroupGray from '../common/CheckboxGroupGray';
 export default function ProfileFavorite({ jobs, studies, professions }) {
   const { t } = useTranslation('common');
   const categoryGroups = [
-    { name: t('משרות'), id: 'jobs' },
+    // { name: t('משרות'), id: 'jobs' },
     { name: t('לימודים'), id: 'studies' },
     { name: t('מקצועות'), id: 'professions' },
   ];
@@ -40,7 +40,7 @@ export default function ProfileFavorite({ jobs, studies, professions }) {
   };
 
   const [categoryType, setcategoryType] = useState(categoryGroups[0]);
-  const [selectCategory, setSelectCategory] = useState('');
+  const [, setSelectCategory] = useState('');
 
   const onChange = (id) => {
     const newCategory = categoryGroups.find((c) => c.id === id);
@@ -50,7 +50,6 @@ export default function ProfileFavorite({ jobs, studies, professions }) {
   const handleSelectCahnge = ({ value }) => {
     setSelectCategory(value);
   };
-  console.log(selectCategory);
   return (
     <div className="my-[18px] h-[420px] bg-white rounded-[20px] py-[25px] px-[21px]">
       <div className="flex justify-between items-center">

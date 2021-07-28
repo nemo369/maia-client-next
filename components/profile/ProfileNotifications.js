@@ -1,5 +1,3 @@
-/* eslint-disable operator-linebreak */
-/* eslint-disable no-nested-ternary */
 import React, { useContext } from 'react';
 import { AppContext } from '../../src/context/state';
 import SmallHatGreen from '../svg/SmallHatGreen';
@@ -53,11 +51,9 @@ export default function ProfileNotifications() {
               {notifications?.map((content) => (
                 <div id={content.id} key={content.id} className="flex justify-between space-x-4">
                   <div className="w-[20px] h-[20px] ml-[12px] mt-[10px]">
-                    {'school' === content.type ? (
-                      <SmallHatGreen />
-                    ) : 'job' === content.type ? (
-                      <SmallBreifcaseGreen />
-                    ) : (
+                    {'school' === content.type && <SmallHatGreen />}
+                    {'job' === content.type && <SmallBreifcaseGreen />}
+                    {'job' !== content.type && 'school' !== content.type && (
                       <SmallExclamationMarkGreen />
                     )}
                   </div>
@@ -86,11 +82,9 @@ export default function ProfileNotifications() {
             {notifications?.map((content) => (
               <div key={content.title} className="flex justify-between  space-x-4">
                 <div className="w-[20px] h-[20px] ml-[12px] mt-[10px]">
-                  {'school' === content.type ? (
-                    <SmallHatGreen />
-                  ) : 'job' === content.type ? (
-                    <SmallBreifcaseGreen />
-                  ) : (
+                  {'school' === content.type && <SmallHatGreen />}
+                  {'job' === content.type && <SmallBreifcaseGreen />}
+                  {'job' !== content.type && 'school' !== content.type && (
                     <SmallExclamationMarkGreen />
                   )}
                 </div>

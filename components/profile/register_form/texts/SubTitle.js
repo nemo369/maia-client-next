@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
 const SubTitle = () => (
   <div className="py-4">
     <p className="fon font-black text-xl leading-5 text-gray-500">פרטים אישיים</p>

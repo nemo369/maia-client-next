@@ -1,5 +1,4 @@
-/* eslint-disable jsx-a11y/control-has-associated-label */
-/* eslint-disable prettier/prettier */
+/* eslint-disable react/no-danger */
 import React, { useState, useContext } from 'react';
 import Inputs from '../common/Inputs';
 import Arrow from '../svg/Arrow';
@@ -13,7 +12,6 @@ export default function ProfileDetails() {
   const { profile } = useContext(AppContext);
   const [isOpen, setIsOpen] = useState(false);
   const [isDisabled, setIsDiabled] = useState(true);
-  console.log(profile);
   const toggleInfo = () => {
     setIsOpen(!isOpen);
   };
@@ -22,7 +20,8 @@ export default function ProfileDetails() {
     setIsDiabled(!isDisabled);
   };
 
-  const tooltipSendedJobs = '<span>סגירת מצב ״מחפש עבודה״ תציג אותך במצב לא פעיל אצל<br /> המעסקים שאליהם שלחת בקשה והם לא יכולו לראות את <br /> פרטיך האישיים.</span>';
+  const tooltipSendedJobs = `<span>סגירת מצב ״מחפש עבודה״ תציג אותך במצב לא פעיל אצל
+  <br /> המעסקים שאליהם שלחת בקשה והם לא יכולו לראות את <br /> פרטיך האישיים.</span>`;
 
   return (
     <div>
@@ -102,10 +101,14 @@ export default function ProfileDetails() {
             </div>
             <div className="dash w-[365px] border-b-[2px] border-dashed border-[#979797] opacity-20 h-1" />
             <div className="my-[15px] flex w-[365px] justify-between">
-              <div className="text-[#666666] text-[18px]">
-                עריכת פרטי שאלון אוטוביוגרפיה
-              </div>
-              <button className="opacity-50 focus:outline-none hover:opacity-100" onClick={editInfo} type="button"><EditInfo /></button>
+              <div className="text-[#666666] text-[18px]">עריכת פרטי שאלון אוטוביוגרפיה</div>
+              <button
+                className="opacity-50 focus:outline-none hover:opacity-100"
+                onClick={editInfo}
+                type="button"
+              >
+                <EditInfo />
+              </button>
             </div>
           </div>
         </div>

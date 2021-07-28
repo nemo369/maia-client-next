@@ -56,12 +56,13 @@
 .button-group-gray div input:checked + label,
 .button-group-gray div input:checked + label:active {
   background: linear-gradient(143.28deg, #40c2c4 0%, #3c91a0 100%);
-  min-width: 100px;
+  // min-width: 100px;
   opacity: 1;
   border-radius: 3px;
   color: #ffffff;
   font-size: 18px;
-  width: 100px;
+  // width: 100px;
+  width: 100%;
   font-weight: bold;
   display: inline-block;
 }

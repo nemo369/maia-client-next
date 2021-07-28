@@ -1,4 +1,5 @@
 /* eslint-disable react/jsx-one-expression-per-line */
+import { useTranslation } from 'next-i18next';
 import Link from 'next/link';
 import JustHeart from './JustHeart';
 
@@ -12,6 +13,7 @@ export default function CategoryWithHeart({
   id,
 }) {
   const handleDragStart = (e) => e.preventDefault();
+  const { t } = useTranslation('common');
 
   return (
     <div onDragStart={handleDragStart} tabIndex="0" className={className} role="tab">
@@ -38,7 +40,7 @@ export default function CategoryWithHeart({
                 className="border-black border-2 font-bold text-base leading-4 text-black rounded-[5px] py-[2px] px-[20px] active:bg-gray-lighter focus:outline-none hover:bg-white-active"
                 type="button"
               >
-                קרא עוד
+                {t('קרא עוד')}
               </a>
             </Link>
           )}

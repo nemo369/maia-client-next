@@ -24,7 +24,6 @@ export default function useFormStudy(initial = {}) {
       inputs?.categories.splice(index, 1);
     }
   }
-  console.log(inputs);
 
   function resetForm() {
     setInputs(initial);
