@@ -5,7 +5,8 @@ import MailGreySmall from '../../svg/MailGreySmall';
 import Xcircle from '../../svg/Xcircle';
 import JustHeart from '../JustHeart';
 
-const CompareStepTwo = ({ setOpen, open, setCompare, clearForm, compare }) => {
+const CompareStepTwo = ({ setOpen, open, setCompare, compare }) => {
+  console.log(compare);
   const { t } = useTranslation('common');
   const close = () => {
     if ('undefined' === typeof window) return;
@@ -15,7 +16,7 @@ const CompareStepTwo = ({ setOpen, open, setCompare, clearForm, compare }) => {
   };
   const handleAddTrack = () => {
     setCompare(false);
-    clearForm();
+    // clearForm();
   };
 
   return (
@@ -28,7 +29,7 @@ const CompareStepTwo = ({ setOpen, open, setCompare, clearForm, compare }) => {
           <div className="inline-block w-[116%]">
             <p className="text-2xl leading-6 font-light ">{t('רשימת מסלולי לימוד להשוואה')}</p>
             <h1 className="text-[32px] text-green-500 leading-8 font-black">
-              {t(compare[0].title)}
+              {t(compare[0]?.title)}
             </h1>
           </div>
           <div className="flex justify-self-end compare-c">
@@ -44,8 +45,8 @@ const CompareStepTwo = ({ setOpen, open, setCompare, clearForm, compare }) => {
           </div>
         </div>
         <div className="flex justify-between border-t-[1px] item3">
-          {compare.map((x) => (
-            <div className="grid gap-y-16 pt-4 mt-5 ">
+          {compare.map((x, index) => (
+            <div key={index} className="grid gap-y-16 pt-4 mt-5 ">
               <div className="flex justify-between">
                 <h1 className="study-logo">לוגו</h1>
                 <JustHeart id={x.id} type="studies" />

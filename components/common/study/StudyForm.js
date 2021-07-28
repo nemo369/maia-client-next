@@ -33,6 +33,7 @@ export default function StudyForm(props) {
   return (
     <>
       <Select
+        instanceId="1"
         aria-label=">תחום"
         label="תחום"
         className="flex-grow "
@@ -55,6 +56,7 @@ export default function StudyForm(props) {
         styles={customStyles}
       />
       <Select
+        instanceId="3"
         aria-label=">מסלול"
         label="מסלול"
         className="flex-grow "

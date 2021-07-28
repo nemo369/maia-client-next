@@ -13,13 +13,18 @@ export default function useFormStudy(initial = {}) {
   function handleChange(e) {
     const { value } = e.target;
     const { name } = e.target;
-
-    setInputs({
-      // copy the existing state
-      ...inputs,
-      [name]: [...inputs[name], value],
-    });
+    if (!inputs?.categories.includes(value)) {
+      setInputs({
+        ...inputs,
+        [name]: [...inputs[name], value],
+      });
+    }
+    if (inputs?.categories.includes(value)) {
+      const index = inputs.categories.indexOf(value);
+      inputs?.categories.splice(index, 1);
+    }
   }
+  console.log(inputs);
 
   function resetForm() {
     setInputs(initial);
