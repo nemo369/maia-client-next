@@ -1,4 +1,3 @@
-/* eslint-disable react/no-danger */
 import React, { useState, useContext } from 'react';
 import Inputs from '../common/Inputs';
 import Arrow from '../svg/Arrow';
@@ -39,7 +38,7 @@ export default function ProfileDetails() {
             <Inputs
               type="text"
               status="main"
-              className={`profile-inputs ${isDisabled && 'text-[#717171]'}`}
+              className={`profile-inputs ${isDisabled ? 'text-[#717171]' : ''}`}
               placeholder="שם"
               value={profile.display_name}
               disabled={isDisabled}
@@ -63,7 +62,7 @@ export default function ProfileDetails() {
             <Inputs
               type="text"
               status="main"
-              className={`profile-inputs ${isDisabled && 'text-[#717171]'}`}
+              className={`profile-inputs ${isDisabled ? 'text-[#717171]' : ''}`}
               placeholder="עיר מגורים"
               value={JSON.parse(profile.city).name}
               disabled={isDisabled}
@@ -71,7 +70,7 @@ export default function ProfileDetails() {
             <Inputs
               type="text"
               status="main"
-              className={`profile-inputs ${isDisabled && 'text-[#717171]'}`}
+              className={`profile-inputs ${isDisabled ? 'text-[#717171]' : ''}`}
               placeholder="שפת אם"
               value="עברית"
               disabled={isDisabled}
@@ -81,7 +80,7 @@ export default function ProfileDetails() {
                 type="text"
                 status="main"
                 placeholder="גיל"
-                className={`profile-inputs-age ${isDisabled && 'text-[#717171]'}`}
+                className={`profile-inputs ${isDisabled ? 'text-[#717171]' : ''}`}
                 value={profile.age}
                 disabled={isDisabled}
               />

@@ -1,22 +1,20 @@
-/* eslint-disable react/jsx-indent */
-/* eslint-disable indent */
-// import React, { useContext } from 'react';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { NextSeo } from 'next-seo';
-import { useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import BreadCrumbs from '../../components/common/BreadCrumbs';
-import CategoryWithHeart from '../../components/common/CategoryWithHeart';
+import CheckboxGroup from '../../components/common/CheckboxGroup';
+import ProfessionForm from '../../components/profession/ProfessionForm';
+import ProfessionList from '../../components/profession/ProfessionList';
+import { AppContext } from '../../src/context/state';
 import useProfile from '../../src/hooks/useProfile';
 import VendorAPI from '../../src/services/vendor.service';
 import { getUserSession } from '../../src/utils/getUser';
 import { seoMerge } from '../../src/utils/next-seo.config';
-import CheckboxGroup from '../../components/common/CheckboxGroup';
-import { setLs } from '../../src/utils/localStorge';
-import { DASHBOARD_TYPE_CATEGORY } from '../../src/utils/consts';
-import ProfessionForm from '../../components/profession/ProfessionForm';
 
-export default function Professions({ additionalProfessions, num = 3 }) {
+export default function Professions({ allProfessions }) {
+  const { user } = useContext(AppContext);
+
   const seo = seoMerge({
     title: 'זירת המקצועות',
   });
@@ -24,33 +22,31 @@ export default function Professions({ additionalProfessions, num = 3 }) {
   useProfile();
 
   const categoryGroups = [
-    { name: t('הכל'), id: 1 },
-    { name: t('הכי מתאים'), id: 2 },
+    { name: t('הכל'), id: 0 },
+    { name: t('הכי מתאים'), id: 1 },
   ];
 
   const [categoryType, setcategoryType] = useState(categoryGroups[0]);
-  const [, setcurrentCategory] = useState(null);
-  const onChangeCategoryList = (catData) => {
-    setcurrentCategory(catData.id);
-  };
+
+  const [professions, setProfessions] = useState([]);
+  const [myProfessions, setMyProfessions] = useState([]);
+  useEffect(() => {
+    const { data } = VendorAPI.getCategorys(user.token, 'professions', { byUser: true });
+    setMyProfessions(data);
+  }, []);
+  useEffect(() => {
+    setProfessions(allProfessions);
+  }, [allProfessions]);
 
   const onChange = (id) => {
-    const newCategory = categoryGroups.find((c) => c.id === id);
-    setLs(DASHBOARD_TYPE_CATEGORY, newCategory);
-    setcategoryType(newCategory);
-    onChangeCategoryList(newCategory);
+    const cat = categoryGroups.find((categ) => categ.id === id);
+    setcategoryType(cat);
+    if (id) {
+      setProfessions(myProfessions);
+      return;
+    }
+    setProfessions(allProfessions);
   };
-  const professionList = additionalProfessions.map((profession) => (
-    <CategoryWithHeart
-      key={profession.id}
-      value={profession.title}
-      isButton
-      description={profession.description}
-      id={profession.id}
-      type="professions"
-      className="px-0 "
-    />
-  ));
 
   return (
     <>
@@ -61,12 +57,14 @@ export default function Professions({ additionalProfessions, num = 3 }) {
           <div>
             <div className="flex">
               <h1 className="text-black text-3xl font-black">{t('זירת המקצוענות')}</h1>
-              <div className="flex self-center bg-orange rounded-lg py-2 px-8 h-9 text-white text-[22px] font-bold leading-6 mr-9">
-                <p>{t(`נמצאו לך ${num} מקצועות שיתאימו לך`)}</p>
-                <div className="relative smallpop w-4 h-4 border-solid border-white-active border-2 rounded-full font-small  text-white text-xs mr-4 hover:bg-gradient-2 inline-block text-center">
-                  ?
+              {myProfessions?.length && (
+                <div className="flex self-center bg-orange rounded-lg py-2 px-8 h-9 text-white text-[22px] font-bold leading-6 mr-9">
+                  <p>{t(`נמצאו לך ${myProfessions.length} מקצועות שיתאימו לך`)}</p>
+                  <div className="relative smallpop w-4 h-4 border-solid border-white-active border-2 rounded-full font-small  text-white text-xs mr-4 hover:bg-gradient-2 inline-block text-center">
+                    ?
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
             <p className="max-w-4xl my-5">
               {t(
@@ -82,8 +80,8 @@ export default function Professions({ additionalProfessions, num = 3 }) {
               <CheckboxGroup checks={categoryGroups} onChange={onChange} checkType={categoryType} />
             </div>
           </div>
-          <hr className="mainProfessionsDash my-5" />
-          <div className="grid grid-cols-3 gap-2">{professionList}</div>
+          <hr className="border-t-2 border-dashed border-[#cccccc] my-5" />
+          <ProfessionList professions={professions} />
         </div>
       </section>
     </>
@@ -93,14 +91,14 @@ export default function Professions({ additionalProfessions, num = 3 }) {
 export async function getServerSideProps(req) {
   const [user, token] = getUserSession(req);
   if (user.redirect) return user;
-  const { data: additionalProfessions } = await VendorAPI.getCategorys(token, 'professions');
+  const { data: professions } = await VendorAPI.getCategorys(token, 'professions');
   const locale = `he${user.gender}`;
   // Here you can add more data
   return {
     props: {
       ...(await serverSideTranslations(locale, ['common', 'professions'])),
       user,
-      additionalProfessions,
+      allProfessions: professions,
     },
   };
 }

@@ -4,17 +4,29 @@ import { FRONT_URL } from '../utils/consts';
 const API_URL = `${FRONT_URL}`;
 
 const VendorAPI = {
-  getCategorys: async (token, type, ids = null) => {
+  getCategorys: async (token, type, query = {}) => {
+    const defualtQuery = {
+      byUser: false,
+    };
     try {
-      const { data } = await axios.get(`${API_URL}/vendor/${type}${ids ? `?ids=[${ids}]` : ''}`, {
-        headers: {
-          'Content-type': 'application/json',
-          Authorization: `Bearer ${token}`,
+      const { data } = await axios.post(
+        `${API_URL}/vendor/${type}`,
+        {
+          query: {
+            ...defualtQuery,
+            ...query,
+          },
         },
-      });
+        {
+          headers: {
+            'Content-type': 'application/json',
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       return data;
     } catch (error) {
-      return [];
+      return { data: [] };
     }
   },
   fetchComparedCategorys: async (token, filteredData, type) => {

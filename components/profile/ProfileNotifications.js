@@ -80,7 +80,7 @@ export default function ProfileNotifications() {
           <div className="text-white text-[10px] py-[5px]">מוקדם יותר</div>
           <div className="scroller">
             {notifications?.map((content) => (
-              <div key={content.title} className="flex justify-between  space-x-4">
+              <div key={content.id} className="flex justify-between  space-x-4">
                 <div className="w-[20px] h-[20px] ml-[12px] mt-[10px]">
                   {'school' === content.type && <SmallHatGreen />}
                   {'job' === content.type && <SmallBreifcaseGreen />}

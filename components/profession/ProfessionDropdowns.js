@@ -8,29 +8,16 @@ function ProfessionDropdowns({ profession }) {
   return (
     <section className=" relative max-w-[812px] w-full">
       <ul id="professionDropdown">
-        {profession.whatToDoWithIt
-          ? profession.whatToDoWithIt.map((x) => (
-            <Acordion key={x.title} title={x.title} text={x.text} />
-          ))
-          : null}
-        {/* <Acordion
-          title="מה עושים עם זה"
-          text={profession?.whatToDoWithIt[0].text ? profession.whatToDoWithIt[0].text : ''}
-        />
-        <Acordion
-          title="מה עושים עם זה"
-          text={profession?.whatToDoWithIt[0].text ? profession.whatToDoWithIt[0].text : ''}
-        />
-        <Acordion
-          title="מה עושים עם זה"
-          text={profession?.whatToDoWithIt[0].text ? profession.whatToDoWithIt[0].text : ''}
-        /> */}
+        {profession.info && Object.entries(profession.info).map(([key, info]) => (
+          <Acordion key={key} title={info.title} text={info.text} id={info.id} />
+        ))}
       </ul>
     </section>
   );
 }
-const Acordion = ({ text, title }) => {
+const Acordion = ({ text, title, id }) => {
   const [isActive, setIsActive] = useState(false);
+  if (!text) return null;
   return (
     <li className={`acordion ${isActive ? 'isActive' : ''}`}>
       <button
@@ -41,7 +28,7 @@ const Acordion = ({ text, title }) => {
         }}
       >
         <div className="inline-block acodrion-svg">
-          <CheckForTitle title={title} />
+          <CheckForTitle id={id} />
           <span>
             {title}
           </span>
@@ -50,27 +37,28 @@ const Acordion = ({ text, title }) => {
           <Arrow />
         </div>
       </button>
-      <div className="submenu">{text}</div>
+      <div className="submenu" dangerouslySetInnerHTML={{ __html: text }} />
     </li>
   );
 };
 
-const CheckForTitle = ({ title }) => {
-  let classes = '';
-  switch (title) {
-    case 'מה עושים עם זה?':
+const CheckForTitle = ({ id }) => {
+  let classes = <WhitePen />;
+  switch (id) {
+    case 'mikExampleTeur':
       classes = <WhitePen />;
       break;
-    case 'מערכי עבודה':
+    case 'moreInfoTeur':
       classes = <WhiteEarth />;
       break;
-    case 'סביבות עבודה':
+    case 'jobsTeur':
       classes = <WhitePen />;
       break;
-    case 'דרישות אישיות':
+    case 'personalDemandsTeur':
       classes = <WhiteEarth />;
       break;
     default:
+      classes = <WhitePen />;
       break;
   }
   return classes;

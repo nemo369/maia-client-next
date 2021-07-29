@@ -26,7 +26,7 @@ const CompareStepOne = ({
       description={study.description}
       id={study.id}
       type="studies"
-      company="מכללת עזריאלי"
+      company={study.company}
       className="px-0 max-w-[666px] max-h-40"
     />
   ));
