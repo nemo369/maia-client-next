@@ -32,7 +32,7 @@ export default function Profile({ notifications }) {
     const fetcCategorys = async () => {
       if (!profile || !profile.professions) return;
       const professionsIds = profile.professions.map((profession) => +profession.id);
-      const studiesIds = profile.studies.map((study) => study.id);
+      const studiesIds = profile.studies.map((study) => +study.id);
       const [{ data: professionsData }, { data: studiesData }] = await Promise.all([
         VendorAPI.getCategorys(user.token, 'professions', { ids: professionsIds }),
         VendorAPI.getCategorys(user.token, 'studies', { ids: studiesIds }),

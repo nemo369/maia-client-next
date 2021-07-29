@@ -51,12 +51,11 @@ export async function getServerSideProps(req) {
   const [user, token] = getUserSession(req);
   if (user.redirect) return user;
   const { study } = req.query;
-  const [fetchedstudies, fetchedStudy] = await Promise.all([
-    VendorAPI.getCategorys(token, 'studies'),
+  const [{ data: studies }, { data: studyData }] = await Promise.all([
+    VendorAPI.getCategorys(token, 'studies', { byUser: true }),
     VendorAPI.getCategory(token, 'study', study),
   ]);
-  const studies = fetchedstudies.data;
-  const study1 = fetchedStudy.data;
+  // const studyData = fetchedStudy.data;
   const locale = `he${user.gender}`;
 
   return {
@@ -64,7 +63,7 @@ export async function getServerSideProps(req) {
       ...(await serverSideTranslations(locale, ['common', 'study'])),
       user,
       studies,
-      study: study1,
+      study: studyData,
     },
   };
 }

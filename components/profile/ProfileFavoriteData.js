@@ -1,6 +1,5 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 import React from 'react';
-import Eye from '../svg/Eye';
 import ProfileFavoriteEmpty from './ProfileFavoriteEmpty';
 import CategoryPercentage from './CategoryPercentage';
 import JustHeart from '../common/JustHeart';
