@@ -78,7 +78,7 @@ function DashboardSummary({ step }) {
         <h3 className="text-xl text-gray-700">{t('סיכום תוצאות שלב')}</h3>
         <h3 className="text-gray font-bold text-3xl mb-6">{step?.name}</h3>
       </div>
-      <article className="flex-grow">{JSON.stringify(profile)}</article>
+      <article className="flex-grow overflow-hidden">{JSON.stringify(profile)}</article>
       <div className="flex gap-x-1 mt-6">
         <PopSide
           trigger={

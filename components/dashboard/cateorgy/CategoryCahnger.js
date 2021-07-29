@@ -7,9 +7,9 @@ import CheckboxGroup from '../../common/CheckboxGroup';
 function CategoryCahnger({ onChangeCategoryList, length, isLabel }) {
   const { t } = useTranslation('common');
   const categoryGroups = [
-    // { name: t('משרות'), id: 'jobs' },
-    { name: t('לימודים'), id: 'studies' },
     { name: t('מקצועות'), id: 'professions' },
+    { name: t('לימודים'), id: 'studies' },
+    // { name: t('משרות'), id: 'jobs' },
   ];
   const [categoryType, setcategoryType] = useState(categoryGroups[0]);
   useEffect(() => {
