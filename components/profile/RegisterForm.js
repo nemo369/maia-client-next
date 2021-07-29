@@ -7,7 +7,6 @@ import CellphoneInput from './register_form/inputs/CellphoneInput';
 import EmailInput from './register_form/inputs/EmailInput';
 import FemaleRadio from './register_form/inputs/FemaleRadio';
 import MaleRadio from './register_form/inputs/MaleRadio';
-import FullnameInput from './register_form/inputs/FullnameInput';
 import SearchCountryInput from './SearchCountryInput';
 import SearchStreetInput from './SearchStreetInput';
 import CoefficientCheckbox from './register_form/inputs/CoefficientCheckbox';
@@ -19,6 +18,8 @@ import Group11 from '../svg/Group11';
 import UserAPI from '../../src/services/user.service';
 import Button from '../common/Button';
 import Loader from '../common/Loader';
+import FirstName from './register_form/inputs/FirstName';
+import LastName from './register_form/inputs/LastName';
 
 const RegisterForm = ({ cities, termsText }) => {
   const [cityId, setCityId] = useState(null);
@@ -36,7 +37,8 @@ const RegisterForm = ({ cities, termsText }) => {
     password: '',
     cellphone: '',
     age: '',
-    fullname: '',
+    firstName: '',
+    lastName: '',
     gender: '',
     employment_coefficient: null,
     terms_and_conditions: null,
@@ -121,31 +123,33 @@ const RegisterForm = ({ cities, termsText }) => {
             />
           </div>
           <hr className="dashed my-5" />
-          <div className={`grid gap-x-4 gap-y-7 md:grid-cols-2 ${loader ? 'opacity-30 ' : ''}`}>
-            <EmailInput handleChange={handleChange} value={inputs.email} />
-
-            <FullnameInput handleChange={handleChange} value={inputs.fullname} />
+          <div
+            className={`second-grid grid gap-x-4 gap-y-7 grid-cols-2 ${
+              loader ? 'opacity-30 ' : ''
+            }`}
+          >
+            <FirstName handleChange={handleChange} value={inputs.firstName} />
+            <LastName handleChange={handleChange} value={inputs.lastName} />
 
             <CellphoneInput handleChange={handleChange} value={inputs.cellphone} />
+            <EmailInput handleChange={handleChange} value={inputs.email} />
 
             <AgeInput handleChange={handleChange} value={inputs.age} />
-          </div>
-          {error ? <div className="text-red-500 shake mt-3">{error}</div> : ''}
-
-          <div className=" mt-7 mb-5 col-start-1 col-end-3 flex">
-            <p className="inline-block text-regiterPageDarkBottomText leading-regiterPageDarkBottomText text-regiterPageDarkBottomTextcolor">
-              לפני שאנחנו ממשיכים, איך נוח לך שנפנה אליך?
-            </p>
-            <div className="flex gap-x-7">
-              <MaleRadio handleChange={handleChange} />
-              <FemaleRadio handleChange={handleChange} />
+            <div className="signup-radio-wrapper mb-5  flex">
+              <p className="inline-block text-regiterPageDarkBottomText leading-regiterPageDarkBottomText text-regiterPageDarkBottomTextcolor">
+                לפני שאנחנו ממשיכים, איך נוח לך שנפנה אליך?
+              </p>
+              <div className="signup-radio-sub-wrapper flex gap-x-7">
+                <MaleRadio handleChange={handleChange} />
+                <FemaleRadio handleChange={handleChange} />
+              </div>
             </div>
           </div>
-
+          {error ? <div className="text-red-500 shake mt-3">{error}</div> : ''}
           <CoefficientCheckbox handleChange={handleChange} />
           <hr className="dashed col-start-1 col-end-3 my-4" />
 
-          <div className="flex justify-between">
+          <div className="signup-seconde-checkbox-wrapper flex justify-between">
             <ConditionsCheckbox termsText={termsText} handleChange={handleChange} />
             <Button
               type="submit"

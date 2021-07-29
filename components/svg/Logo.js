@@ -6,7 +6,7 @@ function Logosvg() {
       viewBox="0 0 193 87"
       padding="50px"
       version="1.1"
-      className="relativ"
+      className="relativ signup-logo"
       // xmlns="http://www.w3.org/2000/svg"
       // xmlns:xlink="http://www.w3.org/1999/xlink"
     >
