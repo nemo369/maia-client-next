@@ -48,8 +48,9 @@ export async function getServerSideProps(req) {
   const [user, token] = getUserSession(req);
   if (user.redirect) return user;
   const { profession } = req.query;
-  const professions = await VendorAPI.getCategorys(token, 'professions');
-  const additionalProfessions = professions.data;
+  const { data: additionalProfessions } = await VendorAPI.getCategorys(token, 'professions', {
+    byUser: true,
+  });
   const fetchedProfession = await VendorAPI.getCategory(token, 'profession', profession);
   const professionData = fetchedProfession.data;
   const locale = `he${user.gender}`;

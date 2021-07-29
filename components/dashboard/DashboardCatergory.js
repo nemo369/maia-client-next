@@ -26,27 +26,25 @@ function Dashboard() {
   }, [currentCategory]);
   useEffect(() => {
     const fetchAll = async () => {
-      const [{ data: professions }, { data: jobs }, { data: studies }] = await Promise.all([
-        VendorAPI.getCategorys(user.token, 'professions'),
-        VendorAPI.getCategorys(user.token, 'jobs'),
-        VendorAPI.getCategorys(user.token, 'studies'),
+      const [{ data: professions }, { data: studies }] = await Promise.all([
+        VendorAPI.getCategorys(user.token, 'professions', { byUser: true }),
+        VendorAPI.getCategorys(user.token, 'studies', { byUser: true }),
+        // VendorAPI.getCategorys(user.token, 'jobs' ),
       ]);
 
       setcategories({
         professions: professions || [],
-        jobs: jobs || [],
+        jobs: [],
         studies: studies || [],
       });
 
-      setTimeout(() => {
-        if (categories[currentCategory]) {
-          setcatList([...categories[currentCategory]]);
-        } else {
-          setcatList([]);
-        }
-        setcurrentCategory(null);
-        setcurrentCategory(currentCategory);
-      }, 1);
+      if (categories[currentCategory]) {
+        setcatList([...categories[currentCategory]]);
+      } else {
+        setcatList([]);
+      }
+      setcurrentCategory(null);
+      setcurrentCategory(currentCategory);
     };
     fetchAll();
   }, [user.token]);

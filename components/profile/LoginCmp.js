@@ -39,7 +39,7 @@ export default function LoginCmp() {
       <button className="hidden" type="button" onClick={() => setLoginType('password')}>
         התחברות עם סיסמא
       </button>
-      <div className="mt-auto relative mx-auto text-center">
+      <div className="mt-[120px] relative mx-auto text-center">
         <Link href="/user/signup">
           <a>
             <span>עדיין לא רשום/ה?</span>

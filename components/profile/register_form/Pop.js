@@ -1,4 +1,3 @@
-/* eslint-disable react/no-danger */
 import { useEffect, useState } from 'react';
 import Popup from 'reactjs-popup';
 

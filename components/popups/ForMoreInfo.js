@@ -1,4 +1,3 @@
-/* eslint-disable react/no-danger */
 /* eslint-disable prettier/prettier */
 // import { useTranslation } from 'next-i18next';
 import React from 'react';
