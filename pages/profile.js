@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { NextSeo } from 'next-seo';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'next-i18next';
@@ -15,15 +15,33 @@ import useProfile from '../src/hooks/useProfile';
 import { SET_NOTIFICATIONS } from '../src/context/appReducer';
 import VendorAPI from '../src/services/vendor.service';
 
-export default function Profile({ notifications, jobs, studies, professions }) {
+export default function Profile({ notifications }) {
   const { t } = useTranslation('common');
-  const { dispatch } = useContext(AppContext);
+  const { dispatch, user, profile } = useContext(AppContext);
   useProfile();
+
+  // const [jobs, setJobs] = useState([])
+  const [studies, setStudies] = useState([]);
+  const [professions, setProfessions] = useState([]);
 
   const seo = seoMerge({
     title: t('פרופיל אישי'),
   });
 
+  useEffect(() => {
+    const fetcCategorys = async () => {
+      if (!profile || !profile.professions) return;
+      const professionsIds = profile.professions.map((profession) => +profession.id);
+      const studiesIds = profile.studies.map((study) => study.id);
+      const [{ data: professionsData }, { data: studiesData }] = await Promise.all([
+        VendorAPI.getCategorys(user.token, 'professions', { ids: professionsIds }),
+        VendorAPI.getCategorys(user.token, 'studies', { ids: studiesIds }),
+      ]);
+      setStudies(studiesData);
+      setProfessions(professionsData);
+    };
+    fetcCategorys();
+  }, [profile, user.token]);
   useEffect(() => {
     dispatch({ type: SET_NOTIFICATIONS, notifications: notifications });
   }, []);
@@ -41,7 +59,7 @@ export default function Profile({ notifications, jobs, studies, professions }) {
               <ProfileConclusion stage="3" />
             </div>
             <div>
-              <ProfileFavorite jobs={jobs} studies={studies} professions={professions} />
+              <ProfileFavorite studies={studies} professions={professions} />
             </div>
           </div>
           <div className="flex flex-col">
@@ -56,18 +74,13 @@ export default function Profile({ notifications, jobs, studies, professions }) {
 export async function getServerSideProps(req) {
   const [user, token] = getUserSession(req);
   if (user.redirect) return user;
-  const notifications = await NotificationAPI.full_notification(token);
-  const { data: jobs } = await VendorAPI.getCategorys(token, 'jobs');
-  const { data: studies } = await VendorAPI.getCategorys(token, 'studies');
-  const { data: professions } = await VendorAPI.getCategorys(token, 'professions');
+  const { data: notifications } = await NotificationAPI.full_notification(token);
+
   return {
     props: {
       ...(await serverSideTranslations(req.locale, ['common'])),
       user,
-      jobs,
-      studies,
-      professions,
-      notifications: notifications.data,
+      notifications,
     }, // will be passed to the page component as props
   };
 }

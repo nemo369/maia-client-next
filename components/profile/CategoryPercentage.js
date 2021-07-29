@@ -2,6 +2,7 @@
 import React from 'react';
 
 const CategoryPercentage = ({ className, percentage }) => {
+  if (!percentage) return null;
   let colorOne = '';
   let colorTwo = '';
   switch (true) {
@@ -21,34 +22,24 @@ const CategoryPercentage = ({ className, percentage }) => {
       break;
   }
   return (
-    <div className={className}>
-      <div>
-        <div className="flex felxi">
-          <div className="flex">
-            <div className="flex">
-              <div className="h-[42px]">
-                <svg viewBox="0 0 36 36" className="circular-chart orange">
-                  <linearGradient id={`linearColors-${percentage}`} x1="1" y1="1" x2="1" y2="0">
-                    <stop offset="0%" stopColor={colorOne} />
-                    <stop offset="100%" stopColor={colorTwo} />
-                  </linearGradient>
-                  <path
-                    stroke={`url(#linearColors-${percentage})`}
-                    className="circle"
-                    strokeDasharray={`${percentage}, 100`}
-                    d="M18 2.0845
+    <div className={`${className} flex h-[42px]`}>
+      <svg viewBox="0 0 36 36" className="circular-chart orange">
+        <linearGradient id={`linearColors-${percentage}`} x1="1" y1="1" x2="1" y2="0">
+          <stop offset="0%" stopColor={colorOne} />
+          <stop offset="100%" stopColor={colorTwo} />
+        </linearGradient>
+        <path
+          stroke={`url(#linearColors-${percentage})`}
+          className="circle"
+          strokeDasharray={`${percentage}, 100`}
+          d="M18 2.0845
           a 15.9155 15.9155 0 0 1 0 31.831
           a 15.9155 15.9155 0 0 1 0 -31.831"
-                  />
-                  <text x="18" y="22" className="percentage" fill={colorOne}>
-                    {percentage}%
-                  </text>
-                </svg>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+        />
+        <text x="18" y="22" className="percentage" fill={colorOne}>
+          {percentage}%
+        </text>
+      </svg>
     </div>
   );
 };

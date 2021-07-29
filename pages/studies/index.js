@@ -54,7 +54,7 @@ export default function Studies({ additionalStudies, num = 3, user }) {
       description={study.description}
       id={study.id}
       type="studies"
-      company="מכללת עזריאלי"
+      company={study.company}
       className="px-0 "
     />
   ));

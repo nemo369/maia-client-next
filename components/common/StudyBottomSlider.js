@@ -13,15 +13,15 @@ function StudyBottomSlider({ studies }) {
   if (!studies || !Array.isArray(studies)) {
     return null;
   }
-  const items = studies.map((studies1) => (
+  const items = studies.map((study) => (
     <CategoryWithHeart
-      value={studies1.title}
+      value={study.title}
       isButton
-      description={studies1.description}
-      id={studies1.id}
+      description={study.description}
+      id={study.id}
       type="studies"
       className="px-0 "
-      company="מכללת עזריאלי"
+      company={study.company}
     />
   ));
 
