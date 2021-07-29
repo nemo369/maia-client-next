@@ -4,6 +4,7 @@ import { useState } from 'react';
 const SearchStreetInput = (props) => {
   const [isOpen, setIsOpen] = useState(false);
   const { theStreets, cityData, setTheStreet, theStreet, inputValue, setInputValue } = props;
+  console.log(theStreets);
 
   const toggleOpen = () => {
     setIsOpen(!isOpen);

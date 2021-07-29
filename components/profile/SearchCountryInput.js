@@ -95,7 +95,7 @@ const SearchCountryInput = (props) => {
         <Select
           required
           autoFocus
-          isSearchable={false}
+          // isSearchable={false}
           backspaceRemovesValue={false}
           controlShouldRenderValue={false}
           hideSelectedOptions={false}
