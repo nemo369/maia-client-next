@@ -1,4 +1,3 @@
-/* eslint-disable react/no-danger */
 import React, { useState, useContext } from 'react';
 import Inputs from '../common/Inputs';
 import Arrow from '../svg/Arrow';

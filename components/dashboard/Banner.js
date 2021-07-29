@@ -1,4 +1,3 @@
-/* eslint-disable react/no-danger */
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'next-i18next';
 import Infoservice from '../../src/services/info.service';
