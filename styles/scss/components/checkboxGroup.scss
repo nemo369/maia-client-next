@@ -22,3 +22,47 @@
   font-size: 18px;
   font-weight: bold;
 }
+
+//checkboxGroup-Gray
+.button-group-gray {
+  color: #333333;
+  border-radius: 5px;
+  width: 300px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  background-color: #eaeaea;
+  font-size: 18px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.button-sec-gray {
+  min-width: 95px;
+  padding: 2px;
+  cursor: pointer;
+}
+
+.button-label-gray {
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.button-group-gray div input {
+  display: none;
+  font-size: 18px;
+  width: 100px;
+}
+.button-group-gray div input:checked + label,
+.button-group-gray div input:checked + label:active {
+  background: linear-gradient(143.28deg, #40c2c4 0%, #3c91a0 100%);
+  // min-width: 100px;
+  opacity: 1;
+  border-radius: 3px;
+  color: #ffffff;
+  font-size: 18px;
+  // width: 100px;
+  width: 100%;
+  font-weight: bold;
+  display: inline-block;
+}

@@ -6,7 +6,6 @@ import Xcircle from '../../svg/Xcircle';
 import JustHeart from '../JustHeart';
 
 const CompareStepTwo = ({ setOpen, open, setCompare, compare }) => {
-  console.log(compare);
   const { t } = useTranslation('common');
   const close = () => {
     if ('undefined' === typeof window) return;

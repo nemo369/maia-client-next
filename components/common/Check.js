@@ -11,7 +11,6 @@ export default function Check({
   name,
   checkWrapper,
 }) {
-  console.log(isChecked);
   return (
     <label className={checkWrapper + ' check flex float-right'}>
       <input

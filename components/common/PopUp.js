@@ -27,17 +27,22 @@ const PopUp = ({ children, trigger, defaultOpen = false }) => {
         </div>
       )}
       <Popup position="center" modal open={open}>
-        <div className="bg-white rounded-2xl py-7 px-4 h-[460px] overflow-y-auto">
-          {children}
-          <button
-            id="close-modal-hack"
-            type="button"
-            onClick={closeModal}
-            hidden
-            className="hidden"
-          >
-            &times;
-          </button>
+        <div>
+          <div className="bg-white rounded-2xl py-7 px-4 h-[460px] overflow-y-auto">
+            {children}
+            <button
+              id="close-modal-hack"
+              type="button"
+              onClick={closeModal}
+              hidden
+              className="hidden"
+            >
+              &times;
+            </button>
+          </div>
+          <div className="bg-white w-[52px] h-[52px] rounded-full absolute bottom-[-20px] right-[-80px]" />
+          <div className="bg-white opacity-50 w-[22px] h-[22px] rounded-full absolute top-[490px] right-[-35px]" />
+          <div className="bg-white opacity-80 w-[10px] h-[10px] rounded-full absolute top-[490px] right-[25px]" />
         </div>
       </Popup>
     </>

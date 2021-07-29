@@ -48,7 +48,7 @@ const RegisterForm = ({ cities, termsText }) => {
 
   useEffect(() => {
     const getStreets = async () => {
-      const { data } = await Infoservice.getStreetInfo(cityId);
+      const data = await Infoservice.getStreetInfo(cityId);
       if (data) {
         setTheStreets(data);
       }

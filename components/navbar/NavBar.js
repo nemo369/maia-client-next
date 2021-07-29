@@ -1,18 +1,18 @@
-import Link from 'next/link';
-import React, { useContext, useEffect } from 'react';
-import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
-import LightBulb from '../svg/LightBulb';
-import { AppContext } from '../../src/context/state';
-import Information from '../svg/Information';
-import SchoolHat from '../svg/SchoolHat';
-import Briefcase from '../svg/Briefcase';
-import FemalePic from '../svg/FemalePic';
-import SilverLogo from '../svg/SilverLogo';
-import MalePic from '../svg/MalePic';
-import LinkButton from './LinkButton';
-import NotificationAPI from '../../src/services/notification.service';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import React, { useContext, useEffect } from 'react';
 import { SET_NOTIFICATIONS } from '../../src/context/appReducer';
+import { AppContext } from '../../src/context/state';
+import NotificationAPI from '../../src/services/notification.service';
+// import Briefcase from '../svg/Briefcase';
+import FemalePic from '../svg/FemalePic';
+import Information from '../svg/Information';
+import LightBulb from '../svg/LightBulb';
+import MalePic from '../svg/MalePic';
+import SchoolHat from '../svg/SchoolHat';
+import SilverLogo from '../svg/SilverLogo';
+import LinkButton from './LinkButton';
 
 const NavBar = () => {
   const { pathname } = useRouter();
@@ -22,13 +22,15 @@ const NavBar = () => {
     { href: '/', name: t('ראשי'), icon: <LightBulb /> },
     { href: '/professions', name: t('זירת המקצועות'), icon: <Information /> },
     { href: '/studies', name: t('מאגר הלימודים'), icon: <SchoolHat /> },
-    { href: '/jobs', name: t('משרות פנויות'), icon: <Briefcase /> },
+    // { href: '/jobs', name: t('משרות פנויות'), icon: <Briefcase /> },
   ];
 
   useEffect(() => {
     const getNotifications = async () => {
-      const data = await NotificationAPI.full_notification(user.token);
-      dispatch({ type: SET_NOTIFICATIONS, notifications: data.data });
+      const { data } = await NotificationAPI.full_notification(user?.token);
+      if (data && Array.isArray(data.data)) {
+        dispatch({ type: SET_NOTIFICATIONS, notifications: data.data });
+      }
     };
     getNotifications();
   }, []);
