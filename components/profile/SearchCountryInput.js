@@ -29,6 +29,7 @@ const customStyles = {
       color: '#00C5C6',
       backgroundColor: 'white',
       fontWeight: '600',
+      cursor: 'pointer',
     },
   }),
   menu: (provided) => ({

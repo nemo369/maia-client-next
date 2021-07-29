@@ -4,8 +4,45 @@ import { useState } from 'react';
 const SearchStreetInput = (props) => {
   const [isOpen, setIsOpen] = useState(false);
   const { theStreets, cityData, setTheStreet, theStreet, inputValue, setInputValue } = props;
-  console.log(theStreets);
+  const customStyles = {
+    menuList: (provided) => ({
+      ...provided,
+      width: '98%',
+      padding: 20,
 
+      '::-webkit-scrollbar-thumb': {
+        background: '#00C5C6',
+        height: '50px',
+        borderRadios: '50%',
+        width: '10px',
+      },
+      '::-webkit-scrollbar-track': {
+        background: '#D6D9E2',
+        opacity: '0.55',
+        borderRadios: '20px',
+        width: '5px',
+      },
+      '::-webkit-scrollbar': {
+        width: '4px',
+      },
+    }),
+    option: (provided) => ({
+      ...provided,
+      ':hover': {
+        color: '#00C5C6',
+        backgroundColor: 'white',
+        fontWeight: '600',
+        cursor: 'pointer',
+      },
+    }),
+    menu: (provided) => ({
+      ...provided,
+      marginTop: '0px',
+      padding: '10px',
+      color: 'gray',
+      border: '1px solid #CCCCCC',
+    }),
+  };
   const toggleOpen = () => {
     setIsOpen(!isOpen);
   };
@@ -38,7 +75,7 @@ const SearchStreetInput = (props) => {
             disabled={!cityData}
             name="street"
             type="button"
-            className={`bwc ${inputValue ? '' : 'text-gray-active'}`}
+            className={`bwc city   emailini ${inputValue ? '' : 'text-gray-active'}`}
             onClick={toggleOpen}
             isselected={isOpen.toString()}
           >
@@ -59,31 +96,19 @@ const SearchStreetInput = (props) => {
           placeholder="Search..."
           tabSelectsValue={false}
           value={theStreet?.name}
+          styles={customStyles}
         />
       </Dropdown>
     </div>
   );
 };
 export default SearchStreetInput;
-const Blanket = (props) => (
-  <div
-    css={{
-      bottom: 0,
-      left: 0,
-      top: 0,
-      right: 0,
-      position: 'absolute',
-      zIndex: 1,
-    }}
-    {...props}
-  />
-);
+
 const Menu = (props) => <div className="vvf absolute top-full w-full z-20" {...props} />;
 
-const Dropdown = ({ children, isOpen, target, onClose }) => (
+const Dropdown = ({ children, isOpen, target }) => (
   <div css={{ position: 'absolute' }}>
     {target}
     {isOpen ? <Menu>{children}</Menu> : null}
-    {isOpen ? <Blanket onClick={onClose} /> : null}
   </div>
 );
