@@ -8,15 +8,14 @@ function ProfessionList({ professions }) {
   return (
     <ul className="grid grid-cols-3 gap-2">
       {professions.map((profession) => (
-        <li key={profession.id}>
+        <li key={profession.id} className="h-full">
           <CategoryWithHeart
             value={profession.title}
             isButton
             description={profession.description}
             id={profession.id}
             type="professions"
-            classNam
-            e="px-0 "
+            className="h-full"
           />
         </li>
       ))}

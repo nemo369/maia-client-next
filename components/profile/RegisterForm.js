@@ -76,7 +76,7 @@ const RegisterForm = ({ cities, termsText }) => {
     if (200 === status) {
       // TODO: Set cookie with nookies
       resetForm();
-      router.push('/user/login?error="נרשמת בהצלחה, כעת נותר להתחבר"'); // TODO: go to last page user visited
+      router.push('/user/login?error="200"'); // TODO: go to last page user visited
     }
     setLoader(false);
   };

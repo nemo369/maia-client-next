@@ -7,7 +7,7 @@ import CategoryPercentage from '../profile/CategoryPercentage';
 function ProfessionInfo({ profession }) {
   const { t } = useTranslation('common');
   return (
-    <article className="bg-white professionInfo professionInfoBoxShadow   rounded-lg pt-8 pb-4 px-4 mr-[6px] ml-4 w-full ">
+    <article className="bg-white professionInfo shadow   rounded-lg pt-8 pb-4 px-4 mr-[6px] ml-4 w-full ">
       <header className="flex mb-7 gap-x-4 items-center">
         <h2 className="ml-auto text-2xl font-bold">{profession.title}</h2>
         <JustHeart id={profession.id} type="professions" />
