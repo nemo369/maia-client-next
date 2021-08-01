@@ -78,15 +78,13 @@ const RegisterForm = ({ cities, termsText }) => {
     if (200 === status) {
       // TODO: Set cookie with nookies
       resetForm();
-      router.push('/user/login?error="נרשמת בהצלחה, כעת נותר להתחבר"'); // TODO: go to last page user visited
+      router.push('/user/login?error="200"'); // TODO: go to last page user visited
     }
     setLoader(false);
   };
 
   return (
     <div className="registerPage_container mt-24 relative max-w-5xl mx-auto mb-40 mq-register">
-      {/* <div className="registerPage_container relative xl:-mt-24 max-w-5xl mx-auto mb-40 "> */}
-      {/* <ConditionsPopup /> */}
       <MainTitle />
       <Group11 />
       <div className="registerPage_form_container relative bg-white px-32 pt-14 pb-9 register-form rounded-lg mq-form">

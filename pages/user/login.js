@@ -23,6 +23,9 @@ const Login = () => {
       case 401:
         setErrorMsg(t('אנא התחברו מחדש'));
         break;
+      case 200:
+        setErrorMsg(t('נרשמת בהצלחה, כעת נותר להתחבר'));
+        break;
 
       default:
         setErrorMsg(null);

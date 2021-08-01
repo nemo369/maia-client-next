@@ -3,7 +3,7 @@ import { USER_COOKIE } from './consts';
 
 export const redirectToLogin = {
   redirect: {
-    destination: '/user/login?error=401',
+    destination: '/user/login',
     permanent: false,
   },
 };
