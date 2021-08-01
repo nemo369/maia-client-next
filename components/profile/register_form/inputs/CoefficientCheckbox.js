@@ -2,7 +2,7 @@ const CoefficientCheckbox = (props) => {
   const { handleChange } = props;
 
   return (
-    <div className="flex items-center">
+    <div className="signup-frist-checkbox-wrapper flex items-center">
       <label
         htmlFor="employment_coefficient"
         name="employment_coefficient"
