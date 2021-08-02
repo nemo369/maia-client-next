@@ -9,14 +9,14 @@ import Tooltip from '../common/Tooltip';
 export default function ProfileDetails() {
   const { profile } = useContext(AppContext);
   const [isOpen, setIsOpen] = useState(false);
-  const [isDisabled, setIsDiabled] = useState(true);
+  // const [isDisabled, setIsDiabled] = useState(true);
   const toggleInfo = () => {
     setIsOpen(!isOpen);
   };
 
-  const editInfo = () => {
-    setIsDiabled(!isDisabled);
-  };
+  // const editInfo = () => {
+  //   setIsDiabled(!isDisabled);
+  // };
 
   const tooltipSendedJobs = `<span>סגירת מצב ״מחפש עבודה״ תציג אותך במצב לא פעיל אצל
   <br /> המעסקים שאליהם שלחת בקשה והם לא יכולו לראות את <br /> פרטיך האישיים.</span>`;
