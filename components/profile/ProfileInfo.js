@@ -9,6 +9,7 @@ import { AppContext } from '../../src/context/state';
 import Tooltip from '../common/Tooltip';
 import NeedInfo from '../svg/NeedInfo';
 import Toggle from '../common/Toggle';
+import EditInfo from '../svg/EditInfo';
 
 export default function ProfileInfo() {
   const user = { gender: 'f' };
@@ -24,6 +25,11 @@ export default function ProfileInfo() {
   const onIsChecked = () => {
     setLookingForJob(!lookingForJob);
   };
+
+  const editInfo = () => {
+    console.log('open');
+  };
+
   return (
     <div className="h-[825px] w-[430px] bg-white rounded-[20px]">
       <span className="relative top-[-80px] right-[300px]">
@@ -45,7 +51,17 @@ export default function ProfileInfo() {
         </div>
         <ProfileDetails />
         <div className="bg-[#979797] opacity-20 mx-8 h-[1px]" />
-        <div className="flex justify-between items-center mb-[15px] mt-6 px-[30px]">
+        <div className="my-[15px] mx-auto flex w-[365px] justify-between">
+          <div className="text-[#666666] text-[18px]">עריכת פרטי שאלון אוטוביוגרפיה</div>
+          <button
+            className="opacity-50 focus:outline-none hover:opacity-100"
+            onClick={editInfo}
+            type="button"
+          >
+            <EditInfo />
+          </button>
+        </div>
+        {/* <div className="flex justify-between items-center mb-[15px] mt-6 px-[30px]">
           <div className="flex items-center">
             <div className="text-gray-mid text-[18px]">הצג אותי כמחפש עבודה למעסיקים</div>
             <Tooltip
@@ -59,8 +75,8 @@ export default function ProfileInfo() {
             </Tooltip>
           </div>
           <Toggle isChecked={lookingForJob} onChange={onIsChecked} />
-        </div>
-        <div className="px-8">
+        </div> */}
+        {/* <div className="px-8">
           <div className="flex justify-between mb-2">
             <Check content="אני מאשר/ת ליועץ לצפות במשרות ששלחתי" />
             <Tooltip
@@ -85,9 +101,9 @@ export default function ProfileInfo() {
               <div dangerouslySetInnerHTML={{ __html: tooltipReachMe }} />
             </Tooltip>
           </div>
-        </div>
-        <div className="bg-[#979797] opacity-20 mx-8 h-[1px]" />
-        <UploadedFiles />
+        </div> */}
+        {/* <div className="bg-[#979797] opacity-20 mx-8 h-[1px]" />
+        <UploadedFiles /> */}
       </div>
     </div>
   );

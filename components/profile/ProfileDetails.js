@@ -5,7 +5,6 @@ import RadioMaleFemale from '../common/RadioMaleFemale';
 import { AppContext } from '../../src/context/state';
 import Check from '../common/Check';
 import Tooltip from '../common/Tooltip';
-import EditInfo from '../svg/EditInfo';
 
 export default function ProfileDetails() {
   const { profile } = useContext(AppContext);
@@ -71,8 +70,8 @@ export default function ProfileDetails() {
               type="text"
               status="main"
               className={`profile-inputs ${isDisabled ? 'text-[#717171]' : ''}`}
-              placeholder="שפת אם"
-              value="עברית"
+              placeholder="רחוב"
+              value={JSON.parse(profile.street).name}
               disabled={isDisabled}
             />
             <div className="flex items-center justify-between w-[365px]">
@@ -80,7 +79,7 @@ export default function ProfileDetails() {
                 type="text"
                 status="main"
                 placeholder="גיל"
-                className={`profile-inputs ${isDisabled ? 'text-[#717171]' : ''}`}
+                className={`profile-inputs-age ${isDisabled ? 'text-[#717171]' : ''}`}
                 value={profile.age}
                 disabled={isDisabled}
               />
@@ -98,17 +97,7 @@ export default function ProfileDetails() {
                 <div dangerouslySetInnerHTML={{ __html: tooltipSendedJobs }} />
               </Tooltip>
             </div>
-            <div className="dash w-[365px] border-b-[2px] border-dashed border-[#979797] opacity-20 h-1" />
-            <div className="my-[15px] flex w-[365px] justify-between">
-              <div className="text-[#666666] text-[18px]">עריכת פרטי שאלון אוטוביוגרפיה</div>
-              <button
-                className="opacity-50 focus:outline-none hover:opacity-100"
-                onClick={editInfo}
-                type="button"
-              >
-                <EditInfo />
-              </button>
-            </div>
+            {/* <div className="dash w-[365px] border-b-[2px] border-dashed border-[#979797] opacity-20 h-1" /> */}
           </div>
         </div>
       )}
