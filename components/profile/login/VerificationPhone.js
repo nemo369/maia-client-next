@@ -26,6 +26,10 @@ const VerificationPhone = (props) => {
     }
     return phoneNumberString;
   }
+  const reSend = async () => {
+    const { data, status } = await UserAPI.magicLogin({ phone: cell, type: 'phone' });
+    console.log(data, status);
+  };
   const handleSumbit = async () => {
     setLoader(true);
     setError(false);
@@ -65,12 +69,15 @@ const VerificationPhone = (props) => {
   return (
     <div className="relative">
       <h1 className="font-black text-2xl">התחברות</h1>
-      <div className="mb-11">
+      <div>
         אנא הזן/י את הקוד שקיבלת
         <br />
         בהודעת SMS לטלפון שלך
         <span className="mr-2">{formatPhoneNumber(cell)}</span>
       </div>
+      <button type="button" className="mt-2 mb-4 underline" onClick={reSend}>
+        לא קיבלת? שלח שוב
+      </button>
       <div className="text-white h-6">
         {!!error && <span className="shake block">{error}</span>}
       </div>
