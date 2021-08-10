@@ -71,7 +71,7 @@ export default function Studies({ myStudies, user, scopes }) {
           className={`grid grid-cols-none ml-3 transition ${loader ? 'opacity-40' : 'opacity-100'}`}
         >
           <StudiesHeader num={myStudies.length} />
-          <div className="grid grid-cols-5 gap-x-4 relative">
+          <div className="flex gap-x-4 relative">
             <StudyForm handleChange={handleChange} scopes={scopes} />
             <div className="flex items-center">
               <CompareDropdown
@@ -82,11 +82,11 @@ export default function Studies({ myStudies, user, scopes }) {
                 additionalStudies={[]}
               />
             </div>
-            <div className="checkbox-container">
+            <div className=" mr-auto">
               <CheckboxGroup checks={categoryGroups} onChange={onChange} checkType={categoryType} />
             </div>
           </div>
-          <hr className="mainProfessionsDash my-5" />
+          <hr className="border-dashed my-4" />
           <StudyList studies={studies} />
         </div>
       </section>

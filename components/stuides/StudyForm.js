@@ -1,72 +1,67 @@
-/* eslint-disable react/jsx-one-expression-per-line */
+/* eslint-disable react/button-has-type */
+import { useTranslation } from 'next-i18next';
 import React from 'react';
-import Select from 'react-select';
+import Popup from 'reactjs-popup';
+import Scope from '../common/Scope';
+import Arrow from '../svg/Arrow';
 
-export default function StudyForm(props) {
-  const { handleChange } = props;
-
-  const handleSelectCahnge = ({ value, name }) => {
-    handleChange({ target: { value, name, type: 'select' } });
-  };
-
-  const professionOptions = [
-    { value: 'chocolate', label: 'Chocolate', id: 1 },
-    { value: 'strawberry', label: 'Strawberry', id: 2 },
-    { value: 'vanilla', label: 'Vanilla', id: 3 },
-  ];
-  const customStyles = {
-    menuList: () => ({
-      backgroundColor: '#E1E1E1',
-      color: 'black',
-      border: 0,
-    }),
-    control: (provided) => ({
-      ...provided,
-      backgroundColor: '#E1E1E1',
-      border: 0,
-      borderRadius: '8px',
-    }),
-    indicatorsContainer: () => ({
-      backgroundColor: '#E1E1E1',
-    }),
+export default function StudyForm({ scopes, handleChange }) {
+  const { t } = useTranslation('common');
+  const onSend = (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    handleChange([...formData.values()]);
   };
   return (
     <>
-      <Select
-        instanceId="1"
-        aria-label=">תחום"
-        label="תחום"
-        className="flex-grow "
-        placeholder="תחום"
-        name="field"
-        value="field"
-        onChange={(e) => handleSelectCahnge({ value: e.value, name: 'field' })}
-        options={professionOptions}
-        styles={customStyles}
-      />
-      <Select
-        aria-label="מקצוע"
-        label="מקצוע"
-        className="flex-grow "
-        placeholder="מקצוע"
-        name="profession"
-        value="profession"
-        onChange={(e) => handleSelectCahnge({ value: e.value, name: 'profession' })}
-        options={professionOptions}
-        styles={customStyles}
-      />
-      <Select
-        instanceId="3"
-        aria-label=">מסלול"
-        label="מסלול"
-        className="flex-grow "
-        placeholder="מסלול"
-        name="path"
-        value="path"
-        onChange={(e) => handleSelectCahnge({ value: e.value, name: 'path' })}
-        options={professionOptions}
-        styles={customStyles}
-      />
+      <Popup
+        trigger={(open) => (
+          <button
+            type="button"
+            className={`h-10 items-center flex justify-between px-3 rounded-lg min-w-[215px] ${
+              open ? 'bg-white ring ring-green-500' : 'bg-gray-mid/10 '
+            }`}
+          >
+            <span>{t('תחום')}</span>
+            <span className={`transform transition ${!open ? 'rotate-0' : 'rotate-180'}`}>
+              <Arrow />
+            </span>
+          </button>
+        )}
+        position="bottom"
+        on="click"
+        closeOnDocumentClick
+        // contentStyle={{ padding: '0px', border: 'none' }}
+        arrow
+      >
+        <form
+          className="w-[120%] transform translate-x-[8%] border-2 border-gray-400 rounded-md px-2 py-3 bg-white  text-xs"
+          onSubmit={onSend}
+        >
+          <div className="flex mb-4 justify-between">
+            <span>ניתן לבחור עד 4 מסלולים</span>
+            <div className="flex justify-between items-center  px-2 gap-x-1">
+              <button
+                type="reset"
+                className="outline-none px-2 py-1 rounded-lg bg-white hover:bg-gray-100 text-gray transition"
+              >
+                נקה
+              </button>
+              <button
+                type="submit"
+                className="outline-none px-2 py-1 rounded-lg hover:bg-opacity-80 bg-green-500 text-white transition"
+              >
+                בחר
+              </button>
+            </div>
+          </div>
+          <div className="overflow-auto max-h-40">
+            {scopes.map((scope) => (
+              <Scope scope={scope} key={scope.value} />
+            ))}
+          </div>
+        </form>
+      </Popup>
     </>
   );
 }
