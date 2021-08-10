@@ -1,4 +1,4 @@
-.popup-overlay {
+.popup-overlay[data-popup="modal"] {
   background-color: rgba(0, 0, 0, 0.185);
   backdrop-filter: blur(2px);
 }

@@ -1,7 +1,7 @@
 import { useTranslation } from 'next-i18next';
-import Button from '../Button';
-import Xcircle from '../../svg/Xcircle';
-import CategoryWithHeart from '../CategoryWithHeart';
+import Button from '../common/Button';
+import Xcircle from '../svg/Xcircle';
+import CategoryWithHeart from '../common/CategoryWithHeart';
 
 const CompareStepOne = ({
   setOpen,

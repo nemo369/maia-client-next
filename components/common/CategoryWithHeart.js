@@ -20,17 +20,14 @@ export default function CategoryWithHeart({
       onDragStart={handleDragStart}
       tabIndex="0"
       role="tab"
-      className={`${className}bg-white heart shadow-sm rounded-2xl border-[1px] border-[rgba(151,151,151,0.13)]
-      px-4 py-5`}
+      className={`${className} bg-white heart shadow-sm rounded-2xl border-[1px] border-[rgba(151,151,151,0.13)]
+      px-4 py-5 flex flex-col justify-between`}
     >
-      <div className="heart-wrapper h-[42px] w-full inline">
-        <div className="single-chart">
-          <JustHeart id={id} type={type} />
-        </div>
+      <h5 className="company text-gray-active text-[18px] text-right">{company}</h5>
+      <div className="flex justify-between">
+        <h4 className=" font-bold text-[18px] text-[#333333] text-right ">{value}</h4>
+        <JustHeart id={id} type={type} />
       </div>
-
-      <div className="company text-gray-active text-[18px] text-right">{company}</div>
-      <div className="title-length font-bold text-[18px] text-[#333333] text-right ">{value}</div>
       <div className="dash border-b-[1px] border-dashed border-[#979797] opacity-20 w-full h-1" />
       <p className="description  text-black tracking-normal font-normal opacity-70 leading-[18px] text-lg mt-[10px] text-right">
         {description}

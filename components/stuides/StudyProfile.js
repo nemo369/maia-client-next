@@ -1,7 +1,7 @@
 import React from 'react';
-import CategoryPercentage from '../../profile/CategoryPercentage';
-import Button from '../Button';
-import JustHeart from '../JustHeart';
+import CategoryPercentage from '../profile/CategoryPercentage';
+import Button from '../common/Button';
+import JustHeart from '../common/JustHeart';
 
 export default function StudyProfile({ study }) {
   return (

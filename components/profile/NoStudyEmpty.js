@@ -3,7 +3,7 @@ import GrayHat from '../svg/GrayHat';
 
 export default function NoStudyEmpty() {
   return (
-    <div className="absolute w-[100%] h-[283px] flex justify-center items-center">
+    <div className=" h-[283px] flex justify-center items-center">
       <div className="grid gap-y-8">
         <div className="gray-hat">
           <GrayHat />

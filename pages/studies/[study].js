@@ -10,8 +10,8 @@ import VendorAPI from '../../src/services/vendor.service';
 import { seoMerge } from '../../src/utils/next-seo.config';
 import useProfile from '../../src/hooks/useProfile';
 import StudyBottomSlider from '../../components/common/StudyBottomSlider';
-import StudyProfile from '../../components/common/study/StudyProfile';
-import StudyMoreInfo from '../../components/common/study/StudyMoreInfo';
+import StudyMoreInfo from '../../components/stuides/StudyMoreInfo';
+import StudyProfile from '../../components/stuides/StudyProfile';
 
 export default function Studies({ study, studies }) {
   const { t } = useTranslation('common');

@@ -16,15 +16,15 @@ $lower-background: linear-gradient(to bottom, $lower-color, $lower-color) 100% 5
 
 // Webkit cannot style progress so we fake it with a long shadow
 // on the thumb element
-@function webkit-slider-thumb-shadow($i: 1) {
-    $val: #{$i}px 0 0 -#{($thumb-height - $track-height) / 2} #{$upper-color};
-    @if $i == 1 {
-        @for $k from 2 through 1000 {
-            $val: #{$val}, webkit-slider-thumb-shadow($k);
-        }
-    }
-    @return $val;
-}
+// @function webkit-slider-thumb-shadow($i: 1) {
+//     $val: #{$i}px 0 0 -#{($thumb-height - $track-height) / 2} #{$upper-color};
+//     @if $i == 1 {
+//         @for $k from 2 through 1000 {
+//             $val: #{$val}, webkit-slider-thumb-shadow($k);
+//         }
+//     }
+//     @return $val;
+// }
 
 .e-range {
     display: block;
@@ -56,8 +56,8 @@ $lower-background: linear-gradient(to bottom, $lower-color, $lower-color) 100% 5
     border-radius: 100%;
     border: 0;
     top: 50%;
-    margin-top: (-$thumb-height/2);
-    box-shadow: webkit-slider-thumb-shadow();
+    // margin-top: (-$thumb-height/2);
+    // box-shadow: webkit-slider-thumb-shadow();
     transition: background-color 150ms;
 }
 

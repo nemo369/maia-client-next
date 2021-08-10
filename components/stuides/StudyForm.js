@@ -5,7 +5,7 @@ import Popup from 'reactjs-popup';
 import Scope from '../common/Scope';
 import Arrow from '../svg/Arrow';
 
-export default function ProfessionForm({ scopes, handleChange }) {
+export default function StudyForm({ scopes, handleChange }) {
   const { t } = useTranslation('common');
   const onSend = (e) => {
     e.preventDefault();
@@ -18,7 +18,7 @@ export default function ProfessionForm({ scopes, handleChange }) {
         trigger={(open) => (
           <button
             type="button"
-            className={`h-10 items-center flex justify-between px-3 rounded-lg ${
+            className={`h-10 items-center flex justify-between px-3 rounded-lg min-w-[215px] ${
               open ? 'bg-white ring ring-green-500' : 'bg-gray-mid/10 '
             }`}
           >

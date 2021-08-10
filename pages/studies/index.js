@@ -5,33 +5,38 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { NextSeo } from 'next-seo';
 import { useState } from 'react';
 import BreadCrumbs from '../../components/common/BreadCrumbs';
-import CategoryWithHeart from '../../components/common/CategoryWithHeart';
+import CheckboxGroup from '../../components/common/CheckboxGroup';
+import CompareDropdown from '../../components/stuides/CompareDropdown';
+import StudiesHeader from '../../components/stuides/StudiesHeader';
+import StudyForm from '../../components/stuides/StudyForm';
+import StudyList from '../../components/stuides/StudyList';
+import useForm from '../../src/hooks/useForm';
 import useProfile from '../../src/hooks/useProfile';
 import VendorAPI from '../../src/services/vendor.service';
 import { getUserSession } from '../../src/utils/getUser';
 import { seoMerge } from '../../src/utils/next-seo.config';
-import CompareDropdown from '../../components/common/study/CompareDropdown';
-import StudyForm from '../../components/common/study/StudyForm';
-import CheckboxGroup from '../../components/common/CheckboxGroup';
-import { DASHBOARD_TYPE_CATEGORY } from '../../src/utils/consts';
-import { setLs } from '../../src/utils/localStorge';
-import useForm from '../../src/hooks/useForm';
-import NoStudyEmpty from '../../components/profile/NoStudyEmpty';
 
-export default function Studies({ additionalStudies, num = 3, user }) {
-  const seo = seoMerge({
-    title: 'זירת הלימודים',
-  });
+const seo = seoMerge({
+  title: 'זירת הלימודים',
+});
+export default function Studies({ myStudies, user, scopes }) {
+  const [loader, setLoader] = useState(false);
+  const [studies, setstudies] = useState(myStudies);
+  const [allStudies, setAllstudies] = useState(null);
   const { t } = useTranslation('common');
   useProfile();
   const categoryGroups = [
-    { name: t('הכל'), id: 1 },
-    { name: t('הכי מתאים'), id: 2 },
+    { name: t('הכל'), id: 0 },
+    { name: t('הכי מתאים'), id: 1 },
   ];
-  const [categoryType, setcategoryType] = useState(categoryGroups[0]);
-  const [, setcurrentCategory] = useState(null);
-  const onChangeCategoryList = (catData) => {
-    setcurrentCategory(catData.id);
+  const [categoryType, setcategoryType] = useState(categoryGroups[1]);
+
+  const fetchAllStuides = async () => {
+    // TODO: should be uppon filter
+    setLoader(true);
+    const { data } = await VendorAPI.getCategorys(user.token, 'studies');
+    setAllstudies(data);
+    setLoader(false);
   };
 
   const { inputs, handleChange } = useForm({
@@ -40,24 +45,18 @@ export default function Studies({ additionalStudies, num = 3, user }) {
     path: null,
   });
   const onChange = (id) => {
-    const newCategory = categoryGroups.find((c) => c.id === id);
-    setLs(DASHBOARD_TYPE_CATEGORY, newCategory);
-    setcategoryType(newCategory);
-    onChangeCategoryList(newCategory);
+    const cat = categoryGroups.find((categ) => categ.id === id);
+    setcategoryType(cat);
+    if (id) {
+      setstudies(myStudies);
+      return;
+    }
+    if (!allStudies) {
+      fetchAllStuides();
+      return;
+    }
+    setAllstudies(allStudies);
   };
-
-  const studyList = additionalStudies.map((study) => (
-    <CategoryWithHeart
-      key={study.id}
-      value={study.title}
-      isButton
-      description={study.description}
-      id={study.id}
-      type="studies"
-      company={study.company}
-      className="px-0 "
-    />
-  ));
   const [comparedCategorys, setComparedCategorys] = useState('');
   const filteredCategories = async (dataToSend) => {
     setComparedCategorys(await VendorAPI.fetchComparedCategorys(user.token, dataToSend, 'studies'));
@@ -68,41 +67,27 @@ export default function Studies({ additionalStudies, num = 3, user }) {
       <NextSeo {...seo} />
       <section className="professions">
         <BreadCrumbs breadCrumbs={[{ title: t('לימודים'), href: '/studies' }]} />
-        <div className="grid grid-cols-none ml-3">
-          <div>
-            <div className="flex">
-              <h1 className="text-black text-3xl font-black">{t('מאגר לימודים')}</h1>
-              <div className="flex self-center bg-orange rounded-lg py-2 px-8 h-9 text-white text-[22px] font-bold leading-6 mr-9">
-                <p>{t(`נמצאו לך ${num} מקצועות שיתאימו לך`)}</p>
-                <div className="relative smallpop w-4 h-4 border-solid border-white-active border-2 rounded-full font-small  text-white text-xs mr-4 hover:bg-gradient-2 inline-block text-center">
-                  ?
-                </div>
-              </div>
-            </div>
-            <p className="max-w-4xl my-5">
-              {t(
-                ' כאן תוכלו לקרוא על מקצועות ותפקידים שיכולים להתאים לכם או שמעניינים אתכם לקרוא עליהם. מאיה מציגה בפניכם את המקצועות המתאימים ביותר. השתמשו במסננים לקריאה על מקצועות נוספים.'
-              )}
-            </p>
-          </div>
-          <div className="grid grid-cols-5 gap-x-4 relative">
-            <StudyForm handleChange={handleChange} />
-
+        <div
+          className={`grid grid-cols-none ml-3 transition ${loader ? 'opacity-40' : 'opacity-100'}`}
+        >
+          <StudiesHeader num={myStudies.length} />
+          <div className="flex gap-x-4 relative">
+            <StudyForm handleChange={handleChange} scopes={scopes} />
             <div className="flex items-center">
               <CompareDropdown
                 comparedCategorys={comparedCategorys}
                 filteredCategories={filteredCategories}
                 topIputs={inputs}
                 //לבנתיים//
-                additionalStudies={additionalStudies}
+                additionalStudies={[]}
               />
             </div>
-            <div className="checkbox-container">
+            <div className=" mr-auto">
               <CheckboxGroup checks={categoryGroups} onChange={onChange} checkType={categoryType} />
             </div>
           </div>
-          <hr className="mainProfessionsDash my-5" />
-          <div className="grid grid-cols-3 gap-2">{studyList || <NoStudyEmpty />}</div>
+          <hr className="border-dashed my-4" />
+          <StudyList studies={studies} />
         </div>
       </section>
     </>
@@ -111,7 +96,10 @@ export default function Studies({ additionalStudies, num = 3, user }) {
 
 export async function getServerSideProps(req) {
   const [user, token] = getUserSession(req);
-  const { data: additionalStudies } = await VendorAPI.getCategorys(token, 'studies');
+  // const { data: additionalStudies } = await VendorAPI.getCategorys(token, 'studies');
+  const { data: myStudies } = await VendorAPI.getCategorys(token, 'studies', { byUser: true });
+  const { data: scopes } = await VendorAPI.getScopes(token);
+
   if (user.redirect) return user;
   const locale = `he${user.gender}`;
   // Here you can add more data
@@ -119,7 +107,8 @@ export async function getServerSideProps(req) {
     props: {
       ...(await serverSideTranslations(locale, ['common', 'studies'])),
       user,
-      additionalStudies,
+      myStudies,
+      scopes,
     },
   };
 }
