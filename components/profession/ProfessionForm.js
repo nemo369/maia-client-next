@@ -2,6 +2,7 @@
 import { useTranslation } from 'next-i18next';
 import React from 'react';
 import Popup from 'reactjs-popup';
+import Scope from '../common/Scope';
 import Arrow from '../svg/Arrow';
 
 export default function ProfessionForm({ scopes, handleChange }) {
@@ -61,22 +62,6 @@ export default function ProfessionForm({ scopes, handleChange }) {
           </div>
         </form>
       </Popup>
-      {/* <Select
-        aria-label="תחום"
-        label="תחום"
-        className="flex-grow "
-        placeholder={t('תחום')}
-        name="path"
-        onChange={(e) => handleSelectCahnge({ value: e.target, name: 'scope' })}
-        options={scopes}
-        styles={customStyles}
-      /> */}
     </>
   );
 }
-const Scope = ({ scope }) => (
-  <label className="flex gap-x-2 mb-3">
-    <input type="checkbox" name={scope.value} value={scope.value} />
-    <span>{scope.label}</span>
-  </label>
-);

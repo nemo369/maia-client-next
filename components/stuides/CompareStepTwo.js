@@ -1,9 +1,9 @@
 import { useTranslation } from 'next-i18next';
-import Button from '../Button';
-import PrinterGreySmall from '../../svg/PrinterGreySmall';
-import MailGreySmall from '../../svg/MailGreySmall';
-import Xcircle from '../../svg/Xcircle';
-import JustHeart from '../JustHeart';
+import Button from '../common/Button';
+import PrinterGreySmall from '../svg/PrinterGreySmall';
+import MailGreySmall from '../svg/MailGreySmall';
+import Xcircle from '../svg/Xcircle';
+import JustHeart from '../common/JustHeart';
 
 const CompareStepTwo = ({ setOpen, open, setCompare, compare }) => {
   const { t } = useTranslation('common');

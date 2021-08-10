@@ -1,6 +1,6 @@
 import { useState } from 'react';
 // import useFormStudy from '../../../src/hooks/useFormStudy';
-import useFormStudyInner from '../../../src/hooks/useFormStudyInner';
+import useFormStudyInner from '../../src/hooks/useFormStudyInner';
 import CompareStepTwo from './CompareStepTwo';
 import CompareStepOne from './CompareStepOne';
 

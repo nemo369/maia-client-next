@@ -1,8 +1,8 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 import React from 'react';
-import SmallBrain from '../../svg/SmallBrain';
-import PencileGeomitry from '../../svg/PencileGeomitry';
-import Books from '../../svg/Books';
+import SmallBrain from '../svg/SmallBrain';
+import PencileGeomitry from '../svg/PencileGeomitry';
+import Books from '../svg/Books';
 
 export default function StudyMoreInfo({ study }) {
   return (

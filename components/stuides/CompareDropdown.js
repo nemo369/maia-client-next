@@ -1,11 +1,11 @@
 import { useTranslation } from 'next-i18next';
 import { useState } from 'react';
-import useFormStudy from '../../../src/hooks/useFormStudy';
-import Group4 from '../../svg/Group4';
-import Button from '../Button';
-import Check from '../Check';
-import PopSide from '../PopSide';
-import { StudyData } from '../StudyData';
+import useFormStudy from '../../src/hooks/useFormStudy';
+import Group4 from '../svg/Group4';
+import Button from '../common/Button';
+import Check from '../common/Check';
+import PopSide from '../common/PopSide';
+import { studyData, areaData } from '../../src/utils/StudyData';
 import CompareSidePop from './CompareSidePop';
 
 const CompareDropdown = (props) => {
@@ -20,7 +20,6 @@ const CompareDropdown = (props) => {
     area: '',
   });
   const [open, setOpen] = useState(false);
-  const { studyData, areaData } = StudyData();
   const [group4fill, setGroup4fill] = useState(false);
 
   const handleSubmit = async (e) => {
