@@ -65,6 +65,7 @@ const RegisterForm = ({ cities, termsText }) => {
 
     const dataToSend = {
       ...inputs,
+      cellphone: inputs.cellphone.replace(/-/g, ''),
       city: theStreet ? JSON.stringify(cityData) : null,
       street: theStreet ? JSON.stringify(theStreet) : null,
       username: inputs.email,

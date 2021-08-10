@@ -18,12 +18,13 @@ function LoginWithPhone(props) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError(false);
-    if (!cellNumber || !validatePhoneNumber(cellNumber)) {
+    const digitsPhoneNum = cellNumber.replace(/-/g, '');
+    if (!digitsPhoneNum || !validatePhoneNumber(digitsPhoneNum)) {
       setError('מספר לא תקין');
       return;
     }
     setLoader(true);
-    const { data, status } = await UserAPI.magicLogin({ phone: cellNumber, type: 'phone' });
+    const { data, status } = await UserAPI.magicLogin({ phone: digitsPhoneNum, type: 'phone' });
     setLoader(false);
     if (200 !== status || !data.data.message) {
       setError('נייד לא תקין');
@@ -31,7 +32,7 @@ function LoginWithPhone(props) {
     } else {
       setPopup(data.data.message);
     }
-    setCell(cellNumber);
+    setCell(digitsPhoneNum);
   };
   return (
     <div className="mb-auto">
