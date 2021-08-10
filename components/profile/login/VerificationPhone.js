@@ -27,8 +27,8 @@ const VerificationPhone = (props) => {
     return phoneNumberString;
   }
   const reSend = async () => {
-    const { data, status } = await UserAPI.magicLogin({ phone: cell, type: 'phone' });
-    console.log(data, status);
+    // const { data, status } = await UserAPI.magicLogin({ phone: cell, type: 'phone' });
+    await UserAPI.magicLogin({ phone: cell, type: 'phone' });
   };
   const handleSumbit = async () => {
     setLoader(true);

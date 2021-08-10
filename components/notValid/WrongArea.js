@@ -17,9 +17,9 @@ function WrongArea({ fullname, location, email }) {
     e.preventDefault();
     setLoader(true);
 
-    const dataToSend = {
-      ...inputs,
-    };
+    // const dataToSend = {
+    //   ...inputs,
+    // };
 
     // const { data, status } = await UserAPI.register(dataToSend);
     // if (200 !== status) {
@@ -27,7 +27,7 @@ function WrongArea({ fullname, location, email }) {
     // }
 
     // if (200 === status) {
-    //   resetForm();
+    resetForm();
     // //   router.push('/user/login?error="200"'); // TODO: go to last page user visited
     // }
   };
