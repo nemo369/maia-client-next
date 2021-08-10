@@ -6,6 +6,7 @@ import BreadCrumbs from '../../components/common/BreadCrumbs';
 import CheckboxGroup from '../../components/common/CheckboxGroup';
 import ProfessionForm from '../../components/profession/ProfessionForm';
 import ProfessionList from '../../components/profession/ProfessionList';
+import ProfessionsHeader from '../../components/profession/ProfessionsHeader';
 import { AppContext } from '../../src/context/state';
 import useProfile from '../../src/hooks/useProfile';
 import VendorAPI from '../../src/services/vendor.service';
@@ -54,24 +55,7 @@ export default function Professions({ allProfessions }) {
       <section className="professions">
         <BreadCrumbs breadCrumbs={[{ title: t('מקצועות'), href: '/professions' }]} />
         <div className="grid grid-cols-none ml-3">
-          <div>
-            <div className="flex">
-              <h1 className="text-black text-3xl font-black">{t('זירת המקצוענות')}</h1>
-              {myProfessions?.length && (
-                <div className="flex self-center bg-orange rounded-lg py-2 px-8 h-9 text-white text-[22px] font-bold leading-6 mr-9">
-                  <p>{t(`נמצאו לך ${myProfessions.length} מקצועות שיתאימו לך`)}</p>
-                  <div className="relative smallpop w-4 h-4 border-solid border-white-active border-2 rounded-full font-small  text-white text-xs mr-4 hover:bg-gradient-2 inline-block text-center">
-                    ?
-                  </div>
-                </div>
-              )}
-            </div>
-            <p className="max-w-4xl my-5">
-              {t(
-                'כאן תוכלו לקרוא על מקצועות ותפקידים שיכולים להתאים לכם או שמעניינים אתכם לקרוא עליהם. מאיה מציגה בפניכם את המקצועות המתאימים ביותר. השתמשו במסננים לקריאה על מקצועות נוספים.'
-              )}
-            </p>
-          </div>
+          <ProfessionsHeader myProfessions={myProfessions} />
           <div className="grid grid-cols-2 gap-x-1  ">
             <div className="grid grid-cols-2 gap-x-1">
               <ProfessionForm />

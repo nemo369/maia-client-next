@@ -14,9 +14,12 @@ export default async function proxy(req, res) {
           headers: { authorization },
         })
         .then(({ data }) => {
+          // console.log(data);
           res.status(200).json({ data });
         })
         .catch(({ response }) => {
+          // console.log(response);
+
           if ([401, 403].includes(response?.status)) {
             res.writeHead(307, { Location: `/user/login?error=${response.status}` });
             res.end();
@@ -31,9 +34,11 @@ export default async function proxy(req, res) {
           headers: { authorization },
         })
         .then(({ data }) => {
+          // console.log(data);
           res.status(200).json({ data });
         })
         .catch((err) => {
+          // console.log(err);
           if (!err) {
             res.status(500).json('Server Error');
           }
