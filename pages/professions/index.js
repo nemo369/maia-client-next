@@ -13,8 +13,21 @@ import VendorAPI from '../../src/services/vendor.service';
 import { getUserSession } from '../../src/utils/getUser';
 import { seoMerge } from '../../src/utils/next-seo.config';
 
-export default function Professions({ allProfessions }) {
+export default function Professions({ allProfessions, scopes }) {
   const { user } = useContext(AppContext);
+
+  const [loader, setloader] = useState(true);
+  const [professions, setProfessions] = useState([]);
+  const setQuery = async (query) => {
+    if (!query.length) {
+      setProfessions(allProfessions);
+      return;
+    }
+    setloader(true);
+    const { data } = await VendorAPI.getCategorys(user.token, 'professions', { scopes: query });
+    setProfessions(data);
+    setloader(false);
+  };
 
   const seo = seoMerge({
     title: 'זירת המקצועות',
@@ -27,18 +40,18 @@ export default function Professions({ allProfessions }) {
     { name: t('הכי מתאים'), id: 1 },
   ];
 
-  const [categoryType, setcategoryType] = useState(categoryGroups[0]);
+  const [categoryType, setcategoryType] = useState(categoryGroups[1]);
 
-  const [professions, setProfessions] = useState([]);
   const [myProfessions, setMyProfessions] = useState([]);
   useEffect(() => {
-    const { data } = VendorAPI.getCategorys(user.token, 'professions', { byUser: true });
-    setMyProfessions(data);
+    const fetchCat = async () => {
+      const { data } = await VendorAPI.getCategorys(user.token, 'professions', { byUser: true });
+      setMyProfessions(data);
+      setProfessions(data);
+      setloader(false);
+    };
+    fetchCat();
   }, []);
-  useEffect(() => {
-    setProfessions(allProfessions);
-  }, [allProfessions]);
-
   const onChange = (id) => {
     const cat = categoryGroups.find((categ) => categ.id === id);
     setcategoryType(cat);
@@ -54,11 +67,13 @@ export default function Professions({ allProfessions }) {
       <NextSeo {...seo} />
       <section className="professions">
         <BreadCrumbs breadCrumbs={[{ title: t('מקצועות'), href: '/professions' }]} />
-        <div className="grid grid-cols-none ml-3">
+        <div
+          className={`grid grid-cols-none ml-3 transition ${loader ? 'opacity-30' : 'opacity-100'}`}
+        >
           <ProfessionsHeader myProfessions={myProfessions} />
-          <div className="grid grid-cols-2 gap-x-1  ">
+          <div className="grid grid-cols-2 gap-x-1 transition">
             <div className="grid grid-cols-2 gap-x-1">
-              <ProfessionForm />
+              <ProfessionForm scopes={scopes} handleChange={setQuery} />
             </div>
             <div className="justify-self-end">
               <CheckboxGroup checks={categoryGroups} onChange={onChange} checkType={categoryType} />
@@ -76,13 +91,16 @@ export async function getServerSideProps(req) {
   const [user, token] = getUserSession(req);
   if (user.redirect) return user;
   const { data: professions } = await VendorAPI.getCategorys(token, 'professions');
+  const { data: scopes } = await VendorAPI.getScopes(token);
   const locale = `he${user.gender}`;
+
   // Here you can add more data
   return {
     props: {
       ...(await serverSideTranslations(locale, ['common', 'professions'])),
       user,
       allProfessions: professions,
+      scopes,
     },
   };
 }

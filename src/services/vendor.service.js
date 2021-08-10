@@ -4,6 +4,19 @@ import { FRONT_URL } from '../utils/consts';
 const API_URL = `${FRONT_URL}`;
 
 const VendorAPI = {
+  getScopes: async (token) => {
+    try {
+      const { data } = await axios.get(`${API_URL}/vendor/scopes`, {
+        headers: {
+          'Content-type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      return data;
+    } catch (error) {
+      return { data: [] };
+    }
+  },
   getCategorys: async (token, type, query = {}) => {
     const defualtQuery = {
       byUser: false,
