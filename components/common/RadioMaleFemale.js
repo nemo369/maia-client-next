@@ -1,18 +1,16 @@
 import React from 'react';
 
-export default function RadioMaleFemale({ className, initialValue }) {
-  const handleSelectCahnge = ({ value }) => value.value;
+export default function RadioMaleFemale({ className, value, onChange }) {
   return (
     <div className={`${className} flex`}>
       <div className="flex">
         <input
           type="radio"
-          value="m"
+          value={value}
           name="gender"
           id="male"
-          onChange={(e) => handleSelectCahnge({ value: e.target })}
-          required
-          defaultChecked={'m' === initialValue}
+          onChange={onChange}
+          checked={'m' === value}
         />
         <label className="radio-label ml-3" htmlFor="male">
           זכר
@@ -21,12 +19,11 @@ export default function RadioMaleFemale({ className, initialValue }) {
       <div className="flex">
         <input
           type="radio"
-          value="f"
+          value={value}
           name="gender"
           id="female"
-          required
-          onChange={(e) => handleSelectCahnge({ value: e.target })}
-          defaultChecked={'f' === initialValue}
+          checked={'f' === value}
+          onChange={onChange}
         />
         <label className="radio-label ml-3" htmlFor="female">
           נקבה

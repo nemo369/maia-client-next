@@ -18,22 +18,25 @@ export default function ProfileDetails() {
     first_name: profile.first_name,
     last_name: profile.last_name,
     age: profile.age,
+    gender: profile.gender,
   });
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log(inputs);
   };
   const editInfo = async () => {
     setIsDiabled(true);
     const { data, status } = await ProfileAPI.updateProfile(user.token, inputs);
-    console.log(data);
     if (200 === status && data?.updated_profile) {
       dispatch({ type: SET_PROFILE, profile: data.updated_profile });
     } else {
       resetForm();
     }
     setIsDiabled(false);
+  };
+  const handleRadioChange = (e) => {
+    // handleChange(e);
+    // editInfo();
   };
   const tooltipSendedJobs = `<span>סגירת מצב ״מחפש עבודה״ תציג אותך במצב לא פעיל אצל
   <br /> המעסקים שאליהם שלחת בקשה והם לא יכולו לראות את <br /> פרטיך האישיים.</span>`;
@@ -114,7 +117,7 @@ export default function ProfileDetails() {
               disabled={isDisabled}
             />
             <div className="flex items-center justify-between w-[365px]">
-              {/* <RadioMaleFemale initialValue={profile.gender} /> */}
+              <RadioMaleFemale name="gender" onChange={handleRadioChange} value={inputs.gender} />
             </div>
             <div className="flex justify-between w-[345px] my-[5px]">
               <Check content="אני מאשר/ת ליועץ/ת לצפות בפרטים שלי" />
