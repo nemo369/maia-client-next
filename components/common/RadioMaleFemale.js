@@ -3,32 +3,32 @@ import React from 'react';
 export default function RadioMaleFemale({ className, value, onChange }) {
   return (
     <div className={`${className} flex`}>
-      <div className="flex">
+      <label className="flex">
         <input
           type="radio"
-          value={value}
+          value="m"
           name="gender"
           id="male"
           onChange={onChange}
           checked={'m' === value}
         />
-        <label className="radio-label ml-3" htmlFor="male">
+        <span className="radio-label ml-3" htmlFor="male">
           זכר
-        </label>
-      </div>
-      <div className="flex">
+        </span>
+      </label>
+      <label className="flex">
         <input
           type="radio"
-          value={value}
+          value="f"
           name="gender"
           id="female"
           checked={'f' === value}
           onChange={onChange}
         />
-        <label className="radio-label ml-3" htmlFor="female">
+        <span className="radio-label ml-3" htmlFor="female">
           נקבה
-        </label>
-      </div>
+        </span>
+      </label>
     </div>
   );
 }

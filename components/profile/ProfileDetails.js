@@ -26,7 +26,10 @@ export default function ProfileDetails() {
   };
   const editInfo = async () => {
     setIsDiabled(true);
-    const { data, status } = await ProfileAPI.updateProfile(user.token, inputs);
+    const { data, status } = await ProfileAPI.updateProfile(user.token, {
+      ...inputs,
+      gender: document.querySelector('#female').checked ? 'f' : 'm',
+    });
     if (200 === status && data?.updated_profile) {
       dispatch({ type: SET_PROFILE, profile: data.updated_profile });
     } else {
@@ -35,8 +38,8 @@ export default function ProfileDetails() {
     setIsDiabled(false);
   };
   const handleRadioChange = (e) => {
-    // handleChange(e);
-    // editInfo();
+    handleChange(e);
+    editInfo();
   };
   const tooltipSendedJobs = `<span>סגירת מצב ״מחפש עבודה״ תציג אותך במצב לא פעיל אצל
   <br /> המעסקים שאליהם שלחת בקשה והם לא יכולו לראות את <br /> פרטיך האישיים.</span>`;

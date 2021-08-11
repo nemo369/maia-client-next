@@ -25,6 +25,11 @@ export default function useForm(initial = {}) {
     if ('checkbox' === type) {
       value = !!value;
     }
+    if ('radio' === type) {
+      console.log(name);
+      console.log(value);
+      // value = !!value;
+    }
 
     setInputs({
       // copy the existing state
