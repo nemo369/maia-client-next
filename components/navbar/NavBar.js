@@ -16,7 +16,7 @@ import LinkButton from './LinkButton';
 
 const NavBar = () => {
   const { pathname } = useRouter();
-  const { user, dispatch, notifications } = useContext(AppContext);
+  const { user, dispatch, notifications, profile } = useContext(AppContext);
   const { t } = useTranslation('common');
   const links = [
     { href: '/', name: t('ראשי'), icon: <LightBulb /> },
@@ -51,7 +51,9 @@ const NavBar = () => {
                 {'m' === user?.gender ? <MalePic /> : <FemalePic />}
               </div>
               <div className="w-full  nav-profile-img-text text-lg text-white leading-[18px] text-center pt-1 mt-1 font-bold">
-                {user?.displayName}
+                {profile?.first_name}
+                &nbsp;
+                {profile?.last_name}
               </div>
             </a>
           </Link>

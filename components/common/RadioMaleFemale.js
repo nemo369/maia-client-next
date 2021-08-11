@@ -32,20 +32,6 @@ export default function RadioMaleFemale({ className, initialValue }) {
           נקבה
         </label>
       </div>
-      <div className="flex">
-        <input
-          type="radio"
-          value="o"
-          name="gender"
-          id="other"
-          required
-          onChange={(e) => handleSelectCahnge({ value: e.target })}
-          defaultChecked={'o' === initialValue}
-        />
-        <label className="radio-label ml-3" htmlFor="other">
-          אחר
-        </label>
-      </div>
     </div>
   );
 }

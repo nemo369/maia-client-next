@@ -1,5 +1,6 @@
 /* eslint-disable prettier/prettier */
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { AppContext } from '../../src/context/state';
 import Check from '../common/Check';
 import Toggle from '../common/Toggle';
 import Tooltip from '../common/Tooltip';
@@ -21,6 +22,9 @@ export default function ProfileInfo() {
   const onIsChecked = () => {
     setLookingForJob(!lookingForJob);
   };
+
+  const { profile } = useContext(AppContext);
+
   return (
     <div className="h-[825px] w-[430px] bg-white rounded-[20px]">
       <span className="relative top-[-80px] right-[300px]">
@@ -40,7 +44,7 @@ export default function ProfileInfo() {
           <br />
           בצורה אידאלית עבורך :)
         </div>
-        <ProfileDetails />
+        {profile && <ProfileDetails /> }
         <div className="bg-[#979797] opacity-20 mx-8 h-[1px]" />
         <div className="flex justify-between items-center mb-[15px] mt-6 px-[30px]">
           <div className="flex items-center">

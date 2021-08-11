@@ -1,15 +1,7 @@
 import React from 'react';
 
-export default function Inputs({
-  placeholder,
-  type,
-  className,
-  status,
-  onChange,
-  value,
-  required,
-  disabled,
-}) {
+export default function Inputs(props) {
+  const { status, className, placeholder } = props;
   let classes = '';
   switch (status) {
     case 'main':
@@ -30,13 +22,9 @@ export default function Inputs({
         {placeholder}
       </label>
       <input
+        {...props}
         id={placeholder}
-        required={required}
         placeholder={placeholder}
-        value={value}
-        onChange={onChange}
-        type={type}
-        disabled={disabled}
         className={`rounded outline-none text-lg p-5 focus:ring-2 
         ${classes} ${className}`}
       />

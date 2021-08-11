@@ -6,44 +6,77 @@ import { AppContext } from '../../src/context/state';
 import Check from '../common/Check';
 import Tooltip from '../common/Tooltip';
 import EditInfo from '../svg/EditInfo';
+import useForm from '../../src/hooks/useForm';
+import ProfileAPI from '../../src/services/profile.service';
+import { SET_PROFILE } from '../../src/context/appReducer';
 
 export default function ProfileDetails() {
-  const { profile } = useContext(AppContext);
+  const { profile, user, dispatch } = useContext(AppContext);
   const [isOpen, setIsOpen] = useState(false);
-  const [isDisabled, setIsDiabled] = useState(true);
-  const toggleInfo = () => {
-    setIsOpen(!isOpen);
-  };
+  const [isDisabled, setIsDiabled] = useState(false);
+  const { inputs, handleChange, resetForm } = useForm({
+    first_name: profile.first_name,
+    last_name: profile.last_name,
+    age: profile.age,
+  });
 
-  const editInfo = () => {
-    setIsDiabled(!isDisabled);
+  const onSubmit = (e) => {
+    e.preventDefault();
+    console.log(inputs);
   };
-
+  const editInfo = async () => {
+    setIsDiabled(true);
+    const { data, status } = await ProfileAPI.updateProfile(user.token, inputs);
+    console.log(data);
+    if (200 === status && data?.updated_profile) {
+      dispatch({ type: SET_PROFILE, profile: data.updated_profile });
+    } else {
+      resetForm();
+    }
+    setIsDiabled(false);
+  };
   const tooltipSendedJobs = `<span>סגירת מצב ״מחפש עבודה״ תציג אותך במצב לא פעיל אצל
   <br /> המעסקים שאליהם שלחת בקשה והם לא יכולו לראות את <br /> פרטיך האישיים.</span>`;
 
   return (
     <div>
-      <div className="flex justify-between my-[10px] mx-[30px]">
+      <button
+        className="flex justify-between my-[10px] mx-[30px] focus:outline-none w-full pl-16"
+        onClick={() => setIsOpen(!isOpen)}
+        type="button"
+      >
         <div className="text-gray text-[19px] font-bold">פרטים אישיים</div>
-        <button className="focus:outline-none" onClick={toggleInfo} type="button">
-          <div className={isOpen && 'rotate-180'}>
-            <Arrow />
-          </div>
-        </button>
-      </div>
+        <div className={`transition ${isOpen ? 'rotate-180' : 'rotate-0'}`}>
+          <Arrow />
+        </div>
+      </button>
       {isOpen && (
-        <div className="absolute bg-white z-10 w-full">
+        <form className="absolute bg-white z-10 w-full" onSubmit={onSubmit}>
           <div className="flex flex-col items-center">
             <Inputs
+              onChange={handleChange}
+              onBlur={editInfo}
               type="text"
-              status="main"
               className={`profile-inputs ${isDisabled ? 'text-[#717171]' : ''}`}
-              placeholder="שם"
-              value={profile.display_name}
+              placeholder="שם פרטי"
+              status="main"
+              value={inputs.first_name}
+              name="first_name"
               disabled={isDisabled}
             />
             <Inputs
+              onChange={handleChange}
+              onBlur={editInfo}
+              type="text"
+              className={`profile-inputs ${isDisabled ? 'text-[#717171]' : ''}`}
+              placeholder="שם משפחה"
+              status="main"
+              value={inputs.last_name}
+              name="last_name"
+              disabled={isDisabled}
+            />
+            <Inputs
+              onChange={handleChange}
               type="tel"
               status="main"
               className="profile-inputs text-[#717171]"
@@ -56,10 +89,12 @@ export default function ProfileDetails() {
               status="main"
               className="profile-inputs text-[#717171]"
               placeholder="מייל"
+              onChange={handleChange}
               value={profile.user_email}
               disabled
             />
             <Inputs
+              onChange={handleChange}
               type="text"
               status="main"
               className={`profile-inputs ${isDisabled ? 'text-[#717171]' : ''}`}
@@ -69,22 +104,17 @@ export default function ProfileDetails() {
             />
             <Inputs
               type="text"
+              onBlur={editInfo}
+              onChange={handleChange}
               status="main"
+              placeholder="גיל"
               className={`profile-inputs ${isDisabled ? 'text-[#717171]' : ''}`}
-              placeholder="שפת אם"
-              value="עברית"
+              value={inputs.age}
+              name="age"
               disabled={isDisabled}
             />
             <div className="flex items-center justify-between w-[365px]">
-              <Inputs
-                type="text"
-                status="main"
-                placeholder="גיל"
-                className={`profile-inputs ${isDisabled ? 'text-[#717171]' : ''}`}
-                value={profile.age}
-                disabled={isDisabled}
-              />
-              <RadioMaleFemale initialValue={profile.gender} />
+              {/* <RadioMaleFemale initialValue={profile.gender} /> */}
             </div>
             <div className="flex justify-between w-[345px] my-[5px]">
               <Check content="אני מאשר/ת ליועץ/ת לצפות בפרטים שלי" />
@@ -101,16 +131,12 @@ export default function ProfileDetails() {
             <div className="dash w-[365px] border-b-[2px] border-dashed border-[#979797] opacity-20 h-1" />
             <div className="my-[15px] flex w-[365px] justify-between">
               <div className="text-[#666666] text-[18px]">עריכת פרטי שאלון אוטוביוגרפיה</div>
-              <button
-                className="opacity-50 focus:outline-none hover:opacity-100"
-                onClick={editInfo}
-                type="button"
-              >
+              <a className="opacity-50 focus:outline-none hover:opacity-100" herf="#">
                 <EditInfo />
-              </button>
+              </a>
             </div>
           </div>
-        </div>
+        </form>
       )}
     </div>
   );
