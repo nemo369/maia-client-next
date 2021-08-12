@@ -18,6 +18,24 @@ const ProfileAPI = {
       return { data: null, status: 500 };
     }
   },
+  updateProfile: async (token, profile) => {
+    try {
+      const { data, status } = await axios.put(
+        `${API_URL}/profile`,
+        { profile },
+        {
+          headers: {
+            'Content-type': 'application/json',
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      return { ...data, status };
+    } catch (error) {
+      // console.log(error);
+      return { data: null, status: 500 };
+    }
+  },
 };
 
 export default ProfileAPI;

@@ -96,10 +96,10 @@ export default function Studies({ myStudies, user, scopes }) {
 
 export async function getServerSideProps(req) {
   const [user, token] = getUserSession(req);
-  // const { data: additionalStudies } = await VendorAPI.getCategorys(token, 'studies');
-  const { data: myStudies } = await VendorAPI.getCategorys(token, 'studies', { byUser: true });
-  const { data: scopes } = await VendorAPI.getScopes(token);
-
+  const [{ data: myStudies }, { data: scopes }] = await Promise.all([
+    VendorAPI.getCategorys(token, 'studies', { byUser: true }),
+    VendorAPI.getScopes(token),
+  ]);
   if (user.redirect) return user;
   const locale = `he${user.gender}`;
   // Here you can add more data

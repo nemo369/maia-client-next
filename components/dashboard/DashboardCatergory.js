@@ -31,13 +31,11 @@ function Dashboard() {
         VendorAPI.getCategorys(user.token, 'studies', { byUser: true }),
         // VendorAPI.getCategorys(user.token, 'jobs' ),
       ]);
-
       setcategories({
         professions: professions || [],
         jobs: [],
         studies: studies || [],
       });
-
       if (categories[currentCategory]) {
         setcatList([...categories[currentCategory]]);
       } else {

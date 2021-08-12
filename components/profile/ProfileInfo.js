@@ -1,16 +1,17 @@
 /* eslint-disable prettier/prettier */
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { AppContext } from '../../src/context/state';
 import Check from '../common/Check';
 import Toggle from '../common/Toggle';
 import Tooltip from '../common/Tooltip';
 import FemaleCrown from '../svg/FemaleCrown';
 import MalePic from '../svg/MalePic';
+import FemalePic from '../svg/FemalePic';
 import NeedInfo from '../svg/NeedInfo';
 import ProfileDetails from './ProfileDetails';
 import UploadedFiles from './UploadedFiles';
 
 export default function ProfileInfo() {
-  const user = { gender: 'f' };
   const [lookingForJob, setLookingForJob] = useState(false);
   const tooltipLookingForJob = '<span>סגירת מצב ״מחפש עבודה״ תציג אותך במצב לא פעיל אצל<br /> המעסקים שאליהם שלחת בקשה והם לא יכולו לראות את <br /> פרטיך האישיים.</span>';
   const tooltipSendedJobs = '<span>סגירת מצב ״מחפש עבודה״ תציג אותך במצב לא פעיל אצל<br /> המעסקים שאליהם שלחת בקשה והם לא יכולו לראות את <br /> פרטיך האישיים.</span>';
@@ -21,13 +22,31 @@ export default function ProfileInfo() {
   const onIsChecked = () => {
     setLookingForJob(!lookingForJob);
   };
+
+  const { profile } = useContext(AppContext);
+
   return (
     <div className="h-[825px] w-[430px] bg-white rounded-[20px]">
       <span className="relative top-[-80px] right-[300px]">
         <NeedInfo />
       </span>
       <div className="w-[130px] mx-auto relative bottom-[260px]">
-        {'m' === user?.gender ? <MalePic /> : <FemaleCrown />}
+        <div className="md:w-[84px]  mx-auto  h-[73px] w-10">
+          {profile?.avatar ? (
+            <div className="w-[135px] overflow-hidden rounded-full">
+              <img
+                src={profile.avatar.src}
+                widh={135}
+                height={135}
+                loading="lazy"
+                alt={profile.first_name}
+              />
+            </div>
+          ) : null}
+          {'m' === profile?.gender && !profile?.avatar && <MalePic />}
+          {'f' === profile?.gender && !profile?.avatar && <FemalePic />}
+          <FemaleCrown />
+        </div>
       </div>
       <div className="relative bottom-[250px]">
         <div className="text-orange font-bold text-[19px] text-center">
@@ -40,7 +59,7 @@ export default function ProfileInfo() {
           <br />
           בצורה אידאלית עבורך :)
         </div>
-        <ProfileDetails />
+        {profile && <ProfileDetails /> }
         <div className="bg-[#979797] opacity-20 mx-8 h-[1px]" />
         <div className="flex justify-between items-center mb-[15px] mt-6 px-[30px]">
           <div className="flex items-center">

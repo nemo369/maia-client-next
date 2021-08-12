@@ -1,51 +1,34 @@
 import React from 'react';
 
-export default function RadioMaleFemale({ className, initialValue }) {
-  const handleSelectCahnge = ({ value }) => value.value;
+export default function RadioMaleFemale({ className, value, onChange }) {
   return (
     <div className={`${className} flex`}>
-      <div className="flex">
+      <label className="flex">
         <input
           type="radio"
           value="m"
           name="gender"
           id="male"
-          onChange={(e) => handleSelectCahnge({ value: e.target })}
-          required
-          defaultChecked={'m' === initialValue}
+          onChange={onChange}
+          checked={'m' === value}
         />
-        <label className="radio-label ml-3" htmlFor="male">
+        <span className="radio-label ml-3" htmlFor="male">
           זכר
-        </label>
-      </div>
-      <div className="flex">
+        </span>
+      </label>
+      <label className="flex">
         <input
           type="radio"
           value="f"
           name="gender"
           id="female"
-          required
-          onChange={(e) => handleSelectCahnge({ value: e.target })}
-          defaultChecked={'f' === initialValue}
+          checked={'f' === value}
+          onChange={onChange}
         />
-        <label className="radio-label ml-3" htmlFor="female">
+        <span className="radio-label ml-3" htmlFor="female">
           נקבה
-        </label>
-      </div>
-      <div className="flex">
-        <input
-          type="radio"
-          value="o"
-          name="gender"
-          id="other"
-          required
-          onChange={(e) => handleSelectCahnge({ value: e.target })}
-          defaultChecked={'o' === initialValue}
-        />
-        <label className="radio-label ml-3" htmlFor="other">
-          אחר
-        </label>
-      </div>
+        </span>
+      </label>
     </div>
   );
 }
