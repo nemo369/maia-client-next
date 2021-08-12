@@ -99,9 +99,7 @@ export async function getServerSideProps(req) {
   const [{ data: myStudies }, { data: scopes }] = await Promise.all([
     VendorAPI.getCategorys(token, 'studies', { byUser: true }),
     VendorAPI.getScopes(token),
-    // VendorAPI.getCategorys(user.token, 'jobs' ),
   ]);
-  console.log(scopes);
   if (user.redirect) return user;
   const locale = `he${user.gender}`;
   // Here you can add more data
