@@ -12,7 +12,6 @@ import ProfileDetails from './ProfileDetails';
 import UploadedFiles from './UploadedFiles';
 
 export default function ProfileInfo() {
-  const user = { gender: 'f' };
   const [lookingForJob, setLookingForJob] = useState(false);
   const tooltipLookingForJob = '<span>סגירת מצב ״מחפש עבודה״ תציג אותך במצב לא פעיל אצל<br /> המעסקים שאליהם שלחת בקשה והם לא יכולו לראות את <br /> פרטיך האישיים.</span>';
   const tooltipSendedJobs = '<span>סגירת מצב ״מחפש עבודה״ תציג אותך במצב לא פעיל אצל<br /> המעסקים שאליהם שלחת בקשה והם לא יכולו לראות את <br /> פרטיך האישיים.</span>';
@@ -46,6 +45,7 @@ export default function ProfileInfo() {
           ) : null}
           {'m' === profile?.gender && !profile?.avatar && <MalePic />}
           {'f' === profile?.gender && !profile?.avatar && <FemalePic />}
+          <FemaleCrown />
         </div>
       </div>
       <div className="relative bottom-[250px]">
