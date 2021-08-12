@@ -23,6 +23,7 @@ export default function Profile({ notifications }) {
   // const [jobs, setJobs] = useState([])
   const [studies, setStudies] = useState([]);
   const [professions, setProfessions] = useState([]);
+  const [fetchOnce, setfetchOnce] = useState(false);
 
   const seo = seoMerge({
     title: t('פרופיל אישי'),
@@ -31,6 +32,7 @@ export default function Profile({ notifications }) {
   useEffect(() => {
     const fetcCategorys = async () => {
       if (!profile || !profile.professions) return;
+      if (fetchOnce) return;
       const professionsIds = profile.professions.map((profession) => +profession.id);
       const studiesIds = profile.studies.map((study) => +study.id);
       const [{ data: professionsData }, { data: studiesData }] = await Promise.all([
@@ -39,6 +41,7 @@ export default function Profile({ notifications }) {
       ]);
       setStudies(studiesData);
       setProfessions(professionsData);
+      setfetchOnce(true);
     };
     fetcCategorys();
   }, [profile, user.token]);

@@ -6,6 +6,7 @@ import Toggle from '../common/Toggle';
 import Tooltip from '../common/Tooltip';
 import FemaleCrown from '../svg/FemaleCrown';
 import MalePic from '../svg/MalePic';
+import FemalePic from '../svg/FemalePic';
 import NeedInfo from '../svg/NeedInfo';
 import ProfileDetails from './ProfileDetails';
 import UploadedFiles from './UploadedFiles';
@@ -31,7 +32,21 @@ export default function ProfileInfo() {
         <NeedInfo />
       </span>
       <div className="w-[130px] mx-auto relative bottom-[260px]">
-        {'m' === user?.gender ? <MalePic /> : <FemaleCrown />}
+        <div className="md:w-[84px]  mx-auto  h-[73px] w-10">
+          {profile?.avatar ? (
+            <div className="w-[135px] overflow-hidden rounded-full">
+              <img
+                src={profile.avatar.src}
+                widh={135}
+                height={135}
+                loading="lazy"
+                alt={profile.first_name}
+              />
+            </div>
+          ) : null}
+          {'m' === profile?.gender && !profile?.avatar && <MalePic />}
+          {'f' === profile?.gender && !profile?.avatar && <FemalePic />}
+        </div>
       </div>
       <div className="relative bottom-[250px]">
         <div className="text-orange font-bold text-[19px] text-center">

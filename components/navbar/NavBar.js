@@ -48,7 +48,19 @@ const NavBar = () => {
                 </div>
               ) : null}
               <div className="md:w-[84px]  mx-auto  h-[73px] w-10">
-                {'m' === user?.gender ? <MalePic /> : <FemalePic />}
+                {profile?.avatar ? (
+                  <div className="w-[68px] overflow-hidden rounded-full">
+                    <img
+                      src={profile.avatar.src}
+                      widh={68}
+                      height={68}
+                      loading="lazy"
+                      alt={profile.first_name}
+                    />
+                  </div>
+                ) : null}
+                {'m' === profile?.gender && !profile?.avatar && <MalePic />}
+                {'f' === profile?.gender && !profile?.avatar && <FemalePic />}
               </div>
               <div className="w-full  nav-profile-img-text text-lg text-white leading-[18px] text-center pt-1 mt-1 font-bold">
                 {profile?.first_name}
