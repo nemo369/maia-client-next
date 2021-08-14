@@ -1,4 +1,5 @@
 import axios from 'axios';
+import formidable from 'formidable';
 
 export default async function handler(req, res) {
   const { WORDPRESS_ENDPOINT } = process.env;
@@ -6,13 +7,27 @@ export default async function handler(req, res) {
   const { headers } = req;
   const authorization = headers.authorization ? headers.authorization : '';
 
+  //https://stackoverflow.com/questions/60020241/next-js-file-upload-via-api-routes-formidable-not-working
+  const promise = new Promise((resolve, reject) => {
+    const form = new formidable.IncomingForm();
+    form.uploadDir = './';
+    form.keepExtensions = true;
+    form.parse(req, (err, fields, files) => {
+      if (err) reject(err);
+      resolve({ fields, files });
+    });
+  });
+
+  const { fields, files } = await promise;
+  console.log(files);
+  console.log(fields);
   switch (method) {
     case 'POST':
       // Get data from your database
       try {
         const { data: image } = await axios.post(
           `${WORDPRESS_ENDPOINT}/wp-json/wp/v2/media`,
-          { ...req.body, ...req.files },
+          files,
           {
             headers: {
               ...headers,
@@ -46,3 +61,8 @@ export default async function handler(req, res) {
       res.status(405).end(`Method ${method} Not Allowed`);
   }
 }
+export const config = {
+  api: {
+    bodyParser: false,
+  },
+};
