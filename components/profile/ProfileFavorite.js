@@ -25,7 +25,7 @@ export default function ProfileFavorite({ studies, professions }) {
   return (
     <div className="my-[18px] h-[420px] bg-white rounded-[20px] py-[25px] px-[21px]">
       <div className="flex justify-between items-center">
-        <div className="text-black text-[28px] font-bold">המועדפים שלי</div>
+        <h2 className="text-black text-[28px] font-bold">המועדפים שלי</h2>
         <div className="flex">
           {/* <div className="ml-[6px]">
             <Select

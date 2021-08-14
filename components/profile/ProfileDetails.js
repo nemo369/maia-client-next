@@ -51,7 +51,7 @@ export default function ProfileDetails() {
         onClick={() => setIsOpen(!isOpen)}
         type="button"
       >
-        <div className="text-gray text-[19px] font-bold">פרטים אישיים</div>
+        <h2 className="text-gray text-[19px] font-bold">פרטים אישיים</h2>
         <div className={`transition ${isOpen ? 'rotate-180' : 'rotate-0'}`}>
           <Arrow />
         </div>

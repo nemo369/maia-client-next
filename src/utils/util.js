@@ -16,3 +16,22 @@ export const addOrRemove = ([...array], value) => {
   }
   return array;
 };
+
+export const getGreeting = () => {
+  const hour = new Date().getHours();
+  let greet = 'בוקר טוב';
+  switch (true) {
+    case 12 < hour && 18 > hour:
+      greet = 'צהריים טובים';
+      break;
+    case 18 < hour && 22 > hour:
+      greet = 'ערב טוב';
+      break;
+    case 22 < hour && 24 > hour:
+      greet = 'לילה טוב';
+      break;
+    default:
+      break;
+  }
+  return greet;
+};

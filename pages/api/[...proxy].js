@@ -53,7 +53,11 @@ export default async function proxy(req, res) {
       break;
     case 'PUT':
       await axios
-        .put(`${WORDPRESS_ENDPOINT}/wp-json/wp/v2${endpoint}`, req.body, { headers })
+        .put(
+          `${WORDPRESS_ENDPOINT}/wp-json/wp/v2${endpoint}`,
+          { ...req.body, ...req.files },
+          { ...headers, 'Content-Disposition': 'attachment; filename=X.jpeg' }
+        )
         .then(({ data }) => {
           res.status(200).json({ data });
         })
