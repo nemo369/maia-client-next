@@ -18,17 +18,16 @@ const ProfileAPI = {
       return { data: null, status: 500 };
     }
   },
-  updateProfileImage: async (token, formData) => {
+  updateProfileImage: async (token, formData, filename) => {
     try {
-      const { data, status } = await axios.post(`${API_URL}/media`, formData, {
+      const { data, status } = await axios.post(`${API_URL}/user/profile-pic`, formData, {
         headers: {
-          'Content-type': 'application/json',
           Authorization: `Bearer ${token}`,
-          'Content-Disposition': 'attachment; filename=X.jpeg',
+          'content-type': 'image/jpeg',
+          'content-disposition': `attachment; filename=${filename}`,
         },
       });
-
-      return { ...data, status };
+      return { data: { ...data }, status };
     } catch (error) {
       // console.log(error);
       return { data: null, status: 500 };

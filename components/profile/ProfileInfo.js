@@ -53,18 +53,22 @@ export default function ProfileInfo() {
     const formData = new FormData();
     formData.append('file', file);
     formData.append('title', profile.first_name);
-    const { data, status } = await ProfileAPI.updateProfileImage(user.token, formData);
+    formData.append('caption', `${profile.first_name} ${profile.last_name}`);
+    const { data, status } = await ProfileAPI.updateProfileImage(
+      user.token,
+      formData,
+      `${profile.first_name}_${profile.last_name}.${file.type.split('/').pop()}`
+    );
     if (200 === status && data?.updated_profile) {
-      const { newProfile } = await ProfileAPI.updateProfile(user.token, {
-        avatar: data,
-      });
-      dispatch({ type: SET_PROFILE, profile: newProfile });
+      dispatch({ type: SET_PROFILE, profile: data.updated_profile });
     }
     setLoader(false);
     setSelectedFile(null);
   };
 
   const addImage = (event) => {
+    console.log(event);
+    setSelectedFile(null);
     const [file] = event.target.files;
 
     if (!validateImage(file)) {
@@ -73,6 +77,7 @@ export default function ProfileInfo() {
     }
     setSelectedFile(file);
     updateProfle(file);
+    event.target.value = '';
   };
 
   if (!profile) return null;
@@ -134,7 +139,7 @@ export default function ProfileInfo() {
               <div dangerouslySetInnerHTML={{ __html: tooltipLookingForJob }} />
             </Tooltip>
           </div>
-          <Toggle isChecked={lookingForJob} onChange={onIsChecked} />
+          <Toggle isChecked={lookingForJob} onChange={onIsChecked} onInput={onIsChecked} />
         </div>
         <div className="px-8">
           <div className="flex justify-between mb-2">
