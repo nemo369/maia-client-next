@@ -6,7 +6,7 @@ function ProfessionList({ professions }) {
     return <NoProfession />;
   }
   return (
-    <ul className="grid grid-cols-3 gap-2">
+    <ul className="grid grid-cols-3 gap-2 pb-6">
       {professions.map((profession) => (
         <li key={profession.id} className="h-full">
           <CategoryWithHeart

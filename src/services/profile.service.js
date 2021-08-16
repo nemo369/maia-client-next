@@ -4,9 +4,9 @@ import { FRONT_URL } from '../utils/consts';
 const API_URL = `${FRONT_URL}`;
 
 const ProfileAPI = {
-  profile: async (token) => {
+  profile: async (token, query = '') => {
     try {
-      const { data, status } = await axios.get(`${API_URL}/profile`, {
+      const { data, status } = await axios.get(`${API_URL}/profile${query}`, {
         headers: {
           'Content-type': 'application/json',
           Authorization: `Bearer ${token}`,
