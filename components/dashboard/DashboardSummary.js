@@ -5,6 +5,8 @@ import Button from '../common/Button';
 import Loader from '../common/Loader';
 import PopSide from '../common/PopSide';
 import PopUp from '../common/PopUp';
+import { Case, Switch } from '../common/Switch';
+import NoInfo from './steps/NoInfo';
 
 function ReportSidePop() {
   const close = () => {
@@ -72,14 +74,16 @@ function DashboardSummary({ step }) {
       </div>
     );
   }
+  const { vendor_profile } = profile;
+
   return (
-    <div className="dashboard__summary bg-white rounded-lg py-5 px-4 flex flex-col">
-      <div>
-        <h3 className="text-xl text-gray-700">{t('סיכום תוצאות שלב')}</h3>
-        <h3 className="text-gray font-bold text-3xl mb-6">{step?.name}</h3>
-      </div>
-      <article className="flex-grow overflow-hidden">{JSON.stringify(profile)}</article>
-      <div className="flex gap-x-1 mt-6">
+    <div className="dashboard__summary bg-white rounded-lg py-5 px-4 flex flex-col max-h-[722px] overflow-auto">
+      <NoInfo />
+      <Switch test={vendor_profile}>
+        <Case value="null" />
+      </Switch>
+
+      {/* <div className="flex gap-x-1 mt-6">
         <PopSide
           trigger={
             <Button
@@ -99,7 +103,7 @@ function DashboardSummary({ step }) {
         >
           <NextStagePopUp />
         </PopUp>
-      </div>
+      </div> */}
     </div>
   );
 }

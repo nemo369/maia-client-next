@@ -135,12 +135,12 @@ export default function ProfileDetails() {
               </Tooltip>
             </div>
             <div className="dash w-[365px] border-b-[2px] border-dashed border-[#979797] opacity-20 h-1" />
-            <div className="my-[15px] flex w-[365px] justify-between">
+            <a href={profile.vendor_token} className="my-[15px] flex w-[365px] justify-between">
               <div className="text-[#666666] text-[18px]">עריכת פרטי שאלון אוטוביוגרפיה</div>
-              <a className="opacity-50 focus:outline-none hover:opacity-100" herf="#">
+              <div className="opacity-50 focus:outline-none hover:opacity-100" herf="#">
                 <EditInfo />
-              </a>
-            </div>
+              </div>
+            </a>
           </div>
         </form>
       )}

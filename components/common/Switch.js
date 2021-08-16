@@ -9,8 +9,9 @@ export const Switch = (props) => {
     }
     return value === tester;
   };
-
-  return children.find((child) => isTestPass(child.props.value, test)) || <div />;
+  return (
+    (children.find && children.find((child) => isTestPass(child.props.value, test))) || <div />
+  );
 };
 export const Case = ({ children }) => children;
 // I don't want do add container around my cases ! };

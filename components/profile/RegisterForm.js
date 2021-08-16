@@ -79,7 +79,11 @@ const RegisterForm = ({ cities, termsText }) => {
     if (200 === status) {
       // TODO: Set cookie with nookies
       resetForm();
-      router.push('/user/login?error="200"'); // TODO: go to last page user visited
+      if (data.vendor_token) {
+        window.location.href = data.vendor_token;
+      } else {
+        router.push('/user/login?error="200"'); // TODO: go to last page user visited
+      }
     }
     setLoader(false);
   };
