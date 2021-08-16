@@ -67,7 +67,6 @@ export default function ProfileInfo() {
   };
 
   const addImage = (event) => {
-    console.log(event);
     setSelectedFile(null);
     const [file] = event.target.files;
 

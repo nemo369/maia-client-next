@@ -2,7 +2,7 @@ import { useTranslation } from 'next-i18next';
 import Button from '../../common/Button';
 import Arrow from '../../svg/Arrow';
 
-function NoInfo() {
+function NoInfo({ href }) {
   const { t } = useTranslation('common');
 
   return (
@@ -14,16 +14,18 @@ function NoInfo() {
         <br />
         <strong>אבל לא לדאוג, מספיק שתשלים את השלבים הבאים ואתה מסודר :)</strong>
       </p>
-      <Button
-        className="flex justify-between px-3 text-white items-center"
-        type="button"
-        status="main"
-      >
-        <span className="mx-auto px-4">{t('השלם נתונים')}</span>
-        <span className="transform rotate-90">
-          <Arrow />
-        </span>
-      </Button>
+      <a href={href}>
+        <Button
+          className="flex justify-between px-3 text-white items-center"
+          type="button"
+          status="main"
+        >
+          <span className="mx-auto px-4">{t('השלם נתונים')}</span>
+          <span className="transform rotate-90">
+            <Arrow />
+          </span>
+        </Button>
+      </a>
     </article>
   );
 }

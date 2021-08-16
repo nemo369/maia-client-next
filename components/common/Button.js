@@ -1,4 +1,4 @@
-import { Children, forwardRef } from 'react';
+import { forwardRef } from 'react';
 
 const Button = forwardRef(({ name, onClick, type, disabled, className, status, children }, ref) => {
   let classes = '';
