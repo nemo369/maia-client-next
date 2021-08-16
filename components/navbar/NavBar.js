@@ -67,6 +67,7 @@ const NavBar = () => {
                 &nbsp;
                 {profile?.last_name}
               </div>
+              <div className="sr-only">לעמוד הפרופיל</div>
             </a>
           </Link>
         </div>

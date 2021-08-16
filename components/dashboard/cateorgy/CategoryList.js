@@ -56,7 +56,7 @@ function CategoryList({ categories, type }) {
   }
   return (
     <ul className="grid xl:grid-cols-3 grid-cols-2 gap-x-3 gap-y-4  min-h-[430px] mt-10">
-      {categories?.map((cat) => (
+      {categories.slice(0, 6).map((cat) => (
         <CategoryLi key={cat.id} cat={cat} type={type} />
       ))}
     </ul>

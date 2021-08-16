@@ -54,7 +54,7 @@ export default function Profile({ notifications }) {
       <NextSeo {...seo} />
       <div className="profile">
         <BreadCrumbs breadCrumbs={[{ title: 'משתמש', href: '/profile' }]} />
-        <div className="pofile-header text-gray-mid text-[38px] font-black">אזור אישי</div>
+        <h1 className="pofile-header text-gray-mid text-[38px] font-black">אזור אישי</h1>
         <div className="flex flex-wrap">
           <div className="profile-container flex flex-col w-[1160px] ml-5 justify-between mb-2">
             <div className="flex justify-between">

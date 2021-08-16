@@ -18,6 +18,35 @@ const ProfileAPI = {
       return { data: null, status: 500 };
     }
   },
+  updateProfileImage: async (token, formData, filename) => {
+    try {
+      const { data: image } = await axios.post(`${API_URL}/user/profile-pic`, formData, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'content-type': 'image/jpeg',
+          'content-disposition': `attachment; filename=${filename}`,
+        },
+      });
+      if (!image || !Number(image.id)) {
+        throw new Error('No image :(');
+      }
+      const newProfile = {
+        profile: {
+          avatar: Number(image.id),
+        },
+      };
+      const { data, status } = await axios.put(`${API_URL}/profile`, newProfile, {
+        headers: {
+          'Content-type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      return { ...data, status };
+    } catch (error) {
+      // console.log(error);
+      return { data: null, status: 500 };
+    }
+  },
   updateProfile: async (token, profile) => {
     try {
       const { data, status } = await axios.put(
