@@ -10,6 +10,7 @@ import { getUserSession, redirectToLogin } from '../src/utils/getUser';
 import { seoMerge } from '../src/utils/next-seo.config';
 import WalkMe from '../components/walkMe/WalkMe';
 import WMStepOne from '../components/walkMe/WMStepOne';
+import WMStepTwo from '../components/walkMe/WMStepTwo';
 
 export default function Home() {
   const { t } = useTranslation('common');
@@ -26,7 +27,8 @@ export default function Home() {
       <NextSeo {...seo} />
       {isPopUp ? (
         <WalkMe defaultOpen>
-          <WMStepOne />
+          {/* <WMStepOne /> */}
+          <WMStepTwo />
         </WalkMe>
       ) : (
         <section className="dashboard md:pl-16 md:pr-0 px-3">
