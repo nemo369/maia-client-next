@@ -1,14 +1,15 @@
 import Image from 'next/image';
-import { useState } from 'react';
+// import { useState } from 'react';
 // import LittleStar from '../LittleStar';
 import StarRating from './StarRating';
 import medalStar from '../../../public/images/medalStar.png';
 
 const StagesResultsWorkExperience = (props) => {
   const { stageData, medal } = props;
+  console.log(medal);
   const medal1 = true;
   console.log(stageData);
-  const [dummy, setDummy] = useState(true);
+  // const [dummy, setDummy] = useState(true);
   return (
     <div className="bg-[#F5F5F5] grid py-[30px] px-5 gap-y-7 max-h-[427px] overflow-scroll">
       <div className="flex border-b-2 pb-4 gap-y-[30px]">

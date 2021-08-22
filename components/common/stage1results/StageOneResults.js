@@ -1,23 +1,22 @@
 import { useState } from 'react';
 // import Button from '../Button';
 import { Case, Switch } from '../Switch';
-import CurrentEducation from './CurrentEducation';
 import EducationCurrent from './EducationCurrent';
 import Stage1middleTitles from './Stage1middleTitles';
 import StageOneTop from './StageOneTop';
 import StagesResultsWorkExperience from './StagesResultsWorkExperience';
-import WhereIWantToGo from './WhereIWantToGo';
 import WhereToGo from './WhereToGo';
 
 const StageOneResults = (props) => {
   const { stageData } = props;
   console.log(stageData);
-  const [test, setTest] = useState(false);
-  const [workExperience, setWorkExperience] = useState(true);
-  const [currentEducation, setCurrentEducation] = useState(false);
-  const [whereToGo, setWhereToGo] = useState(false);
+  // const [test, setTest] = useState(false);
+  // const [workExperience, setWorkExperience] = useState(true);
+  // const [currentEducation, setCurrentEducation] = useState(false);
+  // const [whereToGo, setWhereToGo] = useState(false);
   const [selected, setSelected] = useState('work-exprerience');
-  const [medal, setMedal] = useState(stageData?.stage1?.medal ? stageData?.stage1?.medal : false);
+  const medal = stageData?.stage1?.medal ? stageData?.stage1?.medal : false;
+  // const [medal, setMedal] = useState(stageData?.stage1?.medal ? stageData?.stage1?.medal : false);
 
   ////////////////////////////////////////////////////////
   const [jobActive, setJobActive] = useState(true);
@@ -55,7 +54,7 @@ const StageOneResults = (props) => {
   };
   return (
     <div className="stage1-wrapper grid">
-      <StageOneTop stageData={stageData} />
+      <StageOneTop close={close} stageData={stageData} />
 
       <hr className="dashed my-5" />
 

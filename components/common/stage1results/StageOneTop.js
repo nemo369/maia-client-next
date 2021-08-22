@@ -1,6 +1,6 @@
 import Button from '../Button';
 
-const StageOneTop = ({ stageData }) => (
+const StageOneTop = ({ stageData, close }) => (
   <>
     <div className="stage-top-wrapper flex justify-between">
       <button className="self-start" type="button" onClick={close}>

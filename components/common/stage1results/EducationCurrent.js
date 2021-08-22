@@ -2,7 +2,7 @@
 // import medalStar from '../../../public/images/medalStar.png';
 
 // const medal1 = true;
-const EducationCurrent = ({ changeType }) => (
+const EducationCurrent = () => (
   <div className="bg-[#F5F5F5] grid py-[30px] px-5 gap-y-7 max-h-[427px] overflow-scroll">
     {/* {medal1 ? <Image src={medalStar} alt="מדליה" width={100} height={100} /> : null} */}
     <div className="grid border-b-2 pb-4 gap-y-[30px]">

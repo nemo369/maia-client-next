@@ -1,8 +1,9 @@
-import React, { useState } from 'react'; // for create-react-app, etc
+import React from 'react'; // for create-react-app, etc
+// import React, { useState } from 'react'; // for create-react-app, etc
 
 // const { useState } = React; // for codepen, jsbin, jsfiddle etc.
 
-function Rating({ count, value, inactiveColor = '#ddd', size = 24, activeColor = '#FB9773' }) {
+function Rating({ count, value, inactiveColor = '#ddd', activeColor = '#FB9773' }) {
   // short trick
   const stars = Array.from({ length: count }, () => '🟊');
   return (
@@ -25,7 +26,8 @@ function Rating({ count, value, inactiveColor = '#ddd', size = 24, activeColor =
   );
 }
 const StarRating = () => {
-  const [rating, setRating] = useState(3);
+  // const [rating, setRating] = useState(3);
+  const rating = 3;
   return (
     <div>
       <Rating count={5} size={40} value={rating} activeColor="#FB9773" inactiveColor="#ddd" />

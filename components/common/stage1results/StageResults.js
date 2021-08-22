@@ -15,7 +15,8 @@ const StageResults = () => {
     getStages();
   }, []);
   console.log(stages);
-  const [stage1, setStage1] = useState(true);
+  // const [stage1, setStage1] = useState(true);
+  const stage1 = true;
   //   const [stage2, setStage2] = useState(false);
   //   const [stage3, setStage3] = useState(true);
   return <>{stage1 ? <StageOneResults stageData={stages} /> : <StageTwoResults />}</>;
