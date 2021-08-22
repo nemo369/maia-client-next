@@ -100,7 +100,7 @@ export async function getServerSideProps(req) {
     VendorAPI.getCategorys(token, 'studies', { byUser: true }),
     VendorAPI.getScopes(token),
   ]);
-  if (user.redirect) return user;
+  // if (user.redirect) return user;
   const locale = `he${user.gender}`;
   // Here you can add more data
   return {

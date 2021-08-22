@@ -1,6 +1,9 @@
 import Link from 'next/link';
+import Button from './common/Button';
+import StageResults from './common/stage1results/StageResults';
 import Logo from './svg/Logo';
 import WHeelChair from './svg/WheelChair';
+import StagesPopSide from './common/StagesPopSide';
 
 const SignUpHeader = function () {
   return (
@@ -15,6 +18,13 @@ const SignUpHeader = function () {
               <u> התחבר עכשיו </u>
             </a>
           </Link>
+          <StagesPopSide
+            trigger={
+              <Button type="button" status="secondary" name="תוצאות השלב" className="h-12 w-full" />
+            }
+          >
+            <StageResults />
+          </StagesPopSide>
         </div>
         <WHeelChair />
       </div>

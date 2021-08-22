@@ -47,6 +47,16 @@ const ProfileAPI = {
       return { data: null, status: 500 };
     }
   },
+  stages: async () => {
+    try {
+      const { data, status } = await axios.get(`${API_URL}/profile/userStages`);
+      console.log(data);
+      return { ...data, status };
+    } catch (error) {
+      // console.log(error);
+      return { data: null, status: 500 };
+    }
+  },
   updateProfile: async (token, profile) => {
     try {
       const { data, status } = await axios.put(

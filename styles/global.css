@@ -138,3 +138,12 @@ hr.dashed {
 .show {
   display: block;
 }
+.left-to-right{
+  direction: ltr;
+}
+.stage-star{
+  font-size: 24px;
+  width: 24px;
+  height: 24px;
+
+}
