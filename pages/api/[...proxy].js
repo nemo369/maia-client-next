@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export default async function proxy(req, res) {
-  const { WORDPRESS_ENDPOINT } = process.env;
+  const { WORDPRESS_ENDPOINT, NODE_ENV } = process.env;
   const { method, url } = req;
   const { headers } = req;
   const endpoint = url.replace(/^\/api/, '');
@@ -20,7 +20,7 @@ export default async function proxy(req, res) {
         .catch(({ response }) => {
           // console.log(response);
 
-          if ([401, 403].includes(response?.status)) {
+          if ([401, 403].includes(response?.status) && 'production' === NODE_ENV) {
             res.writeHead(307, { Location: `/user/login?error=${response.status}` });
             res.end();
             return;
@@ -43,7 +43,7 @@ export default async function proxy(req, res) {
             res.status(500).json('Server Error');
           }
           const { response } = err;
-          if ([401, 403].includes(response?.status)) {
+          if ([401, 403].includes(response?.status) && 'production' === NODE_ENV) {
             res.writeHead(307, { Location: `/user/login?error=${response.status}` });
             res.end();
             return;
@@ -58,7 +58,7 @@ export default async function proxy(req, res) {
           res.status(200).json({ data });
         })
         .catch(({ response }) => {
-          if ([401, 403].includes(response?.status)) {
+          if ([401, 403].includes(response?.status) && 'production' === NODE_ENV) {
             res.writeHead(307, { Location: `/user/login?error=${response.status}` });
             res.end();
             return;
