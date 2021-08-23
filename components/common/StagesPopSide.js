@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import Popup from 'reactjs-popup';
 
-const PopSide = ({ children, trigger }) => {
+const StagesPopSide = ({ children, trigger }) => {
   const [open, setOpen] = useState(false);
   const [isServer, setisServer] = useState(true);
   const closeModal = () => {
@@ -47,4 +47,4 @@ const PopSide = ({ children, trigger }) => {
     </>
   );
 };
-export default PopSide;
+export default StagesPopSide;
