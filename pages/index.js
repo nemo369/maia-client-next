@@ -11,6 +11,7 @@ import { seoMerge } from '../src/utils/next-seo.config';
 import WalkMe from '../components/walkMe/WalkMe';
 import WMStepOne from '../components/walkMe/WMStepOne';
 import WMStepTwo from '../components/walkMe/WMStepTwo';
+import WMStepThree from '../components/walkMe/WMStepThree';
 
 export default function Home() {
   const { t } = useTranslation('common');
@@ -28,7 +29,8 @@ export default function Home() {
       {isPopUp ? (
         <WalkMe defaultOpen>
           {/* <WMStepOne /> */}
-          <WMStepTwo />
+          {/* <WMStepTwo /> */}
+          <WMStepThree />
         </WalkMe>
       ) : (
         <section className="dashboard md:pl-16 md:pr-0 px-3">
