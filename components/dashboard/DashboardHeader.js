@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { useTranslation } from 'next-i18next';
+import { useEffect, useState } from 'react';
 import { AppContext, useAppContext } from '../../src/context/state';
 import Stepper from '../common/Stepper';
 import assistant from '../../public/images/assistant_dashboard.png';
@@ -8,10 +9,31 @@ import { getGreeting } from '../../src/utils/util';
 
 function DashboardHeader() {
   const { t } = useTranslation('common');
-  const { user } = useAppContext(AppContext);
-  const dis = `dis_${user.step}`; // dis_second
+  const { profile } = useAppContext(AppContext);
+  const [step, setstep] = useState(1);
+  useEffect(() => {
+    if (!profile) {
+      return;
+    }
+    const { vendor_profile: vendor } = profile;
+    if (vendor.completionAutobiography && !vendor.completionIAmpro) {
+      setstep(1);
+      return;
+    }
+
+    if (vendor.completionAutobiography && vendor.completionIAmpro && !vendor.completionVeritas) {
+      setstep(2);
+      return;
+    }
+    if (vendor.completionAutobiography && vendor.completionIAmpro && vendor.completionVeritas) {
+      setstep(3);
+    }
+  }, [profile]);
+
+  if (!profile) return null;
+
   return (
-    <header className={`sw-full h-32 mb-16 p-7  flex items-center stepper-one stepper${dis}`}>
+    <header className="sw-full h-32 mb-16 p-7  flex items-center stepper-one">
       <div className="ml-auto">
         <h1 className="text-4xl max-w-xs truncate text-white">
           <strong className="text-orange font-bold">
@@ -20,7 +42,7 @@ function DashboardHeader() {
           </strong>
           <span>
             &nbsp;
-            {user.displayName}
+            {profile.first_name}
           </span>
         </h1>
         <h2 className="text-white text-2xl">
@@ -28,12 +50,13 @@ function DashboardHeader() {
           &nbsp;
           {t('בשלב')}
           &nbsp;
-          {user.step}
+          {step}
+          &nbsp;
           {t('במסע ההתקדמות שלך')}
           <Info />
         </h2>
       </div>
-      <Stepper step={user.step || 'one'} />
+      <Stepper step={step || 'one'} />
       <Image src={assistant} alt="העוזרת של מאיה" width={242} height={216} />
     </header>
   );
