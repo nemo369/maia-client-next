@@ -8,6 +8,7 @@ import NoInfo from './steps/NoInfo';
 
 function DashboardSummary() {
   const { profile } = useContext(AppContext);
+  console.log(profile);
   const [step, setstep] = useState('loading');
   useEffect(() => {
     if (!profile) {
