@@ -2,10 +2,61 @@ import Button from '../common/Button';
 import CategoryCahnger from '../dashboard/cateorgy/CategoryCahnger';
 import ArrowOrange from '../svg/ArrowOrange';
 import WalkMeStepTwo from '../svg/WalkMeStepTwo';
+import CategoryList from '../dashboard/cateorgy/CategoryList';
 
 const onChangeCategoryList = () => {
   console.log('works');
 };
+const catList = [
+  {
+    full_data: {},
+    title: 'הנדסאי אדריכלות ועיצוב פנים',
+    id: 1,
+    percentage: 82,
+    description:
+      'לורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית נולום ארווס סאפיאן - פוסיליס קוויס, אקווזמן נולום ארווס סאפיאן - פוסיליס קוויס, אקווזמן קוואזי במר מודוף. אודיפו בלאסטיק …',
+  },
+  {
+    full_data: {},
+    title: 'הנדסאי אדריכלות ועיצוב פנים',
+    id: 2,
+    percentage: 85,
+    description:
+      'לורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית נולום ארווס סאפיאן - פוסיליס קוויס, אקווזמן נולום ארווס סאפיאן - פוסיליס קוויס, אקווזמן קוואזי במר מודוף. אודיפו בלאסטיק …',
+  },
+  {
+    full_data: {},
+    title: 'הנדסאי אדריכלות ועיצוב פנים',
+    id: 3,
+    percentage: 82,
+    description:
+      'לורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית נולום ארווס סאפיאן - פוסיליס קוויס, אקווזמן נולום ארווס סאפיאן - פוסיליס קוויס, אקווזמן קוואזי במר מודוף. אודיפו בלאסטיק …',
+  },
+  {
+    full_data: {},
+    title: 'הנדסאי אדריכלות ועיצוב פנים',
+    id: 4,
+    percentage: 74,
+    description:
+      'לורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית נולום ארווס סאפיאן - פוסיליס קוויס, אקווזמן נולום ארווס סאפיאן - פוסיליס קוויס, אקווזמן קוואזי במר מודוף. אודיפו בלאסטיק …',
+  },
+  {
+    full_data: {},
+    title: 'הנדסאי אדריכלות ועיצוב פנים',
+    id: 5,
+    percentage: 70,
+    description:
+      'לורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית נולום ארווס סאפיאן - פוסיליס קוויס, אקווזמן נולום ארווס סאפיאן - פוסיליס קוויס, אקווזמן קוואזי במר מודוף. אודיפו בלאסטיק …',
+  },
+  {
+    full_data: {},
+    title: 'הנדסאי אדריכלות ועיצוב פנים',
+    id: 6,
+    percentage: 62,
+    description:
+      'לורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית נולום ארווס סאפיאן - פוסיליס קוויס, אקווזמן נולום ארווס סאפיאן - פוסיליס קוויס, אקווזמן קוואזי במר מודוף. אודיפו בלאסטיק …',
+  },
+];
 
 const WMStepTwo = () => (
   <>
@@ -38,22 +89,20 @@ const WMStepTwo = () => (
         </div>
         <WalkMeStepTwo />
       </div>
-      <div>
-        <div className="flex justify-between mt-[180px] mx-[50px]">
+      <div className="max-w-[1200px]">
+        <div className="flex justify-between mt-[180px]">
           <div className="flex items-center text-white">
             <div className="text-[28px] font-bold ml-[10px]">מקצועות שיכולים להתאים לי </div>
-            <div className="text-[22px] opacity-70">(נמצאו 12 משרות חדשות עבורך)</div>
+            <div className="text-[22px] opacity-70">(נמצאו 12 מקצועות חדשים עבורך)</div>
             <div className="ml-[100px] relative smallpop w-4 h-4 border-solid border-white border-[1px] rounded-full font-small  text-white text-xs mr-4 hover:bg-[#3C91A0] hover:opacity-100 hover:text-white inline-block text-center">
               ?
             </div>
           </div>
           <CategoryCahnger onChangeCategoryList={onChangeCategoryList} isLabel={false} />
         </div>
-        {/* <ul className="grid xl:grid-cols-3 grid-cols-2 gap-x-3 gap-y-4  min-h-[430px] mt-10">
-          {categories.slice(0, 6).map((cat) => (
-            <CategoryLi key={cat.id} cat={cat} type={type} />
-          ))}
-        </ul> */}
+        <div>
+          <CategoryList categories={catList} type="type" />
+        </div>
       </div>
     </div>
   </>
