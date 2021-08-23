@@ -1,6 +1,6 @@
 // import axios from 'axios';
 
-import { createProxyMiddleware } from 'http-proxy-middleware';
+// import { createProxyMiddleware } from 'http-proxy-middleware';
 
 const { WORDPRESS_ENDPOINT } = process.env;
 
