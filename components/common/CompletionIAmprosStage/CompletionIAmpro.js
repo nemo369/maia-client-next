@@ -7,7 +7,7 @@ const CompletionIAmpro = (props) => {
     const el = document.querySelector('#close-modal-hack');
     el?.click();
   };
-  const test = 'test';
+  // const test = 'test';
   return (
     <div className="stage1-wrapper grid">
       <Stage2Top close={close} stageData={stageData} />

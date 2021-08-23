@@ -1,4 +1,4 @@
-import { Doughnut, defaults } from 'react-chartjs-2';
+import { Doughnut } from 'react-chartjs-2';
 
 const StageOneBottom = () => (
   <Doughnut

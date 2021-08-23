@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { defaults } from 'chart.js';
 import { Case, Switch } from '../Switch';
 import EducationCurrent from './EducationCurrent';
 import Stage1middleTitles from './Stage1middleTitles';
