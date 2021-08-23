@@ -1,5 +1,5 @@
 import { Fragment, useCallback, useRef } from 'react';
-// import { useVirtual } from 'react-virtual';
+import { useVirtual } from 'react-virtual';
 
 import CategoryWithHeart from '../common/CategoryWithHeart';
 
