@@ -9,9 +9,9 @@ import useProfile from '../src/hooks/useProfile';
 import { getUserSession, redirectToLogin } from '../src/utils/getUser';
 import { seoMerge } from '../src/utils/next-seo.config';
 
-export default function Home() {
+export default function Home({ user }) {
   const { t } = useTranslation('common');
-
+  console.log(user);
   const seo = seoMerge({
     title: t('ראשי'),
   });

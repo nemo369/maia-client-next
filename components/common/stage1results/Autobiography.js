@@ -1,15 +1,15 @@
 import { useState } from 'react';
-// import Button from '../Button';
+import { defaults } from 'chart.js';
 import { Case, Switch } from '../Switch';
 import EducationCurrent from './EducationCurrent';
 import Stage1middleTitles from './Stage1middleTitles';
 import StageOneTop from './StageOneTop';
 import StagesResultsWorkExperience from './StagesResultsWorkExperience';
 import WhereToGo from './WhereToGo';
+import StageOneBottom from './StageOneBottom';
 
-const StageOneResults = (props) => {
+const Autobiography = (props) => {
   const { stageData } = props;
-  console.log(stageData);
   // const [test, setTest] = useState(false);
   // const [workExperience, setWorkExperience] = useState(true);
   // const [currentEducation, setCurrentEducation] = useState(false);
@@ -52,11 +52,12 @@ const StageOneResults = (props) => {
     titleCheck(e);
     console.log(e.target);
   };
+
   return (
     <div className="stage1-wrapper grid">
       <StageOneTop close={close} stageData={stageData} />
 
-      <hr className="dashed my-5" />
+      <hr className="dashed-stages my-5 h-[2px]" />
 
       <div className="stage1-middle-wrapper flex justify-around gap-x-[104px]">
         <Stage1middleTitles
@@ -87,6 +88,8 @@ const StageOneResults = (props) => {
       </div>
 
       <div className="stage1-bottom-wrapper">
+        <StageOneBottom />
+
         <h1>data</h1>
         <br />
         <h1>more data</h1>
@@ -95,4 +98,4 @@ const StageOneResults = (props) => {
   );
 };
 
-export default StageOneResults;
+export default Autobiography;

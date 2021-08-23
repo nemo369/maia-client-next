@@ -64,6 +64,7 @@ function NextStagePopUp() {
 
 function DashboardSummary({ step }) {
   const { profile } = useContext(AppContext);
+  console.log(profile);
   const { t } = useTranslation('common');
   if (!profile) {
     return (

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import StageOneResults from './StageOneResults';
-import StageTwoResults from '../StageTwoResults';
+import Autobiography from './Autobiography';
 import ProfileAPI from '../../../src/services/profile.service';
+import CompletionIAmpro from '../CompletionIAmpro';
 // import StageThreeResults from './StageThreeResults';
 
 const StageResults = () => {
@@ -19,6 +19,6 @@ const StageResults = () => {
   const stage1 = true;
   //   const [stage2, setStage2] = useState(false);
   //   const [stage3, setStage3] = useState(true);
-  return <>{stage1 ? <StageOneResults stageData={stages} /> : <StageTwoResults />}</>;
+  return <>{stage1 ? <Autobiography stageData={stages} /> : <CompletionIAmpro />}</>;
 };
 export default StageResults;
