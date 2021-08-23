@@ -14,7 +14,7 @@ export default function CategoryWithHeart({
 }) {
   const handleDragStart = (e) => e.preventDefault();
   const { t } = useTranslation('common');
-
+  if (!id) return null;
   return (
     <div
       onDragStart={handleDragStart}
@@ -29,9 +29,10 @@ export default function CategoryWithHeart({
         <JustHeart id={id} type={type} />
       </div>
       <div className="dash border-b-[1px] border-dashed border-[#979797] opacity-20 w-full h-1" />
-      <p className="description  text-black tracking-normal font-normal opacity-70 leading-[18px] text-lg mt-[10px] text-right">
-        {description}
-      </p>
+      <p
+        className="description  text-black tracking-normal font-normal opacity-70 leading-[18px] text-lg mt-[10px] text-right"
+        dangerouslySetInnerHTML={{ __html: description }}
+      />
       <div className="footer w-full flex my-[10px]">
         {isButton && (
           <Link href={`/${type}/${id}`}>
