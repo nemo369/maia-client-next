@@ -75,11 +75,29 @@ const RegisterForm = ({ cities, termsText }) => {
     if (200 !== status) {
       setError(data.message);
     }
-
+    console.log(data);
     if (200 === status) {
       // TODO: Set cookie with nookies
       resetForm();
-      router.push('/user/login?error="200"'); // TODO: go to last page user visited
+      if (data.vendor_token) {
+        e.preventDefault();
+
+        const windowOpen = window.open(data.vendor_token);
+        setTimeout(() => {
+          windowOpen.postMessage('Maya', data.vendor_token);
+        }, 10000);
+        window.addEventListener(
+          'message',
+          (event) => {
+            if (event.data) {
+              router.push('/user/login?error=200');
+            }
+          },
+          false
+        );
+      } else {
+        router.push('/user/login?error=200');
+      }
     }
     setLoader(false);
   };

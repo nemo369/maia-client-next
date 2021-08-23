@@ -4,6 +4,7 @@ import { AppContext, useAppContext } from '../../src/context/state';
 import Stepper from '../common/Stepper';
 import assistant from '../../public/images/assistant_dashboard.png';
 import Info from './header/Info';
+import { getGreeting } from '../../src/utils/util';
 
 function DashboardHeader() {
   const { t } = useTranslation('common');
@@ -14,7 +15,7 @@ function DashboardHeader() {
       <div className="ml-auto">
         <h1 className="text-4xl max-w-xs truncate text-white">
           <strong className="text-orange font-bold">
-            {t('בוקר טוב')}
+            {getGreeting()}
             <span>,</span>
           </strong>
           <span>

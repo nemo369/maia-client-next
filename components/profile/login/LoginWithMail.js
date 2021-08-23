@@ -32,6 +32,7 @@ const LoginWithMail = (props) => {
     if (200 !== status) {
       setError(data.message);
     } else {
+      console.log(data.data.magic_link);
       setPopup(data.data.message);
     }
   };

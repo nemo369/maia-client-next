@@ -9,6 +9,7 @@ import EditInfo from '../svg/EditInfo';
 import useForm from '../../src/hooks/useForm';
 import ProfileAPI from '../../src/services/profile.service';
 import { SET_PROFILE } from '../../src/context/appReducer';
+import { FRONT_URL } from '../../src/utils/consts';
 
 export default function ProfileDetails() {
   const { profile, user, dispatch } = useContext(AppContext);
@@ -44,6 +45,24 @@ export default function ProfileDetails() {
   const tooltipSendedJobs = `<span>סגירת מצב ״מחפש עבודה״ תציג אותך במצב לא פעיל אצל
   <br /> המעסקים שאליהם שלחת בקשה והם לא יכולו לראות את <br /> פרטיך האישיים.</span>`;
 
+  const openTest = (e) => {
+    e.preventDefault();
+
+    const windowOpen = window.open(profile.vendor_token);
+    setTimeout(() => {
+      windowOpen.postMessage('Maya', profile.vendor_token);
+    }, 10000);
+    window.addEventListener(
+      'message',
+      (event) => {
+        if (event.data) {
+          window.location.href = `${FRONT_URL}?testDone=autoBiography`;
+        }
+      },
+      false
+    );
+  };
+
   return (
     <div>
       <button
@@ -51,7 +70,7 @@ export default function ProfileDetails() {
         onClick={() => setIsOpen(!isOpen)}
         type="button"
       >
-        <div className="text-gray text-[19px] font-bold">פרטים אישיים</div>
+        <h2 className="text-gray text-[19px] font-bold">פרטים אישיים</h2>
         <div className={`transition ${isOpen ? 'rotate-180' : 'rotate-0'}`}>
           <Arrow />
         </div>
@@ -135,12 +154,16 @@ export default function ProfileDetails() {
               </Tooltip>
             </div>
             <div className="dash w-[365px] border-b-[2px] border-dashed border-[#979797] opacity-20 h-1" />
-            <div className="my-[15px] flex w-[365px] justify-between">
+            <a
+              href={profile.vendor_token}
+              className="my-[15px] flex w-[365px] justify-between"
+              onClick={openTest}
+            >
               <div className="text-[#666666] text-[18px]">עריכת פרטי שאלון אוטוביוגרפיה</div>
-              <a className="opacity-50 focus:outline-none hover:opacity-100" herf="#">
+              <div className="opacity-50 focus:outline-none hover:opacity-100" herf="#">
                 <EditInfo />
-              </a>
-            </div>
+              </div>
+            </a>
           </div>
         </form>
       )}

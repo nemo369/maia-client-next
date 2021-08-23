@@ -23,8 +23,8 @@ export default function ProfileConclusion({ stage }) {
     <div className="w-[850px] max-h-[400px] bg-white rounded-[20px] py-[25px] px-[21px]">
       <div className="flex justify-between">
         <div>
-          <div className="text-black opacity-50 text-[26px]">סיכום תוצאות שלב </div>
-          <div className="text-gray text-[29px] font-black mt-[-12px]">{stageLabel}</div>
+          <h2 className="text-black opacity-50 text-[26px]">סיכום תוצאות שלב </h2>
+          <h3 className="text-gray text-[29px] font-black mt-[-12px]">{stageLabel}</h3>
         </div>
         <div className="flex">
           {'3' !== stage && (

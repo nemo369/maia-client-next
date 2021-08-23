@@ -79,12 +79,12 @@ const UserAPI = {
   },
   register: async (user) => {
     try {
-      const response = await axios.post(`${API_URL}/user/register`, JSON.stringify(user), {
+      const { data, status } = await axios.post(`${API_URL}/user/register`, JSON.stringify(user), {
         headers: {
           'Content-Type': 'application/json',
         },
       });
-      return response;
+      return { ...data, status };
     } catch (error) {
       return error.response;
     }

@@ -1,6 +1,6 @@
 import { forwardRef } from 'react';
 
-const Button = forwardRef(({ name, onClick, type, disabled, className, status }, ref) => {
+const Button = forwardRef(({ name, onClick, type, disabled, className, status, children }, ref) => {
   let classes = '';
   switch (status) {
     case 'main':
@@ -34,6 +34,7 @@ const Button = forwardRef(({ name, onClick, type, disabled, className, status },
       onClick={onClick}
     >
       {name}
+      {children}
     </button>
   );
 });

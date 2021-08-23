@@ -4,6 +4,7 @@ import { NextSeo } from 'next-seo';
 import { useContext, useEffect, useState } from 'react';
 import BreadCrumbs from '../../components/common/BreadCrumbs';
 import CheckboxGroup from '../../components/common/CheckboxGroup';
+import NoProfession from '../../components/profession/NoProfession';
 import ProfessionForm from '../../components/profession/ProfessionForm';
 import ProfessionList from '../../components/profession/ProfessionList';
 import ProfessionsHeader from '../../components/profession/ProfessionsHeader';
@@ -80,7 +81,9 @@ export default function Professions({ allProfessions, scopes }) {
             </div>
           </div>
           <hr className="border-t-2 border-dashed border-[#cccccc] my-5" />
-          <ProfessionList professions={professions} />
+
+          {professions && !!professions.length && <ProfessionList professions={professions} />}
+          <NoProfession professions={professions?.length} />
         </div>
       </section>
     </>
@@ -93,7 +96,6 @@ export async function getServerSideProps(req) {
   const { data: professions } = await VendorAPI.getCategorys(token, 'professions');
   const { data: scopes } = await VendorAPI.getScopes(token);
   const locale = `he${user.gender}`;
-
   // Here you can add more data
   return {
     props: {

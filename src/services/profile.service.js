@@ -4,9 +4,38 @@ import { FRONT_URL } from '../utils/consts';
 const API_URL = `${FRONT_URL}`;
 
 const ProfileAPI = {
-  profile: async (token) => {
+  profile: async (token, query = '') => {
     try {
-      const { data, status } = await axios.get(`${API_URL}/profile`, {
+      const { data, status } = await axios.get(`${API_URL}/profile${query}`, {
+        headers: {
+          'Content-type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      return { ...data, status };
+    } catch (error) {
+      // console.log(error);
+      return { data: null, status: 500 };
+    }
+  },
+  updateProfileImage: async (token, formData, filename) => {
+    try {
+      const { data: image } = await axios.post(`${API_URL}/user/profile-pic`, formData, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'content-type': 'image/jpeg',
+          'content-disposition': `attachment; filename=${filename}`,
+        },
+      });
+      if (!image || !Number(image.id)) {
+        throw new Error('No image :(');
+      }
+      const newProfile = {
+        profile: {
+          avatar: Number(image.id),
+        },
+      };
+      const { data, status } = await axios.put(`${API_URL}/profile`, newProfile, {
         headers: {
           'Content-type': 'application/json',
           Authorization: `Bearer ${token}`,
