@@ -42,7 +42,6 @@ const VerificationPhone = (props) => {
       document.activeElement?.blur();
       return;
     }
-    //////ככה??/////
     if (data?.token) {
       dispatch({ type: SET_USER, user: data });
 
@@ -62,8 +61,11 @@ const VerificationPhone = (props) => {
       el.previousElementSibling?.focus();
       return;
     }
-    if (4 === inputs.join('').length && !loader) {
-      handleSumbit();
+    if (4 === inputs.length && !loader) {
+      setLoader(true);
+      setTimeout(() => {
+        handleSumbit();
+      }, 0);
     }
   };
   return (
