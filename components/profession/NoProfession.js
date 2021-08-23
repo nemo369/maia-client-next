@@ -1,7 +1,7 @@
 import GrayHat from '../svg/GrayHat';
 
 export default function NoProfession({ hide }) {
-  if (hide) return null;
+  if (!hide) return null;
   return (
     <div className="flex flex-col justify-center min-h-[30vh]">
       <div className="flex justify-center mb-3">

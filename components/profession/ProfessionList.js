@@ -7,18 +7,17 @@ function ProfessionList({ professions }) {
   const parentRef = useRef();
 
   const rowVirtualizer = useVirtual({
-    size: professions.length,
+    size: professions.length / 3,
     parentRef,
-    estimateSize: useCallback(() => 35, []),
+    estimateSize: useCallback(() => 180, []),
     overscan: 5,
   });
 
   const columnVirtualizer = useVirtual({
-    horizontal: true,
-    size: professions.length,
+    horizontal: false,
+    size: 3,
     parentRef,
-    estimateSize: useCallback(() => 100, []),
-    overscan: 5,
+    estimateSize: useCallback(() => 530, []),
   });
   return (
     <>
@@ -26,10 +25,8 @@ function ProfessionList({ professions }) {
         ref={parentRef}
         className="List"
         style={{
-          height: '150px',
-
-          width: '300px',
-
+          height: 'calc(100vh - 368px)',
+          width: '100%',
           overflow: 'auto',
         }}
       >
@@ -44,30 +41,18 @@ function ProfessionList({ professions }) {
           {rowVirtualizer.virtualItems.map((virtualRow) => (
             <Fragment key={virtualRow.index}>
               {columnVirtualizer.virtualItems.map((virtualColumn) => (
-                <div
-                  key={virtualColumn.index}
-                  style={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    width: `${virtualColumn.size}px`,
-                    height: `${virtualRow.size}px`,
-                    transform: `translateX(${virtualColumn.start}px) translateY(${virtualRow.start}px)`,
-                  }}
-                >
-                  <li className="h-full">
-                    <CategoryWithHeart
-                      value={professions[virtualRow.index * 3 + virtualColumn.index].title}
-                      isButton
-                      description={
-                        professions[virtualRow.index * 3 + virtualColumn.index].description
-                      }
-                      id={professions[virtualRow.index * 3 + virtualColumn.index].id}
-                      type="professions"
-                      className="h-full"
-                    />
-                  </li>
-                </div>
+                <li className="h-full" key={virtualColumn.index}>
+                  <CategoryWithHeart
+                    value={professions[virtualColumn.index * 3 + virtualRow.index]?.title}
+                    isButton
+                    description={
+                      professions[virtualColumn.index * 3 + virtualRow.index]?.description
+                    }
+                    id={professions[virtualColumn.index * 3 + virtualRow.index]?.id}
+                    type="professions"
+                    className="h-full"
+                  />
+                </li>
               ))}
             </Fragment>
           ))}
