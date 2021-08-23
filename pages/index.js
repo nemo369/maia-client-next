@@ -8,6 +8,10 @@ import DashboardSummary from '../components/dashboard/DashboardSummary';
 import useProfile from '../src/hooks/useProfile';
 import { getUserSession, redirectToLogin } from '../src/utils/getUser';
 import { seoMerge } from '../src/utils/next-seo.config';
+import WalkMe from '../components/walkMe/WalkMe';
+import WMStepOne from '../components/walkMe/WMStepOne';
+import WMStepTwo from '../components/walkMe/WMStepTwo';
+import WMStepThree from '../components/walkMe/WMStepThree';
 
 export default function Home({ user }) {
   const { t } = useTranslation('common');
@@ -17,17 +21,27 @@ export default function Home({ user }) {
   });
   useProfile();
 
+  const isPopUp = true;
+
   return (
     <>
       <NextSeo {...seo} />
-      <section className="dashboard md:pl-16 md:pr-0 px-3">
-        <DashboardHeader />
-        <div className="dashboard__grid xl:grid pb-10">
-          <DashboardSummary />
-          <DashboardCatergory />
-          <Banner />
-        </div>
-      </section>
+      {isPopUp ? (
+        <WalkMe defaultOpen>
+          <WMStepOne />
+          <WMStepTwo />
+          <WMStepThree />
+        </WalkMe>
+      ) : (
+        <section className="dashboard md:pl-16 md:pr-0 px-3">
+          <DashboardHeader />
+          <div className="dashboard__grid xl:grid pb-10">
+            <DashboardSummary />
+            <DashboardCatergory />
+            <Banner />
+          </div>
+        </section>
+      )}
     </>
   );
 }
