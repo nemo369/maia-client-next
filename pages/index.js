@@ -28,8 +28,8 @@ export default function Home() {
       <NextSeo {...seo} />
       {isPopUp ? (
         <WalkMe defaultOpen>
-          {/* <WMStepOne /> */}
-          {/* <WMStepTwo /> */}
+          <WMStepOne />
+          <WMStepTwo />
           <WMStepThree />
         </WalkMe>
       ) : (
