@@ -74,8 +74,8 @@ const RegisterForm = ({ cities, termsText }) => {
     const { data, status } = await UserAPI.register(dataToSend);
     if (200 !== status) {
       setError(data.message);
+      setLoader(false);
     }
-    console.log(data);
     if (200 === status) {
       // TODO: Set cookie with nookies
       resetForm();
@@ -85,7 +85,7 @@ const RegisterForm = ({ cities, termsText }) => {
         const windowOpen = window.open(data.vendor_token);
         setTimeout(() => {
           windowOpen.postMessage('Maya', data.vendor_token);
-        }, 10000);
+        }, 6000);
         window.addEventListener(
           'message',
           (event) => {
@@ -95,11 +95,12 @@ const RegisterForm = ({ cities, termsText }) => {
           },
           false
         );
-      } else {
-        router.push('/user/login?error=200');
       }
+      setTimeout(() => {
+        router.push('/user/login?error=200');
+        setLoader(false);
+      }, 7000);
     }
-    setLoader(false);
   };
 
   return (

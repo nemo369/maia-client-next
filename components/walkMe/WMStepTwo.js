@@ -4,9 +4,6 @@ import ArrowOrange from '../svg/ArrowOrange';
 import WalkMeStepTwo from '../svg/WalkMeStepTwo';
 import CategoryList from '../dashboard/cateorgy/CategoryList';
 
-const onChangeCategoryList = () => {
-  console.log('works');
-};
 const catList = [
   {
     full_data: {},
@@ -58,7 +55,7 @@ const catList = [
   },
 ];
 
-const WMStepTwo = () => (
+const WMStepTwo = ({ nextStep, closeModal }) => (
   <>
     <div className="flex">
       <div className="flex flex-col">
@@ -80,12 +77,8 @@ const WMStepTwo = () => (
             <br />
             מקצועות ומסלולי לימוד שיכולים להתאים לך
           </div>
-          <div>
-            <Button name="הבא" type="button" status="main" className="next-btn" />
-          </div>
-          <div>
-            <Button name="דלג" type="button" className="skip-btn" />
-          </div>
+          <Button name="הבא" type="button" status="main" className="next-btn" onClick={nextStep} />
+          <Button name="דלג" type="button" className="skip-btn" onClick={closeModal} />
         </div>
         <WalkMeStepTwo />
       </div>
@@ -98,7 +91,7 @@ const WMStepTwo = () => (
               ?
             </div>
           </div>
-          <CategoryCahnger onChangeCategoryList={onChangeCategoryList} isLabel={false} />
+          <CategoryCahnger onChangeCategoryList={() => {}} isLabel={false} />
         </div>
         <div>
           <CategoryList categories={catList} type="type" />

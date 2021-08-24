@@ -4,10 +4,10 @@ import ArrowOrange from '../svg/ArrowOrange';
 import WalkMeStepOne from '../svg/WalkMeStepOne';
 import step from '../../public/images/step.png';
 
-const WMStepThree = () => (
+const WMStepThree = ({ closeModal }) => (
   <>
     <div className="flex">
-      <div className="relative ml-[100px] mt-[200px]">
+      <div className="relative ml-[100px] mt-[10vh]">
         <Image src={step} alt="שלב 3 תצוגת עזר" width={558} height={722} />
       </div>
       <div className="flex flex-col">
@@ -27,7 +27,13 @@ const WMStepThree = () => (
             כל התובנות וההתאמות בהתבסס על שיקלול כל הממצאים.
           </div>
           <div>
-            <Button name="סגור" type="button" status="main" className="next-btn" />
+            <Button
+              name="סגור"
+              type="button"
+              status="main"
+              className="next-btn"
+              onClick={closeModal}
+            />
           </div>
         </div>
         <WalkMeStepOne />

@@ -1,23 +1,23 @@
-import Image from 'next/image';
 import { useTranslation } from 'next-i18next';
+import Image from 'next/image';
 import { useEffect, useState } from 'react';
-import { AppContext, useAppContext } from '../../src/context/state';
-import Stepper from '../common/Stepper';
 import assistant from '../../public/images/assistant_dashboard.png';
-import Info from './header/Info';
+import { AppContext, useAppContext } from '../../src/context/state';
 import { getGreeting } from '../../src/utils/util';
+import WalkMeStepper from '../walkMe/WalkMeStepper';
+import Info from './header/Info';
 
 function DashboardHeader() {
   const { t } = useTranslation('common');
   const { profile } = useAppContext(AppContext);
   const [step, setstep] = useState(1);
   useEffect(() => {
-    if (!profile) {
+    if (!profile || !profile.vendor_profile) {
       return;
     }
     const { vendor_profile: vendor } = profile;
     if (vendor.completionAutobiography && !vendor.completionIAmpro) {
-      setstep(1);
+      setstep(2);
       return;
     }
 
@@ -29,11 +29,8 @@ function DashboardHeader() {
       setstep(3);
     }
   }, [profile]);
-
-  if (!profile) return null;
-
   return (
-    <header className="sw-full h-32 mb-16 p-7  flex items-center stepper-one">
+    <header className="sw-full h-32 mb-4 p-7  flex items-center stepper-one">
       <div className="ml-auto">
         <h1 className="text-4xl max-w-xs truncate text-white">
           <strong className="text-orange font-bold">
@@ -42,7 +39,7 @@ function DashboardHeader() {
           </strong>
           <span>
             &nbsp;
-            {profile.first_name}
+            {profile?.first_name}
           </span>
         </h1>
         <h2 className="text-white text-2xl">
@@ -56,7 +53,8 @@ function DashboardHeader() {
           <Info />
         </h2>
       </div>
-      <Stepper step={step || 'one'} />
+      <WalkMeStepper step={step} />
+      {/* <Stepper step={step || 'one'} /> */}
       <Image src={assistant} alt="העוזרת של מאיה" width={242} height={216} />
     </header>
   );

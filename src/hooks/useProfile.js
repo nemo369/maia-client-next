@@ -1,16 +1,32 @@
 import { useRouter } from 'next/dist/client/router';
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { SET_PROFILE } from '../context/appReducer';
 import { AppContext } from '../context/state';
 import ProfileAPI from '../services/profile.service';
 // FETCHING THE FULL PROFILE OBJECT ONLY IF DIDNT FETCHED BEFORE
 export default function useProfile() {
   const { profile, user, dispatch } = useContext(AppContext);
-  const { pathname, replace } = useRouter();
-
+  const { pathname, push, query } = useRouter();
+  const [fetching, setfetching] = useState(false);
+  const cleanUrl = (newQuery) => {
+    delete newQuery.refetchuser;
+    push(
+      {
+        pathname,
+        query: newQuery,
+      },
+      undefined,
+      { shallow: true }
+    );
+  };
   useEffect(() => {
-    const fetchUser = async (query) => {
-      const { data, status } = await ProfileAPI.profile(user.token, query);
+    const fetchUser = async (queryUser) => {
+      if (fetching) {
+        return;
+      }
+      setfetching(true);
+      const { data, status } = await ProfileAPI.profile(user.token, queryUser);
+      setfetching(false);
       if (200 === status && data) {
         dispatch({ type: SET_PROFILE, profile: data });
       }
@@ -20,17 +36,16 @@ export default function useProfile() {
     };
 
     if (!profile) {
-      let query = '';
-
-      if ('undefined' !== typeof window) {
-        const urlParams = new URLSearchParams(window.location.search);
-        const refetchuser = urlParams.get('refetchuser');
-        if (refetchuser) {
-          query = '?refetchuser=true';
-          replace(pathname, undefined, { shallow: true });
-        }
+      if (query.refetchuser) {
+        fetchUser('?refetchuser=true');
+        cleanUrl(query);
+      } else {
+        fetchUser();
       }
-      fetchUser(query);
+    }
+    if (profile && query.refetchuser) {
+      fetchUser('?refetchuser=true');
+      cleanUrl(query);
     }
 
     if (profile) {
@@ -43,5 +58,5 @@ export default function useProfile() {
     if (profile && 18 > +profile.age) {
       // window.location.href = '/user/not-valid?error="to young"';
     }
-  }, [profile, dispatch, user?.token]);
+  }, [profile, dispatch, user?.token, query]);
 }

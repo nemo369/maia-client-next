@@ -10,7 +10,6 @@ import { getLs, setLs } from '../../src/utils/localStorge';
 
 export default function LoginCmp() {
   const [loginType, setLoginType] = useState();
-  console.log(loginType);
   useEffect(() => {
     setLoginType(getLs(LOGIN_TYPE_LS));
   }, []);

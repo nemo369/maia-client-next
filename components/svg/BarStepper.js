@@ -3,10 +3,9 @@ import React from 'react';
 function BarStepper() {
   return (
     <svg
+      className="w-full"
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
-      width="1706"
-      height="234"
       viewBox="0 0 1706 234"
     >
       <defs>

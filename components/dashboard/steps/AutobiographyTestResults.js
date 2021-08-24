@@ -1,11 +1,14 @@
 import { useTranslation } from 'next-i18next';
+import { useState } from 'react';
 import Bars from '../../charts/Bars';
 import Button from '../../common/Button';
 import StageResults from '../../common/stage1results/StageResults';
 import StagesPopSide from '../../common/StagesPopSide';
+import NextStepPopUp from '../../popups/NextStepPopUp';
 
 function AutobiographyTestResults() {
   const { t } = useTranslation('common');
+  const [defaultOpen, setDefaultOpen] = useState(false);
 
   return (
     <section className="h-full">
@@ -23,7 +26,14 @@ function AutobiographyTestResults() {
           <StageResults />
         </StagesPopSide>
 
-        <Button type="secondary" status="main" name={t('לשלב הבא')} className="h-12 w-full" />
+        <Button
+          type="secondary"
+          status="main"
+          name={t('לשלב הבא')}
+          className="h-12 w-full"
+          onClick={() => setDefaultOpen(true)}
+        />
+        {defaultOpen && <NextStepPopUp />}
       </div>
     </section>
   );
