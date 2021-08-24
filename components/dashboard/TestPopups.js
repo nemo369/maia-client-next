@@ -11,7 +11,6 @@ function TestPopups() {
   const [finisthVeritas, setFinisthVeritas] = useState(false);
 
   useEffect(() => {
-    console.log(query);
     if ('iampro' === query?.testDone) {
       setFinisthStepIamPro(true);
     }

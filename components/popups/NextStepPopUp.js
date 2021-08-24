@@ -22,18 +22,18 @@ const PopupContent = () => {
   const router = useRouter();
 
   const { profile } = useContext(AppContext);
-  const onClick = () => {
+  const onClick = (e) => {
     e.preventDefault();
 
-    const windowOpen = window.open(data.vendor_token);
+    const windowOpen = window.open(profile.iampro_test_url);
     setTimeout(() => {
-      windowOpen.postMessage('Maya', data.vendor_token);
+      windowOpen.postMessage('Maya', profile.iampro_test_url);
     }, 6000);
     window.addEventListener(
       'message',
       (event) => {
         if (event.data) {
-          router.push('/user?refetchuser=true&testDone=autoBiography');
+          router.push({ pathname: '/', query: { refetchuser: 'true', testDone: 'iampro' } });
         }
       },
       false
@@ -54,7 +54,7 @@ const PopupContent = () => {
         <br />
         התעסוקתיים שלך
       </div>
-      <a onClick={onClick} href={profile?.vendor_token}>
+      <a onClick={onClick} href={profile?.iampro_test_url}>
         <Button className="h-[50px] w-[240px]" status="secondary" name={t('התחל')} />
       </a>
       <button className="h-[50px] w-[240px]" type="button">
