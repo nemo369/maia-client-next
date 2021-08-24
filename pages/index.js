@@ -5,43 +5,33 @@ import Banner from '../components/dashboard/Banner';
 import DashboardCatergory from '../components/dashboard/DashboardCatergory';
 import DashboardHeader from '../components/dashboard/DashboardHeader';
 import DashboardSummary from '../components/dashboard/DashboardSummary';
+import TestPopups from '../components/dashboard/TestPopups';
+import WalkMe from '../components/walkMe/WalkMe';
 import useProfile from '../src/hooks/useProfile';
 import { getUserSession, redirectToLogin } from '../src/utils/getUser';
 import { seoMerge } from '../src/utils/next-seo.config';
-import WalkMe from '../components/walkMe/WalkMe';
-import WMStepOne from '../components/walkMe/WMStepOne';
-import WMStepTwo from '../components/walkMe/WMStepTwo';
-import WMStepThree from '../components/walkMe/WMStepThree';
 
-export default function Home({ user }) {
+export default function Home() {
   const { t } = useTranslation('common');
-  console.log(user);
+  const isServer = 'undefined' === typeof window;
+
   const seo = seoMerge({
     title: t('ראשי'),
   });
   useProfile();
-
-  const isPopUp = true;
-
   return (
     <>
       <NextSeo {...seo} />
-      {isPopUp ? (
-        <WalkMe defaultOpen>
-          <WMStepOne />
-          <WMStepTwo />
-          <WMStepThree />
-        </WalkMe>
-      ) : (
-        <section className="dashboard md:pl-16 md:pr-0 px-3">
-          <DashboardHeader />
-          <div className="dashboard__grid xl:grid pb-10">
-            <DashboardSummary />
-            <DashboardCatergory />
-            <Banner />
-          </div>
-        </section>
-      )}
+      {!isServer && <WalkMe />}
+      <section className="dashboard md:pl-16 md:pr-0 px-3">
+        <DashboardHeader />
+        <TestPopups />
+        <div className="dashboard__grid xl:grid mb-10">
+          <DashboardSummary />
+          <DashboardCatergory />
+          <Banner />
+        </div>
+      </section>
     </>
   );
 }

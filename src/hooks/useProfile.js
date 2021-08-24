@@ -1,4 +1,4 @@
-import { useRouter } from 'next/dist/client/router';
+// import { useRouter } from 'next/dist/client/router';
 import { useContext, useEffect } from 'react';
 import { SET_PROFILE } from '../context/appReducer';
 import { AppContext } from '../context/state';
@@ -6,7 +6,7 @@ import ProfileAPI from '../services/profile.service';
 // FETCHING THE FULL PROFILE OBJECT ONLY IF DIDNT FETCHED BEFORE
 export default function useProfile() {
   const { profile, user, dispatch } = useContext(AppContext);
-  const { pathname, replace } = useRouter();
+  // const { pathname, replace } = useRouter();
 
   useEffect(() => {
     const fetchUser = async (query) => {
@@ -27,7 +27,7 @@ export default function useProfile() {
         const refetchuser = urlParams.get('refetchuser');
         if (refetchuser) {
           query = '?refetchuser=true';
-          replace(pathname, undefined, { shallow: true });
+          // replace(pathname, undefined, { shallow: true });
         }
       }
       fetchUser(query);

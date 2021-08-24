@@ -1,12 +1,11 @@
 import { useTranslation } from 'next-i18next';
-import React, { useContext } from 'react';
 import { useRouter } from 'next/router';
-import PopUp from '../common/PopUp';
-import PagePen from '../svg/PagePen';
-import Button from '../common/Button';
+import React, { useContext } from 'react';
 import { AppContext } from '../../src/context/state';
+import Button from '../common/Button';
+import PopUp from '../common/PopUp';
 
-const NextStepPopUp = () => (
+const NextStepPopUpAutoBiography = () => (
   // const [isDone, setIsDone] = useState(false);
 
   <div>
@@ -15,19 +14,19 @@ const NextStepPopUp = () => (
     </PopUp>
   </div>
 );
-export default NextStepPopUp;
+export default NextStepPopUpAutoBiography;
 
 const PopupContent = () => {
   const { t } = useTranslation('common');
   const router = useRouter();
 
   const { profile } = useContext(AppContext);
-  const onClick = () => {
+  const onClick = (e) => {
     e.preventDefault();
 
-    const windowOpen = window.open(data.vendor_token);
+    const windowOpen = window.open(profile.vendor_token);
     setTimeout(() => {
-      windowOpen.postMessage('Maya', data.vendor_token);
+      windowOpen.postMessage('Maya', profile.vendor_token);
     }, 6000);
     window.addEventListener(
       'message',
@@ -40,26 +39,22 @@ const PopupContent = () => {
     );
   };
   return (
-    <div className="flex flex-col items-center justify-center py-4 px-16 text-center">
-      <PagePen />
+    <div className="flex flex-col items-center justify-center py-16 px-16">
       <h2 className="text-center text-3xl font-bold ">
         מעבר אל השלב
         <br />
-        ״מה מעניין אותי״
+        ״מה עשיתי עד כה״
       </h2>
-      <div className="my-4">
+      <div className="my-6">
         {t('בשלב זה תועבר אל שאלון הקריירה')}
         <br />
-        שיסייע לך לזהות את תחומי העניין
+        שמסכם את המסלול חייך עד כה
         <br />
-        התעסוקתיים שלך
       </div>
-      <a onClick={onClick} href={profile?.vendor_token}>
+      <a onClick={onClick} href={profile?.vendor_token} className="mb-2">
         <Button className="h-[50px] w-[240px]" status="secondary" name={t('התחל')} />
       </a>
-      <button className="h-[50px] w-[240px]" type="button">
-        {t('סגור')}
-      </button>
+      <Button className="h-[50px] w-[240px]" status="secondary" name={t('סגור')} />
     </div>
   );
 };

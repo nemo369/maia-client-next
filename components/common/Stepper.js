@@ -28,7 +28,7 @@ const Stepper = ({ step }) => {
   }
   return (
     <div>
-      <div className="stepper__step">
+      <div className="flex flex-col">
         <div className="stepper__indicator">
           {'one' === step ? (
             <span className={`${one} stepper__info shadow-active bottom-[10px]`}>1</span>
@@ -38,15 +38,13 @@ const Stepper = ({ step }) => {
             </span>
           )}
         </div>
-        <div className={`stepper__label ${'one' === step && 'font-bold'}`}>
-          <span>
-            מה עשיתי
-            <br />
-            עד כה
-          </span>
+        <div className={`stepper__label text-center ${'one' === step && 'font-bold'}`}>
+          מה עשיתי
+          <br />
+          עד כה
         </div>
       </div>
-      <div className="stepper__step">
+      <div className="flex flex-col">
         <div className="stepper__indicator">
           {'two' === step ? (
             <span className={`${two} stepper__info shadow-active bottom-[10px]`}>2</span>
@@ -64,7 +62,7 @@ const Stepper = ({ step }) => {
           </span>
         </div>
       </div>
-      <div className="stepper__step">
+      <div className="flex flex-col">
         <div className="stepper__indicator">
           {'three' === step ? (
             <span className={`${three} stepper__info shadow-active bottom-[10px]`}>3</span>
