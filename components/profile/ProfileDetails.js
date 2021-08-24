@@ -56,7 +56,10 @@ export default function ProfileDetails() {
       'message',
       (event) => {
         if (event.data) {
-          window.location.href = `${FRONT_URL.replace('/api', '')}?testDone=autoBiography`;
+          window.location.href = `${FRONT_URL.replace(
+            '/api',
+            ''
+          )}?testDone=autoBiography&refetchuser=true`;
         }
       },
       false

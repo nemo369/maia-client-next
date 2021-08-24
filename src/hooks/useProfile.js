@@ -1,4 +1,4 @@
-// import { useRouter } from 'next/dist/client/router';
+import { useRouter } from 'next/dist/client/router';
 import { useContext, useEffect } from 'react';
 import { SET_PROFILE } from '../context/appReducer';
 import { AppContext } from '../context/state';
@@ -6,11 +6,12 @@ import ProfileAPI from '../services/profile.service';
 // FETCHING THE FULL PROFILE OBJECT ONLY IF DIDNT FETCHED BEFORE
 export default function useProfile() {
   const { profile, user, dispatch } = useContext(AppContext);
-  // const { pathname, replace } = useRouter();
+  const { pathname, push, query } = useRouter();
 
   useEffect(() => {
-    const fetchUser = async (query) => {
-      const { data, status } = await ProfileAPI.profile(user.token, query);
+    console.log(query);
+    const fetchUser = async (queryUser) => {
+      const { data, status } = await ProfileAPI.profile(user.token, queryUser);
       if (200 === status && data) {
         dispatch({ type: SET_PROFILE, profile: data });
       }
@@ -20,17 +21,20 @@ export default function useProfile() {
     };
 
     if (!profile) {
-      let query = '';
-
-      if ('undefined' !== typeof window) {
-        const urlParams = new URLSearchParams(window.location.search);
-        const refetchuser = urlParams.get('refetchuser');
-        if (refetchuser) {
-          query = '?refetchuser=true';
-          // replace(pathname, undefined, { shallow: true });
-        }
+      if (query.refetchuser) {
+        fetchUser('?refetchuser=true');
+        delete query.refetchuser;
+        push(
+          {
+            pathname,
+            query,
+          },
+          undefined,
+          { shallow: true }
+        );
+      } else {
+        fetchUser();
       }
-      fetchUser(query);
     }
 
     if (profile) {
@@ -43,5 +47,5 @@ export default function useProfile() {
     if (profile && 18 > +profile.age) {
       // window.location.href = '/user/not-valid?error="to young"';
     }
-  }, [profile, dispatch, user?.token]);
+  }, [profile, dispatch, user?.token, query]);
 }

@@ -32,7 +32,7 @@ const PopupContent = () => {
       'message',
       (event) => {
         if (event.data) {
-          router.push('/user?refetchuser=true&testDone=autoBiography');
+          router.push({ pathname: '/', query: { refetchuser: 'true', testDone: 'autoBiography' } });
         }
       },
       false
