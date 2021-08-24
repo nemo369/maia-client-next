@@ -1,9 +1,7 @@
 import Button from '../common/Button';
-import WalkMeStepOne from '../svg/WalkMeStepOne';
-import ArrowOrange from '../svg/ArrowOrange';
-import BarStepper from '../svg/BarStepper';
-import WalkMeStepper from './WalkMeStepper';
 import DashboardHeader from '../dashboard/DashboardHeader';
+import ArrowOrange from '../svg/ArrowOrange';
+import WalkMeStepOne from '../svg/WalkMeStepOne';
 
 const WMStepOne = ({ closeModal, nextStep }) => (
   <section className="w-[90%] ml-auto py-9 h-full mr-[180px]">
