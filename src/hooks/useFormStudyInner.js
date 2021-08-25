@@ -23,6 +23,10 @@ export default function useFormStudyInner(initial = {}) {
       const index = inputs.categories.indexOf(value);
       inputs?.categories.splice(index, 1);
     }
+    console.log(inputs);
+    if (4 < inputs.categories.length) {
+      // setInputs({ ...inputs.categories.reverse().slice(0, 4) });
+    }
   }
 
   function resetForm() {
