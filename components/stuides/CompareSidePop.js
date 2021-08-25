@@ -4,7 +4,7 @@ import useFormStudyInner from '../../src/hooks/useFormStudyInner';
 import CompareStepTwo from './CompareStepTwo';
 import CompareStepOne from './CompareStepOne';
 
-const CompareSidePop = ({ open, setOpen, comparedCategorys, additionalStudies }) => {
+const CompareSidePop = ({ open, setOpen, comparedCategorys, studies }) => {
   const [compare, setCompare] = useState(false);
   const { inputs, handleChange, clearForm } = useFormStudyInner({
     categories: [],
@@ -12,7 +12,7 @@ const CompareSidePop = ({ open, setOpen, comparedCategorys, additionalStudies })
   const handleCompare = () => {
     const filtered = [];
     inputs.categories.forEach((x) => {
-      additionalStudies.forEach((y) => {
+      studies.forEach((y) => {
         // eslint-disable-next-line eqeqeq
         if (x == y.id) {
           filtered.push(y);
@@ -32,7 +32,7 @@ const CompareSidePop = ({ open, setOpen, comparedCategorys, additionalStudies })
           setOpen={setOpen}
           setCompare={setCompare}
           comparedCategorys={comparedCategorys}
-          additionalStudies={additionalStudies}
+          studies={studies}
           clearForm={clearForm}
           compare={compare}
         />
@@ -44,7 +44,7 @@ const CompareSidePop = ({ open, setOpen, comparedCategorys, additionalStudies })
           handleCompare={handleCompare}
           setOpen={setOpen}
           comparedCategorys={comparedCategorys}
-          additionalStudies={additionalStudies}
+          studies={studies}
         />
       )}
     </>

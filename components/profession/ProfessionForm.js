@@ -2,7 +2,7 @@
 import { useTranslation } from 'next-i18next';
 import React from 'react';
 import Popup from 'reactjs-popup';
-import Scope from '../common/Scope';
+import Check from '../common/Check';
 import Arrow from '../svg/Arrow';
 
 export default function ProfessionForm({ scopes, handleChange }) {
@@ -55,9 +55,18 @@ export default function ProfessionForm({ scopes, handleChange }) {
               </button>
             </div>
           </div>
-          <div className="overflow-auto max-h-40">
+          <div className="overflow-auto max-h-40 flex flex-col gap-y-3 pr-3">
             {scopes.map((scope) => (
-              <Scope scope={scope} key={scope.value} />
+              <Check
+                name="scopeIds"
+                key={scope.value}
+                value={scope.value}
+                content={scope.label}
+                textClass="text-xs mr-3 relative"
+                wraperClass="flex gap-x-2 mb-3"
+                onChange={handleChange}
+                isChecked={inputs.scopeIds.includes(scope.value)}
+              />
             ))}
           </div>
         </form>

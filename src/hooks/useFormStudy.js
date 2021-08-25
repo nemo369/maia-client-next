@@ -13,12 +13,19 @@ export default function useFormStudy(initial = {}) {
   function handleChange(e) {
     const { value } = e.target;
     const { name } = e.target;
-
-    setInputs({
-      // copy the existing state
-      ...inputs,
-      [name]: [...inputs[name], value],
-    });
+    if (e.target.checked) {
+      setInputs({
+        // copy the existing state
+        ...inputs,
+        [name]: [...inputs[name], value],
+      });
+    } else {
+      setInputs({
+        // copy the existing state
+        ...inputs,
+        [name]: inputs[name].filter((input) => input !== value),
+      });
+    }
   }
 
   function resetForm() {

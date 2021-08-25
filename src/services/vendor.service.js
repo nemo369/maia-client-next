@@ -4,6 +4,19 @@ import { FRONT_URL } from '../utils/consts';
 const API_URL = `${FRONT_URL}`;
 
 const VendorAPI = {
+  getInstitutions: async (token) => {
+    try {
+      const { data } = await axios.get(`${API_URL}/vendor/institutions`, {
+        headers: {
+          'Content-type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      return data;
+    } catch (error) {
+      return { data: [] };
+    }
+  },
   getScopes: async (token) => {
     try {
       const { data } = await axios.get(`${API_URL}/vendor/scopes`, {
@@ -40,23 +53,6 @@ const VendorAPI = {
       return data;
     } catch (error) {
       return { data: [] };
-    }
-  },
-  fetchComparedCategorys: async (token, filteredData, type) => {
-    try {
-      const { data } = await axios.post(
-        `${API_URL}/vendor/${type}`,
-        { filteredData },
-        {
-          headers: {
-            'Content-type': 'application/json',
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-      return data;
-    } catch (error) {
-      return [];
     }
   },
   getCategory: async (token, type, id) => {

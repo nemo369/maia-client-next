@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-export default function useFormStudy(initial = {}) {
+export default function useFormStudyInner(initial = {}) {
   // create a state object for our inputs
   const [inputs, setInputs] = useState(initial);
   const initialValues = Object.values(initial).join('');
@@ -22,6 +22,10 @@ export default function useFormStudy(initial = {}) {
     if (inputs?.categories.includes(value)) {
       const index = inputs.categories.indexOf(value);
       inputs?.categories.splice(index, 1);
+    }
+    console.log(inputs);
+    if (4 < inputs.categories.length) {
+      // setInputs({ ...inputs.categories.reverse().slice(0, 4) });
     }
   }
 

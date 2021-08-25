@@ -22,7 +22,7 @@ export default async function login(req, res) {
           .then(({ data: user }) => {
             setCookie({ res }, USER_COOKIE, JSON.stringify(user), {
               secure: 'production' === NODE_ENV,
-              maxAge: 72576000,
+              maxAge: 12 * 60 * 60, //12 hours as in Iam token
               httpOnly: true,
               path: '/',
             });

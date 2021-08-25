@@ -12,7 +12,7 @@ export default function Check({
   checkWrapper,
 }) {
   return (
-    <label className={checkWrapper + ' check flex float-right'}>
+    <label className={checkWrapper + ' check flex float-right cursor-pointer'}>
       <input
         type="checkbox"
         dirname={dirname}

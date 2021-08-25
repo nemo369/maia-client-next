@@ -3,14 +3,7 @@ import Button from '../common/Button';
 import Xcircle from '../svg/Xcircle';
 import CategoryWithHeart from '../common/CategoryWithHeart';
 
-const CompareStepOne = ({
-  setOpen,
-  open,
-  additionalStudies,
-  handleChange,
-  handleCompare,
-  inputs,
-}) => {
+const CompareStepOne = ({ setOpen, open, studies, handleChange, handleCompare, inputs }) => {
   const { t } = useTranslation('common');
   const close = () => {
     if ('undefined' === typeof window) return;
@@ -19,7 +12,7 @@ const CompareStepOne = ({
     setOpen(!open);
   };
 
-  const List = additionalStudies.map((study) => (
+  const List = studies.map((study) => (
     <CategoryWithHeart
       key={study.id}
       value={study.title}
