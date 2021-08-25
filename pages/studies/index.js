@@ -10,7 +10,6 @@ import CompareDropdown from '../../components/stuides/CompareDropdown';
 import StudiesHeader from '../../components/stuides/StudiesHeader';
 import StudyForm from '../../components/stuides/StudyForm';
 import StudyList from '../../components/stuides/StudyList';
-import useForm from '../../src/hooks/useForm';
 import useProfile from '../../src/hooks/useProfile';
 import VendorAPI from '../../src/services/vendor.service';
 import { getUserSession } from '../../src/utils/getUser';
@@ -36,14 +35,10 @@ export default function Studies({ myStudies, user, scopes }) {
     setLoader(true);
     const { data } = await VendorAPI.getCategorys(user.token, 'studies');
     setAllstudies(data);
+    setstudies(data);
     setLoader(false);
   };
 
-  const { inputs, handleChange } = useForm({
-    field: null,
-    profession: null,
-    path: null,
-  });
   const onChange = (id) => {
     const cat = categoryGroups.find((categ) => categ.id === id);
     setcategoryType(cat);
@@ -55,7 +50,13 @@ export default function Studies({ myStudies, user, scopes }) {
       fetchAllStuides();
       return;
     }
-    setAllstudies(allStudies);
+    setstudies(allStudies);
+  };
+  const dropDownChanges = async (selected) => {
+    setLoader(true);
+    const { data } = await VendorAPI.getCategorys(user.token, 'studies', selected);
+    setstudies(data);
+    setLoader(false);
   };
   const [comparedCategorys, setComparedCategorys] = useState('');
   const filteredCategories = async (dataToSend) => {
@@ -72,12 +73,12 @@ export default function Studies({ myStudies, user, scopes }) {
         >
           <StudiesHeader num={myStudies.length} />
           <div className="flex gap-x-4 relative">
-            <StudyForm handleChange={handleChange} scopes={scopes} />
+            {!categoryType.id && <StudyForm handleChange={dropDownChanges} scopes={scopes} />}
             <div className="flex items-center">
               <CompareDropdown
                 comparedCategorys={comparedCategorys}
                 filteredCategories={filteredCategories}
-                topIputs={inputs}
+                topIputs={[]}
                 //לבנתיים//
                 additionalStudies={[]}
               />
@@ -100,7 +101,7 @@ export async function getServerSideProps(req) {
     VendorAPI.getCategorys(token, 'studies', { byUser: true }),
     VendorAPI.getScopes(token),
   ]);
-  // if (user.redirect) return user;
+  if (user.redirect) return user;
   const locale = `he${user.gender}`;
   // Here you can add more data
   return {

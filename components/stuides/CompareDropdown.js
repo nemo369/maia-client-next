@@ -5,7 +5,7 @@ import Group4 from '../svg/Group4';
 import Button from '../common/Button';
 import Check from '../common/Check';
 import PopSide from '../common/PopSide';
-import { studyData, areaData } from '../../src/utils/StudyData';
+import { studyData, areaData } from '../../src/utils/studyFilterData';
 import CompareSidePop from './CompareSidePop';
 
 const CompareDropdown = (props) => {
@@ -13,11 +13,11 @@ const CompareDropdown = (props) => {
   const { t } = useTranslation('common');
 
   const { inputs, handleChange } = useFormStudy({
-    drishot: '',
-    teuda: '',
-    meshech: '',
-    miuhad: '',
-    area: '',
+    drishot: [],
+    teuda: [],
+    meshech: [],
+    miuhad: [],
+    area: [],
   });
   const [open, setOpen] = useState(false);
   const [group4fill, setGroup4fill] = useState(false);
@@ -25,6 +25,7 @@ const CompareDropdown = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     filteredCategories(inputs);
+    console.log(inputs);
   };
 
   const handelClick = () => {
@@ -52,26 +53,27 @@ const CompareDropdown = (props) => {
       {open && (
         <form
           onSubmit={handleSubmit}
-          className="bg-white study-form p-5 absolute text-black shadow-2xl grid min-h-[252px] top-12 z-40 rounded-lg w-full gap-5"
+          className="bg-white study-form p-5 absolute text-black shadow-2xl grid min-h-[252px] top-12 z-40 rounded-lg w-full gap-5 right-0"
         >
           <div className="triangle" />
           <div className="flex justify-around gap-4">
-            {studyData.map((x, idX) => (
-              <div key={idX} className="w-full wrapper-border">
-                <h3 className="font-bold text-xl leading-5">{t(x.text)}</h3>
+            {studyData.map((column) => (
+              <div key={column.text} className="w-full wrapper-border">
+                <h3 className="font-bold text-xl leading-5">{t(column.text)}</h3>
 
                 <div className="grid grid-cols-2   checkdropdown mt-5 gap-y-5">
-                  {x.options.map((y, index) => (
+                  {column.options.map((study) => (
                     <Check
-                      name={x.name}
-                      key={index}
-                      id={y.id}
-                      value={y.id}
+                      name={column.name}
+                      key={study.id}
+                      id={study.id}
+                      value={study.id}
                       onChange={handleChange}
                       className="pll p-1  w-4 h-4"
-                      content={t(y.text)}
+                      content={study.text}
                       textClass="text-sm mr-3 relative"
                       wraperClass="pl-4"
+                      isChecked={inputs[column.name].includes(study.id)}
                     />
                   ))}
                 </div>
@@ -81,17 +83,18 @@ const CompareDropdown = (props) => {
           <div className="flex flex-wrap justify-between items-end">
             <div className="checkdropdown1">
               <h3 className="text-xl leading-5 font-bold mb-3">אזור</h3>
-              {areaData.map((x, index) => (
+              {areaData.map((area) => (
                 <Check
-                  key={index}
+                  key={area.id}
                   className="p-1 mr-3 cheche"
                   onChange={handleChange}
-                  value={x.id}
-                  name={x.name}
-                  content={t(x.title)}
+                  value={area.id}
+                  name={area.name}
+                  content={area.title}
                   textClass="text-base mr-3 relative"
                   wraperClass="pl-4"
-                  id={x.id}
+                  id={area.id}
+                  isChecked={inputs.area.includes(area.id)}
                 />
               ))}
             </div>

@@ -12,9 +12,12 @@ const ProfileAPI = {
           Authorization: `Bearer ${token}`,
         },
       });
+
       return { ...data, status };
     } catch (error) {
-      // console.log(error);
+      if (error.response) {
+        return { data: null, status: error.response.status };
+      }
       return { data: null, status: 500 };
     }
   },
