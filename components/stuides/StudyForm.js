@@ -3,74 +3,79 @@ import { useTranslation } from 'next-i18next';
 import { useContext, useState } from 'react';
 import Popup from 'reactjs-popup';
 import { AppContext } from '../../src/context/state';
+import useFormStudy from '../../src/hooks/useFormStudy';
 import VendorAPI from '../../src/services/vendor.service';
-import ProfessionCheckbox from '../common/ProfessionCheckbox';
-import Scope from '../common/Scope';
+import Check from '../common/Check';
 import Arrow from '../svg/Arrow';
 
-export default function StudyForm({ scopes, handleChange }) {
+export default function StudyForm({ scopes, dropDownChanges, institutions }) {
   const { user } = useContext(AppContext);
+  const { inputs, handleChange, clearForm } = useFormStudy({
+    scopeIds: [],
+    professionIds: [],
+    institutionIds: [],
+  });
 
-  const [form, setform] = useState({ scopeIds: [], professionIds: [], institutionIds: [] });
   const [professions, setProfessions] = useState([]);
-  const [scopeLabel, setScopeLabel] = useState('תחום');
-  const [professionLabel, setProfessionLabel] = useState('מסלול');
-  const [institutionLabel, setInstitutionLabel] = useState('מוסד');
+  const [labels, setLabels] = useState({ scope: 'תחום', profession: 'מסלול', institution: 'מוסד' });
+
   const fetchProfessions = async () => {
-    if (!form.scopeIds.length) {
+    if (!inputs.scopeIds.length) {
       return;
     }
     const { data } = await VendorAPI.getCategorys(user.token, 'professions', {
-      scopes: form.scopeIds,
+      scopes: inputs.scopeIds,
     });
     setProfessions(data);
   };
 
   const clearData = (e) => {
     e.preventDefault();
-    setform({ scopeIds: [], professionIds: [], institutionIds: [] });
+    clearForm();
     setProfessions([]);
-    setScopeLabel('תחום');
-    setProfessionLabel('מסלול');
-    setInstitutionLabel('מוסד');
+    setLabels({ scope: 'תחום', profession: 'מסלול', institution: 'מוסד' });
+    dropDownChanges(inputs);
   };
   const onSendScopes = (e) => {
     e.preventDefault();
-    const formData = new FormData(e.target);
-    setform({ ...form, scopeIds: [...formData.values()], professionIds: [] });
-    setTimeout(() => {
-      fetchProfessions();
-    }, 0);
-    setScopeLabel([...formData.keys()].join(','));
+    fetchProfessions();
+    // setScopeLabel([...formData.keys()].join(','));
   };
   const onSendProfessions = (e) => {
     e.preventDefault();
-    const formData = new FormData(e.target);
-    setform({ ...form, professionIds: [...formData.values()] });
-    setTimeout(() => {
-      handleChange(form);
-    }, 0);
-    setProfessionLabel([...formData.keys()].join(','));
+    dropDownChanges(inputs);
+    // setProfessionLabel([...formData.keys()].join(','));
   };
   return (
     <div className="flex gap-x-3">
-      <ScopesPopUp onSend={onSendScopes} scopes={scopes} clearData={clearData} label={scopeLabel} />
+      <ScopesPopUp
+        onSend={onSendScopes}
+        scopes={scopes}
+        clearData={clearData}
+        label={labels.scope}
+        inputs={inputs}
+        handleChange={handleChange}
+      />
       <ProfessionsPopUp
         clearData={clearData}
         onSend={onSendProfessions}
         professions={professions}
-        label={professionLabel}
+        label={labels.profession}
+        inputs={inputs}
+        handleChange={handleChange}
       />
       <InstitutionPopUp
         clearData={clearData}
         onSend={onSendProfessions}
-        institutions={[]}
-        label={institutionLabel}
+        institutions={institutions}
+        label={labels.institution}
+        inputs={inputs}
+        handleChange={handleChange}
       />
     </div>
   );
 }
-const ScopesPopUp = ({ scopes, onSend, clearData, label }) => {
+const ScopesPopUp = ({ scopes, onSend, clearData, label, inputs, handleChange }) => {
   const { t } = useTranslation('common');
 
   return (
@@ -116,16 +121,25 @@ const ScopesPopUp = ({ scopes, onSend, clearData, label }) => {
             </button>
           </div>
         </div>
-        <div className="overflow-auto max-h-40">
+        <div className="overflow-auto max-h-40 flex flex-col gap-y-3 pr-3">
           {scopes.map((scope) => (
-            <Scope scope={scope} key={scope.value} />
+            <Check
+              name="scopeIds"
+              key={scope.value}
+              value={scope.value}
+              content={scope.label}
+              textClass="text-xs mr-3 relative"
+              wraperClass="flex gap-x-2 mb-3"
+              onChange={handleChange}
+              isChecked={inputs.scopeIds.includes(scope.value)}
+            />
           ))}
         </div>
       </form>
     </Popup>
   );
 };
-const ProfessionsPopUp = ({ professions, onSend, label, clearData }) => {
+const ProfessionsPopUp = ({ professions, onSend, label, clearData, inputs, handleChange }) => {
   const { t } = useTranslation('common');
   if (!professions.length) {
     return (
@@ -164,7 +178,7 @@ const ProfessionsPopUp = ({ professions, onSend, label, clearData }) => {
         onSubmit={onSend}
       >
         <div className="flex mb-4 justify-between">
-          <span />
+          <span>{t('בחר מסלול')}</span>
           <div className="flex justify-between items-center  px-2 gap-x-1">
             <button
               onClick={clearData}
@@ -181,16 +195,25 @@ const ProfessionsPopUp = ({ professions, onSend, label, clearData }) => {
             </button>
           </div>
         </div>
-        <div className="overflow-auto max-h-40">
+        <div className="overflow-auto max-h-40  flex flex-col gap-y-3 pr-3">
           {professions.map((profession) => (
-            <ProfessionCheckbox profession={profession} key={profession.id} />
+            <Check
+              name="professionIds"
+              key={profession.full_data.miK_NUM}
+              value={`${profession.full_data.miK_NUM}`}
+              content={profession.title}
+              textClass="text-xs mr-3 relative"
+              wraperClass="flex gap-x-2 mb-3"
+              onChange={handleChange}
+              isChecked={inputs.professionIds.includes(`${profession.full_data.miK_NUM}`)}
+            />
           ))}
         </div>
       </form>
     </Popup>
   );
 };
-const InstitutionPopUp = ({ institutions, onSend, label, clearData }) => {
+const InstitutionPopUp = ({ institutions, onSend, label, clearData, inputs, handleChange }) => {
   const { t } = useTranslation('common');
   if (!institutions.length) {
     return (
@@ -229,6 +252,8 @@ const InstitutionPopUp = ({ institutions, onSend, label, clearData }) => {
         onSubmit={onSend}
       >
         <div className="flex mb-4 justify-between">
+          <span>{t('בחר מוסד לימודים')}</span>
+
           <div className="flex justify-between items-center  px-2 gap-x-1">
             <button
               onClick={clearData}
@@ -245,9 +270,18 @@ const InstitutionPopUp = ({ institutions, onSend, label, clearData }) => {
             </button>
           </div>
         </div>
-        <div className="overflow-auto max-h-40">
+        <div className="overflow-auto max-h-40  flex flex-col gap-y-3 pr-3 py-3">
           {institutions.map((institution) => (
-            <ProfessionCheckbox profession={institution} key={institution.id} />
+            <Check
+              name="institutionIds"
+              key={institution.mosnum}
+              value={institution.mosnum}
+              content={institution.mosname}
+              textClass="text-xs mr-3 relative"
+              wraperClass="flex gap-x-2 mb-3"
+              onChange={handleChange}
+              isChecked={inputs.institutionIds.includes(institution.mosnum)}
+            />
           ))}
         </div>
       </form>

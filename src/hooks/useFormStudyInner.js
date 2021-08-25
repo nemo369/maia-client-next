@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-export default function useFormStudy(initial = {}) {
+export default function useFormStudyInner(initial = {}) {
   // create a state object for our inputs
   const [inputs, setInputs] = useState(initial);
   const initialValues = Object.values(initial).join('');

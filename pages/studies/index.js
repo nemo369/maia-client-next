@@ -18,7 +18,7 @@ import { seoMerge } from '../../src/utils/next-seo.config';
 const seo = seoMerge({
   title: 'זירת הלימודים',
 });
-export default function Studies({ myStudies, user, scopes }) {
+export default function Studies({ myStudies, user, scopes, institutions }) {
   const [loader, setLoader] = useState(false);
   const [studies, setstudies] = useState(myStudies);
   const [allStudies, setAllstudies] = useState(null);
@@ -58,10 +58,6 @@ export default function Studies({ myStudies, user, scopes }) {
     setstudies(data);
     setLoader(false);
   };
-  const [comparedCategorys, setComparedCategorys] = useState('');
-  const filteredCategories = async (dataToSend) => {
-    setComparedCategorys(await VendorAPI.fetchComparedCategorys(user.token, dataToSend, 'studies'));
-  };
 
   return (
     <>
@@ -73,16 +69,17 @@ export default function Studies({ myStudies, user, scopes }) {
         >
           <StudiesHeader num={myStudies.length} />
           <div className="flex gap-x-4 relative">
-            {!categoryType.id && <StudyForm handleChange={dropDownChanges} scopes={scopes} />}
-            <div className="flex items-center">
-              <CompareDropdown
-                comparedCategorys={comparedCategorys}
-                filteredCategories={filteredCategories}
-                topIputs={[]}
-                //לבנתיים//
-                additionalStudies={[]}
+            {!categoryType.id && (
+              <StudyForm
+                dropDownChanges={dropDownChanges}
+                scopes={scopes}
+                institutions={institutions}
               />
-            </div>
+            )}
+            {!!categoryType.id && (
+              <CompareDropdown professionIds={myStudies.map((study) => study.full_data.miK_NUM)} />
+            )}
+
             <div className=" mr-auto">
               <CheckboxGroup checks={categoryGroups} onChange={onChange} checkType={categoryType} />
             </div>
@@ -97,9 +94,10 @@ export default function Studies({ myStudies, user, scopes }) {
 
 export async function getServerSideProps(req) {
   const [user, token] = getUserSession(req);
-  const [{ data: myStudies }, { data: scopes }] = await Promise.all([
+  const [{ data: myStudies }, { data: scopes }, { data: institutions }] = await Promise.all([
     VendorAPI.getCategorys(token, 'studies', { byUser: true }),
     VendorAPI.getScopes(token),
+    VendorAPI.getInstitutions(token),
   ]);
   if (user.redirect) return user;
   const locale = `he${user.gender}`;
@@ -110,6 +108,7 @@ export async function getServerSideProps(req) {
       user,
       myStudies,
       scopes,
+      institutions,
     },
   };
 }

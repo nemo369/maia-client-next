@@ -1,5 +1,6 @@
+/* eslint-disable operator-linebreak */
 import { useTranslation } from 'next-i18next';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import useFormStudy from '../../src/hooks/useFormStudy';
 import Group4 from '../svg/Group4';
 import Button from '../common/Button';
@@ -7,12 +8,20 @@ import Check from '../common/Check';
 import PopSide from '../common/PopSide';
 import { studyData, areaData } from '../../src/utils/studyFilterData';
 import CompareSidePop from './CompareSidePop';
+import VendorAPI from '../../src/services/vendor.service';
+import { AppContext } from '../../src/context/state';
 
-const CompareDropdown = (props) => {
-  const { filteredCategories, comparedCategorys, additionalStudies } = props;
+const CompareDropdown = ({ professionIds }) => {
   const { t } = useTranslation('common');
+  const { user } = useContext(AppContext);
 
+  const [studies, setStudies] = useState([]);
+  const filteredCategories = async (dataToSend) => {
+    const { data } = await VendorAPI.getCategorys(user.token, 'studies', dataToSend);
+    setStudies(data);
+  };
   const { inputs, handleChange } = useFormStudy({
+    professionIds,
     drishot: [],
     teuda: [],
     meshech: [],
@@ -25,7 +34,6 @@ const CompareDropdown = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     filteredCategories(inputs);
-    console.log(inputs);
   };
 
   const handelClick = () => {
@@ -68,10 +76,10 @@ const CompareDropdown = (props) => {
                       key={study.id}
                       id={study.id}
                       value={study.id}
-                      onChange={handleChange}
-                      className="pll p-1  w-4 h-4"
+                      className="p-1  w-4 h-4"
                       content={study.text}
                       textClass="text-sm mr-3 relative"
+                      onChange={handleChange}
                       wraperClass="pl-4"
                       isChecked={inputs[column.name].includes(study.id)}
                     />
@@ -101,6 +109,15 @@ const CompareDropdown = (props) => {
             <PopSide
               trigger={
                 <Button
+                  disabled={
+                    !(
+                      inputs.drishot.length ||
+                      inputs.teuda.length ||
+                      inputs.meshech.length ||
+                      inputs.miuhad.length ||
+                      inputs.area.length
+                    )
+                  }
                   onClick={handleSubmit}
                   className="w-24"
                   type="button"
@@ -110,11 +127,10 @@ const CompareDropdown = (props) => {
               }
             >
               <CompareSidePop
-                comparedCategorys={comparedCategorys}
+                comparedCategorys={inputs}
                 open={open}
                 setOpen={setOpen}
-                //לבנתיים//
-                additionalStudies={additionalStudies}
+                studies={studies}
               />
             </PopSide>
           </div>

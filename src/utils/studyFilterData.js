@@ -56,7 +56,7 @@ export const studyData = [
       { text: 'שלוש שנים', id: '4', name: 'three_year' },
       { text: 'ארבע שנים', id: '5', name: 'four_year' },
       { text: 'חמש עד שש שנים', id: '6', name: 'five_year' },
-      { text: 'שבע שנים ומעלה', id: '6', name: 'seven_year' },
+      { text: 'שבע שנים ומעלה', id: '7', name: 'seven_year' },
     ],
   },
 ];
