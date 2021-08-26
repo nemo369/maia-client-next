@@ -5,6 +5,7 @@ import Button from '../../common/Button';
 import StageResults from '../../common/stage1results/StageResults';
 import StagesPopSide from '../../common/StagesPopSide';
 import NextStepPopUp from '../../popups/NextStepPopUp';
+import ProfileSummary from '../ProfileSummary';
 
 function AutobiographyTestResults() {
   const { t } = useTranslation('common');
@@ -15,7 +16,7 @@ function AutobiographyTestResults() {
       <h2 className="text-[22px] text-gray">סיכום תוצאת שלב</h2>
       <h3 className="text-3xl font-bold text-[#6C6C6C] mb-6">מה עשיתי עד כה</h3>
       <h4 className="mb-4 text-xl font-bold">המאפיינים היעקריים שלך</h4>
-      <div className="min-h-[300px]" />
+      <ProfileSummary />
       <Bars />
       <div className="flex gap-x-1 mt-6">
         <StagesPopSide

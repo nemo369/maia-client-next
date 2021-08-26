@@ -1,9 +1,14 @@
 export const upperCase = (str) => str?.toUpperCase();
 export const trimText = (str, length = 64) => {
-  if (!str || str.length < length) {
+  if (!str) {
     return str;
   }
-  return `${str.substring(0, length - 3)}...`;
+  const strippedString = str.replace(/(<([^>]+)>)/gi, '');
+  if (strippedString.length < length) {
+    return strippedString;
+  }
+
+  return `${strippedString.substring(0, length - 3)}...`;
 };
 
 export const addOrRemove = ([...array], value) => {
@@ -34,4 +39,26 @@ export const getGreeting = () => {
       break;
   }
   return greet;
+};
+export const getProfileDesc = (proifle) => {
+  function getDesc(s) {
+    switch (s) {
+      case 's':
+        return 'חברתי';
+      case 'c':
+        return 'חברתי';
+      case 'e':
+        return 'חברתי';
+
+      default:
+        return '';
+    }
+  }
+  let str = '*';
+  str += getDesc(proifle.mainField);
+  str += '-';
+  str += getDesc(proifle.secondField);
+  str += '-';
+  str += getDesc(proifle.thirdField);
+  return str;
 };

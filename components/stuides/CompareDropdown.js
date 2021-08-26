@@ -21,8 +21,7 @@ const CompareDropdown = ({ professionIds }) => {
     setStudies(data);
   };
   const { inputs, handleChange } = useFormStudy({
-    // professionIds,
-    professionIds: [7203, ...professionIds],
+    professionIds,
     drishot: [],
     teuda: [],
     meshech: [],
