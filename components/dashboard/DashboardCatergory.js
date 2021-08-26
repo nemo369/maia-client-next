@@ -31,6 +31,7 @@ function Dashboard() {
         VendorAPI.getCategorys(user.token, 'studies', { byUser: true }),
         // VendorAPI.getCategorys(user.token, 'jobs' ),
       ]);
+      console.log(studies);
       setcategories({
         professions: professions || [],
         jobs: [],

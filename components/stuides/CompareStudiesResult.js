@@ -5,17 +5,16 @@ import MailGreySmall from '../svg/MailGreySmall';
 import Xcircle from '../svg/Xcircle';
 import JustHeart from '../common/JustHeart';
 
-const CompareStepTwo = ({ setOpen, open, setCompare, studies }) => {
+const CompareStudiesResult = ({ setOpen, setCompare, studies }) => {
   const { t } = useTranslation('common');
   const close = () => {
     if ('undefined' === typeof window) return;
     const el = document.querySelector('#close-modal-hack');
     el?.click();
-    setOpen(!open);
+    setOpen(false);
   };
   const handleAddTrack = () => {
     setCompare(false);
-    // clearForm();
   };
 
   return (
@@ -91,4 +90,4 @@ const CompareStepTwo = ({ setOpen, open, setCompare, studies }) => {
     </div>
   );
 };
-export default CompareStepTwo;
+export default CompareStudiesResult;
