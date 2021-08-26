@@ -11,21 +11,20 @@ export default function useFormStudyInner(initial = {}) {
   }, [initialValues]);
 
   function handleChange(e) {
-    const { value } = e.target;
+    const value = Number(e.target.value);
     const { name } = e.target;
-    if (!inputs?.categories.includes(value)) {
+    if (e.target.checked) {
       setInputs({
+        // copy the existing state
         ...inputs,
         [name]: [...inputs[name], value],
       });
-    }
-    if (inputs?.categories.includes(value)) {
-      const index = inputs.categories.indexOf(value);
-      inputs?.categories.splice(index, 1);
-    }
-    console.log(inputs);
-    if (4 < inputs.categories.length) {
-      // setInputs({ ...inputs.categories.reverse().slice(0, 4) });
+    } else {
+      setInputs({
+        // copy the existing state
+        ...inputs,
+        [name]: inputs[name].filter((input) => input !== value),
+      });
     }
   }
 
