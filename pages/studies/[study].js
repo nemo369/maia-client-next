@@ -38,7 +38,7 @@ export default function Studies({ study, studies }) {
         <div className="md:grid  grid-cols-2 gap-x-4 justify-between">
           <div className="lg:flex felx col-start-1 col-end-3">
             <StudyProfile study={study} />
-            {/* <StudyMoreInfo study={study} /> */}
+            <StudyMoreInfo study={study} />
           </div>
           <StudyBottomSlider studies={studies} />
         </div>
@@ -62,6 +62,7 @@ export async function getServerSideProps(req) {
     props: {
       ...(await serverSideTranslations(locale, ['common', 'study'])),
       user,
+      // studies: studies.filter((stud) => Number(stud.iD_Num) !== Number(study)),
       studies,
       study: studyData,
     },

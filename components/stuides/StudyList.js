@@ -14,7 +14,7 @@ function StudyList({ studies }) {
             isButton
             description={study.description}
             id={study.id}
-            type="study"
+            type="studies"
             className="h-full"
           />
         </li>

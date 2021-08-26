@@ -7,31 +7,50 @@ import Books from '../svg/Books';
 export default function StudyMoreInfo({ study }) {
   return (
     <div>
-      {study.more_study_info.map((stud) => (
-        <div className=" lg:mr-7 flex gap-1 mb-5 flex-shrink flex-grow">
-          <div className="bg-white study-two-cornered py-7 px-3 self-start added-shadow">
-            <CheckForTitle title={stud.title} />
-          </div>
-          <div className="bg-white study-three-cornered added-shadow grid content-evenly pb-10 pt-5  px-5 gap-4">
-            <h4 className=" font-bold text-lg leading-4">{stud.title}</h4>
-            <p className="text-sm leading-3">{stud.text} </p>
-          </div>
-        </div>
+      {Object.entries(study).map(([key]) => (
+        <Li key={key} place={key} study={study} />
       ))}
     </div>
   );
 }
+const Li = ({ place, study }) => {
+  const getLine = (key) => {
+    switch (key) {
+      case 'teurdrishot':
+        return { key: study[key], value: 'תנאי קבלה' };
+      case 'tochnit':
+        return { key: study[key], value: 'תוכנית לימודים' };
+      case 'hearot':
+        return { key: study[key], value: 'מידע נוסף ומעונות' };
 
+      default:
+        return {};
+    }
+  };
+  const { key, value } = getLine(place);
+  if (!key || !value) return null;
+  return (
+    <div className=" lg:mr-7 flex gap-1 mb-5 flex-shrink flex-grow">
+      <div className="bg-white study-two-cornered py-7 px-3 self-start added-shadow">
+        <CheckForTitle title={place} />
+      </div>
+      <div className="bg-white study-three-cornered added-shadow grid content-evenly pb-10 pt-5  px-5 gap-4">
+        <h4 className=" font-bold text-lg leading-4">{value}</h4>
+        <p className="text-sm leading-3" dangerouslySetInnerHTML={{ __html: key }} />
+      </div>
+    </div>
+  );
+};
 const CheckForTitle = ({ title }) => {
   let classes = '';
   switch (title) {
-    case 'תנאי קבלה':
+    case 'teurdrishot':
       classes = <PencileGeomitry />;
       break;
-    case 'תוכנית לימודים':
+    case 'tochnit':
       classes = <Books />;
       break;
-    case 'מידע נוסף ומעונות':
+    case 'hearot':
       classes = <SmallBrain />;
       break;
 
