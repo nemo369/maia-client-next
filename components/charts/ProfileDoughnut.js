@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Doughnut } from 'react-chartjs-2';
 import { AppContext, useAppContext } from '../../src/context/state';
+import { getChartColors } from '../../src/utils/util';
 
 function ProfileDoughnut() {
   const { profile } = useAppContext(AppContext);
@@ -13,13 +14,12 @@ function ProfileDoughnut() {
       profile.vendor_profile.secondField,
       profile.vendor_profile.thirdField,
     ];
-    console.log(fields);
     setlabels(fields.map((field) => field.displayName));
     setDataset([
       {
         label: false,
         data: fields.map((field) => field.value * 100),
-        backgroundColor: fields.map((field) => 'red'),
+        backgroundColor: fields.map((field) => getChartColors(field.code)),
       },
     ]);
   }, [profile]);
