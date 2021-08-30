@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import Autobiography from './Autobiography';
 import ProfileAPI from '../../../src/services/profile.service';
 import CompletionIAmpro from '../CompletionIAmprosStage/CompletionIAmpro';
+// import Veretas from '../veritasStage.js/Veretas';
 
 // import StageThreeResults from '../StageThreeResults';
 
@@ -25,3 +26,6 @@ const StageResults = () => {
   );
 };
 export default StageResults;
+{
+  /* <CompletionIAmpro stageData={stages} /> */
+}

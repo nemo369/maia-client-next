@@ -3,13 +3,41 @@ import StarRating from './StarRating';
 import medalStar from '../../../public/images/medalStar.png';
 
 const StagesResultsWorkExperience = (props) => {
-  const { stageData, medal } = props;
+  const { stageData, medal, autobiographyData, profileData } = props;
   console.log(medal);
-  const medal1 = true;
-  console.log(stageData);
+  console.log(profileData);
+  const warriorText =    'חשוב שתדע שמסלול השירות שלך מקנה לך כישורים ומיומנויות חשובים לקראת השילוב בלימודים ובתעסוקה.';
+  const medal1 = false;
+  const workExp = profileData?.vendor_profile_test.map((x, index) => (
+    <div className="flex border-b-2 pb-4 gap-y-[30px]">
+      {medal1 && 0 === index && <Image src={medalStar} alt="מדליה" width={100} height={100} />}
+      <div className={medal1 && 0 === index ? 'grid' : 'w-full'}>
+        <div className="flex justify-between">
+          <p className="text-xl text-[#474747] max-w-[425px]">
+            {x.categoryName}
+{' '}
+|<span> 
+{' '}
+{''}
+{' '}
+ </span>
+            {x.jobName}
+          </p>
+          <div className="stars-wrapper flex">
+            <StarRating rating={x.starsValue} />
+          </div>
+        </div>
+
+        {medal1 && 0 === index && (
+          <p className="block text-xl text-[#474747] font-bold w-[93%]">{warriorText}</p>
+        )}
+      </div>
+    </div>
+  ));
   return (
     <div className="bg-[#F5F5F5] grid py-[30px] px-5 gap-y-7 max-h-[427px] overflow-scroll">
-      <div className="flex border-b-2 pb-4 gap-y-[30px]">
+      {workExp}
+      {/* <div className="flex border-b-2 pb-4 gap-y-[30px]">
         {medal1 ? <Image src={medalStar} alt="מדליה" width={100} height={100} /> : null}
         <div className="grid">
           <div className="flex justify-between">
@@ -36,7 +64,7 @@ const StagesResultsWorkExperience = (props) => {
       </div>
       <div className=" text-xl text-[#474747]">
         <p>{stageData ? stageData[4] : 'hello'}</p>
-      </div>
+      </div> */}
     </div>
   );
 };
