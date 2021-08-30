@@ -1,9 +1,8 @@
 function InformationClicked() {
   return (
     <svg width="96px" height="73px" viewBox="0 0 96 73" version="1.1">
-      <title>9EFA38ED-1402-458B-AFB1-4121E6A7FC01</title>
       <defs>
-        <filter id="filter-1">
+        <filter id="InformationClicked-filter-1">
           <feColorMatrix
             in="SourceGraphic"
             type="matrix"
@@ -26,7 +25,10 @@ function InformationClicked() {
                   זירת המקצועות
                 </tspan>
               </text>
-              <g filter="url(#filter-1)" id="iconfinder_tourist_info_sign_2097334">
+              <g
+                filter="url(#InformationClicked-filter-1)"
+                id="iconfinder_tourist_info_sign_2097334"
+              >
                 <g transform="translate(33.500000, 0.000000)">
                   <path
                     d="M16.8642,12.860208 C13.4622,12.860208 10.692,10.091952 10.692,6.688008 C10.692,3.284064 13.460256,0.517752 16.8642,0.517752 C20.2662,0.517752 23.034456,3.286008 23.034456,6.688008 C23.034456,10.090008 20.2662,12.860208 16.8642,12.860208 Z"

@@ -5,7 +5,7 @@ function WalkMeStepOne() {
     <svg xmlns="http://www.w3.org/2000/svg" width="585" height="646" viewBox="0 0 585 646">
       <defs>
         <filter
-          id="filter-1"
+          id="WalkMeStepOne-filter-1"
           width="178.1%"
           height="421.1%"
           x="-39%"
@@ -24,7 +24,7 @@ function WalkMeStepOne() {
               x="147.5"
               y="395"
               fill="#3E3E3E"
-              filter="url(#filter-1)"
+              filter="url(#WalkMeStepOne-filter-1)"
               opacity="0.63"
               rx="10"
               transform="rotate(16 293.5 430.5)"

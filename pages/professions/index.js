@@ -7,6 +7,7 @@ import CheckboxGroup from '../../components/common/CheckboxGroup';
 import NoProfession from '../../components/profession/NoProfession';
 import ProfessionForm from '../../components/profession/ProfessionForm';
 import ProfessionList from '../../components/profession/ProfessionList';
+import ProfessionListVirtual from '../../components/profession/ProfessionListVirtual';
 import ProfessionsHeader from '../../components/profession/ProfessionsHeader';
 import { AppContext } from '../../src/context/state';
 import useProfile from '../../src/hooks/useProfile';
@@ -73,7 +74,7 @@ export default function Professions({ allProfessions, scopes }) {
         >
           <ProfessionsHeader myProfessions={myProfessions} />
           <div className="grid grid-cols-2 gap-x-1 transition">
-            <div className="grid grid-cols-2 gap-x-1">
+            <div className="grid grid-cols-2 gap-x-1 pr-1">
               {!categoryType.id && <ProfessionForm scopes={scopes} handleChange={setQuery} />}
             </div>
             <div className="justify-self-end">
@@ -82,8 +83,11 @@ export default function Professions({ allProfessions, scopes }) {
           </div>
           <hr className="border-t-2 border-dashed border-[#cccccc] my-5" />
 
-          {professions && !!professions.length && <ProfessionList professions={professions} />}
-          <NoProfession professions={professions?.length} />
+          {professions && !!professions.length ? (
+            <ProfessionListVirtual professions={professions} />
+          ) : (
+            <NoProfession />
+          )}
         </div>
       </section>
     </>
