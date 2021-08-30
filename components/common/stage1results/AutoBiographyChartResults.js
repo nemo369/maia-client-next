@@ -1,10 +1,7 @@
-// import { getChartColors } from '../../../src/utils/consts';
-
-import { getChartColors } from '../../../src/utils/consts';
+import { getChartColors } from '../../../src/utils/util';
 
 const AutoBiographyChartResults = (props) => {
   const { autobiographyData } = props;
-  console.log(autobiographyData);
   const colorCheck = (id) => {
     const color = getChartColors(id);
     return <div className="w-2 h-2 rounded-full" style={{ backgroundColor: color }} />;
