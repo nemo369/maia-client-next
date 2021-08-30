@@ -13,7 +13,7 @@ function ProfessionListVirtual({ professions }) {
   return (
     <>
       {Object.entries(byGroups).map(([key, value]) => (
-        <div key={key}>
+        <div key={key} className="mb-10">
           <h2 className="font-bold text-[22px] mb-5">{key}</h2>
           <ul className="grid grid-cols-3 gap-2 pb-6">
             {value.map((profession) => (
