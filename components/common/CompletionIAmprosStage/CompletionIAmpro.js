@@ -1,27 +1,26 @@
+import { useContext } from 'react';
+import { AppContext } from '../../../src/context/state';
 import Stage2Top from './stage2Top';
+import Stage2longTextArr from './Stage2longTextArr';
 
-const CompletionIAmpro = (props) => {
-  const { stageData } = props;
+const CompletionIAmpro = () => {
+  const { profile } = useContext(AppContext);
+  const iamproData = profile?.vendor_profile_i_am_pro;
   const close = () => {
     if ('undefined' === typeof window) return;
     const el = document.querySelector('#close-modal-hack');
     el?.click();
   };
-  // const test = 'test';
   return (
     <div className="stage1-wrapper grid">
-      <Stage2Top close={close} stageData={stageData} />
+      <Stage2Top close={close} iamproData={iamproData} />
 
       <hr className="dashed-stages my-5 h-[2px]" />
 
       <div className="stage1-middle-wrapper flex justify-around gap-x-[104px]">
-        <div className="grid pt-[30px] gap-y-8" />
-      </div>
-
-      <div className="stage1-bottom-wrapper">
-        <h1>data</h1>
-        <br />
-        <h1>more data</h1>
+        <div className="grid pt-[30px] gap-y-8">
+          <Stage2longTextArr iamproData={iamproData} />
+        </div>
       </div>
     </div>
   );

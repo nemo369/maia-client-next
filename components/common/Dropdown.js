@@ -4,9 +4,7 @@ import WithClickOutside from './WithClickOutside';
 
 const Dropdown = forwardRef(({ open1, setOpen1, props }, ref) => {
   const { title, content } = props;
-  const handelClick = () => {
-    // console.log('focus-out');
-  };
+  const handelClick = () => {};
 
   return (
     <div ref={ref} className="max-h-28 grid relative  ">
