@@ -19,21 +19,10 @@
 }
 
 .description {
-  // min-width: 520px;
-  // max-width: 500px;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
   line-height: 16px; /* fallback */
-  // max-height: 32px; /* fallback */
   -webkit-line-clamp: 3; /* number of lines to show */
   -webkit-box-orient: vertical;
 }
-
-.email1::placeholder {
-  padding-right: 10px;
-}
-
-// .whiteEarth {
-//   fill: white;
-// }
