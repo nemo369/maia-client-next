@@ -2,8 +2,6 @@ import ClearMark from '../../svg/ClearMark';
 
 const Stage2longTextArr = (props) => {
   const { iamproData } = props;
-  console.log(iamproData);
-  console.log('test');
 
   const data = iamproData?.longTextArr.map((x) => (
     <div className="grid">

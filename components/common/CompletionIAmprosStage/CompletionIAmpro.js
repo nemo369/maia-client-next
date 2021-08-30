@@ -5,9 +5,7 @@ import Stage2longTextArr from './Stage2longTextArr';
 
 const CompletionIAmpro = () => {
   const { profile } = useContext(AppContext);
-  console.log(profile);
   const iamproData = profile?.vendor_profile_i_am_pro;
-  console.log(iamproData);
   const close = () => {
     if ('undefined' === typeof window) return;
     const el = document.querySelector('#close-modal-hack');

@@ -1,6 +1,6 @@
 import { useTranslation } from 'next-i18next';
 import { AppContext, useAppContext } from '../../src/context/state';
-import { getProfileDesc } from '../../src/utils/util';
+// import { getProfileDesc } from '../../src/utils/util';
 
 function ProfileSummary() {
   const { profile } = useAppContext(AppContext);
@@ -10,10 +10,7 @@ function ProfileSummary() {
     <div className="min-h-[300px]">
       {profile.vendor_profile_i_am_pro && (
         <>
-          <p>
-            מסתמן כי הפרופיל התעסוקתי שלך הוא &nbsp;
-            {getProfileDesc(profile.vendor_profile)}
-          </p>
+          <p>מסתמן כי הפרופיל התעסוקתי שלך הוא &nbsp;</p>
           <p className="mb-4">
             {t('אתה')}
             &nbsp;

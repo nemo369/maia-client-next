@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { Doughnut } from 'react-chartjs-2';
-import { getChartColors } from '../../../src/utils/util';
 
 const StageOneBottom = ({ userProfileResults }) => {
   const [datasets, setDatasets] = useState([]);
