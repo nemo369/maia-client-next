@@ -153,7 +153,40 @@ hr.dashed {
 
 }
 
-.stage1-bottom-wrapper {
+.stage1-bottom-wrapper{
   width: 200px;
   height: 200px;
 }
+
+.btnwrapper-stage{
+fill: black;
+stroke: black;
+color: black;
+}
+.btnwrapper-stage path{
+fill: black;
+stroke: black;
+color: black;
+}
+.btnwrapper-stage g{
+fill: black;
+stroke: black;
+color: black;
+}
+.btnwrapper-stage svg{
+fill: black;
+stroke: black;
+color: black;
+}
+
+.chart-wrapper {
+  position: relative;
+  max-width: 400px;
+  margin: auto;
+}
+
+.small-img{
+  width: 30px;
+  height: 30px;
+}
+

@@ -1,10 +1,11 @@
+import Xcircle from '../../svg/Xcircle';
 import Button from '../Button';
 
 const StageOneTop = ({ stageData, close }) => (
   <>
     <div className="stage-top-wrapper flex justify-between">
-      <button className="self-start" type="button" onClick={close}>
-        x
+      <button className="self-start btnwrapper-stage" type="button" onClick={close}>
+        <Xcircle />
       </button>
       <div className="grid justify-center">
         <h1 className="text-3xl font-bold text-center text-[#333333]">דוח תוצאות</h1>

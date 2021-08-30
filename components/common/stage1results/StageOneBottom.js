@@ -1,27 +1,34 @@
+import { useState, useEffect } from 'react';
 import { Doughnut } from 'react-chartjs-2';
 
-const StageOneBottom = () => (
-  <Doughnut
-    data={{
-      labels: ['Red', 'Blue', 'Green', 'Purple'],
-      datasets: [
-        {
-          label: '# of votes',
-          data: [5, 5, 5, 5],
-          backgroundColor: ['red', 'green', 'blue', 'yellow'],
+const StageOneBottom = ({ userProfileResults }) => {
+  const [datasets, setDatasets] = useState([]);
+  const [labels, setLabels] = useState([]);
+  useEffect(() => {
+    const newdatasets = { data: [], backgroundColor: [] };
+    const newLables = [];
+    userProfileResults.forEach((data) => {
+      newLables.push(data.name);
+      newdatasets.data.push(data.value * 100);
+      newdatasets.backgroundColor.push(getChartColors(data.code));
+    });
+    setLabels(newLables);
+    setDatasets([newdatasets]);
+  }, [userProfileResults]);
+
+  return (
+    <Doughnut
+      data={{
+        labels,
+        datasets,
+      }}
+      options={{
+        maintainAspectRatio: false,
+        legend: {
+          display: false,
         },
-      ],
-    }}
-    height="100px"
-    width="100px"
-    options={{
-      maintainAspectRatio: false,
-      legend: {
-        label: {
-          fontSize: 200,
-        },
-      },
-    }}
-  />
-);
+      }}
+    />
+  );
+};
 export default StageOneBottom;
