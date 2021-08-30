@@ -11,12 +11,8 @@
   table-layout: fixed;
   border-collapse: collapse;
 }
-
-.stepper__step {
-  position: relative;
-  display: table-cell;
-  text-align: center;
-  padding: 1rem;
+.half-white-half-orange {
+  background: linear-gradient(90deg, #ffffff 50%, #fb9773 50%);
 }
 
 .stepper__indicator {
@@ -52,7 +48,7 @@
 }
 
 .stepper .stepper__step:after {
-  content: ' ';
+  content: " ";
   position: absolute;
   top: 1.8rem;
   width: 100%;

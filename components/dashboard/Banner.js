@@ -17,7 +17,7 @@ function Banner() {
     fetchBanner();
   }, []);
   return (
-    <footer className="grid__banner   mt-12 relative h-52 mb-10">
+    <footer className="grid__banner relative h-52 mb-10">
       <div
         className="h-40 bg-gray-200 rounded-lg overflow-hidden wp-content"
         dangerouslySetInnerHTML={{ __html: bannerHtml }}

@@ -1,17 +1,36 @@
-import Image from 'next/image';
 import { useTranslation } from 'next-i18next';
-import { AppContext, useAppContext } from '../../src/context/state';
-import Stepper from '../common/Stepper';
+import Image from 'next/image';
+import { useEffect, useState } from 'react';
 import assistant from '../../public/images/assistant_dashboard.png';
-import Info from './header/Info';
+import { AppContext, useAppContext } from '../../src/context/state';
 import { getGreeting } from '../../src/utils/util';
+import WalkMeStepper from '../walkMe/WalkMeStepper';
+import Info from './header/Info';
 
 function DashboardHeader() {
   const { t } = useTranslation('common');
-  const { user } = useAppContext(AppContext);
-  const dis = `dis_${user.step}`; // dis_second
+  const { profile } = useAppContext(AppContext);
+  const [step, setstep] = useState(1);
+  useEffect(() => {
+    if (!profile || !profile.vendor_profile) {
+      return;
+    }
+    const { vendor_profile: vendor } = profile;
+    if (vendor.completionAutobiography && !vendor.completionIAmpro) {
+      setstep(2);
+      return;
+    }
+
+    if (vendor.completionAutobiography && vendor.completionIAmpro && !vendor.completionVeritas) {
+      setstep(2);
+      return;
+    }
+    if (vendor.completionAutobiography && vendor.completionIAmpro && vendor.completionVeritas) {
+      setstep(3);
+    }
+  }, [profile]);
   return (
-    <header className={`sw-full h-32 mb-16 p-7  flex items-center stepper-one stepper${dis}`}>
+    <header className="sw-full h-32 mb-4 p-7  flex items-center stepper-one">
       <div className="ml-auto">
         <h1 className="text-4xl max-w-xs truncate text-white">
           <strong className="text-orange font-bold">
@@ -20,7 +39,7 @@ function DashboardHeader() {
           </strong>
           <span>
             &nbsp;
-            {user.displayName}
+            {profile?.first_name}
           </span>
         </h1>
         <h2 className="text-white text-2xl">
@@ -28,12 +47,14 @@ function DashboardHeader() {
           &nbsp;
           {t('בשלב')}
           &nbsp;
-          {user.step}
+          {step}
+          &nbsp;
           {t('במסע ההתקדמות שלך')}
           <Info />
         </h2>
       </div>
-      <Stepper step={user.step || 'one'} />
+      <WalkMeStepper step={step} />
+      {/* <Stepper step={step || 'one'} /> */}
       <Image src={assistant} alt="העוזרת של מאיה" width={242} height={216} />
     </header>
   );

@@ -50,7 +50,6 @@ const ProfileAPI = {
   stages: async () => {
     try {
       const { data, status } = await axios.get(`${API_URL}/profile/userStages`);
-      console.log(data);
       return { ...data, status };
     } catch (error) {
       // console.log(error);

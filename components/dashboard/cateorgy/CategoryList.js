@@ -37,7 +37,7 @@ const CategoryLi = ({ cat, type }) => {
             </h3>
           </div>
         </div>
-        <div className="dash border-b-[1px] border-dashed border-[#979797] opacity-20 w-full h-1" />
+        <div className="dash border-b-[1px] mt-[10px] border-dashed border-[#979797] opacity-20 w-full h-1" />
         <p className="text-[#333333] opacity-70 text-[16px] mt-[10px]">
           {trimText(cat.description, 140)}
         </p>
