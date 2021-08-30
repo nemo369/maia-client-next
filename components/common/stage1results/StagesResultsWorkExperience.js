@@ -1,12 +1,20 @@
+/* eslint-disable prettier/prettier */
+/* eslint-disable react/jsx-indent */
+/* eslint-disable react/jsx-one-expression-per-line */
+/* eslint-disable react/jsx-curly-brace-presence */
 import Image from 'next/image';
 import StarRating from './StarRating';
 import medalStar from '../../../public/images/medalStar.png';
 
 const StagesResultsWorkExperience = (props) => {
   const { stageData, medal, autobiographyData, profileData } = props;
+  console.log(stageData);
+  console.log(autobiographyData);
   console.log(medal);
   console.log(profileData);
-  const warriorText =    'חשוב שתדע שמסלול השירות שלך מקנה לך כישורים ומיומנויות חשובים לקראת השילוב בלימודים ובתעסוקה.';
+  // eslint-disable-next-line operator-linebreak
+  const warriorText =
+    'חשוב שתדע שמסלול השירות שלך מקנה לך כישורים ומיומנויות חשובים לקראת השילוב בלימודים ובתעסוקה.';
   const medal1 = false;
   const workExp = profileData?.vendor_profile_test.map((x, index) => (
     <div className="flex border-b-2 pb-4 gap-y-[30px]">
@@ -15,12 +23,8 @@ const StagesResultsWorkExperience = (props) => {
         <div className="flex justify-between">
           <p className="text-xl text-[#474747] max-w-[425px]">
             {x.categoryName}
-{' '}
-|<span> 
-{' '}
-{''}
-{' '}
- </span>
+             |
+            <span> {''} </span>
             {x.jobName}
           </p>
           <div className="stars-wrapper flex">

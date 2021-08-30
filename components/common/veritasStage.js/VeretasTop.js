@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import Xcircle from '../../svg/Xcircle';
 import Button from '../Button';
 
@@ -55,7 +56,7 @@ const VeretasTop = ({ veretasData, close }) => {
           <Xcircle />
         </button>
         <div className="grid justify-center">
-          <h1 className="text-3xl font-bold text-center text-[#333333]">דוח תוצאות</h1>
+          <h1 className="text-3xl font-bold text-center text-[#d4cbcb]">דוח תוצאות</h1>
           <h2 className="text-3xl text-[#333333]">"היכולות שלי + מה מתאים לי"</h2>
         </div>
         <Button className="w-24" type="button" status="main" name="עריכה" />

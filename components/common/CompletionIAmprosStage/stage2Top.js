@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import Button from '../Button';
 
 const stage2Top = ({ iamproData, close }) => (

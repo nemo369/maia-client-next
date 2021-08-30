@@ -26,6 +26,6 @@ const StageResults = () => {
   );
 };
 export default StageResults;
-{
-  /* <CompletionIAmpro stageData={stages} /> */
-}
+// {
+//   /* <CompletionIAmpro stageData={stages} /> */
+// }
