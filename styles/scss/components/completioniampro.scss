@@ -1,0 +1,17 @@
+.stage2-marks{
+    display: flex;
+    gap: 10px;
+}
+
+.stage2-marks svg{
+display: inline-block;
+}
+.stage2-marks p{
+display: inline-block;
+}
+
+.full-divider{
+    box-sizing: border-box;
+  border-top: 1px solid #979797;
+  opacity: 0.2;
+}

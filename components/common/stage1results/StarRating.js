@@ -25,9 +25,10 @@ function Rating({ count, value, inactiveColor = '#ddd', activeColor = '#FB9773' 
     </div>
   );
 }
-const StarRating = () => {
+const StarRating = (props) => {
+  const { rating } = props;
   // const [rating, setRating] = useState(3);
-  const rating = 3;
+  // const rating = 3;
   return (
     <div>
       <Rating count={5} size={40} value={rating} activeColor="#FB9773" inactiveColor="#ddd" />

@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useContext, useEffect } from 'react';
+import { AppContext } from '../../../src/context/state';
 import { Case, Switch } from '../Switch';
 import EducationCurrent from './EducationCurrent';
 import Stage1middleTitles from './Stage1middleTitles';
@@ -6,22 +7,48 @@ import StageOneTop from './StageOneTop';
 import StagesResultsWorkExperience from './StagesResultsWorkExperience';
 import WhereToGo from './WhereToGo';
 import StageOneBottom from './StageOneBottom';
+import AutoBiographyChartResults from './AutoBiographyChartResults';
+
+const worksConsts = ['שירות צבאי'];
+const eductionsConsts = [];
 
 const Autobiography = (props) => {
   const { stageData } = props;
-  // const [test, setTest] = useState(false);
-  // const [workExperience, setWorkExperience] = useState(true);
-  // const [currentEducation, setCurrentEducation] = useState(false);
-  // const [whereToGo, setWhereToGo] = useState(false);
-  const [selected, setSelected] = useState('work-exprerience');
-  const medal = stageData?.stage1?.medal ? stageData?.stage1?.medal : false;
-  // const [medal, setMedal] = useState(stageData?.stage1?.medal ? stageData?.stage1?.medal : false);
+  const { profile } = useContext(AppContext);
+  const autobiographyData = profile?.vendor_profile;
+  const [biographys, setBiographys] = useState({
+    works: [],
+    eductions: [],
+    toGos: [],
+  });
+  useEffect(() => {
+    if (!profile || !profile.vendor_profile || !profile.vendor_profile_test) {
+      return;
+    }
 
-  ////////////////////////////////////////////////////////
+    const works = [];
+    const eductions = [];
+    profile.vendor_profile_test.forEach((test) => {
+      if (worksConsts.includes(test.categoryName)) {
+        works.push(test);
+      }
+      if (eductionsConsts.includes(test.categoryName)) {
+        eductions.push(test);
+      }
+    });
+    setBiographys({
+      works,
+      eductions,
+      toGos: [],
+    });
+  }, [profile]);
+
+  const [selected, setSelected] = useState('work-exprerience');
+  const medal = autobiographyData?.warrior;
+
   const [jobActive, setJobActive] = useState(true);
   const [eductionActive, setEductionActive] = useState(false);
   const [goActive, setGoActive] = useState(false);
-  //////////////////////////////////////////////
 
   const close = () => {
     if ('undefined' === typeof window) return;
@@ -54,7 +81,7 @@ const Autobiography = (props) => {
 
   return (
     <div className="stage1-wrapper grid">
-      <StageOneTop close={close} stageData={stageData} />
+      <StageOneTop close={close} stageData={stageData} autobiographyData={autobiographyData} />
 
       <hr className="dashed-stages my-5 h-[2px]" />
 
@@ -66,32 +93,41 @@ const Autobiography = (props) => {
           changeType={changeSelectedType}
         />
 
-        <div className="grid pt-[30px] gap-y-8">
+        <div className="grid pt-[30px] gap-y-8 w-full pl-10">
           <Switch test={selected}>
             <Case value="work-exprerience">
               <StagesResultsWorkExperience
                 medal={medal}
+                profileData={profile}
+                autobiographyData={biographys.works}
                 stageData={stageData?.stage1?.middle?.workWExperience}
               />
             </Case>
 
             <Case value="current-education">
-              <EducationCurrent stageData={stageData?.stage1?.middle?.currentEducation} />
+              <EducationCurrent
+                stageData={stageData?.stage1?.middle?.currentEducation}
+                autobiographyData={biographys.eductions}
+              />
             </Case>
 
             <Case value="where-to-go">
-              <WhereToGo stageData={stageData?.stage1?.middle?.whereIWantToGo} />
+              <WhereToGo
+                stageData={stageData?.stage1?.middle?.whereIWantToGo}
+                autobiographyData={biographys.toGos}
+              />
             </Case>
           </Switch>
         </div>
       </div>
 
-      <div className="stage1-bottom-wrapper">
-        <StageOneBottom />
-
-        <h1>data</h1>
-        <br />
-        <h1>more data</h1>
+      <div className="w-full flex justify-between pt-9 pr-28">
+        {/* <div className="flex"> */}
+        <AutoBiographyChartResults autobiographyData={autobiographyData} />
+        <div className="stage1-bottom-wrapper">
+          <StageOneBottom userProfileResults={profile.vendor_profile.userProfileResults} />
+        </div>
+        {/* </div> */}
       </div>
     </div>
   );
