@@ -1,30 +1,40 @@
+import { useState, useEffect } from 'react';
 import { Bar } from 'react-chartjs-2';
+import { AppContext, useAppContext } from '../../src/context/state';
+import { getChartColors } from '../../src/utils/util';
 
-const rand = () => Math.round(Math.random() * 20 - 10);
-const chartData = {
-  // labels: ['row.map(col => `${col.value}`)', 'label2'],
-  labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-  datasets: [
-    {
-      // data: row.map(col => col.value),
-      backgroundColor: 'rgb(15, 0, 132)',
-      data: [rand(), rand(), rand(), rand(), rand(), rand(), rand()],
-      type: 'bar',
-
-      label: '20%',
-    },
-    {
-      // data: row.map(col => col.value),
-      label: '',
-      backgroundColor: 'rgb(255, 99, 132)',
-      data: [rand(), rand(), rand(), rand(), rand(), rand(), rand()],
-    },
-  ],
-};
+const riasec = ['r', 'i', 'a', 's', 'e', 'c'];
 function Bars() {
+  const { profile } = useAppContext(AppContext);
+  const [labels, setlabels] = useState([]);
+  const [datasets, setDataset] = useState([{}]);
+  useEffect(() => {
+    if (!profile || !profile.vendor_profile) return;
+    const { vendor_profile: data } = profile;
+    const fields = data.userProfileResults.filter((field) => riasec.includes(field.code));
+    setlabels(fields.map((field) => field.name));
+    setDataset([
+      {
+        label: '',
+        data: fields.map((field) => field.value * 100),
+        backgroundColor: fields.map((field) => getChartColors(field.code)),
+      },
+    ]);
+  }, [profile]);
+  const options = {
+    maintainAspectRatio: false,
+  };
   return (
     <div>
-      <Bar data={chartData} width={100} height={50} options={{ maintainAspectRatio: false }} />
+      <Bar
+        data={{
+          labels,
+          datasets,
+        }}
+        width={100}
+        height={150}
+        options={options}
+      />
     </div>
   );
 }
