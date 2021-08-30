@@ -1,11 +1,9 @@
 /* eslint-disable react/jsx-one-expression-per-line */
-import { useTranslation } from 'next-i18next';
 import { AppContext, useAppContext } from '../../src/context/state';
 import ProfileDoughnut from '../charts/ProfileDoughnut';
 
 function ProfileSummary() {
   const { profile } = useAppContext(AppContext);
-  // const { t } = useTranslation('common');
 
   return (
     <div className="min-h-[300px]">
