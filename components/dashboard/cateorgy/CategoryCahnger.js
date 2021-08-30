@@ -31,15 +31,18 @@ function CategoryCahnger({ onChangeCategoryList, length, isLabel }) {
             <h2 className="text-3xl text-black font-bold ml-2">
               {categoryType.name}
               &nbsp;
-              {t('שיכולות להתאים לך')}
+              {t('שיכולים להתאים לך')}
             </h2>
-            <h3 className="text-base text-black/50">
+            <h3 className="text-base underline text-black/50">
               (נמצאו&nbsp;
               {length}
               &nbsp;
               {categoryType.name}
-              &nbsp;חדשות עבורך)
+              &nbsp;חדשים עבורך)
             </h3>
+            <div className="mr-[8px] mb-[5px] font-normal rounded-full border border-black/50 w-[19px] h-[19px] flex justify-center items-center text-sm text-black/50">
+              ?
+            </div>
           </div>
         </>
       )}
