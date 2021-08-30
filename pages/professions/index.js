@@ -6,7 +6,6 @@ import BreadCrumbs from '../../components/common/BreadCrumbs';
 import CheckboxGroup from '../../components/common/CheckboxGroup';
 import NoProfession from '../../components/profession/NoProfession';
 import ProfessionForm from '../../components/profession/ProfessionForm';
-import ProfessionList from '../../components/profession/ProfessionList';
 import ProfessionListVirtual from '../../components/profession/ProfessionListVirtual';
 import ProfessionsHeader from '../../components/profession/ProfessionsHeader';
 import { AppContext } from '../../src/context/state';
