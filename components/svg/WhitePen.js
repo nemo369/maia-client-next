@@ -8,7 +8,7 @@ function WhitePen() {
       viewBox="0 0 35 36"
     >
       <defs>
-        <filter id="filter-1">
+        <filter id="WhitePen-filter-1">
           <feColorMatrix
             in="SourceGraphic"
             values="0 0 0 0 1.000000 0 0 0 0 1.000000 0 0 0 0 1.000000 0 0 0 1.000000 0"

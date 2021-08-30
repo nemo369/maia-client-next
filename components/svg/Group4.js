@@ -11,7 +11,7 @@ function Group4({ content, container }) {
       className="inline-block"
     >
       <defs>
-        <filter id="filter-1" colorInterpolationFilters="auto">
+        <filter id="Group4-filter-1" colorInterpolationFilters="auto">
           <feColorMatrix
             in="SourceGraphic"
             values="0 0 0 0 0.418139 0 0 0 0 0.418139 0 0 0 0 0.418139 0 0 0 1.000000 0"

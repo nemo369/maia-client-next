@@ -1,13 +1,13 @@
 import React from 'react';
 
-function ChevronLeft() {
+function ChevronLeft({ className }) {
   return (
     <svg
+      className={`${className} "bi bi-chevron-left`}
       xmlns="http://www.w3.org/2000/svg"
       width="16"
       height="16"
       fill="currentColor"
-      className="bi bi-chevron-left"
       viewBox="0 0 16 16"
     >
       <path

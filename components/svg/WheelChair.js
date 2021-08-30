@@ -1,9 +1,8 @@
 function WHeelChair() {
   return (
     <svg className="inline-block" width="48px" height="48px" viewBox="0 0 48 48" version="1.1">
-      <title>E891AB2E-D913-493B-AAC5-761D97EDF33A</title>
       <defs>
-        <filter id="filter-1">
+        <filter id="WHeelChair-filter-1">
           <feColorMatrix
             in="SourceGraphic"
             type="matrix"
@@ -14,7 +13,7 @@ function WHeelChair() {
       <g id="Design" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
         <g id="Styleguide" transform="translate(-1399.000000, -4412.000000)">
           <g id="Group-27" transform="translate(1399.000000, 4412.000000)">
-            <g filter="url(#filter-1)" id="iconfinder_01_16_3556130">
+            <g filter="url(#WHeelChair-filter-1)" id="iconfinder_01_16_3556130">
               <g transform="translate(15.000000, 12.000000)">
                 <path
                   d="M6.54545455,5.45454545 C8.04927273,5.45454545 9.27272727,4.23109091 9.27272727,2.72727273 C9.27272727,1.22345455 8.04927273,0 6.54545455,0 C5.04163636,0 3.81818182,1.22345455 3.81818182,2.72727273 C3.81818182,4.23109091 5.04163636,5.45454545 6.54545455,5.45454545 Z"

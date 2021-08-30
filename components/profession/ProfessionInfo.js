@@ -11,7 +11,7 @@ function ProfessionInfo({ profession }) {
       <header className="flex mb-7 gap-x-4 items-center">
         <h2 className="ml-auto text-2xl font-bold">{profession.title}</h2>
         <JustHeart id={profession.id} type="professions" />
-        <CategoryPercentage percentage="92" className="flex-none mb-2" />
+        <CategoryPercentage percentage={profession.percentage} className="flex-none mb-2" />
       </header>
       <div dangerouslySetInnerHTML={{ __html: profession.description }} />
 

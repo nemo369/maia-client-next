@@ -52,11 +52,8 @@ export default function useProfile() {
       const allowedCityIds = [11];
       const city = profile.city ? JSON.parse(profile.city) : null;
       if (!city || !allowedCityIds.includes(city.id_area)) {
-        // window.location.href = '/user/not-valid';
+        window.location.href = '/user/not-valid';
       }
-    }
-    if (profile && 18 > +profile.age) {
-      // window.location.href = '/user/not-valid?error="to young"';
     }
   }, [profile, dispatch, user?.token, query]);
 }
