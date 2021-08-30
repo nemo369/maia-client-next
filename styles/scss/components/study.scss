@@ -1,12 +1,3 @@
-.study-two-cornered {
-  border-top-right-radius: 20px;
-  border-bottom-right-radius: 20px;
-}
-.study-three-cornered {
-  border-top-left-radius: 20px;
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
-}
 .flexi text > * {
   color: white;
   fill: white;
@@ -16,96 +7,26 @@
   box-shadow: 0 12px 34px -20px rgba(16, 20, 63, 0.15);
 }
 
-.triangle{
+.triangle {
   position: absolute;
-  width: 0; 
-  height: 0; 
+  width: 0;
+  height: 0;
   border-left: 20px solid transparent;
   border-right: 20px solid transparent;
-  
+
   border-bottom: 20px solid white;
 
   justify-self: center;
-  margin-right: 353px; 
+  right: 35%;
   top: -12px;
 }
 
-.checkbox-container > .button-group{
+.checkbox-container > .button-group {
   min-width: 0;
   width: auto;
 }
-.checkdropdown > * .check-text{
-  margin-right: 10px;
-  grid-column-gap: 10px;
-  font-size: 16px;
-}
-.checkdropdown1 > * .check-text{
-  font-size: 16px;
-}
-.checkdropdown1 > * .checkbox{
-  margin-right: 0px;
-}
-.checkdropdown {
-  grid-column-gap: 17px;
-}
-.checkdropdown1 > * .check-text {
-  margin-left: 10px;
-  margin-right:7px;
-}
-.study-form > * .check input[type="checkbox"]:before {
-  width: 18px;
-  height: 18px;
-}
-.study-sidePop-wrapper >  .check input[type="checkbox"]:before {
-  width: 38px;
-  height: 38px;
-  border-radius: 11px;
-  position: absolute;
-  right: -15px;
-  
-}
-.study-sidePop-wrapper > * .check-text{
-  margin-right: 50px;
-}
-.study-sidePop-wrapper >  .check input[type=checkbox]:checked:after {
-  content: "";
-  display: block;
-  width: 11px;
-  height: 21px;
-  border: solid #3c91a0;
-  border-width: 0 2px 2px 0;
-  transform: rotate(
-45deg
-);
-  position: absolute;
-  top: 4px;
-  left: 4px;
-}
 
-.copmare-SidePop > * .heart-wrapper{
-  display: none;
-}
-
-@media only screen and (max-width: 1060px) {
-  .checkbox-container > .button-group{
-    height: auto;
-    
-  }
-}
-@media only screen and (max-width: 1679px) {
-  .checkdropdown{
-    grid-template-columns: repeat(1, minmax(0, 1fr));
-  }
-}
-.wrapper-border:not(:last-child){
-  border-left: 2px solid rgb(151,151,151, 0.2) ;
-}
-
-.item3:nth-child(odd) .compare-wrapper{
-  background-color: grey
-}
-
-.compare-c > svg path g  {
+.compare-c > svg path g {
   fill: black;
   stroke: black;
   // background-color: black;

@@ -1,9 +1,14 @@
 export const upperCase = (str) => str?.toUpperCase();
 export const trimText = (str, length = 64) => {
-  if (!str || str.length < length) {
+  if (!str) {
     return str;
   }
-  return `${str.substring(0, length - 3)}...`;
+  const strippedString = str.replace(/(<([^>]+)>)/gi, '');
+  if (strippedString.length < length) {
+    return strippedString;
+  }
+
+  return `${strippedString.substring(0, length - 3)}...`;
 };
 
 export const addOrRemove = ([...array], value) => {
@@ -35,39 +40,25 @@ export const getGreeting = () => {
   }
   return greet;
 };
+export const getProfileDesc = (proifle) => {
+  function getDesc(s) {
+    switch (s) {
+      case 's':
+        return 'חברתי';
+      case 'c':
+        return 'חברתי';
+      case 'e':
+        return 'חברתי';
 
-export const getChartColors = (id) => {
-  const colors = {
-    a: '#277da1',
-    b: '#577590',
-    c: '#4d908e',
-    d: '#43aa8b',
-    e: '#90be6d',
-    f: '#90be6d',
-    g: '#f9c74f',
-    h: '#f9844a',
-    i: '#f8961e',
-    j: '#f3722c',
-    k: '#f94144',
-    l: '#f2cc8f',
-    m: '#ffafcc',
-    n: '#fee440',
-    o: '#b5e48c',
-    p: '#dda15e',
-    q: '#edf6f9',
-    r: '#e29578',
-    s: '#415a77',
-    t: '#A8DFCE',
-    u: '#b6ccfe',
-    v: '#f3e7e4',
-    w: '#55a630',
-    x: '#3e1f47',
-    y: '#ef233c',
-    z: '#ff9f1c',
-  };
-  if (colors[id]) {
-    return colors[id];
+      default:
+        return '';
+    }
   }
-
-  return '#000000';
+  let str = '*';
+  str += getDesc(proifle.mainField);
+  str += '-';
+  str += getDesc(proifle.secondField);
+  str += '-';
+  str += getDesc(proifle.thirdField);
+  return str;
 };

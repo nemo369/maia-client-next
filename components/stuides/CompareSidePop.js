@@ -1,50 +1,37 @@
 import { useState } from 'react';
 // import useFormStudy from '../../../src/hooks/useFormStudy';
 import useFormStudyInner from '../../src/hooks/useFormStudyInner';
-import CompareStepTwo from './CompareStepTwo';
-import CompareStepOne from './CompareStepOne';
+import CompareListOfAllStudies from './CompareListOfAllStudies';
+import CompareStudiesResult from './CompareStudiesResult';
 
-const CompareSidePop = ({ open, setOpen, comparedCategorys, additionalStudies }) => {
+const CompareSidePop = ({ setOpen, comparedCategorys, studies }) => {
   const [compare, setCompare] = useState(false);
-  const { inputs, handleChange, clearForm } = useFormStudyInner({
+  const [studiesToCompare, setStudiesToCompare] = useState([]);
+  const { inputs, handleChange } = useFormStudyInner({
     categories: [],
   });
   const handleCompare = () => {
-    const filtered = [];
-    inputs.categories.forEach((x) => {
-      additionalStudies.forEach((y) => {
-        // eslint-disable-next-line eqeqeq
-        if (x == y.id) {
-          filtered.push(y);
-        }
-      });
-    });
-    setCompare(filtered);
-    return filtered;
+    const filtered = studies.filter((study) => inputs.categories.includes(study.id));
+    setStudiesToCompare(filtered);
+    setCompare(true);
   };
 
   return (
     <>
       {compare ? (
-        <CompareStepTwo
-          open={open}
-          inputs={inputs}
+        <CompareStudiesResult
           setOpen={setOpen}
           setCompare={setCompare}
-          comparedCategorys={comparedCategorys}
-          additionalStudies={additionalStudies}
-          clearForm={clearForm}
-          compare={compare}
+          studies={studiesToCompare}
         />
       ) : (
-        <CompareStepOne
-          open={open}
+        <CompareListOfAllStudies
           inputs={inputs}
           handleChange={handleChange}
           handleCompare={handleCompare}
           setOpen={setOpen}
           comparedCategorys={comparedCategorys}
-          additionalStudies={additionalStudies}
+          studies={studies}
         />
       )}
     </>

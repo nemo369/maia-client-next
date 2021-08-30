@@ -13,8 +13,8 @@ function StudyList({ studies }) {
             value={study.title}
             isButton
             description={study.description}
-            id={profession.id}
-            type="study"
+            id={study.id}
+            type="studies"
             className="h-full"
           />
         </li>

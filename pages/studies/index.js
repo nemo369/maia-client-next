@@ -10,7 +10,6 @@ import CompareDropdown from '../../components/stuides/CompareDropdown';
 import StudiesHeader from '../../components/stuides/StudiesHeader';
 import StudyForm from '../../components/stuides/StudyForm';
 import StudyList from '../../components/stuides/StudyList';
-import useForm from '../../src/hooks/useForm';
 import useProfile from '../../src/hooks/useProfile';
 import VendorAPI from '../../src/services/vendor.service';
 import { getUserSession } from '../../src/utils/getUser';
@@ -19,7 +18,7 @@ import { seoMerge } from '../../src/utils/next-seo.config';
 const seo = seoMerge({
   title: 'זירת הלימודים',
 });
-export default function Studies({ myStudies, user, scopes }) {
+export default function Studies({ myStudies, user, scopes, institutions }) {
   const [loader, setLoader] = useState(false);
   const [studies, setstudies] = useState(myStudies);
   const [allStudies, setAllstudies] = useState(null);
@@ -36,14 +35,10 @@ export default function Studies({ myStudies, user, scopes }) {
     setLoader(true);
     const { data } = await VendorAPI.getCategorys(user.token, 'studies');
     setAllstudies(data);
+    setstudies(data);
     setLoader(false);
   };
 
-  const { inputs, handleChange } = useForm({
-    field: null,
-    profession: null,
-    path: null,
-  });
   const onChange = (id) => {
     const cat = categoryGroups.find((categ) => categ.id === id);
     setcategoryType(cat);
@@ -55,11 +50,13 @@ export default function Studies({ myStudies, user, scopes }) {
       fetchAllStuides();
       return;
     }
-    setAllstudies(allStudies);
+    setstudies(allStudies);
   };
-  const [comparedCategorys, setComparedCategorys] = useState('');
-  const filteredCategories = async (dataToSend) => {
-    setComparedCategorys(await VendorAPI.fetchComparedCategorys(user.token, dataToSend, 'studies'));
+  const dropDownChanges = async (selected) => {
+    setLoader(true);
+    const { data } = await VendorAPI.getCategorys(user.token, 'studies', selected);
+    setstudies(data);
+    setLoader(false);
   };
 
   return (
@@ -72,16 +69,17 @@ export default function Studies({ myStudies, user, scopes }) {
         >
           <StudiesHeader num={myStudies.length} />
           <div className="flex gap-x-4 relative">
-            <StudyForm handleChange={handleChange} scopes={scopes} />
-            <div className="flex items-center">
-              <CompareDropdown
-                comparedCategorys={comparedCategorys}
-                filteredCategories={filteredCategories}
-                topIputs={inputs}
-                //לבנתיים//
-                additionalStudies={[]}
+            {!categoryType.id && (
+              <StudyForm
+                dropDownChanges={dropDownChanges}
+                scopes={scopes}
+                institutions={institutions}
               />
-            </div>
+            )}
+            {!!categoryType.id && (
+              <CompareDropdown professionIds={myStudies.map((study) => study.full_data.miK_NUM)} />
+            )}
+
             <div className=" mr-auto">
               <CheckboxGroup checks={categoryGroups} onChange={onChange} checkType={categoryType} />
             </div>
@@ -96,11 +94,12 @@ export default function Studies({ myStudies, user, scopes }) {
 
 export async function getServerSideProps(req) {
   const [user, token] = getUserSession(req);
-  const [{ data: myStudies }, { data: scopes }] = await Promise.all([
+  const [{ data: myStudies }, { data: scopes }, { data: institutions }] = await Promise.all([
     VendorAPI.getCategorys(token, 'studies', { byUser: true }),
     VendorAPI.getScopes(token),
+    VendorAPI.getInstitutions(token),
   ]);
-  // if (user.redirect) return user;
+  if (user.redirect) return user;
   const locale = `he${user.gender}`;
   // Here you can add more data
   return {
@@ -109,6 +108,7 @@ export async function getServerSideProps(req) {
       user,
       myStudies,
       scopes,
+      institutions,
     },
   };
 }

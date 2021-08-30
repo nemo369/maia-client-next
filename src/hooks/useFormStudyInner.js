@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-export default function useFormStudy(initial = {}) {
+export default function useFormStudyInner(initial = {}) {
   // create a state object for our inputs
   const [inputs, setInputs] = useState(initial);
   const initialValues = Object.values(initial).join('');
@@ -11,17 +11,20 @@ export default function useFormStudy(initial = {}) {
   }, [initialValues]);
 
   function handleChange(e) {
-    const { value } = e.target;
+    const value = Number(e.target.value);
     const { name } = e.target;
-    if (!inputs?.categories.includes(value)) {
+    if (e.target.checked) {
       setInputs({
+        // copy the existing state
         ...inputs,
         [name]: [...inputs[name], value],
       });
-    }
-    if (inputs?.categories.includes(value)) {
-      const index = inputs.categories.indexOf(value);
-      inputs?.categories.splice(index, 1);
+    } else {
+      setInputs({
+        // copy the existing state
+        ...inputs,
+        [name]: inputs[name].filter((input) => input !== value),
+      });
     }
   }
 

@@ -31,7 +31,7 @@ export default function useProfile() {
         dispatch({ type: SET_PROFILE, profile: data });
       }
       if ([403, 401].includes(status)) {
-        window.location.href = '/';
+        push('/user/login?error=401&vendorissue=true');
       }
     };
 

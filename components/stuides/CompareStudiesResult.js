@@ -5,17 +5,16 @@ import MailGreySmall from '../svg/MailGreySmall';
 import Xcircle from '../svg/Xcircle';
 import JustHeart from '../common/JustHeart';
 
-const CompareStepTwo = ({ setOpen, open, setCompare, compare }) => {
+const CompareStudiesResult = ({ setOpen, setCompare, studies }) => {
   const { t } = useTranslation('common');
   const close = () => {
     if ('undefined' === typeof window) return;
     const el = document.querySelector('#close-modal-hack');
     el?.click();
-    setOpen(!open);
+    setOpen(false);
   };
   const handleAddTrack = () => {
     setCompare(false);
-    // clearForm();
   };
 
   return (
@@ -28,7 +27,7 @@ const CompareStepTwo = ({ setOpen, open, setCompare, compare }) => {
           <div className="inline-block w-[116%]">
             <p className="text-2xl leading-6 font-light ">{t('רשימת מסלולי לימוד להשוואה')}</p>
             <h1 className="text-[32px] text-green-500 leading-8 font-black">
-              {t(compare[0]?.title)}
+              {t(studies[0]?.title)}
             </h1>
           </div>
           <div className="flex justify-self-end compare-c">
@@ -38,58 +37,50 @@ const CompareStepTwo = ({ setOpen, open, setCompare, compare }) => {
               className="place-self-end px-5"
               type="button"
               status="main"
-              name="הוסף מסלול "
+              name={t('הוסף מסלול')}
               onClick={handleAddTrack}
             />
           </div>
         </div>
         <div className="flex justify-between border-t-[1px] item3">
-          {compare.map((x, index) => (
-            <div key={index} className="grid gap-y-16 pt-4 mt-5 ">
+          {studies.map(({ full_data: data }) => (
+            <div key={data.iD_Num} className="grid gap-y-16 pt-4 mt-5 ">
               <div className="flex justify-between">
                 <h1 className="study-logo">לוגו</h1>
-                <JustHeart id={x.id} type="studies" />
+                <JustHeart id={data.iD_Num} type="studies" />
               </div>
               <div className="grid gap-y-16 pt-4 mt-5 compare-wrapper">
                 <div>
-                  <h2 className="text-lg leading-5 text-gray">מוסדד לימודי</h2>
-                  <h3 className=" font-bold text-lg leading-5">{t(x.institute)}</h3>
+                  <h2 className="text-lg leading-5 text-gray">מוסד לימודי</h2>
+                  <h3 className=" font-bold text-lg leading-5">{data.mosname}</h3>
                 </div>
                 <div>
-                  <h2 className="text-lg leading-5 text-gray">{t(x.study_duration.title)}</h2>
-                  <h3 className=" font-bold text-lg leading-5">{t(x.study_duration.text)}</h3>
+                  <h2 className="text-lg leading-5 text-gray">משך הלימודים</h2>
+                  <h3 className=" font-bold text-lg leading-5">{data.meshech}</h3>
                 </div>
                 <div>
-                  <h2 className="text-lg leading-5 text-gray">{t(x.prerquisites.title)}</h2>
-                  <h3 className=" font-bold text-lg leading-5">{t(x.prerquisites.text)}</h3>
+                  <h2 className="text-lg leading-5 text-gray">דרישות מוקדמות</h2>
+                  <h3 className=" font-bold text-lg leading-5">{data.drishot}</h3>
                 </div>
                 <div>
-                  <h2 className="text-lg leading-5 text-gray">
-                    {t(x.certification_upon_complete.title)}
-                  </h2>
-                  <h3 className=" font-bold text-lg leading-5">
-                    {t(x.certification_upon_complete.text)}
-                  </h3>
-                </div>
-                <div>
-                  <h2 className="text-lg leading-5 text-gray">
-                    {t(x.certification_upon_complete.title)}
-                  </h2>
-                  <h3 className=" font-bold text-lg leading-5">
-                    {t(x.certification_upon_complete.text)}
-                  </h3>
+                  <h2 className="text-lg leading-5 text-gray">תעודות בסיום</h2>
+                  <h3 className=" font-bold text-lg leading-5">{data.teudA_TEUR}</h3>
                 </div>
                 <div>
                   <h2 className="text-lg leading-5 text-gray">הערות (למסלולי ההכשרה)</h2>
-                  <h3 className=" font-bold text-lg leading-5">{t(x.prerquisites.text)}</h3>
+                  <h3 className=" font-bold text-lg leading-5">{data.hearot}</h3>
                 </div>
                 <div>
-                  <h2 className="text-lg leading-5 text-gray">
-                    {t(x.candidate_start_registration.title)}
-                  </h2>
-                  <h3 className=" font-bold text-lg leading-5">
-                    {t(x.candidate_start_registration.text)}
-                  </h3>
+                  <h2 className="text-lg leading-5 text-gray">מועד תחילת הלימודים </h2>
+                  <h3 className=" font-bold text-lg leading-5"> </h3>
+                </div>
+                <div>
+                  <h2 className="text-lg leading-5 text-gray">מועד אחרון לפסיכומטרי </h2>
+                  <h3 className=" font-bold text-lg leading-5"> </h3>
+                </div>
+                <div>
+                  <h2 className="text-lg leading-5 text-gray">גובה שכר לימוד </h2>
+                  <h3 className=" font-bold text-lg leading-5"> </h3>
                 </div>
               </div>
             </div>
@@ -99,4 +90,4 @@ const CompareStepTwo = ({ setOpen, open, setCompare, compare }) => {
     </div>
   );
 };
-export default CompareStepTwo;
+export default CompareStudiesResult;

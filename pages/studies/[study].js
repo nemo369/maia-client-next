@@ -17,7 +17,7 @@ export default function Studies({ study, studies }) {
   const { t } = useTranslation('common');
   useProfile();
   const seo = seoMerge({
-    title: t('זירת המקצועות '),
+    title: 'מאגר הלימודים |' + study.teudA_TEUR,
   });
   const router = useRouter();
   if (!study) {
@@ -30,7 +30,7 @@ export default function Studies({ study, studies }) {
         <BreadCrumbs
           breadCrumbs={[
             { title: 'לימודים', href: '/studies' },
-            { title: study.title, href: router.asPath },
+            { title: study.teudA_TEUR, href: router.asPath },
           ]}
         />
         <NextSeo {...seo} />
@@ -62,6 +62,7 @@ export async function getServerSideProps(req) {
     props: {
       ...(await serverSideTranslations(locale, ['common', 'study'])),
       user,
+      // studies: studies.filter((stud) => Number(stud.iD_Num) !== Number(study)),
       studies,
       study: studyData,
     },
