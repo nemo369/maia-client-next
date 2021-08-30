@@ -40,25 +40,3 @@ export const getGreeting = () => {
   }
   return greet;
 };
-export const getProfileDesc = (proifle) => {
-  function getDesc(s) {
-    switch (s) {
-      case 's':
-        return 'חברתי';
-      case 'c':
-        return 'חברתי';
-      case 'e':
-        return 'חברתי';
-
-      default:
-        return '';
-    }
-  }
-  let str = '*';
-  str += getDesc(proifle.mainField);
-  str += '-';
-  str += getDesc(proifle.secondField);
-  str += '-';
-  str += getDesc(proifle.thirdField);
-  return str;
-};

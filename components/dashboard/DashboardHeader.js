@@ -1,7 +1,7 @@
 import { useTranslation } from 'next-i18next';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
-import assistant from '../../public/images/assistant_dashboard.png';
+import assistant from '../../public/images/assistant_dashboard.svg';
 import { AppContext, useAppContext } from '../../src/context/state';
 import { getGreeting } from '../../src/utils/util';
 import WalkMeStepper from '../walkMe/WalkMeStepper';
