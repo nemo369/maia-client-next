@@ -83,7 +83,7 @@ const ScopesPopUp = ({ scopes, onSend, clearData, label, inputs, handleChange })
       trigger={(open) => (
         <button
           type="button"
-          className={`h-10 items-center flex justify-between px-3 rounded-lg w-[215px] ${
+          className={`h-10 items-center text-right flex justify-between px-3 rounded-lg w-[215px] ${
             open ? 'bg-white ring ring-green-500' : 'bg-gray-mid/10 '
           }`}
         >
@@ -235,7 +235,7 @@ const InstitutionPopUp = ({ institutions, onSend, label, clearData, inputs, hand
             open ? 'bg-white ring ring-green-500' : 'bg-gray-mid/10 '
           }`}
         >
-          <span className="truncate w-2/3">{label}</span>
+          <span className="truncate w-2/3 text-right">{label}</span>
           <span className={`transform transition ${!open ? 'rotate-0' : 'rotate-180'}`}>
             <Arrow />
           </span>

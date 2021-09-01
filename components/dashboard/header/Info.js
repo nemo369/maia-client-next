@@ -17,7 +17,7 @@ function Info() {
         ?
       </span>
       {isOpen && (
-        <div className="bubble bubble-right text-sm rounded shadow-sm w-[230px] right-[125%] z-10 text-right top-0 bottom-0 my-auto">
+        <div className="bubble bubble-right text-sm rounded shadow-sm w-[230px] right-[125%] z-20 text-right top-0 bottom-0 my-auto">
           <strong className="text-black font-bold">{t('הנתונים אינם סופיים.')}</strong>
           <p className="text-black/70 mb-2">
             {t('ככל שתתקדם בסולם ההתקדמות שלך,')}

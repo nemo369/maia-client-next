@@ -42,8 +42,14 @@ export default function ProfileDetails() {
     handleChange(e);
     editInfo();
   };
-  const tooltipSendedJobs = `<span>סגירת מצב ״מחפש עבודה״ תציג אותך במצב לא פעיל אצל
-  <br /> המעסקים שאליהם שלחת בקשה והם לא יכולו לראות את <br /> פרטיך האישיים.</span>`;
+  const tooltipSendedJobs = `<p>
+  מקדם תעסוקתי ילווה אותך בתהליכי קבלת ההחלטות לבניית מסלול אישי לקרייה שלך וללא עלות.
+</p>
+<p style="color:#41C2C4; margin-top: 2px">מה בתאכלס מקדם התעסוקה יראה?</p>
+<p>
+  1. את פרטי ההרשמה שלך (דרכם הוא גם יצור קשר איתך) 2. את הדוחות המסכמים שעלו מתוך האבחון
+  שתעבור 
+</p>`;
 
   const openTest = (e) => {
     e.preventDefault();
@@ -73,14 +79,14 @@ export default function ProfileDetails() {
         onClick={() => setIsOpen(!isOpen)}
         type="button"
       >
-        <h2 className="text-gray text-[19px] font-bold">פרטים אישיים</h2>
+        <h2 className="text-gray text-[19px] font-medium">פרטים אישיים</h2>
         <div className={`transition ${isOpen ? 'rotate-180' : 'rotate-0'}`}>
           <Arrow />
         </div>
       </button>
       {isOpen && (
         <form className="absolute bg-white z-10 w-full" onSubmit={onSubmit}>
-          <div className="flex flex-col items-center">
+          <div className="flex flex-col items-center text-[#717171] text-[18px]">
             <Inputs
               onChange={handleChange}
               onBlur={editInfo}
@@ -107,7 +113,7 @@ export default function ProfileDetails() {
               onChange={handleChange}
               type="tel"
               status="main"
-              className="profile-inputs text-[#717171]"
+              className="profile-inputs text-[#7D7D7D] opacity-50"
               placeholder="טלפון"
               value={profile.cellphone}
               disabled
@@ -115,12 +121,15 @@ export default function ProfileDetails() {
             <Inputs
               type="mail"
               status="main"
-              className="profile-inputs text-[#717171]"
+              className="profile-inputs text-[#7D7D7D] opacity-50"
               placeholder="מייל"
               onChange={handleChange}
               value={profile.user_email}
               disabled
             />
+            <div className="opacity-70 text-[#7D7D7D] text-[16px] w-[365px]">
+              * לעריכת מייל ונייד צור קשר עם התמיכה 03-6450072
+            </div>
             <Inputs
               onChange={handleChange}
               type="text"
@@ -130,18 +139,19 @@ export default function ProfileDetails() {
               value={JSON.parse(profile.city).name}
               disabled={isDisabled}
             />
-            <Inputs
-              type="text"
-              onBlur={editInfo}
-              onChange={handleChange}
-              status="main"
-              placeholder="גיל"
-              className={`profile-inputs ${isDisabled ? 'text-[#717171]' : ''}`}
-              value={inputs.age}
-              name="age"
-              disabled={isDisabled}
-            />
+
             <div className="flex items-center justify-between w-[365px]">
+              <Inputs
+                type="text"
+                onBlur={editInfo}
+                onChange={handleChange}
+                status="main"
+                placeholder="גיל"
+                className={`profile-inputs-age ${isDisabled ? 'text-[#717171]' : ''}`}
+                value={inputs.age}
+                name="age"
+                disabled={isDisabled}
+              />
               <RadioMaleFemale name="gender" onChange={handleRadioChange} value={inputs.gender} />
             </div>
             <div className="flex justify-between w-[345px] my-[5px]">

@@ -80,7 +80,7 @@ export default function Professions({ allProfessions, scopes }) {
               <CheckboxGroup checks={categoryGroups} onChange={onChange} checkType={categoryType} />
             </div>
           </div>
-          <hr className="border-t-2 border-dashed border-[#cccccc] my-5" />
+          <hr className="border-t-1 border-dashed border-[#cccccc] my-5" />
 
           {professions && !!professions.length && <ProfessionList professions={professions} />}
           <NoProfession professions={professions?.length} />
