@@ -1,11 +1,14 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 import React from 'react';
+import Link from 'next/link';
+import { useTranslation } from 'next-i18next';
 import ProfileFavoriteEmpty from './ProfileFavoriteEmpty';
 import CategoryPercentage from './CategoryPercentage';
 import JustHeart from '../common/JustHeart';
 
 export default function ProfileFavoriteData({ jobs, categoryType, professions, studies }) {
   let data = [];
+  const { t } = useTranslation('common');
 
   switch (true) {
     case 'jobs' === categoryType.id:
@@ -20,9 +23,6 @@ export default function ProfileFavoriteData({ jobs, categoryType, professions, s
     default:
       break;
   }
-
-  const sendJob = () => {};
-
   if (!Array.isArray(data) || !data.length) {
     return <ProfileFavoriteEmpty categoryType={categoryType} />;
   }
@@ -46,26 +46,25 @@ export default function ProfileFavoriteData({ jobs, categoryType, professions, s
                   </div>
                 </div>
               </div>
-              <p className="description leading-5 w-[450px] mr-10 text-[#333300] opacity-70 text-[18px]">
-                {dataItem.description}
-              </p>
+              <p
+                className="description leading-5 w-[450px] mr-10 text-[#333300] opacity-70 text-[18px]"
+                dangerouslySetInnerHTML={{ __html: dataItem.description }}
+              />
               <div className="mr-[100px] flex items-center">
                 <JustHeart id={dataItem.id} type={categoryType.id} />
-                <button
-                  className="ml-[35px] mr-[20px] focus:outline-none rounded-full border-black border"
-                  type="button"
-                >
-                  {/* <Eye /> */}
-                </button>
                 {'jobs' === categoryType.id && (
                   <button
-                    className="border-black border-2 text-black rounded-[10px] py-[2px] px-[20px] active:bg-gray-lighter focus:outline-none h-10"
+                    className="ml-[35px] mr-[20px] focus:outline-none rounded-full border-black border"
                     type="button"
-                    onClick={sendJob}
                   >
-                    הגשת מועמדות
+                    {/* <Eye /> */}
                   </button>
                 )}
+                <Link href={`${categoryType.id}/${dataItem.id}`}>
+                  <a className="border-black border-2 text-black rounded-[10px]  px-[20px] active:bg-gray-lighter focus:outline-none h-10 leading-10 ml-2 mr-2">
+                    {'jobs' === categoryType.id ? t('הגש מועמדות') : t('לחץ לצפייה')}
+                  </a>
+                </Link>
               </div>
             </div>
           </li>
