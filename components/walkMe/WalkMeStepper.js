@@ -36,7 +36,7 @@ const WalkMeStepper = ({ step }) => {
       <div className="stepper__step flex flex-col ">
         <div className="stepper__indicator">
           {1 === step ? (
-            <span className={`${one} stepper__info shadow-active`}>1</span>
+            <span className={`${one} stepper__info shadow-active mb-2`}>1</span>
           ) : (
             <span className={`stepper__info ${one}`}>
               <span className="stepper__empty bg-[#ffffff]" />
@@ -44,8 +44,8 @@ const WalkMeStepper = ({ step }) => {
           )}
         </div>
         <div
-          className={`stepper__label text-center transform translate-x-5 ${
-            'one' === step ? 'font-bold' : ''
+          className={`stepper__label text-center transform translate-x-4 ${
+            1 === step ? 'font-bold' : ''
           }`}
         >
           מה עשיתי
@@ -56,14 +56,14 @@ const WalkMeStepper = ({ step }) => {
       <div className="stepper__step flex flex-col items-center">
         <div className="stepper__indicator">
           {2 === step ? (
-            <span className={`${two} stepper__info shadow-active`}>2</span>
+            <span className={`${two} stepper__info shadow-active mb-2`}>2</span>
           ) : (
             <span className={`stepper__info ${two}`}>
               <span className={`stepper__empty ${dot}`} />
             </span>
           )}
         </div>
-        <div className={`stepper__label  text-center ${3 === step ? 'font-bold' : ''}`}>
+        <div className={`stepper__label  text-center ${2 === step ? 'font-bold' : ''}`}>
           מה מעניין
           <br />
           אותי
@@ -71,8 +71,8 @@ const WalkMeStepper = ({ step }) => {
       </div>
       <div className="stepper__step flex flex-col items-end">
         <div className="stepper__indicator">
-          {'three' === step ? (
-            <span className={`${three} stepper__info shadow-active `}>3</span>
+          {3 === step ? (
+            <span className={`${three} stepper__info shadow-active mb-2`}>3</span>
           ) : (
             <span className={`stepper__info ${three}`}>
               <span className="stepper__empty bg-[#DFDFDF]" />
@@ -81,7 +81,7 @@ const WalkMeStepper = ({ step }) => {
         </div>
         <div
           className={`stepper__label text-center transform -translate-x-5 ${
-            'three' === step ? 'font-bold' : ''
+            3 === step ? 'font-bold' : ''
           }`}
         >
           היכולות שלי +

@@ -1,8 +1,10 @@
+/* eslint-disable prettier/prettier */
 import { useTranslation } from 'next-i18next';
 import { useState, useEffect } from 'react';
 import { DASHBOARD_TYPE_CATEGORY } from '../../../src/utils/consts';
 import { getLs, setLs } from '../../../src/utils/localStorge';
 import CheckboxGroup from '../../common/CheckboxGroup';
+import CategoryTooltip from './CategoryTooltip';
 
 function CategoryCahnger({ onChangeCategoryList, length, isLabel }) {
   const { t } = useTranslation('common');
@@ -31,15 +33,20 @@ function CategoryCahnger({ onChangeCategoryList, length, isLabel }) {
             <h2 className="text-3xl text-black font-bold ml-2">
               {categoryType.name}
               &nbsp;
-              {t('שיכולות להתאים לך')}
+              {'משרות' === categoryType.name ? t('שיכולות להתאים לך') : t('שיכולים להתאים לך')}
             </h2>
-            <h3 className="text-base text-black/50">
+            <h3 className="text-base underline text-black/50">
               (נמצאו&nbsp;
-              {length}
+              <span className="font-bold">
+                {length}
+                &nbsp;
+                {'לימודים' === categoryType.name ? 'מסלולים' : categoryType.name}
+              </span>
               &nbsp;
-              {categoryType.name}
-              &nbsp;חדשות עבורך)
+              {'משרות' === categoryType.name ? 'חדשות עבורך' : 'חדשים עבורך'}
+              )
             </h3>
+            <CategoryTooltip name={categoryType.name} />
           </div>
         </>
       )}

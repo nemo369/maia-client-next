@@ -26,7 +26,7 @@ export default function Home() {
       <section className="dashboard md:pl-16 md:pr-0 px-3">
         <DashboardHeader />
         <TestPopups />
-        <div className="dashboard__grid xl:grid mb-10">
+        <div className="dashboard__grid xl:grid my-10">
           <DashboardSummary />
           <DashboardCatergory />
           <Banner />

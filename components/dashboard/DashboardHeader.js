@@ -10,7 +10,7 @@ import Info from './header/Info';
 function DashboardHeader() {
   const { t } = useTranslation('common');
   const { profile } = useAppContext(AppContext);
-  const [step, setstep] = useState(1);
+  const [step, setstep] = useState(2);
   useEffect(() => {
     if (!profile || !profile.vendor_profile) {
       return;
@@ -30,7 +30,7 @@ function DashboardHeader() {
     }
   }, [profile]);
   return (
-    <header className="sw-full h-32 mb-4 p-7  flex items-center stepper-one">
+    <header className="sw-full h-32 mb-4 p-7 flex items-center stepper-one">
       <div className="ml-auto">
         <h1 className="text-4xl max-w-xs truncate text-white">
           <strong className="text-orange font-bold">
@@ -54,8 +54,7 @@ function DashboardHeader() {
         </h2>
       </div>
       <WalkMeStepper step={step} />
-      {/* <Stepper step={step || 'one'} /> */}
-      <Image src={assistant} alt="העוזרת של מאיה" width={242} height={216} />
+      <Image src={assistant} alt="העוזרת של מאיה" width={242} height={197} />
     </header>
   );
 }
