@@ -4,6 +4,7 @@ import Xcircle from '../svg/Xcircle';
 import Check from '../common/Check';
 
 const CompareListOfAllStudies = ({ setOpen, studies, handleChange, handleCompare, inputs }) => {
+  console.log(studies);
   const { t } = useTranslation('common');
   const close = () => {
     if ('undefined' === typeof window) return;
@@ -44,26 +45,27 @@ const CompareListOfAllStudies = ({ setOpen, studies, handleChange, handleCompare
               <Check
                 name="categories"
                 key={study.id}
+                className="big-check"
                 value={study.id}
                 content=""
                 textClass="text-lg"
-                checkWrapper="ml-4 "
+                checkWrapper="ml-4 big-check"
                 onChange={handleChange}
                 isChecked={inputs.categories.includes(study.id)}
               />
               <div
-                className={`bg-white heart shadow-sm rounded-2xl border-[1px] border-[rgba(151,151,151,0.13)]
-      px-4 py-5 flex flex-col justify-between`}
+                className={`bg-white  rounded-2xl border border-[rgba(151,151,151,0.13)]
+      px-4 py-5 flex flex-col justify-between shadow-md w-full`}
               >
                 <h5 className="company text-gray-active text-[18px] text-right">{study.company}</h5>
                 <div className="flex justify-between">
-                  <h4 className=" font-bold text-[18px] text-[#333333] text-right ">
+                  <h4 className=" font-bold text-[18px] text-[#333333] text-right max-w-[465px]">
                     {study.title}
                   </h4>
                 </div>
                 <div className="dash border-b-[1px] border-dashed border-[#979797] opacity-20 w-full h-1" />
                 <p
-                  className="description  text-black tracking-normal font-normal opacity-70 leading-[18px] text-lg mt-[10px] text-right"
+                  className="description  text-black tracking-normal font-normal opacity-70 leading-[18px] text-lg mt-[10px] text-right max-w-[465px]"
                   dangerouslySetInnerHTML={{ __html: study.description }}
                 />
               </div>

@@ -76,7 +76,6 @@ const Autobiography = (props) => {
   const changeSelectedType = (e) => {
     setSelected(e.target.value);
     titleCheck(e);
-    console.log(e.target);
   };
 
   return (

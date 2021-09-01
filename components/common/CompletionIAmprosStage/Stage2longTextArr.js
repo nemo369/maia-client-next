@@ -49,7 +49,6 @@ const Stage2longTextArr = (props) => {
       <hr className="full-divider my-5 h-[2px] " />
     </div>
   ));
-  console.log(data);
 
   // return data;
   return <>{data}</>;

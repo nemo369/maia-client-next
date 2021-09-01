@@ -20,13 +20,13 @@ function StudyBottomSlider({ studies }) {
       description={study.description}
       id={study.id}
       type="studies"
-      className="px-0 "
+      className="px-6 "
       company={study.company}
     />
   ));
 
   return (
-    <div className="col-start-1 col-end-4 mt-16">
+    <div className="col-start-1 col-end-4 mt-16 bbgg1">
       <div className="text-2xl font-bold leading-6 mb-6 pr-[6px] ">
         עוד מסלולי לימודי שיכולים להתאים לך
       </div>

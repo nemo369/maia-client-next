@@ -190,3 +190,23 @@ color: black;
   height: 30px;
 }
 
+@media only screen and (max-width: 600px) {
+    
+  .main-layout  :not(#idmessage){
+    filter: blur(10px);
+  }
+
+  
+
+  /* .#idmessage{
+    filter: blur(0)!important;
+  } */
+  
+  
+
+  
+
+}
+
+
+

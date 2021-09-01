@@ -20,12 +20,12 @@ function ProfessionBottomSlider({ professions }) {
       description={profession1.description}
       id={profession1.id}
       type="professions"
-      className="px-0 "
+      className="px-6 "
     />
   ));
 
   return (
-    <div className="col-start-1 col-end-4 mt-16">
+    <div className="col-start-1 col-end-4 mt-16 pb-16">
       <div className="text-2xl font-bold leading-6 mb-6 pr-[6px] ">
         עוד מקצועות שיכולות להתאים לך
       </div>

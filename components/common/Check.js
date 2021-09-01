@@ -10,6 +10,7 @@ export default function Check({
   dirname,
   name,
   checkWrapper,
+  textClass,
 }) {
   return (
     <label className={checkWrapper + ' check flex float-right cursor-pointer'}>
@@ -23,7 +24,7 @@ export default function Check({
         onChange={onChange}
         className={className}
       />
-      <div className="check-text">{content}</div>
+      <div className={'check-text' + textClass}>{content}</div>
     </label>
   );
 }

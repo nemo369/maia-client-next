@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
 import { Doughnut } from 'react-chartjs-2';
+import { getChartColors } from '../../../src/utils/util';
 
 const StageOneBottom = ({ userProfileResults }) => {
   const [datasets, setDatasets] = useState([]);
-  const [labels, setLabels] = useState([]);
+  // const [labels, setLabels] = useState([]);
+  const labels = [];
   useEffect(() => {
     const newdatasets = { data: [], backgroundColor: [] };
     const newLables = [];
@@ -12,7 +14,7 @@ const StageOneBottom = ({ userProfileResults }) => {
       newdatasets.data.push(data.value * 100);
       newdatasets.backgroundColor.push(getChartColors(data.code));
     });
-    setLabels(newLables);
+    // setLabels(newLables);
     setDatasets([newdatasets]);
   }, [userProfileResults]);
 

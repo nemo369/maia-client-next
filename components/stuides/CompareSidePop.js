@@ -5,6 +5,8 @@ import CompareListOfAllStudies from './CompareListOfAllStudies';
 import CompareStudiesResult from './CompareStudiesResult';
 
 const CompareSidePop = ({ setOpen, comparedCategorys, studies }) => {
+  // console.log(studies);
+  // console.log(comparedCategorys);
   const [compare, setCompare] = useState(false);
   const [studiesToCompare, setStudiesToCompare] = useState([]);
   const { inputs, handleChange } = useFormStudyInner({

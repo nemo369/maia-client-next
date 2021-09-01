@@ -85,7 +85,7 @@ export default function Studies({ myStudies, user, scopes, institutions }) {
             </div>
           </div>
           <hr className="border-dashed my-4" />
-          <StudyList studies={studies} />
+          <StudyList allStudies={allStudies} studies={studies} />
         </div>
       </section>
     </>
