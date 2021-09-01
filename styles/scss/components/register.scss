@@ -75,17 +75,20 @@
   opacity: 1;
   transform: translateY(0);
 }
+.regiserPageInput::placeholder {
+  color: #434343;
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: 18px;
+  text-align: right;
+  padding-right: 20px;
+}
 
 .regiserPageInput:focus {
   outline: none !important;
   background-color: rgba(255, 255, 255, 0.81);
   border: solid 2px #41c2c4;
 }
-// .emailini:active {
-//   outline: none !important;
-//   background-color: rgba(255, 255, 255, 0.81);
-//   border: solid 2px #41c2c4;
-// }
 
 .boomp:active + .emailini {
   outline: none !important;
@@ -114,7 +117,7 @@
   background-repeat: no-repeat;
   background-size: 54%;
 
-  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMTJweCIgaGVpZ2h0PSIxMXB4IiB2aWV3Qm94PSIwIDAgMTIgMTEiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8dGl0bGU+MDYzNzk4ODktRDQzMi00REM1LUE3NzEtQUVGRkY1NjVENjc0PC90aXRsZT4KICAgIDxnIGlkPSJEZXNpZ24iIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCI+CiAgICAgICAgPGcgaWQ9IlN0eWxlZ3VpZGUiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC00NDkuMDAwMDAwLCAtMjk0Ni4wMDAwMDApIiBzdHJva2U9IiMzQzkxQTAiIHN0cm9rZS13aWR0aD0iMiI+CiAgICAgICAgICAgIDxwb2x5bGluZSBpZD0iUGF0aC0yIiBwb2ludHM9IjQ1MCAyOTUxLjg0Njg1IDQ1Mi45OTkzMjkgMjk1NS4wNTA5IDQ1OS44MTczODggMjk0NyI+PC9wb2x5bGluZT4KICAgICAgICA8L2c+CiAgICA8L2c+Cjwvc3ZnPg==');
+  background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMTJweCIgaGVpZ2h0PSIxMXB4IiB2aWV3Qm94PSIwIDAgMTIgMTEiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8dGl0bGU+MDYzNzk4ODktRDQzMi00REM1LUE3NzEtQUVGRkY1NjVENjc0PC90aXRsZT4KICAgIDxnIGlkPSJEZXNpZ24iIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCI+CiAgICAgICAgPGcgaWQ9IlN0eWxlZ3VpZGUiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC00NDkuMDAwMDAwLCAtMjk0Ni4wMDAwMDApIiBzdHJva2U9IiMzQzkxQTAiIHN0cm9rZS13aWR0aD0iMiI+CiAgICAgICAgICAgIDxwb2x5bGluZSBpZD0iUGF0aC0yIiBwb2ludHM9IjQ1MCAyOTUxLjg0Njg1IDQ1Mi45OTkzMjkgMjk1NS4wNTA5IDQ1OS44MTczODggMjk0NyI+PC9wb2x5bGluZT4KICAgICAgICA8L2c+CiAgICA8L2c+Cjwvc3ZnPg==");
 }
 #react-select-3-option-0 :hover {
   color: red;

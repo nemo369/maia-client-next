@@ -24,7 +24,13 @@ const VeretasTop = ({ veretasData, close }) => {
     const ff = dummyData.map((x) => (
       <div className="flex pb-4 veritas-links-wrappers gap-x-12">
         <div className="flex gap-x-5">
-          <img className="small-img" src="/images/powerplant.svg" alt="" />
+          <img
+            width="30"
+            height="30"
+            loading="lazy"
+            src="/images/powerplant.svg"
+            alt="powerplant"
+          />
           <div className="grid text-right gap-y-[5px]">
             <p className="text-base text-[#333333] opacity-50 leading-4 font-bold">
               מה כדי לי ללמוד:

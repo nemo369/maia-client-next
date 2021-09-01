@@ -1,0 +1,114 @@
+hr.dashed {
+    box-sizing: border-box;
+    border-top: 1px dashed #cccccc;
+    opacity: 0.3;
+}
+
+.male {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    /* create custom radiobutton appearance */
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    padding: 3px;
+    /* background-color only for content */
+    background-clip: content-box;
+    border: 1px solid #bbbbbb;
+    background-color: #e7e6e7;
+    border-radius: 50%;
+}
+
+.male:checked {
+    background-color: #3c91a0;
+    border-color: #3c91a0;
+}
+
+.female {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    /* create custom radiobutton appearance */
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    padding: 3px;
+    /* background-color only for content */
+    background-clip: content-box;
+    border: 1px solid #bbbbbb;
+    background-color: #e7e6e7;
+    border-radius: 50%;
+}
+.female:checked {
+    background-color: #3c91a0;
+    border-color: #3c91a0;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f6f6f6;
+    /* min-width: 230px; */
+    max-height: 250px;
+    width: 100%;
+    overflow: auto;
+    border: 1px solid #ddd;
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown a:hover {
+    background-color: #ddd;
+}
+
+.show {
+    display: block;
+}
+.left-to-right {
+    direction: ltr;
+}
+
+.btnwrapper-stage {
+    fill: black;
+    stroke: black;
+    color: black;
+}
+.btnwrapper-stage path {
+    fill: black;
+    stroke: black;
+    color: black;
+}
+.btnwrapper-stage g {
+    fill: black;
+    stroke: black;
+    color: black;
+}
+.btnwrapper-stage svg {
+    fill: black;
+    stroke: black;
+    color: black;
+}
+
+.chart-wrapper {
+    position: relative;
+    max-width: 400px;
+    margin: auto;
+}
+
+@media only screen and (max-width: 600px) {
+    .main-layout :not(#idmessage) {
+        filter: blur(10px);
+    }
+}

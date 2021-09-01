@@ -1,11 +1,9 @@
-import '../styles/main.scss';
-import '../styles/global.css';
-import { appWithTranslation } from 'next-i18next';
 import ProgressBar from '@badrap/bar-of-progress';
+import { appWithTranslation } from 'next-i18next';
 import Router from 'next/router';
-import { useState } from 'react';
 import Layout from '../components/layout/Layout';
 import { AppWrapper } from '../src/context/state';
+import '../styles/main.scss';
 
 const isSSR = () => 'undefined' === typeof window;
 const progress = new ProgressBar({
@@ -25,15 +23,12 @@ if ('production' !== process.env.NODE_ENV && !isSSR()) {
   axe(React, DOM, 1000);
 }
 
-const AppComponent = ({ Component, pageProps }) => {
-  const [selected, setSelected] = useState('');
-  return (
-    <AppWrapper userProp={pageProps.user}>
-      <Layout>
-        <Component selected={selected} setSelected={setSelected} {...pageProps} />
-      </Layout>
-    </AppWrapper>
-  );
-};
+const AppComponent = ({ Component, pageProps }) => (
+  <AppWrapper userProp={pageProps.user}>
+    <Layout>
+      <Component {...pageProps} />
+    </Layout>
+  </AppWrapper>
+);
 
 export default appWithTranslation(AppComponent);
