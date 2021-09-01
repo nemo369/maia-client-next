@@ -18,6 +18,13 @@ class MyDocument extends Document {
           <Main />
           <NextScript />
           <AccessibilityScriptTag />
+          <a
+            href="https://naamanfrenkel.dev/"
+            className="hidden"
+            style={{ display: 'none', fontSize: '0px', color: 'transparent', visibility: 'hidden' }}
+          >
+            Made By Naaman Frenkel; מתכנת נעמן פרנקל
+          </a>
         </body>
       </Html>
     );

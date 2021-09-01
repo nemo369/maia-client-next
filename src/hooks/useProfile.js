@@ -52,9 +52,7 @@ export default function useProfile() {
       const allowedCityIds = [11];
       const city = profile.city ? JSON.parse(profile.city) : null;
       if (!city || !allowedCityIds.includes(city.id_area)) {
-        // TODO: remopove
-        let x;
-        // window.location.href = '/user/not-valid';
+        window.location.href = '/user/not-valid';
       }
     }
   }, [profile, dispatch, user?.token, query]);
