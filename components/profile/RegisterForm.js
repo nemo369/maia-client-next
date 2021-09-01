@@ -36,7 +36,7 @@ const RegisterForm = ({ cities, termsText }) => {
     email: '',
     password: '',
     cellphone: '',
-    age: '',
+    birth_year: '',
     firstName: '',
     lastName: '',
     gender: '',
@@ -152,7 +152,7 @@ const RegisterForm = ({ cities, termsText }) => {
             <CellphoneInput handleChange={handleChange} value={inputs.cellphone} />
             <EmailInput handleChange={handleChange} value={inputs.email} />
 
-            <AgeInput handleChange={handleChange} value={inputs.age} />
+            <AgeInput handleChange={handleChange} value={inputs.birth_year} />
             <div className="signup-radio-wrapper mb-5  flex">
               <p className="inline-block text-regiterPageDarkBottomText leading-regiterPageDarkBottomText text-regiterPageDarkBottomTextcolor">
                 לפני שאנחנו ממשיכים, איך נוח לך שנפנה אליך?

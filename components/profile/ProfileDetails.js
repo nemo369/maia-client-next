@@ -10,6 +10,7 @@ import useForm from '../../src/hooks/useForm';
 import ProfileAPI from '../../src/services/profile.service';
 import { SET_PROFILE } from '../../src/context/appReducer';
 import { FRONT_URL } from '../../src/utils/consts';
+import AgeInput from './register_form/inputs/AgeInput';
 
 export default function ProfileDetails() {
   const { profile, user, dispatch } = useContext(AppContext);
@@ -18,7 +19,7 @@ export default function ProfileDetails() {
   const { inputs, handleChange, resetForm } = useForm({
     first_name: profile.first_name,
     last_name: profile.last_name,
-    age: profile.age,
+    birth_year: profile.birth_year,
     gender: profile.gender,
   });
 
@@ -140,6 +141,25 @@ export default function ProfileDetails() {
               disabled={isDisabled}
             />
 
+            <div className="profile-inputs">
+              <AgeInput
+                handleChange={handleChange}
+                value={profile.birth_year}
+                disabled={isDisabled}
+              />
+            </div>
+
+            {/* <Inputs
+              type="year"
+              onBlur={editInfo}
+              onChange={handleChange}
+              status="main"
+              placeholder="גיל"
+              className={`profile-inputs ${isDisabled ? 'text-[#717171]' : ''}`}
+              value={inputs.birth_year}
+              name="birth_year"
+              disabled={isDisabled}
+            /> */}
             <div className="flex items-center justify-between w-[365px]">
               <Inputs
                 type="text"

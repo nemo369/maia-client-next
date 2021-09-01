@@ -26,7 +26,7 @@ const CompareDropdown = ({ professionIds }) => {
     teuda: [],
     meshech: [],
     miuhad: [],
-    area: [],
+    area: ['1'],
   });
   const [open, setOpen] = useState(false);
   const [group4fill, setGroup4fill] = useState(false);

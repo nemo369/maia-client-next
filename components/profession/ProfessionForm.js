@@ -50,7 +50,7 @@ export default function ProfessionForm({ scopes, handleChange }) {
           onSubmit={onSend}
         >
           <div className="flex mb-4 justify-between">
-            <span>ניתן לבחור עד 4 מסלולים</span>
+            <span />
             <div className="flex justify-between items-center  px-2 gap-x-1">
               <button
                 onClick={clearForm}

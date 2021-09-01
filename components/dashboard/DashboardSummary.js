@@ -5,6 +5,7 @@ import { Case, Switch } from '../common/Switch';
 import AutobiographyTestResults from './steps/AutobiographyTestResults';
 import IamProTest from './steps/IamProTest';
 import NoInfo from './steps/NoInfo';
+import NoInfoAtAll from './steps/NoInfoAtAll';
 
 function DashboardSummary() {
   const { profile } = useContext(AppContext);
@@ -28,6 +29,8 @@ function DashboardSummary() {
       setstep('completionVeritas');
       return;
     }
+    // TODO: when this should apper
+    // setstep('dataIsMissing');
     if (vendor.completionAutobiography && vendor.completionIAmpro && vendor.completionVeritas) {
       setstep('completed');
     }
@@ -41,10 +44,13 @@ function DashboardSummary() {
           </div>
         </Case>
         <Case value="noTestYet">
-          <NoInfo />
+          <NoInfoAtAll />
         </Case>
         <Case value="completionAutobiography">
           <AutobiographyTestResults />
+        </Case>
+        <Case value="dataIsMissing">
+          <NoInfo />
         </Case>
         <Case value="completionIAmpro">
           <IamProTest />

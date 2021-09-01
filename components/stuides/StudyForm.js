@@ -47,7 +47,7 @@ export default function StudyForm({ scopes, dropDownChanges, institutions }) {
     // setProfessionLabel([...formData.keys()].join(','));
   };
   return (
-    <div className="flex gap-x-3">
+    <div className="flex gap-x-3 pr-1">
       <ScopesPopUp
         onSend={onSendScopes}
         scopes={scopes}

@@ -16,7 +16,7 @@ function HeartEmpty({ toglleFavorites, disabled }) {
         viewBox="0 0 23 21"
       >
         <defs>
-          <filter id="filter-1-heart">
+          <filter id="HeartEmpty-filter-1-heart">
             <feColorMatrix
               in="SourceGraphic"
               values="0 0 0 0 0.200000 0 0 0 0 0.200000 0 0 0 0 0.200000 0 0 0 1.000000 0"
@@ -28,7 +28,7 @@ function HeartEmpty({ toglleFavorites, disabled }) {
           />
         </defs>
         <g fill="none" fillRule="evenodd" stroke="none" strokeWidth="1">
-          <g filter="url(#filter-1-heart)" transform="translate(-811 -3491)">
+          <g filter="url(#HeartEmpty-filter-1-heart)" transform="translate(-811 -3491)">
             <g transform="translate(811 3491)">
               <mask id="mask-3-heart" fill="#fff">
                 <use xlinkHref="#path-2-heart" />

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Select from 'react-select';
+import ChevronLeft from '../svg/ChevronLeft';
 
 const customStyles = {
   menuList: (provided) => ({
@@ -83,13 +84,14 @@ const SearchCountryInput = (props) => {
           <button
             type="button"
             required
-            className={`regiserPageInput city bwc  emailini  hover: bg-red-900 ${
+            className={`flex  items-center justify-between pl-3  regiserPageInput city bwc  emailini  hover: bg-red-900 ${
               vale ? '' : 'text-gray-active'
             }`}
             onClick={toggleOpen}
             isselected={isOpen.toString()}
           >
             {vale ? `  ${vale.label}` : 'בחר יישוב *'}
+            <ChevronLeft className="transform -rotate-90" />
           </button>
         }
       >
@@ -105,7 +107,7 @@ const SearchCountryInput = (props) => {
           className="absolute w-full max-h-52 border-gray-500 "
           onChange={onSelectChange}
           options={optiosn1()}
-          placeholder="Search..."
+          placeholder="חיפוש..."
           tabSelectsValue={false}
           value={value}
           styles={customStyles}

@@ -4,7 +4,7 @@ function GrayHat() {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" width="87" height="51" viewBox="0 0 87 51">
       <defs>
-        <filter id="filter-1">
+        <filter id="GrayHat-filter-1">
           <feColorMatrix
             in="SourceGraphic"
             values="0 0 0 0 0.800000 0 0 0 0 0.800000 0 0 0 0 0.800000 0 0 0 1.000000 0"

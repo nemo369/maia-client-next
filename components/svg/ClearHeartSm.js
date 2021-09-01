@@ -8,7 +8,7 @@ function Chat() {
       viewBox="0 0 23 21"
     >
       <defs>
-        <filter id="filter-1">
+        <filter id="Chat-filter-1">
           <feColorMatrix
             in="SourceGraphic"
             values="0 0 0 0 0.200000 0 0 0 0 0.200000 0 0 0 0 0.200000 0 0 0 1.000000 0"
@@ -20,7 +20,7 @@ function Chat() {
         />
       </defs>
       <g fill="none" fillRule="evenodd" stroke="none" strokeWidth="1">
-        <g filter="url(#filter-1)" transform="translate(-811 -3491)">
+        <g filter="url(#Chat-filter-1)" transform="translate(-811 -3491)">
           <g transform="translate(811 3491)">
             <mask id="mask-3" fill="#fff">
               <use xlinkHref="#path-2" />

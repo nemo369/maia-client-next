@@ -101,7 +101,7 @@ const ProfessionDropdown = (props) => {
           className="absolute w-full max-h-52 border-gray-500 "
           onChange={onSelectChange}
           options={optiosn1()}
-          placeholder="Search..."
+          placeholder="חיפוש..."
           tabSelectsValue={false}
           value={value}
           styles={customStyles}

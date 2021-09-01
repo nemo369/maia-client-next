@@ -1,5 +1,6 @@
 import Select from 'react-select';
 import { useState } from 'react';
+import ChevronLeft from '../svg/ChevronLeft';
 
 const SearchStreetInput = (props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -75,11 +76,14 @@ const SearchStreetInput = (props) => {
             disabled={!cityData}
             name="street"
             type="button"
-            className={`bwc city   emailini ${inputValue ? '' : 'text-gray-active'}`}
+            className={`bwc city flex items-center pl-3   emailini ${
+              inputValue ? '' : 'text-gray-active'
+            }`}
             onClick={toggleOpen}
             isselected={isOpen.toString()}
           >
             {inputValue ? `  ${inputValue}` : 'בחר רחוב  *'}
+            {cityData && <ChevronLeft className="transform -rotate-90 mr-auto" />}
           </button>
         }
       >
@@ -93,7 +97,7 @@ const SearchStreetInput = (props) => {
           className="absolute w-full"
           onChange={onSelectChange}
           options={optiosn1()}
-          placeholder="Search..."
+          placeholder="חיפוש..."
           tabSelectsValue={false}
           value={theStreet?.name}
           styles={customStyles}
