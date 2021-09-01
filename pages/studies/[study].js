@@ -14,6 +14,8 @@ import StudyMoreInfo from '../../components/stuides/StudyMoreInfo';
 import StudyProfile from '../../components/stuides/StudyProfile';
 
 export default function Studies({ study, studies }) {
+  console.log(studies);
+  console.log(study);
   const { t } = useTranslation('common');
   useProfile();
   const seo = seoMerge({

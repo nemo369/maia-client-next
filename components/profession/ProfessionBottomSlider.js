@@ -20,7 +20,7 @@ function ProfessionBottomSlider({ professions }) {
       description={profession1.description}
       id={profession1.id}
       type="professions"
-      className="px-0 "
+      className="px-6 "
     />
   ));
 
