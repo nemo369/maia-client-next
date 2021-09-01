@@ -141,40 +141,15 @@ export default function ProfileDetails() {
               disabled={isDisabled}
             />
 
-            <div className="profile-inputs">
+            <div className="flex items-center justify-between w-[365px]">
               <AgeInput
                 handleChange={handleChange}
                 value={profile.birth_year}
                 disabled={isDisabled}
               />
-            </div>
-
-            {/* <Inputs
-              type="year"
-              onBlur={editInfo}
-              onChange={handleChange}
-              status="main"
-              placeholder="גיל"
-              className={`profile-inputs ${isDisabled ? 'text-[#717171]' : ''}`}
-              value={inputs.birth_year}
-              name="birth_year"
-              disabled={isDisabled}
-            /> */}
-            <div className="flex items-center justify-between w-[365px]">
-              <Inputs
-                type="text"
-                onBlur={editInfo}
-                onChange={handleChange}
-                status="main"
-                placeholder="גיל"
-                className={`profile-inputs-age ${isDisabled ? 'text-[#717171]' : ''}`}
-                value={inputs.age}
-                name="age"
-                disabled={isDisabled}
-              />
               <RadioMaleFemale name="gender" onChange={handleRadioChange} value={inputs.gender} />
             </div>
-            <div className="flex justify-between w-[345px] my-[5px]">
+            <div className="flex justify-between w-[345px] mb-[3px] mt-[8px]">
               <Check content="אני מאשר/ת ליועץ/ת לצפות בפרטים שלי" />
               <Tooltip
                 trigger={

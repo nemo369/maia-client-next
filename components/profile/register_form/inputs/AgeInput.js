@@ -25,20 +25,20 @@ const AgeInput = ({ value, handleChange }) => {
       <Dropdown
         isOpen={isOpen}
         onClose={() => setIsOpen(false)}
-        className="absolute vvf "
+        className="absolute vvf"
         required
         target={
           <button
             type="button"
             required
-            className={`flex  items-center justify-between pl-2 bwc    hover: bg-red-900 ${
+            className={`flex items-center justify-between pl-2 bwc hover: bg-red-900 ${
               vale ? '' : 'text-gray-active'
             }`}
             onClick={() => setIsOpen(true)}
             isselected={isOpen.toString()}
           >
-            {vale ? `  ${vale.label}` : 'שנת לידה *'}
-            <ChevronLeft className="transform -rotate-90" />
+            {vale ? `  ${vale.label}` : 'שנת לידה'}
+            <ChevronLeft className="transform -rotate-90 mr-8" />
 
           </button>
         }
