@@ -1,6 +1,5 @@
 function AccessibilityScriptTag() {
-  const isSSR = () => 'undefined' === typeof window;
-  if ('production' !== process.env.NODE_ENV || isSSR()) {
+  if ('production' !== process.env.NODE_ENV) {
     return null;
   }
   return (
