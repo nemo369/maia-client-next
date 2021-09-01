@@ -86,7 +86,7 @@ export default function ProfileDetails() {
         </div>
       </button>
       {isOpen && (
-        <form className="absolute bg-white z-10 w-full" onSubmit={onSubmit}>
+        <form className=" bg-white w-full" onSubmit={onSubmit}>
           <div className="flex flex-col items-center text-[#717171] text-[18px]">
             <Inputs
               onChange={handleChange}
@@ -148,30 +148,7 @@ export default function ProfileDetails() {
                 disabled={isDisabled}
               />
             </div>
-
-            {/* <Inputs
-              type="year"
-              onBlur={editInfo}
-              onChange={handleChange}
-              status="main"
-              placeholder="גיל"
-              className={`profile-inputs ${isDisabled ? 'text-[#717171]' : ''}`}
-              value={inputs.birth_year}
-              name="birth_year"
-              disabled={isDisabled}
-            /> */}
             <div className="flex items-center justify-between w-[365px]">
-              <Inputs
-                type="text"
-                onBlur={editInfo}
-                onChange={handleChange}
-                status="main"
-                placeholder="גיל"
-                className={`profile-inputs-age ${isDisabled ? 'text-[#717171]' : ''}`}
-                value={inputs.age}
-                name="age"
-                disabled={isDisabled}
-              />
               <RadioMaleFemale name="gender" onChange={handleRadioChange} value={inputs.gender} />
             </div>
             <div className="flex justify-between w-[345px] my-[5px]">
@@ -187,19 +164,19 @@ export default function ProfileDetails() {
               </Tooltip>
             </div>
             <div className="dash w-[365px] border-b-[2px] border-dashed border-[#979797] opacity-20 h-1" />
-            <a
-              href={profile.vendor_token}
-              className="my-[15px] flex w-[365px] justify-between"
-              onClick={openTest}
-            >
-              <div className="text-[#666666] text-[18px]">עריכת פרטי שאלון אוטוביוגרפיה</div>
-              <div className="opacity-50 focus:outline-none hover:opacity-100" herf="#">
-                <EditInfo />
-              </div>
-            </a>
           </div>
         </form>
       )}
+      <a
+        href={profile.vendor_token}
+        className="my-[15px] flex w-[365px] justify-between"
+        onClick={openTest}
+      >
+        <div className="text-[#666666] text-[18px]">עריכת פרטי שאלון אוטוביוגרפיה</div>
+        <div className="opacity-50 focus:outline-none hover:opacity-100" herf="#">
+          <EditInfo />
+        </div>
+      </a>
     </div>
   );
 }

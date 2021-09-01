@@ -7,10 +7,6 @@ import FemaleCrown from '../svg/FemaleCrown';
 import MaleCrown from '../svg/MaleCrown';
 import NeedInfo from '../svg/NeedInfo';
 import ProfileDetails from './ProfileDetails';
-// import Check from '../common/Check';
-// import Toggle from '../common/Toggle';
-// import Tooltip from '../common/Tooltip';
-// import UploadedFiles from './UploadedFiles';
 
 export default function ProfileInfo() {
   // const [lookingForJob, setLookingForJob] = useState(false);
@@ -18,21 +14,6 @@ export default function ProfileInfo() {
   const [loader, setLoader] = useState(false);
   const { profile, user, dispatch } = useContext(AppContext);
 
-  // const tooltipLookingForJob = `<span>סגירת מצב ״מחפש עבודה״ תציג אותך במצב לא פעיל אצל
-  // <br /> המעסקים שאליהם שלחת בקשה והם לא יכולו לראות את <br /> פרטיך האישיים.</span>`;
-  // const tooltipSendedJobs = `<span>סגירת מצב ״מחפש עבודה״ תציג אותך במצב לא פעיל אצל
-  // <br /> המעסקים שאליהם שלחת בקשה והם לא יכולו לראות את <br /> פרטיך האישיים.</span>`;
-  // const tooltipReachMe = `<span><div> מעסיקים שמחפשים עובדים יוכלו לאתר אתכם דרך
-  // <br /> המאיה ולפנות אליכם בהצעות עבודה. אך אל דאגה!<br /> לא תהיה להם גישה אל קורות החיים שלכם ואל<br /> תוצאות האבחון ללא אישור מפורש מכם.</div>
-  // <div style="color:#3c91a0; margin-top: 5px"><strong>מה כן יראה המעסיק?</strong></div>
-  // <div><ul style="list-style: inside" ><li>את פרטי הקשר שלכם (שם מלא, מייל, נייד)</li><li> את אחוזי ההתאמה שלכם למשרה במקרים בהם <br /> אחוז ההתאמה עולה על 75%</li></ul></div>
-  // </span>`;
-  // useEffect(() => {
-  //   setLookingForJob(false);
-  // }, []);
-  // const onIsChecked = () => {
-  //   setLookingForJob(!lookingForJob);
-  // };
   const validateImage = (file) => {
     if (!file) {
       return false;
@@ -84,7 +65,7 @@ export default function ProfileInfo() {
     <section
       className={`${
         loader ? 'opacity-60' : 'opacity-100'
-      } transiton h-[825px] w-[430px] bg-white rounded-[20px] relative`}
+      } transiton w-[430px] bg-white rounded-[20px] relative mb-18`}
     >
       <span className="absolute top-[-80px] right-[300px]">
         <NeedInfo />

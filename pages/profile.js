@@ -65,7 +65,7 @@ export default function Profile({ notifications }) {
               <ProfileFavorite studies={studies} professions={professions} />
             </div>
           </div>
-          <div className="flex flex-col">
+          <div className="flex flex-col mb-8">
             <ProfileInfo />
           </div>
         </div>
