@@ -32,7 +32,7 @@ const VendorAPI = {
   },
   getCategorys: async (token, type, query = {}) => {
     const defualtQuery = {
-      byUser: false,
+      byUser: true,
     };
     try {
       const { data } = await axios.post(

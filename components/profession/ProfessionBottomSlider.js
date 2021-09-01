@@ -25,7 +25,7 @@ function ProfessionBottomSlider({ professions }) {
   ));
 
   return (
-    <div className="col-start-1 col-end-4 mt-16">
+    <div className="col-start-1 col-end-4 mt-16 pb-16">
       <div className="text-2xl font-bold leading-6 mb-6 pr-[6px] ">
         עוד מקצועות שיכולות להתאים לך
       </div>

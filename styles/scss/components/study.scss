@@ -17,7 +17,7 @@
   border-bottom: 20px solid white;
 
   justify-self: center;
-  right: 35%;
+  right: 8%;
   top: -12px;
 }
 
@@ -32,3 +32,41 @@
   // background-color: black;
   // color: black;
 }
+
+.studysmallcheck{
+  font-size: 10px;
+}
+
+.big-check input[type="checkbox"]::before{
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  left: -5px;
+  top: -3px;
+
+}
+
+.big-check input[type="checkbox"]:checked:after {
+  content: "";
+  display: block;
+  width: 10px;
+  height: 20px;
+  border: solid #3c91a0;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+  position: absolute;
+  top: 4px;
+  left: 8px;
+}
+
+
+.compare-wrapper .compare-wrapper-map:nth-child(odd){ /* Selects only odd elements */
+  background-color: rgb(231, 229, 229);   
+}
+
+// .compare-wrapper-map :first-child{
+//   background-color: red;
+
+// }

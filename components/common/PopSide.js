@@ -30,7 +30,7 @@ const PopSide = ({ children, trigger }) => {
       </div>
       {!isServer && (
         <Popup position="center" modal open={open} className="popside w-full">
-          <div className="bg-white  py-7 px-4 lg:h-screen overflow-y-auto h-[70vh]  lg:w-screen lg:max-w-4xl w-full">
+          <div className="bg-white  py-7 px-4 lg:h-screen overflow-y-auto h-[70vh]  lg:w-screen lg:max-w-[812px] w-full">
             {children}
             <button
               id="close-modal-hack"

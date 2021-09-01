@@ -17,7 +17,10 @@ const CompareDropdown = ({ professionIds }) => {
 
   const [studies, setStudies] = useState([]);
   const filteredCategories = async (dataToSend) => {
+    // console.log(dataToSend);
     const { data } = await VendorAPI.getCategorys(user.token, 'studies', dataToSend);
+    // console.log(data);
+
     setStudies(data);
   };
   const { inputs, handleChange } = useFormStudy({
@@ -64,23 +67,23 @@ const CompareDropdown = ({ professionIds }) => {
           className="bg-white study-form p-5 absolute text-black shadow-2xl grid min-h-[252px] top-12 z-40 rounded-lg w-full gap-5 right-0"
         >
           <div className="triangle" />
-          <div className="flex justify-around gap-4">
+          <div className="flex gap-4 justify-evenly">
             {studyData.map((column) => (
-              <div key={column.text} className="w-full wrapper-border">
+              <div key={column.text} className="w-full wrapper-border max-w-[340px]">
                 <h3 className="font-bold text-xl leading-5">{t(column.text)}</h3>
 
-                <div className="grid grid-cols-2   checkdropdown mt-5 gap-y-5">
+                <div className="grid  checkdropdown mt-5 gap-y-5">
                   {column.options.map((study) => (
                     <Check
                       name={column.name}
                       key={study.id}
                       id={study.id}
                       value={study.id}
-                      className="p-1  w-4 h-4"
+                      className="p-1 w-4 h-4"
                       content={study.text}
-                      textClass="text-sm mr-3 relative"
+                      textClass=""
                       onChange={handleChange}
-                      wraperClass="pl-4"
+                      wraperClass="pl-4 "
                       isChecked={inputs[column.name].includes(study.id)}
                     />
                   ))}

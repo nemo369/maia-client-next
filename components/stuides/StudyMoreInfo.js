@@ -31,10 +31,10 @@ const Li = ({ place, study }) => {
   if (!key || !value) return null;
   return (
     <div className=" lg:mr-7 flex gap-1 mb-5 flex-shrink flex-grow">
-      <div className="bg-white study-two-cornered py-7 px-3 self-start added-shadow">
+      <div className="bg-white rounded-r-xl py-7 px-3 self-start added-shadow">
         <CheckForTitle title={place} />
       </div>
-      <div className="bg-white study-three-cornered added-shadow grid content-evenly pb-10 pt-5  px-5 gap-4">
+      <div className="bg-white rounded-b-lg rounded-tl-lg added-shadow grid content-evenly pb-10 pt-5  px-5 gap-4">
         <h4 className=" font-bold text-lg leading-4">{value}</h4>
         <p className="text-sm leading-3" dangerouslySetInnerHTML={{ __html: key }} />
       </div>

@@ -1,52 +1,31 @@
-import { useEffect, useState } from 'react';
+import Logosvg from '../../svg/Logo';
+import Button from '../Button';
 
-const NotOnMobile = () => {
-  const [mobileCheck, setMobileCheck] = useState('');
-  const [width, setWidth] = useState(false);
-  useEffect(() => {
-    setWidth(Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0));
-    console.log(width);
-    console.log('דישלן');
-    if (700 > width) {
-      console.log('smaler then 700px');
-    } else {
-      console.log('bigger then 700px');
-    }
-    console.log('Window width', window.screen.width);
-    if (
-      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
-    ) {
-      // true for mobile device
-      console.log('mobile device');
-      setMobileCheck(true);
-      // document.write('mobile device');
-    } else {
-      // false for not mobile device
-      console.log('not mobile device');
-      setMobileCheck(false);
-      // document.write('not mobile device');
-    }
-  }, [width]);
-
-  console.log(width);
-
-  return (
-    <div
-      className={`w-[360px] h-[380px] bg-red messageWrapper px-7 py-4 
-      ${mobileCheck ? 'grid' : 'hidden'} absolute right-[21%] top-28 overflow-hidden`}
-    >
-      {/* <div className="messageWrapper px-7 py-4"> */}
-
-      {/* </div> */}
-      <img src="/images/powerplant.svg" alt="" />
-      <h1 className="text-[#FB9773] font-black text-[32px] leading-8">מצטערים אבל...</h1>
-      <h2 className="text-lg font-medium">כרגע מאיה פועלת רק מתצוגת מחשב.</h2>
-      <p className="text-lg">
-        {' '}
-        כדי ליהנות ולקבל את המירב מהמסע שלכם במאיה אתם מוזמנים לחזור אלינו מאוחר יותר דרך המחשב
-        ולשלוח לעצמכם את הלינק או לשמור את העמוד למועדפים
-      </p>
-    </div>
-  );
-};
+const NotOnMobile = () => (
+  <div
+    id="idmessage"
+    className="w-[360px] bg-[#fffcfc] messageWrapper px-7 py-4 grid text-center  absolute  top-28 overflow-hidden align-bottom justify-items-center rounded right-0 left-0 mx-auto"
+  >
+    <Logosvg />
+    <h1 className="text-[#FB9773] font-black text-[32px] leading-8 self-end pt-6">
+      מצטערים אבל...
+    </h1>
+    <h2 className="text-lg font-semibold align-bottom pt-[10px]">
+      כרגע מאיה פועלת רק מתצוגת מחשב.
+    </h2>
+    <p className="text-lg">
+      {' '}
+      כדי ליהנות ולקבל את המירב מהמסע שלכם במאיה אתם מוזמנים לחזור אלינו מאוחר יותר דרך המחשב ולשלוח
+      לעצמכם את הלינק או לשמור את העמוד למועדפים
+    </p>
+    <Button
+      className="w-44 bg-gradient-to-r from-gradient-1 to-gradient-2 text-white hover:from-blue hover:to-blue font-bold mt-8"
+      type="button"
+      name="שליחת לינק"
+    />
+    <button type="button" className="text-xl text-gray-active pt-2">
+      סגור
+    </button>
+  </div>
+);
 export default NotOnMobile;

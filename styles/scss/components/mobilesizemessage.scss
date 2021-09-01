@@ -1,0 +1,14 @@
+.messageWrapper{
+    display: none;
+    position: absolute;
+}
+
+@media only screen and (max-width: 600px) {
+    
+    .messageWrapper{
+        display: grid;
+        position: absolute;
+        
+    }
+
+}

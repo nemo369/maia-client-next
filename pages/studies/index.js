@@ -3,7 +3,7 @@
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { NextSeo } from 'next-seo';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import BreadCrumbs from '../../components/common/BreadCrumbs';
 import CheckboxGroup from '../../components/common/CheckboxGroup';
 import CompareDropdown from '../../components/stuides/CompareDropdown';
@@ -53,7 +53,6 @@ export default function Studies({ myStudies, user, scopes, institutions }) {
     setstudies(allStudies);
   };
   const dropDownChanges = async (selected) => {
-    console.log(selected);
     setLoader(true);
     const { data } = await VendorAPI.getCategorys(user.token, 'studies', selected);
     setstudies(data);

@@ -9,9 +9,9 @@ import medalStar from '../../../public/images/medalStar.png';
 const StagesResultsWorkExperience = (props) => {
   const { stageData, medal, autobiographyData, profileData } = props;
   console.log(stageData);
-  console.log(autobiographyData);
   console.log(medal);
-  console.log(profileData);
+  console.log(autobiographyData);
+
   // eslint-disable-next-line operator-linebreak
   const warriorText =
     'חשוב שתדע שמסלול השירות שלך מקנה לך כישורים ומיומנויות חשובים לקראת השילוב בלימודים ובתעסוקה.';

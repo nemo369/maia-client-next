@@ -42,16 +42,16 @@ const CompareStudiesResult = ({ setOpen, setCompare, studies }) => {
             />
           </div>
         </div>
-        <div className="flex justify-between border-t-[1px] item3">
+        <div className="flex justify-between border-t-[1px] align-baseline compare-wrapper ">
           {studies.map(({ full_data: data }) => (
-            <div key={data.iD_Num} className="grid gap-y-16 pt-4 mt-5 ">
+            <div key={data.iD_Num} className="grid gap-y-16 pt-4 mt-5 compare-wrapper-map px-4">
               <div className="flex justify-between">
                 <h1 className="study-logo">לוגו</h1>
                 <JustHeart id={data.iD_Num} type="studies" />
               </div>
-              <div className="grid gap-y-16 pt-4 mt-5 compare-wrapper">
+              <div className="grid gap-y-16 pt-4 mt-5  max-w-[250px]">
                 <div>
-                  <h2 className="text-lg leading-5 text-gray">מוסד לימודי</h2>
+                  <h2 className="text-lg leading-5 text-gray ">מוסד לימודי</h2>
                   <h3 className=" font-bold text-lg leading-5">{data.mosname}</h3>
                 </div>
                 <div>

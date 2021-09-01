@@ -1,7 +1,6 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable no-multi-spaces */
 const VeretasEmploymentProfile = () => {
-  console.log('hello');
 
   const boldEmploymentProfileDummyData = 'הפרופיל התעסוקיתי שלך הוא יזמי-מנהלי-חברתי:';
   const employmentProfileDummyData = 'אתה בעל כושר מנהיגות, חשוב לך להשפיע, להימנות עם מקבלי ההחלטות ולקדם נושאים שנמצאים תחת אחריותך. אתה נמשך לעבודה עם נתונים, שואף לסדר ומכוון לפעול בסביבה מוגדרת ומובנית . אתה בעל עניין רב בזולת, שואב סיפוק מיכולתך להיות קשוב לצרכיהם של אנשים אחרים ולסייע להם להשיג את מטרותיהם.';
