@@ -3,6 +3,8 @@ import React from 'react';
 import Button from '../common/Button';
 import PopUp from '../common/PopUp';
 import BigChecked from '../svg/BigChecked';
+import StagesPopSide from '../common/StagesPopSide';
+import StageResults from '../common/stage1results/StageResults';
 
 const FinisthStepAutobiogrpahy = () => (
   // const [isDone, setIsDone] = useState(false);
@@ -17,6 +19,11 @@ export default FinisthStepAutobiogrpahy;
 
 const PopupContent = () => {
   const { t } = useTranslation('common');
+  const close = () => {
+    if ('undefined' === typeof window) return;
+    const el = document.querySelector('#close-modal-hack');
+    el?.click();
+  };
 
   return (
     <div className="flex flex-col items-center justify-center py-4 px-16 text-center">
@@ -27,8 +34,12 @@ const PopupContent = () => {
         ״מה עשיתי עד כה״
       </h2>
       <div className="my-6">שמסכם את המסלול חייך עד כה</div>
-      <Button className="h-[50px] w-[240px]" status="secondary" name="לתוצאות השלב" />
-      <button className="h-[50px] w-[240px]" type="button">
+      <StagesPopSide
+        trigger={<Button className="h-[50px] w-[240px]" status="secondary" name="לתוצאות השלב" />}
+      >
+        <StageResults />
+      </StagesPopSide>
+      <button className="h-[50px] w-[240px]" type="button" onClick={close}>
         {t('סגור')}
       </button>
     </div>

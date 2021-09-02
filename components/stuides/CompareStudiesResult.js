@@ -1,16 +1,13 @@
 import { useTranslation } from 'next-i18next';
 import Image from 'next/image';
 import Button from '../common/Button';
-import PrinterGreySmall from '../svg/PrinterGreySmall';
-import MailGreySmall from '../svg/MailGreySmall';
+// import PrinterGreySmall from '../svg/PrinterGreySmall';
+// import MailGreySmall from '../svg/MailGreySmall';
 import Xcircle from '../svg/Xcircle';
 import JustHeart from '../common/JustHeart';
-<<<<<<< HEAD
 import envelope from '../../public/images/envelope.png';
 import smallprinter from '../../public/images/smallprinter.png';
-=======
 import { ALL_LOGOS } from '../../src/utils/allLogos';
->>>>>>> main
 
 const CompareStudiesResult = ({ setOpen, setCompare, studies }) => {
   console.log(studies);

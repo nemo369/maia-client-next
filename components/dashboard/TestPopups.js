@@ -6,7 +6,7 @@ import FinisthStepVeritas from '../popups/FinisthStepVeritas';
 
 function TestPopups() {
   const { pathname, push, query } = useRouter();
-  const [finisthStepIamPro, setFinisthStepIamPro] = useState(false);
+  const [finisthStepIamPro, setFinisthStepIamPro] = useState(true);
   const [finisthAutoBiogrphy, setfinisthAutoBiogrphy] = useState(false);
   const [finisthVeritas, setFinisthVeritas] = useState(false);
 

@@ -10,6 +10,9 @@
         position: absolute;
         
     }
+    .messageWrapper{
+        filter: blur(0);
+    }
 
     .nav__wrapper>*{
         display: none;
