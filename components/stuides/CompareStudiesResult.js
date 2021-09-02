@@ -5,8 +5,12 @@ import PrinterGreySmall from '../svg/PrinterGreySmall';
 import MailGreySmall from '../svg/MailGreySmall';
 import Xcircle from '../svg/Xcircle';
 import JustHeart from '../common/JustHeart';
+<<<<<<< HEAD
 import envelope from '../../public/images/envelope.png';
 import smallprinter from '../../public/images/smallprinter.png';
+=======
+import { ALL_LOGOS } from '../../src/utils/allLogos';
+>>>>>>> main
 
 const CompareStudiesResult = ({ setOpen, setCompare, studies }) => {
   console.log(studies);
@@ -20,7 +24,20 @@ const CompareStudiesResult = ({ setOpen, setCompare, studies }) => {
   const handleAddTrack = () => {
     setCompare(false);
   };
+  const getImg = (data) => {
+    const types = ['jpg', 'png', 'jpeg'];
+    let type = null;
+    types.forEach((imgType) => {
+      if (ALL_LOGOS.includes(`${data.mosnum}.${imgType}`)) {
+        type = imgType;
+      }
+    });
 
+    if (type) {
+      return <img src={`/logos/${data.mosnum}.${type}`} alt="logo" height="54" loading="lazy" />;
+    }
+    return <h4 className="text-5xl font-black text-[#F4F4F4]">לוגו</h4>;
+  };
   return (
     <div className="grid step-two-wrapper">
       <button className="justify-self-start" type="button" onClick={close}>
@@ -56,7 +73,10 @@ const CompareStudiesResult = ({ setOpen, setCompare, studies }) => {
           {studies.map(({ full_data: data }) => (
             <div key={data.iD_Num} className="grid  pt-4 mt-5 compare-wrapper-map px-4">
               <div className="flex justify-between">
-                <h1 className="study-logo">לוגו</h1>
+                <h1 className="study-logo">
+                  {getImg(data)}
+                  <div className="sr-only">לוגו</div>
+                </h1>
                 <JustHeart id={data.iD_Num} type="studies" />
               </div>
               <div className="grid gap-y-12 pt-4 mt-5 max-w-[250px]">

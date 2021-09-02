@@ -43,8 +43,14 @@ export default function ProfileDetails() {
     handleChange(e);
     editInfo();
   };
-  const tooltipSendedJobs = `<span>סגירת מצב ״מחפש עבודה״ תציג אותך במצב לא פעיל אצל
-  <br /> המעסקים שאליהם שלחת בקשה והם לא יכולו לראות את <br /> פרטיך האישיים.</span>`;
+  const tooltipSendedJobs = `<p>
+  מקדם תעסוקתי ילווה אותך בתהליכי קבלת ההחלטות לבניית מסלול אישי לקרייה שלך וללא עלות.
+</p>
+<p style="color:#41C2C4; margin-top: 2px">מה בתאכלס מקדם התעסוקה יראה?</p>
+<p>
+  1. את פרטי ההרשמה שלך (דרכם הוא גם יצור קשר איתך) 2. את הדוחות המסכמים שעלו מתוך האבחון
+  שתעבור 
+</p>`;
 
   const openTest = (e) => {
     e.preventDefault();
@@ -74,14 +80,14 @@ export default function ProfileDetails() {
         onClick={() => setIsOpen(!isOpen)}
         type="button"
       >
-        <h2 className="text-gray text-[19px] font-bold">פרטים אישיים</h2>
+        <h2 className="text-gray text-[19px] font-medium">פרטים אישיים</h2>
         <div className={`transition ${isOpen ? 'rotate-180' : 'rotate-0'}`}>
           <Arrow />
         </div>
       </button>
       {isOpen && (
-        <form className="absolute bg-white z-10 w-full" onSubmit={onSubmit}>
-          <div className="flex flex-col items-center">
+        <form className=" bg-white w-full" onSubmit={onSubmit}>
+          <div className="flex flex-col items-center text-[#717171] text-[18px]">
             <Inputs
               onChange={handleChange}
               onBlur={editInfo}
@@ -108,7 +114,7 @@ export default function ProfileDetails() {
               onChange={handleChange}
               type="tel"
               status="main"
-              className="profile-inputs text-[#717171]"
+              className="profile-inputs text-[#7D7D7D] opacity-50"
               placeholder="טלפון"
               value={profile.cellphone}
               disabled
@@ -116,12 +122,15 @@ export default function ProfileDetails() {
             <Inputs
               type="mail"
               status="main"
-              className="profile-inputs text-[#717171]"
+              className="profile-inputs text-[#7D7D7D] opacity-50"
               placeholder="מייל"
               onChange={handleChange}
               value={profile.user_email}
               disabled
             />
+            <div className="opacity-70 text-[#7D7D7D] text-[16px] w-[365px]">
+              * לעריכת מייל ונייד צור קשר עם התמיכה 03-6450072
+            </div>
             <Inputs
               onChange={handleChange}
               type="text"
@@ -131,6 +140,7 @@ export default function ProfileDetails() {
               value={JSON.parse(profile.city).name}
               disabled={isDisabled}
             />
+
             <div className="profile-inputs">
               <AgeInput
                 handleChange={handleChange}
@@ -138,18 +148,6 @@ export default function ProfileDetails() {
                 disabled={isDisabled}
               />
             </div>
-
-            {/* <Inputs
-              type="year"
-              onBlur={editInfo}
-              onChange={handleChange}
-              status="main"
-              placeholder="גיל"
-              className={`profile-inputs ${isDisabled ? 'text-[#717171]' : ''}`}
-              value={inputs.birth_year}
-              name="birth_year"
-              disabled={isDisabled}
-            /> */}
             <div className="flex items-center justify-between w-[365px]">
               <RadioMaleFemale name="gender" onChange={handleRadioChange} value={inputs.gender} />
             </div>
@@ -166,19 +164,19 @@ export default function ProfileDetails() {
               </Tooltip>
             </div>
             <div className="dash w-[365px] border-b-[2px] border-dashed border-[#979797] opacity-20 h-1" />
-            <a
-              href={profile.vendor_token}
-              className="my-[15px] flex w-[365px] justify-between"
-              onClick={openTest}
-            >
-              <div className="text-[#666666] text-[18px]">עריכת פרטי שאלון אוטוביוגרפיה</div>
-              <div className="opacity-50 focus:outline-none hover:opacity-100" herf="#">
-                <EditInfo />
-              </div>
-            </a>
           </div>
         </form>
       )}
+      <a
+        href={profile.vendor_token}
+        className="my-[15px] flex w-[365px] justify-between"
+        onClick={openTest}
+      >
+        <div className="text-[#666666] text-[18px]">עריכת פרטי שאלון אוטוביוגרפיה</div>
+        <div className="opacity-50 focus:outline-none hover:opacity-100" herf="#">
+          <EditInfo />
+        </div>
+      </a>
     </div>
   );
 }

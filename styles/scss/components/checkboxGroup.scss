@@ -6,6 +6,7 @@
 
 .button-label {
   opacity: 0.5;
+  line-height: 30px;
 }
 
 .button-group div input {
@@ -15,11 +16,11 @@
 }
 .button-group div input:checked + label,
 .button-group div input:checked + label:active {
-  background: linear-gradient(143.28deg, #40c2c4 0%, #3c91a0 100%);
+  background: #3ea8b1;
   opacity: 1;
-  border-radius: 3px;
+  border-radius: 4px;
   color: #ffffff;
-  font-size: 18px;
+  font-size: 17px;
   font-weight: bold;
 }
 

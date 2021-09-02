@@ -14,7 +14,7 @@ function Rating({ count, value, inactiveColor = '#ddd', activeColor = '#FB9773' 
           style = activeColor;
         }
         return (
-          <span className="stage-star" key={index} style={{ color: style }}>
+          <span className="stage-star text-2xl w-6 h-6" key={index} style={{ color: style }}>
             {s}
           </span>
         );

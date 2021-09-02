@@ -1,18 +1,26 @@
 import { useTranslation } from 'next-i18next';
+import Tooltip from '../common/Tooltip';
 
 function ProfessionsHeader({ myProfessions }) {
   const { t } = useTranslation('common');
-
+  const tooltipSendedJobs = '<span>המקצועות שיכולים להתאים לך בהתבסס לנתונים שהוזנו עד כה</span>';
   return (
     <div>
       <div className="flex">
-        <h1 className="text-black text-3xl font-black">{t('זירת המקצוענות')}</h1>
+        <h1 className="text-black text-3xl font-black">{t('זירת המקצועות')}</h1>
         {myProfessions?.length ? (
-          <div className="flex self-center bg-orange rounded-lg py-2 px-8 h-9 text-white text-[22px] font-bold leading-6 mr-9">
+          <div className="flex items-center self-center bg-orange rounded-[8px] py-[6px] px-[13px] h-[36px] text-white text-[22px] leading-6 mr-9">
             <p>{t(`נמצאו לך ${myProfessions.length} מקצועות שיתאימו לך`)}</p>
-            <div className="relative smallpop w-4 h-4 border-solid border-white-active border-2 rounded-full font-small  text-white text-xs mr-4 hover:bg-gradient-2 inline-block text-center">
-              ?
-            </div>
+
+            <Tooltip
+              trigger={
+                <div className="relative smallpop w-4 h-4 border-solid border-white-active border rounded-full font-small  text-white text-xs mr-4 hover:bg-gradient-2 inline-block text-center">
+                  ?
+                </div>
+              }
+            >
+              <div dangerouslySetInnerHTML={{ __html: tooltipSendedJobs }} />
+            </Tooltip>
           </div>
         ) : null}
       </div>
