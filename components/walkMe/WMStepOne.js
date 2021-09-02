@@ -5,7 +5,9 @@ import WalkMeStepOne from '../svg/WalkMeStepOne';
 
 const WMStepOne = ({ closeModal, nextStep }) => (
   <>
-    <DashboardHeader />
+    <div className="shadow-2xl">
+      <DashboardHeader />
+    </div>
     <section className="w-[90%] ml-auto py-9 h-full mr-[180px]">
       <div className="flex justify-center">
         <div className="ml-[30px]">

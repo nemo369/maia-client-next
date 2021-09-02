@@ -1,14 +1,13 @@
-import Image from 'next/image';
 import Button from '../common/Button';
 import ArrowOrange from '../svg/ArrowOrange';
 import WalkMeStepOne from '../svg/WalkMeStepOne';
-import step from '../../public/images/step.png';
+import DashboardSummary from '../dashboard/DashboardSummary';
 
 const WMStepThree = ({ closeModal }) => (
   <>
     <div className="flex">
-      <div className="relative ml-[100px] mt-[10vh]">
-        <Image src={step} alt="שלב 3 תצוגת עזר" width={558} height={722} />
+      <div className="relative ml-[100px] mt-[10vh] w-[558px] h-[722px]">
+        <DashboardSummary />
       </div>
       <div className="flex flex-col">
         <div className="relative scale-x-[-1] scale-y-[1] top-[60px] transform rotate-[150deg] w-[110px]">

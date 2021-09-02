@@ -9,7 +9,7 @@ import WMStepOne from './WMStepOne';
 import WMStepThree from './WMStepThree';
 import WMStepTwo from './WMStepTwo';
 
-const overlayStyle = { background: 'rgba(130,139,149,0.95)' };
+const overlayStyle = { background: 'rgba(130,139,149,0.97)' };
 
 const WalkMe = () => {
   const isServer = 'undefined' === typeof window;
