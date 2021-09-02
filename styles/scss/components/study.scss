@@ -63,10 +63,13 @@
 
 
 .compare-wrapper .compare-wrapper-map:nth-child(odd){ /* Selects only odd elements */
-  background-color: rgb(231, 229, 229);   
+  background-color: rgb(231, 229, 229, 0.5);   
 }
+// .compare-wrapper .compare-data-wraper:nth-child(odd){ /* Selects only odd elements */
+//   background-color: rgb(231, 229, 229);   
+// }
 
-// .compare-wrapper-map :first-child{
+// .compare-wrapper-map:first-child{
 //   background-color: red;
 
 // }
