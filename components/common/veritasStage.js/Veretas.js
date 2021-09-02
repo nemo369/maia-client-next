@@ -6,7 +6,6 @@ import VeretasEmploymentProfile from './VeretasEmploymentProfile';
 const Veretas = () => {
   const { profile } = useContext(AppContext);
   const iamproData = profile?.vendor_profile_i_am_pro;
-  console.log(iamproData);
   const close = () => {
     if ('undefined' === typeof window) return;
     const el = document.querySelector('#close-modal-hack');

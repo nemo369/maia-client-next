@@ -11,4 +11,20 @@
         
     }
 
+    .nav__wrapper>*{
+        display: none;
+    }
+    .messageWrapper{
+        display: grid;
+        
+    }
+
 }
+
+// @media only screen and (max-width: 600px) {
+    
+//     .nav__wrapper:not(.messageWrapper){
+//         filter: blur(1px);
+//     }
+
+// }
