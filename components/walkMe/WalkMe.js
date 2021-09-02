@@ -9,7 +9,7 @@ import WMStepOne from './WMStepOne';
 import WMStepThree from './WMStepThree';
 import WMStepTwo from './WMStepTwo';
 
-const overlayStyle = { background: 'rgba(130,139,149,0.7)' };
+const overlayStyle = { background: 'rgba(130,139,149,0.95)' };
 
 const WalkMe = () => {
   const isServer = 'undefined' === typeof window;
@@ -42,7 +42,7 @@ const WalkMe = () => {
     }
   };
 
-  if (isServer || isPopUp) {
+  if (isServer || !isPopUp) {
     return null;
   }
   return (
