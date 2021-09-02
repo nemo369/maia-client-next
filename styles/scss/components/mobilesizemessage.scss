@@ -15,16 +15,9 @@
         display: none;
     }
     .messageWrapper{
+        z-index: 1;
         display: grid;
         
     }
 
 }
-
-// @media only screen and (max-width: 600px) {
-    
-//     .nav__wrapper:not(.messageWrapper){
-//         filter: blur(1px);
-//     }
-
-// }
