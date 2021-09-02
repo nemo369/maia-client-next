@@ -6,23 +6,24 @@ import BigChecked from '../svg/BigChecked';
 import StagesPopSide from '../common/StagesPopSide';
 import StageResults from '../common/stage1results/StageResults';
 
-const FinisthStepAutobiogrpahy = () => (
+const FinisthStepAutobiogrpahy = () => {
   // const [isDone, setIsDone] = useState(false);
-
-  <div>
-    <PopUp defaultOpen>
-      <PopupContent />
-    </PopUp>
-  </div>
-);
+  const { setFinisthVeritas } = props;
+  return (
+    <div>
+      <PopUp defaultOpen>
+        <PopupContent setFinisthVeritas={setFinisthVeritas} />
+      </PopUp>
+    </div>
+  );
+};
 export default FinisthStepAutobiogrpahy;
 
-const PopupContent = () => {
+const PopupContent = (props) => {
+  const { setFinisthVeritas } = props;
   const { t } = useTranslation('common');
   const close = () => {
-    if ('undefined' === typeof window) return;
-    const el = document.querySelector('#close-modal-hack');
-    el?.click();
+    setFinisthVeritas(false);
   };
 
   return (
@@ -39,7 +40,7 @@ const PopupContent = () => {
       >
         <StageResults />
       </StagesPopSide>
-      <button className="h-[50px] w-[240px]" type="button" onClick={close}>
+      <button className="h-[50px] w-[240px]" type="button" id="close-modal-hack" onClick={close}>
         {t('סגור')}
       </button>
     </div>
