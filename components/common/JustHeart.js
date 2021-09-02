@@ -1,5 +1,5 @@
+/* eslint-disable react/destructuring-assignment */
 // eslint-disable-next-line react/destructuring-assignment
-/* eslint-disable react/jsx-one-expression-per-line */
 import { useContext, useEffect, useState } from 'react';
 import UserAPI from '../../src/services/user.service';
 import HeartEmpty from '../svg/HeartEmpty';
