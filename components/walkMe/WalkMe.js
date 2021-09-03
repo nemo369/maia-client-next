@@ -20,7 +20,7 @@ const WalkMe = () => {
   const [open, setOpen] = useState(!isServer);
   const closeModal = () => {
     setOpen(false);
-    setLs(IS_WALKME, true);
+    setLs(IS_WALKME, false);
     setisPopUp(false);
   };
   // const openModal = () => {
