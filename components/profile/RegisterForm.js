@@ -157,7 +157,7 @@ const RegisterForm = ({ cities, termsText }) => {
               <p className="inline-block text-regiterPageDarkBottomText leading-regiterPageDarkBottomText text-regiterPageDarkBottomTextcolor">
                 לפני שאנחנו ממשיכים, איך נוח לך שנפנה אליך?
               </p>
-              <div className="signup-radio-sub-wrapper flex gap-x-7">
+              <div className="signup-radio-sub-wrapper flex md:gap-x-7">
                 <MaleRadio handleChange={handleChange} />
                 <FemaleRadio handleChange={handleChange} />
               </div>
@@ -167,7 +167,7 @@ const RegisterForm = ({ cities, termsText }) => {
           <CoefficientCheckbox handleChange={handleChange} />
           <hr className="dashed col-start-1 col-end-3 my-4" />
 
-          <div className="signup-seconde-checkbox-wrapper flex justify-between">
+          <div className="md:flex-row flex-col flex items-center md:justify-between">
             <ConditionsCheckbox termsText={termsText} handleChange={handleChange} />
             <Button
               type="submit"

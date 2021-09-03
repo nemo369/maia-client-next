@@ -36,7 +36,7 @@ const Login = () => {
   return (
     <>
       <NextSeo {...seo} />
-      <section className="login__wrapper flex justify-center items-center h-screen overflow-hidden relative">
+      <section className="login__wrapper flex justify-center items-center md:h-screen overflow-auto md:doverflow-hidden relative">
         <div className="md:flex login text-white w-full">
           <div className="login__form bg-green-500 z-40  rounded px-14 py-11">
             {errorMsg && (
@@ -44,7 +44,7 @@ const Login = () => {
             )}
             <LoginCmp />
           </div>
-          <div className="login__image flex-grow">
+          <div className="login__image flex-grow hidden md:block">
             <img
               width="1374"
               height="837"
