@@ -46,7 +46,6 @@ const ProfileAPI = {
       });
       return { ...data, status };
     } catch (error) {
-      // console.log(error);
       return { data: null, status: 500 };
     }
   },
@@ -55,7 +54,6 @@ const ProfileAPI = {
       const { data, status } = await axios.get(`${API_URL}/profile/userStages`);
       return { ...data, status };
     } catch (error) {
-      // console.log(error);
       return { data: null, status: 500 };
     }
   },
@@ -73,7 +71,6 @@ const ProfileAPI = {
       );
       return { ...data, status };
     } catch (error) {
-      // console.log(error);
       return { data: null, status: 500 };
     }
   },

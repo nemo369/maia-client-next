@@ -9,7 +9,6 @@ function ProfessionBottomSlider({ professions }) {
     600: { items: 2 },
     1024: { items: 3 },
   };
-  // console.log(professions[0].id);
   if (!professions || !Array.isArray(professions)) {
     return null;
   }

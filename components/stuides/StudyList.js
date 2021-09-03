@@ -2,7 +2,6 @@ import CategoryWithHeart from '../common/CategoryWithHeart';
 import NoStudyEmpty from '../profile/NoStudyEmpty';
 
 function StudyList({ studies, allStudies }) {
-  console.log(allStudies);
   if (!studies || !studies.length) {
     return <NoStudyEmpty />;
   }
