@@ -77,7 +77,6 @@ const RegisterForm = ({ cities, termsText }) => {
       setLoader(false);
     }
     if (200 === status) {
-      // TODO: Set cookie with nookies
       resetForm();
       if (data.vendor_token) {
         e.preventDefault();
@@ -104,7 +103,7 @@ const RegisterForm = ({ cities, termsText }) => {
   };
 
   return (
-    <div className="registerPage_container mt-24 relative max-w-5xl mx-auto mb-40 mq-register">
+    <div className="registerPage_container mt-9 relative max-w-5xl mx-auto mb-40 mq-register">
       <MainTitle />
       <Group11 />
       <div className="registerPage_form_container relative bg-white px-32 pt-14 pb-9 register-form rounded-lg mq-form">
@@ -157,7 +156,7 @@ const RegisterForm = ({ cities, termsText }) => {
               <p className="inline-block text-regiterPageDarkBottomText leading-regiterPageDarkBottomText text-regiterPageDarkBottomTextcolor">
                 לפני שאנחנו ממשיכים, איך נוח לך שנפנה אליך?
               </p>
-              <div className="signup-radio-sub-wrapper flex gap-x-7">
+              <div className="signup-radio-sub-wrapper flex md:gap-x-7">
                 <MaleRadio handleChange={handleChange} />
                 <FemaleRadio handleChange={handleChange} />
               </div>
@@ -167,7 +166,7 @@ const RegisterForm = ({ cities, termsText }) => {
           <CoefficientCheckbox handleChange={handleChange} />
           <hr className="dashed col-start-1 col-end-3 my-4" />
 
-          <div className="signup-seconde-checkbox-wrapper flex justify-between">
+          <div className="md:flex-row flex-col flex items-center md:justify-between">
             <ConditionsCheckbox termsText={termsText} handleChange={handleChange} />
             <Button
               type="submit"

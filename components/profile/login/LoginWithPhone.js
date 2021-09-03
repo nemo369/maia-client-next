@@ -63,7 +63,7 @@ function LoginWithPhone(props) {
             אני מעוניין/ת לקבל קוד למייל
           </button>
         </div>
-        <div className="h-32">
+        <div className="md:h-32">
           <Loader
             className="absolute  w-32 h-32 text-white right-0 left-0 top-auto bottom-0 m-auto"
             loading={loader}

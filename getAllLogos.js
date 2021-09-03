@@ -7,5 +7,5 @@ fs.readdirSync(testFolder).forEach((file) => {
 });
 fs.writeFile('input.json', JSON.stringify(logos), (err) => {
   if (err) throw err;
-  console.log('complete');
+  // console.log('complete');
 });

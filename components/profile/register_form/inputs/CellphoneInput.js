@@ -5,7 +5,7 @@ const CellphoneInput = (props) => {
       type="text"
       required
       name="cellphone"
-      placeholder="נייד"
+      placeholder="נייד *"
       value={value}
       onChange={handleChange}
       className="regiserPageInput justify-self-center h-12 w-full bwc bg-gray-disabled  rounded-md"
