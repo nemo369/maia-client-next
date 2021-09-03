@@ -8,7 +8,7 @@ import StagesResultsWorkExperience from './StagesResultsWorkExperience';
 import WhereToGo from './WhereToGo';
 import StageOneBottom from './StageOneBottom';
 import AutoBiographyChartResults from './AutoBiographyChartResults';
-// import Bars from '../../charts/Bars';
+import Bars from '../../charts/Bars';
 
 const worksConsts = ['שירות צבאי'];
 const eductionsConsts = [];
@@ -122,13 +122,13 @@ const Autobiography = (props) => {
       </div>
 
       <div className="w-full flex justify-between pt-9 pr-28">
-        {/* <div className="flex"> */}
         <AutoBiographyChartResults autobiographyData={autobiographyData} />
-        <div className="w-[200px] h-[200px] grid gap-y-6">
+        <div className="w-[200px] h-[200px]">
           <StageOneBottom userProfileResults={profile.vendor_profile.userProfileResults} />
-          {/* <Bars /> */}
         </div>
-        {/* </div> */}
+      </div>
+      <div className="w">
+        <Bars width={150} height={200} />
       </div>
     </div>
   );

@@ -4,7 +4,8 @@ import { AppContext, useAppContext } from '../../src/context/state';
 import { getChartColors } from '../../src/utils/util';
 
 const riasec = ['r', 'i', 'a', 's', 'e', 'c'];
-function Bars() {
+function Bars(props) {
+  const { height, width } = props;
   const { profile } = useAppContext(AppContext);
   const [labels, setlabels] = useState([]);
   const [datasets, setDataset] = useState([{}]);
@@ -31,8 +32,8 @@ function Bars() {
           labels,
           datasets,
         }}
-        width={100}
-        height={150}
+        width={width}
+        height={height}
         options={options}
       />
     </div>
