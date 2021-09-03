@@ -1,16 +1,16 @@
 import CategoryWithHeart from '../common/CategoryWithHeart';
 import NoStudyEmpty from '../profile/NoStudyEmpty';
 
-function StudyList({ studies, allStudies }) {
+function StudyList({ studies }) {
   if (!studies || !studies.length) {
     return <NoStudyEmpty />;
   }
   const noDuplicets = studies?.filter((v, i, a) => a.findIndex((t) => t.id === v.id) === i);
   const byGroups = noDuplicets.reduce((accumulator, currentValue) => {
-    if (accumulator[currentValue.full_data.miK_NAME]) {
+    const mikName = currentValue.full_data.miK_NAME ? currentValue.full_data.miK_NAME : ' ';
+    if (accumulator[mikName]) {
       accumulator[currentValue.full_data.miK_NAME].push(currentValue);
-    } else {
-      accumulator[currentValue.full_data.miK_NAME] = [currentValue];
+      return accumulator;
     }
     return accumulator;
   }, {});
