@@ -1,6 +1,12 @@
-function MailHeart() {
+function MailHeart({ className }) {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="92" height="74" viewBox="0 0 92 74">
+    <svg
+      className={className}
+      xmlns="http://www.w3.org/2000/svg"
+      width="92"
+      height="74"
+      viewBox="0 0 92 74"
+    >
       <g fill="none" fillRule="evenodd" stroke="none" strokeWidth="1">
         <g fillRule="nonzero" transform="translate(-991 -3681)">
           <g transform="translate(991 3681)">

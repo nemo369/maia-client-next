@@ -14,6 +14,7 @@ import NotificationAPI from '../src/services/notification.service';
 import useProfile from '../src/hooks/useProfile';
 import { SET_NOTIFICATIONS } from '../src/context/appReducer';
 import VendorAPI from '../src/services/vendor.service';
+import HelpInfo from '../components/popups/HelpInfo';
 
 export default function Profile({ notifications }) {
   const { t } = useTranslation('common');
@@ -67,6 +68,7 @@ export default function Profile({ notifications }) {
           </div>
           <div className="flex flex-col mb-8">
             <ProfileInfo />
+            <HelpInfo />
           </div>
         </div>
       </div>
