@@ -2,9 +2,8 @@ import React, { useState } from 'react';
 import PopUp from '../common/PopUp';
 import MailHeart from '../svg/MailHeart';
 import Chat from '../svg/Chat';
-import FlyingWoman from '../svg/FlyingWoman';
 import WalkMeStepTwo from '../svg/WalkMeStepTwo';
-import WalkMeStepOne from '../svg/WalkMeStepOne';
+import FlyingWoman from '../svg/FlyingWoman';
 
 const HelpInfo = () => {
   const [showPhone, setShowPhone] = useState(false);
@@ -14,7 +13,23 @@ const HelpInfo = () => {
 
   return (
     <>
-      <PopUp defaultOpen>
+      <PopUp
+        trigger={
+          <button
+            type="button"
+            className="max-w-[273px] cursor-pointer relative top-[-50px] left-[-360px] w-full z-10"
+          >
+            <FlyingWoman />
+            <span className="leading-6 text-white font-bold text-lg absolute z-20 text-center w-[121px] px-6 pt-6 top-0 left-0">
+              זקוק/ה
+              <br />
+              להכוונה
+              <br />
+              אישית?
+            </span>
+          </button>
+        }
+      >
         <div className="flex flex-col items-center justify-center px-10">
           <h2 className="text-center text-[30px] font-bold text-gray-mid">
             נשארתם עם שאלה לא פתורה?

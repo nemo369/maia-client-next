@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'next-i18next';
 import Infoservice from '../../src/services/info.service';
-import FlyingWoman from '../svg/FlyingWoman';
+import HelpInfo from '../popups/HelpInfo';
 
 function Banner() {
   const { t } = useTranslation('common');
@@ -22,12 +22,7 @@ function Banner() {
         className="h-40 bg-gray-200 rounded-lg overflow-hidden wp-content"
         dangerouslySetInnerHTML={{ __html: bannerHtml }}
       />
-      <div className="flying-women max-w-[273px] absolute top-1/2 -left-20 w-full z-10  right-auto ">
-        <FlyingWoman />
-        <span className="leading-6 text-white font-bold text-lg absolute z-20 text-center w-[121px] px-6 pt-6 top-0 left-0">
-          {t('זקוק-להכוונה-אישית')}
-        </span>
-      </div>
+      <HelpInfo />
     </footer>
   );
 }
