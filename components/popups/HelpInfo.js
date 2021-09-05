@@ -4,11 +4,18 @@ import MailHeart from '../svg/MailHeart';
 import Chat from '../svg/Chat';
 import WalkMeStepTwo from '../svg/WalkMeStepTwo';
 import FlyingWoman from '../svg/FlyingWoman';
+import ForMoreInfo from './ForMoreInfo';
 
 const HelpInfo = () => {
   const [showPhone, setShowPhone] = useState(false);
+  const [showMail, setShowMail] = useState(false);
+
   const togglePhone = () => {
     setShowPhone(!showPhone);
+  };
+
+  const mailPopUP = () => {
+    setShowMail(true);
   };
 
   return (
@@ -16,6 +23,7 @@ const HelpInfo = () => {
       <PopUp
         trigger={
           <button
+            onClick={() => setShowMail(false)}
             type="button"
             className="max-w-[273px] cursor-pointer relative top-[-50px] left-[-360px] w-full z-10"
           >
@@ -49,6 +57,7 @@ const HelpInfo = () => {
           </div>
           <div className="flex">
             <button
+              onClick={mailPopUP}
               type="button"
               className="ml-[40px] cursor-pointer
            w-[200px] h-[180px] border border-[rgba(0,0,0,0.14)] rounded-[8px] shadow-input"
@@ -74,6 +83,7 @@ const HelpInfo = () => {
           <WalkMeStepTwo />
         </div>
       </PopUp>
+      {showMail && <ForMoreInfo />}
     </>
   );
 };

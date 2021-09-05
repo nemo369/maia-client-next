@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { useTranslation } from 'next-i18next';
+// import { useTranslation } from 'next-i18next';
 import Infoservice from '../../src/services/info.service';
 import HelpInfo from '../popups/HelpInfo';
 
 function Banner() {
-  const { t } = useTranslation('common');
+  // const { t } = useTranslation('common');
 
   const [bannerHtml, setbannerHtml] = useState('');
   useEffect(() => {
