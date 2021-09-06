@@ -10,8 +10,28 @@ import StageOneBottom from './StageOneBottom';
 import AutoBiographyChartResults from './AutoBiographyChartResults';
 import Bars from '../../charts/Bars';
 
-const worksConsts = ['שירות צבאי'];
-const eductionsConsts = [];
+const worksConsts = [
+  'שירות צבאי',
+  'שירות אזרחי לאומי',
+  'שנת שירות',
+  'מכינה קדם צבאית',
+  'עבודות נוער',
+  'עבודות כבוגר',
+  'לא רלוונטי',
+];
+const eductionsConsts = [
+  'השכלה תיכונית',
+  'בגרות אקסטרנית',
+  'ישיבה קטנה/סמינר תיכוני',
+  'ישיבה גדולה',
+  'סמינר',
+  'תעודת גמר / מקצוע',
+  'טכנאי/ת',
+  'הנדסאי/ת',
+  'תואר ראשון',
+  'תואר שני',
+  'תואר שלישי',
+];
 
 const Autobiography = (props) => {
   const { stageData } = props;
@@ -40,7 +60,7 @@ const Autobiography = (props) => {
     setBiographys({
       works,
       eductions,
-      toGos: [],
+      toGos: autobiographyData?.aspiration.split(','),
     });
   }, [profile]);
 
@@ -106,6 +126,7 @@ const Autobiography = (props) => {
 
             <Case value="current-education">
               <EducationCurrent
+                profileData={profile}
                 stageData={stageData?.stage1?.middle?.currentEducation}
                 autobiographyData={biographys.eductions}
               />
@@ -113,6 +134,7 @@ const Autobiography = (props) => {
 
             <Case value="where-to-go">
               <WhereToGo
+                profileData={profile}
                 stageData={stageData?.stage1?.middle?.whereIWantToGo}
                 autobiographyData={biographys.toGos}
               />
@@ -121,7 +143,7 @@ const Autobiography = (props) => {
         </div>
       </div>
 
-      <div className="w-full flex justify-between pt-9 pr-28">
+      <div className="w-full flex justify-between pt-9 pb-10 pr-28">
         <AutoBiographyChartResults autobiographyData={autobiographyData} />
         <div className="w-[200px] h-[200px]">
           <StageOneBottom userProfileResults={profile.vendor_profile.userProfileResults} />

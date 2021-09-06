@@ -11,29 +11,29 @@ function DashboardSummary() {
   const { profile } = useContext(AppContext);
   const [step, setstep] = useState('loading');
   useEffect(() => {
-    if (!profile) {
-      setstep('loading');
-      return;
-    }
-    if (!profile.vendor_profile || !profile.vendor_profile.completionAutobiography) {
-      setstep('noTestYet');
-      return;
-    }
-    const { vendor_profile: vendor } = profile;
-    if (vendor.completionAutobiography && !vendor.completionIAmpro) {
-      setstep('completionAutobiography');
-      return;
-    }
-
-    if (vendor.completionAutobiography && vendor.completionIAmpro && !vendor.completionVeritas) {
-      setstep('completionVeritas');
-      return;
-    }
-    // TODO: when this should apper
+    setstep('completionAutobiography');
+    // if (!profile) {
+    //   setstep('loading');
+    //   return;
+    // }
+    // if (!profile.vendor_profile || !profile.vendor_profile.completionAutobiography) {
+    //   setstep('noTestYet');
+    //   return;
+    // }
+    // const { vendor_profile: vendor } = profile;
+    // if (vendor.completionAutobiography && !vendor.completionIAmpro) {
+    //   setstep('completionAutobiography');
+    //   return;
+    // }
+    // if (vendor.completionAutobiography && vendor.completionIAmpro && !vendor.completionVeritas) {
+    //   setstep('completionIAmpro');
+    //   return;
+    // }
+    // // TODO: when this should apper
     // setstep('dataIsMissing');
-    if (vendor.completionAutobiography && vendor.completionIAmpro && vendor.completionVeritas) {
-      setstep('completed');
-    }
+    // if (vendor.completionAutobiography && vendor.completionIAmpro && vendor.completionVeritas) {
+    //   setstep('completed');
+    // }
   }, [profile]);
   return (
     <div className="dashboard__summary bg-white rounded-lg py-5 px-4 flex flex-col max-h-[722px] overflow-auto">

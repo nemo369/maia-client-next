@@ -7,8 +7,7 @@ import StarRating from './StarRating';
 import medalStar from '../../../public/images/medalStar.png';
 
 const StagesResultsWorkExperience = (props) => {
-  const { stageData, medal, autobiographyData, profileData } = props;
-  console.log(stageData);
+  const { medal, autobiographyData, profileData } = props;
   console.log(medal);
   console.log(autobiographyData);
 
@@ -23,8 +22,9 @@ const StagesResultsWorkExperience = (props) => {
         <div className="flex justify-between">
           <p className="text-xl text-[#474747] max-w-[425px]">
             {x.categoryName}
+            <span> {' '} </span>
              |
-            <span> {''} </span>
+            <span> {' '} </span>
             {x.jobName}
           </p>
           <div className="stars-wrapper flex">

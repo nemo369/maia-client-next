@@ -6,7 +6,7 @@ import BigChecked from '../svg/BigChecked';
 import StagesPopSide from '../common/StagesPopSide';
 import StageResults from '../common/stage1results/StageResults';
 
-const FinisthStepAutobiogrpahy = () => {
+const FinisthStepAutobiogrpahy = (props) => {
   // const [isDone, setIsDone] = useState(false);
   const { setFinisthVeritas } = props;
   return (

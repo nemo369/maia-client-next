@@ -15,15 +15,12 @@ const StageResults = ({ testType }) => {
     };
     getStages();
   }, []);
-  // const [stage1, setStage1] = useState(true);
-  const stage1 = true;
-  //   const [stage2, setStage2] = useState(false);
-  //   const [stage3, setStage3] = useState(true);
+
   return (
     <>
       {'Autobiography' === testType && <Autobiography stageData={stages} />}
       {'CompletionIAmpro' === testType && <CompletionIAmpro stageData={stages} />}
-      {'Veritas' === testType && <Veretas stageData={stages} />}
+      {'Veretas' === testType && <Veretas stageData={stages} />}
     </>
   );
 };

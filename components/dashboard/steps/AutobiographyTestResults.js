@@ -24,7 +24,9 @@ function AutobiographyTestResults() {
             <Button type="button" status="secondary" name="תוצאות השלב" className="h-12 w-full" />
           }
         >
+          {/* <StageResults testType="CompletionIAmpro" /> */}
           <StageResults testType="Autobiography" />
+          {/* <StageResults testType="Veretas" /> */}
         </StagesPopSide>
 
         <Button

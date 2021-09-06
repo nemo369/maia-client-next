@@ -12,12 +12,13 @@ function ProfileSummary() {
         <div className="flex">
           <p>
             מסתמן כי הפרופיל התעסוקתי שלך הוא
-            <br />*{profile.vendor_profile_i_am_pro?.shortProfileText}
+            <br />
+            {profile?.vendor_profile_i_am_pro?.shortProfileText}
           </p>
           <ProfileDoughnut />
         </div>
         <p className="mb-4" />
-        <p>{profile.vendor_profile_i_am_pro?.shortEnviormentText}</p>
+        <p>{profile?.vendor_profile_i_am_pro?.shortEnviormentText}</p>
       </>
       {/* )} */}
     </div>

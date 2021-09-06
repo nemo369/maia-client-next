@@ -10,7 +10,6 @@ import smallprinter from '../../public/images/smallprinter.png';
 import { ALL_LOGOS } from '../../src/utils/allLogos';
 
 const CompareStudiesResult = ({ setOpen, setCompare, studies }) => {
-  console.log(studies);
   const { t } = useTranslation('common');
   const close = () => {
     if ('undefined' === typeof window) return;
