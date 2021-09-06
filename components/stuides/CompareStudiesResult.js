@@ -1,8 +1,6 @@
 import { useTranslation } from 'next-i18next';
 import Image from 'next/image';
 import Button from '../common/Button';
-// import PrinterGreySmall from '../svg/PrinterGreySmall';
-// import MailGreySmall from '../svg/MailGreySmall';
 import Xcircle from '../svg/Xcircle';
 import JustHeart from '../common/JustHeart';
 import envelope from '../../public/images/envelope.png';
@@ -48,14 +46,12 @@ const CompareStudiesResult = ({ setOpen, setCompare, studies }) => {
             </h1>
           </div>
           <div className="flex justify-self-end compare-c gap-x-4">
-            {/* <MailGreySmall /> */}
             <button type="button">
               <Image src={envelope} alt="מעטפה" width={25} height={25} />
             </button>
             <button type="button">
               <Image src={smallprinter} alt="מדפסת" width={30} height={30} />
             </button>
-            {/* <PrinterGreySmall /> */}
             <Button
               className="place-self-end px-5"
               type="button"

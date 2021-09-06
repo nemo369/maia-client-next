@@ -4,14 +4,13 @@ import WHeelChair from './svg/WheelChair';
 
 const SignUpHeader = function () {
   return (
-    <div className="grid grid-cols-2 relative mb-14 mt-9 mq-sign">
+    <div className="flex md:flex-row flex-col-reverse items-center relative mb-2 mq-sign max-w-[95vw] mx-auto 2xl:absolute w-full top-10 right-0 left-0">
       <Logo />
-      <div className="justify-self-end absolute bottom-2/3 top-[20px] ">
-        <div className="ml-4 inline-block">
-          <p className="inline-block text-lg">יש לך שם משתמש? </p>
-          <span> </span>
+      <div className="flex  mr-auto items-center">
+        <div className="flex gap-x-1 ml-4  text-lg">
+          <p className=" text-gray">יש לך שם משתמש? </p>
           <Link href="/user/login">
-            <a className="inline-block text-orange-mainOr text-lg">
+            <a className=" text-orange-mainOr text-lg font-bold hover:text-opacity-80">
               <u> התחבר עכשיו </u>
             </a>
           </Link>

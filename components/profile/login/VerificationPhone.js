@@ -1,5 +1,5 @@
 import router from 'next/router';
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import UserAPI from '../../../src/services/user.service';
 import Loader from '../../common/Loader';
 import { SET_USER } from '../../../src/context/appReducer';
@@ -16,8 +16,14 @@ const VerificationPhone = (props) => {
   const { dispatch } = useContext(AppContext);
 
   const [loader, setLoader] = useState(false);
+  const [isAllowdResend, setIsAllowdResend] = useState(false);
   const [inputs, setInputs] = useState(['', '', '', '']);
   const [error, setError] = useState(false);
+  useEffect(() => {
+    setTimeout(() => {
+      setIsAllowdResend(true);
+    }, 5000);
+  }, []);
   function formatPhoneNumber(phoneNumberString) {
     const cleaned = ('' + phoneNumberString).replace(/\D/g, '');
     const match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
@@ -77,9 +83,13 @@ const VerificationPhone = (props) => {
         בהודעת SMS לטלפון שלך
         <span className="mr-2">{formatPhoneNumber(cell)}</span>
       </div>
-      <button type="button" className="mt-2 mb-4 underline" onClick={reSend}>
-        לא קיבלת? שלח שוב
-      </button>
+      {isAllowdResend ? (
+        <button type="button" className="mt-2 mb-4 underline" onClick={reSend}>
+          לא קיבלת? שלח שוב
+        </button>
+      ) : (
+        <div className="mt-2 mb-4 h-6" />
+      )}
       <div className="text-white h-6">
         {!!error && <span className="shake block">{error}</span>}
       </div>
