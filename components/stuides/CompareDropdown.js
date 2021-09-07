@@ -18,6 +18,7 @@ const CompareDropdown = ({ professionIds }) => {
   const [studies, setStudies] = useState([]);
   const filteredCategories = async (dataToSend) => {
     const { data } = await VendorAPI.getCategorys(user.token, 'studies', dataToSend);
+
     setStudies(data);
   };
   const { inputs, handleChange } = useFormStudy({

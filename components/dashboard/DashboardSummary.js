@@ -24,13 +24,12 @@ function DashboardSummary() {
       setstep('completionAutobiography');
       return;
     }
-
     if (vendor.completionAutobiography && vendor.completionIAmpro && !vendor.completionVeritas) {
-      setstep('completionVeritas');
+      setstep('completionIAmpro');
       return;
     }
     // TODO: when this should apper
-    // setstep('dataIsMissing');
+    setstep('dataIsMissing');
     if (vendor.completionAutobiography && vendor.completionIAmpro && vendor.completionVeritas) {
       setstep('completed');
     }

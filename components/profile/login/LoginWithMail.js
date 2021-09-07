@@ -35,7 +35,6 @@ const LoginWithMail = (props) => {
       setLoader(false);
       setError(data.message);
     } else {
-      console.log(data.data.magic_link);
       setPopup(data.data.message);
     }
   };
