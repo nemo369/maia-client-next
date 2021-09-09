@@ -18,7 +18,7 @@ const CompletionIAmpro = () => {
       <hr className="dashed-stages my-5 h-[2px]" />
 
       <div className="stage1-middle-wrapper flex justify-around gap-x-[104px]">
-        <div className="grid pt-[30px] gap-y-8">
+        <div className="grid pt-[30px] gap-y-8 pl-24">
           <Stage2longTextArr iamproData={iamproData} />
         </div>
       </div>
