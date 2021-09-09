@@ -1,13 +1,25 @@
 import ClearMark from '../../svg/ClearMark';
+import { ALL_IA_PRO_LOGOS } from '../../../src/utils/iamproLogos';
 
 const Stage2longTextArr = (props) => {
+  const getImg = (data) => {
+    const imgPaths = data.img_src.split('/');
+    const imgCode = imgPaths.reverse()[0].replace('.png', '');
+
+    if (ALL_IA_PRO_LOGOS.includes(imgCode)) {
+      return <img src={`/logos/${imgCode}.svg`} alt="logo" height="54" loading="lazy" />;
+    }
+
+    return <h4 className="text-5xl font-black text-[#F4F4F4]">תמונה</h4>;
+  };
   const { iamproData } = props;
 
   const data = iamproData?.longTextArr.map((x) => (
     <div className="grid">
       <div className="flex gap-x-12">
         <div>
-          <img className="w-40 h-40 bg-red-active" src={x.img_src} alt="" />
+          {getImg(x)}
+          {/* <img className="w-40 h-40 bg-red-active" src={x.img_src} alt="" /> */}
         </div>
         <div className="grid gap-y-12">
           <div className="grid">

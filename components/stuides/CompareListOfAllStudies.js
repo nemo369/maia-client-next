@@ -4,7 +4,6 @@ import Xcircle from '../svg/Xcircle';
 import Check from '../common/Check';
 
 const CompareListOfAllStudies = ({ setOpen, studies, handleChange, handleCompare, inputs }) => {
-  console.log(studies);
   const { t } = useTranslation('common');
   const close = () => {
     if ('undefined' === typeof window) return;

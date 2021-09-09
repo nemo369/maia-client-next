@@ -14,6 +14,7 @@ const Register = function (props) {
     title: t('הרשמה למערכת'),
   });
   const { cities, termsText } = props;
+
   return (
     <div
       className="bg-lightgreybackground w-full
@@ -22,6 +23,7 @@ const Register = function (props) {
       <NextSeo {...seo} />
       <SignUpHeader />
       <RegisterForm cities={cities} termsText={termsText} />
+
     </div>
   );
 };

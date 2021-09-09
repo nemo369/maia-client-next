@@ -21,6 +21,9 @@ const LoginWithMail = (props) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (loader) {
+      return;
+    }
     setError(false);
     if (!email || !validateEmail(email)) {
       setError(t('המייל אינו תקין'));
@@ -28,11 +31,10 @@ const LoginWithMail = (props) => {
     }
     setLoader(true);
     const { data, status } = await UserAPI.magicLogin({ email, type: 'email' });
-    setLoader(false);
     if (200 !== status) {
+      setLoader(false);
       setError(data.message);
     } else {
-      console.log(data.data.magic_link);
       setPopup(data.data.message);
     }
   };
@@ -78,12 +80,13 @@ const LoginWithMail = (props) => {
           )}
         </div>
         <button
+          disabled={loader}
           type="submit"
-          className="submit mt-32 bg-mainOrange w-full text-center rounded py-4 hover:bg-opacity-90"
+          className="submit mt-36 bg-mainOrange w-full text-center rounded py-4 hover:bg-opacity-90"
         >
           התחברות
         </button>
-        <Loader loading={loader} />
+        <Loader loading={loader} className="mx-auto -mt-11 absolute right-0 left-0 top-p[153px]" />
 
         {error ? (
           <div className="absolute top-3  right-auto left-2  font-bold  text-red-500 grid grid-flow-col items-center">

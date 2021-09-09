@@ -10,5 +10,17 @@
         position: absolute;
         
     }
+    .messageWrapper{
+        filter: blur(0);
+    }
+
+    .nav__wrapper>*{
+        display: none;
+    }
+    .messageWrapper{
+        z-index: 1;
+        display: grid;
+        
+    }
 
 }

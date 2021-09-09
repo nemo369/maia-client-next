@@ -9,7 +9,11 @@ function TestPopups() {
   const [finisthStepIamPro, setFinisthStepIamPro] = useState(false);
   const [finisthAutoBiogrphy, setfinisthAutoBiogrphy] = useState(false);
   const [finisthVeritas, setFinisthVeritas] = useState(false);
-
+  const close = () => {
+    if ('undefined' === typeof window) return;
+    const el = document.querySelector('#close-modal-hack');
+    el?.click();
+  };
   useEffect(() => {
     if ('iampro' === query?.testDone) {
       setFinisthStepIamPro(true);
@@ -32,11 +36,16 @@ function TestPopups() {
       );
     }
   }, [query]);
+  if ('undefined' === typeof window) return null;
   return (
     <>
-      {finisthStepIamPro && <FinisthStepIamPro />}
-      {finisthAutoBiogrphy && <FinisthStepAutobiogrpahy />}
-      {finisthVeritas && <FinisthStepVeritas />}
+      {finisthStepIamPro && (
+        <FinisthStepIamPro setFinisthStepIamPro={setFinisthStepIamPro} close={close} />
+      )}
+      {finisthAutoBiogrphy && (
+        <FinisthStepAutobiogrpahy setfinisthAutoBiogrphy={setfinisthAutoBiogrphy} close={close} />
+      )}
+      {finisthVeritas && <FinisthStepVeritas close={close} setFinisthVeritas={setFinisthVeritas} />}
     </>
   );
 }

@@ -17,14 +17,16 @@ function AutobiographyTestResults() {
       <h3 className="text-3xl font-bold text-[#6C6C6C] mb-6">מה עשיתי עד כה</h3>
       <h4 className="mb-4 text-xl font-bold">המאפיינים העיקריים שלך</h4>
       <ProfileSummary />
-      <Bars />
+      <Bars height={150} width={100} />
       <div className="flex gap-x-1 mt-6">
         <StagesPopSide
           trigger={
             <Button type="button" status="secondary" name="תוצאות השלב" className="h-12 w-full" />
           }
         >
-          <StageResults />
+          {/* <StageResults testType="CompletionIAmpro" /> */}
+          <StageResults testType="Autobiography" />
+          {/* <StageResults testType="Veretas" /> */}
         </StagesPopSide>
 
         <Button

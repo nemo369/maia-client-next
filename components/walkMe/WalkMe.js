@@ -1,5 +1,3 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-// ITS OK TO DISABLE SINCE WE HAVE A BUTTON ALSO UNDER
 import { useState } from 'react';
 import Popup from 'reactjs-popup';
 import { IS_WALKME } from '../../src/utils/consts';
@@ -20,20 +18,10 @@ const WalkMe = () => {
   const [open, setOpen] = useState(!isServer);
   const closeModal = () => {
     setOpen(false);
-    setLs(IS_WALKME, true);
+    setLs(IS_WALKME, false);
     setisPopUp(false);
   };
-  // const openModal = () => {
-  //   if (open) {
-  //     setOpen(false);
-  //     // THIS HACK BECUSE OF ESC CLICK BUG
-  //     setTimeout(() => {
-  //       setOpen(true);
-  //     }, 0);
-  //     return;
-  //   }
-  //   setOpen(true);
-  // };
+
   const nextStep = () => {
     const next = step + 1;
     setStep(next);

@@ -1,6 +1,9 @@
 /* eslint-disable react/no-unescaped-entities */
+import Image from 'next/image';
 import Xcircle from '../../svg/Xcircle';
 import Button from '../Button';
+import envelope from '../../../public/images/envelope.png';
+import smallprinter from '../../../public/images/smallprinter.png';
 
 const VeretasTop = ({ veretasData, close }) => {
   console.log(veretasData);
@@ -65,7 +68,24 @@ const VeretasTop = ({ veretasData, close }) => {
           <h1 className="text-3xl font-bold text-center text-[#d4cbcb]">דוח תוצאות</h1>
           <h2 className="text-3xl text-[#333333]">"היכולות שלי + מה מתאים לי"</h2>
         </div>
-        <Button className="w-24" type="button" status="main" name="עריכה" />
+        <div className="flex gap-x-2">
+          <Button
+            className="w-24 flex justify-center items-center gap-x-[5px]"
+            type="button"
+            status="secondary"
+            name="עריכה"
+          >
+            <Image src={envelope} alt="מעטפה" width={25} height={25} />
+          </Button>
+          <Button
+            className="w-24 flex justify-center items-center gap-x-[5px]"
+            type="button"
+            status="secondary"
+            name="עריכה"
+          >
+            <Image src={smallprinter} alt="מעטפה" width={25} height={25} />
+          </Button>
+        </div>
       </div>
 
       <div className="text-center py-8 mt-7 mx-8">

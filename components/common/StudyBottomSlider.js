@@ -9,7 +9,6 @@ function StudyBottomSlider({ studies }) {
     600: { items: 2 },
     1024: { items: 3 },
   };
-  // console.log(professions[0].id);
   if (!studies || !Array.isArray(studies)) {
     return null;
   }

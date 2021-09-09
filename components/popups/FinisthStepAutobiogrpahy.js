@@ -3,20 +3,28 @@ import React from 'react';
 import Button from '../common/Button';
 import PopUp from '../common/PopUp';
 import BigChecked from '../svg/BigChecked';
+import StagesPopSide from '../common/StagesPopSide';
+import StageResults from '../common/stage1results/StageResults';
 
-const FinisthStepAutobiogrpahy = () => (
+const FinisthStepAutobiogrpahy = (props) => {
   // const [isDone, setIsDone] = useState(false);
-
-  <div>
-    <PopUp defaultOpen>
-      <PopupContent />
-    </PopUp>
-  </div>
-);
+  const { setFinisthVeritas } = props;
+  return (
+    <div>
+      <PopUp defaultOpen>
+        <PopupContent setFinisthVeritas={setFinisthVeritas} />
+      </PopUp>
+    </div>
+  );
+};
 export default FinisthStepAutobiogrpahy;
 
-const PopupContent = () => {
+const PopupContent = (props) => {
+  const { setFinisthVeritas } = props;
   const { t } = useTranslation('common');
+  const close = () => {
+    setFinisthVeritas(false);
+  };
 
   return (
     <div className="flex flex-col items-center justify-center py-4 px-16 text-center">
@@ -27,8 +35,12 @@ const PopupContent = () => {
         ״מה עשיתי עד כה״
       </h2>
       <div className="my-6">שמסכם את המסלול חייך עד כה</div>
-      <Button className="h-[50px] w-[240px]" status="secondary" name="לתוצאות השלב" />
-      <button className="h-[50px] w-[240px]" type="button">
+      <StagesPopSide
+        trigger={<Button className="h-[50px] w-[240px]" status="secondary" name="לתוצאות השלב" />}
+      >
+        <StageResults />
+      </StagesPopSide>
+      <button className="h-[50px] w-[240px]" type="button" id="close-modal-hack" onClick={close}>
         {t('סגור')}
       </button>
     </div>
