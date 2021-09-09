@@ -7,9 +7,10 @@ import StagesPopSide from '../../common/StagesPopSide';
 import NextStepPopUp from '../../popups/NextStepPopUp';
 import ProfileSummary from '../ProfileSummary';
 
-function AutobiographyTestResults() {
+function AutobiographyTestResults(props) {
   const { t } = useTranslation('common');
   const [defaultOpen, setDefaultOpen] = useState(false);
+  const { testType } = props;
 
   return (
     <section className="h-full">
@@ -24,8 +25,9 @@ function AutobiographyTestResults() {
             <Button type="button" status="secondary" name="תוצאות השלב" className="h-12 w-full" />
           }
         >
+          <StageResults testType={testType} />
           {/* <StageResults testType="CompletionIAmpro" /> */}
-          <StageResults testType="Autobiography" />
+          {/* <StageResults testType="Autobiography" /> */}
           {/* <StageResults testType="Veretas" /> */}
         </StagesPopSide>
 

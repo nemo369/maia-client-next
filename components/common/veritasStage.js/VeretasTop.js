@@ -4,59 +4,32 @@ import Xcircle from '../../svg/Xcircle';
 import Button from '../Button';
 import envelope from '../../../public/images/envelope.png';
 import smallprinter from '../../../public/images/smallprinter.png';
+import { AppContext, useAppContext } from '../../../src/context/state';
 
-const VeretasTop = ({ veretasData, close }) => {
-  console.log(veretasData);
+const VeretasTop = ({ close }) => {
+  const { profile } = useAppContext(AppContext);
+  const iamproData = profile?.vendor_profile_i_am_pro;
 
-  const dd = () => {
-    const dummyData = [
-      {
-        title: 'מה כדי לי ללמוד:',
-        titleText: 'תכנות',
-        subTitle: 'במה עובדים:',
-        subText: ['איש.אשת אלגוריטמיקה', 'ארכיטקט/ית'],
-      },
-      {
-        title: 'מה כדי לי ללמוד:',
-        titleText: 'אוטוטרוניקה',
-        subTitle: 'במה עובדים:',
-        subText: ['איש.אשת אלגוריטמיקה', 'ארכיטקט/ית'],
-      },
-    ];
-
-    const ff = dummyData.map((x) => (
-      <div className="flex pb-4 veritas-links-wrappers gap-x-12">
-        <div className="flex gap-x-5">
-          <img
-            width="30"
-            height="30"
-            loading="lazy"
-            src="/images/powerplant.svg"
-            alt="powerplant"
-          />
-          <div className="grid text-right gap-y-[5px]">
-            <p className="text-base text-[#333333] opacity-50 leading-4 font-bold">
-              מה כדי לי ללמוד:
-            </p>
-            {/* <p className="text-base text-[#333333] opacity-50 leading-4 font-bold">{x.title}</p> */}
-            <h3 className=" font-black text-[22px] leading-6">{x.titleText}</h3>
-            <div className="h-1 bg-green-500 pt-1 rounded-lg w-8" />
-          </div>
-        </div>
-        <div className="grid text-right">
-          <p className="text-base text-[#333333] opacity-50 leading-4 font-bold">במה עובדים:</p>
-          {/* <p className="text-base text-[#333333] opacity-50 leading-4 font-bold">{x.subTitle}</p> */}
-          <div className="flex veritas-links gap-x-4">
-            {x.subText.map((y) => (
-              <a href="https://www.w3schools.com">{y}</a>
-            ))}
-          </div>
+  const dataiampro = iamproData.longTextArr.map((professionArr) => (
+    <div className="flex pb-4 veritas-links-wrappers gap-x-12">
+      <div className="flex gap-x-5">
+        <img width="30" height="30" loading="lazy" src="/images/powerplant.svg" alt="powerplant" />
+        <div className="grid text-right gap-y-[5px]">
+          <p className="text-base text-[#333333] opacity-50 leading-4 font-bold">
+            מה כדי לי ללמוד:
+          </p>
+          <h3 className=" font-black text-[22px] leading-6">חסר</h3>
+          <div className="h-1 bg-green-500 pt-1 rounded-lg w-8" />
         </div>
       </div>
-    ));
-
-    return ff;
-  };
+      <div className="grid text-right">
+        <p className="text-base text-[#333333] opacity-50 leading-4 font-bold">במה עובדים:</p>
+        <div className="flex veritas-links gap-x-4">
+          <a href="">{professionArr.professions}</a>
+        </div>
+      </div>
+    </div>
+  ));
 
   return (
     <>
@@ -99,10 +72,7 @@ const VeretasTop = ({ veretasData, close }) => {
         </p>
       </div>
 
-      <div className="text-center bg-[#F5F5F5] py-8 px-8 grid gap-y-4 mx-10">
-        {dd()}
-        {/* <p className="text-xl text-[#393939]">{veretasData?.stage1?.top.secondText}</p> */}
-      </div>
+      <div className="text-center bg-[#F5F5F5] py-8 px-8 grid gap-y-4 mx-10">{dataiampro}</div>
     </>
   );
 };

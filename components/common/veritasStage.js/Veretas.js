@@ -6,63 +6,26 @@ import { AppContext } from '../../../src/context/state';
 import VeretasTop from './VeretasTop';
 import VeretasEmploymentProfile from './VeretasEmploymentProfile';
 import Stage2longTextArr from '../CompletionIAmprosStage/Stage2longTextArr';
-// import { ALL_IA_PRO_LOGOS } from '../../../src/utils/iamproLogos';
+import { ALL_IA_PRO_LOGOS } from '../../../src/utils/iamproLogos';
 
 const Veretas = () => {
   const { profile } = useContext(AppContext);
   const iamproData = profile?.vendor_profile_i_am_pro;
+  const veritasPersonaityData = profile?.vendor_profile?.userProfileResultsVeritas;
+
   const close = () => {
     if ('undefined' === typeof window) return;
     const el = document.querySelector('#close-modal-hack');
     el?.click();
   };
-  const dummyCharacteristicsData = [
-    {
-      title: 'שיקול דעת',
-      text: 'נמצאה בתחום הממוצע ומלמדת על יעילות בביצוע משימות המצריכות מעקב אחר נתונים, דיוק וזריזות סבירה. נראה כי אתה עלול לעיתים להתקשות באיזון בין שמירה על דיוק לבין הספק גבוה. ',
-    },
-    {
-      title: 'הדרכה',
-      text: 'סחטיר בלובק. תצטנפל בלינדו למרקל אס לכימפו, דול, צוט ומעיוט - לפתיעם ברשג - ולתיעם גדדיש. קוויז דומור ליאמום בלינך רוגצה. לפמעט מוסן מנת. גולר מונפרר סוברט לורם שבצק יהול, לכנוץ בעריר גק ליץ, ושבעגט ליבם סולגק. בראיט ולחת צורק מונחף, בגורמי מגמש. תרבנך וסתעד לכנו סתשם השמה - לתכי מורגם בורק? לתיג ישבעס.',
-    },
-    {
-      title: 'ביטחון',
-      text: 'ולורס מונפרד אדנדום סילקוף, מרגשי ומרגשח. עמחליף קולהע צופעט למרקוח איבן איף, ברומץ כלרשט מיחוצים. קלאצי סחטיר בלובק. תצטנפל בלינדו למרקל אס לכימפו, דול, צוט ומעיוט - לפתיעם ברשג - ולתיעם גדדיש. קוויז דומור ליאמום בלינך רוגצה. לפמעט',
-    },
-    {
-      title: 'ביטחון',
-      text: 'חשיבה לוגית: רמת החשיבה המילולית נמצאה בתחום הממוצע מה שמלמד על יכולת סבירה ללמוד, לעבד, ולהסיק מסקנות הגיוניות מתוך מידע מילולי באופיו. קיימת גמישות מספקת ביכולת לעבד מידע מילולי. יתכן כי יידרש פישוט נוכח מורכבות גבוהה של מידע מילולי.',
-    },
-    { title: 'גמישות', text: '' },
-    {
-      title: 'הובלה וקידום משימות',
-      text: 'היכולת לגזור על חוקיות ולהסיק באופן לוגי מתוך מידע כמותי באופיו נמצאה בתחום נמוך מן ',
-    },
-    {
-      title: 'פתרון בעיות',
-      text: 'קולורס מונפרד אדנדום סילקוף, מרגשי ומרגשח. עמחליף קולהע צופעט למרקוח איבן איף, ברומץ כלרשט מיחוצים. קלאצי סחטיר בלובק. תצטנפל בלינדו למרקל אס לכימפו, דול, צוט ומעיוט - לפתיעם ברשג - ולתיעם גדדיש. קוויז דומור ליאמום בלינך רוגצה.',
-    },
-  ];
-  // const getImg = (data) => {
-  //   // const imgPaths = data?.img_src.split('/');
-  //   // const imgCode = imgPaths?.reverse()[0].replace('.png', '');
-  //   const test = 'test';
-  //   // if (ALL_IA_PRO_LOGOS.includes(imgCode)) {
-  //   //   return <img src={`/logos/${imgCode}.svg`} alt="logo" height="54" loading="lazy" />;
-  //   // }
 
-  //   return <h4 className="text-5xl font-black text-[#F4F4F4]">תמונה</h4>;
-  // };
+  const getImg = (imgCode) => {
+    if (ALL_IA_PRO_LOGOS.includes(imgCode)) {
+      return <img src={`/logos/${imgCode}.svg`} alt="logo" height="54" loading="lazy" />;
+    }
 
-  // const characteristics = () => {
-  //   dummyCharacteristicsData.map((char) => (
-  //     <div className=" bg-gray-light px-2 py-1">
-  //       <p className="text-xl">{char}</p>
-  //     </div>
-  //   ));
-  //   // return (
-  //   // )
-  // };
+    return <h4 className="text-5xl font-black text-[#F4F4F4]">תמונה</h4>;
+  };
 
   return (
     <div className="stage1-wrapper grid">
@@ -78,26 +41,26 @@ const Veretas = () => {
       </div>
 
       <div className="stage1-middle-wrapper flex justify-around gap-x-[104px]">
-        <div className="grid pt-[30px] gap-y-8">
+        <div className="grid pt-[30px] gap-y-8 pl-24">
           <Stage2longTextArr iamproData={iamproData} />
         </div>
       </div>
       <p className="text-xl font-bold justify-self-center ">המאפיינים העיקריים שלי</p>
       <div className="w-7 h-[3px] bg-green-500 justify-self-center mt-2 rounded" />
       <div className="flex flex-wrap pt-6 px-[10px] gap-y-[10px] gap-x-2 w-full">
-        {dummyCharacteristicsData.map((char) => (
+        {veritasPersonaityData.map((personality) => (
           <span className="bg-[#F5F5F5] px-12 py-3 flex-shrink-0  text-xl rounded-md">
-            {char.title}
+            {personality.name}
           </span>
         ))}
       </div>
-      {dummyCharacteristicsData.map((char) => (
+      {veritasPersonaityData.map((personality) => (
         <div className="flex py-8 px-8 gap-x-10px">
-          {/* {getImg(char.title)} */}
+          {getImg(personality.code)}
           <div className="pt-9 ">
-            <span className="text-[22px] font-bold text-green-500">{char.title}:</span>
+            <span className="text-[22px] font-bold text-green-500">{personality.name}:</span>
             <span>{" "}</span>
-            <p className="text-[22px] inline">{char.text}</p>
+            <p className="text-[22px] inline">{personality.summary}</p>
           </div>
         </div>
       ))}

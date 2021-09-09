@@ -3,7 +3,7 @@ import { AppContext } from '../../src/context/state';
 import Loader from '../common/Loader';
 import { Case, Switch } from '../common/Switch';
 import AutobiographyTestResults from './steps/AutobiographyTestResults';
-import IamProTest from './steps/IamProTest';
+// import IamProTest from './steps/IamProTest';
 import NoInfo from './steps/NoInfo';
 import NoInfoAtAll from './steps/NoInfoAtAll';
 
@@ -46,14 +46,17 @@ function DashboardSummary() {
           <NoInfoAtAll />
         </Case>
         <Case value="completionAutobiography">
-          <AutobiographyTestResults />
+          <AutobiographyTestResults testType="Autobiography" />
+        </Case>
+        <Case value="completionIAmpro">
+          <AutobiographyTestResults testType="Veretas" />
         </Case>
         <Case value="dataIsMissing">
           <NoInfo />
         </Case>
-        <Case value="completionIAmpro">
+        {/* <Case value="completionIAmpro">
           <IamProTest />
-        </Case>
+        </Case> */}
       </Switch>
     </div>
   );
