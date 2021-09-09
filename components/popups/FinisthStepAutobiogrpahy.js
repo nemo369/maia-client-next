@@ -19,12 +19,8 @@ const FinisthStepAutobiogrpahy = (props) => {
 };
 export default FinisthStepAutobiogrpahy;
 
-const PopupContent = (props) => {
-  const { setFinisthVeritas } = props;
+const PopupContent = ({ setFinisthVeritas }) => {
   const { t } = useTranslation('common');
-  const close = () => {
-    setFinisthVeritas(false);
-  };
 
   return (
     <div className="flex flex-col items-center justify-center py-4 px-16 text-center">
@@ -40,7 +36,12 @@ const PopupContent = (props) => {
       >
         <StageResults />
       </StagesPopSide>
-      <button className="h-[50px] w-[240px]" type="button" id="close-modal-hack" onClick={close}>
+      <button
+        className="h-[50px] w-[240px]"
+        type="button"
+        id="close-modal-hack"
+        onClick={() => setFinisthVeritas(false)}
+      >
         {t('סגור')}
       </button>
     </div>

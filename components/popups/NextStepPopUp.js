@@ -6,18 +6,17 @@ import PagePen from '../svg/PagePen';
 import Button from '../common/Button';
 import { AppContext } from '../../src/context/state';
 
-const NextStepPopUp = () => (
+const NextStepPopUp = (props) => (
   // const [isDone, setIsDone] = useState(false);
-
   <div>
     <PopUp defaultOpen>
-      <PopupContent />
+      <PopupContent {...props} />
     </PopUp>
   </div>
 );
 export default NextStepPopUp;
 
-const PopupContent = () => {
+const PopupContent = ({ closePopup }) => {
   const { t } = useTranslation('common');
   const router = useRouter();
 
@@ -55,9 +54,19 @@ const PopupContent = () => {
         התעסוקתיים שלך
       </div>
       <a onClick={onClick} href={profile?.iampro_test_url}>
-        <Button className="h-[50px] w-[240px]" status="secondary" name={t('התחל')} />
+        <Button
+          className="h-[50px] w-[240px]"
+          status="secondary"
+          name={t('התחל')}
+          onClick={() => closePopup(false)}
+        />
       </a>
-      <button className="h-[50px] w-[240px]" type="button">
+      <button
+        className="h-[50px] w-[240px]"
+        type="button"
+        id="close-modal-hack"
+        onClick={() => closePopup(false)}
+      >
         {t('סגור')}
       </button>
     </div>
