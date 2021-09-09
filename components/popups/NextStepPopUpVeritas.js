@@ -1,10 +1,12 @@
 import { useTranslation } from 'next-i18next';
-import React, { useContext } from 'react';
-import { useRouter } from 'next/router';
+import React, { useContext, useState } from 'react';
+import { AppContext } from '../../src/context/state';
+import ProfileAPI from '../../src/services/profile.service';
+import { FRONT_URL } from '../../src/utils/consts';
+import Button from '../common/Button';
+import Loader from '../common/Loader';
 import PopUp from '../common/PopUp';
 import PagePen from '../svg/PagePen';
-import Button from '../common/Button';
-import { AppContext } from '../../src/context/state';
 
 const NextStepPopUpVeritas = (props) => (
   // const [isDone, setIsDone] = useState(false);
@@ -18,18 +20,43 @@ export default NextStepPopUpVeritas;
 
 const PopupContent = ({ closePopup }) => {
   const { t } = useTranslation('common');
-  const router = useRouter();
+  const [loading, setloading] = useState(false);
+  const [veritasStatus, setveritasStatus] = useState('');
+  const { profile, user } = useContext(AppContext);
+  const { token } = user;
 
-  const { profile } = useContext(AppContext);
-  const onClick = (e) => {
-    e.preventDefault();
-    console.log(profile);
-
-    const windowOpen = window.open(profile.veritas_test_url);
-    // router.push({ pathname: '/', query: { refetchuser: 'true', testDone: 'iampro' } });
+  const fetchVertiasStatus = async () => {
+    const { data, status } = await ProfileAPI.veritasTestStatus(token);
+    if (200 !== status) {
+      closePopup(false);
+      setloading(false);
+      return;
+    }
+    console.log(data);
+    setveritasStatus(data.veritasStatus);
+    // Not Started
+    if (data && 'x' !== data.veritasStatus) {
+      setTimeout(fetchVertiasStatus, 7000);
+    } else {
+      setloading(false);
+      window.location.href = `${FRONT_URL.replace('/api', '')}?testDone=veritas&refetchuser=true`;
+    }
+  };
+  const onClick = async () => {
+    if (!profile.veritas_test_url) {
+      return;
+    }
+    setloading(true);
+    setTimeout(fetchVertiasStatus, 4000);
   };
   return (
-    <div className="flex">
+    <div className="flex relative">
+      {loading && (
+        <div className="absolute inset-auto w-full h-full flex justify-center items-center bg-white/70">
+          {veritasStatus}
+          <Loader loading={loading} />
+        </div>
+      )}
       <div className="flex flex-col items-center justify-center py-4 px-16 text-center">
         <PagePen />
         <h2 className="text-center text-3xl font-bold ">
@@ -44,12 +71,12 @@ const PopupContent = ({ closePopup }) => {
           <br />
           והמיומניות שלך
         </div>
-        <a onClick={onClick} href={profile?.veritas_test_url}>
+        <a onClick={onClick} href={profile?.veritas_test_url} target="_blank" rel="noreferrer">
           <Button
             className="h-[50px] w-[240px]"
             status="secondary"
             name={t('התחל')}
-            onClick={() => closePopup(false)}
+            onClick={onClick}
           />
         </a>
         <button

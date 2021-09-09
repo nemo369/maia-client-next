@@ -4,7 +4,6 @@ import Bars from '../../charts/Bars';
 import Button from '../../common/Button';
 import StageResults from '../../common/stage1results/StageResults';
 import StagesPopSide from '../../common/StagesPopSide';
-import NextStepPopUp from '../../popups/NextStepPopUp';
 import NextStepPopUpVeritas from '../../popups/NextStepPopUpVeritas';
 import ProfileSummary from '../ProfileSummary';
 
