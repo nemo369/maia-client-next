@@ -1,6 +1,12 @@
-function Chat() {
+function Chat({ className }) {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="98" height="98" viewBox="0 0 98 98">
+    <svg
+      className={className}
+      xmlns="http://www.w3.org/2000/svg"
+      width="98"
+      height="98"
+      viewBox="0 0 98 98"
+    >
       <g fill="none" fillRule="evenodd" stroke="none" strokeWidth="1">
         <g fillRule="nonzero" transform="translate(-830 -3665)">
           <g transform="translate(830 3665)">
