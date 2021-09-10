@@ -1,13 +1,12 @@
 /* eslint-disable react/button-has-type */
-import { useTranslation } from 'next-i18next';
-import React from 'react';
+import React, { useState } from 'react';
 import Popup from 'reactjs-popup';
 import useFormStudy from '../../src/hooks/useFormStudy';
 import Check from '../common/Check';
 import Arrow from '../svg/Arrow';
 
 export default function ProfessionForm({ scopes, handleChange }) {
-  const { t } = useTranslation('common');
+  const [label, setlabel] = useState('תחום');
   const {
     inputs,
     handleChange: change,
@@ -17,10 +16,16 @@ export default function ProfessionForm({ scopes, handleChange }) {
   });
   const clearForm = () => {
     resetForm();
+    setlabel('תחום');
     handleChange([...inputs.scopeIds]);
   };
   const onSend = (e) => {
     e.preventDefault();
+    const labels = inputs.scopeIds.map((scopeId) => {
+      const scope = scopes.find((scop) => scop.value === scopeId);
+      return scope?.label;
+    });
+    setlabel(labels.join(','));
     handleChange([...inputs.scopeIds]);
   };
   return (
@@ -33,7 +38,7 @@ export default function ProfessionForm({ scopes, handleChange }) {
               open ? 'bg-white ring ring-green-500' : 'bg-gray-mid/10 '
             }`}
           >
-            <span>{t('תחום')}</span>
+            <span className="truncate pl-2">{label}</span>
             <span className={`transform transition ${!open ? 'rotate-0' : 'rotate-180'}`}>
               <Arrow />
             </span>

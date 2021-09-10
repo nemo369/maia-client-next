@@ -7,10 +7,11 @@ function StudyList({ studies }) {
   }
   const noDuplicets = studies?.filter((v, i, a) => a.findIndex((t) => t.id === v.id) === i);
   const byGroups = noDuplicets.reduce((accumulator, currentValue) => {
-    const mikName = currentValue.full_data.miK_NAME ? currentValue.full_data.miK_NAME : ' ';
+    const mikName = currentValue.group ? currentValue.group : ' ';
     if (accumulator[mikName]) {
-      accumulator[currentValue.full_data.miK_NAME].push(currentValue);
-      return accumulator;
+      accumulator[mikName].push(currentValue);
+    } else {
+      accumulator[mikName] = [currentValue];
     }
     return accumulator;
   }, {});

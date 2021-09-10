@@ -40,7 +40,7 @@ function WrongArea({ fullname, location, email }) {
         <br />
         באזור שלך כרגע
       </h1>
-      <p className="text-3xl leading-8  text-gray-dark text-center mb-7 text-gray">
+      <p className="text-3xl leading-8  text-gray-dark text-center mb-7">
         <strong>רוצים לדעתך מתי היא באזורכם? </strong>
         <span>השאירו פרטים ונדאג לעדכן אותכם</span>
       </p>

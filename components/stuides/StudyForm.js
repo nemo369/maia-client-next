@@ -39,10 +39,29 @@ export default function StudyForm({ scopes, dropDownChanges, institutions }) {
   const onSendScopes = (e) => {
     e.preventDefault();
     fetchProfessions();
-    // setScopeLabel([...formData.keys()].join(','));
+    const labelsToset = inputs.scopeIds.map((scopeId) => {
+      const scope = scopes.find((scop) => scop.value === scopeId);
+      return scope?.label;
+    });
+    setLabels({ ...labels, scope: labelsToset.join(',') });
   };
   const onSendProfessions = (e) => {
     e.preventDefault();
+    const labelsToset = inputs.professionIds.map((id) => {
+      const profession = professions.find(({ full_data: fullData }) => fullData.miK_NUM === id);
+      return profession?.title;
+    });
+    setLabels({ ...labels, profession: labelsToset.join(',') });
+    dropDownChanges(inputs);
+    // setProfessionLabel([...formData.keys()].join(','));
+  };
+  const onSendInstitutions = (e) => {
+    e.preventDefault();
+    const labelsToset = inputs.institutionIds.map((id) => {
+      const profession = professions.find(({ full_data: fullData }) => fullData.miK_NUM === id);
+      return profession?.title;
+    });
+    setLabels({ ...labels, profession: labelsToset.join(',') });
     dropDownChanges(inputs);
     // setProfessionLabel([...formData.keys()].join(','));
   };
@@ -66,7 +85,7 @@ export default function StudyForm({ scopes, dropDownChanges, institutions }) {
       />
       <InstitutionPopUp
         clearData={clearData}
-        onSend={onSendProfessions}
+        onSend={onSendInstitutions}
         institutions={institutions}
         label={labels.institution}
         inputs={inputs}

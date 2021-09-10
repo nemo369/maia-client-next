@@ -62,7 +62,6 @@ export default function Professions({ allProfessions, scopes }) {
     }
     setProfessions(allProfessions);
   };
-
   return (
     <>
       <NextSeo {...seo} />
@@ -74,7 +73,7 @@ export default function Professions({ allProfessions, scopes }) {
           <ProfessionsHeader myProfessions={myProfessions} />
           <div className="grid grid-cols-2 gap-x-1 transition">
             <div className="grid grid-cols-2 gap-x-1 pr-1">
-              {!categoryType.id && <ProfessionForm scopes={scopes} handleChange={setQuery} />}
+              {!categoryType.id && <ProfessionForm scopes={scopes} fetchStudies={setQuery} />}
             </div>
             <div className="justify-self-end">
               <CheckboxGroup checks={categoryGroups} onChange={onChange} checkType={categoryType} />
