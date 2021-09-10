@@ -30,11 +30,11 @@ const PopupContent = ({ setFinisthVeritas }) => {
         <br />
         ״מה עשיתי עד כה״
       </h2>
-      <div className="my-6">שמסכם את המסלול חייך עד כה</div>
+      <div className="my-6">שמסכם את מסלול חייך עד כה</div>
       <StagesPopSide
         trigger={<Button className="h-[50px] w-[240px]" status="secondary" name="לתוצאות השלב" />}
       >
-        <StageResults />
+        <StageResults testType="CompletionIAmpro" />
       </StagesPopSide>
       <button
         className="h-[50px] w-[240px]"
