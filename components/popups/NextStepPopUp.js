@@ -1,10 +1,11 @@
 import { useTranslation } from 'next-i18next';
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useRouter } from 'next/router';
 import PopUp from '../common/PopUp';
 import PagePen from '../svg/PagePen';
 import Button from '../common/Button';
 import { AppContext } from '../../src/context/state';
+import Loader from '../common/Loader';
 
 const NextStepPopUp = (props) => (
   // const [isDone, setIsDone] = useState(false);
@@ -19,10 +20,12 @@ export default NextStepPopUp;
 const PopupContent = ({ closePopup }) => {
   const { t } = useTranslation('common');
   const router = useRouter();
+  const [loading, setloading] = useState(false);
 
   const { profile } = useContext(AppContext);
   const onClick = (e) => {
     e.preventDefault();
+    setloading(true);
 
     const windowOpen = window.open(profile.iampro_test_url);
     setTimeout(() => {
@@ -32,6 +35,7 @@ const PopupContent = ({ closePopup }) => {
       'message',
       (event) => {
         if (event.data) {
+          setloading(false);
           router.push({ pathname: '/', query: { refetchuser: 'true', testDone: 'iampro' } });
         }
       },
@@ -53,13 +57,14 @@ const PopupContent = ({ closePopup }) => {
         <br />
         התעסוקתיים שלך
       </div>
-      <a onClick={onClick} href={profile?.iampro_test_url}>
-        <Button
-          className="h-[50px] w-[240px]"
-          status="secondary"
-          name={t('התחל')}
-          onClick={() => closePopup(false)}
-        />
+      <a onClick={onClick} href={profile?.iampro_test_url} className="relative ">
+        {loading ? (
+          <div className=" inset-auto w-full h-full flex justify-center items-center bg-white/70">
+            <Loader loading={loading} />
+          </div>
+        ) : (
+          <Button className="h-[50px] w-[240px]" status="secondary" name={t('התחל')} />
+        )}
       </a>
       <button
         className="h-[50px] w-[240px]"

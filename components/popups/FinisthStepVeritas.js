@@ -39,13 +39,18 @@ const PopupContent = ({ close }) => {
             className="h-[50px] w-[240px]"
             status="secondary"
             name="לתוצאות השלב"
-            onClick={close}
+            // onClick={close}
           />
         }
       >
         <StageResults />
       </StagesPopSide>
-      <button className="h-[50px] w-[240px]" type="button" id="close-modal-hack" onClick={close}>
+      <button
+        className="h-[50px] w-[240px]"
+        type="button"
+        id="close-modal-hack"
+        onClick={() => close(false)}
+      >
         {t('סגור')}
       </button>
     </div>

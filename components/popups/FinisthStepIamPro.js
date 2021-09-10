@@ -15,12 +15,9 @@ const FinisthStepIamPro = (props) => (
 );
 export default FinisthStepIamPro;
 
-const PopupContent = (props) => {
-  const { setFinisthStepIamPro } = props;
+const PopupContent = ({ close }) => {
   const { t } = useTranslation('common');
-  const close = () => {
-    setFinisthStepIamPro(false);
-  };
+
   return (
     <div className="flex flex-col items-center justify-center py-4 px-16 text-center">
       <BigChecked />
@@ -42,13 +39,18 @@ const PopupContent = (props) => {
             className="h-[50px] w-[240px]"
             status="secondary"
             name="לתוצאות השלב"
-            onClick={close}
+            // onClick={() => close(false)}
           />
         }
       >
-        <StageResults />
+        <StageResults testType="IAmpro" />
       </StagesPopSide>
-      <button className="h-[50px] w-[240px]" type="button" id="close-modal-hack" onClick={close}>
+      <button
+        className="h-[50px] w-[240px]"
+        type="button"
+        id="close-modal-hack"
+        onClick={() => close(false)}
+      >
         {t('סגור')}
       </button>
     </div>

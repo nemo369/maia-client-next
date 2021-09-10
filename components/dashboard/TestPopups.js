@@ -35,8 +35,8 @@ function TestPopups() {
   if ('undefined' === typeof window) return null;
   return (
     <>
-      {finisthStepIamPro && <FinisthStepIamPro close={setFinisthStepIamPro} />}
       {finisthAutoBiogrphy && <FinisthStepAutobiogrpahy close={setfinisthAutoBiogrphy} />}
+      {finisthStepIamPro && <FinisthStepIamPro close={setFinisthStepIamPro} />}
       {finisthVeritas && <FinisthStepVeritas close={setFinisthVeritas} />}
     </>
   );

@@ -34,7 +34,7 @@ const PopupContent = ({ close }) => {
             className="h-[50px] w-[240px] "
             status="secondary"
             name="לתוצאות השלב"
-            onClick={() => close(false)}
+            // onClick={() => close(false)}
           />
         }
       >

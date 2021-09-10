@@ -5,12 +5,10 @@ const Stage2longTextArr = (props) => {
   const getImg = (data) => {
     const imgPaths = data.img_src.split('/');
     const imgCode = imgPaths.reverse()[0].replace('.png', '');
-
     if (ALL_IA_PRO_LOGOS.includes(imgCode)) {
-      return <img src={`/logos/${imgCode}.svg`} alt="logo" height="54" loading="lazy" />;
+      return <img src={`/iamprologos/${imgCode}.svg`} alt="logo" height="54" loading="lazy" />;
     }
-
-    return <h4 className="text-5xl font-black text-[#F4F4F4]">תמונה</h4>;
+    return <img src="/iamprologos/fallback.svg" alt="logo" width="150" loading="lazy" />;
   };
   const { iamproData } = props;
 
