@@ -16,7 +16,7 @@ const VeretasTop = ({ close }) => {
         <img width="30" height="30" loading="lazy" src="/images/powerplant.svg" alt="powerplant" />
         <div className="grid text-right gap-y-[5px]">
           <p className="text-base text-[#333333] opacity-50 leading-4 font-bold">
-            מה כדי לי ללמוד:
+            מה כדאי לי ללמוד:
           </p>
           <h3 className=" font-black text-[22px] leading-6">חסר</h3>
           <div className="h-1 bg-green-500 pt-1 rounded-lg w-8" />
@@ -43,18 +43,18 @@ const VeretasTop = ({ close }) => {
         </div>
         <div className="flex gap-x-2">
           <Button
-            className="w-24 flex justify-center items-center gap-x-[5px]"
+            className="px-2 flex flex-row-reverse justify-center items-center gap-x-[5px] rounded-md h-10"
             type="button"
             status="secondary"
-            name="עריכה"
+            name="שליחה למייל"
           >
             <Image src={envelope} alt="מעטפה" width={25} height={25} />
           </Button>
           <Button
-            className="w-24 flex justify-center items-center gap-x-[5px]"
+            className="px-2 flex flex-row-reverse justify-center items-center gap-x-[5px] rounded-md h-10"
             type="button"
             status="secondary"
-            name="עריכה"
+            name="הדפסה"
           >
             <Image src={smallprinter} alt="מעטפה" width={25} height={25} />
           </Button>

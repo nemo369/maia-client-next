@@ -2,8 +2,8 @@ import ClearMark from '../../svg/ClearMark';
 import { ALL_IA_PRO_LOGOS } from '../../../src/utils/iamproLogos';
 
 const Stage2longTextArr = (props) => {
-  const getImg = (data) => {
-    const imgPaths = data.img_src.split('/');
+  const getImg = (imgSrc) => {
+    const imgPaths = imgSrc.split('/');
     const imgCode = imgPaths.reverse()[0].replace('.png', '');
     if (ALL_IA_PRO_LOGOS.includes(imgCode)) {
       return <img src={`/iamprologos/${imgCode}.svg`} alt="logo" height="54" loading="lazy" />;
@@ -13,12 +13,9 @@ const Stage2longTextArr = (props) => {
   const { iamproData } = props;
 
   const data = iamproData?.longTextArr.map((x) => (
-    <div className="grid">
+    <div className="grid" key={x.img_src}>
       <div className="flex gap-x-12">
-        <div>
-          {getImg(x)}
-          {/* <img className="w-40 h-40 bg-red-active" src={x.img_src} alt="" /> */}
-        </div>
+        <div>{getImg(x.img_src)}</div>
         <div className="grid gap-y-12">
           <div className="grid">
             <h3 className="font-bold text-[22px] text-[#00A4AE] pb-4">{x.labelText}</h3>
