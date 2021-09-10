@@ -74,6 +74,19 @@ const ProfileAPI = {
       return { data: null, status: 500 };
     }
   },
+  veritasTestStatus: async (token) => {
+    try {
+      const { data, status } = await axios.get(`${API_URL}/profile/get_veritas_test_status`, {
+        headers: {
+          'Content-type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      return { ...data, status };
+    } catch (error) {
+      return { data: null, status: 500 };
+    }
+  },
 };
 
 export default ProfileAPI;

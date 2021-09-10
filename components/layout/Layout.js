@@ -8,7 +8,7 @@ const Layout = function ({ children }) {
   return (
     <section className="min-h-screen overflow-hidden md:flex  bg-lightgreybackground wrapper ">
       {!witihoutnav.includes(pathname) ? <NavBar /> : ''}
-      <main className="main flex-grow pt-9 md: mx-auto main-layout">{children}</main>
+      <main className="main flex-grow md: mx-auto main-layout">{children}</main>
     </section>
   );
 };

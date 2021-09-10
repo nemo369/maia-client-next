@@ -19,7 +19,7 @@ const StageResults = ({ testType }) => {
   return (
     <>
       {'Autobiography' === testType && <Autobiography stageData={stages} />}
-      {'CompletionIAmpro' === testType && <CompletionIAmpro stageData={stages} />}
+      {'IAmpro' === testType && <CompletionIAmpro stageData={stages?.completionIAmpro} />}
       {'Veretas' === testType && <Veretas stageData={stages} />}
     </>
   );

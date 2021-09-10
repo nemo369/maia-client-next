@@ -13,7 +13,8 @@ export const getLs = (key = null) => {
     ...defaultLs,
     ...savedLs,
   };
-  if (!key || !ls[key]) {
+
+  if (!key || !Object.prototype.hasOwnProperty.call(ls, key)) {
     return ls;
   }
   return ls[key];

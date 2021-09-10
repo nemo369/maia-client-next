@@ -21,7 +21,6 @@ const WalkMe = () => {
     setLs(IS_WALKME, false);
     setisPopUp(false);
   };
-
   const nextStep = () => {
     const next = step + 1;
     setStep(next);

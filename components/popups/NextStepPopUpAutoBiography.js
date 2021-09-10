@@ -52,7 +52,7 @@ const PopupContent = () => {
         <br />
       </div>
       <a onClick={onClick} href={profile?.vendor_token} className="mb-2">
-        <Button className="h-[50px] w-[240px]" status="secondary" name={t('התחל')} />
+        <Button className="h-[50px] w-[240px] " status="secondary" name={t('התחל')} />
       </a>
       <Button className="h-[50px] w-[240px]" status="secondary" name={t('סגור')} />
     </div>

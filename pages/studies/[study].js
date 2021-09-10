@@ -21,9 +21,9 @@ export default function Studies({ study, studies }) {
   });
   const router = useRouter();
   if (!study) {
-    return 'TODO: redirect to professions page';
+    router.push('/studies');
+    return <h1>הלימוד אותו חיפשת אינו קיים 404- </h1>;
   }
-
   return (
     <div>
       <section>

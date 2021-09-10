@@ -24,6 +24,7 @@ function ProfileDoughnut() {
     ]);
   }, [profile]);
   const options = {
+    animation: false,
     maintainAspectRatio: false,
     plugins: {
       legend: {

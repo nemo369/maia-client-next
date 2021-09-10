@@ -102,55 +102,12 @@ export default function ProfileInfo() {
           </span>
         </h2>
         <div className="text-gray-mid text-[18px] opacity-70 text-center mb-4 leading-4">
-          כל המשרות ומסלולי הלימודים מותאמים
+          כל המקצועות ומסלולי הלימודים מותאמים
           <br />
           בצורה אידאלית עבורך :)
         </div>
         {profile && <ProfileDetails />}
         <div className="bg-[#979797] opacity-20 mx-8 h-[1px]" />
-        {/* <div className="flex justify-between items-center mb-[15px] mt-6 px-[30px]">
-          <div className="flex items-center">
-            <div className="text-gray-mid text-[18px]">הצג אותי כמחפש עבודה למעסיקים</div>
-            <Tooltip
-              trigger={
-                <div className="relative smallpop w-4 h-4 border-solid border-[#666666] border-[1px] rounded-full font-small opacity-50  text-[#666666] text-xs mr-4 hover:bg-[#3C91A0] hover:opacity-100 hover:text-white inline-block text-center">
-                  ?
-                </div>
-              }
-            >
-              <div dangerouslySetInnerHTML={{ __html: tooltipLookingForJob }} />
-            </Tooltip>
-          </div>
-          <Toggle isChecked={lookingForJob} onChange={onIsChecked} onInput={onIsChecked} />
-        </div>
-        <div className="px-8">
-          <div className="flex justify-between mb-2">
-            <Check content="אני מאשר/ת ליועץ לצפות במשרות ששלחתי" />
-            <Tooltip
-              trigger={
-                <div className="relative smallpop w-4 h-4 border-solid border-[#666666] border-[1px] rounded-full font-small opacity-50  text-[#666666] text-xs mr-4 hover:bg-[#3C91A0] hover:opacity-100 hover:text-white inline-block text-center">
-                  ?
-                </div>
-              }
-            >
-              <div dangerouslySetInnerHTML={{ __html: tooltipSendedJobs }} />
-            </Tooltip>
-          </div>
-          <div className="flex justify-between mb-2">
-            <Check content="אני מאשר/ת למעסיקים לפנות אלי עצמאית" />
-            <Tooltip
-              trigger={
-                <div className="relative smallpop w-4 h-4 border-solid border-[#666666] border-[1px] rounded-full font-small opacity-50  text-[#666666] text-xs mr-4 hover:bg-[#3C91A0] hover:opacity-100 hover:text-white inline-block text-center">
-                  ?
-                </div>
-              }
-            >
-              <div dangerouslySetInnerHTML={{ __html: tooltipReachMe }} />
-            </Tooltip>
-          </div>
-        </div>
-        <div className="bg-[#979797] opacity-20 mx-8 h-[1px]" />
-        <UploadedFiles /> */}
       </div>
     </section>
   );

@@ -3,13 +3,15 @@ import CategoryWithHeart from '../common/CategoryWithHeart';
 function ProfessionListVirtual({ professions }) {
   const noDuplicets = professions.filter((v, i, a) => a.findIndex((t) => t.id === v.id) === i);
   const byGroups = noDuplicets.reduce((accumulator, currentValue) => {
-    const mikName = currentValue.full_data.miK_NAME ? currentValue.full_data.miK_NAME : ' ';
+    const mikName = currentValue.group ? currentValue.group : ' ';
     if (accumulator[mikName]) {
-      accumulator[currentValue.full_data.miK_NAME].push(currentValue);
-      return accumulator;
+      accumulator[mikName].push(currentValue);
+    } else {
+      accumulator[mikName] = [currentValue];
     }
     return accumulator;
   }, {});
+
   return (
     <>
       {Object.entries(byGroups).map(([key, value]) => (

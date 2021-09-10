@@ -2,25 +2,17 @@ function Xcircle() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      xmlnsXlink="http://www.w3.org/1999/xlink"
-      width="27"
-      height="27"
+      className="h-6 w-6"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
     >
-      <defs>
-        <path
-          id="a"
-          d="M13.5.208c7.34 0 13.292 5.951 13.292 13.292 0 7.34-5.951 13.292-13.292 13.292C6.16 26.792.208 20.84.208 13.5S6.16.208 13.5.208zm0 2.417C7.494 2.625 2.625 7.494 2.625 13.5S7.494 24.375 13.5 24.375 24.375 19.506 24.375 13.5 19.506 2.625 13.5 2.625zM9.02 9.021a1.208 1.208 0 011.71 0l2.77 2.77 2.77-2.77a1.21 1.21 0 011.611-.089l.098.089a1.208 1.208 0 010 1.708L15.21 13.5l2.77 2.77c.44.441.47 1.137.089 1.611l-.089.098a1.208 1.208 0 01-1.708 0l-2.77-2.77-2.772 2.77c-.44.44-1.136.47-1.61.089l-.098-.089a1.208 1.208 0 010-1.708l2.77-2.77-2.77-2.772a1.209 1.209 0 01-.089-1.61z"
-        />
-      </defs>
-      <g fill="none" fillRule="evenodd" opacity="0.5">
-        <mask id="b" fill="#fff">
-          <use xlinkHref="#a" />
-        </mask>
-        <use fill="#000" fillRule="nonzero" xlinkHref="#a" />
-        <g fill="#000" mask="url(#b)">
-          <path d="M-1-1h29v29H-1z" />
-        </g>
-      </g>
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+        d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+      />
     </svg>
   );
 }

@@ -62,7 +62,7 @@ const CompareDropdown = ({ professionIds }) => {
       {open && (
         <form
           onSubmit={handleSubmit}
-          className="bg-white study-form p-5 absolute text-black shadow-2xl grid min-h-[252px] top-12 z-40 rounded-lg w-full gap-5 right-0"
+          className="bg-white study-form p-5 absolute text-black shadow-2xl grid min-h-[252px] max-h-[75vh] top-12 z-40 rounded-lg w-full gap-5 right-0 overflow-auto "
         >
           <div className="triangle" />
           <div className="flex gap-4 justify-evenly">
@@ -89,7 +89,7 @@ const CompareDropdown = ({ professionIds }) => {
               </div>
             ))}
           </div>
-          <div className="flex flex-wrap justify-between items-end">
+          <div className="flex flex-wrap justify-between items-end pb-6">
             <div className="checkdropdown1">
               <h3 className="text-xl leading-5 font-bold mb-3">אזור</h3>
               {areaData.map((area) => (

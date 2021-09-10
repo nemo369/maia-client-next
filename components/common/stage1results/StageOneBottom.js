@@ -25,6 +25,7 @@ const StageOneBottom = ({ userProfileResults }) => {
         datasets,
       }}
       options={{
+        animation: false,
         maintainAspectRatio: false,
         legend: {
           display: false,

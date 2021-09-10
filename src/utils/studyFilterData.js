@@ -29,7 +29,7 @@ export const studyData = [
       { text: 'תכניות ייחודיות לחברה הערבית', id: '7', name: 'MsAr' },
       { text: 'תכניות ייחודיות ליוצאי אתיופיה', id: '8', name: 'MsEt' },
       { text: 'אפיק מעבר של האוניברסיטה הפתוחה', id: '9', name: 'MsRel' },
-      { text: 'סלול דו חוגי', id: '10', name: 'MsDo' },
+      { text: 'מסלול דו חוגי', id: '10', name: 'MsDo' },
       { text: 'מסלול חד חוגי', id: '11', name: 'MsChad' },
       { text: 'מוכר למימוש פיקדון הקרן לחיילים משוחררים', id: '12', name: 'MsPik' },
       { text: 'מוכר לגמול השתלמות', id: '13', name: 'MsGmul' },

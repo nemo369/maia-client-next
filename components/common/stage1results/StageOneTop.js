@@ -16,10 +16,7 @@ const StageOneTop = ({ stageData, close }) => (
 
     <div className="text-center py-8 bg-[#F5F5F5] mt-7 mx-8">
       <p className="text-xl text-[#393939] font-semibold">{stageData?.stage1?.top.firstText1}</p>
-      <p className="text-xl text-[#393939]">
-        {stageData?.stage1?.top.firstText2}
-        שלך
-      </p>
+      <p className="text-xl text-[#393939]">{stageData?.stage1?.top.firstText2}</p>
     </div>
 
     <div className="text-center py-8 px-[113px]">

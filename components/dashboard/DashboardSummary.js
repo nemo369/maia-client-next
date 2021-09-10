@@ -3,9 +3,11 @@ import { AppContext } from '../../src/context/state';
 import Loader from '../common/Loader';
 import { Case, Switch } from '../common/Switch';
 import AutobiographyTestResults from './steps/AutobiographyTestResults';
+import IamProTestResults from './steps/IamProTestResults';
 // import IamProTest from './steps/IamProTest';
 import NoInfo from './steps/NoInfo';
 import NoInfoAtAll from './steps/NoInfoAtAll';
+import VeritasTestResults from './steps/VeritasTestResults';
 
 function DashboardSummary() {
   const { profile } = useContext(AppContext);
@@ -31,7 +33,7 @@ function DashboardSummary() {
     // TODO: when this should apper
     setstep('dataIsMissing');
     if (vendor.completionAutobiography && vendor.completionIAmpro && vendor.completionVeritas) {
-      setstep('completed');
+      setstep('completionVeritas');
     }
   }, [profile]);
   return (
@@ -49,14 +51,14 @@ function DashboardSummary() {
           <AutobiographyTestResults testType="Autobiography" />
         </Case>
         <Case value="completionIAmpro">
-          <AutobiographyTestResults testType="Veretas" />
+          <IamProTestResults testType="IAmpro" />
+        </Case>
+        <Case value="completionVeritas">
+          <VeritasTestResults testType="Veretas" />
         </Case>
         <Case value="dataIsMissing">
           <NoInfo />
         </Case>
-        {/* <Case value="completionIAmpro">
-          <IamProTest />
-        </Case> */}
       </Switch>
     </div>
   );

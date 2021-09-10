@@ -85,13 +85,16 @@ const NavBar = () => {
           ))}
         </ul>
         <div className="nav__logo">
-          <Link href="/">
-            <a className="text-xs text-white opacity-70">
-              {/* <Logosvg /> */}
-              <SilverLogo />
-              אדם מילה Powered by
-            </a>
-          </Link>
+          <a
+            href="https://adam-milo.co.il"
+            className="text-xs text-white opacity-70"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {/* <Logosvg /> */}
+            <SilverLogo />
+            אדם מילא Powered by
+          </a>
         </div>
       </aside>
       <div className="nav__border rounded-r-lg  hidden md:block z-20 mr-[-37px]" />
