@@ -22,20 +22,17 @@ function AutobiographyTestResults(props) {
       <div className="flex gap-x-1 mt-6">
         <StagesPopSide
           trigger={
-            <Button type="button" status="secondary" name="תוצאות השלב" className="h-12 w-full" />
+            <Button type="button" status="secondary" name="תוצאות השלב" className="h-12 w-full " />
           }
         >
           <StageResults testType={testType} />
-          {/* <StageResults testType="CompletionIAmpro" /> */}
-          {/* <StageResults testType="Autobiography" /> */}
-          {/* <StageResults testType="Veretas" /> */}
         </StagesPopSide>
 
         <Button
           type="secondary"
           status="main"
           name={t('לשלב הבא')}
-          className="h-12 w-full"
+          className="h-12 w-full start-NextStepPopUpAutoBiography-js"
           onClick={() => setDefaultOpen(true)}
         />
         {defaultOpen && <NextStepPopUp closePopup={setDefaultOpen} />}

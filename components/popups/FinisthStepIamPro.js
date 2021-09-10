@@ -6,17 +6,13 @@ import BigChecked from '../svg/BigChecked';
 import StagesPopSide from '../common/StagesPopSide';
 import StageResults from '../common/stage1results/StageResults';
 
-const FinisthStepIamPro = (props) => {
-  // const [isDone, setIsDone] = useState(false);
-  const { setFinisthStepIamPro } = props;
-  return (
-    <div>
-      <PopUp defaultOpen>
-        <PopupContent setFinisthStepIamPro={setFinisthStepIamPro} />
-      </PopUp>
-    </div>
-  );
-};
+const FinisthStepIamPro = (props) => (
+  <div>
+    <PopUp defaultOpen>
+      <PopupContent {...props} />
+    </PopUp>
+  </div>
+);
 export default FinisthStepIamPro;
 
 const PopupContent = (props) => {
@@ -41,7 +37,14 @@ const PopupContent = (props) => {
         ו-״מה מעניין אותי״
       </div>
       <StagesPopSide
-        trigger={<Button className="h-[50px] w-[240px]" status="secondary" name="לתוצאות השלב" />}
+        trigger={
+          <Button
+            className="h-[50px] w-[240px]"
+            status="secondary"
+            name="לתוצאות השלב"
+            onClick={close}
+          />
+        }
       >
         <StageResults />
       </StagesPopSide>

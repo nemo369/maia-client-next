@@ -6,25 +6,18 @@ import BigChecked from '../svg/BigChecked';
 import StagesPopSide from '../common/StagesPopSide';
 import StageResults from '../common/stage1results/StageResults';
 
-const FinisthStepVeritas = (props) => {
-  // const [isDone, setIsDone] = useState(false);
-  const { setFinisthVeritas } = props;
-  return (
-    <div>
-      <PopUp defaultOpen>
-        <PopupContent setFinisthVeritas={setFinisthVeritas} />
-      </PopUp>
-    </div>
-  );
-};
+const FinisthStepVeritas = (props) => (
+  <div>
+    <PopUp defaultOpen>
+      <PopupContent {...props} />
+    </PopUp>
+  </div>
+);
 export default FinisthStepVeritas;
 
-const PopupContent = (props) => {
+const PopupContent = ({ close }) => {
   const { t } = useTranslation('common');
-  const { setFinisthVeritas } = props;
-  const close = () => {
-    setFinisthVeritas(false);
-  };
+
   return (
     <div className="flex flex-col items-center justify-center py-4 px-16 text-center">
       <BigChecked />
@@ -41,7 +34,14 @@ const PopupContent = (props) => {
         זה הזמן להגיש מועמדות למשרות שמעניינות אותך
       </div>
       <StagesPopSide
-        trigger={<Button className="h-[50px] w-[240px]" status="secondary" name="לתוצאות השלב" />}
+        trigger={
+          <Button
+            className="h-[50px] w-[240px]"
+            status="secondary"
+            name="לתוצאות השלב"
+            onClick={close}
+          />
+        }
       >
         <StageResults />
       </StagesPopSide>

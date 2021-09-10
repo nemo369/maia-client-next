@@ -34,7 +34,7 @@ const VeretasTop = ({ close }) => {
   return (
     <>
       <div className="stage-top-wrapper flex justify-between">
-        <button className="self-start btnwrapper-stage" type="button" onClick={close}>
+        <button className="self-start" type="button" onClick={close}>
           <Xcircle />
         </button>
         <div className="grid justify-center">

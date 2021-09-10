@@ -8,7 +8,7 @@ const AutoBiographyChartResults = (props) => {
   };
 
   const results = autobiographyData?.userProfileResults.map((result) => (
-    <div className="grid autobiograph-chart-wrapper gap-y-1">
+    <div className="grid autobiograph-chart-wrapper gap-y-1" key={result.code}>
       <div className="flex">
         {colorCheck(result.code)}
         <h3 className="font-black text-lg leading-5 text-[#020230] pr-[10px]">חברתיים</h3>
