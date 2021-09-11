@@ -1,4 +1,3 @@
-import { useTranslation } from 'next-i18next';
 import React, { useState } from 'react';
 import PopUp from '../common/PopUp';
 import Chat from '../svg/Chat';
@@ -17,7 +16,6 @@ const HelpInfo = ({ className, children }) => {
   const mailPopUP = () => {
     setShowMail(true);
   };
-  const { t } = useTranslation('common');
 
   return (
     <>

@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-one-expression-per-line */
-import React from 'react';
+import { useTranslation } from 'next-i18next';
 
 export default function Positions({
   className,
@@ -9,6 +9,8 @@ export default function Positions({
   description,
   isButton,
 }) {
+  const { t } = useTranslation('common');
+
   let colorOne = '';
   let colorTwo = '';
   switch (true) {
@@ -67,7 +69,7 @@ export default function Positions({
               className="border-black border-2 text-black rounded-[5px] py-[2px] px-[20px] active:bg-gray-lighter focus:outline-none"
               type="button"
             >
-              קרא עוד
+              {t('קרא עוד')}
             </button>
           )}
         </div>

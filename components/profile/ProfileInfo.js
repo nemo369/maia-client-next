@@ -6,9 +6,7 @@ import ProfileAPI from '../../src/services/profile.service';
 import HelpInfo from '../popups/HelpInfo';
 import CameraSvg from '../svg/Camera';
 import FemaleCrown from '../svg/FemaleCrown';
-import FlyingWoman from '../svg/FlyingWoman';
 import MaleCrown from '../svg/MaleCrown';
-import NeedInfo from '../svg/NeedInfo';
 import ProfileDetails from './ProfileDetails';
 
 export default function ProfileInfo() {

@@ -4,8 +4,6 @@ import ProfileAPI from '../../../src/services/profile.service';
 import CompletionIAmpro from '../CompletionIAmprosStage/CompletionIAmpro';
 import Veretas from '../veritasStage.js/Veretas';
 
-// import StageThreeResults from '../StageThreeResults';
-
 const StageResults = ({ testType }) => {
   const [stages, setStages] = useState('');
   useEffect(() => {
