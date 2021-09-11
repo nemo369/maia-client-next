@@ -1,11 +1,12 @@
 import React, { useContext, useState } from 'react';
+import { useTranslation } from 'next-i18next';
 import { SET_PROFILE } from '../../src/context/appReducer';
 import { AppContext } from '../../src/context/state';
 import ProfileAPI from '../../src/services/profile.service';
+import HelpInfo from '../popups/HelpInfo';
 import CameraSvg from '../svg/Camera';
 import FemaleCrown from '../svg/FemaleCrown';
 import MaleCrown from '../svg/MaleCrown';
-import NeedInfo from '../svg/NeedInfo';
 import ProfileDetails from './ProfileDetails';
 
 export default function ProfileInfo() {
@@ -35,10 +36,11 @@ export default function ProfileInfo() {
     formData.append('file', file);
     formData.append('title', profile.first_name);
     formData.append('caption', `${profile.first_name} ${profile.last_name}`);
+
     const { data, status } = await ProfileAPI.updateProfileImage(
       user.token,
       formData,
-      `${profile.first_name}_${profile.last_name}.${file.type.split('/').pop()}`
+      `${profile.user_nicename}.${file.type.split('/').pop()}`
     );
     if (200 === status && data?.updated_profile) {
       dispatch({ type: SET_PROFILE, profile: data.updated_profile });
@@ -52,6 +54,7 @@ export default function ProfileInfo() {
     const [file] = event.target.files;
 
     if (!validateImage(file)) {
+      console.log('not valid');
       setSelectedFile(null);
       return;
     }
@@ -59,6 +62,7 @@ export default function ProfileInfo() {
     updateProfle(file);
     event.target.value = '';
   };
+  const { t } = useTranslation('common');
 
   if (!profile) return null;
   return (
@@ -67,9 +71,13 @@ export default function ProfileInfo() {
         loader ? 'opacity-60' : 'opacity-100'
       } transiton w-[430px] bg-white rounded-[20px] relative mb-18`}
     >
-      <span className="absolute top-[-80px] right-[300px]">
-        <NeedInfo />
-      </span>
+      <HelpInfo className="absolute left-0 top-0 -translate-y-4 -translate-x-2 right-auto cursor-pointer">
+        <div className="w-[120px] h-[120px] rounded-full bg-orange  border-white border-2 text-white font-bold text-lg flex flex-col justify-center items-center leading-tight hover:bg-orange-active transition">
+          <span>{t('זקוק')}</span>
+          <span>להכוונה</span>
+          <span>אישית?</span>
+        </div>
+      </HelpInfo>
       <div className="w-[130px] mx-auto relative top-[-45px]">
         {profile.avatar ? (
           <div className="w-[135px] overflow-hidden mx-auto rounded-full">

@@ -5,7 +5,7 @@ import React, { useContext, useEffect } from 'react';
 import { SET_NOTIFICATIONS } from '../../src/context/appReducer';
 import { AppContext } from '../../src/context/state';
 import NotificationAPI from '../../src/services/notification.service';
-import NotOnMobile from '../common/veritasStage.js/NotOnMobile';
+import NotOnMobile from '../common/veritasStage/NotOnMobile';
 // import Briefcase from '../svg/Briefcase';
 import FemalePic from '../svg/FemalePic';
 import Information from '../svg/Information';

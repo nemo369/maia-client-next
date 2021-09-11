@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import useFormStudyInner from '../../src/hooks/useFormStudyInner';
+import Loader from '../common/Loader';
 import CompareListOfAllStudies from './CompareListOfAllStudies';
 import CompareStudiesResult from './CompareStudiesResult';
 
-const CompareSidePop = ({ setOpen, comparedCategorys, studies }) => {
+const CompareSidePop = ({ setOpen, comparedCategorys, studies, loading }) => {
   const [compare, setCompare] = useState(false);
   const [studiesToCompare, setStudiesToCompare] = useState([]);
   const { inputs, handleChange } = useFormStudyInner({
@@ -17,6 +18,11 @@ const CompareSidePop = ({ setOpen, comparedCategorys, studies }) => {
 
   return (
     <>
+      {loading && (
+        <div className="h-full w-full flex items-center justify-center">
+          <Loader loading={loading} />
+        </div>
+      )}
       {compare ? (
         <CompareStudiesResult
           setOpen={setOpen}

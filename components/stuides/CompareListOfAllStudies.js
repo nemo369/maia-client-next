@@ -56,7 +56,7 @@ const CompareListOfAllStudies = ({ setOpen, studies, handleChange, handleCompare
                 className={`bg-white  rounded-2xl border border-[rgba(151,151,151,0.13)]
       px-4 py-5 flex flex-col justify-between shadow-md w-full`}
               >
-                <h5 className="company text-gray-active text-[18px] text-right">{study.company}</h5>
+                <h5 className=" text-gray-active text-[18px] text-right">{study.company}</h5>
                 <div className="flex justify-between">
                   <h4 className=" font-bold text-[18px] text-[#333333] text-right max-w-[465px]">
                     {study.title}
