@@ -1,17 +1,23 @@
 /* eslint-disable prettier/prettier */
 import Select from 'react-select';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import ChevronLeft from '../../../svg/ChevronLeft';
 
-const AgeInput = ({ value, handleChange }) => {
+const AgeInput = ({ value, handleChange, initValue }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [vale, setVale] = useState(undefined);
+  useEffect(() => {
+    if (initValue) {
+      setVale({ value: initValue, label: initValue, id: initValue });
+    }
+  }, [initValue]);
 
   const currentYear = new Date().getFullYear();
   const range = (start, stop, step) => Array.from({ length: (stop - start) / step + 1 }, (_, i) => start + i * step);
   const years = range(currentYear - 17, currentYear - 90, -1);
   const yearsMaped = years.map((year) => ({ value: year, label: year, id: year }));
   const fakeHandleChange = (e) => {
+    console.log(e);
     handleChange({ target: {
       value: e.value,
       name: 'birth_year',
@@ -21,7 +27,7 @@ const AgeInput = ({ value, handleChange }) => {
     setIsOpen(false);
   };
   return (
-    <div className="relative ">
+    <div className="relative min-w-[110px]">
       <Dropdown
         isOpen={isOpen}
         onClose={() => setIsOpen(false)}

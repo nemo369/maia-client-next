@@ -19,6 +19,9 @@ export default function useForm(initial = {}) {
     if ('number' === type) {
       value = +value;
     }
+    if ('select' === type) {
+      value = +value;
+    }
     if ('file' === type) {
       [value] = e.target.files;
     }

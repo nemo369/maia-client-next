@@ -24,7 +24,7 @@ export default function Check({
         onChange={onChange}
         className={className}
       />
-      <div className={'check-text' + textClass}>{content}</div>
+      <div className={'check-text ' + textClass}>{content}</div>
     </label>
   );
 }

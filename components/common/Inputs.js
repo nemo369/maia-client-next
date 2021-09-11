@@ -17,7 +17,7 @@ export default function Inputs(props) {
       break;
   }
   return (
-    <div>
+    <div className="w-full">
       <label htmlFor={placeholder} className="sr-only">
         {placeholder}
       </label>

@@ -1,5 +1,3 @@
-import React from 'react';
-
 const CheckboxGroupGray = ({ checks, onChange, checkType, name = 'check' }) => (
   <div className="button-group-gray">
     {checks?.map((check) => (
@@ -12,7 +10,10 @@ const CheckboxGroupGray = ({ checks, onChange, checkType, name = 'check' }) => (
           name={name}
           onChange={() => onChange(check.id)}
         />
-        <label className="button-label-gray" htmlFor={check.id}>
+        <label
+          className="cursor-pointer w-full h-full block transition hover:opacity-100 opacity-50"
+          htmlFor={check.id}
+        >
           {check.name}
         </label>
       </div>

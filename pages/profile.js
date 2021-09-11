@@ -68,7 +68,6 @@ export default function Profile({ notifications }) {
           </div>
           <div className="flex flex-col mb-8">
             <ProfileInfo />
-            <HelpInfo />
           </div>
         </div>
       </div>

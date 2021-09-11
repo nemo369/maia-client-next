@@ -1,12 +1,12 @@
+import { useTranslation } from 'next-i18next';
 import React, { useState } from 'react';
 import PopUp from '../common/PopUp';
-import MailHeart from '../svg/MailHeart';
 import Chat from '../svg/Chat';
+import MailHeart from '../svg/MailHeart';
 import WalkMeStepTwo from '../svg/WalkMeStepTwo';
-import FlyingWoman from '../svg/FlyingWoman';
 import ForMoreInfo from './ForMoreInfo';
 
-const HelpInfo = () => {
+const HelpInfo = ({ className, children }) => {
   const [showPhone, setShowPhone] = useState(false);
   const [showMail, setShowMail] = useState(false);
 
@@ -17,24 +17,14 @@ const HelpInfo = () => {
   const mailPopUP = () => {
     setShowMail(true);
   };
+  const { t } = useTranslation('common');
 
   return (
     <>
       <PopUp
         trigger={
-          <button
-            onClick={() => setShowMail(false)}
-            type="button"
-            className="max-w-[273px] cursor-pointer relative top-[-50px] left-[-360px] w-full z-10"
-          >
-            <FlyingWoman />
-            <span className="leading-6 text-white font-bold text-lg absolute z-20 text-center w-[121px] px-6 pt-6 top-0 left-0">
-              זקוק/ה
-              <br />
-              להכוונה
-              <br />
-              אישית?
-            </span>
+          <button onClick={() => setShowMail(false)} type="button" className={className}>
+            {children}
           </button>
         }
       >
