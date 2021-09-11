@@ -17,7 +17,7 @@ const Li = ({ place, study }) => {
   const getLine = (key) => {
     switch (key) {
       case 'teurdrishot':
-        return { key: study[key], value: 'תנאי קבלה' };
+        return { key: study[key] + '<br/><br/>' + study.halichmiun, value: 'תנאי קבלה' };
       case 'tochnit':
         return { key: study[key], value: 'תוכנית לימודים' };
       case 'hearot':
@@ -31,12 +31,12 @@ const Li = ({ place, study }) => {
   if (!key || !value) return null;
   return (
     <div className=" lg:mr-7 flex gap-1 mb-5 flex-shrink flex-grow">
-      <div className="bg-white rounded-r-xl py-7 px-3 self-start added-shadow">
+      <div className="bg-white rounded-r-xl py-7 px-3 flex items-center justify-center shadow w-[100px] h-[100px]">
         <CheckForTitle title={place} />
       </div>
-      <div className="bg-white rounded-b-lg rounded-tl-lg added-shadow grid content-evenly pb-10 pt-5  px-5 gap-4">
+      <div className="bg-white rounded-b-lg rounded-tl-lg shadow grid pb-10 pt-5  px-5 gap-4 w-full">
         <h4 className=" font-bold text-lg leading-4">{value}</h4>
-        <p className="text-sm leading-3" dangerouslySetInnerHTML={{ __html: key }} />
+        <p className="text-sm leading-none" dangerouslySetInnerHTML={{ __html: key }} />
       </div>
     </div>
   );

@@ -63,7 +63,7 @@ const CompareStudiesResult = ({ setOpen, setCompare, studies }) => {
         </div>
         <div className="flex justify-between border-t-[1px] items-baseline compare-wrapper ">
           {studies.map(({ full_data: data }) => (
-            <div key={data.iD_Num} className="grid  pt-4 mt-5 compare-wrapper-map px-4">
+            <div key={data.iD_Num} className="grid  pt-4 mt-5 compare-wrapper-map px-4 flex-1">
               <div className="flex justify-between">
                 <h1 className="study-logo">
                   {getImg(data)}
@@ -92,18 +92,18 @@ const CompareStudiesResult = ({ setOpen, setCompare, studies }) => {
                   <h2 className="text-lg leading-5 text-gray">הערות (למסלולי ההכשרה)</h2>
                   <h3 className=" font-bold text-lg leading-5">{data.hearot}</h3>
                 </div>
-                <div className="min-h-[100px]">
+                {/* <div className="min-h-[100px]">
                   <h2 className="text-lg leading-5 text-gray">מועד תחילת הלימודים </h2>
                   <h3 className=" font-bold text-lg leading-5"> </h3>
-                </div>
-                <div className="min-h-[100px]">
+                </div> */}
+                {/* <div className="min-h-[100px]">
                   <h2 className="text-lg leading-5 text-gray">מועד אחרון לפסיכומטרי </h2>
                   <h3 className=" font-bold text-lg leading-5"> </h3>
-                </div>
-                <div className="min-h-[100px]">
+                </div> */}
+                {/* <div className="min-h-[100px]">
                   <h2 className="text-lg leading-5 text-gray">גובה שכר לימוד </h2>
                   <h3 className=" font-bold text-lg leading-5"> </h3>
-                </div>
+                </div> */}
               </div>
             </div>
           ))}

@@ -27,7 +27,6 @@ export default function useFormStudy(initial = {}) {
         [name]: inputs[name].filter((input) => input !== value),
       });
     }
-    console.log(inputs);
   }
 
   function resetForm() {

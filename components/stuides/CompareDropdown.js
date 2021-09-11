@@ -16,10 +16,12 @@ const CompareDropdown = ({ professionIds }) => {
   const { user } = useContext(AppContext);
 
   const [studies, setStudies] = useState([]);
+  const [loading, setloading] = useState(false);
   const filteredCategories = async (dataToSend) => {
+    setloading(true);
     const { data } = await VendorAPI.getCategorys(user.token, 'studies', dataToSend);
-
     setStudies(data);
+    setloading(false);
   };
   const { inputs, handleChange } = useFormStudy({
     professionIds,
@@ -128,6 +130,7 @@ const CompareDropdown = ({ professionIds }) => {
               }
             >
               <CompareSidePop
+                loading={loading}
                 comparedCategorys={inputs}
                 open={open}
                 setOpen={setOpen}
