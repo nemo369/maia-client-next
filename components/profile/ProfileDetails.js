@@ -140,15 +140,6 @@ export default function ProfileDetails({ cities }) {
               * לעריכת מייל ונייד צור קשר עם התמיכה 03-6450072
             </div>
             <ProfileDetailsEditStreet cities={cities} />
-            <Inputs
-              onChange={handleChange}
-              type="text"
-              status="main"
-              className={`profile-inputs ${isDisabled ? 'text-[#717171]' : ''}`}
-              placeholder="עיר מגורים"
-              value={JSON.parse(profile.city).name}
-              disabled={isDisabled}
-            />
 
             <div className="flex items-center justify-between w-full">
               <AgeInputSimple
