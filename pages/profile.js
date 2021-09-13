@@ -15,7 +15,7 @@ import useProfile from '../src/hooks/useProfile';
 import { SET_NOTIFICATIONS } from '../src/context/appReducer';
 import VendorAPI from '../src/services/vendor.service';
 
-export default function Profile({ notifications }) {
+export default function Profile({ notifications, cities }) {
   const { t } = useTranslation('common');
   const { dispatch, user, profile } = useContext(AppContext);
   useProfile();
@@ -66,7 +66,7 @@ export default function Profile({ notifications }) {
             </div>
           </div>
           <div className="flex flex-col mb-8">
-            <ProfileInfo />
+            <ProfileInfo cities={cities} />
           </div>
         </div>
       </div>
@@ -77,12 +77,21 @@ export default function Profile({ notifications }) {
 export async function getServerSideProps(req) {
   const [user, token] = getUserSession(req);
   if (user.redirect) return user;
-  const { data: notifications } = await NotificationAPI.full_notification(token);
+  const { WORDPRESS_ENDPOINT } = process.env;
 
+  // const { data: notifications } = await NotificationAPI.full_notification(token);
+  const [cities, { data: notifications }] = await Promise.all([
+    // eslint-disable-next-line prettier/prettier
+    fetch(`${WORDPRESS_ENDPOINT}/wp-content/themes/canaan/data/cities.json`).then((res) => res.json()),
+    NotificationAPI.full_notification(token),
+  ]);
+
+  console.log(cities);
   return {
     props: {
       ...(await serverSideTranslations(req.locale, ['common'])),
       user,
+      cities,
       notifications,
     }, // will be passed to the page component as props
   };

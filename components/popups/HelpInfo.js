@@ -28,7 +28,7 @@ const HelpInfo = ({ className, children }) => {
       >
         <div className="flex flex-col items-center justify-center px-10">
           <h2 className="text-center text-[30px] font-bold text-gray-mid">
-            נשארתם עם שאלה לא פתורה?
+            נשארת עם שאלה לא פתורה?
           </h2>
           <h2 className="text-center text-[25px] leading-3 font-medium text-gray-mid">
             מקדמי התעסוקה והלימודים ישמחו לסייע לכם.

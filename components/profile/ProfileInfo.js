@@ -9,7 +9,7 @@ import FemaleCrown from '../svg/FemaleCrown';
 import MaleCrown from '../svg/MaleCrown';
 import ProfileDetails from './ProfileDetails';
 
-export default function ProfileInfo() {
+export default function ProfileInfo({ cities }) {
   // const [lookingForJob, setLookingForJob] = useState(false);
   const [selectedFile, setSelectedFile] = useState(null);
   const [loader, setLoader] = useState(false);
@@ -80,10 +80,11 @@ export default function ProfileInfo() {
       </HelpInfo>
       <div className="w-[130px] mx-auto relative top-[-45px]">
         {profile.avatar ? (
-          <div className="w-[135px] overflow-hidden mx-auto rounded-full">
+          <div className="w-[135px] h-[135px] overflow-hidden mx-auto rounded-full">
             <img
+              className="w-full h-full object-cover"
               src={profile.avatar.src}
-              widh={135}
+              width={135}
               height={135}
               loading="lazy"
               alt={profile.first_name}
@@ -114,7 +115,7 @@ export default function ProfileInfo() {
           <br />
           בצורה אידאלית עבורך :)
         </div>
-        {profile && <ProfileDetails />}
+        {profile && <ProfileDetails cities={cities} />}
         <div className="bg-[#979797] opacity-20 mx-8 h-[1px]" />
       </div>
     </section>

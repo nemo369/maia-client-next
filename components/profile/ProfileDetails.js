@@ -12,8 +12,9 @@ import ProfileAPI from '../../src/services/profile.service';
 import { SET_PROFILE } from '../../src/context/appReducer';
 import { FRONT_URL } from '../../src/utils/consts';
 import AgeInputSimple from './register_form/inputs/AgeInputSimple';
+import ProfileDetailsEditStreet from './ProfileDetailsEditStreet';
 
-export default function ProfileDetails() {
+export default function ProfileDetails({ cities }) {
   const { profile, user, dispatch } = useContext(AppContext);
   const [isOpen, setIsOpen] = useState(false);
   const [isDisabled, setIsDiabled] = useState(false);
@@ -138,15 +139,7 @@ export default function ProfileDetails() {
             <div className="opacity-70 text-[#7D7D7D] text-[16px] w-full mb-4 text-sm pr-4">
               * לעריכת מייל ונייד צור קשר עם התמיכה 03-6450072
             </div>
-            <Inputs
-              onChange={handleChange}
-              type="text"
-              status="main"
-              className={`profile-inputs ${isDisabled ? 'text-[#717171]' : ''}`}
-              placeholder="עיר מגורים"
-              value={JSON.parse(profile.city).name}
-              disabled={isDisabled}
-            />
+            <ProfileDetailsEditStreet cities={cities} />
 
             <div className="flex items-center justify-between w-full">
               <AgeInputSimple

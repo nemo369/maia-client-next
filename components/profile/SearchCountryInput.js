@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Select from 'react-select';
 import ChevronLeft from '../svg/ChevronLeft';
 
@@ -46,7 +46,12 @@ const SearchCountryInput = (props) => {
   const [isOpen, setIsOpen] = useState(false);
   const [vale, setVale] = useState(undefined);
 
-  const { setCityId, setCityData, cities, value, setInputValue } = props;
+  const { setCityId, setCityData, cities, value, setInputValue, cityData } = props;
+  useEffect(() => {
+    if (cityData && cityData.id) {
+      setVale(cityData);
+    }
+  }, [cityData]);
 
   const toggleOpen = () => {
     setIsOpen(!isOpen);
@@ -67,6 +72,7 @@ const SearchCountryInput = (props) => {
   };
 
   const onSelectChange = (value1) => {
+    console.log(value1);
     setCityId(value1.id);
     setCityData(value1);
     toggleOpen();

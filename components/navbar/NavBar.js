@@ -51,8 +51,9 @@ const NavBar = () => {
               ) : null}
               <div className="md:w-[84px]  mx-auto  h-[73px] w-10">
                 {profile?.avatar ? (
-                  <div className="w-[68px] overflow-hidden rounded-full">
+                  <div className="w-[68px] h-[68px] overflow-hidden rounded-full">
                     <img
+                      className="w-full h-full object-cover"
                       src={profile.avatar.src}
                       widh={68}
                       height={68}

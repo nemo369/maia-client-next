@@ -7,7 +7,7 @@ function Group11() {
       viewBox="0 0 240 168"
     >
       <title>D464D077-447F-48E1-BC72-6C0723B5D7DD</title>
-      <g id="Design" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
+      <g id="Group11-Design" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
         <g id="Styleguide" transform="translate(-697.000000, -8467.000000)">
           <g id="Group-11" transform="translate(697.000000, 8467.948000)">
             <g id="Group-57">

@@ -16,7 +16,7 @@ function ProfessionInfo({ profession }) {
       <div dangerouslySetInnerHTML={{ __html: profession.description }} />
 
       <div className="mt-4 flex">
-        <Link href={`/studies/${profession.id}`}>
+        <Link href="/studies">
           <button className="font-bold mr-2" type="button">
             <u>{t('בדוק מסלולי לימוד')}</u>
           </button>
