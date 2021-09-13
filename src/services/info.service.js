@@ -20,5 +20,21 @@ const Infoservice = {
       return error.response;
     }
   },
+  contactUs: async (creditiontals) => {
+    try {
+      const response = await axios.post(
+        `${API_URL}/info/contact-us`,
+        JSON.stringify(creditiontals),
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      );
+      return response;
+    } catch (error) {
+      return error.response;
+    }
+  },
 };
 export default Infoservice;
