@@ -4,12 +4,14 @@ import Button from '../common/Button';
 import Loader from '../common/Loader';
 import Group11 from '../svg/Group11';
 import Group18Img from '../svg/Group18Img';
+import Infoservice from '../../src/services/info.service';
+import { FRONT_URL } from '../../src/utils/consts';
 
-function WrongArea({ fullname, location, email }) {
+function WrongArea({ fullname: fullName, location, email }) {
   const [loader, setLoader] = useState(false);
 
   const { inputs, handleChange, resetForm } = useForm({
-    fullname,
+    fullName,
     location,
     email,
   });
@@ -17,19 +19,13 @@ function WrongArea({ fullname, location, email }) {
     e.preventDefault();
     setLoader(true);
 
-    // const dataToSend = {
-    //   ...inputs,
-    // };
-
-    // const { data, status } = await UserAPI.register(dataToSend);
-    // if (200 !== status) {
-    //   console.log(status);
-    // }
-
-    // if (200 === status) {
+    const { status } = await Infoservice.contactUs(inputs);
+    if (200 === status) {
+      setFormSend(true);
+    }
     resetForm();
-    // //   router.push('/user/login?error="200"'); // TODO: go to last page user visited
-    // }
+    setLoader(false);
+    window.location.href = `${FRONT_URL.replace('/api', '')}`;
   };
   return (
     <div className="mt-24 relative max-w-5xl mx-auto mb-40   bg-white px-32 pt-14 pb-9 register-form rounded-lg">
@@ -58,10 +54,10 @@ function WrongArea({ fullname, location, email }) {
           <input
             type="text"
             required
-            name="fullname"
+            name="fullName"
             autoComplete="on"
             placeholder="שם מלא*"
-            value={inputs.fullname}
+            value={inputs.fullName}
             onChange={handleChange}
             className="regiserPageInput justify-self-center h-12 w-full bwc bg-gray-disabled  rounded-md"
           />
@@ -69,7 +65,7 @@ function WrongArea({ fullname, location, email }) {
             type="text"
             required
             autoComplete="off"
-            name="fullname"
+            name="location"
             placeholder="מקום מגורים"
             value={inputs.location}
             onChange={handleChange}
@@ -79,7 +75,7 @@ function WrongArea({ fullname, location, email }) {
             type="email"
             autoComplete="email"
             required
-            name="fullname"
+            name="email"
             placeholder="מייל*"
             value={inputs.email}
             onChange={handleChange}

@@ -9,7 +9,7 @@ import FemaleCrown from '../svg/FemaleCrown';
 import MaleCrown from '../svg/MaleCrown';
 import ProfileDetails from './ProfileDetails';
 
-export default function ProfileInfo() {
+export default function ProfileInfo({ cities }) {
   // const [lookingForJob, setLookingForJob] = useState(false);
   const [selectedFile, setSelectedFile] = useState(null);
   const [loader, setLoader] = useState(false);
@@ -115,7 +115,7 @@ export default function ProfileInfo() {
           <br />
           בצורה אידאלית עבורך :)
         </div>
-        {profile && <ProfileDetails />}
+        {profile && <ProfileDetails cities={cities} />}
         <div className="bg-[#979797] opacity-20 mx-8 h-[1px]" />
       </div>
     </section>
