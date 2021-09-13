@@ -80,10 +80,11 @@ export default function ProfileInfo() {
       </HelpInfo>
       <div className="w-[130px] mx-auto relative top-[-45px]">
         {profile.avatar ? (
-          <div className="w-[135px] overflow-hidden mx-auto rounded-full">
+          <div className="w-[135px] h-[135px] overflow-hidden mx-auto rounded-full">
             <img
+              className="w-full h-full object-cover"
               src={profile.avatar.src}
-              widh={135}
+              width={135}
               height={135}
               loading="lazy"
               alt={profile.first_name}

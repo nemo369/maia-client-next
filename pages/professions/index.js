@@ -70,10 +70,10 @@ export default function Professions({ allProfessions, scopes }) {
         <div
           className={`grid grid-cols-none ml-3 transition ${loader ? 'opacity-30' : 'opacity-100'}`}
         >
-          <ProfessionsHeader myProfessions={myProfessions} />
+          <ProfessionsHeader myProfessions={categoryType.id ? myProfessions : null} />
           <div className="grid grid-cols-2 gap-x-1 transition">
             <div className="grid grid-cols-2 gap-x-1 pr-1">
-              {!categoryType.id && <ProfessionForm scopes={scopes} fetchStudies={setQuery} />}
+              {!categoryType.id && <ProfessionForm scopes={scopes} handleChange={setQuery} />}
             </div>
             <div className="justify-self-end">
               <CheckboxGroup checks={categoryGroups} onChange={onChange} checkType={categoryType} />

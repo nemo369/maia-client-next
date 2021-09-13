@@ -10,6 +10,8 @@ function JobsList({ jobs }) {
             <Briefcase />
           </div>
           <h3 className="text-3xl text-black/20 text-center font-bold">
+            לצורך הצגת נתונים יש לבחור תחום
+            <br />
             לא נמצאו משרות
             <br />
             שתואמות את החיפוש שהוזן

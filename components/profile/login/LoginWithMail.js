@@ -44,9 +44,7 @@ const LoginWithMail = (props) => {
     <div>
       <h1 className="font-black text-2xl">{t('התחברות')}</h1>
       <div className="mb-11">
-        {t(
-          'כדי שנוכל לשמור על פרטיותך ולהגן על הנתונים שלך נשלח לך באמצעות מייל מייל סיסמא חד פעמי'
-        )}
+        {t('כדי שנוכל לשמור על פרטיותך ולהגן על הנתונים שלך נשלח לך באמצעות המייל קישור להתחברות')}
       </div>
       <form method="POST" onSubmit={handleSubmit} className="relative">
         <div>
