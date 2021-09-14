@@ -13,6 +13,12 @@ hr.dashed {
     animation-delay: 200ms;
     // overflow: hidden;
 }
+.flex-1-0-auto {
+    flex: 1 0 auto;
+}
+.flex-0-0-auto {
+    flex: 0 0 auto;
+}
 @keyframes height-animation {
     0% {
         overflow: hidden;

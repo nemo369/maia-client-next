@@ -6,7 +6,7 @@ import StagesPopSide from '../../common/StagesPopSide';
 import NextStepPopUp from '../../popups/NextStepPopUp';
 import ProfileSummary from '../ProfileSummary';
 
-function VeritasTestResults() {
+function VeritasTestResults({ direction }) {
   const [defaultOpen, setDefaultOpen] = useState(false);
 
   return (
@@ -18,7 +18,7 @@ function VeritasTestResults() {
         ומה מתאים לי
       </h3>
       <h4 className="mb-4 text-xl font-bold">המאפיינים העיקריים שלך:</h4>
-      <ProfileSummary />
+      <ProfileSummary direction={direction} />
       <Bars height={150} width={100} />
       <div className="flex gap-x-1 mt-6">
         <StagesPopSide

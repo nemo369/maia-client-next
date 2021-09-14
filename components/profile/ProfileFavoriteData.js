@@ -47,10 +47,10 @@ export default function ProfileFavoriteData({ jobs, categoryType, professions, s
                 </div>
               </div>
               <p
-                className="description leading-5 w-[450px] mr-10 text-[#333300] opacity-70 text-[18px]"
+                className="description leading-5  mr-10 text-[#333300] opacity-70 text-[18px]"
                 dangerouslySetInnerHTML={{ __html: dataItem.description }}
               />
-              <div className="mr-[100px] flex items-center">
+              <div className=" flex items-center">
                 <JustHeart id={dataItem.id} type={categoryType.id} />
                 {'jobs' === categoryType.id && (
                   <button
@@ -61,7 +61,7 @@ export default function ProfileFavoriteData({ jobs, categoryType, professions, s
                   </button>
                 )}
                 <Link href={`${categoryType.id}/${dataItem.id}`}>
-                  <a className="border-black border-2 text-black rounded-[10px]  px-[20px] active:bg-gray-lighter focus:outline-none h-10 leading-10 ml-2 mr-2">
+                  <a className="border-black border-2 text-black rounded-[10px]  px-[20px] active:bg-gray-lighter focus:outline-none h-10 leading-10 ml-2 mr-2 truncate">
                     {'jobs' === categoryType.id ? t('הגש מועמדות') : t('לחץ לצפייה')}
                   </a>
                 </Link>

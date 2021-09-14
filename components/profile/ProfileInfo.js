@@ -69,7 +69,7 @@ export default function ProfileInfo({ cities }) {
     <section
       className={`${
         loader ? 'opacity-60' : 'opacity-100'
-      } transiton w-[430px] bg-white rounded-[20px] relative mb-18`}
+      } transiton w-[430px]  bg-white rounded-[20px] relative mb-18`}
     >
       <HelpInfo className="absolute left-0 top-0 -translate-y-4 -translate-x-2 right-auto cursor-pointer">
         <div className="w-[120px] h-[120px] rounded-full bg-orange  border-white border-2 text-white font-bold text-lg flex flex-col justify-center items-center leading-tight hover:bg-orange-active transition">

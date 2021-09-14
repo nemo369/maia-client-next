@@ -17,3 +17,13 @@
         grid-area: main;
     }
 }
+
+.dashboard__summary--horizontal {
+    .ProfileSummary {
+        min-height: unset;
+    }
+    h4,
+    h3 {
+        margin-bottom: 0;
+    }
+}
