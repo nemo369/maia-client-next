@@ -9,7 +9,8 @@ import NoInfo from './steps/NoInfo';
 import NoInfoAtAll from './steps/NoInfoAtAll';
 import VeritasTestResults from './steps/VeritasTestResults';
 
-function DashboardSummary() {
+// diretion in dasboard is vertical and in profiel page is horizontal
+function DashboardSummary({ direction = 'vertical' }) {
   const { profile } = useContext(AppContext);
   const [step, setstep] = useState('loading');
   useEffect(() => {
@@ -37,7 +38,9 @@ function DashboardSummary() {
     }
   }, [profile]);
   return (
-    <div className="dashboard__summary bg-white rounded-lg py-5 px-4 flex flex-col max-h-[722px] overflow-auto">
+    <div
+      className={`dashboard__summary bg-white rounded-lg py-5 px-4 flex flex-col max-h-[722px] min-w-[500px] overflow-auto dashboard__summary--${direction}`}
+    >
       <Switch test={step}>
         <Case value="loading">
           <div className="bg-white rounded-lg py-5 px-4 flex items-center justify-center h-full">
@@ -45,18 +48,18 @@ function DashboardSummary() {
           </div>
         </Case>
         <Case value="noTestYet">
-          <NoInfoAtAll />
+          <NoInfoAtAll direction={direction} />
         </Case>
         <Case value="completionAutobiography">
-          <AutobiographyTestResults testType="Autobiography" />
+          <AutobiographyTestResults testType="Autobiography" direction={direction} />
         </Case>
         <Case value="completionIAmpro">
-          <IamProTestResults testType="IAmpro" />
+          <IamProTestResults testType="IAmpro" direction={direction} />
         </Case>
         <Case value="completionVeritas">
-          <VeritasTestResults testType="Veretas" />
+          <VeritasTestResults testType="Veretas" direction={direction} />
         </Case>
-        <Case value="dataIsMissing">
+        <Case value="dataIsMissing" direction={direction}>
           <NoInfo />
         </Case>
       </Switch>
