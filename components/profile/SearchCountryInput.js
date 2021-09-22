@@ -46,7 +46,7 @@ const SearchCountryInput = (props) => {
   const [isOpen, setIsOpen] = useState(false);
   const [vale, setVale] = useState(undefined);
 
-  const { setCityId, setCityData, cities, value, setInputValue, cityData } = props;
+  const { setCityId, setCityData, cities, value, setInputValue, cityData, emptyStateError } = props;
   useEffect(() => {
     if (cityData && cityData.id) {
       setVale(cityData);
@@ -72,7 +72,6 @@ const SearchCountryInput = (props) => {
   };
 
   const onSelectChange = (value1) => {
-    console.log(value1);
     setCityId(value1.id);
     setCityData(value1);
     toggleOpen();
@@ -127,6 +126,9 @@ const SearchCountryInput = (props) => {
           })}
         />
       </Dropdown>
+      {emptyStateError ? (
+        <span className="h-0 block shake text-xs text-red-error">יש לבחור ישוב*</span>
+      ) : null}
     </div>
   );
 };

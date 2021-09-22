@@ -43,7 +43,15 @@ const customStyles = {
 };
 const SearchStreetInput = (props) => {
   const [isOpen, setIsOpen] = useState(false);
-  const { theStreets, cityData, setTheStreet, theStreet, inputValue, setInputValue } = props;
+  const {
+    theStreets,
+    cityData,
+    setTheStreet,
+    theStreet,
+    inputValue,
+    setInputValue,
+    emptyStateError,
+  } = props;
 
   const toggleOpen = () => {
     setIsOpen(!isOpen);
@@ -104,6 +112,9 @@ const SearchStreetInput = (props) => {
           styles={customStyles}
         />
       </Dropdown>
+      {emptyStateError ? (
+        <span className="h-0 block shake text-xs text-red-error">יש לבחור רחוב*</span>
+      ) : null}
     </div>
   );
 };

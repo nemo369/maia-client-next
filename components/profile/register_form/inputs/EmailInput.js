@@ -1,17 +1,22 @@
 const EmailInput = (props) => {
-  const { value, handleChange } = props;
+  const { value, handleChange, isError } = props;
   return (
     <div>
       <input
-        // onInput={InvalidMsg}
-        required
         type="email"
         name="email"
         placeholder="מייל *"
         value={value}
         onChange={handleChange}
-        className="regiserPageInput bwc emailini justify-self-center h-12 w-full bg-gray-disabled  rounded-md"
+        className={`regiserPageInput justify-self-center h-12 bwc w-full bg-gray-disabled  rounded-md
+        ${isError ? 'is-error' : ''}
+        `}
       />
+      {isError ? (
+        <span className="h-0 block shake text-xs text-red-error">
+          יש להזין כתובת דואר אלקטרוני תקינה*
+        </span>
+      ) : null}
     </div>
   );
 };

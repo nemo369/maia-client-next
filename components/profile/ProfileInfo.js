@@ -54,7 +54,6 @@ export default function ProfileInfo({ cities }) {
     const [file] = event.target.files;
 
     if (!validateImage(file)) {
-      console.log('not valid');
       setSelectedFile(null);
       return;
     }

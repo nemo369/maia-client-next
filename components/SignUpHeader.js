@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import Logo from './svg/Logo';
-import WHeelChair from './svg/WheelChair';
 
 const SignUpHeader = function () {
   return (
@@ -11,11 +10,11 @@ const SignUpHeader = function () {
           <p className=" text-gray">יש לך שם משתמש? </p>
           <Link href="/user/login">
             <a className=" text-orange-mainOr text-lg font-bold hover:text-opacity-80">
-              <u> התחבר עכשיו </u>
+              <u> התחברו עכשיו </u>
             </a>
           </Link>
         </div>
-        <WHeelChair />
+        {/* <WHeelChair /> */}
       </div>
     </div>
   );

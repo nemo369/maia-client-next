@@ -46,7 +46,6 @@ const ProfileAPI = {
       });
       return { ...data, status };
     } catch (error) {
-      console.log(error);
       return { data: null, status: 500 };
     }
   },
