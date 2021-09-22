@@ -5,6 +5,7 @@ import Button from '../../common/Button';
 function Info() {
   const [isOpen, setisOpen] = useState(false);
   const { t } = useTranslation('common');
+
   function startNextStep() {
     const nextStepBtn = document?.querySelector('.start-NextStepPopUpAutoBiography-js');
     if (nextStepBtn) {
