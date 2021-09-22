@@ -12,7 +12,9 @@ const FirstName = (props) => {
       ${isError ? 'is-error' : ''}
       `}
       />
-      {isError ? <span className="text-xs text-red-error">יש להזין שם פרטי*</span> : null}
+      {isError ? (
+        <span className="h-0 block shake text-xs text-red-error">יש להזין שם פרטי*</span>
+      ) : null}
     </div>
   );
 };

@@ -35,7 +35,7 @@ module.exports = {
         black: '#000000',
         red: {
           DEFAULT: '#F97168',
-          error: '#FFDBDB',
+          error: '#FF8282',
           active: '#FF8282',
         },
         green: {

@@ -3,7 +3,7 @@ import Select from 'react-select';
 import { useEffect, useState } from 'react';
 import ChevronLeft from '../../../svg/ChevronLeft';
 
-const AgeInput = ({ value, handleChange, initValue }) => {
+const AgeInput = ({ value, handleChange, initValue, isError }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [vale, setVale] = useState(undefined);
   useEffect(() => {
@@ -17,7 +17,6 @@ const AgeInput = ({ value, handleChange, initValue }) => {
   const years = range(currentYear - 17, currentYear - 90, -1);
   const yearsMaped = years.map((year) => ({ value: year, label: year, id: year }));
   const fakeHandleChange = (e) => {
-    console.log(e);
     handleChange({ target: {
       value: e.value,
       name: 'birth_year',
@@ -39,7 +38,7 @@ const AgeInput = ({ value, handleChange, initValue }) => {
             required
             className={`flex  items-center justify-between pl-2 bwc    hover: bg-red-900 ${
               vale ? '' : 'text-gray-active'
-            }`}
+            } ${isError ? 'border border-red-error bg-white ' : ''}`}
             onClick={() => setIsOpen(true)}
             isselected={isOpen.toString()}
           >
@@ -73,6 +72,11 @@ const AgeInput = ({ value, handleChange, initValue }) => {
           })}
         />
       </Dropdown>
+      {isError ? (
+        <span className="h-0 block shake text-xs text-red-error">
+          יש לבחור שנת לידה*
+        </span>
+      ) : null}
     </div>
   );
 };

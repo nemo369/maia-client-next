@@ -30,6 +30,8 @@ const errorsInitial = {
   firstName: false,
   lastName: false,
   gender: false,
+  cityData: false,
+  theStreet: false,
   employment_coefficient: false,
   terms_and_conditions: false,
 };
@@ -54,21 +56,21 @@ const RegisterForm = ({ cities, termsText }) => {
     email: '',
     password: '',
     cellphone: '',
-    birth_year: '',
+    birth_year: null,
     firstName: '',
     lastName: '',
     gender: '',
-    employment_coefficient: null,
-    terms_and_conditions: null,
+    employment_coefficient: false,
+    terms_and_conditions: false,
   });
   const handleChange = (e) => {
     setErrors({ ...errorsInitial });
     handleChangeInForm(e);
   };
   const checkValidation = () => {
-    const { isValid, errors: newErrors } = validateRegister(inputs);
+    const { isValid, errors: newErrors } = validateRegister({ ...inputs, theStreet, cityData });
     setErrors({ ...errors, ...newErrors });
-    console.log(newErrors);
+
     return isValid;
   };
 
@@ -160,6 +162,7 @@ const RegisterForm = ({ cities, termsText }) => {
               setError={setError}
               setTheStreet={setTheStreet}
               setInputValue={setInputValue}
+              emptyStateError={errors.cityData}
             />
             <SearchStreetInput
               theStreets={theStreets}
@@ -167,6 +170,7 @@ const RegisterForm = ({ cities, termsText }) => {
               cityData={cityData}
               inputValue={inputValue}
               setInputValue={setInputValue}
+              emptyStateError={errors.theStreet}
             />
           </div>
           <hr className="dashed my-5" />
@@ -180,12 +184,24 @@ const RegisterForm = ({ cities, termsText }) => {
               value={inputs.firstName}
               isError={errors.firstName}
             />
-            <LastName handleChange={handleChange} value={inputs.lastName} />
+            <LastName
+              handleChange={handleChange}
+              value={inputs.lastName}
+              isError={errors.lastName}
+            />
 
-            <CellphoneInput handleChange={handleChange} value={inputs.cellphone} />
-            <EmailInput handleChange={handleChange} value={inputs.email} />
+            <CellphoneInput
+              handleChange={handleChange}
+              value={inputs.cellphone}
+              isError={errors.cellphone}
+            />
+            <EmailInput handleChange={handleChange} value={inputs.email} isError={errors.email} />
 
-            <AgeInput handleChange={handleChange} value={inputs.birth_year} />
+            <AgeInput
+              handleChange={handleChange}
+              value={inputs.birth_year}
+              isError={errors.birth_year}
+            />
             <div className="signup-radio-wrapper mb-5  flex">
               <p className="inline-block text-regiterPageDarkBottomText leading-regiterPageDarkBottomText text-regiterPageDarkBottomTextcolor">
                 לפני שאנחנו ממשיכים, איך נוח לך שנפנה אליך?
@@ -197,11 +213,19 @@ const RegisterForm = ({ cities, termsText }) => {
             </div>
           </div>
           {error ? <div className="text-red-500 shake mt-3">{error}</div> : ''}
-          <CoefficientCheckbox handleChange={handleChange} />
+          <CoefficientCheckbox
+            handleChange={handleChange}
+            checked={inputs.employment_coefficient}
+          />
           <hr className="dashed col-start-1 col-end-3 my-4" />
 
           <div className="md:flex-row flex-col flex items-center md:justify-between">
-            <ConditionsCheckbox termsText={termsText} handleChange={handleChange} />
+            <ConditionsCheckbox
+              termsText={termsText}
+              handleChange={handleChange}
+              checked={inputs.terms_and_conditions}
+              isError={errors.terms_and_conditions}
+            />
             <Button
               type="submit"
               status="main"

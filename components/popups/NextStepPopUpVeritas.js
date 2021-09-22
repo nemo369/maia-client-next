@@ -32,7 +32,6 @@ const PopupContent = ({ closePopup }) => {
       setloading(false);
       return;
     }
-    console.log(data);
     setveritasStatus(data.veritasStatus);
     // Not Started
     if (data && 'x' !== data.veritasStatus) {

@@ -113,7 +113,9 @@
   background-size: 25%;
   background-position: center;
 }
-
+.checkbox--error.checkbox {
+  border-color: red;
+}
 .checkbox:checked {
   /* background-color: #b61515; */
   border-color: #3c91a0;

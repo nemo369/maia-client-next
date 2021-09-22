@@ -1,7 +1,7 @@
 const LastName = (props) => {
   const { value, handleChange, isError } = props;
   return (
-    <>
+    <div>
       <input
         type="text"
         name="lastName"
@@ -12,8 +12,10 @@ const LastName = (props) => {
       ${isError ? 'is-error' : ''}
       `}
       />
-      {isError ? <span className="text-xs text-red-error">יש להזין שם משפחה*</span> : null}
-    </>
+      {isError ? (
+        <span className="h-0 block shake text-xs text-red-error">יש להזין שם משפחה*</span>
+      ) : null}
+    </div>
   );
 };
 
