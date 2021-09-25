@@ -27,6 +27,7 @@ function ProfessionListVirtual({ professions }) {
                   id={profession.id}
                   type="professions"
                   className="h-full"
+                  company={profession.group}
                 />
               </li>
             ))}

@@ -27,6 +27,7 @@ function StudyList({ studies }) {
                   value={study.title}
                   isButton
                   description={study.description}
+                  company={study.institute}
                   id={study.id}
                   type="studies"
                   className="h-full"

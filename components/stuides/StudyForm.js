@@ -43,25 +43,40 @@ export default function StudyForm({ scopes, dropDownChanges, institutions }) {
       const scope = scopes.find((scop) => scop.value === scopeId);
       return scope?.label;
     });
-    setLabels({ ...labels, scope: labelsToset.join(',') });
+    let labelsToSetString = labelsToset.join(',');
+    if (2 < labelsToset.length) {
+      labelsToSetString = `נבחרו ${labelsToset.length} תחומים`;
+    }
+    setLabels({ ...labels, scope: labelsToSetString });
   };
   const onSendProfessions = (e) => {
     e.preventDefault();
     const labelsToset = inputs.professionIds.map((id) => {
-      const profession = professions.find(({ full_data: fullData }) => fullData.miK_NUM === id);
-      return profession?.title;
+      const profession = professions.find(({ full_data: fullData }) => +fullData.miK_NUM === +id);
+      return profession?.group;
     });
-    setLabels({ ...labels, profession: labelsToset.join(',') });
+
+    let labelsToSetString = labelsToset.join(',');
+    if (2 < labelsToset.length) {
+      labelsToSetString = `נבחרו ${labelsToset.length} מסלולים`;
+    }
+    setLabels({ ...labels, profession: labelsToSetString });
     dropDownChanges(inputs);
     // setProfessionLabel([...formData.keys()].join(','));
   };
   const onSendInstitutions = (e) => {
     e.preventDefault();
+
     const labelsToset = inputs.institutionIds.map((id) => {
-      const profession = professions.find(({ full_data: fullData }) => fullData.miK_NUM === id);
-      return profession?.title;
+      const institution = institutions.find(({ mosnum }) => mosnum === id);
+      return institution?.mosname;
     });
-    setLabels({ ...labels, profession: labelsToset.join(',') });
+    let labelsToSetString = labelsToset.join(',');
+    if (2 < labelsToset.length) {
+      labelsToSetString = `נבחרו ${labelsToset.length} מוסדות לימוד`;
+    }
+    setLabels({ ...labels, institution: labelsToSetString });
+
     dropDownChanges(inputs);
     // setProfessionLabel([...formData.keys()].join(','));
   };
@@ -106,7 +121,7 @@ const ScopesPopUp = ({ scopes, onSend, clearData, label, inputs, handleChange })
             open ? 'bg-white ring ring-green-500' : 'bg-gray-mid/10 '
           }`}
         >
-          <span className="truncate w-2/3">{label}</span>
+          <span className="truncate w-2/3 text-right">{label}</span>
           <span className={`transform transition ${!open ? 'rotate-0' : 'rotate-180'}`}>
             <Arrow />
           </span>
@@ -180,7 +195,7 @@ const ProfessionsPopUp = ({ professions, onSend, label, clearData, inputs, handl
             open ? 'bg-white ring ring-green-500' : 'bg-gray-mid/10 '
           }`}
         >
-          <span className="truncate w-2/3">{label}</span>
+          <span className="truncate w-2/3 text-right">{label}</span>
           <span className={`transform transition ${!open ? 'rotate-0' : 'rotate-180'}`}>
             <Arrow />
           </span>
@@ -214,7 +229,7 @@ const ProfessionsPopUp = ({ professions, onSend, label, clearData, inputs, handl
             </button>
           </div>
         </div>
-        <div className="overflow-auto max-h-40  flex flex-col gap-y-3 pr-3">
+        <div className="overflow-auto max-h-40  flex flex-col gap-y-3 pr-3 pb-4">
           {professions.map((profession) => (
             <Check
               name="professionIds"
@@ -289,7 +304,7 @@ const InstitutionPopUp = ({ institutions, onSend, label, clearData, inputs, hand
             </button>
           </div>
         </div>
-        <div className="overflow-auto max-h-40  flex flex-col gap-y-3 pr-3 py-3">
+        <div className="overflow-auto max-h-40  flex flex-col gap-y-3 pr-3 py-3 pb-4">
           {institutions.map((institution) => (
             <Check
               name="institutionIds"
