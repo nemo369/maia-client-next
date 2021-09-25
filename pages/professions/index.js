@@ -65,7 +65,7 @@ export default function Professions({ allProfessions, scopes }) {
   return (
     <>
       <NextSeo {...seo} />
-      <section className="professions">
+      <section className="professions pt-10">
         <BreadCrumbs breadCrumbs={[{ title: t('מקצועות'), href: '/professions' }]} />
         <div
           className={`grid grid-cols-none ml-3 transition ${loader ? 'opacity-30' : 'opacity-100'}`}

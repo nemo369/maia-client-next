@@ -20,7 +20,7 @@ export default function ProfessionForm({ scopes, handleChange }) {
   const clearForm = () => {
     resetForm();
     setlabel('תחום');
-    handleChange([...inputs.scopeIds]);
+    handleChange([]);
   };
   const onSend = (e) => {
     e.preventDefault();

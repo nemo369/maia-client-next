@@ -8,7 +8,7 @@ export default function NoStudyEmpty() {
         <div className="gray-hat">
           <GrayHat />
         </div>
-        <div className="text-black opacity-20 text-[28px] font-bold w-[69%] text-center justify-self-center">
+        <div className="text-black opacity-20 text-[28px] font-bold  text-center justify-self-center">
           לצורך הצגת נתונים יש לבחור תחום
         </div>
       </div>
