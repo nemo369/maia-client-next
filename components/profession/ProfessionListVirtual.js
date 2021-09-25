@@ -6,6 +6,7 @@ function ProfessionListVirtual({ professions }) {
     const mikName = currentValue.group ? currentValue.group : ' ';
     if (accumulator[mikName]) {
       accumulator[mikName].push(currentValue);
+      accumulator[mikName].sort((a, b) => a.title.localeCompare(b.title));
     } else {
       accumulator[mikName] = [currentValue];
     }
@@ -27,6 +28,7 @@ function ProfessionListVirtual({ professions }) {
                   id={profession.id}
                   type="professions"
                   className="h-full"
+                  company={profession.group}
                 />
               </li>
             ))}

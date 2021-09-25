@@ -6,10 +6,11 @@ import Tooltip from '../common/Tooltip';
 import useForm from '../../src/hooks/useForm';
 import Infoservice from '../../src/services/info.service';
 import FormSend from './FormSend';
+import { AppContext, useAppContext } from '../../src/context/state';
 
 const ForMoreInfo = () => {
   const { t } = useTranslation('common');
-
+  const { profile } = useAppContext(AppContext);
   const tooltipSendedJobs = `<p>
     מקדם תעסוקתי ילווה אותך בתהליכי קבלת ההחלטות לבניית מסלול אישי לקרייה שלך וללא עלות.
   </p>
@@ -22,8 +23,8 @@ const ForMoreInfo = () => {
   const [formSend, setFormSend] = useState(false);
 
   const { inputs, handleChange } = useForm({
-    fullName: '',
-    email: '',
+    fullName: `${profile.first_name} ${profile.last_name}`,
+    email: profile.user_email,
     check: true,
   });
 
@@ -90,6 +91,7 @@ const ForMoreInfo = () => {
                   </div>
                   <div className="flex mt-[15px] mr-[6px]">
                     <Check
+                      isChecked={inputs.check}
                       name="check"
                       className="ml-[10px]"
                       content={t('אני מאשר ליועץ לצפות בפרטים שלי')}

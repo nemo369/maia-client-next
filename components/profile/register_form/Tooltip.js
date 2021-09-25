@@ -1,12 +1,11 @@
 import React from 'react';
 import Popup from 'reactjs-popup';
-import Question from '../../svg/Question';
 
 const Tooltip = () => (
   <Popup
     trigger={() => (
       <button type="button">
-        <Question />
+        <div />
       </button>
     )}
     position="left top"

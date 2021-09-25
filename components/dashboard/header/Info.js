@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-bind */
 import { useTranslation } from 'next-i18next';
 import { useState } from 'react';
 import Button from '../../common/Button';
@@ -18,7 +19,6 @@ function Info() {
         type="button"
         onClick={() => setisOpen(!isOpen)}
         onMouseEnter={() => setisOpen(true)}
-        // onMouseLeave={() => setisOpen(false)}
         className="rounded-full border border-gray-200 text-gray-200 w-5 inline-block leading-5 text-center text-sm mr-2 hover:text-[#01AAB2] hover:bg-white hover:border-[#01AAB2]"
       >
         ?

@@ -1,4 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { AppContext, useAppContext } from '../../src/context/state';
+import { IS_WALKME } from '../../src/utils/consts';
+import { getLs } from '../../src/utils/localStorge';
 import PopUp from '../common/PopUp';
 import Chat from '../svg/Chat';
 import MailHeart from '../svg/MailHeart';
@@ -8,6 +11,19 @@ import ForMoreInfo from './ForMoreInfo';
 const HelpInfo = ({ className, children }) => {
   const [showPhone, setShowPhone] = useState(false);
   const [showMail, setShowMail] = useState(false);
+  const { profile } = useAppContext(AppContext);
+  const isServer = 'undefined' === typeof window;
+  const isNotWalkMe = getLs(IS_WALKME);
+
+  useEffect(() => {
+    // TODO: Should toglle profile.employment_coefficient
+    if (!profile) return;
+    if (!profile.employment_coefficient) {
+      if (!isServer && !isNotWalkMe) {
+        document?.querySelector('#hack-to-click-lazy')?.click();
+      }
+    }
+  }, [profile]);
 
   const togglePhone = () => {
     setShowPhone(!showPhone);
@@ -21,7 +37,12 @@ const HelpInfo = ({ className, children }) => {
     <>
       <PopUp
         trigger={
-          <button onClick={() => setShowMail(false)} type="button" className={className}>
+          <button
+            onClick={() => setShowMail(false)}
+            type="button"
+            className={className}
+            id="hack-to-click-lazy"
+          >
             {children}
           </button>
         }

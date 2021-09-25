@@ -48,7 +48,7 @@ export default function Profession({ profession, additionalProfessions }) {
 
   return (
     <div>
-      <section className="professions">
+      <section className="profession pt-10">
         <BreadCrumbs
           breadCrumbs={[
             { title: 'מקצועות', href: '/professions' },

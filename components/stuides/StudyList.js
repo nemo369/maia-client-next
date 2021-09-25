@@ -7,9 +7,11 @@ function StudyList({ studies }) {
   }
   const noDuplicets = studies?.filter((v, i, a) => a.findIndex((t) => t.id === v.id) === i);
   const byGroups = noDuplicets.reduce((accumulator, currentValue) => {
+    if (!currentValue.title) return accumulator;
     const mikName = currentValue.group ? currentValue.group : ' ';
     if (accumulator[mikName]) {
       accumulator[mikName].push(currentValue);
+      accumulator[mikName].sort((a, b) => a.title.localeCompare(b.title));
     } else {
       accumulator[mikName] = [currentValue];
     }
@@ -27,6 +29,7 @@ function StudyList({ studies }) {
                   value={study.title}
                   isButton
                   description={study.description}
+                  company={study.institute}
                   id={study.id}
                   type="studies"
                   className="h-full"

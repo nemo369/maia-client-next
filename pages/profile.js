@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { NextSeo } from 'next-seo';
@@ -29,10 +30,24 @@ export default function Profile({ notifications, cities }) {
     title: t('פרופיל אישי'),
   });
 
+  const removeFromTypes = () => {
+    const professionsIds = profile.professions.map((profession) => +profession.id);
+    const studiesIds = profile.studies.map((study) => +study.id);
+
+    const filteredProfessions = professions.filter((profession) => professionsIds.includes(profession.id));
+    const filteredStudies = studies.filter((study) => studiesIds.includes(study.id));
+
+    setStudies(filteredStudies);
+    setProfessions(filteredProfessions);
+  };
+
   useEffect(() => {
-    const fetcCategorys = async () => {
+    const fetchCategories = async () => {
       if (!profile || !profile.professions) return;
-      if (fetchOnce) return;
+      if (fetchOnce) {
+        removeFromTypes();
+        return;
+      }
       const professionsIds = profile.professions.map((profession) => +profession.id);
       const studiesIds = profile.studies.map((study) => +study.id);
       const [{ data: professionsData }, { data: studiesData }] = await Promise.all([
@@ -43,7 +58,7 @@ export default function Profile({ notifications, cities }) {
       setProfessions(professionsData);
       setfetchOnce(true);
     };
-    fetcCategorys();
+    fetchCategories();
   }, [profile, user.token]);
   useEffect(() => {
     dispatch({ type: SET_NOTIFICATIONS, notifications: notifications });
