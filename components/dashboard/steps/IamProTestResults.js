@@ -1,6 +1,7 @@
 import { useTranslation } from 'next-i18next';
 import { useState } from 'react';
 import Bars from '../../charts/Bars';
+import ProfileDoughnut from '../../charts/ProfileDoughnut';
 import Button from '../../common/Button';
 import StageResults from '../../common/stage1results/StageResults';
 import StagesPopSide from '../../common/StagesPopSide';
@@ -30,7 +31,16 @@ function IamProTestResults({ direction, testType }) {
       </div>
       <h4 className="mb-4 text-xl font-medium">המאפיינים העיקריים שלך:</h4>
       <ProfileSummary direction={direction} />
-      <Bars height={150} width={100} />
+      {'vertical' !== direction ? (
+        <div className="flex gap-x-3">
+          <div className="flex-grow w-full">
+            <Bars height={150} width={100} />
+          </div>
+          <ProfileDoughnut />
+        </div>
+      ) : (
+        <Bars height={150} width={100} />
+      )}
       {'vertical' === direction && (
         <div className="flex gap-x-1 mt-6">
           <StagesPopSide

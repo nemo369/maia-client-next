@@ -31,10 +31,7 @@ export default function useProfile() {
         dispatch({ type: SET_PROFILE, profile: data });
       }
       if ([403, 401].includes(status)) {
-        console.log('XXXXXXXXXXX');
-        // push('/user/login?error=401&vendorissue=true');
-        console.log('XXXXXXXXYYY');
-        console.log('XXXXXXXXXXX');
+        push('/user/login?error=401&vendorissue=true');
       }
     };
 

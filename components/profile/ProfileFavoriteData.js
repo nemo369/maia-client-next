@@ -1,10 +1,10 @@
 /* eslint-disable react/jsx-one-expression-per-line */
-import React from 'react';
-import Link from 'next/link';
 import { useTranslation } from 'next-i18next';
-import ProfileFavoriteEmpty from './ProfileFavoriteEmpty';
+import Link from 'next/link';
+import React from 'react';
 import CategoryPercentage from './CategoryPercentage';
-import JustHeart from '../common/JustHeart';
+import ProfileFavoriteEmpty from './ProfileFavoriteEmpty';
+import ProfileFavoriteHeart from './ProfileFavoriteHeart';
 
 export default function ProfileFavoriteData({ jobs, categoryType, professions, studies }) {
   let data = [];
@@ -51,7 +51,7 @@ export default function ProfileFavoriteData({ jobs, categoryType, professions, s
                 dangerouslySetInnerHTML={{ __html: dataItem.description }}
               />
               <div className=" flex items-center">
-                <JustHeart id={dataItem.id} type={categoryType.id} />
+                <ProfileFavoriteHeart id={dataItem.id} type={categoryType.id} />
                 {'jobs' === categoryType.id && (
                   <button
                     className="ml-[35px] mr-[20px] focus:outline-none rounded-full border-black border"
