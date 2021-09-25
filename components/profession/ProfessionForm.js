@@ -1,11 +1,14 @@
 /* eslint-disable react/button-has-type */
 import React, { useState } from 'react';
 import Popup from 'reactjs-popup';
+import { useTranslation } from 'next-i18next';
 import useFormStudy from '../../src/hooks/useFormStudy';
 import Check from '../common/Check';
 import Arrow from '../svg/Arrow';
 
 export default function ProfessionForm({ scopes, handleChange }) {
+  const { t } = useTranslation('common');
+
   const [label, setlabel] = useState('תחום');
   const {
     inputs,
@@ -25,7 +28,11 @@ export default function ProfessionForm({ scopes, handleChange }) {
       const scope = scopes.find((scop) => scop.value === scopeId);
       return scope?.label;
     });
-    setlabel(labels.join(','));
+    let labelToSet = labels.join(',');
+    if (2 < labels.length) {
+      labelToSet = `נבחרו ${labels.length} תחומים`;
+    }
+    setlabel(labelToSet);
     handleChange([...inputs.scopeIds]);
   };
   return (
@@ -62,13 +69,13 @@ export default function ProfessionForm({ scopes, handleChange }) {
                 type="reset"
                 className="outline-none px-2 py-1 rounded-lg bg-white hover:bg-gray-100 text-gray transition"
               >
-                נקה
+                {t('נקה')}
               </button>
               <button
                 type="submit"
                 className="outline-none px-2 py-1 rounded-lg hover:bg-opacity-80 bg-green-500 text-white transition"
               >
-                בחר
+                {t('בחרי')}
               </button>
             </div>
           </div>

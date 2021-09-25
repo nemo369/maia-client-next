@@ -32,8 +32,15 @@ const CompareStudiesResult = ({ setOpen, setCompare, studies }) => {
     }
     return <h4 className="text-5xl font-black text-[#F4F4F4]">לוגו</h4>;
   };
+
+  const printCompare = () => {
+    // const printContents = document.getElementById('print-section').innerHTML;
+    // const w = window.open();
+    // w.document.write(printContents);
+    window.print();
+  };
   return (
-    <div className="grid step-two-wrapper">
+    <div className="grid step-two-wrapper" id="print-section">
       <button className="justify-self-start" type="button" onClick={close}>
         <Xcircle />
       </button>
@@ -49,7 +56,7 @@ const CompareStudiesResult = ({ setOpen, setCompare, studies }) => {
             <button type="button">
               <Image src={envelope} alt="מעטפה" width={25} height={25} />
             </button>
-            <button type="button">
+            <button type="button" onClick={printCompare}>
               <Image src={smallprinter} alt="מדפסת" width={30} height={30} />
             </button>
             <Button
