@@ -31,7 +31,7 @@ function DashboardSummary({ direction = 'vertical' }) {
       setstep('completionIAmpro');
       return;
     }
-    // TODO: when this should apper
+    // TODO: when this should appear
     setstep('dataIsMissing');
     if (vendor.completionAutobiography && vendor.completionIAmpro && vendor.completionVeritas) {
       setstep('completionVeritas');
