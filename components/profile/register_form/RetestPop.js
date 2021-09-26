@@ -1,6 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
 import { useContext, useState } from 'react';
-import Popup from 'reactjs-popup';
 import Image from 'next/image';
 import { useTranslation } from 'next-i18next';
 import Xcircle from '../../svg/Xcircle';
