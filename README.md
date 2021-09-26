@@ -2,11 +2,11 @@
 
 ## Getting Started
 
-1. Make sure you have a running server site on wordperss with the maia-client-wp, and add it to .env.local buy copy the .env.local.example file
+1. Make sure you have a running server site on wordpress with the maia-client-wp, and add it to .env.local buy copy the .env.local.example file
 1. Then, run the development server:
 
 ```bash
-npm run insatll
+npm run install
 ```
 ```bash
 npm run dev
@@ -14,7 +14,7 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result. 
 
-- Must of the pages are route locked based on the Token Cookie. You should log in or make sure you have the currect cookie
+- Must of the pages are route locked based on the Token Cookie. You should log in or make sure you have the correct cookie
 - 
 
 ## Lint and CI/CD
@@ -33,14 +33,19 @@ There is a github action that run `build`and `lint`command just to make sure eve
 ## Tech Stack
 1. This is a [NextJS](https://nextjs.org/) app -> The React Framework for Production
 
-1 . For *state management* there is a lightwight `useReucer` that wraps the apps with `useContext` and passing data like the current user.
+1 . For *state management* there is a lightwight `useReducer` that wraps the apps with `useContext` and passing data like the current user.
 1. Axios for making API's call
 
 ## Translation
-We use `next-i18next` as trnasltion between hebrew male (HEM) and hebrew female (for the most part). make sure toi wrapp your string with the `t` function from `useTranslation`.
+We use `next-i18next` as translation between hebrew male (HEM) and hebrew female (for the most part). make sure to wraps your string with the `t` function from `useTranslation`.
 After that, run 
 ```bash
 translations-scan
 ```
 
-To add it to the common.js transaltions files in the public directory.
+To add it to the common.js translations files in the public directory.
+
+
+
+
+PLEASE BE AWARE THAT BOTH BE AND VENDOR (AKA IAMPRO) ARE LOOKED BEHIND IP WALL
