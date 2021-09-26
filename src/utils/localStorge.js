@@ -1,10 +1,17 @@
-import { DASHBOARD_TYPE_CATEGORY, LOGIN_TYPE_LS, IS_WALKME, IS_FAVORITE } from './consts';
+import {
+  DASHBOARD_TYPE_CATEGORY,
+  LOGIN_TYPE_LS,
+  IS_WALKME,
+  IS_FAVORITE,
+  IS_HELP_POPPED,
+} from './consts';
 
 const defaultLs = {
   [LOGIN_TYPE_LS]: 'email',
   [DASHBOARD_TYPE_CATEGORY]: { name: 'מקצועות', id: 'professions' },
   [IS_WALKME]: true,
   [IS_FAVORITE]: true,
+  [IS_HELP_POPPED]: false,
 };
 
 export const getLs = (key = null) => {
