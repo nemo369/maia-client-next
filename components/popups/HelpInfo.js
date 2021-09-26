@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { AppContext, useAppContext } from '../../src/context/state';
-import { IS_WALKME } from '../../src/utils/consts';
-import { getLs } from '../../src/utils/localStorge';
+import { IS_HELP_POPPED, IS_WALKME } from '../../src/utils/consts';
+import { getLs, setLs } from '../../src/utils/localStorge';
 import PopUp from '../common/PopUp';
 import Chat from '../svg/Chat';
 import MailHeart from '../svg/MailHeart';
@@ -14,13 +14,15 @@ const HelpInfo = ({ className, children }) => {
   const { profile } = useAppContext(AppContext);
   const isServer = 'undefined' === typeof window;
   const isNotWalkMe = getLs(IS_WALKME);
+  const didHelpPoppedAlready = getLs(IS_HELP_POPPED);
 
   useEffect(() => {
-    // TODO: Should toglle profile.employment_coefficient
+    // TODO: Should toggle profile.employment_coefficient
     if (!profile) return;
     if (!profile.employment_coefficient) {
-      if (!isServer && !isNotWalkMe) {
+      if (!isServer && !isNotWalkMe && !didHelpPoppedAlready) {
         document?.querySelector('#hack-to-click-lazy')?.click();
+        setLs(IS_HELP_POPPED, true);
       }
     }
   }, [profile]);

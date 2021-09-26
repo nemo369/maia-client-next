@@ -2,13 +2,14 @@
 import { useState } from 'react';
 import Popup from 'reactjs-popup';
 import Image from 'next/image';
+import { useTranslation } from 'next-i18next';
 import Xcircle from '../../svg/Xcircle';
 import Button from '../../common/Button';
 import warningsign from '../../../public/images/warningsign.png';
 
 const RetestPop = () => {
   const [open, setOpen] = useState(false);
-
+  const { t } = useTranslation('common');
   return (
     <Popup
       modal
@@ -50,7 +51,7 @@ const RetestPop = () => {
             </button>
             <Image src={warningsign} alt="מדליה" width={100} height={100} />
             <h1 className="text-[32px] text-black font-black">ביצוע מבחן חוזר "מה מעניין אותי"</h1>
-            <p className="text-2xl px-5">האם אתה בטוח שברצונך לאפס את התוצאות שהתקבלו?</p>
+            <p className="text-2xl px-5">{t('האם אתה בטוח שברצונך לאפס את התוצאות שהתקבלו?')}</p>
             <Button
               className="w-auto px-3"
               type="button"
