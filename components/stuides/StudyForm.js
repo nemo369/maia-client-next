@@ -10,11 +10,7 @@ import Arrow from '../svg/Arrow';
 
 export default function StudyForm({ scopes, dropDownChanges, institutions }) {
   const { user } = useContext(AppContext);
-  const { inputs, handleChange, clearForm } = useFormStudy({
-    scopeIds: [],
-    professionIds: [],
-    institutionIds: [],
-  });
+  
 
   const [professions, setProfessions] = useState([]);
   const [labels, setLabels] = useState({ scope: 'תחום', profession: 'מסלול', institution: 'מוסד' });
