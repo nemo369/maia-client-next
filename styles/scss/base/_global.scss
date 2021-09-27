@@ -4,6 +4,35 @@ hr.dashed {
     opacity: 0.3;
 }
 
+.height-animation {
+    animation: height-animation;
+    animation-duration: 200ms;
+    animation-timing-function: linear;
+    animation-fill-mode: backwards;
+    animation-iteration-count: 1;
+    animation-delay: 200ms;
+    // overflow: hidden;
+}
+.flex-1-0-auto {
+    flex: 1 0 auto;
+}
+.flex-0-0-auto {
+    flex: 0 0 auto;
+}
+@keyframes height-animation {
+    0% {
+        overflow: hidden;
+        max-height: 0;
+    }
+    99% {
+        overflow: hidden;
+    }
+    100% {
+        overflow: auto;
+
+        max-height: 100vh;
+    }
+}
 .male {
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -78,27 +107,6 @@ hr.dashed {
 }
 .left-to-right {
     direction: ltr;
-}
-
-.btnwrapper-stage {
-    fill: black;
-    stroke: black;
-    color: black;
-}
-.btnwrapper-stage path {
-    fill: black;
-    stroke: black;
-    color: black;
-}
-.btnwrapper-stage g {
-    fill: black;
-    stroke: black;
-    color: black;
-}
-.btnwrapper-stage svg {
-    fill: black;
-    stroke: black;
-    color: black;
 }
 
 .chart-wrapper {

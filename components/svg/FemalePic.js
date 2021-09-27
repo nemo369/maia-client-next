@@ -5,7 +5,7 @@ function ProfilePic() {
       <defs>
         <circle id="path-1" cx="78.5" cy="76.5" r="67.5" />
       </defs>
-      <g id="Design" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
+      <g id="ProfilePic-Design" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
         <g id="Styleguide" transform="translate(-570.000000, -3813.000000)">
           <g id="Group-11" transform="translate(570.184132, 3813.726790)">
             <mask id="mask-2" fill="white">

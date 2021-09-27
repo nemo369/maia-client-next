@@ -62,12 +62,12 @@ export default function Studies({ myStudies, user, scopes, institutions }) {
   return (
     <>
       <NextSeo {...seo} />
-      <section className="professions">
+      <section className="studies pt-10">
         <BreadCrumbs breadCrumbs={[{ title: t('לימודים'), href: '/studies' }]} />
         <div
           className={`grid grid-cols-none ml-3 transition ${loader ? 'opacity-40' : 'opacity-100'}`}
         >
-          <StudiesHeader num={myStudies.length} />
+          <StudiesHeader num={categoryType.id ? myStudies.length : 0} />
           <div className="flex gap-x-4 relative">
             {!categoryType.id && (
               <StudyForm

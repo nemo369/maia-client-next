@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { NextSeo } from 'next-seo';
 import { useTranslation } from 'next-i18next';
+import Link from 'next/link';
 import BreadCrumbs from '../../components/common/BreadCrumbs';
 import { getUserSession } from '../../src/utils/getUser';
 import VendorAPI from '../../src/services/vendor.service';
@@ -17,20 +18,39 @@ export default function Studies({ study, studies }) {
   const { t } = useTranslation('common');
   useProfile();
   const seo = seoMerge({
-    title: 'מאגר הלימודים |' + study.teudA_TEUR,
+    title: 'מאגר הלימודים |' + (study.hearot ? study.hearot : '404'),
   });
   const router = useRouter();
   if (!study) {
-    return 'TODO: redirect to professions page';
+    // router.push('/studies');
+    return (
+      <>
+        <NextSeo {...seo} />
+        <BreadCrumbs
+          breadCrumbs={[
+            { title: 'לימודים', href: '/studies' },
+            { title: '404', href: router.asPath },
+          ]}
+        />
+        <div className="flex h-full w-full items-center justify-center flex-col gap-y-4">
+          <h1 className="text-5xl font-bold">הלימוד אותו חיפשת אינו קיים</h1>
+          <Link href="/studies">
+            <a className="py-2 px-6 border rounded-xl">חזרה לכל למאגר הלימודים</a>
+          </Link>
+          <Link href="/">
+            <a className="py-2 px-6 border rounded-xl">חזרה לראשי</a>
+          </Link>
+        </div>
+      </>
+    );
   }
-
   return (
-    <div>
+    <div className="pt-10">
       <section>
         <BreadCrumbs
           breadCrumbs={[
             { title: 'לימודים', href: '/studies' },
-            { title: study.teudA_TEUR, href: router.asPath },
+            { title: study.hearot, href: router.asPath },
           ]}
         />
         <NextSeo {...seo} />

@@ -9,7 +9,7 @@ export default function StudyProfile({ study }) {
       <div className="row-span-2 flex flex-shrink flex-grow justify-between font-bold text-lg leading-4 text-white border-b-[1px] border-dashed border-[#ffffff2f]">
         <div className="self-center">
           <h3 className="self-center font-medium text-lg leading-5">{study.mosname}</h3>
-          <h3 className="self-center font-bold text-lg leading-5">{study.teudA_TEUR}</h3>
+          <h3 className="self-center font-bold text-lg leading-5">{study.hearot}</h3>
         </div>
         <CategoryPercentage percentage={null} className=" study-profile-percentage" />
       </div>
@@ -39,8 +39,9 @@ const Li = ({ place, study }) => {
       case 'registemo':
         return { key: study[key], value: 'מועד הרשמה' };
       case 'begiN_DATE':
-        return { key: study[key], value: 'מועד הרשממועד תחילת לימודים' };
-      case 'meshech':
+        return { key: study[key], value: 'מועד הרשמה ומועד תחילת לימודים' };
+      case 'meS_TEUR':
+        // case 'meshech':
         return { key: study[key], value: 'משך הלימודים' };
       case 'teurdrishot':
         return { key: study[key], value: 'דרישות מקדימות' };

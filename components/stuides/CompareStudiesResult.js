@@ -32,8 +32,15 @@ const CompareStudiesResult = ({ setOpen, setCompare, studies }) => {
     }
     return <h4 className="text-5xl font-black text-[#F4F4F4]">לוגו</h4>;
   };
+
+  const printCompare = () => {
+    // const printContents = document.getElementById('print-section').innerHTML;
+    // const w = window.open();
+    // w.document.write(printContents);
+    window.print();
+  };
   return (
-    <div className="grid step-two-wrapper">
+    <div className="grid step-two-wrapper" id="print-section">
       <button className="justify-self-start" type="button" onClick={close}>
         <Xcircle />
       </button>
@@ -49,7 +56,7 @@ const CompareStudiesResult = ({ setOpen, setCompare, studies }) => {
             <button type="button">
               <Image src={envelope} alt="מעטפה" width={25} height={25} />
             </button>
-            <button type="button">
+            <button type="button" onClick={printCompare}>
               <Image src={smallprinter} alt="מדפסת" width={30} height={30} />
             </button>
             <Button
@@ -63,7 +70,7 @@ const CompareStudiesResult = ({ setOpen, setCompare, studies }) => {
         </div>
         <div className="flex justify-between border-t-[1px] items-baseline compare-wrapper ">
           {studies.map(({ full_data: data }) => (
-            <div key={data.iD_Num} className="grid  pt-4 mt-5 compare-wrapper-map px-4">
+            <div key={data.iD_Num} className="grid  pt-4 mt-5 compare-wrapper-map px-4 flex-1">
               <div className="flex justify-between">
                 <h1 className="study-logo">
                   {getImg(data)}
@@ -92,18 +99,18 @@ const CompareStudiesResult = ({ setOpen, setCompare, studies }) => {
                   <h2 className="text-lg leading-5 text-gray">הערות (למסלולי ההכשרה)</h2>
                   <h3 className=" font-bold text-lg leading-5">{data.hearot}</h3>
                 </div>
-                <div className="min-h-[100px]">
+                {/* <div className="min-h-[100px]">
                   <h2 className="text-lg leading-5 text-gray">מועד תחילת הלימודים </h2>
                   <h3 className=" font-bold text-lg leading-5"> </h3>
-                </div>
-                <div className="min-h-[100px]">
+                </div> */}
+                {/* <div className="min-h-[100px]">
                   <h2 className="text-lg leading-5 text-gray">מועד אחרון לפסיכומטרי </h2>
                   <h3 className=" font-bold text-lg leading-5"> </h3>
-                </div>
-                <div className="min-h-[100px]">
+                </div> */}
+                {/* <div className="min-h-[100px]">
                   <h2 className="text-lg leading-5 text-gray">גובה שכר לימוד </h2>
                   <h3 className=" font-bold text-lg leading-5"> </h3>
-                </div>
+                </div> */}
               </div>
             </div>
           ))}

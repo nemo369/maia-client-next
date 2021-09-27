@@ -1,5 +1,3 @@
-import React from 'react';
-
 const CheckboxGroup = ({ checks, onChange, checkType, name = 'check' }) => (
   <div className="button-group flex text-[16px] text-[#6C6C6C] h-[40px] py-[4px] px-1 bg-[#EAEAEA] min-w-[315px]">
     {checks?.map((check) => (

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Select from 'react-select';
 import ChevronLeft from '../svg/ChevronLeft';
 
@@ -46,7 +46,12 @@ const SearchCountryInput = (props) => {
   const [isOpen, setIsOpen] = useState(false);
   const [vale, setVale] = useState(undefined);
 
-  const { setCityId, setCityData, cities, value, setInputValue } = props;
+  const { setCityId, setCityData, cities, value, setInputValue, cityData, emptyStateError } = props;
+  useEffect(() => {
+    if (cityData && cityData.id) {
+      setVale(cityData);
+    }
+  }, [cityData]);
 
   const toggleOpen = () => {
     setIsOpen(!isOpen);
@@ -121,6 +126,9 @@ const SearchCountryInput = (props) => {
           })}
         />
       </Dropdown>
+      {emptyStateError ? (
+        <span className="h-0 block shake text-xs text-red-error">יש לבחור ישוב*</span>
+      ) : null}
     </div>
   );
 };

@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react';
+import { useTranslation } from 'next-i18next';
 import Inputs from '../common/Inputs';
 import Arrow from '../svg/Arrow';
 import RadioMaleFemale from '../common/RadioMaleFemale';
@@ -10,16 +11,17 @@ import useForm from '../../src/hooks/useForm';
 import ProfileAPI from '../../src/services/profile.service';
 import { SET_PROFILE } from '../../src/context/appReducer';
 import { FRONT_URL } from '../../src/utils/consts';
-import AgeInput from './register_form/inputs/AgeInput';
+import AgeInputSimple from './register_form/inputs/AgeInputSimple';
+import ProfileDetailsEditStreet from './ProfileDetailsEditStreet';
 
-export default function ProfileDetails() {
+export default function ProfileDetails({ cities }) {
   const { profile, user, dispatch } = useContext(AppContext);
   const [isOpen, setIsOpen] = useState(false);
   const [isDisabled, setIsDiabled] = useState(false);
   const { inputs, handleChange, resetForm } = useForm({
     first_name: profile.first_name,
     last_name: profile.last_name,
-    birth_year: profile.birth_year,
+    birth_year: +profile.birth_year,
     gender: profile.gender,
   });
 
@@ -31,6 +33,7 @@ export default function ProfileDetails() {
     const { data, status } = await ProfileAPI.updateProfile(user.token, {
       ...inputs,
       gender: document.querySelector('#female').checked ? 'f' : 'm',
+      birth_year: +document.querySelector('#birth_year').value,
     });
     if (200 === status && data?.updated_profile) {
       dispatch({ type: SET_PROFILE, profile: data.updated_profile });
@@ -40,6 +43,10 @@ export default function ProfileDetails() {
     setIsDiabled(false);
   };
   const handleRadioChange = (e) => {
+    handleChange(e);
+    editInfo();
+  };
+  const handleYearOfBirthChange = (e) => {
     handleChange(e);
     editInfo();
   };
@@ -72,11 +79,12 @@ export default function ProfileDetails() {
       false
     );
   };
+  const { t } = useTranslation('common');
 
   return (
-    <div>
+    <div className="px-6">
       <button
-        className="flex justify-between my-[10px] mx-[30px] focus:outline-none w-full pl-16"
+        className="flex justify-between  focus:outline-none w-full "
         onClick={() => setIsOpen(!isOpen)}
         type="button"
       >
@@ -86,7 +94,7 @@ export default function ProfileDetails() {
         </div>
       </button>
       {isOpen && (
-        <form className=" bg-white w-full" onSubmit={onSubmit}>
+        <form className="height-animation bg-white w-full mt-4" onSubmit={onSubmit}>
           <div className="flex flex-col items-center text-[#717171] text-[18px]">
             <Inputs
               onChange={handleChange}
@@ -128,31 +136,25 @@ export default function ProfileDetails() {
               value={profile.user_email}
               disabled
             />
-            <div className="opacity-70 text-[#7D7D7D] text-[16px] w-[365px]">
+            <div className="opacity-70 text-[#7D7D7D] text-[16px] w-full mb-4 text-sm pr-4">
               * לעריכת מייל ונייד צור קשר עם התמיכה 03-6450072
             </div>
-            <Inputs
-              onChange={handleChange}
-              type="text"
-              status="main"
-              className={`profile-inputs ${isDisabled ? 'text-[#717171]' : ''}`}
-              placeholder="עיר מגורים"
-              value={JSON.parse(profile.city).name}
-              disabled={isDisabled}
-            />
+            <ProfileDetailsEditStreet cities={cities} />
 
-            <div className="profile-inputs">
-              <AgeInput
-                handleChange={handleChange}
-                value={profile.birth_year}
+            <div className="flex items-center justify-between w-full">
+              <AgeInputSimple
+                value={inputs.birth_year}
+                handleChange={handleYearOfBirthChange}
                 disabled={isDisabled}
               />
-            </div>
-            <div className="flex items-center justify-between w-[365px]">
               <RadioMaleFemale name="gender" onChange={handleRadioChange} value={inputs.gender} />
             </div>
-            <div className="flex justify-between w-[345px] my-[5px]">
-              <Check content="אני מאשר/ת ליועץ/ת לצפות בפרטים שלי" />
+            <div className="flex justify-between mt-8 w-full px-3">
+              <Check
+                checkWrapper=" "
+                content={t('אני מאשר ליועץ לצפות בפרטים שלי')}
+                handleChange={handleChange}
+              />
               <Tooltip
                 trigger={
                   <div className="relative smallpop w-4 h-4 border-solid border-[#666666] border-[1px] rounded-full font-small opacity-50  text-[#666666] text-xs mr-4 hover:bg-[#3C91A0] hover:opacity-100 hover:text-white inline-block text-center">
@@ -163,15 +165,11 @@ export default function ProfileDetails() {
                 <div dangerouslySetInnerHTML={{ __html: tooltipSendedJobs }} />
               </Tooltip>
             </div>
-            <div className="dash w-[365px] border-b-[2px] border-dashed border-[#979797] opacity-20 h-1" />
           </div>
         </form>
       )}
-      <a
-        href={profile.vendor_token}
-        className="my-[15px] flex w-[365px] justify-between"
-        onClick={openTest}
-      >
+      <div className="dash  border-b-[2px] border-dashed border-[#979797] opacity-20 h-1 my-6" />
+      <a href={profile.vendor_token} className="my-[15px] flex  justify-between" onClick={openTest}>
         <div className="text-[#666666] text-[18px]">עריכת פרטי שאלון אוטוביוגרפיה</div>
         <div className="opacity-50 focus:outline-none hover:opacity-100" herf="#">
           <EditInfo />

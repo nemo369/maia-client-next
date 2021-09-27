@@ -23,8 +23,19 @@ function Bars(props) {
     ]);
   }, [profile]);
   const options = {
+    animation: false,
     maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        labels: {
+          font: {
+            size: 0,
+          },
+        },
+      },
+    },
   };
+
   return (
     <div>
       <Bar

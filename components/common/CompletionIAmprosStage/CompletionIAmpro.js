@@ -3,7 +3,7 @@ import { AppContext } from '../../../src/context/state';
 import Stage2Top from './stage2Top';
 import Stage2longTextArr from './Stage2longTextArr';
 
-const CompletionIAmpro = () => {
+const CompletionIAmpro = ({ stageData }) => {
   const { profile } = useContext(AppContext);
   const iamproData = profile?.vendor_profile_i_am_pro;
   const close = () => {
@@ -11,14 +11,17 @@ const CompletionIAmpro = () => {
     const el = document.querySelector('#close-modal-hack');
     el?.click();
   };
+  if (!stageData) {
+    return null;
+  }
   return (
     <div className="stage1-wrapper grid">
-      <Stage2Top close={close} iamproData={iamproData} />
+      <Stage2Top close={close} data={stageData.top} />
 
       <hr className="dashed-stages my-5 h-[2px]" />
 
       <div className="stage1-middle-wrapper flex justify-around gap-x-[104px]">
-        <div className="grid pt-[30px] gap-y-8">
+        <div className="grid pt-[30px] gap-y-8 pl-24">
           <Stage2longTextArr iamproData={iamproData} />
         </div>
       </div>

@@ -26,7 +26,7 @@ const PopUp = ({ children, trigger, defaultOpen = false }) => {
           {trigger}
         </div>
       )}
-      <Popup position="center" modal open={open}>
+      <Popup position="center" modal open={open} closeOnDocumentClick={!defaultOpen}>
         <div>
           <div className="bg-white rounded-2xl py-7 px-4 h-[460px] overflow-y-auto">
             {children}

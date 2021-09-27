@@ -3,9 +3,11 @@ const CurrentEducation = ({ changeType, eductionActive }) => (
     value="current-education"
     type="button"
     onClick={changeType}
-    className={eductionActive ? 'font-bold text-[#00A4AE]' : ' '}
+    className={`text-right ${
+      eductionActive ? 'font-bold text-[#00A4AE] border-l-4 border-blue' : ' '
+    }`}
   >
-    השכלה נוכחתי
+    השכלה נוכחית
   </button>
 );
 export default CurrentEducation;

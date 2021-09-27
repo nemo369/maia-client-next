@@ -51,6 +51,9 @@ function ProfessionList({ professions }) {
                     id={professions[virtualColumn.index * 3 + virtualRow.index]?.id}
                     type="professions"
                     className="h-full"
+                    company={
+                      professions[virtualColumn.index * 3 + virtualRow.index]?.full_data.miK_NAME
+                    }
                   />
                 </li>
               ))}

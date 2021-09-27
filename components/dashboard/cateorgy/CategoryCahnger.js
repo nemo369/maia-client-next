@@ -33,7 +33,7 @@ function CategoryCahnger({ onChangeCategoryList, length, isLabel }) {
             <h2 className="text-3xl text-black font-bold ml-2">
               {categoryType.name}
               &nbsp;
-              {'משרות' === categoryType.name ? t('שיכולות להתאים לך') : t('שיכולים להתאים לך')}
+              {'משרות' === categoryType.name ? 'שיכולות להתאים לך' : 'שיכולים להתאים לך'}
             </h2>
             <h3 className="text-base underline text-black/50">
               (נמצאו&nbsp;

@@ -5,7 +5,7 @@ import React, { useContext, useEffect } from 'react';
 import { SET_NOTIFICATIONS } from '../../src/context/appReducer';
 import { AppContext } from '../../src/context/state';
 import NotificationAPI from '../../src/services/notification.service';
-import NotOnMobile from '../common/veritasStage.js/NotOnMobile';
+import NotOnMobile from '../common/veritasStage/NotOnMobile';
 // import Briefcase from '../svg/Briefcase';
 import FemalePic from '../svg/FemalePic';
 import Information from '../svg/Information';
@@ -51,8 +51,9 @@ const NavBar = () => {
               ) : null}
               <div className="md:w-[84px]  mx-auto  h-[73px] w-10">
                 {profile?.avatar ? (
-                  <div className="w-[68px] overflow-hidden rounded-full">
+                  <div className="w-[68px] h-[68px] overflow-hidden rounded-full">
                     <img
+                      className="w-full h-full object-cover"
                       src={profile.avatar.src}
                       widh={68}
                       height={68}
@@ -85,13 +86,16 @@ const NavBar = () => {
           ))}
         </ul>
         <div className="nav__logo">
-          <Link href="/">
-            <a className="text-xs text-white opacity-70">
-              {/* <Logosvg /> */}
-              <SilverLogo />
-              אדם מילה Powered by
-            </a>
-          </Link>
+          <a
+            href="https://adam-milo.co.il"
+            className="text-xs text-white opacity-70"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {/* <Logosvg /> */}
+            <SilverLogo />
+            אדם מילא Powered by
+          </a>
         </div>
       </aside>
       <div className="nav__border rounded-r-lg  hidden md:block z-20 mr-[-37px]" />

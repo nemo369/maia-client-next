@@ -1,98 +1,33 @@
+import { useTranslation } from 'next-i18next';
 import React, { useContext, useState } from 'react';
-import { SET_PROFILE } from '../../src/context/appReducer';
 import { AppContext } from '../../src/context/state';
-import ProfileAPI from '../../src/services/profile.service';
-import CameraSvg from '../svg/Camera';
-import FemaleCrown from '../svg/FemaleCrown';
-import MaleCrown from '../svg/MaleCrown';
-import NeedInfo from '../svg/NeedInfo';
+import HelpInfo from '../popups/HelpInfo';
+import ProfileAvatar from './ProfileAvatar';
 import ProfileDetails from './ProfileDetails';
 
-export default function ProfileInfo() {
+export default function ProfileInfo({ cities }) {
   // const [lookingForJob, setLookingForJob] = useState(false);
-  const [selectedFile, setSelectedFile] = useState(null);
   const [loader, setLoader] = useState(false);
-  const { profile, user, dispatch } = useContext(AppContext);
+  const { profile } = useContext(AppContext);
 
-  const validateImage = (file) => {
-    if (!file) {
-      return false;
-    }
-    if (!['image/jpeg', 'image/jpg'].includes(file.type)) {
-      return false;
-    }
-    if (3097152 < file.size) {
-      // 3 MiB for bytes.
-      return false;
-    }
-
-    return true;
-  };
-
-  const updateProfle = async (file) => {
-    setLoader(true);
-    const formData = new FormData();
-    formData.append('file', file);
-    formData.append('title', profile.first_name);
-    formData.append('caption', `${profile.first_name} ${profile.last_name}`);
-    const { data, status } = await ProfileAPI.updateProfileImage(
-      user.token,
-      formData,
-      `${profile.first_name}_${profile.last_name}.${file.type.split('/').pop()}`
-    );
-    if (200 === status && data?.updated_profile) {
-      dispatch({ type: SET_PROFILE, profile: data.updated_profile });
-    }
-    setLoader(false);
-    setSelectedFile(null);
-  };
-
-  const addImage = (event) => {
-    setSelectedFile(null);
-    const [file] = event.target.files;
-
-    if (!validateImage(file)) {
-      setSelectedFile(null);
-      return;
-    }
-    setSelectedFile(file);
-    updateProfle(file);
-    event.target.value = '';
-  };
+  const { t } = useTranslation('common');
 
   if (!profile) return null;
   return (
     <section
       className={`${
         loader ? 'opacity-60' : 'opacity-100'
-      } transiton w-[430px] bg-white rounded-[20px] relative mb-18`}
+      } transiton w-[430px]  bg-white rounded-[20px] relative mb-18`}
     >
-      <span className="absolute top-[-80px] right-[300px]">
-        <NeedInfo />
-      </span>
-      <div className="w-[130px] mx-auto relative top-[-45px]">
-        {profile.avatar ? (
-          <div className="w-[135px] overflow-hidden mx-auto rounded-full">
-            <img
-              src={profile.avatar.src}
-              widh={135}
-              height={135}
-              loading="lazy"
-              alt={profile.first_name}
-            />
-          </div>
-        ) : null}
-        {!profile.avatar && 'm' === profile?.gender && <MaleCrown />}
-        {!profile.avatar && 'f' === profile?.gender && <FemaleCrown />}
-        <label
-          accept="image/jpeg, image/jpg"
-          value={selectedFile}
-          className="cursor-pointer hover:bg-opacity-90 transition mr-auto transform translate-y-[-32px] w-10 h-10 border-2 border-white rounded-full flex justify-center items-center text-white bg-gray-300"
-        >
-          <CameraSvg />
-          <input type="file" className="hidden" onChange={addImage} />
-        </label>
-      </div>
+      <HelpInfo className="absolute left-0 top-0 -translate-y-4 -translate-x-2 right-auto cursor-pointer">
+        <div className="w-[120px] h-[120px] rounded-full bg-orange  border-white border-2 text-white font-bold text-lg flex flex-col justify-center items-center leading-tight hover:bg-orange-active transition">
+          <span>{t('זקוק')}</span>
+          <span>להכוונה</span>
+          <span>אישית?</span>
+        </div>
+      </HelpInfo>
+      <ProfileAvatar setLoader={setLoader} />
+
       <div className="relative top-[-70px]">
         <h2 className="text-orange font-bold text-[24px] text-center leading-6">
           כל הכבוד!
@@ -102,55 +37,12 @@ export default function ProfileInfo() {
           </span>
         </h2>
         <div className="text-gray-mid text-[18px] opacity-70 text-center mb-4 leading-4">
-          כל המשרות ומסלולי הלימודים מותאמים
+          כל המקצועות ומסלולי הלימודים מותאמים
           <br />
           בצורה אידאלית עבורך :)
         </div>
-        {profile && <ProfileDetails />}
+        {profile && <ProfileDetails cities={cities} />}
         <div className="bg-[#979797] opacity-20 mx-8 h-[1px]" />
-        {/* <div className="flex justify-between items-center mb-[15px] mt-6 px-[30px]">
-          <div className="flex items-center">
-            <div className="text-gray-mid text-[18px]">הצג אותי כמחפש עבודה למעסיקים</div>
-            <Tooltip
-              trigger={
-                <div className="relative smallpop w-4 h-4 border-solid border-[#666666] border-[1px] rounded-full font-small opacity-50  text-[#666666] text-xs mr-4 hover:bg-[#3C91A0] hover:opacity-100 hover:text-white inline-block text-center">
-                  ?
-                </div>
-              }
-            >
-              <div dangerouslySetInnerHTML={{ __html: tooltipLookingForJob }} />
-            </Tooltip>
-          </div>
-          <Toggle isChecked={lookingForJob} onChange={onIsChecked} onInput={onIsChecked} />
-        </div>
-        <div className="px-8">
-          <div className="flex justify-between mb-2">
-            <Check content="אני מאשר/ת ליועץ לצפות במשרות ששלחתי" />
-            <Tooltip
-              trigger={
-                <div className="relative smallpop w-4 h-4 border-solid border-[#666666] border-[1px] rounded-full font-small opacity-50  text-[#666666] text-xs mr-4 hover:bg-[#3C91A0] hover:opacity-100 hover:text-white inline-block text-center">
-                  ?
-                </div>
-              }
-            >
-              <div dangerouslySetInnerHTML={{ __html: tooltipSendedJobs }} />
-            </Tooltip>
-          </div>
-          <div className="flex justify-between mb-2">
-            <Check content="אני מאשר/ת למעסיקים לפנות אלי עצמאית" />
-            <Tooltip
-              trigger={
-                <div className="relative smallpop w-4 h-4 border-solid border-[#666666] border-[1px] rounded-full font-small opacity-50  text-[#666666] text-xs mr-4 hover:bg-[#3C91A0] hover:opacity-100 hover:text-white inline-block text-center">
-                  ?
-                </div>
-              }
-            >
-              <div dangerouslySetInnerHTML={{ __html: tooltipReachMe }} />
-            </Tooltip>
-          </div>
-        </div>
-        <div className="bg-[#979797] opacity-20 mx-8 h-[1px]" />
-        <UploadedFiles /> */}
       </div>
     </section>
   );

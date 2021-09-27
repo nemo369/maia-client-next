@@ -26,7 +26,7 @@ const EducationCurrent = (props) => {
     </div>
   ));
   return (
-    <div className="bg-[#F5F5F5] grid py-[30px] px-5 gap-y-7 max-h-[427px] overflow-scroll">
+    <div className="bg-[#F5F5F5] grid py-[30px] px-5 gap-y-7 max-h-[427px] overflow-auto">
       {workExp}
     </div>
   );

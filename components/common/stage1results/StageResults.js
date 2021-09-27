@@ -2,9 +2,7 @@ import { useState, useEffect } from 'react';
 import Autobiography from './Autobiography';
 import ProfileAPI from '../../../src/services/profile.service';
 import CompletionIAmpro from '../CompletionIAmprosStage/CompletionIAmpro';
-import Veretas from '../veritasStage.js/Veretas';
-
-// import StageThreeResults from '../StageThreeResults';
+import Veretas from '../veritasStage/Veretas';
 
 const StageResults = ({ testType }) => {
   const [stages, setStages] = useState('');
@@ -19,7 +17,7 @@ const StageResults = ({ testType }) => {
   return (
     <>
       {'Autobiography' === testType && <Autobiography stageData={stages} />}
-      {'CompletionIAmpro' === testType && <CompletionIAmpro stageData={stages} />}
+      {'IAmpro' === testType && <CompletionIAmpro stageData={stages?.completionIAmpro} />}
       {'Veretas' === testType && <Veretas stageData={stages} />}
     </>
   );

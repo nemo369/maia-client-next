@@ -1,5 +1,3 @@
-import React from 'react';
-
 export default function Check({
   value,
   isChecked,
@@ -24,7 +22,7 @@ export default function Check({
         onChange={onChange}
         className={className}
       />
-      <div className={'check-text' + textClass}>{content}</div>
+      <div className={'check-text ' + textClass}>{content}</div>
     </label>
   );
 }

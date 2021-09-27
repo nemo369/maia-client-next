@@ -2,48 +2,57 @@ import Select from 'react-select';
 import { useState } from 'react';
 import ChevronLeft from '../svg/ChevronLeft';
 
+const customStyles = {
+  menuList: (provided) => ({
+    ...provided,
+    width: '98%',
+    padding: 20,
+
+    '::-webkit-scrollbar-thumb': {
+      background: '#00C5C6',
+      height: '50px',
+      borderRadios: '50%',
+      width: '10px',
+    },
+    '::-webkit-scrollbar-track': {
+      background: '#D6D9E2',
+      opacity: '0.55',
+      borderRadios: '20px',
+      width: '5px',
+    },
+    '::-webkit-scrollbar': {
+      width: '4px',
+    },
+  }),
+  option: (provided) => ({
+    ...provided,
+    ':hover': {
+      color: '#00C5C6',
+      backgroundColor: 'white',
+      fontWeight: '600',
+      cursor: 'pointer',
+    },
+  }),
+  menu: (provided) => ({
+    ...provided,
+    marginTop: '0px',
+    padding: '10px',
+    color: 'gray',
+    border: '1px solid #CCCCCC',
+  }),
+};
 const SearchStreetInput = (props) => {
   const [isOpen, setIsOpen] = useState(false);
-  const { theStreets, cityData, setTheStreet, theStreet, inputValue, setInputValue } = props;
-  const customStyles = {
-    menuList: (provided) => ({
-      ...provided,
-      width: '98%',
-      padding: 20,
+  const {
+    theStreets,
+    cityData,
+    setTheStreet,
+    theStreet,
+    inputValue,
+    setInputValue,
+    emptyStateError,
+  } = props;
 
-      '::-webkit-scrollbar-thumb': {
-        background: '#00C5C6',
-        height: '50px',
-        borderRadios: '50%',
-        width: '10px',
-      },
-      '::-webkit-scrollbar-track': {
-        background: '#D6D9E2',
-        opacity: '0.55',
-        borderRadios: '20px',
-        width: '5px',
-      },
-      '::-webkit-scrollbar': {
-        width: '4px',
-      },
-    }),
-    option: (provided) => ({
-      ...provided,
-      ':hover': {
-        color: '#00C5C6',
-        backgroundColor: 'white',
-        fontWeight: '600',
-        cursor: 'pointer',
-      },
-    }),
-    menu: (provided) => ({
-      ...provided,
-      marginTop: '0px',
-      padding: '10px',
-      color: 'gray',
-      border: '1px solid #CCCCCC',
-    }),
-  };
   const toggleOpen = () => {
     setIsOpen(!isOpen);
   };
@@ -103,6 +112,9 @@ const SearchStreetInput = (props) => {
           styles={customStyles}
         />
       </Dropdown>
+      {emptyStateError ? (
+        <span className="h-0 block shake text-xs text-red-error">יש לבחור רחוב*</span>
+      ) : null}
     </div>
   );
 };

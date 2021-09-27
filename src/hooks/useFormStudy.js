@@ -13,6 +13,7 @@ export default function useFormStudy(initial = {}) {
   function handleChange(e) {
     const { value } = e.target;
     const { name } = e.target;
+
     if (e.target.checked) {
       setInputs({
         // copy the existing state

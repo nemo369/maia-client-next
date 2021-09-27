@@ -11,7 +11,7 @@ export default function ProfileFavoriteEmpty({ categoryType }) {
           <GrayHat />
         </div>
         <div className="text-black opacity-20 text-[28px] font-bold">
-          עדיין לא נבחרו מסלולי לימוד שאהבת
+          עדיין לא נבחרו {categoryType?.name} שאהבת
         </div>
         <Link href={`/${categoryType?.id}`}>
           <a className="text-[#3D9CA8] text-[20px] font-bold underline flex justify-center">

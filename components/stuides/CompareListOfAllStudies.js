@@ -28,6 +28,9 @@ const CompareListOfAllStudies = ({ setOpen, studies, handleChange, handleCompare
                 'מוסדות הלימוד המוצגים הם בהתאם לתוצאות סולם ההתקדמות שלך. ניתן לבחור עד 4 מסלולי לימוד'
               )}
             </p>
+            {inputs.categories.length && 1 >= inputs.categories.length ? (
+              <div className="text-red-error h-0">יש לבחור 2 מסלולים לפחות</div>
+            ) : null}
           </div>
           <Button
             className="place-self-end px-5"
@@ -35,7 +38,7 @@ const CompareListOfAllStudies = ({ setOpen, studies, handleChange, handleCompare
             status="main"
             name="השוואת מסלולים"
             onClick={handleCompare}
-            disabled={0 >= inputs.categories.length || 4 < inputs.categories.length}
+            disabled={1 >= inputs.categories.length || 4 < inputs.categories.length}
           />
         </div>
         <div className="grid  gap-y-8 pt-5">
@@ -56,7 +59,7 @@ const CompareListOfAllStudies = ({ setOpen, studies, handleChange, handleCompare
                 className={`bg-white  rounded-2xl border border-[rgba(151,151,151,0.13)]
       px-4 py-5 flex flex-col justify-between shadow-md w-full`}
               >
-                <h5 className="company text-gray-active text-[18px] text-right">{study.company}</h5>
+                <h5 className=" text-gray-active text-[18px] text-right">{study.company}</h5>
                 <div className="flex justify-between">
                   <h4 className=" font-bold text-[18px] text-[#333333] text-right max-w-[465px]">
                     {study.title}

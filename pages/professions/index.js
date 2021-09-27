@@ -62,16 +62,15 @@ export default function Professions({ allProfessions, scopes }) {
     }
     setProfessions(allProfessions);
   };
-
   return (
     <>
       <NextSeo {...seo} />
-      <section className="professions">
+      <section className="professions pt-10">
         <BreadCrumbs breadCrumbs={[{ title: t('מקצועות'), href: '/professions' }]} />
         <div
           className={`grid grid-cols-none ml-3 transition ${loader ? 'opacity-30' : 'opacity-100'}`}
         >
-          <ProfessionsHeader myProfessions={myProfessions} />
+          <ProfessionsHeader myProfessions={categoryType.id ? myProfessions : null} />
           <div className="grid grid-cols-2 gap-x-1 transition">
             <div className="grid grid-cols-2 gap-x-1 pr-1">
               {!categoryType.id && <ProfessionForm scopes={scopes} handleChange={setQuery} />}

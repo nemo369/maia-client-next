@@ -6,25 +6,18 @@ import BigChecked from '../svg/BigChecked';
 import StagesPopSide from '../common/StagesPopSide';
 import StageResults from '../common/stage1results/StageResults';
 
-const FinisthStepIamPro = (props) => {
-  // const [isDone, setIsDone] = useState(false);
-  const { setFinisthStepIamPro } = props;
-  return (
-    <div>
-      <PopUp defaultOpen>
-        <PopupContent setFinisthStepIamPro={setFinisthStepIamPro} />
-      </PopUp>
-    </div>
-  );
-};
+const FinisthStepIamPro = (props) => (
+  <div>
+    <PopUp defaultOpen>
+      <PopupContent {...props} />
+    </PopUp>
+  </div>
+);
 export default FinisthStepIamPro;
 
-const PopupContent = (props) => {
-  const { setFinisthStepIamPro } = props;
+const PopupContent = ({ close }) => {
   const { t } = useTranslation('common');
-  const close = () => {
-    setFinisthStepIamPro(false);
-  };
+
   return (
     <div className="flex flex-col items-center justify-center py-4 px-16 text-center">
       <BigChecked />
@@ -41,11 +34,23 @@ const PopupContent = (props) => {
         ו-״מה מעניין אותי״
       </div>
       <StagesPopSide
-        trigger={<Button className="h-[50px] w-[240px]" status="secondary" name="לתוצאות השלב" />}
+        trigger={
+          <Button
+            className="h-[50px] w-[240px]"
+            status="secondary"
+            name="לתוצאות השלב"
+            // onClick={() => close(false)}
+          />
+        }
       >
-        <StageResults />
+        <StageResults testType="IAmpro" />
       </StagesPopSide>
-      <button className="h-[50px] w-[240px]" type="button" id="close-modal-hack" onClick={close}>
+      <button
+        className="h-[50px] w-[240px]"
+        type="button"
+        id="close-modal-hack"
+        onClick={() => close(false)}
+      >
         {t('סגור')}
       </button>
     </div>

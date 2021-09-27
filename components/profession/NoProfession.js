@@ -10,6 +10,9 @@ export default function NoProfession() {
         לא נמצאו מקצועות
         <br />
       </h3>
+      <div className="text-black opacity-20 text-[28px] font-bold  text-center ">
+        לצורך הצגת נתונים יש לבחור תחום
+      </div>
     </div>
   );
 }

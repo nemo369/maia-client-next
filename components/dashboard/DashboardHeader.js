@@ -10,7 +10,7 @@ import Info from './header/Info';
 function DashboardHeader() {
   const { t } = useTranslation('common');
   const { profile } = useAppContext(AppContext);
-  const [step, setstep] = useState(2);
+  const [step, setstep] = useState(1);
   useEffect(() => {
     if (!profile || !profile.vendor_profile) {
       return;
@@ -22,15 +22,29 @@ function DashboardHeader() {
     }
 
     if (vendor.completionAutobiography && vendor.completionIAmpro && !vendor.completionVeritas) {
-      setstep(2);
+      setstep(3);
       return;
     }
     if (vendor.completionAutobiography && vendor.completionIAmpro && vendor.completionVeritas) {
-      setstep(3);
+      setstep(4);
     }
   }, [profile]);
+  if (4 === step) {
+    return (
+      <header className="w-full h-32 mb-4 lg:px-7 px-1 lg:mt-9 mt-2 flex items-center stepper-one rounded-lg">
+        <div className="m-auto text-center text-white">
+          <h1 className="font-bold text-3xl">
+            <strong className="text-orange">כל הכבוד!</strong>
+            &nbsp; השלמת את סולם ההתקדמות שלך
+          </h1>
+          <h2 className="text-xl">כל המקצועות ומסלולי הלימודים מותאמים בצורה אידיאלית עבורך :)</h2>
+        </div>
+        <Image src={assistant} alt="העוזרת של מאיה" width={242} height={197} />
+      </header>
+    );
+  }
   return (
-    <header className="sw-full h-32 mb-4 p-7 flex items-center stepper-one">
+    <header className="w-full h-32 mb-4 lg:px-7 px-1 lg:mt-9 mt-2 flex items-center stepper-one rounded-lg">
       <div className="ml-auto">
         <h1 className="text-4xl max-w-xs truncate text-white">
           <strong className="text-orange font-bold">
@@ -48,6 +62,7 @@ function DashboardHeader() {
           {t('בשלב')}
           &nbsp;
           {step}
+          {3 === step ? ' ואחרון' : ''}
           &nbsp;
           {t('במסע ההתקדמות שלך')}
           <Info />

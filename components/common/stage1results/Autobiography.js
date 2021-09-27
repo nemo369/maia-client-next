@@ -113,7 +113,7 @@ const Autobiography = (props) => {
           changeType={changeSelectedType}
         />
 
-        <div className="grid pt-[30px] gap-y-8 w-full pl-10">
+        <div className="grid pt-[30px] gap-y-8  w-full pl-10">
           <Switch test={selected}>
             <Case value="work-exprerience">
               <StagesResultsWorkExperience

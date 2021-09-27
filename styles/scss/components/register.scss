@@ -89,7 +89,10 @@
   background-color: rgba(255, 255, 255, 0.81);
   border: solid 2px #41c2c4;
 }
-
+.regiserPageInput.is-error {
+  background-color: rgba(255, 255, 255, 0.81);
+  border: solid 2px #ffdbdb;
+}
 .boomp:active + .emailini {
   outline: none !important;
   background-color: rgba(255, 255, 255, 0.81);
@@ -110,7 +113,9 @@
   background-size: 25%;
   background-position: center;
 }
-
+.checkbox--error.checkbox {
+  border-color: red;
+}
 .checkbox:checked {
   /* background-color: #b61515; */
   border-color: #3c91a0;

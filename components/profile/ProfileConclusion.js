@@ -1,5 +1,6 @@
 import React from 'react';
 import Button from '../common/Button';
+// TODO; Remove this
 
 export default function ProfileConclusion({ stage }) {
   let stageLabel = '';

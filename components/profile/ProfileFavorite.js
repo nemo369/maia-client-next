@@ -54,29 +54,3 @@ export default function ProfileFavorite({ studies, professions }) {
     </div>
   );
 }
-// const professionOptions = [
-//   { value: 'sent', label: 'נשלחו' },
-//   { value: 'favorite', label: 'אהבתי' },
-// ];
-// const customStyles = {
-//   menuList: () => ({
-//     backgroundColor: '#FFFFFF',
-//     color: '#898080',
-//     borderWidth: '2px',
-//   }),
-//   control: (provided) => ({
-//     ...provided,
-//     backgroundColor: '#E1E1E1',
-//     border: 0,
-//     borderRadius: '5px',
-//     width: '200px',
-//     height: 32,
-//     minHeight: 32,
-//     boxShadow: 'none',
-//   }),
-//   indicatorsContainer: () => ({
-//     backgroundColor: '#E1E1E1',
-//     height: 18,
-//     marginBottom: 18,
-//   }),
-// };

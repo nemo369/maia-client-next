@@ -6,19 +6,19 @@ const Button = forwardRef(({ name, onClick, type, disabled, className, status, c
     case 'main':
       classes += `h-[50px]  ${
         disabled
-          ? 'bg-gray-disabled text-gray-text font-bold'
+          ? 'bg-gray-disabled text-gray-text font-bold cursor-not-allowed'
           : 'bg-orange text-white active:bg-orange-active hover:bg-orange-active font-bold'
       }`;
       break;
     case 'secondary':
       classes += `h-[50px]  ${
-        disabled && 'opacity-40'
+        disabled && 'opacity-40 cursor-not-allowed'
       } bg-none text-black border border-black font-bold active:bg-white-active hover:bg-white-active`;
       break;
     case 'gradient':
       classes += `h-16 px-10 ${
         disabled
-          ? 'bg-gray-disabled text-gray-text font-thin'
+          ? 'bg-gray-disabled text-gray-text font-thin cursor-not-allowed'
           : 'bg-gradient-to-r from-gradient-1 to-gradient-2 text-white hover:from-blue hover:to-blue font-bold'
       }`;
       break;
@@ -32,6 +32,7 @@ const Button = forwardRef(({ name, onClick, type, disabled, className, status, c
         ${classes} ${className}`}
       type={'submit' === type ? 'submit' : 'button'}
       onClick={onClick}
+      disabled={!!disabled}
     >
       {name}
       {children}

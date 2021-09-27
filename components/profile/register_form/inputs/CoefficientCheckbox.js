@@ -1,5 +1,5 @@
 const CoefficientCheckbox = (props) => {
-  const { handleChange } = props;
+  const { handleChange, checked } = props;
 
   return (
     <div className="signup-frist-checkbox-wrapper flex items-center">
@@ -9,12 +9,12 @@ const CoefficientCheckbox = (props) => {
         className="text-regiterPageDarkBottomText leading-regiterPageDarkBottomText text-regiterPageDarkBottomTextcolor"
       >
         <input
-          required
           className="checkbox ml-4"
           id="employment_coefficient"
           name="employment_coefficient"
-          type="checkbox"
           value="employment_coefficient"
+          type="checkbox"
+          checked={checked}
           onChange={handleChange}
         />
         אני מאשר/ת למקדם/ת תעסוקה לצפות בפרטים שלי

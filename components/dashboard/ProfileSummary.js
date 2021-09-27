@@ -2,11 +2,13 @@
 import { AppContext, useAppContext } from '../../src/context/state';
 import ProfileDoughnut from '../charts/ProfileDoughnut';
 
-function ProfileSummary() {
+function ProfileSummary({ direction }) {
+  // vertical  --- horizontal
+
   const { profile } = useAppContext(AppContext);
 
   return (
-    <div className="min-h-[300px]">
+    <div className="min-h-[300px] ProfileSummary">
       {/* {profile.vendor_profile_i_am_pro && ( */}
       <>
         <div className="flex">
@@ -15,7 +17,7 @@ function ProfileSummary() {
             <br />
             {profile?.vendor_profile_i_am_pro?.shortProfileText}
           </p>
-          <ProfileDoughnut />
+          {'vertical' === direction && <ProfileDoughnut />}
         </div>
         <p className="mb-4" />
         <p>{profile?.vendor_profile_i_am_pro?.shortEnviormentText}</p>

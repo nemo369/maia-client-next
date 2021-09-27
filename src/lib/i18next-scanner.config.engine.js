@@ -13,7 +13,7 @@ module.exports = {
 
     lngs: ['hem', 'hef'],
 
-    ns: [],
+    ns: ['common'],
 
     defaultLng: 'hem',
     defaultNs: 'common',

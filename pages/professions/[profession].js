@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { NextSeo } from 'next-seo';
 import { useTranslation } from 'next-i18next';
+import Link from 'next/link';
 import BreadCrumbs from '../../components/common/BreadCrumbs';
 import ProfessionDropdowns from '../../components/profession/ProfessionDropdowns';
 import ProfessionInfo from '../../components/profession/ProfessionInfo';
@@ -20,12 +21,34 @@ export default function Profession({ profession, additionalProfessions }) {
   });
   const router = useRouter();
   if (!profession) {
-    return 'TODO: redirect to professions page';
+    if (!study) {
+      // router.push('/studies');
+      return (
+        <>
+          <NextSeo {...seo} />
+          <BreadCrumbs
+            breadCrumbs={[
+              { title: 'מקצועות', href: '/professions' },
+              { title: '404', href: router.asPath },
+            ]}
+          />
+          <div className="flex h-full w-full items-center justify-center flex-col gap-y-4">
+            <h1 className="text-5xl font-bold">המקצוע אותו חיפשת אינו קיים</h1>
+            <Link href="/professions">
+              <a className="py-2 px-6 border rounded-xl">חזרה לזירת המקצועות</a>
+            </Link>
+            <Link href="/">
+              <a className="py-2 px-6 border rounded-xl">חזרה לראשי</a>
+            </Link>
+          </div>
+        </>
+      );
+    }
   }
 
   return (
     <div>
-      <section className="professions">
+      <section className="profession pt-10">
         <BreadCrumbs
           breadCrumbs={[
             { title: 'מקצועות', href: '/professions' },

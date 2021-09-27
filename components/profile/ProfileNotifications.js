@@ -32,7 +32,7 @@ export default function ProfileNotifications() {
   };
 
   return (
-    <div className="pofile-notifications max-h-[400px] w-[300px] rounded-[15px] p-[20px]">
+    <div className="pofile-notifications w-[300px] rounded-[15px] p-[20px] flex-0-0-auto h-full">
       <div className="pofile-notifications-header dash border-b-[1px] border-dashed border-[#ffffff2f] flex justify-between text-gray-200 items-center">
         <div className="text-[24px] text-white font-black">ההתראות שלי</div>
         <button

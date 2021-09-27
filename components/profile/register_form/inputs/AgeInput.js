@@ -1,11 +1,16 @@
 /* eslint-disable prettier/prettier */
 import Select from 'react-select';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import ChevronLeft from '../../../svg/ChevronLeft';
 
-const AgeInput = ({ value, handleChange }) => {
+const AgeInput = ({ value, handleChange, initValue, isError }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [vale, setVale] = useState(undefined);
+  useEffect(() => {
+    if (initValue) {
+      setVale({ value: initValue, label: initValue, id: initValue });
+    }
+  }, [initValue]);
 
   const currentYear = new Date().getFullYear();
   const range = (start, stop, step) => Array.from({ length: (stop - start) / step + 1 }, (_, i) => start + i * step);
@@ -21,7 +26,7 @@ const AgeInput = ({ value, handleChange }) => {
     setIsOpen(false);
   };
   return (
-    <div className="relative ">
+    <div className="relative min-w-[110px]">
       <Dropdown
         isOpen={isOpen}
         onClose={() => setIsOpen(false)}
@@ -33,7 +38,7 @@ const AgeInput = ({ value, handleChange }) => {
             required
             className={`flex  items-center justify-between pl-2 bwc    hover: bg-red-900 ${
               vale ? '' : 'text-gray-active'
-            }`}
+            } ${isError ? 'border border-red-error bg-white ' : ''}`}
             onClick={() => setIsOpen(true)}
             isselected={isOpen.toString()}
           >
@@ -67,6 +72,11 @@ const AgeInput = ({ value, handleChange }) => {
           })}
         />
       </Dropdown>
+      {isError ? (
+        <span className="h-0 block shake text-xs text-red-error">
+          יש לבחור שנת לידה*
+        </span>
+      ) : null}
     </div>
   );
 };
