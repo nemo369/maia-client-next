@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import StarRating from './StarRating';
-import medalStar from '../../../public/images/medalStar.png';
+import worrior from '../../../public/images/worrior.png';
 
 const StagesResultsWorkExperience = ({ profileData, medal }) => (
   <div className="bg-[#F5F5F5] grid py-[30px] px-5 gap-y-7 max-h-[427px] overflow-auto">
@@ -16,9 +16,11 @@ const WorkExp = ({ info, medal, index }) => {
   const warriorText = `חשוב שתדע שמסלול השירות שלך מקנה לך כישורים ומיומנויות חשובים 
   לקראת השילוב בלימודים ובתעסוקה.`;
   return (
-    <div className="flex border-b-2 pb-4 gap-y-[30px]">
-      {medal && 0 === index && <Image src={medalStar} alt="מדליה" width={100} height={100} />}
-      <div className={medal && 0 === index ? 'grid' : 'w-full'}>
+    <div className="flex border-b-2 pb-4 gap-y-[30px] gap-x-2">
+      <div className="warrior-wrapper">
+        {medal && 0 === index && <Image className="worrior-img" src={worrior} alt="מדליה" />}
+      </div>
+      <div className={medal && 0 === index ? 'grid gap-y-2' : 'w-full'}>
         <div className="flex justify-between">
           <p className="text-xl text-[#474747] max-w-[425px]">
             {info.categoryName}

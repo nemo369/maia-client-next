@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { useTranslation } from 'next-i18next';
 import Xcircle from '../../svg/Xcircle';
 import Button from '../../common/Button';
-import warningsign from '../../../public/images/warningsign.png';
+import warning from '../../../public/images/warning.png';
 import { AppContext } from '../../../src/context/state';
 import Loader from '../../common/Loader';
 
@@ -60,7 +60,7 @@ const RetestPop = () => {
             >
               <Xcircle />
             </button>
-            <Image src={warningsign} alt="שימו לב" width={100} height={100} />
+            <Image src={warning} alt="שימו לב" width={100} height={100} />
             <h1 className="text-[32px] text-black font-black">ביצוע מבחן חוזר "מה מעניין אותי"</h1>
             <p className="text-2xl px-5">{t('האם אתה בטוח שברצונך לאפס את התוצאות שהתקבלו?')}</p>
             <a

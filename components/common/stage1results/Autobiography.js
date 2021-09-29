@@ -37,6 +37,8 @@ const Autobiography = (props) => {
   const { stageData } = props;
   const { profile } = useContext(AppContext);
   const autobiographyData = profile?.vendor_profile;
+  console.log(autobiographyData);
+  console.log('autobiographyData');
   const [biographys, setBiographys] = useState({
     works: [],
     eductions: [],
