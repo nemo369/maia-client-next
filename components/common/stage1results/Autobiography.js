@@ -9,6 +9,7 @@ import WhereToGo from './WhereToGo';
 import StageOneBottom from './StageOneBottom';
 import AutoBiographyChartResults from './AutoBiographyChartResults';
 import Bars from '../../charts/Bars';
+import MessageMedal from '../../profile/register_form/MessageMedal';
 
 const worksConsts = [
   'שירות צבאי',
@@ -114,6 +115,7 @@ const Autobiography = (props) => {
           goActive={goActive}
           changeType={changeSelectedType}
         />
+        {/* <MessageMedal /> */}
 
         <div className="grid pt-[30px] gap-y-8  w-full pl-10">
           <Switch test={selected}>

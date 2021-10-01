@@ -54,7 +54,8 @@ function DashboardSummary({ direction = 'vertical' }) {
           <AutobiographyTestResults testType="Autobiography" direction={direction} />
         </Case>
         <Case value="completionIAmpro">
-          <IamProTestResults testType="IAmpro" direction={direction} />
+          <AutobiographyTestResults testType="Autobiography" direction={direction} />
+          {/* <IamProTestResults testType="IAmpro" direction={direction} /> */}
         </Case>
         <Case value="completionVeritas">
           <VeritasTestResults testType="Veretas" direction={direction} />
