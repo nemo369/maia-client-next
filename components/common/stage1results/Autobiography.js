@@ -9,7 +9,7 @@ import WhereToGo from './WhereToGo';
 import StageOneBottom from './StageOneBottom';
 import AutoBiographyChartResults from './AutoBiographyChartResults';
 import Bars from '../../charts/Bars';
-import MessageMedal from '../../profile/register_form/MessageMedal';
+// import MessageMedal from '../../profile/register_form/MessageMedal';
 
 const worksConsts = [
   'שירות צבאי',
