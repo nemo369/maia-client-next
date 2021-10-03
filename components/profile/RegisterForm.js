@@ -111,9 +111,15 @@ const RegisterForm = ({ cities, termsText }) => {
     }
     if (200 === status) {
       resetForm();
+      const allowedCityIds = [11];
+      if (!allowedCityIds.includes(cityData.id_area)) {
+        window.location.href = `/user/not-valid?email=${inputs.email}&location=${
+          cityData?.name
+        }&fullName=${inputs.firstName + ' ' + inputs.lastName}`;
+        return;
+      }
       if (data.vendor_token) {
         e.preventDefault();
-
         const windowOpen = window.open(data.vendor_token);
         setTimeout(() => {
           windowOpen.postMessage('Maya', data.vendor_token);
@@ -128,10 +134,10 @@ const RegisterForm = ({ cities, termsText }) => {
           false
         );
       }
-      setTimeout(() => {
-        router.push('/user/login?error=200');
-        setLoader(false);
-      }, 7000);
+      // setTimeout(() => {
+      //   router.push('/user/login?error=200');
+      //   setLoader(false);
+      // }, 7000);
     }
   };
 
