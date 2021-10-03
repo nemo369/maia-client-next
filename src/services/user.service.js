@@ -45,11 +45,23 @@ const UserAPI = {
       return error.response;
     }
   },
-  magicLogin: async (creditiontals) => {
+  magicLogin: async (credentials) => {
     try {
-      const response = await axios.post(
-        `${API_URL}/user/magic-link`,
-        JSON.stringify(creditiontals),
+      const response = await axios.post(`${API_URL}/user/magic-link`, JSON.stringify(credentials), {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      return response;
+    } catch (error) {
+      return error.response;
+    }
+  },
+
+  emailVerification: async ({ email, password }) => {
+    try {
+      const response = await axios.get(
+        `${API_URL}/user/login-with-email?email=${email}&password=${password}`,
         {
           headers: {
             'Content-Type': 'application/json',
@@ -61,7 +73,6 @@ const UserAPI = {
       return error.response;
     }
   },
-
   phoneVerification: async ({ phone, pin }) => {
     try {
       const response = await axios.get(
