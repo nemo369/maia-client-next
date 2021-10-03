@@ -29,7 +29,6 @@ const RetestPop = () => {
       (event) => {
         if (event.data) {
           setloading(false);
-          setIsOpen(false);
           router.push({ pathname: '/', query: { refetchuser: 'true', testDone: 'iampro' } });
         }
       },
