@@ -38,7 +38,6 @@ const MailVerification = ({ email }) => {
     }
     if (data?.token) {
       dispatch({ type: SET_USER, user: data });
-      console.log(data.token);
       router.push('/');
     } else {
       setError('משהו השתבש');

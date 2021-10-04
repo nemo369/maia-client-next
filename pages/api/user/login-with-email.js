@@ -23,12 +23,12 @@ export default async function loginWithMail(req, res) {
           throw new Error('No data :(');
         }
 
-        setCookie({ res }, USER_COOKIE, JSON.stringify(user), {
-          secure: 'production' === NODE_ENV,
-          maxAge: 12 * 60 * 60, //12 hours as in Iam token
-          httpOnly: true,
-          path: '/',
-        });
+        // setCookie({ res }, USER_COOKIE, JSON.stringify(user), {
+        //   secure: 'production' === NODE_ENV,
+        //   maxAge: 12 * 60 * 60, //12 hours as in Iam token
+        //   httpOnly: true,
+        //   path: '/',
+        // });
         res.status(200).json({ ...user });
       } catch (response) {
         res.status(response?.response.status ? response?.response.status : 502).json(response.data);
