@@ -3,7 +3,7 @@ import axios from 'axios';
 // import { USER_COOKIE } from '../../../src/utils/consts';
 
 export default async function loginWithMail(req, res) {
-  const { WORDPRESS_ENDPOINT, NODE_ENV } = process.env;
+  const { WORDPRESS_ENDPOINT } = process.env;
   const { method } = req;
   // destroyCookie({ res }, USER_COOKIE);
   const { email, password } = req.query;
