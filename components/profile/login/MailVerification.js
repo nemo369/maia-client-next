@@ -20,7 +20,11 @@ const MailVerification = ({ email }) => {
   }, []);
 
   const reSend = async () => {
+    setIsAllowedResend(false);
     await UserAPI.magicLogin({ email, type: 'email' });
+    setTimeout(() => {
+      setIsAllowedResend(true);
+    }, 30000);
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -37,6 +41,7 @@ const MailVerification = ({ email }) => {
       return;
     }
     if (data?.token) {
+      console.log(data.token);
       dispatch({ type: SET_USER, user: data });
       router.push('/');
     } else {
