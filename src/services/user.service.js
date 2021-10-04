@@ -25,7 +25,7 @@ const UserAPI = {
       });
       return response;
     } catch (error) {
-      return error.response;
+      return { data: error, status: 500 };
     }
   },
   toglleFavorites: async ({ id, type, token }) => {
@@ -42,7 +42,7 @@ const UserAPI = {
       );
       return { ...data, status };
     } catch (error) {
-      return error.response;
+      return { data: error, status: 500 };
     }
   },
   magicLogin: async (credentials) => {
@@ -70,7 +70,7 @@ const UserAPI = {
       );
       return response;
     } catch (error) {
-      return error.response;
+      return { data: error, status: 500 };
     }
   },
   phoneVerification: async ({ phone, pin }) => {
@@ -85,7 +85,7 @@ const UserAPI = {
       );
       return response;
     } catch (error) {
-      return error.response;
+      return { data: error, status: 500 };
     }
   },
   register: async (user) => {
@@ -97,7 +97,7 @@ const UserAPI = {
       });
       return { ...data, status };
     } catch (error) {
-      return error.response;
+      return { data: error, status: 500 };
     }
   },
 };

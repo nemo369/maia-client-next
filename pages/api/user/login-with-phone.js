@@ -2,7 +2,7 @@ import axios from 'axios';
 import { setCookie, destroyCookie } from 'nookies';
 import { USER_COOKIE } from '../../../src/utils/consts';
 
-export default async function login(req, res) {
+export default async function loginWithPhone(req, res) {
   const { WORDPRESS_ENDPOINT, NODE_ENV } = process.env;
   const { method } = req;
   destroyCookie({ res }, USER_COOKIE);

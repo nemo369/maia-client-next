@@ -1,7 +1,7 @@
 // scripts/data/1309.json
 import axios from 'axios';
 
-export default async function login(req, res) {
+export default async function fetchCity(req, res) {
   const { WORDPRESS_ENDPOINT } = process.env;
   const { method } = req;
   const { cityid } = req.query;

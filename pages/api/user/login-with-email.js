@@ -2,7 +2,7 @@ import axios from 'axios';
 import { setCookie, destroyCookie } from 'nookies';
 import { USER_COOKIE } from '../../../src/utils/consts';
 
-export default async function login(req, res) {
+export default async function loginWithMail(req, res) {
   const { WORDPRESS_ENDPOINT, NODE_ENV } = process.env;
   const { method } = req;
   destroyCookie({ res }, USER_COOKIE);
@@ -15,6 +15,9 @@ export default async function login(req, res) {
         if (!password || !email || 6 > password.length) {
           throw new Error();
         }
+        console.log(password);
+        console.log(email);
+        console.log(res);
         const { data: user } = await axios.get(
           `${WORDPRESS_ENDPOINT}/wp-json/wp/v2/user/user?email=${email}&key=${password}`
         );
@@ -22,6 +25,9 @@ export default async function login(req, res) {
         if (!user) {
           throw new Error('No data :(');
         }
+        console.log(res);
+        console.log(user);
+
         setCookie(res, USER_COOKIE, JSON.stringify(user), {
           secure: 'production' === NODE_ENV,
           maxAge: 12 * 60 * 60, //12 hours as in Iam token
