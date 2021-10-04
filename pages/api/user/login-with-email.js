@@ -22,6 +22,8 @@ export default async function loginWithMail(req, res) {
         if (!user) {
           throw new Error('No data :(');
         }
+        console.log(NODE_ENV);
+        console.log(setCookie);
 
         // setCookie({ res }, USER_COOKIE, JSON.stringify(user), {
         //   secure: 'production' === NODE_ENV,
