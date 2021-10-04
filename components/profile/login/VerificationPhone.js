@@ -1,9 +1,11 @@
 import router from 'next/router';
 import React, { useContext, useEffect, useState } from 'react';
+import { setCookie } from 'nookies';
 import UserAPI from '../../../src/services/user.service';
 import Loader from '../../common/Loader';
 import { SET_USER } from '../../../src/context/appReducer';
 import { AppContext } from '../../../src/context/state';
+import { USER_COOKIE } from '../../../src/utils/consts';
 
 const sucsessClass = `bg-green-success focus:ring-0 
 focus:ring-green-successBorder border-2 border-green-successBorder text-green-successBorder`;
@@ -49,6 +51,10 @@ const VerificationPhone = (props) => {
       return;
     }
     if (data?.token) {
+      setCookie(null, USER_COOKIE, JSON.stringify(data), {
+        maxAge: 12 * 60 * 60, //12 hours as in Iam token
+        path: '/',
+      });
       dispatch({ type: SET_USER, user: data });
       router.push('/');
     }
