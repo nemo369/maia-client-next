@@ -30,7 +30,7 @@ export default async function login(req, res) {
         });
         res.status(200).json({ ...user });
       } catch ({ response }) {
-        res.status(response.status).json(response.data);
+        res.status(502).json(response.data);
       }
 
       break;
