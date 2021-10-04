@@ -27,7 +27,8 @@ export default async function loginWithMail(req, res) {
           secure: 'production' === NODE_ENV,
           maxAge: 12 * 60 * 60, //12 hours as in Iam token
           httpOnly: true,
-          path: '//',
+          sameSite: 'strict',
+          path: '/',
         });
         res.status(200).json({ ...user });
       } catch (response) {
