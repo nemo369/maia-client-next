@@ -2,10 +2,18 @@ import React, { useState } from 'react';
 import MailLog from './MailLog';
 import MailVerification from './MailVerification';
 
-const LoginWithMail = () => {
+const LoginWithMail = ({ changeLoginType }) => {
   const [email, setTheEmail] = useState(null);
 
-  return <>{email ? <MailVerification email={email} /> : <MailLog setTheEmail={setTheEmail} />}</>;
+  return (
+    <>
+      {email ? (
+        <MailVerification email={email} />
+      ) : (
+        <MailLog setTheEmail={setTheEmail} changeLoginType={changeLoginType} />
+      )}
+    </>
+  );
 };
 
 export default LoginWithMail;
