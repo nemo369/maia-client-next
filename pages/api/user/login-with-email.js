@@ -3,7 +3,8 @@ import { setCookie, destroyCookie } from 'nookies';
 import { USER_COOKIE } from '../../../src/utils/consts';
 
 export default async function loginWithMail(req, res) {
-  const { WORDPRESS_ENDPOINT, NODE_ENV } = process.env;
+  // const { WORDPRESS_ENDPOINT, NODE_ENV } = process.env;
+  const { WORDPRESS_ENDPOINT } = process.env;
   const { method } = req;
   destroyCookie({ res }, USER_COOKIE);
   const { email, password } = req.query;
@@ -24,7 +25,7 @@ export default async function loginWithMail(req, res) {
         }
 
         setCookie({ res }, USER_COOKIE, JSON.stringify(user), {
-          secure: 'production' === NODE_ENV,
+          // secure: 'production' === NODE_ENV,
           maxAge: 12 * 60 * 60, //12 hours as in Iam token
           httpOnly: true,
           path: '/',
