@@ -38,7 +38,10 @@ const MailVerification = ({ email }) => {
     }
     if (data?.token) {
       dispatch({ type: SET_USER, user: data });
-      router.push('/?refetchuser=true');
+      console.log(data.token);
+      router.push('/');
+    } else {
+      setError('משהו השתבש');
     }
     setLoader(false);
   };

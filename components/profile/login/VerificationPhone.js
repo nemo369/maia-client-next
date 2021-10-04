@@ -50,7 +50,6 @@ const VerificationPhone = (props) => {
     }
     if (data?.token) {
       dispatch({ type: SET_USER, user: data });
-
       router.push('/');
     }
     setLoader(false);
