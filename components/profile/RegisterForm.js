@@ -106,7 +106,6 @@ const RegisterForm = ({ cities, termsText }) => {
     };
 
     const { data, status } = await UserAPI.register(dataToSend);
-    console.log(data);
     if (200 !== status) {
       setError(data.message);
       setLoader(false);

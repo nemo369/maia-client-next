@@ -85,7 +85,7 @@ const UserAPI = {
       );
       return response;
     } catch (error) {
-      return { data: error, status: 500 };
+      return error.response;
     }
   },
   register: async (user) => {
@@ -96,9 +96,8 @@ const UserAPI = {
         },
       });
       return { ...data, status };
-    } catch ({ response }) {
-      console.log(response);
-      return { data: response.data, status: response.status };
+    } catch (error) {
+      return error.response;
     }
   },
 };
