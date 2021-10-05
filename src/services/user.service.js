@@ -96,8 +96,9 @@ const UserAPI = {
         },
       });
       return { ...data, status };
-    } catch (error) {
-      return { data: error, status: 500 };
+    } catch ({ response }) {
+      console.log(response);
+      return { data: response.data, status: response.status };
     }
   },
 };
