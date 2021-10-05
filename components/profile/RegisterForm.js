@@ -121,7 +121,7 @@ const RegisterForm = ({ cities, termsText }) => {
       }
       if (data.vendor_token) {
         window.location.href = `${data.vendor_token}&redirect=${encodeURIComponent(
-          `${FRONT_URL}?refetchuser=true&testDone=autoBiography`
+          `${FRONT_URL.replace('/api', '')}?refetchuser=true&testDone=autoBiography`
         )}`;
         // e.preventDefault();
         // const windowOpen = window.open(data.vendor_token);
