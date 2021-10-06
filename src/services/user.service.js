@@ -54,6 +54,7 @@ const UserAPI = {
       });
       return response;
     } catch (error) {
+      console.log(error.response);
       return error.response;
     }
   },

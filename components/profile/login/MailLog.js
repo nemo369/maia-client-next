@@ -29,7 +29,7 @@ const MailLog = ({ changeLoginType, setTheEmail }) => {
     const { data, status } = await UserAPI.magicLogin({ email, type: 'email' });
     if (200 !== status) {
       setLoader(false);
-      setError(data.message);
+      setError(data.message ? data.message : data);
     } else {
       setTheEmail(email);
     }

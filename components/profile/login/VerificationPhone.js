@@ -54,6 +54,7 @@ const VerificationPhone = (props) => {
       setCookie(null, USER_COOKIE, JSON.stringify(data), {
         maxAge: 12 * 60 * 60, //12 hours as in Iam token
         path: '/',
+        sameSite: true,
       });
       dispatch({ type: SET_USER, user: data });
       router.push('/');
