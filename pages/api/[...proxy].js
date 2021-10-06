@@ -38,7 +38,7 @@ export default async function proxy(req, res) {
           res.status(200).json({ data });
         })
         .catch((err) => {
-          // console.log(err);
+          console.log(err);
           if (!err) {
             res.status(500).json('Server Error');
           }
@@ -48,7 +48,7 @@ export default async function proxy(req, res) {
             res.end();
             return;
           }
-          res.status(response?.status).json(response?.data);
+          res.status(response?.status ? response.status : 500).json(response?.data);
         });
       break;
     case 'PUT':

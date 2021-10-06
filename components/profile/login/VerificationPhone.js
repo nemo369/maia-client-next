@@ -57,7 +57,7 @@ const VerificationPhone = (props) => {
         sameSite: true,
       });
       dispatch({ type: SET_USER, user: data });
-      router.push('/');
+      router.push({ pathname: '/', query: { refetchuser: 'true' } });
     }
     setLoader(false);
   };
