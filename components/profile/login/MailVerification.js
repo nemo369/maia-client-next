@@ -84,7 +84,7 @@ const MailVerification = ({ email }) => {
         <input
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          type="password"
+          type="text"
           name="password"
           id="password"
           autoComplete="off"
