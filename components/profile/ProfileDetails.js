@@ -62,22 +62,9 @@ export default function ProfileDetails({ cities }) {
   const openTest = (e) => {
     e.preventDefault();
 
-    const windowOpen = window.open(profile.vendor_token);
-    setTimeout(() => {
-      windowOpen.postMessage('Maya', profile.vendor_token);
-    }, 10000);
-    window.addEventListener(
-      'message',
-      (event) => {
-        if (event.data) {
-          window.location.href = `${FRONT_URL.replace(
-            '/api',
-            ''
-          )}?testDone=autoBiography&refetchuser=true`;
-        }
-      },
-      false
-    );
+    window.location.href = `${profile.vendor_token}&redirect=${encodeURIComponent(
+      `${FRONT_URL.replace('/api', '')}?refetchuser=true&testDone=autoBiography`
+    )}`;
   };
   const { t } = useTranslation('common');
 

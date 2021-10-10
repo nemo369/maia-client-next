@@ -35,6 +35,7 @@ export const validateRegister = (inputs) => {
         }
         break;
       case 'cellphone':
+        value = value.replace(/-/g, '');
         if (!value || 10 !== value.length || !value.startsWith('05')) {
           errors[key] = true;
           isValid = false;

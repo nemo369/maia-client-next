@@ -1,39 +1,52 @@
 /* eslint-disable react/button-has-type */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Popup from 'reactjs-popup';
 import { useTranslation } from 'next-i18next';
 import useFormStudy from '../../src/hooks/useFormStudy';
 import Check from '../common/Check';
 import Arrow from '../svg/Arrow';
 
-export default function ProfessionForm({ scopes, handleChange }) {
+export default function ProfessionsFilter({ professions, filterByMikType }) {
   const { t } = useTranslation('common');
 
-  const [label, setlabel] = useState('תחום');
+  const [miks, setMiks] = useState([]);
+  useEffect(() => {
+    const newMiks = professions.reduce((accumulator, currentValue) => {
+      const isNotExist = accumulator.some((acc) => acc.value === currentValue.group);
+      if (!isNotExist) {
+        accumulator.push({
+          value: currentValue.group,
+          label: currentValue.group,
+        });
+      }
+      return accumulator;
+    }, []);
+    setMiks(newMiks);
+  }, [professions]);
+  const [label, setlabel] = useState('סוגי מקצועות');
   const {
     inputs,
     handleChange: change,
     resetForm,
   } = useFormStudy({
-    scopeIds: [],
+    mikIds: [],
   });
   const clearForm = () => {
     resetForm();
-    setlabel('תחום');
-    handleChange([]);
+    setlabel('סוגי מקצועות');
+    filterByMikType([]);
   };
   const onSend = (e) => {
     e.preventDefault();
-    const labels = inputs.scopeIds.map((scopeId) => {
-      const scope = scopes.find((scop) => scop.value === scopeId);
-      return scope?.label;
-    });
-    let labelToSet = labels.join(',');
-    if (2 < labels.length) {
-      labelToSet = `נבחרו ${labels.length} תחומים`;
+    let labelToSet = inputs.mikIds.join(',');
+    if (!inputs.mikIds.length) {
+      labelToSet = 'סוגי מקצועות';
+    }
+    if (2 < inputs.mikIds.length) {
+      labelToSet = `נבחרו ${inputs.mikIds.length} מקצועות`;
     }
     setlabel(labelToSet);
-    handleChange([...inputs.scopeIds]);
+    filterByMikType([...inputs.mikIds]);
   };
   return (
     <>
@@ -80,16 +93,16 @@ export default function ProfessionForm({ scopes, handleChange }) {
             </div>
           </div>
           <div className="overflow-auto max-h-40 flex flex-col gap-y-3 pr-3">
-            {scopes.map((scope) => (
+            {miks.map((mik) => (
               <Check
-                name="scopeIds"
-                key={scope.value}
-                value={scope.value}
-                content={scope.label}
+                name="mikIds"
+                key={mik.value}
+                value={mik.value}
+                content={mik.label}
                 textClass="text-xs mr-3 relative"
                 wraperClass="flex gap-x-2 mb-3"
                 onChange={change}
-                isChecked={inputs.scopeIds.includes(scope.value)}
+                isChecked={inputs.mikIds.includes(mik.value)}
               />
             ))}
           </div>
