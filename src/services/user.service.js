@@ -70,8 +70,8 @@ const UserAPI = {
         }
       );
       return response;
-    } catch (error) {
-      return { data: error, status: 500 };
+    } catch ({ response }) {
+      return { data: response.data, status: response.status };
     }
   },
   phoneVerification: async ({ phone, pin }) => {

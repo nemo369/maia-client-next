@@ -7,18 +7,17 @@ export default async function loginWithMail(req, res) {
   const { method } = req;
   // destroyCookie({ res }, USER_COOKIE);
   const { email, password } = req.query;
-
   switch (method) {
     case 'GET':
       // Get data from your database
       try {
-        if (!password || !email || 6 > password.length) {
+        if (!password || !email) {
           throw new Error();
         }
+
         const { data: user } = await axios.get(
           `${WORDPRESS_ENDPOINT}/wp-json/wp/v2/user/user?email=${email}&key=${password}`
         );
-
         if (!user) {
           throw new Error('No data :(');
         }
@@ -31,7 +30,9 @@ export default async function loginWithMail(req, res) {
         // });
         res.status(200).json({ ...user });
       } catch (response) {
-        res.status(response?.response.status ? response?.response.status : 502).json(response.data);
+        res
+          .status(response?.response.status ? response?.response.status : 502)
+          .json(response.response.data);
       }
 
       break;
