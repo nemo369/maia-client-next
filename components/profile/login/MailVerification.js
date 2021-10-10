@@ -32,7 +32,7 @@ const MailVerification = ({ email }) => {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!input || 10 > input.length) {
+    if (!input || 4 !== input.length) {
       return;
     }
     setLoader(true);
