@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-// import MailVerification from './VerificationPhone';
 import LoginWithPhone from './LoginWithPhone';
 import VerificationPhone from './VerificationPhone';
 

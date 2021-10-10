@@ -31,7 +31,8 @@ const LoginWithPassword = () => {
       dispatch({ type: SET_USER, user: data });
 
       resetForm();
-      router.push('/'); // TODO: navigate to last page
+      router.push({ pathname: '/', query: { refetchuser: 'true' } });
+      // TODO: navigate to last page
     }
 
     setLoading(false);
