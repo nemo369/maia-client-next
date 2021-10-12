@@ -2,7 +2,7 @@ import Logosvg from '../../svg/Logo';
 
 const NotOnMobile = () => (
   <>
-    <div className="fixed w-full h-screen bg-black/70 inset-0 z-10" />
+    <div className="fixed w-full h-screen bg-black/20 inset-0 z-10 messageWrapper--bg" />
     <div
       id="idmessage"
       className="w-[90vw] bg-[#fffcfc] h-[90vh] messageWrapper px-7 py-4 grid text-center  fixed  top-5 overflow-hidden align-bottom justify-items-center rounded right-0 left-0 mx-auto"

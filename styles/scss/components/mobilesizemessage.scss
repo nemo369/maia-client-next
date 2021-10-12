@@ -8,9 +8,11 @@
         display: grid;
     }
     .messageWrapper {
+        z-index: 120;
+    }
+    .messageWrapper--bg {
         filter: blur(0);
         backdrop-filter: blur(4px);
-        z-index: 120;
     }
 
     .nav__wrapper > * {
