@@ -60,7 +60,7 @@ const RegisterForm = ({ cities, termsText }) => {
     birth_year: null,
     firstName: '',
     lastName: '',
-    gender: '',
+    gender: 'm',
     employment_coefficient: false,
     terms_and_conditions: false,
   });
