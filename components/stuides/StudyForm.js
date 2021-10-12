@@ -3,18 +3,13 @@ import { useTranslation } from 'next-i18next';
 import { useContext, useState } from 'react';
 import Popup from 'reactjs-popup';
 import { AppContext } from '../../src/context/state';
-import useFormStudy from '../../src/hooks/useFormStudy';
+// import useFormStudy from '../../src/hooks/useFormStudy';
 import VendorAPI from '../../src/services/vendor.service';
 import Check from '../common/Check';
 import Arrow from '../svg/Arrow';
 
 export default function StudyForm({ scopes, dropDownChanges, institutions }) {
   const { user } = useContext(AppContext);
-  const { inputs, handleChange, clearForm } = useFormStudy({
-    scopeIds: [],
-    professionIds: [],
-    institutionIds: [],
-  });
 
   const [professions, setProfessions] = useState([]);
   const [labels, setLabels] = useState({ scope: 'תחום', profession: 'מסלול', institution: 'מוסד' });

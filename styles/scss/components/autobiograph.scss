@@ -1,3 +1,10 @@
 .autobiograph-chart-wrapper{
     // grid-template-rows: repeat(3, minmax(0, 1fr));
 }
+
+
+.warrior-wrapper *> img{
+    width: 50px;
+    height: 60px;
+    align-self: end;
+}

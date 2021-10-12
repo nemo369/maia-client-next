@@ -6,7 +6,7 @@ import Button from '../../common/Button';
 import medalStar from '../../../public/images/medalStar.png';
 
 const MessageMedal = () => {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
 
   return (
     <Popup
