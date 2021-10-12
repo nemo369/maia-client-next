@@ -1,26 +1,19 @@
-.messageWrapper{
+.messageWrapper {
     display: none;
     position: absolute;
 }
 
-@media only screen and (max-width: 600px) {
-    
-    .messageWrapper{
+@media only screen and (max-width: 780px) {
+    .messageWrapper {
         display: grid;
-        position: absolute;
-        
     }
-    .messageWrapper{
+    .messageWrapper {
         filter: blur(0);
+        backdrop-filter: blur(4px);
+        z-index: 120;
     }
 
-    .nav__wrapper>*{
+    .nav__wrapper > * {
         display: none;
     }
-    .messageWrapper{
-        z-index: 1;
-        display: grid;
-        
-    }
-
 }
