@@ -27,7 +27,7 @@ function LoginWithPhone(props) {
     const { data, status } = await UserAPI.magicLogin({ phone: digitsPhoneNum, type: 'phone' });
     setLoader(false);
     if (200 !== status || !data.data.message) {
-      setError('נייד לא תקין');
+      setError(data.message ? data.message : 'נייד לא תקין');
       return;
     } else {
       setPopup(data.data.message);
@@ -52,7 +52,7 @@ function LoginWithPhone(props) {
             }}
             className={`w-full h-[50px] rounded-md text-gray px-4  text-lg focus:outline-none focus:ring  ${
               error
-                ? 'focus:ring-2 focus:ring-red focus:text-red text-red focus:font-bold focus:text-lg ring-2 ring-red bg-opacity-80 bg-red-error placeholder-red-800'
+                ? 'focus:ring-2 focus:ring-red focus:text-red text-red focus:font-bold focus:text-lg ring-2 ring-red bg-opacity-80 bg-[#FFDBDB] placeholder-red-800'
                 : ''
             }`}
             placeholder="נייד"

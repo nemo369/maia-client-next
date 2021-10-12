@@ -7,7 +7,7 @@ import {
 } from './consts';
 
 const defaultLs = {
-  [LOGIN_TYPE_LS]: 'email',
+  [LOGIN_TYPE_LS]: 'phone',
   [DASHBOARD_TYPE_CATEGORY]: { name: 'מקצועות', id: 'professions' },
   [IS_WALKME]: true,
   [IS_FAVORITE]: true,

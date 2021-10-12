@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import { LOGIN_TYPE_LS } from '../../src/utils/consts';
 import { Case, Switch } from '../common/Switch';
@@ -9,10 +9,7 @@ import PhoneLog from './login/PhoneLog';
 import { getLs, setLs } from '../../src/utils/localStorge';
 
 export default function LoginCmp() {
-  const [loginType, setLoginType] = useState();
-  useEffect(() => {
-    setLoginType(getLs(LOGIN_TYPE_LS));
-  }, []);
+  const [loginType, setLoginType] = useState(getLs(LOGIN_TYPE_LS));
   const changeLoginType = (type) => {
     setLs(LOGIN_TYPE_LS, type);
     setLoginType(type);

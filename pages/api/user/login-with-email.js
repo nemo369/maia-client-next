@@ -11,17 +11,18 @@ export default async function loginWithMail(req, res) {
     case 'GET':
       // Get data from your database
       try {
-        if (!password || !email) {
-          throw new Error();
+        if (!email || !password || 4 !== password.length) {
+          res.status(400).json({ message: 'הקוד אינו תקין' });
+          return;
         }
 
         const { data: user } = await axios.get(
           `${WORDPRESS_ENDPOINT}/wp-json/wp/v2/user/user?email=${email}&key=${password}`
         );
         if (!user) {
-          throw new Error('No data :(');
+          res.status(500).json({ ...user });
+          return;
         }
-
         // setCookie({ res }, USER_COOKIE, JSON.stringify(user), {
         //   secure: 'production' === NODE_ENV,
         //   maxAge: 12 * 60 * 60, //12 hours as in Iam token

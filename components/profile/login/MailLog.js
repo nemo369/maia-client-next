@@ -17,12 +17,13 @@ const MailLog = ({ changeLoginType, setTheEmail }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     if (loader) {
       return;
     }
     setError(false);
     if (!email || !validateEmail(email)) {
-      setError(t('המייל אינו תקין'));
+      setError(t('כתובת מייל לא תקינה'));
       return;
     }
     setLoader(true);
@@ -42,13 +43,13 @@ const MailLog = ({ changeLoginType, setTheEmail }) => {
           'כדי שנוכל לשמור על פרטיותך ולהגן על הנתונים שלך נשלח לך באמצעות המייל סיסמא חד פעמית קישור להתחברות'
         )}
       </div>
-      <form method="POST" onSubmit={handleSubmit} className="relative">
+      <form method="POST" onSubmit={handleSubmit} className="relative mt-11">
         <div>
           <label>
             <span className="sr-only">מייל</span>
             <input
               autoComplete="email"
-              type="email"
+              // type="email"
               onChange={(e) => {
                 setEmail(e.target.value);
                 setError(false);
@@ -56,7 +57,7 @@ const MailLog = ({ changeLoginType, setTheEmail }) => {
               className={`text-gray w-full h-[50px] rounded-md  px-3 font-bold text-[18px]
               ${
                 error
-                  ? 'focus:ring-2 focus:ring-red-500 focus:text-red-700 text-red-700 focus:font-bold focus:text-lg ring-2 ring-red-500 bg-opacity-80 bg-red-error placeholder-red-800'
+                  ? 'focus:ring-2 focus:ring-red-500 focus:text-red-700 text-red-700 focus:font-bold focus:text-lg ring-2 ring-red-500 bg-opacity-80 bg-[#FFDBDB] placeholder-red-800'
                   : ''
               }`}
               placeholder="מייל"

@@ -13,7 +13,8 @@ export default async function magicLogin(req, res) {
       // Get data from your database
       try {
         if (!nonce || !email || !key || 20 > key.length) {
-          throw new Error();
+          res.status(400).json({ message: 'התוקן אינו תקין' });
+          return;
         }
         await axios
           .get(

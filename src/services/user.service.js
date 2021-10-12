@@ -47,14 +47,17 @@ const UserAPI = {
   },
   magicLogin: async (credentials) => {
     try {
-      const response = await axios.post(`${API_URL}/user/magic-link`, JSON.stringify(credentials), {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-      return response;
+      const { data, status } = await axios.post(
+        `${API_URL}/user/magic-link`,
+        JSON.stringify(credentials),
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      );
+      return { data, status };
     } catch (error) {
-      console.log(error.response);
       return error.response;
     }
   },

@@ -16,7 +16,8 @@ export default async function login(req, res) {
           req.body
         );
         if (!tokenData?.token) {
-          throw new Error('No token :(');
+          res.status(400).json({ message: 'התוקן אינו תקין' });
+          return;
         }
 
         await axios

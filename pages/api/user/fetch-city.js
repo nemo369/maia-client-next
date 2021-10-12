@@ -12,7 +12,8 @@ export default async function fetchCity(req, res) {
       try {
         const { data } = await axios.get(`${WORDPRESS_ENDPOINT}/scripts/data/${cityid}.json`);
         if (!data) {
-          throw new Error('No data :(');
+          res.status(400).json({ message: 'הקוד אינו תקין' });
+          return;
         }
 
         res.status(200).json(data);

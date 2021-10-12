@@ -11,7 +11,7 @@ const sucsessClass = `bg-green-success focus:ring-0
 focus:ring-green-successBorder border-2 border-green-successBorder text-green-successBorder`;
 
 const classes = 'bg-white focus:ring-2 focus:ring-orange text-orange';
-const errorClass = `bg-red-error focus:ring-0 
+const errorClass = `bg-[#FFDBDB] focus:ring-0 
 focus:ring-red border-2 border-red text-red`;
 const VerificationPhone = (props) => {
   const { cell } = props;
