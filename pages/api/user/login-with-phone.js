@@ -22,6 +22,7 @@ export default async function loginWithPhone(req, res) {
           res.status(500).json({ ...user });
           return;
         }
+        res.status(200).json({ ...user });
       } catch (response) {
         res.status(response?.response.status ? response?.response.status : 502).json(response.data);
       }
