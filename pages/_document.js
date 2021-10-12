@@ -1,6 +1,7 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 import Favicon from '../components/common/Favicon';
 import AccessibilityScriptTag from '../components/layout/AccessibilityScriptTag';
+import Gtag from '../components/layout/Gtag';
 
 class MyDocument extends Document {
   static async getInitialProps(ctx) {
@@ -12,6 +13,7 @@ class MyDocument extends Document {
     return (
       <Html dir="rtl" lang="he">
         <Head>
+          <Gtag />
           <Favicon />
         </Head>
         <body>
