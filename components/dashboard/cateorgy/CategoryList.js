@@ -9,6 +9,7 @@ import CategoryPercentage from '../../profile/CategoryPercentage';
 const CategoryLi = ({ cat, type }) => {
   const { t } = useTranslation('common');
   const [isHoverd, setisHoverd] = useState(false);
+  console.log(cat);
   return (
     <li
       className="bg-white rounded-[10px] border border-[rgba(151,151,151,0.13)]
@@ -39,6 +40,10 @@ const CategoryLi = ({ cat, type }) => {
         </div>
         <div className="dash border-b-[1px] mt-[10px] border-dashed border-[#979797] opacity-20 w-full h-1" />
         <p className="text-[#333333] opacity-70 text-[16px] mt-[10px]">
+          <strong className="block mb-1">
+            הלימודים מתקיימים ב:&nbsp;
+            {cat.full_data?.city}
+          </strong>
           {trimText(cat.description, 140)}
         </p>
       </div>

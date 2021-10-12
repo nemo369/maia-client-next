@@ -3,6 +3,35 @@ import { Doughnut } from 'react-chartjs-2';
 import { AppContext, useAppContext } from '../../src/context/state';
 import { getChartColors } from '../../src/utils/util';
 
+const options = {
+  animation: false,
+  maintainAspectRatio: false,
+  plugins: {
+    datalabels: {
+      formatter: (value, ctx) => {
+        const datasets = ctx.chart.data.datasets;
+
+        if (datasets.indexOf(ctx.dataset) === datasets.length - 1) {
+          const sum = datasets[0].data.reduce((a, b) => a + b, 0);
+          const percentage = Math.round((value / sum) * 100) + '%';
+          return percentage;
+        } else {
+          return 'percentage';
+        }
+      },
+      color: 'red',
+    },
+    legend: {
+      labels: {
+        font: {
+          size: 0,
+        },
+      },
+    },
+  },
+  zoomOutPercentage: 90,
+};
+
 function ProfileDoughnut() {
   const { profile } = useAppContext(AppContext);
   const [labels, setlabels] = useState([]);
@@ -20,22 +49,12 @@ function ProfileDoughnut() {
         label: false,
         data: fields.map((field) => field.value * 100),
         backgroundColor: fields.map((field) => getChartColors(field.code)),
+
+        borderWidth: 1,
       },
     ]);
   }, [profile]);
-  const options = {
-    animation: false,
-    maintainAspectRatio: false,
-    plugins: {
-      legend: {
-        labels: {
-          font: {
-            size: 0,
-          },
-        },
-      },
-    },
-  };
+
   return (
     <div>
       <Doughnut

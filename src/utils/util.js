@@ -61,7 +61,7 @@ export const getChartColors = (id) => {
     p: '#dda15e',
     q: '#edf6f9',
     r: '#A8DFCE',
-    s: '#415a77',
+    s: '#252464',
     t: '#A8DFCE',
     u: '#b6ccfe',
     v: '#f3e7e4',
