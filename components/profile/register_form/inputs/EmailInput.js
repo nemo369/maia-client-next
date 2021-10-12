@@ -14,7 +14,7 @@ const EmailInput = (props) => {
       />
       {isError ? (
         <span className="h-0 block shake text-xs text-red-error">
-          יש להזין כתובת דואר אלקטרוני תקינה*
+          יש טעות בכתובת שהקלדת, שננסה שוב?*
         </span>
       ) : null}
     </div>

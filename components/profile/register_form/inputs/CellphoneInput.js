@@ -13,7 +13,9 @@ const CellphoneInput = (props) => {
       `}
       />
       {isError ? (
-        <span className="h-0 block shake text-xs text-red-error">יש להזין טלפון נייד*</span>
+        <span className="h-0 block shake text-xs text-red-error">
+          ש טעות במספר שהקלדת, שננסה שוב?*
+        </span>
       ) : null}
     </div>
   );

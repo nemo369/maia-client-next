@@ -26,7 +26,7 @@ export default function useForm(initial = {}) {
       [value] = e.target.files;
     }
     if ('checkbox' === type) {
-      value = !!value;
+      value = e.target.checked;
     }
 
     setInputs({

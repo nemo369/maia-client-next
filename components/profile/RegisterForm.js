@@ -21,7 +21,7 @@ import Loader from '../common/Loader';
 import FirstName from './register_form/inputs/FirstName';
 import LastName from './register_form/inputs/LastName';
 import { validateRegister } from '../../src/utils/validateRegister';
-import { FRONT_URL } from '../../src/utils/consts';
+import { allowedCityIds, FRONT_URL } from '../../src/utils/consts';
 
 const errorsInitial = {
   email: false,
@@ -91,6 +91,7 @@ const RegisterForm = ({ cities, termsText }) => {
     }
   }, [cityId]);
   const handleSubmit = async (e) => {
+    console.log(inputs);
     e.preventDefault();
     if (!checkValidation()) {
       return;
@@ -112,7 +113,6 @@ const RegisterForm = ({ cities, termsText }) => {
     }
     if (200 === status) {
       resetForm();
-      const allowedCityIds = [11];
       if (!allowedCityIds.includes(cityData.id_area)) {
         window.location.href = `/user/not-valid?email=${inputs.email}&location=${
           cityData?.name

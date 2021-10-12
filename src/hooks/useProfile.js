@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from 'react';
 import { SET_PROFILE } from '../context/appReducer';
 import { AppContext } from '../context/state';
 import ProfileAPI from '../services/profile.service';
+import { allowedCityIds } from '../utils/consts';
 // FETCHING THE FULL PROFILE OBJECT ONLY IF DIDNT FETCHED BEFORE
 export default function useProfile() {
   const { profile, user, dispatch } = useContext(AppContext);
@@ -49,7 +50,6 @@ export default function useProfile() {
     }
 
     if (profile) {
-      const allowedCityIds = [11];
       const city = profile.city ? JSON.parse(profile.city) : null;
       if (!city || !allowedCityIds.includes(city.id_area)) {
         if ('production' === process.env.NODE_ENV) {
