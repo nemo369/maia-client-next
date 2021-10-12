@@ -58,6 +58,12 @@ export default function Studies({ myStudies, user, scopes, institutions }) {
     setstudies(data);
     setLoader(false);
   };
+  const fetchCaegorysWithParams = async (dataToSend) => {
+    setLoader(true);
+    const { data } = await VendorAPI.getCategorys(user.token, 'studies', dataToSend);
+    setLoader(false);
+    setstudies(data);
+  };
 
   return (
     <>
@@ -77,7 +83,11 @@ export default function Studies({ myStudies, user, scopes, institutions }) {
               />
             )}
             {!!categoryType.id && (
-              <CompareDropdown professionIds={myStudies.map((study) => study.full_data.miK_NUM)} />
+              <CompareDropdown
+                professionIds={myStudies.map((study) => study.full_data.miK_NUM)}
+                fetchCaegorysWithParams={fetchCaegorysWithParams}
+                studies={studies}
+              />
             )}
 
             <div className=" mr-auto">

@@ -13,7 +13,7 @@ function ProfessionInfo({ profession }) {
         <JustHeart id={profession.id} type="professions" />
         <CategoryPercentage percentage={profession.percentage} className="flex-none mb-2" />
       </header>
-      <div dangerouslySetInnerHTML={{ __html: profession.description }} />
+      <div dangerouslySetInnerHTML={{ __html: profession.description.split('\n').join('<br/>') }} />
 
       <div className="mt-4 flex">
         <Link href="/studies">

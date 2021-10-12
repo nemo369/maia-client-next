@@ -1,6 +1,4 @@
-import React from 'react';
-
-function Group4({ content, container }) {
+function Refresh() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -12,11 +10,11 @@ function Group4({ content, container }) {
       <path
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeWidth="2"
-        d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"
+        strokeWidth={2}
+        d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
       />
     </svg>
   );
 }
 
-export default Group4;
+export default Refresh;

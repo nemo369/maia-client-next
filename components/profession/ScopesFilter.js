@@ -66,7 +66,7 @@ export default function ScopesFilter({ scopes, handleChange }) {
           onSubmit={onSend}
         >
           <div className="flex mb-4 justify-between">
-            <span />
+            <span>ניתן לבחור עד 4 תחומים</span>
             <div className="flex justify-between items-center  px-2 gap-x-1">
               <button
                 onClick={clearForm}
@@ -76,8 +76,11 @@ export default function ScopesFilter({ scopes, handleChange }) {
                 {t('נקה')}
               </button>
               <button
+                disabled={4 < inputs.scopeIds.length}
                 type="submit"
-                className="outline-none px-2 py-1 rounded-lg hover:bg-opacity-80 bg-green-500 text-white transition"
+                className={`outline-none px-2 py-1 rounded-lg hover:bg-opacity-80 bg-green-500 text-white transition
+                ${4 < inputs.scopeIds.length ? ' bg-gray-400 cursor-not-allowed' : ' bg-green-500'}
+                `}
               >
                 {t('בחרי')}
               </button>

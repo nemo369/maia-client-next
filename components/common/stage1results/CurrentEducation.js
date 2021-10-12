@@ -7,7 +7,7 @@ const CurrentEducation = ({ changeType, eductionActive }) => (
       eductionActive ? 'font-bold text-[#00A4AE] border-l-4 border-blue' : ' '
     }`}
   >
-    השכלה נוכחית
+    ההשכלה שלי
   </button>
 );
 export default CurrentEducation;

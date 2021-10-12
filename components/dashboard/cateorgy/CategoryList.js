@@ -9,7 +9,6 @@ import CategoryPercentage from '../../profile/CategoryPercentage';
 const CategoryLi = ({ cat, type }) => {
   const { t } = useTranslation('common');
   const [isHoverd, setisHoverd] = useState(false);
-  console.log(cat);
   return (
     <li
       className="bg-white rounded-[10px] border border-[rgba(151,151,151,0.13)]
