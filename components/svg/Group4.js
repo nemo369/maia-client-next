@@ -1,6 +1,4 @@
-import React from 'react';
-
-function Group4({ content, container }) {
+function Group4() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
