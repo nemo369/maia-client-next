@@ -31,13 +31,17 @@ export default function ProfessionsFilter({ professions, filterByMikType }) {
   } = useFormStudy({
     mikIds: [],
   });
-  const clearForm = () => {
+  const clearForm = (closeModal) => {
     resetForm();
     setlabel('סוגי מקצועות');
     filterByMikType([]);
+    if (closeModal) {
+      closeModal();
+    }
   };
-  const onSend = (e) => {
+  const onSend = (e, closeModal) => {
     e.preventDefault();
+
     let labelToSet = inputs.mikIds.join(',');
     if (!inputs.mikIds.length) {
       labelToSet = 'סוגי מקצועות';
@@ -47,66 +51,71 @@ export default function ProfessionsFilter({ professions, filterByMikType }) {
     }
     setlabel(labelToSet);
     filterByMikType([...inputs.mikIds]);
+    if (closeModal) {
+      closeModal();
+    }
   };
   return (
     <>
       <Popup
-        trigger={(open) => (
+        closeOnDocumentClick
+        trigger={(isOpen) => (
           <button
             type="button"
             className={`h-10 items-center flex justify-between px-3 rounded-lg ${
-              open ? 'bg-white ring ring-green-500' : 'bg-gray-mid/10 '
+              isOpen ? 'bg-white ring ring-green-500' : 'bg-gray-mid/10 '
             }`}
           >
             <span className="truncate pl-2">{label}</span>
-            <span className={`transform transition ${!open ? 'rotate-0' : 'rotate-180'}`}>
+            <span className={`transform transition ${!isOpen ? 'rotate-0' : 'rotate-180'}`}>
               <Arrow />
             </span>
           </button>
         )}
         position="bottom"
         on="click"
-        closeOnDocumentClick
         // contentStyle={{ padding: '0px', border: 'none' }}
         arrow
       >
-        <form
-          className="w-[120%] transform translate-x-[8%] border-2 border-gray-400 rounded-md px-2 py-3 bg-white  text-xs"
-          onSubmit={onSend}
-        >
-          <div className="flex mb-4 justify-between">
-            <span />
-            <div className="flex justify-between items-center  px-2 gap-x-1">
-              <button
-                onClick={clearForm}
-                type="reset"
-                className="outline-none px-2 py-1 rounded-lg bg-white hover:bg-gray-100 text-gray transition"
-              >
-                {t('נקה')}
-              </button>
-              <button
-                type="submit"
-                className="outline-none px-2 py-1 rounded-lg hover:bg-opacity-80 bg-green-500 text-white transition"
-              >
-                {t('בחרי')}
-              </button>
+        {(close) => (
+          <form
+            className="w-[120%] transform translate-x-[8%] border-2 border-gray-400 rounded-md px-2 py-3 bg-white  text-xs"
+            onSubmit={(e) => onSend(e, close)}
+          >
+            <div className="flex mb-4 justify-between">
+              <span />
+              <div className="flex justify-between items-center  px-2 gap-x-1">
+                <button
+                  onClick={() => clearForm(close)}
+                  type="reset"
+                  className="outline-none px-2 py-1 rounded-lg bg-white hover:bg-gray-100 text-gray transition"
+                >
+                  {t('נקה')}
+                </button>
+                <button
+                  type="submit"
+                  className="outline-none px-2 py-1 rounded-lg hover:bg-opacity-80 bg-green-500 text-white transition"
+                >
+                  {t('בחרי')}
+                </button>
+              </div>
             </div>
-          </div>
-          <div className="overflow-auto max-h-40 flex flex-col gap-y-3 pr-3">
-            {miks.map((mik) => (
-              <Check
-                name="mikIds"
-                key={mik.value}
-                value={mik.value}
-                content={mik.label}
-                textClass="text-xs mr-3 relative"
-                wraperClass="flex gap-x-2 mb-3"
-                onChange={change}
-                isChecked={inputs.mikIds.includes(mik.value)}
-              />
-            ))}
-          </div>
-        </form>
+            <div className="overflow-auto max-h-40 flex flex-col gap-y-3 pr-3">
+              {miks.map((mik) => (
+                <Check
+                  name="mikIds"
+                  key={mik.value}
+                  value={mik.value}
+                  content={mik.label}
+                  textClass="text-xs mr-3 relative"
+                  wraperClass="flex gap-x-2 mb-3"
+                  onChange={change}
+                  isChecked={inputs.mikIds.includes(mik.value)}
+                />
+              ))}
+            </div>
+          </form>
+        )}
       </Popup>
     </>
   );

@@ -17,12 +17,15 @@ export default function ScopesFilter({ scopes, handleChange }) {
   } = useFormStudy({
     scopeIds: [],
   });
-  const clearForm = () => {
+  const clearForm = (closeModal) => {
     resetForm();
     setlabel('תחום');
     handleChange([]);
+    if (closeModal) {
+      closeModal();
+    }
   };
-  const onSend = (e) => {
+  const onSend = (e, closeModal) => {
     e.preventDefault();
     const labels = inputs.scopeIds.map((scopeId) => {
       const scope = scopes.find((scop) => scop.value === scopeId);
@@ -38,6 +41,9 @@ export default function ScopesFilter({ scopes, handleChange }) {
     }
     setlabel(labelToSet);
     handleChange([...inputs.scopeIds]);
+    if (closeModal) {
+      closeModal();
+    }
   };
   return (
     <>
@@ -61,46 +67,48 @@ export default function ScopesFilter({ scopes, handleChange }) {
         // contentStyle={{ padding: '0px', border: 'none' }}
         arrow
       >
-        <form
-          className="w-[120%] transform translate-x-[8%] border-2 border-gray-400 rounded-md px-2 py-3 bg-white  text-xs"
-          onSubmit={onSend}
-        >
-          <div className="flex mb-4 justify-between">
-            <span>ניתן לבחור עד 4 תחומים</span>
-            <div className="flex justify-between items-center  px-2 gap-x-1">
-              <button
-                onClick={clearForm}
-                type="reset"
-                className="outline-none px-2 py-1 rounded-lg bg-white hover:bg-gray-100 text-gray transition"
-              >
-                {t('נקה')}
-              </button>
-              <button
-                disabled={4 < inputs.scopeIds.length}
-                type="submit"
-                className={`outline-none px-2 py-1 rounded-lg hover:bg-opacity-80 bg-green-500 text-white transition
+        {(close) => (
+          <form
+            className="w-[120%] transform translate-x-[8%] border-2 border-gray-400 rounded-md px-2 py-3 bg-white  text-xs"
+            onSubmit={(e) => onSend(e, close)}
+          >
+            <div className="flex mb-4 justify-between">
+              <span>ניתן לבחור עד 4 תחומים</span>
+              <div className="flex justify-between items-center  px-2 gap-x-1">
+                <button
+                  onClick={() => clearForm(close)}
+                  type="reset"
+                  className="outline-none px-2 py-1 rounded-lg bg-white hover:bg-gray-100 text-gray transition"
+                >
+                  {t('נקה')}
+                </button>
+                <button
+                  disabled={4 < inputs.scopeIds.length}
+                  type="submit"
+                  className={`outline-none px-2 py-1 rounded-lg hover:bg-opacity-80 bg-green-500 text-white transition
                 ${4 < inputs.scopeIds.length ? ' bg-gray-400 cursor-not-allowed' : ' bg-green-500'}
                 `}
-              >
-                {t('בחרי')}
-              </button>
+                >
+                  {t('בחרי')}
+                </button>
+              </div>
             </div>
-          </div>
-          <div className="overflow-auto max-h-40 flex flex-col gap-y-3 pr-3">
-            {scopes.map((scope) => (
-              <Check
-                name="scopeIds"
-                key={scope.value}
-                value={scope.value}
-                content={scope.label}
-                textClass="text-xs mr-3 relative"
-                wraperClass="flex gap-x-2 mb-3"
-                onChange={change}
-                isChecked={inputs.scopeIds.includes(scope.value)}
-              />
-            ))}
-          </div>
-        </form>
+            <div className="overflow-auto max-h-40 flex flex-col gap-y-3 pr-3">
+              {scopes.map((scope) => (
+                <Check
+                  name="scopeIds"
+                  key={scope.value}
+                  value={scope.value}
+                  content={scope.label}
+                  textClass="text-xs mr-3 relative"
+                  wraperClass="flex gap-x-2 mb-3"
+                  onChange={change}
+                  isChecked={inputs.scopeIds.includes(scope.value)}
+                />
+              ))}
+            </div>
+          </form>
+        )}
       </Popup>
     </>
   );

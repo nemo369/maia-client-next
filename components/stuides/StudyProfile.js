@@ -39,7 +39,7 @@ const Li = ({ place, study }) => {
       case 'registemo':
         return { key: study[key], value: 'מועד הרשמה' };
       case 'begiN_DATE':
-        return { key: study[key], value: 'מועד הרשמה ומועד תחילת לימודים' };
+        return { key: study[key], value: 'מועד תחילת לימודים' };
       case 'meS_TEUR':
         // case 'meshech':
         return { key: study[key], value: 'משך הלימודים' };

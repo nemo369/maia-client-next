@@ -19,7 +19,7 @@ const AgeInputSimple = ({ handleChange, value }) => {
 
   const currentYear = new Date().getFullYear();
   const range = (start, stop, step) => Array.from({ length: (stop - start) / step + 1 }, (_, i) => start + i * step);
-  const years = range(currentYear - 17, currentYear - 90, -1);
+  const years = range(currentYear - 17, currentYear - 40, -1);
 
   return (
     <select value={vale} id="birth_year" onChange={handleTempChange} name="birth_year" className="max-w-[112px] flex  items-center justify-between pl-2 bwc   ">

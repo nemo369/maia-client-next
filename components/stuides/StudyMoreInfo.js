@@ -36,7 +36,10 @@ const Li = ({ place, study }) => {
       </div>
       <div className="bg-white rounded-b-lg rounded-tl-lg shadow grid pb-10 pt-5  px-5 gap-4 w-full">
         <h4 className=" font-bold text-lg leading-4">{value}</h4>
-        <p className="text-sm leading-none" dangerouslySetInnerHTML={{ __html: key }} />
+        <p
+          className="text-sm leading-none prose"
+          dangerouslySetInnerHTML={{ __html: key.split('\n').join('<br/>') }}
+        />
       </div>
     </div>
   );

@@ -28,14 +28,17 @@ export default function StudyForm({ scopes, dropDownChanges, institutions }) {
     setProfessions(data);
   };
 
-  const clearData = (e) => {
+  const clearData = (e, closeModal) => {
     e.preventDefault();
     clearForm();
     setProfessions([]);
     setLabels({ scope: 'תחום', profession: 'מסלול', institution: 'מוסד' });
     dropDownChanges(inputs);
+    if (closeModal) {
+      closeModal();
+    }
   };
-  const onSendScopes = (e) => {
+  const onSendScopes = (e, closeModal) => {
     e.preventDefault();
     fetchProfessions();
     const labelsToset = inputs.scopeIds.map((scopeId) => {
@@ -47,8 +50,11 @@ export default function StudyForm({ scopes, dropDownChanges, institutions }) {
       labelsToSetString = `נבחרו ${labelsToset.length} תחומים`;
     }
     setLabels({ ...labels, scope: labelsToSetString });
+    if (closeModal) {
+      closeModal();
+    }
   };
-  const onSendProfessions = (e) => {
+  const onSendProfessions = (e, closeModal) => {
     e.preventDefault();
     const labelsToset = inputs.professionIds.map((id) => {
       const profession = professions.find(({ full_data: fullData }) => +fullData.miK_NUM === +id);
@@ -62,8 +68,11 @@ export default function StudyForm({ scopes, dropDownChanges, institutions }) {
     setLabels({ ...labels, profession: labelsToSetString });
     dropDownChanges(inputs);
     // setProfessionLabel([...formData.keys()].join(','));
+    if (closeModal) {
+      closeModal();
+    }
   };
-  const onSendInstitutions = (e) => {
+  const onSendInstitutions = (e, closeModal) => {
     e.preventDefault();
 
     const labelsToset = inputs.institutionIds.map((id) => {
@@ -78,6 +87,9 @@ export default function StudyForm({ scopes, dropDownChanges, institutions }) {
 
     dropDownChanges(inputs);
     // setProfessionLabel([...formData.keys()].join(','));
+    if (closeModal) {
+      closeModal();
+    }
   };
   return (
     <div className="flex gap-x-3 pr-1">
@@ -101,6 +113,7 @@ export default function StudyForm({ scopes, dropDownChanges, institutions }) {
         clearData={clearData}
         onSend={onSendInstitutions}
         institutions={institutions}
+        professions={inputs.professionIds}
         label={labels.institution}
         inputs={inputs}
         handleChange={handleChange}
@@ -132,43 +145,45 @@ const ScopesPopUp = ({ scopes, onSend, clearData, label, inputs, handleChange })
       // contentStyle={{ padding: '0px', border: 'none' }}
       arrow
     >
-      <form
-        className="w-[120%] transform translate-x-[8%] border-2 border-gray-400 rounded-md px-2 py-3 bg-white  text-xs"
-        onSubmit={onSend}
-      >
-        <div className="flex mb-4 justify-between">
-          <span>{t('בחר תחום')}</span>
-          <div className="flex justify-between items-center  px-2 gap-x-1">
-            <button
-              onClick={clearData}
-              type="reset"
-              className="outline-none px-2 py-1 rounded-lg bg-white hover:bg-gray-100 text-gray transition"
-            >
-              {t('נקה')}
-            </button>
-            <button
-              type="submit"
-              className="outline-none px-2 py-1 rounded-lg hover:bg-opacity-80 bg-green-500 text-white transition"
-            >
-              {t('בחר')}
-            </button>
+      {(close) => (
+        <form
+          className="w-[120%] transform translate-x-[8%] border-2 border-gray-400 rounded-md px-2 py-3 bg-white  text-xs"
+          onSubmit={(e) => onSend(e, close)}
+        >
+          <div className="flex mb-4 justify-between">
+            <span>{t('בחר תחום')}</span>
+            <div className="flex justify-between items-center  px-2 gap-x-1">
+              <button
+                onClick={(e) => clearData(e, close)}
+                type="reset"
+                className="outline-none px-2 py-1 rounded-lg bg-white hover:bg-gray-100 text-gray transition"
+              >
+                {t('נקה')}
+              </button>
+              <button
+                type="submit"
+                className="outline-none px-2 py-1 rounded-lg hover:bg-opacity-80 bg-green-500 text-white transition"
+              >
+                {t('בחר')}
+              </button>
+            </div>
           </div>
-        </div>
-        <div className="overflow-auto max-h-40 flex flex-col gap-y-3 pr-3">
-          {scopes.map((scope) => (
-            <Check
-              name="scopeIds"
-              key={scope.value}
-              value={scope.value}
-              content={scope.label}
-              textClass="text-xs mr-3 relative"
-              wraperClass="flex gap-x-2 mb-3"
-              onChange={handleChange}
-              isChecked={inputs.scopeIds.includes(scope.value)}
-            />
-          ))}
-        </div>
-      </form>
+          <div className="overflow-auto max-h-40 flex flex-col gap-y-3 pr-3">
+            {scopes.map((scope) => (
+              <Check
+                name="scopeIds"
+                key={scope.value}
+                value={scope.value}
+                content={scope.label}
+                textClass="text-xs mr-3 relative"
+                wraperClass="flex gap-x-2 mb-3"
+                onChange={handleChange}
+                isChecked={inputs.scopeIds.includes(scope.value)}
+              />
+            ))}
+          </div>
+        </form>
+      )}
     </Popup>
   );
 };
@@ -206,49 +221,59 @@ const ProfessionsPopUp = ({ professions, onSend, label, clearData, inputs, handl
       // contentStyle={{ padding: '0px', border: 'none' }}
       arrow
     >
-      <form
-        className="w-[120%] transform translate-x-[8%] border-2 border-gray-400 rounded-md px-2 py-3 bg-white  text-xs"
-        onSubmit={onSend}
-      >
-        <div className="flex mb-4 justify-between">
-          <span>{t('בחר מסלול')}</span>
-          <div className="flex justify-between items-center  px-2 gap-x-1">
-            <button
-              onClick={clearData}
-              type="reset"
-              className="outline-none px-2 py-1 rounded-lg bg-white hover:bg-gray-100 text-gray transition"
-            >
-              {t('נקה')}
-            </button>
-            <button
-              type="submit"
-              className="outline-none px-2 py-1 rounded-lg hover:bg-opacity-80 bg-green-500 text-white transition"
-            >
-              {t('בחר')}
-            </button>
+      {(close) => (
+        <form
+          className="w-[120%] transform translate-x-[8%] border-2 border-gray-400 rounded-md px-2 py-3 bg-white  text-xs"
+          onSubmit={(e) => onSend(e, close)}
+        >
+          <div className="flex mb-4 justify-between">
+            <span>{t('בחר מסלול')}</span>
+            <div className="flex justify-between items-center  px-2 gap-x-1">
+              <button
+                onClick={(e) => clearData(e, close)}
+                type="reset"
+                className="outline-none px-2 py-1 rounded-lg bg-white hover:bg-gray-100 text-gray transition"
+              >
+                {t('נקה')}
+              </button>
+              <button
+                type="submit"
+                className="outline-none px-2 py-1 rounded-lg hover:bg-opacity-80 bg-green-500 text-white transition"
+              >
+                {t('בחר')}
+              </button>
+            </div>
           </div>
-        </div>
-        <div className="overflow-auto max-h-40  flex flex-col gap-y-3 pr-3 pb-4">
-          {professions.map((profession) => (
-            <Check
-              name="professionIds"
-              key={profession.full_data.miK_NUM}
-              value={`${profession.full_data.miK_NUM}`}
-              content={profession.title}
-              textClass="text-xs mr-3 relative"
-              wraperClass="flex gap-x-2 mb-3"
-              onChange={handleChange}
-              isChecked={inputs.professionIds.includes(`${profession.full_data.miK_NUM}`)}
-            />
-          ))}
-        </div>
-      </form>
+          <div className="overflow-auto max-h-40  flex flex-col gap-y-3 pr-3 pb-4">
+            {professions.map((profession) => (
+              <Check
+                name="professionIds"
+                key={profession.full_data.miK_NUM}
+                value={`${profession.full_data.miK_NUM}`}
+                content={profession.title}
+                textClass="text-xs mr-3 relative"
+                wraperClass="flex gap-x-2 mb-3"
+                onChange={handleChange}
+                isChecked={inputs.professionIds.includes(`${profession.full_data.miK_NUM}`)}
+              />
+            ))}
+          </div>
+        </form>
+      )}
     </Popup>
   );
 };
-const InstitutionPopUp = ({ institutions, onSend, label, clearData, inputs, handleChange }) => {
+const InstitutionPopUp = ({
+  institutions,
+  onSend,
+  label,
+  clearData,
+  inputs,
+  handleChange,
+  professions,
+}) => {
   const { t } = useTranslation('common');
-  if (!institutions.length) {
+  if (!institutions.length || !professions?.length) {
     return (
       <button
         disabled
@@ -280,44 +305,46 @@ const InstitutionPopUp = ({ institutions, onSend, label, clearData, inputs, hand
       // contentStyle={{ padding: '0px', border: 'none' }}
       arrow
     >
-      <form
-        className="w-[120%] transform translate-x-[8%] border-2 border-gray-400 rounded-md px-2 py-3 bg-white  text-xs"
-        onSubmit={onSend}
-      >
-        <div className="flex mb-4 justify-between">
-          <span>{t('בחר מוסד לימודים')}</span>
+      {(close) => (
+        <form
+          className="w-[120%] transform translate-x-[8%] border-2 border-gray-400 rounded-md px-2 py-3 bg-white  text-xs"
+          onSubmit={(e) => onSend(e, close)}
+        >
+          <div className="flex mb-4 justify-between">
+            <span>{t('בחר מוסד לימודים')}</span>
 
-          <div className="flex justify-between items-center  px-2 gap-x-1">
-            <button
-              onClick={clearData}
-              type="reset"
-              className="outline-none px-2 py-1 rounded-lg bg-white hover:bg-gray-100 text-gray transition"
-            >
-              {t('נקה')}
-            </button>
-            <button
-              type="submit"
-              className="outline-none px-2 py-1 rounded-lg hover:bg-opacity-80 bg-green-500 text-white transition"
-            >
-              {t('בחר')}
-            </button>
+            <div className="flex justify-between items-center  px-2 gap-x-1">
+              <button
+                onClick={(e) => clearData(e, close)}
+                type="reset"
+                className="outline-none px-2 py-1 rounded-lg bg-white hover:bg-gray-100 text-gray transition"
+              >
+                {t('נקה')}
+              </button>
+              <button
+                type="submit"
+                className="outline-none px-2 py-1 rounded-lg hover:bg-opacity-80 bg-green-500 text-white transition"
+              >
+                {t('בחר')}
+              </button>
+            </div>
           </div>
-        </div>
-        <div className="overflow-auto max-h-40  flex flex-col gap-y-3 pr-3 py-3 pb-4">
-          {institutions.map((institution) => (
-            <Check
-              name="institutionIds"
-              key={institution.mosnum}
-              value={institution.mosnum}
-              content={institution.mosname}
-              textClass="text-xs mr-3 relative"
-              wraperClass="flex gap-x-2 mb-3"
-              onChange={handleChange}
-              isChecked={inputs.institutionIds.includes(institution.mosnum)}
-            />
-          ))}
-        </div>
-      </form>
+          <div className="overflow-auto max-h-40  flex flex-col gap-y-3 pr-3 py-3 pb-4">
+            {institutions.map((institution) => (
+              <Check
+                name="institutionIds"
+                key={institution.mosnum}
+                value={institution.mosnum}
+                content={institution.mosname}
+                textClass="text-xs mr-3 relative"
+                wraperClass="flex gap-x-2 mb-3"
+                onChange={handleChange}
+                isChecked={inputs.institutionIds.includes(institution.mosnum)}
+              />
+            ))}
+          </div>
+        </form>
+      )}
     </Popup>
   );
 };

@@ -82,7 +82,7 @@ export default function Studies({ myStudies, user, scopes, institutions }) {
                 institutions={institutions}
               />
             )}
-            {!!categoryType.id && (
+            {!categoryType.id && (
               <CompareDropdown
                 professionIds={myStudies.map((study) => study.full_data.miK_NUM)}
                 fetchCaegorysWithParams={fetchCaegorysWithParams}

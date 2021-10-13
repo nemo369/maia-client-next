@@ -35,7 +35,7 @@ const CompareDropdown = ({ professionIds, fetchCaegorysWithParams, studies }) =>
   };
 
   const handelClick = () => {
-    setOpen(true);
+    setOpen(!open);
     setGroup4fill(!group4fill);
   };
 

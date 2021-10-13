@@ -8,7 +8,7 @@ function Info() {
   const { t } = useTranslation('common');
 
   function startNextStep() {
-    const nextStepBtn = document?.querySelector('.start-NextStepPopUpAutoBiography-js');
+    const nextStepBtn = document?.querySelector('.start-NextStepPopUp-js');
     if (nextStepBtn) {
       nextStepBtn.click();
     }

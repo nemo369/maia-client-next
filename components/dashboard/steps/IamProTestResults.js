@@ -55,7 +55,7 @@ function IamProTestResults({ direction, testType }) {
             type="secondary"
             status="main"
             name={t('לשלב הבא')}
-            className="h-12 w-full"
+            className="h-12 w-full start-NextStepPopUp-js"
             onClick={() => setDefaultOpen(true)}
           />
           {defaultOpen && <NextStepPopUpVeritas closePopup={setDefaultOpen} />}

@@ -11,11 +11,11 @@ function Bars(props) {
   const [labels, setlabels] = useState([]);
   const [datasets, setDataset] = useState([{}]);
   useEffect(() => {
-    console.log(labelTexts);
     if (!profile || !profile.vendor_profile) return;
     const { vendor_profile: data } = profile;
     const fields = data.userProfileResults.filter((field) => riasec.includes(field.code));
-    setLabelTexts(fields.map((field) => field.name));
+    // eslint-disable-next-line no-control-regex
+    setLabelTexts(fields.map((field) => field.name.replace(/[w^\x00-\x7F]/g, '')));
     setlabels(fields.map((field) => `${field.value * 100}%`));
     setDataset([
       {
@@ -58,7 +58,7 @@ function Bars(props) {
         />
       </div>
 
-      <div className={`grid  grid-cols-${labelTexts.length}`}>
+      <div className={`grid pl-6 grid-cols-${labelTexts.length}`}>
         {labelTexts.map((text) => (
           <span key={text} className="text-center">
             {text}

@@ -18,6 +18,7 @@ module.exports = {
     require('precss'),
     require('autoprefixer'),
     require('tailwind-scrollbar'),
+    require('@tailwindcss/typography'),
   ],
   darkMode: false, // or 'media' or 'class'
   theme: {

@@ -14,7 +14,7 @@ const AgeInput = ({ value, handleChange, initValue, isError }) => {
 
   const currentYear = new Date().getFullYear();
   const range = (start, stop, step) => Array.from({ length: (stop - start) / step + 1 }, (_, i) => start + i * step);
-  const years = range(currentYear - 17, currentYear - 90, -1);
+  const years = range(currentYear - 17, currentYear - 40, -1);
   const yearsMaped = years.map((year) => ({ value: year, label: year, id: year }));
   const fakeHandleChange = (e) => {
     handleChange({ target: {

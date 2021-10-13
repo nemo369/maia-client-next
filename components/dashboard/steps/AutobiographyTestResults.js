@@ -60,7 +60,7 @@ function AutobiographyTestResults({ testType, direction }) {
             type="secondary"
             status="main"
             name={t('לשלב הבא')}
-            className="h-12 w-full start-NextStepPopUpAutoBiography-js"
+            className="h-12 w-full start-NextStepPopUp-js"
             onClick={() => setDefaultOpen(true)}
           />
           {defaultOpen && <NextStepPopUp closePopup={setDefaultOpen} />}

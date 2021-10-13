@@ -1,9 +1,12 @@
+/* eslint-disable operator-linebreak */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import { useContext, useState } from 'react';
 import { useTranslation } from 'next-i18next';
 import CameraSvg from '../svg/Camera';
 import MaleCrown from '../svg/MaleCrown';
+import FemalePic from '../svg/FemalePic';
+import MalePic from '../svg/MalePic';
 import FemaleCrown from '../svg/FemaleCrown';
 import { AppContext } from '../../src/context/state';
 import ProfileAPI from '../../src/services/profile.service';
@@ -89,8 +92,18 @@ function ProfileAvatar({ setLoader }) {
             />
           </div>
         ) : null}
-        {!profile.avatar && 'm' === profile?.gender && <MaleCrown />}
-        {!profile.avatar && 'f' === profile?.gender && <FemaleCrown />}
+        {!profile.avatar && 'm' === profile?.gender && profile.vendor_profile.completionVeritas && (
+          <MaleCrown />
+        )}
+        {!profile.avatar && 'f' === profile?.gender && profile.vendor_profile.completionVeritas && (
+          <FemaleCrown />
+        )}
+        {!profile.avatar &&
+          'm' === profile?.gender &&
+          !profile.vendor_profile.completionVeritas && <FemalePic />}
+        {!profile.avatar &&
+          'f' === profile?.gender &&
+          !profile.vendor_profile.completionVeritas && <MalePic />}
         <div
           className="relative
           z-10
