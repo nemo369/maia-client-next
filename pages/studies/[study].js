@@ -18,7 +18,7 @@ export default function Studies({ study, studies }) {
   const { t } = useTranslation('common');
   useProfile();
   const seo = seoMerge({
-    title: 'מאגר הלימודים |' + (study.hearot ? study.hearot : '404'),
+    title: 'מאגר הלימודים |' + (study.miK_NAME ? study.miK_NAME : '404'),
   });
   const router = useRouter();
   if (!study) {

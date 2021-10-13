@@ -9,7 +9,7 @@ export default function StudyProfile({ study }) {
       <div className="row-span-2 flex flex-shrink flex-grow justify-between font-bold text-lg leading-4 text-white border-b-[1px] border-dashed border-[#ffffff2f]">
         <div className="self-center">
           <h3 className="self-center font-medium text-lg leading-5">{study.mosname}</h3>
-          <h3 className="self-center font-bold text-lg leading-5">{study.hearot}</h3>
+          <h3 className="self-center font-bold text-lg leading-5">{study.miK_NAME}</h3>
         </div>
         <CategoryPercentage percentage={null} className=" study-profile-percentage" />
       </div>
