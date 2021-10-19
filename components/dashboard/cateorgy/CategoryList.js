@@ -6,7 +6,7 @@ import Button from '../../common/Button';
 import Loader from '../../common/Loader';
 import CategoryPercentage from '../../profile/CategoryPercentage';
 
-const CategoryLi = ({ cat, type }) => {
+const CategoryLi = ({ cat, type, disabled }) => {
   const { t } = useTranslation('common');
   const [isHoverd, setisHoverd] = useState(false);
   return (
@@ -23,7 +23,13 @@ const CategoryLi = ({ cat, type }) => {
       >
         <Link href={`/${type}/${cat.id}`}>
           <a>
-            <Button type="button" status="main" className="px-6" name={t('לחץ לצפייה')} />
+            <Button
+              type="button"
+              status="main"
+              className="px-6"
+              name={t('לחץ לצפייה')}
+              disabled={disabled}
+            />
           </a>
         </Link>
       </div>
@@ -52,7 +58,7 @@ const CategoryLi = ({ cat, type }) => {
   );
 };
 
-function CategoryList({ categories, type }) {
+function CategoryList({ categories, type, disabled }) {
   if (!categories || !Array.isArray(categories)) {
     return (
       <div className="flex items-center justify-center min-h-[430px]">
@@ -63,7 +69,7 @@ function CategoryList({ categories, type }) {
   return (
     <ul className="grid xl:grid-cols-3 grid-cols-2 gap-x-3 gap-y-4  min-h-[430px] mt-10">
       {categories.slice(0, 6).map((cat) => (
-        <CategoryLi key={cat.id} cat={cat} type={type} />
+        <CategoryLi disabled={disabled} key={cat.id} cat={cat} type={type} />
       ))}
     </ul>
   );
