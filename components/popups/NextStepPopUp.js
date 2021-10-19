@@ -1,11 +1,11 @@
 import { useTranslation } from 'next-i18next';
 import React, { useContext, useState } from 'react';
-import { useRouter } from 'next/router';
 import PopUp from '../common/PopUp';
 import PagePen from '../svg/PagePen';
 import Button from '../common/Button';
 import { AppContext } from '../../src/context/state';
 import Loader from '../common/Loader';
+import { FRONT_URL } from '../../src/utils/consts';
 
 const NextStepPopUp = (props) => (
   // const [isDone, setIsDone] = useState(false);
@@ -19,7 +19,6 @@ export default NextStepPopUp;
 
 const PopupContent = ({ closePopup }) => {
   const { t } = useTranslation('common');
-  const router = useRouter();
   const [loading, setloading] = useState(false);
 
   const { profile } = useContext(AppContext);
@@ -29,14 +28,20 @@ const PopupContent = ({ closePopup }) => {
 
     const windowOpen = window.open(profile.iampro_test_url);
     setTimeout(() => {
-      windowOpen.postMessage('Maya', profile.iampro_test_url);
+      if (windowOpen) {
+        windowOpen.postMessage('Maya', profile.iampro_test_url);
+      }
     }, 6000);
     window.addEventListener(
       'message',
       (event) => {
         if (event.data) {
           setloading(false);
-          router.push({ pathname: '/', query: { refetchuser: 'true', testDone: 'iampro' } });
+          window.location.href = `${FRONT_URL.replace(
+            '/api',
+            ''
+          )}?refetchuser=true&testDone=iampro`;
+          // router.push({ pathname: '/', query: { refetchuser: 'true', testDone: 'iampro' } });
         }
       },
       false

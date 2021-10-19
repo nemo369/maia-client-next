@@ -20,7 +20,7 @@ function Bars(props) {
     setDataset([
       {
         label: '',
-        data: fields.map((field) => field.value * 100),
+        data: fields.map((field) => (field.value * 100).toFixed(0)),
         backgroundColor: fields.map((field) => getChartColors(field.code)),
       },
     ]);

@@ -40,6 +40,7 @@ export async function getServerSideProps(req) {
   if (user.redirect) return redirectToLogin;
   const gender = user.gender ? user.gender : 'm';
   const locale = `he${gender}`;
+  console.log(locale);
   return {
     props: {
       ...(await serverSideTranslations(locale, ['common'])),

@@ -52,13 +52,11 @@ const MailVerification = ({ email, redirectToTest }) => {
       });
       dispatch({ type: SET_USER, user: data });
       if (redirectToTest && data.vendorTest) {
-        console.log(redirectToTest);
         window.location.href = `${data.vendorTest}&redirect=${encodeURIComponent(
           `${FRONT_URL.replace('/api', '')}?refetchuser=true&testDone=autoBiography`
         )}`;
         return;
       }
-      console.log(router.push);
       router.push({ pathname: '/', query: { refetchuser: 'true' } });
     } else {
       setError('משהו השתבש');

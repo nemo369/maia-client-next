@@ -76,7 +76,7 @@ const WMStepTwo = ({ nextStep, closeModal }) => (
             מקצועות ומסלולי לימוד שיכולים להתאים לך
           </div>
           <Button name="הבא" type="button" status="main" className="next-btn" onClick={nextStep} />
-          <Button name="דלג" type="button" className="skip-btn" onClick={closeModal} />
+          <Button name={t('דלג')} type="button" className="skip-btn" onClick={closeModal} />
         </div>
         <WalkMeStepTwo />
       </div>

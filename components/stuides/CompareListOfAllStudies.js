@@ -24,9 +24,7 @@ const CompareListOfAllStudies = ({ setOpen, studies, handleChange, handleCompare
               {t('השוואת מסלולי לימוד')}
             </h1>
             <p className="text-2xl leading-6 font-light ">
-              {t(
-                'מוסדות הלימוד המוצגים הם בהתאם לתוצאות סולם ההתקדמות שלך. ניתן לבחור עד 4 מסלולי לימוד'
-              )}
+              מוסדות הלימוד המוצגים הם בהתאם לתוצאות סולם ההתקדמות שלך. ניתן לבחור עד 4 מסלולי לימוד
             </p>
             {inputs.categories.length && 1 >= inputs.categories.length ? (
               <div className="text-red-error h-0">יש לבחור 2 מסלולים לפחות</div>
