@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-one-expression-per-line */
 import { useTranslation } from 'next-i18next';
 import { useContext, useState } from 'react';
 import { AppContext } from '../../../src/context/state';
@@ -25,7 +26,7 @@ function NoInfoAtAll() {
         מאיה זיהתה שעדיין אין לה מספיק מידע אודותיך ולכן היא לא יכולה לזהות את הפרופיל התעסוקתי שלך
         ולהמליץ לך על משרות ועבודות אידאליות עבורך.
         <br />
-        <strong>אבל לא לדאוג, מספיק שתשלים את השלבים הבאים ואתה מסודר :)</strong>
+        <strong>{t('אבל לא לדאוג, מספיק שתשלים את השלבים הבאים ואתה מסודר')} :)</strong>
       </p>
       <a onClick={onClick} href={profile?.vendor_token} className="mb-12">
         <Button

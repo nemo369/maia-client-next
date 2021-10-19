@@ -16,7 +16,7 @@ function Bars(props) {
     const fields = data.userProfileResults.filter((field) => riasec.includes(field.code));
     // eslint-disable-next-line no-control-regex
     setLabelTexts(fields.map((field) => field.name.replace(/[w^\x00-\x7F]/g, '')));
-    setlabels(fields.map((field) => `${field.value * 100}%`));
+    setlabels(fields.map((field) => `${(field.value * 100).toFixed(0)}%`));
     setDataset([
       {
         label: '',

@@ -54,6 +54,9 @@ export default function Studies({ myStudies, user, scopes, institutions }) {
   };
   const dropDownChanges = async (selected) => {
     setLoader(true);
+    if (!selected.area) {
+      selected.area = ['1'];
+    }
     const { data } = await VendorAPI.getCategorys(user.token, 'studies', selected);
     setstudies(data);
     setLoader(false);

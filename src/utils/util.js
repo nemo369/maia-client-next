@@ -43,11 +43,11 @@ export const getGreeting = () => {
 
 export const getChartColors = (id) => {
   const colors = {
-    a: '#277da1',
+    a: '#6c6c6c',
     b: '#577590',
-    c: '#4d908e',
+    c: '#007a87',
     d: '#43aa8b',
-    e: '#90be6d',
+    e: '#00a7cb',
     f: '#90be6d',
     g: '#f9c74f',
     h: '#f9844a',
@@ -60,8 +60,8 @@ export const getChartColors = (id) => {
     o: '#b5e48c',
     p: '#dda15e',
     q: '#edf6f9',
-    r: '#A8DFCE',
-    s: '#252464',
+    r: '#98e1cd',
+    s: '#252468',
     t: '#A8DFCE',
     u: '#b6ccfe',
     v: '#f3e7e4',
