@@ -4,6 +4,8 @@ import Button from '../common/Button';
 import JustHeart from '../common/JustHeart';
 
 export default function StudyProfile({ study }) {
+  const assurePrefix = (url) => (url.match(/^.{3,5}:\/\//) ? url : `http://${url}`);
+
   return (
     <div className="pofile-notifications grid grid-rows-8  rounded-2xl lg:max-w-[313px] max-h-[530px] px-5 py-5 flex-shrink-0">
       <div className="row-span-2 flex flex-shrink flex-grow justify-between font-bold text-lg leading-4 text-white border-b-[1px] border-dashed border-[#ffffff2f]">
@@ -24,7 +26,7 @@ export default function StudyProfile({ study }) {
           <JustHeart className2="bg-none" id={study.iD_Num} type="studies" />
         </div>
         {study.wwwAddress && (
-          <a href={study.wwwAddress} target="_blank" rel="noopener noreferrer">
+          <a href={assurePrefix(study.wwwAddress)} target="_blank" rel="noopener noreferrer">
             <Button className="px-8 self-center" type="button" status="main" name="לפרטים נוספים" />
           </a>
         )}

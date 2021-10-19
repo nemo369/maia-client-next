@@ -91,7 +91,6 @@ const RegisterForm = ({ cities, termsText }) => {
     }
   }, [cityId]);
   const handleSubmit = async (e) => {
-    console.log(inputs);
     e.preventDefault();
     if (!checkValidation()) {
       return;
