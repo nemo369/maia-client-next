@@ -38,7 +38,7 @@ const PopupContent = ({ nextStep }) => (
       onClick={nextStep}
       className="h-[45px] w-[210px]"
       status="gradient"
-      name={t('אהבתי, בואו נתחיל')}
+      name="אהבתי, בואו נתחיל"
     />
   </div>
 );
