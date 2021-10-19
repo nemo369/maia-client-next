@@ -5,10 +5,10 @@ import UserAPI from '../../../src/services/user.service';
 import Loader from '../../common/Loader';
 import { SET_USER } from '../../../src/context/appReducer';
 import { AppContext } from '../../../src/context/state';
-import Button from '../../common/Button';
-import { USER_COOKIE } from '../../../src/utils/consts';
+import { FRONT_URL, USER_COOKIE } from '../../../src/utils/consts';
+import FourDigitsInputs from './FourDigitsInputs';
 
-const MailVerification = ({ email }) => {
+const MailVerification = ({ email, redirectToTest }) => {
   const { dispatch } = useContext(AppContext);
 
   const [loader, setLoader] = useState(false);
@@ -31,7 +31,7 @@ const MailVerification = ({ email }) => {
     }, 30000);
   };
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    if (e) e.preventDefault();
     if (!input || 4 !== input.length) {
       return;
     }
@@ -45,18 +45,32 @@ const MailVerification = ({ email }) => {
       return;
     }
     if (data?.token) {
-      setCookie(null, USER_COOKIE, JSON.stringify(data), {
+      setCookie(null, USER_COOKIE, JSON.stringify({ ...data, vendorTest: null }), {
         maxAge: 12 * 60 * 60, //12 hours as in Iam token
         path: '/',
         sameSite: true,
       });
       dispatch({ type: SET_USER, user: data });
+      if (redirectToTest && data.vendorTest) {
+        console.log(redirectToTest);
+        window.location.href = `${data.vendorTest}&redirect=${encodeURIComponent(
+          `${FRONT_URL.replace('/api', '')}?refetchuser=true&testDone=autoBiography`
+        )}`;
+        return;
+      }
+      console.log(router.push);
       router.push({ pathname: '/', query: { refetchuser: 'true' } });
     } else {
       setError('משהו השתבש');
     }
     setLoader(false);
   };
+
+  useEffect(() => {
+    if (input && 4 === input.length) {
+      handleSubmit();
+    }
+  }, [input]);
 
   return (
     <div className="relative">
@@ -67,21 +81,24 @@ const MailVerification = ({ email }) => {
         {email}
       </div>
       {isAllowedResend ? (
-        <button type="button" className="mt-2 mb-4 underline" onClick={reSend}>
-          לא קיבלת? שלח שוב
+        <button type="button" className="mt-2 mb-4" onClick={reSend}>
+          לא קיבלת?
+          <span className="underline text-orange mr-1">שלח שוב</span>
         </button>
       ) : (
         <div className="mt-2 mb-4 h-6" />
       )}
+      <div className="text-gray-400">*שימו לב, אולי המייל נכנס בטעות לתקיית הספאם שלך.</div>
+
       <div className="text-white h-6">
         {!!error && <span className="shake block">{error}</span>}
       </div>
-      <form className="block h-16 gap-x-7" method="POST" onSubmit={handleSubmit}>
+      <form className="validate-form block h-16 gap-x-7" method="POST" onSubmit={handleSubmit}>
         <label htmlFor="password" className="hidden">
           {' '}
           הזן סיסמא
         </label>
-        <input
+        {/* <input
           value={input}
           onChange={(e) => setInput(e.target.value)}
           type="text"
@@ -91,13 +108,19 @@ const MailVerification = ({ email }) => {
           className={`regiserPageInput justify-self-center h-12 w-full bwc bg-gray-disabled  rounded-md ${
             error ? '' : ''
           }`}
+        /> */}
+        <FourDigitsInputs
+          error={error}
+          loader={loader}
+          setLoader={setLoader}
+          setError={setError}
+          setInput={setInput}
         />
-        <Button status="main" type="submit" className="mt-3 w-full" disabled={loader}>
+        {/* <Button status="main" type="submit" className="mt-3 w-full" disabled={loader}>
           שליחה
-        </Button>
+        </Button> */}
       </form>
-
-      <Loader loading={loader} className="absolute right-0 left-0 m-auto bottom-[-210px]" />
+      <Loader loading={loader} className="absolute right-0 left-0 m-auto " />
     </div>
   );
 };

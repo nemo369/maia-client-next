@@ -34,7 +34,8 @@ export async function getServerSideProps(req) {
   const { data: jobs } = await VendorAPI.getCategorys(token, 'jobs');
 
   // Here you can add more data
-  const locale = `he${user.gender}`;
+  const gender = user.gender ? user.gender : 'm';
+  const locale = `he${gender}`;
 
   return {
     props: {

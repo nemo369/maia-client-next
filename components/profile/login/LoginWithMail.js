@@ -8,7 +8,7 @@ const LoginWithMail = ({ changeLoginType }) => {
   return (
     <>
       {email ? (
-        <MailVerification email={email} />
+        <MailVerification email={email} redirectToTest={false} />
       ) : (
         <MailLog setTheEmail={setTheEmail} changeLoginType={changeLoginType} />
       )}

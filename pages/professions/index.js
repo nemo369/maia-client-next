@@ -116,7 +116,8 @@ export async function getServerSideProps(req) {
   if (user.redirect) return user;
   const { data: professions } = await VendorAPI.getCategorys(token, 'professions');
   const { data: scopes } = await VendorAPI.getScopes(token);
-  const locale = `he${user.gender}`;
+  const gender = user.gender ? user.gender : 'm';
+  const locale = `he${gender}`;
   // Here you can add more data
   return {
     props: {

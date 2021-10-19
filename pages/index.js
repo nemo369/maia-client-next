@@ -38,8 +38,8 @@ export default function Home() {
 export async function getServerSideProps(req) {
   const [user] = getUserSession(req);
   if (user.redirect) return redirectToLogin;
-
-  const locale = `he${user.gender}`;
+  const gender = user.gender ? user.gender : 'm';
+  const locale = `he${gender}`;
   return {
     props: {
       ...(await serverSideTranslations(locale, ['common'])),

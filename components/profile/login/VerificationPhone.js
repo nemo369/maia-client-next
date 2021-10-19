@@ -51,7 +51,7 @@ const VerificationPhone = (props) => {
       return;
     }
     if (data?.token) {
-      setCookie(null, USER_COOKIE, JSON.stringify(data), {
+      setCookie(null, USER_COOKIE, JSON.stringify({ ...data, vendorTest: null }), {
         maxAge: 12 * 60 * 60, //12 hours as in Iam token
         path: '/',
         sameSite: true,
@@ -106,7 +106,7 @@ const VerificationPhone = (props) => {
             key={key}
             onChange={(e) => {
               const newInputs = [...inputs];
-              newInputs[index] = !Number.isNaN(+e.target.value) ? +e.target.value : '';
+              newInputs[index] = e.target.value;
               setInputs(newInputs);
             }}
             value={inputs[index]}

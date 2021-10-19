@@ -76,7 +76,8 @@ export async function getServerSideProps(req) {
     VendorAPI.getCategory(token, 'study', study),
   ]);
   // const studyData = fetchedStudy.data;
-  const locale = `he${user.gender}`;
+  const gender = user.gender ? user.gender : 'm';
+  const locale = `he${gender}`;
 
   return {
     props: {

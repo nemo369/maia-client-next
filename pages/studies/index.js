@@ -110,7 +110,8 @@ export async function getServerSideProps(req) {
     VendorAPI.getInstitutions(token),
   ]);
   if (user.redirect) return user;
-  const locale = `he${user.gender}`;
+  const gender = user.gender ? user.gender : 'm';
+  const locale = `he${gender}`;
   // Here you can add more data
   return {
     props: {

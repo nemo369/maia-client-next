@@ -1,27 +1,27 @@
-import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
 import useForm from '../../src/hooks/useForm';
 import Infoservice from '../../src/services/info.service';
-import AgeInput from './register_form/inputs/AgeInput';
-import CellphoneInput from './register_form/inputs/CellphoneInput';
-import EmailInput from './register_form/inputs/EmailInput';
-import FemaleRadio from './register_form/inputs/FemaleRadio';
-import MaleRadio from './register_form/inputs/MaleRadio';
-import SearchCountryInput from './SearchCountryInput';
-import SearchStreetInput from './SearchStreetInput';
-import CoefficientCheckbox from './register_form/inputs/CoefficientCheckbox';
-import ConditionsCheckbox from './register_form/inputs/ConditionsCheckbox';
-import MainTitle from './register_form/texts/MainTItle';
-import SubTitle from './register_form/texts/SubTitle';
-import Group18Img from '../svg/Group18Img';
-import Group11 from '../svg/Group11';
 import UserAPI from '../../src/services/user.service';
+import { allowedCityIds } from '../../src/utils/consts';
+import { validateRegister } from '../../src/utils/validateRegister';
 import Button from '../common/Button';
 import Loader from '../common/Loader';
+import Group11 from '../svg/Group11';
+import Group18Img from '../svg/Group18Img';
+import AgeInput from './register_form/inputs/AgeInput';
+import CellphoneInput from './register_form/inputs/CellphoneInput';
+import CoefficientCheckbox from './register_form/inputs/CoefficientCheckbox';
+import ConditionsCheckbox from './register_form/inputs/ConditionsCheckbox';
+import EmailInput from './register_form/inputs/EmailInput';
+import FemaleRadio from './register_form/inputs/FemaleRadio';
 import FirstName from './register_form/inputs/FirstName';
 import LastName from './register_form/inputs/LastName';
-import { validateRegister } from '../../src/utils/validateRegister';
-import { allowedCityIds, FRONT_URL } from '../../src/utils/consts';
+import MaleRadio from './register_form/inputs/MaleRadio';
+import MainTitle from './register_form/texts/MainTItle';
+import SubTitle from './register_form/texts/SubTitle';
+import SearchCountryInput from './SearchCountryInput';
+import SearchStreetInput from './SearchStreetInput';
 
 const errorsInitial = {
   email: false,
@@ -107,7 +107,7 @@ const RegisterForm = ({ cities, termsText }) => {
 
     const { data, status } = await UserAPI.register(dataToSend);
     if (200 !== status) {
-      setError(data.message);
+      setError(`${data.message}`);
       setLoader(false);
     }
     if (200 === status) {
@@ -118,28 +118,7 @@ const RegisterForm = ({ cities, termsText }) => {
         }&fullName=${inputs.firstName + ' ' + inputs.lastName}`;
         return;
       }
-      if (data.vendor_token) {
-        window.location.href = `${data.vendor_token}&redirect=${encodeURIComponent(
-          `${FRONT_URL.replace('/api', '')}?refetchuser=true&testDone=autoBiography&error=200`
-        )}`;
-        // e.preventDefault();
-        // const windowOpen = window.open(data.vendor_token);
-        // setTimeout(() => {
-        //   windowOpen.postMessage('Maya', data.vendor_token);
-        // }, 6000);
-        // window.addEventListener(
-        //   'message',
-        //   (event) => {
-        //     if (event.data) {
-        //       router.push('/user/login?error=200');
-        //     }
-        //   },
-        //   false
-        // );
-      } else {
-        router.push('/user/login?error=200');
-        setLoader(false);
-      }
+      router.push(`/user/validate?email=${data.email}`);
     }
   };
 
