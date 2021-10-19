@@ -32,7 +32,7 @@ const PopupContent = ({ nextStep }) => (
       <br />
       תוצאות מדוייקות ומותאמות יותר עבורכם.
       <br />
-      <strong className="font-bold">{t('והכי חשוב, אתם מתקדמים בקצב שלכם!!')}</strong>
+      <strong className="font-bold">והכי חשוב, אתם מתקדמים בקצב שלכם!!</strong>
     </p>
     <Button
       onClick={nextStep}
