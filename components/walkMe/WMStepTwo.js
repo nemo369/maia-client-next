@@ -92,7 +92,7 @@ const WMStepTwo = ({ nextStep, closeModal }) => (
           <CategoryCahnger onChangeCategoryList={() => {}} isLabel={false} />
         </div>
         <div>
-          <CategoryList categories={catList} type="type" />
+          <CategoryList disabled="true" categories={catList} type="type" />
         </div>
       </div>
     </div>

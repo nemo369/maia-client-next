@@ -3,6 +3,7 @@ import Popup from 'reactjs-popup';
 import { IS_WALKME } from '../../src/utils/consts';
 import { getLs, setLs } from '../../src/utils/localStorge';
 import { Case, Switch } from '../common/Switch';
+import StartPopUp from '../popups/StartPopUp';
 import WMStepOne from './WMStepOne';
 import WMStepThree from './WMStepThree';
 import WMStepTwo from './WMStepTwo';
@@ -13,7 +14,7 @@ const WalkMe = () => {
   const isServer = 'undefined' === typeof window;
   const [isPopUp, setisPopUp] = useState(getLs(IS_WALKME));
   // const [isPopUp, setisPopUp] = useState(true);
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(0);
 
   const [open, setOpen] = useState(!isServer);
   const closeModal = () => {
@@ -34,26 +35,30 @@ const WalkMe = () => {
   }
   return (
     <>
-      <Popup position="center" modal open={open} overlayStyle={overlayStyle}>
-        <div>
+      {0 === step ? (
+        <StartPopUp nextStep={nextStep} />
+      ) : (
+        <Popup position="center" modal open={open} overlayStyle={overlayStyle}>
           <div>
-            <Switch test={step}>
-              <Case value={1}>
-                <WMStepOne nextStep={nextStep} closeModal={closeModal} />
-              </Case>
-              <Case value={2}>
-                <WMStepTwo nextStep={nextStep} closeModal={closeModal} />
-              </Case>
-              <Case value={3}>
-                <WMStepThree nextStep={nextStep} closeModal={closeModal} />
-              </Case>
-            </Switch>
-            <button id="close-modal-hack" type="button" onClick={closeModal} hidden>
-              &times;
-            </button>
+            <div>
+              <Switch test={step}>
+                <Case value={1}>
+                  <WMStepOne nextStep={nextStep} closeModal={closeModal} />
+                </Case>
+                <Case value={2}>
+                  <WMStepTwo nextStep={nextStep} closeModal={closeModal} />
+                </Case>
+                <Case value={3}>
+                  <WMStepThree nextStep={nextStep} closeModal={closeModal} />
+                </Case>
+              </Switch>
+              <button id="close-modal-hack" type="button" onClick={closeModal} hidden>
+                &times;
+              </button>
+            </div>
           </div>
-        </div>
-      </Popup>
+        </Popup>
+      )}
     </>
   );
 };
