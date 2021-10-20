@@ -1,18 +1,19 @@
-import React, { useState, useContext } from 'react';
 import { useTranslation } from 'next-i18next';
-import Inputs from '../common/Inputs';
-import Arrow from '../svg/Arrow';
-import RadioMaleFemale from '../common/RadioMaleFemale';
+import React, { useContext, useState } from 'react';
+import { SET_PROFILE } from '../../src/context/appReducer';
 import { AppContext } from '../../src/context/state';
-import Check from '../common/Check';
-import Tooltip from '../common/Tooltip';
-import EditInfo from '../svg/EditInfo';
 import useForm from '../../src/hooks/useForm';
 import ProfileAPI from '../../src/services/profile.service';
-import { SET_PROFILE } from '../../src/context/appReducer';
 import { FRONT_URL } from '../../src/utils/consts';
-import AgeInputSimple from './register_form/inputs/AgeInputSimple';
+import Check from '../common/Check';
+import Inputs from '../common/Inputs';
+import RadioMaleFemale from '../common/RadioMaleFemale';
+import Tooltip from '../common/Tooltip';
+import Arrow from '../svg/Arrow';
+import EditInfo from '../svg/EditInfo';
 import ProfileDetailsEditStreet from './ProfileDetailsEditStreet';
+import AgeInputSimple from './register_form/inputs/AgeInputSimple';
+import ResetPopUp from './register_form/ResetPopUp';
 
 export default function ProfileDetails({ cities }) {
   const { profile, user, dispatch } = useContext(AppContext);
@@ -59,9 +60,13 @@ export default function ProfileDetails({ cities }) {
   שתעבור 
 </p>`;
 
-  const openTest = (e) => {
+  const [isTestOpen, setIsTestOpen] = useState(false);
+  const loading = false;
+  const openResetTestPopup = (e) => {
     e.preventDefault();
-
+    setIsTestOpen(true);
+  };
+  const openTest = () => {
     window.location.href = `${profile.vendor_token}&redirect=${encodeURIComponent(
       `${FRONT_URL.replace('/api', '')}?refetchuser=true&testDone=autoBiography`
     )}`;
@@ -156,12 +161,22 @@ export default function ProfileDetails({ cities }) {
         </form>
       )}
       <div className="dash  border-b-[2px] border-dashed border-[#979797] opacity-20 h-1 my-6" />
-      <a href={profile.vendor_token} className="my-[15px] flex  justify-between" onClick={openTest}>
+      <a
+        href={profile.vendor_token}
+        className="my-[15px] flex  justify-between"
+        onClick={openResetTestPopup}
+      >
         <div className="text-[#666666] text-[18px]">עריכת פרטי שאלון מה עשיתי עד כה</div>
-        <div className="opacity-50 focus:outline-none hover:opacity-100" herf="#">
+        <div className="opacity-50 focus:outline-none hover:opacity-100">
           <EditInfo />
         </div>
       </a>
+      <ResetPopUp
+        isOpen={isTestOpen}
+        loading={loading}
+        startTest={openTest}
+        setIsOpen={setIsTestOpen}
+      />
     </div>
   );
 }
