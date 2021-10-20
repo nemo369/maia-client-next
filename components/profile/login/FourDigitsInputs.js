@@ -11,6 +11,15 @@ function FourDigitsInputs({ error, loader, setError, setInput }) {
     setError(false);
 
     const el = e.currentTarget;
+    if ('ArrowLeft' === e.code && el.nextElementSibling && 0 !== index) {
+      el.nextElementSibling?.focus();
+      return;
+    }
+    if ('ArrowRight' === e.code && el.previousElementSibling) {
+      el.previousElementSibling?.focus();
+      return;
+    }
+
     if ('Backspace' === e.code && el.nextElementSibling) {
       el.nextElementSibling?.focus();
       return;

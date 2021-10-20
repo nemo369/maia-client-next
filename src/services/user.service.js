@@ -4,6 +4,16 @@ import { FRONT_URL } from '../utils/consts';
 const API_URL = `${FRONT_URL}`;
 
 const UserAPI = {
+  setCookie: async (cookie) => {
+    console.log(cookie);
+    try {
+      const response = await axios.post(`${API_URL}/auth/set-cookie`, cookie);
+      console.log(response);
+      return response;
+    } catch (error) {
+      return error.response;
+    }
+  },
   current: async () => {
     try {
       const response = await axios.post('/user', {

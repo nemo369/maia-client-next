@@ -1,11 +1,10 @@
 import router from 'next/router';
 import React, { useContext, useEffect, useState } from 'react';
-import { setCookie } from 'nookies';
 import UserAPI from '../../../src/services/user.service';
 import Loader from '../../common/Loader';
 import { SET_USER } from '../../../src/context/appReducer';
 import { AppContext } from '../../../src/context/state';
-import { FRONT_URL, USER_COOKIE } from '../../../src/utils/consts';
+import { FRONT_URL } from '../../../src/utils/consts';
 import FourDigitsInputs from './FourDigitsInputs';
 
 const MailVerification = ({ email, redirectToTest }) => {
@@ -35,6 +34,7 @@ const MailVerification = ({ email, redirectToTest }) => {
     if (!input || 4 !== input.length) {
       return;
     }
+
     setLoader(true);
     setError(false);
     const { data, status } = await UserAPI.emailVerification({ email, password: input });
@@ -45,15 +45,17 @@ const MailVerification = ({ email, redirectToTest }) => {
       return;
     }
     if (data?.token) {
-      setCookie(null, USER_COOKIE, JSON.stringify({ ...data, vendorTest: null }), {
-        maxAge: 12 * 60 * 60, //12 hours as in Iam token
-        path: '/',
-        sameSite: true,
-      });
+      // setCookie(null, USER_COOKIE, JSON.stringify({ ...data, vendorTest: null }), {
+      //   maxAge: 12 * 60 * 60, //12 hours as in Iam token
+      //   path: '/',
+      //   // sameSite: true,
+      // });
+
+      await UserAPI.setCookie({ ...data, vendorTest: null });
       dispatch({ type: SET_USER, user: data });
       if (redirectToTest && data.vendorTest) {
         window.location.href = `${data.vendorTest}&redirect=${encodeURIComponent(
-          `${FRONT_URL.replace('/api', '')}?refetchuser=true&testDone=autoBiography`
+          `${FRONT_URL.replace('/api', '')}`
         )}`;
         return;
       }
