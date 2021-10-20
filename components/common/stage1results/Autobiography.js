@@ -51,13 +51,10 @@ const Autobiography = (props) => {
     }
     const works = [];
     const eductions = [];
-    console.log(profile.vendor_profile_test);
-    console.log('profile.vendor_profile_test');
     profile.vendor_profile_test.forEach((test) => {
       if (worksConsts.includes(test.categoryName)) {
         works.push(test);
       }
-      console.log({ test });
       if (eductionsConsts.includes(test.categoryName)) {
         eductions.push(test);
       }
