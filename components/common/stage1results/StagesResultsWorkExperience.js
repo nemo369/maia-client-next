@@ -2,9 +2,9 @@ import Image from 'next/image';
 import StarRating from './StarRating';
 import worrior from '../../../public/images/worrior.png';
 
-const StagesResultsWorkExperience = ({ profileData, medal }) => (
+const StagesResultsWorkExperience = ({ medal, autobiographyData }) => (
   <div className="bg-[#F5F5F5] grid py-[30px] px-5 gap-y-7 max-h-[427px] overflow-auto">
-    {profileData?.vendor_profile_test.map((info, index) => (
+    {autobiographyData.map((info, index) => (
       <WorkExp key={info.jobName} info={info} medal={medal} index={index} />
     ))}
   </div>
