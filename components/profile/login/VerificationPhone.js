@@ -1,11 +1,9 @@
 import router from 'next/router';
 import React, { useContext, useEffect, useState } from 'react';
-import { setCookie } from 'nookies';
-import UserAPI from '../../../src/services/user.service';
-import Loader from '../../common/Loader';
 import { SET_USER } from '../../../src/context/appReducer';
 import { AppContext } from '../../../src/context/state';
-import { USER_COOKIE } from '../../../src/utils/consts';
+import UserAPI from '../../../src/services/user.service';
+import Loader from '../../common/Loader';
 
 const sucsessClass = `bg-green-success focus:ring-0 
 focus:ring-green-successBorder border-2 border-green-successBorder text-green-successBorder`;
