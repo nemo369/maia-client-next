@@ -17,7 +17,10 @@ const Li = ({ place, study }) => {
   const getLine = (key) => {
     switch (key) {
       case 'teurdrishot':
-        return { key: study[key] + '<br/><br/>' + study.halichmiun, value: 'תנאי קבלה' };
+        return {
+          key: study[key] + '<br/><br/>' + (study.halichmiun ? study.halichmiun : ''),
+          value: 'תנאי קבלה',
+        };
       case 'tochnit':
         return { key: study[key], value: 'תוכנית לימודים' };
       case 'hearot':

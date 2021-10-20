@@ -157,7 +157,7 @@ export default function ProfileDetails({ cities }) {
       )}
       <div className="dash  border-b-[2px] border-dashed border-[#979797] opacity-20 h-1 my-6" />
       <a href={profile.vendor_token} className="my-[15px] flex  justify-between" onClick={openTest}>
-        <div className="text-[#666666] text-[18px]">עריכת פרטי שאלון אוטוביוגרפיה</div>
+        <div className="text-[#666666] text-[18px]">עריכת פרטי שאלון מה עשיתי עד כה</div>
         <div className="opacity-50 focus:outline-none hover:opacity-100" herf="#">
           <EditInfo />
         </div>

@@ -8,14 +8,14 @@ const Stage2longTextArr = (props) => {
     if (ALL_IA_PRO_LOGOS.includes(imgCode)) {
       return <img src={`/iamprologos/${imgCode}.svg`} alt="logo" height="54" loading="lazy" />;
     }
-    return <img src="/iamprologos/fallback.svg" alt="logo" width="150" loading="lazy" />;
+    return '';
   };
   const { iamproData } = props;
 
   const data = iamproData?.longTextArr.map((x) => (
     <div className="grid" key={x.img_src}>
       <div className="flex gap-x-12">
-        <div>{getImg(x.img_src)}</div>
+        <div className="flex-grow">{getImg(x.img_src)}</div>
         <div className="grid gap-y-12">
           <div className="grid">
             <h3 className="font-bold text-[22px] text-[#00A4AE] pb-4">{x.labelText}</h3>

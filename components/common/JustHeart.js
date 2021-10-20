@@ -62,7 +62,7 @@ export default function JustHeart(props) {
           )}
         </div>
       </div>
-      <AddToFav isPopUp={isPopUp} setisPopUp={setisPopUp} />
+      <AddToFav isPopUp={isPopUp} setisPopUp={setisPopUp} type={type} />
     </div>
   );
 }

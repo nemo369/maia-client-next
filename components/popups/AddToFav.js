@@ -4,13 +4,12 @@ import PopUp from '../common/PopUp';
 import AddFav from '../svg/AddFav';
 import Button from '../common/Button';
 
-const AddToFav = ({ isPopUp, setisPopUp }) => {
+const AddToFav = ({ isPopUp, setisPopUp, type }) => {
   const { t } = useTranslation('common');
 
   const closeModal = () => {
     setisPopUp(false);
   };
-
   return (
     <>
       {isPopUp && (
@@ -18,13 +17,15 @@ const AddToFav = ({ isPopUp, setisPopUp }) => {
           <PopUp position="center" defaultOpen>
             <div className="flex flex-col items-center justify-center px-[65px]">
               <AddFav />
-              <h2 className="text-center text-3xl mt-[11px] font-bold ">מקצוע נוסף למועדפים</h2>
+              <h2 className="text-center text-3xl mt-[11px] font-bold ">
+                {'professions' === type ? 'מקצוע ' : 'מסלול הלימודים'}
+                &nbsp;נוסף למועדפים
+              </h2>
               <div className="text-center text-[20px] mt-[50px] leading-[30px]">
                 {t('באזור האישי תוכל לצפות בכל')}
                 <br />
-                המקצועות /הלימודים
-                <br />
-                שהוספת למועדפים
+                {'professions' === type ? 'מקצועות' : 'מסלולי הלימוד'}
+                &nbsp;שהוספת למועדפים
               </div>
               <Link href="/profile">
                 <a>

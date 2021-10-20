@@ -60,7 +60,7 @@ const RetestPop = () => {
               <Xcircle />
             </button>
             <Image src={warning} alt="שימו לב" width={100} height={100} />
-            <h1 className="text-[32px] text-black font-black">ביצוע מבחן חוזר "מה מעניין אותי"</h1>
+            <h1 className="text-[32px] text-black font-black">ביצוע שאלון חוזר "מה מעניין אותי"</h1>
             <p className="text-2xl px-5">{t('האם אתה בטוח שברצונך לאפס את התוצאות שהתקבלו?')}</p>
             <a
               onClick={startTest}

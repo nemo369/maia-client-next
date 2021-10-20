@@ -11,10 +11,10 @@ function NoInfo() {
   return (
     <article className="h-full flex flex-col justify-center items-center text-center">
       {defaultOpen && <NextStepPopUpAutoBiography />}
-      <h3 className="text-orange text-4xl font-bold">רגע, חסר משהו</h3>
+      <h3 className="text-orange text-4xl font-bold">רגע, משהו חסר</h3>
       <p className="w-2/3 text-lg mt-8 mb-10">
         מאיה זיהתה שעדיין אין לה מספיק מידע אודותיך ולכן היא לא יכולה לזהות את הפרופיל התעסוקתי שלך
-        ולהמליץ לך על משרות ועבודות אידאליות עבורך.
+        ולהמליץ לך על מקצועות ומסלולי לימוד אידיאלים עבורך.
         <br />
         <strong>{t('אבל לא לדאוג, מספיק שתשלים את השלבים הבאים ואתה מסודר')}</strong>
       </p>

@@ -99,10 +99,10 @@ function ProfileAvatar({ setLoader }) {
           <FemaleCrown />
         )}
         {!profile.avatar &&
-          'm' === profile?.gender &&
+          'f' === profile?.gender &&
           !profile.vendor_profile.completionVeritas && <FemalePic />}
         {!profile.avatar &&
-          'f' === profile?.gender &&
+          'm' === profile?.gender &&
           !profile.vendor_profile.completionVeritas && <MalePic />}
         <div
           className="relative
