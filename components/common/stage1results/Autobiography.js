@@ -26,7 +26,7 @@ const eductionsConsts = [
   'ישיבה קטנה/סמינר תיכוני',
   'ישיבה גדולה',
   'סמינר',
-  'תעודת גמר / מקצוע',
+  'תעודת גמר/מקצוע',
   'טכנאי/ת',
   'הנדסאי/ת',
   'תואר ראשון',
@@ -38,24 +38,26 @@ const Autobiography = (props) => {
   const { stageData } = props;
   const { profile } = useContext(AppContext);
   const autobiographyData = profile?.vendor_profile;
-  console.log(autobiographyData);
-  console.log('autobiographyData');
+
   const [biographys, setBiographys] = useState({
     works: [],
     eductions: [],
     toGos: [],
   });
+
   useEffect(() => {
     if (!profile || !profile.vendor_profile || !profile.vendor_profile_test) {
       return;
     }
-
     const works = [];
     const eductions = [];
+    console.log(profile.vendor_profile_test);
+    console.log('profile.vendor_profile_test');
     profile.vendor_profile_test.forEach((test) => {
       if (worksConsts.includes(test.categoryName)) {
         works.push(test);
       }
+      console.log({ test });
       if (eductionsConsts.includes(test.categoryName)) {
         eductions.push(test);
       }
