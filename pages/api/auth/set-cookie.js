@@ -1,4 +1,4 @@
-import { setCookie } from 'nookies';
+import cookie from 'cookie';
 import { USER_COOKIE } from '../../../src/utils/consts';
 
 export default async function magicLogin(req, res) {
@@ -7,14 +7,26 @@ export default async function magicLogin(req, res) {
 
   switch (method) {
     case 'POST':
-      setCookie({ res }, USER_COOKIE, JSON.stringify(body), {
-        secure: 'production' === NODE_ENV,
-        maxAge: 12 * 60 * 60, //12 hours as in Iam token
-        httpOnly: true,
-        path: '/',
-      });
+      // setCookie({ res }, USER_COOKIE, JSON.stringify(body), {
+      //   secure: 'production' === NODE_ENV,
+      //   maxAge: 12 * 60 * 60, //12 hours as in Iam token
+      //   httpOnly: true,
+      //   path: '/',
+      // });
 
-      res.status(200).json({ body });
+      // res.status(200).json({ body });
+      res.setHeader(
+        'Set-Cookie',
+        cookie.serialize(USER_COOKIE, JSON.stringify(body), {
+          httpOnly: true,
+          secure: 'development' !== NODE_ENV,
+          maxAge: 12 * 60 * 60, //12 hours as in Iam token
+          sameSite: false,
+          path: '/',
+        })
+      );
+      res.statusCode = 200;
+      res.json({ success: true });
 
       break;
     default:
