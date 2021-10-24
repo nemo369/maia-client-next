@@ -107,7 +107,12 @@ const RegisterForm = ({ cities, termsText }) => {
 
     const { data, status } = await UserAPI.register(dataToSend);
     if (200 !== status) {
-      setError(`${data.message}`);
+      console.log(data, status);
+      if (data.message && 'string' === typeof data.message) {
+        setError(`${data.message}`);
+      } else {
+        setError('תקלה בצד שרת');
+      }
       setLoader(false);
     }
     if (200 === status) {
