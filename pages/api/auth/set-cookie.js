@@ -22,7 +22,7 @@ export default async function magicLogin(req, res) {
           secure: 'development' !== NODE_ENV,
           // maxAge: 60 * 60 * 60, //12 hours as in Iam token
           maxAge: 24 * 60 * 60 * 30, //30 days
-          sameSite: true,
+          sameSite: false,
           path: '/',
         })
       );

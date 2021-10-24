@@ -1,5 +1,3 @@
-import React from 'react';
-
 const ID = 'UA-50437388-2';
 function Gtag() {
   if ('production' !== process.env.NODE_ENV) {
