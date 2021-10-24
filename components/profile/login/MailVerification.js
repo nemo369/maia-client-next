@@ -45,8 +45,14 @@ const MailVerification = ({ email, redirectToTest }) => {
       return;
     }
     if (data?.token) {
-      await UserAPI.setCookie({ ...data, vendorTest: null });
       dispatch({ type: SET_USER, user: data });
+      try {
+        await UserAPI.setCookie({ ...data, vendorTest: null });
+      } catch (error2) {
+        console.log(error2);
+        setError('משהו השתבש');
+        return;
+      }
       if (redirectToTest && data.vendorTest) {
         window.location.href = `${data.vendorTest}&redirect=${encodeURIComponent(
           `${FRONT_URL.replace('/api', '')}`
