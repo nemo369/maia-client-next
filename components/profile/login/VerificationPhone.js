@@ -49,7 +49,8 @@ const VerificationPhone = (props) => {
       return;
     }
     if (data?.token) {
-      await UserAPI.setCookie({ ...data, vendorTest: null });
+      await UserAPI.setCookie({ token: data.token, gender: data.gender });
+      // await UserAPI.setCookie({ ...data, vendorTest: null });
       dispatch({ type: SET_USER, user: data });
       router.push({ pathname: '/', query: { refetchuser: 'true' } });
     }

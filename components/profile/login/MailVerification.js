@@ -47,7 +47,7 @@ const MailVerification = ({ email, redirectToTest }) => {
     if (data?.token) {
       dispatch({ type: SET_USER, user: data });
       try {
-        await UserAPI.setCookie({ ...data, vendorTest: null });
+        await UserAPI.setCookie({ token: data.token, gender: data.gender });
       } catch (error2) {
         console.log(error2);
         setError('משהו השתבש');

@@ -11,7 +11,7 @@ for (let index = min; index < max; index += step) {
 }
 function JobsLocation({ handleChange, inputs }) {
   const { user } = useContext(AppContext);
-  const street = user.street ? JSON.parse(user.street) : null;
+  const street = user.street ? JSON.parse(user.street) : null; // TODO// SHOudl come from profile dont user
   const streetStr = `${street?.name}, ${street?.city_name}`;
   const { t } = useTranslation('common');
   return (

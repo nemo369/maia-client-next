@@ -20,8 +20,9 @@ export default async function magicLogin(req, res) {
         cookie.serialize(USER_COOKIE, JSON.stringify(body), {
           httpOnly: true,
           secure: 'development' !== NODE_ENV,
-          maxAge: 12 * 60 * 60, //12 hours as in Iam token
-          sameSite: false,
+          // maxAge: 60 * 60 * 60, //12 hours as in Iam token
+          maxAge: 24 * 60 * 60 * 30, //30 days
+          sameSite: true,
           path: '/',
         })
       );
