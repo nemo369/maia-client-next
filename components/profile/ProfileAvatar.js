@@ -92,18 +92,18 @@ function ProfileAvatar({ setLoader }) {
             />
           </div>
         ) : null}
-        {!profile.avatar && 'm' === profile?.gender && profile.vendor_profile.completionVeritas && (
-          <MaleCrown />
-        )}
-        {!profile.avatar && 'f' === profile?.gender && profile.vendor_profile.completionVeritas && (
-          <FemaleCrown />
-        )}
-        {!profile.avatar &&
-          'f' === profile?.gender &&
-          !profile.vendor_profile.completionVeritas && <FemalePic />}
         {!profile.avatar &&
           'm' === profile?.gender &&
-          !profile.vendor_profile.completionVeritas && <MalePic />}
+          profile.vendor_profile?.completionVeritas && <MaleCrown />}
+        {!profile.avatar &&
+          'f' === profile?.gender &&
+          profile.vendor_profile?.completionVeritas && <FemaleCrown />}
+        {!profile.avatar &&
+          'f' === profile?.gender &&
+          !profile.vendor_profile?.completionVeritas && <FemalePic />}
+        {!profile.avatar &&
+          'm' === profile?.gender &&
+          !profile.vendor_profile?.completionVeritas && <MalePic />}
         <div
           className="relative
           z-10

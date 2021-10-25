@@ -37,7 +37,7 @@ function ProfileDoughnut() {
   const [labels, setlabels] = useState([]);
   const [datasets, setDataset] = useState([{}]);
   useEffect(() => {
-    if (!profile) return;
+    if (!profile || !profile.vendor_profile) return;
     const fields = [
       profile.vendor_profile.mainField,
       profile.vendor_profile.secondField,

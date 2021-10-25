@@ -149,7 +149,9 @@ const Autobiography = (props) => {
       <div className="w-full flex justify-between pt-9 pb-10 pr-28">
         <AutoBiographyChartResults autobiographyData={autobiographyData} />
         <div className="w-[200px] h-[200px]">
-          <StageOneBottom userProfileResults={profile.vendor_profile.userProfileResults} />
+          {profile.vendor_profile && (
+            <StageOneBottom userProfileResults={profile.vendor_profile.userProfileResults} />
+          )}
         </div>
       </div>
       <div className="w">
