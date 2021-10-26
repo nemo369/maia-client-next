@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import 'chartjs-plugin-datalabels';
 import { Doughnut } from 'react-chartjs-2';
 import { AppContext, useAppContext } from '../../src/context/state';
 import { getChartColors } from '../../src/utils/util';
@@ -8,18 +9,13 @@ const options = {
   maintainAspectRatio: false,
   plugins: {
     datalabels: {
-      formatter: (value, ctx) => {
-        const datasets = ctx.chart.data.datasets;
-
-        if (datasets.indexOf(ctx.dataset) === datasets.length - 1) {
-          const sum = datasets[0].data.reduce((a, b) => a + b, 0);
-          const percentage = Math.round((value / sum) * 100) + '%';
-          return percentage;
-        } else {
-          return 'percentage';
-        }
-      },
-      color: 'red',
+      color: 'white',
+      display: true,
+      align: 'center',
+      anchor: 'center',
+      font: { size: '7' },
+      textAlign: 'center',
+      formatter: (val, ctx) => ctx.chart.data.labels[ctx.dataIndex],
     },
     legend: {
       labels: {
@@ -34,8 +30,8 @@ const options = {
 
 function ProfileDoughnut() {
   const { profile } = useAppContext(AppContext);
-  const [labels, setlabels] = useState([]);
   const [datasets, setDataset] = useState([{}]);
+  const [labels, setlabels] = useState([]);
   useEffect(() => {
     if (!profile || !profile.vendor_profile) return;
     const fields = [
@@ -43,13 +39,13 @@ function ProfileDoughnut() {
       profile.vendor_profile.secondField,
       profile.vendor_profile.thirdField,
     ];
+    console.log(fields);
     setlabels(fields.map((field) => field.displayName));
     setDataset([
       {
-        label: false,
+        labels: fields.map((field) => field.displayName),
         data: fields.map((field) => field.value * 100),
         backgroundColor: fields.map((field) => getChartColors(field.code)),
-
         borderWidth: 1,
       },
     ]);
@@ -59,10 +55,7 @@ function ProfileDoughnut() {
     <div>
       <Doughnut
         id="ProfileDoughnut"
-        data={{
-          labels,
-          datasets,
-        }}
+        data={{ datasets, labels }}
         height="143px"
         width="122px"
         options={options}

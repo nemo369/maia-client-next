@@ -51,7 +51,7 @@ const Autobiography = (props) => {
     }
     const works = [];
     const eductions = [];
-    profile.vendor_profile_test.forEach((test) => {
+    profile?.vendor_profile_test.forEach((test) => {
       if (worksConsts.includes(test.categoryName)) {
         works.push(test);
       }
@@ -149,8 +149,8 @@ const Autobiography = (props) => {
       <div className="w-full flex justify-between pt-9 pb-10 pr-28">
         <AutoBiographyChartResults autobiographyData={autobiographyData} />
         <div className="w-[200px] h-[200px]">
-          {profile.vendor_profile && (
-            <StageOneBottom userProfileResults={profile.vendor_profile.userProfileResults} />
+          {profile?.vendor_profile && (
+            <StageOneBottom userProfileResults={profile?.vendor_profile.userProfileResults} />
           )}
         </div>
       </div>
