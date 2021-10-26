@@ -58,7 +58,7 @@ function Bars(props) {
         />
       </div>
 
-      <div className={`grid pl-6 grid-cols-${labelTexts.length}`}>
+      <div className={`ltr grid pl-6 grid-cols-${labelTexts.length}`}>
         {labelTexts.map((text) => (
           <span key={text} className="text-center">
             {text}
