@@ -34,7 +34,7 @@ const PopupContent = ({ closePopup }) => {
     }
     setveritasStatus(data.veritasStatus);
     // Not Started
-    if (data && 'x' !== data.veritasStatus) {
+    if (data && 'Done' !== data.veritasStatus) {
       setTimeout(fetchVertiasStatus, 7000);
     } else {
       setloading(false);
