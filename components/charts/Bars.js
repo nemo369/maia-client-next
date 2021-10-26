@@ -10,15 +10,14 @@ const riasec = ['r', 'i', 'a', 's', 'e', 'c'];
 function Bars(props) {
   const { height, width } = props;
   const { profile } = useAppContext(AppContext);
-  const [labelTexts, setLabelTexts] = useState([]);
   const [labels, setlabels] = useState([]);
   const [datasets, setDataset] = useState([{}]);
   useEffect(() => {
     if (!profile || !profile.vendor_profile) return;
     const { vendor_profile: data } = profile;
     const fields = data.userProfileResults.filter((field) => riasec.includes(field.code));
-    // eslint-disable-next-line no-control-regex
     // setLabelTexts(fields.map((field) => field.name.replace(/[w^\x00-\x7F]/g, '')));
+    // eslint-disable-next-line no-control-regex
     setlabels(fields.map((field) => field.name.replace(/[w^\x00-\x7F]/g, '')));
     setDataset([
       {
@@ -58,7 +57,6 @@ function Bars(props) {
       <div className="grid-cols-1 grid grid-cols-2 grid grid-cols-3 grid grid-cols-4 grid grid-cols-5 grid grid-cols-6 grid grid-cols-7">
         <Bar data={{ datasets, labels }} width={width} height={height} options={options} />
       </div>
-      <div className={`ltr grid pl-6 grid-cols-${labelTexts.length}`} />
     </>
   );
 }
