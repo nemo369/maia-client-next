@@ -17,10 +17,10 @@ const NextStepPopUpVeritas = (props) => (
   </div>
 );
 export default NextStepPopUpVeritas;
-
 const PopupContent = ({ closePopup }) => {
   const { t } = useTranslation('common');
   const [loading, setloading] = useState(false);
+  const [windowOpen, setwindowOpen] = useState(null);
   const [veritasStatus, setveritasStatus] = useState('');
   const { profile, user } = useContext(AppContext);
   const { token } = user;
@@ -37,14 +37,20 @@ const PopupContent = ({ closePopup }) => {
     if (data && 'Done' !== data.veritasStatus) {
       setTimeout(fetchVertiasStatus, 7000);
     } else {
+      if (windowOpen) {
+        windowOpen.close();
+      }
       setloading(false);
       window.location.href = `${FRONT_URL.replace('/api', '')}?testDone=veritas&refetchuser=true`;
     }
   };
-  const onClick = async () => {
+  const onClick = async (e) => {
+    e.preventDefault();
     if (!profile.veritas_test_url) {
       return;
     }
+    const theWindow = window.open(profile.veritas_test_url);
+    setwindowOpen(theWindow);
     setloading(true);
     setTimeout(fetchVertiasStatus, 4000);
   };
