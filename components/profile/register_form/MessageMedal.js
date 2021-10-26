@@ -3,7 +3,8 @@ import Popup from 'reactjs-popup';
 import Image from 'next/image';
 import Xcircle from '../../svg/Xcircle';
 import Button from '../../common/Button';
-import medalStar from '../../../public/images/medalStar.png';
+// import medalStar from '../../../public/images/medalStar.png';
+import worrior from '../../../public/images/worrior.png';
 
 const MessageMedal = () => {
   const [open, setOpen] = useState(true);
@@ -29,7 +30,7 @@ const MessageMedal = () => {
               setOpen(!open);
             }}
           >
-            open pop
+            <Image className="w-10 h-10 z-20" src={worrior} alt="מדליה" />
           </button>
         </button>
       }
@@ -47,7 +48,7 @@ const MessageMedal = () => {
             >
               <Xcircle />
             </button>
-            <Image src={medalStar} alt="מדליה" width={100} height={100} />
+            <Image src={worrior} alt="מדליה" width={100} height={100} />
             <h1 className="text-[32px] font-black">לוחם? כבוד!</h1>
             <p className="text-2xl px-5">
               חשוב שתדע שמסלול השירות שלך מקנה לך כישורים ומיומנויות חשובים לקראת השילוב בלימודים
