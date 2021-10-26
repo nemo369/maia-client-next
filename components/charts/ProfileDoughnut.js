@@ -39,7 +39,6 @@ function ProfileDoughnut() {
       profile.vendor_profile.secondField,
       profile.vendor_profile.thirdField,
     ];
-    console.log(fields);
     setlabels(fields.map((field) => field.displayName));
     setDataset([
       {
