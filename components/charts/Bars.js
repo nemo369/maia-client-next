@@ -18,8 +18,8 @@ function Bars(props) {
     const { vendor_profile: data } = profile;
     const fields = data.userProfileResults.filter((field) => riasec.includes(field.code));
     // eslint-disable-next-line no-control-regex
-    setLabelTexts(fields.map((field) => field.name.replace(/[w^\x00-\x7F]/g, '')));
-    setlabels(fields.map((field) => `${(field.value * 100).toFixed(0)}%`));
+    // setLabelTexts(fields.map((field) => field.name.replace(/[w^\x00-\x7F]/g, '')));
+    setlabels(fields.map((field) => field.name.replace(/[w^\x00-\x7F]/g, '')));
     setDataset([
       {
         labels: '',
@@ -58,13 +58,7 @@ function Bars(props) {
       <div className="grid-cols-1 grid grid-cols-2 grid grid-cols-3 grid grid-cols-4 grid grid-cols-5 grid grid-cols-6 grid grid-cols-7">
         <Bar data={{ datasets, labels }} width={width} height={height} options={options} />
       </div>
-      <div className={`ltr grid pl-6 grid-cols-${labelTexts.length}`}>
-        {labelTexts.map((text) => (
-          <span key={text} className="text-center">
-            {text}
-          </span>
-        ))}
-      </div>
+      <div className={`ltr grid pl-6 grid-cols-${labelTexts.length}`} />
     </>
   );
 }
