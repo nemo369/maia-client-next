@@ -45,7 +45,7 @@ function Bars(props) {
         display: true,
         color: 'white',
         align: 'center',
-        anchor: 'start',
+        anchor: 'center',
         font: { size: '10' },
         textAlign: 'center',
       },
