@@ -3,7 +3,6 @@ import Popup from 'reactjs-popup';
 import Image from 'next/image';
 import Xcircle from '../../svg/Xcircle';
 import Button from '../../common/Button';
-// import medalStar from '../../../public/images/medalStar.png';
 import worrior from '../../../public/images/worrior.png';
 
 const MessageMedal = () => {
