@@ -49,7 +49,7 @@ const CompareDropdown = ({ professionIds, fetchCaegorysWithParams, studies }) =>
           aria-label=""
           onClick={handelClick}
           onKeyDown={handelClick}
-          className="relative h-10 flex justify-center items-center rounded px-2 border-none text-white  bg-green-500"
+          className="relative h-10 flex justify-center items-center rounded px-2 border-none text-white bg-green-500 transform rotate-90"
         >
           <Group4 />
         </button>
