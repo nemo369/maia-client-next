@@ -1,17 +1,6 @@
 function FlyingWoman() {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 268 156">
-      <rect
-        width="55.671"
-        height="11"
-        x="-27.835"
-        y="-5.5"
-        fillOpacity="0.55"
-        fillRule="evenodd"
-        rx="1"
-        ry="1"
-        transform="translate(190.21 151)"
-      />
       <circle r="61.5" fillRule="evenodd" transform="translate(62 62)" />
       <circle
         r="59.5"

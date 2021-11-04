@@ -1,3 +1,4 @@
+import { useTranslation } from 'next-i18next';
 import Button from '../common/Button';
 import CategoryCahnger from '../dashboard/cateorgy/CategoryCahnger';
 import ArrowOrange from '../svg/ArrowOrange';
@@ -52,9 +53,9 @@ const catList = [
     description: 'דרוש הנדסאי לטובת חברת אדריכלות ועיצוב פנים במרכז הארץ...',
   },
 ];
-
-const WMStepTwo = ({ nextStep, closeModal }) => (
-  <>
+function WMStepTwo({ nextStep, closeModal }) {
+  const { t } = useTranslation('common');
+  return (
     <div className="flex">
       <div className="flex flex-col">
         <div className="relative right-[450px] top-[50px] transform rotate-[210deg] w-[110px]">
@@ -96,7 +97,6 @@ const WMStepTwo = ({ nextStep, closeModal }) => (
         </div>
       </div>
     </div>
-  </>
-);
-
+  );
+}
 export default WMStepTwo;
