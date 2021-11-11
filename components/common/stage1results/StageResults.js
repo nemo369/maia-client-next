@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import Autobiography from './Autobiography';
 import ProfileAPI from '../../../src/services/profile.service';
-import CompletionIAmpro from '../CompletionIAmprosStage/CompletionIAmpro';
+// import CompletionIAmpro from '../CompletionIAmprosStage/CompletionIAmpro';
 import Veretas from '../veritasStage/Veretas';
 
 const StageResults = ({ testType }) => {
@@ -17,7 +17,8 @@ const StageResults = ({ testType }) => {
   return (
     <>
       {'Autobiography' === testType && <Autobiography stageData={stages} />}
-      {'IAmpro' === testType && <CompletionIAmpro stageData={stages?.completionIAmpro} />}
+      {/* {'IAmpro' === testType && <CompletionIAmpro stageData={stages?.completionIAmpro} />} */}
+      {'IAmpro' === testType && <Veretas stageData={stages} />}
       {'Veretas' === testType && <Veretas stageData={stages} />}
     </>
   );

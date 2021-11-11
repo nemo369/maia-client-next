@@ -8,6 +8,7 @@ import VeretasEmploymentProfile from './VeretasEmploymentProfile';
 import Stage2longTextArr from '../CompletionIAmprosStage/Stage2longTextArr';
 import { ALL_IA_PRO_LOGOS } from '../../../src/utils/iamproLogos';
 
+const dummyData = "מאפיין אנשים המוכוונים לפעול בסביבה מוגדרת ומובנית ושואפים לסדר, יציבות וכללים ברורים. לרוב, אנשים אלה משתלבים היטב במסגרות מובנות, המושתתות על חלוקת תפקידים ברורה והיררכיה ארגונית. הם מייחסים חשיבות רבה לעשייה איכותית ויסודית, ושומרים על סדר, ארגון ושיטתיות בעשייתם. הם מוכוונים להגיע בעבודתם לתוצרים ברורים ומדידים ולזכות במשובים אובייקטיביים על עשייתם.";
 const Veretas = () => {
   const { profile } = useContext(AppContext);
   const iamproData = profile?.vendor_profile_i_am_pro;
@@ -20,15 +21,15 @@ const Veretas = () => {
   };
 
   const getImg = (imgCode) => {
-    if (ALL_IA_PRO_LOGOS.includes(imgCode)) {
-      return <img src={`/logos/${imgCode}.svg`} alt="logo" height="54" loading="lazy" />;
+    if (ALL_IA_PRO_LOGOS.includes(imgCode.toUpperCase())) {
+      return <img src={`/iamprologos/${imgCode}.svg`} alt="logo" className="h-14 w-14" loading="lazy" />;
     }
 
-    return <h4 className="text-5xl font-black text-[#F4F4F4]">תמונה</h4>;
+    return <h4 className="text-3xl font-black text-gray-400">תמונה</h4>;
   };
 
   return (
-    <div className="stage1-wrapper grid">
+    <div className="stage1-wrapper veritasWraper grid">
       <VeretasTop veretasData={iamproData} close={close} />
 
       <hr className="dashed-stages my-5 h-[2px]" />
@@ -48,19 +49,25 @@ const Veretas = () => {
       <p className="text-xl font-bold justify-self-center ">המאפיינים העיקריים שלי</p>
       <div className="w-7 h-[3px] bg-green-500 justify-self-center mt-2 rounded" />
       <div className="flex flex-wrap pt-6 px-[10px] gap-y-[10px] gap-x-2 w-full">
-        {veritasPersonaityData.map((personality) => (
-          <span className="bg-[#F5F5F5] px-12 py-3 flex-shrink-0  text-xl rounded-md">
-            {personality.name}
-          </span>
+        {veritasPersonaityData.map((personality, index) => (
+          <a href={`#${index}`}>
+            <span className="bg-[#F5F5F5] px-12 py-3 flex-shrink-0  text-xl rounded-md">
+              {personality.name}
+            </span>
+          </a>
         ))}
       </div>
-      {veritasPersonaityData.map((personality) => (
-        <div className="flex py-8 px-8 gap-x-10px">
-          {getImg(personality.code)}
-          <div className="pt-9 ">
-            <span className="text-[22px] font-bold text-green-500">{personality.name}:</span>
-            <span>{" "}</span>
-            <p className="text-[22px] inline">{personality.summary}</p>
+      {veritasPersonaityData.map((personality, index) => (
+        <div className="py-8 px-8 7">
+          <div className="pt-9 flex gap-x-7">
+            {getImg(personality.code)}
+            <div id={index}>
+
+              <span className="text-[22px] font-bold text-green-500">{personality.name}:</span>
+              <span>{" "}</span>
+              <p className="text-[22px] inline">{dummyData}</p>
+            </div>
+            {/* <p className="text-[22px] inline">{personality.summary}</p> */}
           </div>
         </div>
       ))}
