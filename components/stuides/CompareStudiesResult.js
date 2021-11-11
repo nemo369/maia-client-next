@@ -6,6 +6,7 @@ import JustHeart from '../common/JustHeart';
 import envelope from '../../public/images/envelope.png';
 import smallprinter from '../../public/images/smallprinter.png';
 import { ALL_LOGOS } from '../../src/utils/allLogos';
+import { makepdf } from '../../src/utils/makepdf';
 
 const CompareStudiesResult = ({ setOpen, setCompare, studies }) => {
   const { t } = useTranslation('common');
@@ -19,6 +20,7 @@ const CompareStudiesResult = ({ setOpen, setCompare, studies }) => {
     setCompare(false);
   };
   const getImg = (data) => {
+    console.log('hooolo');
     const types = ['jpg', 'png', 'jpeg'];
     let type = null;
     types.forEach((imgType) => {
@@ -39,6 +41,9 @@ const CompareStudiesResult = ({ setOpen, setCompare, studies }) => {
     // w.document.write(printContents);
     window.print();
   };
+  const mailpdf = () => {
+    makepdf(studies);
+  };
   return (
     <div className="grid step-two-wrapper" id="print-section">
       <button className="justify-self-start" type="button" onClick={close}>
@@ -53,7 +58,7 @@ const CompareStudiesResult = ({ setOpen, setCompare, studies }) => {
             </h1>
           </div>
           <div className="flex justify-self-end compare-c gap-x-4">
-            <button type="button">
+            <button type="button" onClick={mailpdf}>
               <Image src={envelope} alt="מעטפה" width={25} height={25} />
             </button>
             <button type="button" onClick={printCompare}>
