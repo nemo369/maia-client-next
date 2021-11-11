@@ -22,7 +22,7 @@ const Veretas = () => {
 
   const getImg = (imgCode) => {
     if (ALL_IA_PRO_LOGOS.includes(imgCode.toUpperCase())) {
-      return <img src={`/iamprologos/${imgCode}.svg`} alt="logo" className="h-14 w-14" loading="lazy" />;
+      return <img src={`/iamprologos/${imgCode.toUpperCase()}.svg`} alt="logo" className="h-14 w-14" loading="lazy" />;
     }
 
     return <h4 className="text-3xl font-black text-gray-400">תמונה</h4>;
