@@ -15,5 +15,10 @@ export const ALL_IA_PRO_LOGOS = [
   'T',
   'U',
   'V',
-  'W',
+  'R',
+  'E',
+  'S',
+  'A',
+  'C',
+  'I',
 ];

@@ -36,5 +36,18 @@ const Infoservice = {
       return error.response;
     }
   },
+  sendPdf: async (html, token) => {
+    try {
+      const response = await axios.post(`${API_URL}/info/send-pdf`, JSON.stringify({ html }), {
+        headers: {
+          'Content-type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      return response;
+    } catch (error) {
+      return error.response;
+    }
+  },
 };
 export default Infoservice;

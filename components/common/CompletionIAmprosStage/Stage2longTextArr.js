@@ -5,6 +5,7 @@ const Stage2longTextArr = (props) => {
   const getImg = (imgSrc) => {
     const imgPaths = imgSrc.split('/');
     const imgCode = imgPaths.reverse()[0].replace('.png', '');
+    console.log(imgCode);
     if (ALL_IA_PRO_LOGOS.includes(imgCode)) {
       return <img src={`/iamprologos/${imgCode}.svg`} alt="logo" height="54" loading="lazy" />;
     }
@@ -33,7 +34,7 @@ const Stage2longTextArr = (props) => {
             <div className="stage2-marks">
               <ClearMark />
               <div className="grid gap-y-2">
-                <p className="text-xl font-black leading-5">קישורים אופיינים</p>
+                <p className="text-xl font-black leading-5">מאפיינים אישיותיים אופיינים</p>
                 <p className="text-lg">{x.integrate}</p>
               </div>
             </div>
@@ -47,14 +48,14 @@ const Stage2longTextArr = (props) => {
             <div className="stage2-marks">
               <ClearMark />
               <div className="grid gap-y-2">
-                <p className="text-xl font-black leading-5">קישורים אופיינים</p>
+                <p className="text-xl font-black leading-5">ישתלבו היטב בתחומים</p>
                 <p className="text-lg">{x.professions}</p>
               </div>
             </div>
             <div className="stage2-marks">
               <ClearMark />
               <div className="grid gap-y-2">
-                <p className="text-xl font-black leading-5">קישורים אופיינים</p>
+                <p className="text-xl font-black leading-5">מקצועות אופיינים</p>
                 <p className="text-lg">{x.skills}</p>
               </div>
             </div>
