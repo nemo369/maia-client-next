@@ -1,4 +1,4 @@
-import { useTranslation } from 'next-i18next';
+// import { useTranslation } from 'next-i18next';
 import React, { useContext, useState } from 'react';
 import { AppContext } from '../../src/context/state';
 import HelpInfo from '../popups/HelpInfo';
@@ -10,7 +10,7 @@ export default function ProfileInfo({ cities }) {
   const [loader, setLoader] = useState(false);
   const { profile } = useContext(AppContext);
 
-  const { t } = useTranslation('common');
+  // const { t } = useTranslation('common');
 
   if (!profile) return null;
   return (
