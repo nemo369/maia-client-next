@@ -74,7 +74,7 @@ const LoginWithPassword = () => {
           </label>
           <button
             type="submit"
-            className="mt-16 bg-mainOrange w-full text-center rounded py-4 hover:bg-opacity-90"
+            className="mt-16 bg-[#FF916A] w-full text-center rounded py-4 hover:bg-opacity-90"
           >
             התחברות
           </button>
