@@ -27,7 +27,7 @@ function Banner() {
         <>
           <FlyingWoman />
           <span className="leading-6 text-white font-bold text-lg absolute z-20 text-center w-[121px] px-6 pt-6 top-0 left-0">
-            {t('זקוק')}
+            זקוק/ה
             <br />
             להכוונה
             <br />

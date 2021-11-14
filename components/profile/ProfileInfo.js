@@ -21,7 +21,7 @@ export default function ProfileInfo({ cities }) {
     >
       <HelpInfo className="absolute left-0 top-0 -translate-y-4 -translate-x-2 right-auto cursor-pointer">
         <div className="w-[120px] h-[120px] rounded-full bg-orange  border-white border-2 text-white font-bold text-lg flex flex-col justify-center items-center leading-tight hover:bg-orange-active transition">
-          <span>{t('זקוק')}</span>
+          <span>זקוק/ה</span>
           <span>להכוונה</span>
           <span>אישית?</span>
         </div>
