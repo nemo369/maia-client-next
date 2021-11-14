@@ -38,7 +38,7 @@ const Login = () => {
       <NextSeo {...seo} />
       <section className="login__wrapper flex justify-center items-center md:h-screen overflow-auto md:overflow-hidden relative">
         <div className="md:flex login text-white w-full">
-          <div className="login__form bg-green-500 z-40  rounded px-14 py-11">
+          <div className="login__form bg-green-500 z-40 rounded-[20px] px-14 py-11">
             {errorMsg && (
               <h2 className="text-2xl text-red-500 text-center font-bold shake">{errorMsg}</h2>
             )}
